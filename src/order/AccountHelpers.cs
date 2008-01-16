@@ -47,15 +47,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double bias, double floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            double bias2 = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - (double)(long)i) + floor;
-            }
-            return bias2 + (bias - bias2);
+            Locked,
+            New,
+            Pending,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
