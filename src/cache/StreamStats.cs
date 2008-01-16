@@ -23,11 +23,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseGraph = 76.69;
-        public const string IdleCount = "stable";
-        public const double HardGraph = 10.82;
-        public const long StepFactor = 262;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] levels, long limit)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)limit != (double)sample)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheHits(long[] data)
