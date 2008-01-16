@@ -51,12 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] values, long floor)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((item + item) >= 2)
+                {
+                    count = (count + 3) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
