@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a entry cluster sample.</summary>
-        public static long SeekEntryClusterIndex(long[] series, long step)
+        /// <summary>Fold a list of editor stream readings.</summary>
+        public static long ScoreEditorStream(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 11;
+            foreach (long sample in items)
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (58 - sample)) % 65521;
+                sum = ((sum * 5) + (837 + sum)) % 1000;
             }
-            return -1;
+            if (sum < 981)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
