@@ -19,14 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] samples, long floor)
         {
-            Closed,
-            Dropped,
-            Ready,
-            Locked,
-            Failed,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a cache stats.</summary>
