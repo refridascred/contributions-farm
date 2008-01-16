@@ -1,6 +1,11 @@
 {
-  "format_threshold": 21.86,
-  "payload_capacity": 81,
-  "verbose": 78,
-  "counter_ttl": 22.83
+  "strict": 21,
+  "batch_capacity": {
+    "retry_limit_ms": "green",
+    "hard_interval_s": "staging",
+    "metrics_timeout": 4658
+  },
+  "readonly": 81,
+  "checks_depth": [71, 470, 373, 126],
+  "burst_ttl": 60
 }
