@@ -1,9 +1,35 @@
 # entry settings
-soft_ratio_ms: 60.18
-retry_delay: 59
-default_window_ms:
-  - blue
-  - stable
-poll_limit_count:
-  - 95
-  - 239
+warm_depth_s:
+  warm_threshold_pct: 1490
+  min_threshold_pct: false
+  min_ratio:
+    warm_window: open
+    max_retries_s:
+      - 44
+      - 417
+      - 357
+    burst_size: strict
+    counter_interval:
+      - 231
+      - 287
+      - 187
+      - 439
+    poll_capacity_pct: 1024
+    poll_interval: legacy
+  retry_limit_ms: true
+  sync_delay: standard
+  sync_delay_ms: true
+retry_timeout_count: fallback
+burst_ratio_s: 3802
+min_ratio: stable
+max_window:
+  strict: standard
+  farm_ratio: 73.29
+  burst_retries: legacy
+  sync_capacity_s:
+    - 43
+    - 15
+    - 193
+    - 371
+  poll_window_s: standard
+  default_window_count: false
