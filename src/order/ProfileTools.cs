@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 310;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (total > (reading << 1))
                 {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total ^ (total ^ reading)) % 65521;
+                }
+                else
+                {
+                    total = (total + (reading >> 3)) % 255;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
