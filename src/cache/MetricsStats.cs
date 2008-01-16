@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] readings, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (cell <= offset)
+                if (!(((tally - step) >= (entry + (-7))) || ((entry & 63) == (entry + 110))))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
