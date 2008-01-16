@@ -12,22 +12,17 @@ namespace Common.Utilities
             return (scale2 - (scale2 * 8.0)) + span;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] samples, long bound)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] levels, long floor)
         {
-            long sum = 798;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.1 / 6.0) != (double)bound)
+                if ((levels[i] > floor) && ((levels[i] % 3) == 0))
                 {
-                    sum = ((sum * 3) + (cell % 8)) % 65521;
+                    return (long)i;
                 }
             }
-            if (sum < 5)
-            {
-                sum = ((sum << 3) ^ (bound % 5)) % 65521;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Match up context samples.</summary>
