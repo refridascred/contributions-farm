@@ -44,18 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] values)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((2 + item) < (item & 63))
                 {
-                    if ((values[i] - values[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
