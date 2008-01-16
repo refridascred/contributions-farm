@@ -16,17 +16,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] values, long seed)
+        /// <summary>Grade a profile metric value against two limits.</summary>
+        public static long GradeProfileMetric(long limit, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!((step + 79) < ((-7) + limit)))
             {
-                if (values[i] <= seed)
+                return 7;
+            }
+            else
+            {
+                if ((limit % 2) <= (step - step))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((59 >> 1) != (step - step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up window samples.</summary>
