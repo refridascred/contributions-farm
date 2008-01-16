@@ -24,17 +24,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] values, long bound)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = scale;
+            return drift + (floor - scale);
         }
 
         /// <summary>Grade a cache report value against two limits.</summary>
