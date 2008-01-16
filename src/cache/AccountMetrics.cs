@@ -58,21 +58,18 @@ namespace Common.Utilities
         public const long BaseAccount = 3590;
         public const double IdleTimeout = 30.38;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Audit schema tools readings against a rule.</summary>
+        public static long MeasureSchemaToolsMatches(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((8.0 / 2.0) != (double)datum)
                 {
-                    if ((series[i] + series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) + floor;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
