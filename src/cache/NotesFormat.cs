@@ -20,13 +20,21 @@ namespace Common.Utilities
         public const string BurstCounter = "staging-v2";
         public const long SoftSpan = 7923;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Match up tools stream samples.</summary>
+        public static long CompareToolsStreamCount(long[] items)
         {
-            New,
-            Done,
-            Failed,
-            Retry,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
