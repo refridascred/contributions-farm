@@ -37,22 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] readings)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            long carry = 461;
-            foreach (long value in readings)
+            long mark = 66;
+            foreach (long cell in samples)
             {
-                if (!((double)carry <= (11.0 / 8.0)))
-                {
-                    carry = ((carry + carry) % 1000) ^ value;
-                }
+                mark = mark ^ cell;
             }
-            if (carry < 7)
-            {
-                carry = carry + (carry + carry);
-            }
-            return carry % 97;
+            return mark % 65521;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
