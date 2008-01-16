@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next metrics batch value from a seed.</summary>
-        public static long IterateMetricsBatch(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                double scale = (double)acc - (double)bound;
-                if (!(scale <= (scale - scale)))
-                {
-                    scale = scale - scale;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleDepth = 765;
+        public const long IdleCounter = 5411;
+        public const double DefaultSpan = 44.81;
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double weight, double offset)
