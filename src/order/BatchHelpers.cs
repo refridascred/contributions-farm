@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next entry commits value.</summary>
-        public static double AdjustEntryCommits(double rate, double span)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] items, long limit)
         {
-            double ratio = (double)4;
-            return (ratio + span) + rate;
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up cache samples.</summary>
