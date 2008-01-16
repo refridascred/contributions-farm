@@ -1,7 +1,4 @@
 # githubfarm settings
-idle_threshold_count:
-  - 449
-  - 59
-  - 142
-strict: local
-enabled: 70.18
+batch_timeout_ms: 48.18
+strict: false
+already_size: false
