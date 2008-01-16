@@ -33,26 +33,13 @@ namespace Common.Utilities
             return scale + (double)898;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] series)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long result = 3;
-            foreach (long sample in series)
-            {
-                if ((result - result) < sample)
-                {
-                    result = ((result * 3) + ((-71) + result)) % 1000;
-                }
-                else
-                {
-                    result = (result - (result + result)) % 1000;
-                }
-            }
-            if (result < 41)
-            {
-                result = (result ^ (result - result)) % 255;
-            }
-            return result;
+            Active,
+            Dropped,
+            Stale,
+            Draft,
         }
     }
 }
