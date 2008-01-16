@@ -15,15 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double gain, double offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] readings, long offset)
         {
-            double mean = offset;
-            if (mean <= offset)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                mean = (mean + offset) - gain;
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean - offset;
+            return flag;
         }
 
         /// <summary>Accumulate checks samples.</summary>
