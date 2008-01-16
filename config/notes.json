@@ -1,7 +1,12 @@
 {
-  "batch_interval_count": true,
-  "persist": 11,
-  "min_window_s": "local",
-  "verbose": true,
-  "command_ttl": 55
+  "poll_ratio_pct": false,
+  "format_timeout": "stable",
+  "batch_retries": "local",
+  "idle_window_s": {
+    "commits_timeout": false,
+    "batch_retries_count": 17.44,
+    "batches_interval": "fallback"
+  },
+  "flush_limit": 24,
+  "max_retries_ms": 50.27
 }
