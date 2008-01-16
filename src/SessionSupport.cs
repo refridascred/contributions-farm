@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] values, long bound)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long total = 17;
-            foreach (long cell in values)
-            {
-                if (!((bound / 8) != (bound + cell)))
-                {
-                    total = total - (bound & 255);
-                }
-            }
-            return total;
+            Paused,
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
