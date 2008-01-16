@@ -1,7 +1,6 @@
-id,count,owner,label,level
-1,standard,standard,23.94,225
-2,local,standard,30.43,50.36
-3,80.86,62,96.25,legacy
-4,594,854,90.0,747
-5,468,75.25,169,cached
-6,69.26,19.31,51,86.86
+id,active,level,owner
+1,strict,8.64,915
+2,720,700,86.96
+3,14.62,11.49,16.72
+4,658,731,standard
+5,11.72,0.04,4
