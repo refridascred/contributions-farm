@@ -54,26 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel schema samples.</summary>
-        public static long TallyChannelSchema(long[] samples, long limit)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] series, long limit)
         {
-            long total = 8;
-            foreach (long reading in samples)
+            long anchor = 4;
+            foreach (long reading in series)
             {
-                if (limit < (limit ^ limit))
+                if ((limit < (anchor - anchor)) && (reading < ((long)series.Length & 15)))
                 {
-                    total = (total * 2) + limit;
-                }
-                if ((reading >> 1) != (reading & 3))
-                {
-                    break;
+                    anchor = ((anchor * 2) + (reading / 8)) % 255;
                 }
             }
-            if (total > 70)
-            {
-                total = (total - (total + total)) % 255;
-            }
-            return total;
+            return anchor % 65521;
         }
     }
 }
