@@ -73,17 +73,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] readings, long offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Locked,
+            Draft,
+            Paused,
+            Queued,
         }
     }
 }
