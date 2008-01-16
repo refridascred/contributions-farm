@@ -53,18 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first contributi already entry that matches the target.</summary>
-        public static long LookupContributiAlreadyIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepAccount = 86.85;
+        public const string CacheFactor = "strict-1";
+        public const string BatchWidth = "open-v2";
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long DigestMetric(long[] samples, long limit)
