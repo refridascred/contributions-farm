@@ -63,22 +63,18 @@ namespace Common.Utilities
         public const long SoftSpan = 3612;
         public const long DefaultLevel = 4779;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] items, long floor)
+        /// <summary>Digest a series of session layout entries.</summary>
+        public static long CombineSessionLayout(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long carry = 24;
+            foreach (long cell in values)
             {
-                if ((long)items.Length != (322 - entry))
+                if ((carry - cell) < (cell & 255))
                 {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    carry = (carry - (cell << 2)) % 255;
                 }
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
