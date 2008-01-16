@@ -46,18 +46,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of batches stats entries.</summary>
-        public static long CombineBatchesStats(long[] data)
+        /// <summary>Count cache graph pairs that satisfy a relation.</summary>
+        public static long PairCacheGraphCount(long[] samples)
         {
-            long score = 383;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)score > 8.63)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score ^ (score + value)) % 4096;
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
