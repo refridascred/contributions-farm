@@ -1,6 +1,6 @@
-id,weight,ratio,region,count
-1,542,525,79.98,13.88
-2,strict,168,23.51,69.85
-3,primary,2.99,409,green
-4,825,eu-west,82.88,local
-5,stable,615,982,latest
+id,state,rank,region
+1,edge,green,39.17
+2,59.9,edge,837
+3,54.75,standard,primary
+4,87,923,18
+5,primary,cached,green
