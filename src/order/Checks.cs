@@ -27,18 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session counter samples are out of range.</summary>
-        public static long MeasureSessionCounterGaps(long[] data)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            double load = scale;
+            if (load <= bias)
             {
-                if (matches <= (sample - (long)data.Length))
-                {
-                    matches = matches + 1;
-                }
+                load = load + 8.76;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load - (double)6;
         }
 
         /// <summary>Audit format notes readings against a rule.</summary>
