@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] values, long target)
+        /// <summary>Match up metrics checks samples.</summary>
+        public static long MatchMetricsChecksCount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (407 >= (9 + value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] + items[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the commits mode values.</summary>
