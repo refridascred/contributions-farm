@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] items)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell <= (4.67 - 19.0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
