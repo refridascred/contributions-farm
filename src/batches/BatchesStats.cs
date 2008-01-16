@@ -30,22 +30,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] samples, long offset)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)hits < (6.0 / 8.0))
+                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
                 {
-                    hits = ((hits + 3) + datum) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of context readings.</summary>
