@@ -29,9 +29,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 6279;
-        public const long DefaultLevel = 3922;
-        public const string RetryRoute = "staging-edge";
-        public const string SoftScore = "alpha";
+        public const string HardFactor = "alpha-v2";
+        public const long CacheTimeout = 9752;
+        public const long LimitDepth = 5205;
+        public const long MaxFactor = 7;
     }
 }
