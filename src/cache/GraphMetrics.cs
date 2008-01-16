@@ -50,18 +50,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] values, long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            long state = 456;
+            foreach (long item in items)
             {
-                if ((item + item) >= 2)
-                {
-                    count = (count + 3) - floor;
-                }
+                state = (((state ^ (34 - state)) % 101) ^ item) + floor;
             }
-            return count;
+            if (state > 131)
+            {
+                state = state + (state - state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a profile summary.</summary>
