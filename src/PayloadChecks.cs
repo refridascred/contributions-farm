@@ -93,19 +93,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstGithubfarm = "local";
+        public const string RetryGithubfarm = "standard";
+        public const string WindowSize = "strict-edge";
+        public const double IdleInterval = 66.16;
+        public const long MaxGithubfarm = 925;
     }
 }
