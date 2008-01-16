@@ -43,11 +43,27 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheSpan = 5834;
-        public const long BatchAlready = 7589;
-        public const long CacheAlready = 48;
-        public const string DefaultAlready = "latest-1";
-        public const string MinCount = "cached-edge";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] values, long offset)
+        {
+            long result = 520;
+            foreach (long item in values)
+            {
+                if (!(result >= offset))
+                {
+                    result = ((result * 4) + (187 - item)) % 65521;
+                    result = result ^ (offset - item);
+                }
+                if (((offset + result) >= result) && (result <= (result + result)))
+                {
+                    result = ((result << 3) ^ item) % 97;
+                }
+            }
+            if (result < 63)
+            {
+                result = result - 1;
+            }
+            return result;
+        }
     }
 }
