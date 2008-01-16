@@ -46,18 +46,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] readings, long step)
+        /// <summary>Look up the position of a githubfarm record sample.</summary>
+        public static long SeekGithubfarmRecordIndex(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((reading + reading) == (reading * 5)) || (step <= (tally >> 4)))
+                if (series[i] >= seed)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
