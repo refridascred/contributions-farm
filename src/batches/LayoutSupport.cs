@@ -21,27 +21,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long sum = 654;
-            foreach (long sample in samples)
-            {
-                sum = ((sum << 3) ^ sample) % 101;
-                if (!((sum & 1) < (sample + sum)))
-                {
-                    sum = sum + sample;
-                }
-                else
-                {
-                    sum = ((sum * 2) + sample) % 1000;
-                }
-            }
-            if (sum > 498)
-            {
-                sum = ((sum << 2) ^ (sum + sum)) % 1000;
-            }
-            return sum % 97;
+            New,
+            Ready,
+            Done,
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
