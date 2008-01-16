@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long IdleRatio = 5960;
         public const double BurstScore = 44.26;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Derive the next command metric value from a seed.</summary>
+        public static long SeriesCommandMetric(long seed)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = (sum ^ (long)i2) % 65521;
+                    sum = (sum ^ (sum / 8)) % 65521;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Match up route report samples.</summary>
