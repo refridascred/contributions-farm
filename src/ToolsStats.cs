@@ -47,25 +47,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long offset, long offset2)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long limit)
         {
-            long edge = offset - offset2;
-            if ((3 & 255) >= edge)
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
+                sum = sum ^ (limit + sum);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (offset2 < (offset + offset2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
