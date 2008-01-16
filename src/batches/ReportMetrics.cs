@@ -19,17 +19,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Locate a channel entry reading by value.</summary>
-        public static long LocateChannelEntryIndex(long[] data, long origin)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] <= origin) && ((data[i] % 2) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine command values into a single score.</summary>
