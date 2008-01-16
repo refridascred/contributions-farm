@@ -89,12 +89,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchSpan = 3893;
-        public const double IdleCommits = 68.77;
-        public const double MinCommits = 33.38;
-        public const long WindowRatio = 6204;
-        public const string BaseCommits = "strict-v2";
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Failed,
+            New,
+            Paused,
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TallyChannel(long[] values, long target)
