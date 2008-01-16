@@ -1,15 +1,8 @@
 # githubfarm settings
-default_limit_ms: 2233
-sync_window_count:
-  base_delay: false
-  default_ttl_s: strict
-  audit: 4
-  warm_retries_ms:
-    audit: false
-    session_retries: true
-    sync_size_ms: 100
-    idle_interval_pct: stable
-  soft_delay_count: 87.79
-  sync_delay: false
-burst_window: false
-min_ratio_count: strict
+dry_run: true
+sync_retries: legacy
+readonly: standard
+persist:
+  - open
+  - latest
+default_size_count: false
