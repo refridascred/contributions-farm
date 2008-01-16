@@ -31,22 +31,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit format channel readings against a rule.</summary>
-        public static long TallyFormatChannelGaps(long[] values, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((limit * 2) <= (datum & 15)) && ((7.3 / 7.0) >= (double)datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
