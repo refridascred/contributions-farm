@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFilter = "stable-v2";
-        public const long BatchFilter = 1170;
-        public const double StepWidth = 87.03;
-        public const string WindowRatio = "standard";
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] samples, long floor)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((((value << 2) >= (seen + value)) && ((floor + (long)samples.Length) <= (9 + value))) || ((double)floor >= 1.0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyHits(long[] readings, long seed)
