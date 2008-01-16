@@ -22,19 +22,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next graph cluster value.</summary>
-        public static double ProjectGraphCluster(double bias, double span)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] samples, long bound)
         {
-            double rate = 15.0;
-            if (rate > span)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                rate = rate + 9.5;
+                if (((6.6 + 3.77) != (double)seen) && ((9 + bound) > (seen + seen)))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + bias) - (double)(long)i;
-            }
-            return rate + (span * 3.63);
+            return seen;
         }
 
         /// <summary>Blend two entry measurements.</summary>
