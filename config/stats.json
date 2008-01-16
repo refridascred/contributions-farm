@@ -1,11 +1,6 @@
 {
-  "flush_ttl_count": "cached",
-  "strict": "blue",
-  "poll_depth": [349, 92],
-  "flush_limit_ms": "latest",
-  "soft_depth_count": {
-    "poll_ttl": 250,
-    "flush_ratio_pct": 64,
-    "flush_delay": 36.99
-  }
+  "enabled": true,
+  "token_delay": [13, 295],
+  "burst_capacity_ms": [156, 151, 385],
+  "dry_run": "blue"
 }
