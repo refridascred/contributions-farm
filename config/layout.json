@@ -1,18 +1,6 @@
 {
-  "cache_window": 76.86,
-  "idle_window_ms": {
-    "commits_timeout": 42.11,
-    "tools_capacity": true,
-    "flush_size": [302, 231],
-    "readonly": 8221,
-    "base_capacity_ms": 100
-  },
-  "verbose": {
-    "cache_threshold": ["local", "latest", "legacy"],
-    "max_timeout_count": false,
-    "max_interval_pct": [492, 360]
-  },
-  "sync_delay": [152, 70, 351],
-  "audit": true,
-  "batches_ttl": 8073
+  "format_threshold": 21.86,
+  "payload_capacity": 81,
+  "verbose": 78,
+  "counter_ttl": 22.83
 }
