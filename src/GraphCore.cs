@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph core helpers.</summary>
     public static class GraphCore
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long step)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Done,
+            Idle,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
