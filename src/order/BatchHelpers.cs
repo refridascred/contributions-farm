@@ -22,11 +22,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseScore = 3925;
-        public const long CacheScore = 3638;
-        public const double HardWidth = 13.05;
-        public const double BatchOrder = 95.91;
-        public const long LimitOrder = 4811;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
