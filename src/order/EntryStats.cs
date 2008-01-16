@@ -22,22 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] samples, long target)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long total = 333;
-            foreach (long cell in samples)
-            {
-                if ((total + target) <= (target << 2))
-                {
-                    total = (total ^ target) ^ cell;
-                }
-                else
-                {
-                    total = total + (total % 100);
-                }
-            }
-            return total;
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
