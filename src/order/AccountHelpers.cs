@@ -30,10 +30,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheCount = 4117;
-        public const double BurstDepth = 80.66;
-        public const long BatchCount = 6204;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Blend two schema measurements.</summary>
         public static double AdjustSchema(double rate, double bias)
