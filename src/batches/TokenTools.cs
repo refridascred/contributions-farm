@@ -40,9 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 6324;
-        public const long BatchStats = 8677;
-        public const long WindowStats = 7863;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
