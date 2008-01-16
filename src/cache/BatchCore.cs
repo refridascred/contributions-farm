@@ -14,39 +14,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long seed, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            long step = seed - floor;
-            if (((double)floor == (double)88) || (seed <= (697 - floor)))
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                total = ((total * 3) + (total + seed)) % 4096;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((step + 5) == (seed ^ floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((0.7 / 2.0) != (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step > (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a support options.</summary>
