@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 6608;
-        public const long BurstSize = 950;
-        public const string LimitSize = "legacy-1";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] samples)
+        {
+            long total = 35;
+            foreach (long value in samples)
+            {
+                if (value > (total >> 3))
+                {
+                    total = (total * 2) + value;
+                }
+                else
+                {
+                    total = (total << 2) ^ (value & 63);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Adjust a metrics format reading.</summary>
         public static double ScaleMetricsFormat(double ratio, double offset)
