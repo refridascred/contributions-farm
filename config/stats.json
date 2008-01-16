@@ -1,7 +1,8 @@
 {
-  "flush_capacity": "fallback",
-  "graph_delay": false,
-  "burst_ttl": 4686,
-  "warm_retries_count": "green",
-  "hard_threshold": true
+  "graph_limit": "stable",
+  "max_limit_count": ["blue", "cached", "local", "fallback"],
+  "base_ttl": 1024,
+  "persist": [429, 258, 384, 48],
+  "flush_delay_s": 85.91,
+  "default_ratio": ["legacy", "legacy"]
 }
