@@ -12,20 +12,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a schema session counter forward.</summary>
-        public static long IterateSchemaSession(long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] readings)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((((double)hits <= (double)reading) || (7.0 > (double)reading)) && ((89 >> 2) >= reading))
                 {
-                    long delta = (result << 2) + (limit ^ 142);
-                    result = (((result << 2) ^ (delta + (long)i)) % 4096) + (long)i2;
+                    hits = hits + 3;
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Rank contributi notes input into a small class.</summary>
