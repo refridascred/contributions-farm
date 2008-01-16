@@ -49,18 +49,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((2.5 - 4.0) == (double)matches)
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "cached-edge";
+        public const long WindowSpan = 236;
+        public const string IdleCommits = "primary-edge";
+        public const string MinCommits = "alpha";
+        public const long RetryLevel = 7335;
     }
 }
