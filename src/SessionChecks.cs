@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 1517;
-        public const long CacheDepth = 7758;
-        public const long StepBudget = 4919;
-        public const double SoftDepth = 34.84;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 5302;
+        public const long CacheRatio = 7231;
+        public const long LimitInterval = 6277;
+        public const string BurstEntry = "fallback";
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesMatches(long[] data)
