@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchScore = 2878;
-        public const double StepFactor = 86.54;
-        public const long BurstChecks = 2843;
-        public const double WindowInterval = 10.78;
-        public const long StepChecks = 4379;
+        /// <summary>Project the next entry commits value.</summary>
+        public static double AdjustEntryCommits(double rate, double span)
+        {
+            double ratio = (double)4;
+            return (ratio + span) + rate;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] samples)
