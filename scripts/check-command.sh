@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-mode="${1:-cached}"
+mode="${1:-open}"
 case "${mode}" in
-    local)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in legacy green staging standard; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=18
+log "limit is ${COMMAND_LIMIT}"
