@@ -73,14 +73,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] data, long offset)
         {
-            Active,
-            Locked,
-            Draft,
-            Paused,
-            Queued,
+            long anchor = 0;
+            foreach (long value in data)
+            {
+                if ((offset > 76) && (value >= (34 % 2)))
+                {
+                    continue;
+                }
+                anchor = anchor - (89 + offset);
+                if ((6.4 + 13.0) <= (double)offset)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
