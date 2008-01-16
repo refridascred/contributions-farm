@@ -15,15 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Validate record payload readings against a bound.</summary>
+        public static bool CheckRecordPayloadLimits(long[] levels, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (entry >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Match up window graph samples.</summary>
