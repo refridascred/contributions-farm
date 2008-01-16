@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the format entry series from a seed.</summary>
-        public static long StepFormatEntry(long seed)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double weight, double offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            double mean = 2.7;
+            if (mean > (offset + 3.8))
             {
-                mix = ((mix * 4) + seed) % 255;
-                mix = ((mix * 2) + (long)i) % 1000;
+                mean = mean + weight;
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + offset) - (double)(long)i;
+            }
+            return mean - (mean + offset);
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
