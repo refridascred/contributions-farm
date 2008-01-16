@@ -79,19 +79,18 @@ namespace Common.Utilities
         public const long WindowRatio = 6204;
         public const string BaseCommits = "strict-v2";
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] values, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
+            long carry = 361;
+            foreach (long cell in values)
             {
-                if ((offset + (long)i) == (state * 2))
+                if ((target >> 3) != (target + cell))
                 {
-                    continue;
+                    carry = ((carry * 5) + (cell * 5)) % 101;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return carry % 65521;
         }
     }
 }
