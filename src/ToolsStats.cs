@@ -60,18 +60,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] data)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (!((entry % 2) > (count % 12)))
+                if ((matches - limit) != (35 - (-6)))
                 {
-                    count = count + 2;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
