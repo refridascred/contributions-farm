@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] series)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long mark = -3;
-            foreach (long cell in series)
-            {
-                if (cell > (cell ^ mark))
-                {
-                    mark = ((mark * 5) + (mark % 2)) % 97;
-                }
-            }
-            return mark % 97;
+            Draft,
+            Pending,
+            Closed,
+            Done,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
