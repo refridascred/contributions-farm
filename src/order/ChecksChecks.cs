@@ -38,11 +38,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] samples, long bound)
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
