@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowLevel = 1111;
-        public const string BurstInterval = "primary-v2";
-        public const long HardLevel = 1564;
-        public const long SoftInterval = 6211;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string IdleSpan = "fallback-1";
