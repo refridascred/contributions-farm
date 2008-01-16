@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Queued,
-            Synced,
-            Dropped,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRecord = 54.36;
+        public const string WindowCount = "strict-edge";
+        public const long CacheRecord = 8227;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
