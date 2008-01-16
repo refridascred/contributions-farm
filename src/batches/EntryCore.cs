@@ -42,12 +42,19 @@ namespace Common.Utilities
         public const long MaxRatio = 3536;
         public const double BatchTools = 87.17;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetrySpan = 84.8;
-        public const long DefaultFactor = 6253;
-        public const long CacheRatio = 709;
-        public const long BaseWidth = 7386;
-        public const long BurstWindow = 9299;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (value >= (-981))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksHits(long[] samples)
