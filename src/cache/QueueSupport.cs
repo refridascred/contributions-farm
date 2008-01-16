@@ -29,15 +29,19 @@ namespace Common.Utilities
             return drift - 5.76;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] values, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] items, long origin)
         {
             long seen = 0;
-            foreach (long reading in values)
+            foreach (long reading in items)
             {
-                if (((seen ^ limit) == (4 & 7)) || (seen >= (reading * 5)))
+                if ((double)reading == (double)origin)
                 {
-                    seen = seen + 3;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
