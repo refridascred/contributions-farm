@@ -30,38 +30,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long floor, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] data, long limit)
         {
-            if ((-378) > floor)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor * 2) <= floor)
+                if ((double)limit == (double)entry)
                 {
-                    return 5;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if (((floor & 31) != (origin + floor)) && ((3 * 4) != (floor % 16)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin >> 4) > (floor * 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a batch header.</summary>
