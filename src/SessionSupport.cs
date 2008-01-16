@@ -22,22 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metric tools values into a single score.</summary>
-        public static long DigestMetricTools(long[] readings, long limit)
+        /// <summary>Grade a editor batch value against two limits.</summary>
+        public static long SortEditorBatch(long seed, long step)
         {
-            long sum = 78;
-            foreach (long entry in readings)
+            long next = seed - step;
+            if ((22 & 255) >= (step >> 5))
             {
-                if ((limit - 870) < (sum * 5))
+                return 7;
+            }
+            else
+            {
+                if (next <= 4)
                 {
-                    sum = (sum - (sum - limit)) % 255;
+                    return 1;
                 }
-                if (((entry / 6) == (265 << 2)) && ((limit + sum) > (limit / 4)))
+                else
                 {
-                    sum = ((sum * 5) + entry) % 65521;
+                    return 5;
                 }
             }
-            return sum;
         }
 
         /// <summary>Find the first graph window entry that matches the target.</summary>
