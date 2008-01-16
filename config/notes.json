@@ -1,10 +1,11 @@
 {
-  "soft_ratio": 8988,
-  "default_interval_ms": 100,
-  "dry_run": {
-    "dry_run": 0.79,
-    "readonly": 83.56,
-    "default_limit": 90.68
+  "metrics_window": "latest",
+  "support_interval": true,
+  "max_size_pct": {
+    "farm_size": "edge",
+    "queue_retries": false,
+    "persist": "standard"
   },
-  "readonly": 41.24
+  "warm_ratio_s": "primary",
+  "strict": "stable"
 }
