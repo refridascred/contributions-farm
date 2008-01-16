@@ -37,17 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] data, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (data[i] >= step)
+                if ((matches <= (362 - matches)) || ((reading >> 1) <= (reading / 6)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the order kind values.</summary>
