@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] series)
+        /// <summary>Combine githubfarm profile values into a single score.</summary>
+        public static long CombineGithubfarmProfile(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 858;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (carry + carry) - cell;
             }
-            return tally;
+            if (carry < (-95))
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
