@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double gain, double bias)
-        {
-            double load = bias;
-            if (load < (double)28)
-            {
-                load = load + gain;
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load - (double)951;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFactor = 6.33;
+        public const long MaxLevel = 3556;
+        public const long BaseFormat = 1778;
+        public const double StepRatio = 4.65;
+        public const long BurstFormat = 5200;
 
         /// <summary>Check that every counter support entry stays within the limit.</summary>
         public static bool GuardCounterSupportLimits(long[] levels, long seed)
