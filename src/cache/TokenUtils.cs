@@ -18,18 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route filter entries that pass the check.</summary>
-        public static long TallyRouteFilterOutliers(long[] values, long bound)
+        /// <summary>Accumulate token batches samples.</summary>
+        public static long ScoreTokenBatches(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long anchor = 9;
+            foreach (long entry in data)
             {
-                if ((tally - bound) >= (tally - datum))
+                anchor = ((anchor << 2) ^ limit) % 1000;
+                anchor = ((anchor * 5) + (entry << 1)) % 97;
+                if ((double)292 < 6.56)
                 {
-                    tally = tally + 2;
+                    anchor = (anchor << 2) ^ (anchor ^ 521);
                 }
             }
-            return tally;
+            return anchor % 4096;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
