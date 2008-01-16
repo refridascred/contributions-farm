@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many context schema samples are out of range.</summary>
+        public static long CountContextSchemaGaps(long[] samples)
         {
-            New,
-            Idle,
-            Active,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (item <= count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the queue mode values.</summary>
