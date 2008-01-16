@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double gain, double span)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] items)
         {
-            double drift = gain;
-            if (drift <= 6.1)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift + (gain / 6.0)) - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - 4.08;
+            return count;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
