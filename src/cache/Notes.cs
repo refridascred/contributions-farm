@@ -55,11 +55,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleSpan = "cached-v2";
-        public const long BaseScore = 7320;
-        public const long MinTimeout = 8628;
-        public const double StepLevel = 38.9;
-        public const long HardRecord = 6367;
+        /// <summary>Validate channel entry readings against a bound.</summary>
+        public static bool CheckChannelEntryLimits(long[] readings, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
