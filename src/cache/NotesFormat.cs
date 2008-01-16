@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] levels, long floor)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long state = 325;
-            foreach (long item in levels)
-            {
-                state = ((state + floor) % 1000) + item;
-            }
-            if (state > 927)
-            {
-                state = state + (floor + state);
-            }
-            return state;
+            Synced,
+            Draft,
+            Retry,
         }
 
         /// <summary>Match up checks session samples.</summary>
