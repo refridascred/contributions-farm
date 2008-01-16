@@ -68,29 +68,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long floor, long seed)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long target, long limit)
         {
-            if ((seed + seed) >= (2 - seed))
+            if (!((target + 67) > target))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if ((141 - seed) == (441 + seed))
+                if ((316 + target) < (target ^ 7))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((seed / 8) < (seed ^ seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 0;
                 }
             }
         }
