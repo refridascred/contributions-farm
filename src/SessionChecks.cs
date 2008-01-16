@@ -33,13 +33,11 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Synced,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 333;
+        public const double StepProfile = 97.39;
+        public const long HardWidth = 5903;
+        public const double SoftTimeout = 73.42;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
