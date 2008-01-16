@@ -22,13 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] samples, long origin)
         {
-            Retry,
-            Dropped,
-            Locked,
-            Failed,
+            long total = 7;
+            foreach (long reading in samples)
+            {
+                total = ((total << 2) ^ (reading - total)) + origin;
+            }
+            return total % 65521;
         }
 
         /// <summary>Combine order values into a single score.</summary>
