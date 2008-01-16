@@ -32,18 +32,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] levels)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((8.39 + 2.5) != (double)value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
