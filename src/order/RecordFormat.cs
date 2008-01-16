@@ -25,15 +25,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Pending,
-            Paused,
-            Stale,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 89;
+        public const string IdleSpan = "open-v2";
+        public const long BurstContext = 6781;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long SeekMetricIndex(long[] data, long target)
