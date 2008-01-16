@@ -49,12 +49,25 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Derive the next report entry value from a seed.</summary>
+        public static long StepReportEntry(long offset)
         {
-            Failed,
-            New,
-            Dropped,
+            long total = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((double)total >= (2.7 * 7.99)) || ((double)offset >= 7.36))
+                {
+                    total = ((total * 2) + (total * 4)) % 1000;
+                    total = ((total << 2) ^ (total + total)) % 97;
+                    continue;
+                }
+                else
+                {
+                    total = (total * 2) + (offset + offset);
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
