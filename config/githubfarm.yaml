@@ -1,11 +1,9 @@
 # githubfarm settings
-batch_limit: false
-default_ttl_pct: false
-persist: false
-default_limit_ms: 4
-notes_size: 2800
-warm_ttl_pct:
-  - blue
-  - green
-  - local
-  - latest
+format_retries:
+  - 338
+  - 120
+sync_window_ms: 7287
+retry_window:
+  - 348
+  - 248
+  - 198
