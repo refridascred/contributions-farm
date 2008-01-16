@@ -44,25 +44,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long target, long seed)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long gap = target - seed;
-            if ((seed * 5) >= target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed >= (target + gap)) && (gap <= (target & 15)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
