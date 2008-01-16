@@ -37,18 +37,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] readings, long target)
+        /// <summary>Audit format channel readings against a rule.</summary>
+        public static long TallyFormatChannelGaps(long[] values, long limit)
         {
-            long acc = 17;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((cell & 7) != (target + target))
+                if (((limit * 2) <= (datum & 15)) && ((7.3 / 7.0) >= (double)datum))
                 {
-                    acc = (acc + (acc - target)) % 1000;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
