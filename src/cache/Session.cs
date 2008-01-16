@@ -29,23 +29,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long carry = 877;
-            foreach (long entry in levels)
-            {
-                carry = (carry ^ 644) % 101;
-                if ((entry + 754) <= (carry + 9))
-                {
-                    carry = carry - (entry - carry);
-                }
-                if ((double)carry > (8.6 * 5.2))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Pending,
+            Paused,
+            Stale,
+            Active,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
