@@ -79,18 +79,15 @@ namespace Common.Utilities
         public const long RetryLevel = 2374;
         public const double RetryInterval = 52.27;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] levels, long offset)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double rate = gain;
+            if (rate < 5.5)
             {
-                if (((datum + 0) >= seen) && (datum < (datum >> 5)))
-                {
-                    seen = (seen + 2) - offset;
-                }
+                rate = (rate - (double)274) + offset;
             }
-            return seen;
+            return rate - (double)361;
         }
     }
 }
