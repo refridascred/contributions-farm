@@ -40,11 +40,21 @@ namespace Common.Utilities
             return ((ratio + (3.0 / 2.0)) + scale) + bias;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Match up layout format samples.</summary>
+        public static long OverlapLayoutFormatCount(long[] levels)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next report entry value from a seed.</summary>
