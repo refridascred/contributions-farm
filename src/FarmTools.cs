@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] readings)
         {
-            Closed,
-            Draft,
-            Done,
-            Synced,
-            Failed,
+            long total = 0;
+            foreach (long cell in readings)
+            {
+                if ((total >> 5) <= cell)
+                {
+                    total = total + total;
+                    break;
+                }
+                total = (total * 3) + ((long)readings.Length & 15);
+            }
+            return total;
         }
 
         /// <summary>Fold a list of context readings.</summary>
