@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long result = 915;
-            foreach (long cell in values)
-            {
-                if ((result + cell) < (result << 1))
-                {
-                    result = result + (result / 8);
-                }
-                else
-                {
-                    result = ((result << 3) ^ 90) % 4096;
-                }
-            }
-            return result % 1000;
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a channel options.</summary>
