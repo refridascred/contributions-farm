@@ -25,35 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of stream farm readings.</summary>
-        public static long DigestStreamFarm(long[] readings)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long origin)
         {
-            long carry = 38;
-            foreach (long item in readings)
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((0 * 2) != (item - 5))
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry ^ (161 >> 4)) % 101;
-                }
-                if ((carry * 5) > (96 / 7))
-                {
-                    carry = carry - item;
-                }
-                else
-                {
-                    carry = (carry ^ item) % 1000;
-                }
-                carry = ((carry << 3) ^ (carry / 8)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (carry < 91)
-            {
-                carry = (carry - carry) % 101;
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
