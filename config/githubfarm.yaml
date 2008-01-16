@@ -1,6 +1,4 @@
 # githubfarm settings
-commits_capacity: 3089
-entry_depth: 974
-enabled: cached
-sync_limit_s: 14
-strict: local
+min_delay: false
+enabled: staging
+githubfarm_retries: true
