@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine githubfarm profile values into a single score.</summary>
-        public static long CombineGithubfarmProfile(long[] samples)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] series, long bound)
         {
-            long carry = 858;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long cell in series)
             {
-                carry = (carry + carry) - cell;
+                if (cell != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (carry < (-95))
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Derive the next context layout value from a seed.</summary>
