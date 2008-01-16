@@ -38,15 +38,25 @@ namespace Common.Utilities
             return weight + (4.0 * 3.4);
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double bias, double offset)
+        /// <summary>Rank contributi notes input into a small class.</summary>
+        public static long GradeContributiNotes(long bound, long floor)
         {
-            double load = (double)2 + offset;
-            if (load > offset)
+            long lane = bound + floor;
+            if ((bound ^ lane) >= floor)
             {
-                load = (load - (10.0 - offset)) - bias;
+                return 3;
             }
-            return load + (double)52;
+            else
+            {
+                if ((double)lane != (double)4)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
