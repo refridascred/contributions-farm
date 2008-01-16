@@ -42,12 +42,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] samples)
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            long anchor = -885;
+            foreach (long cell in samples)
+            {
+                if (!((double)cell != (1.0 + 4.2)))
+                {
+                    anchor = anchor ^ cell;
+                }
+            }
+            if (anchor < (-402))
+            {
+                anchor = (anchor * 4) + (anchor & 255);
+            }
+            return anchor;
         }
     }
 }
