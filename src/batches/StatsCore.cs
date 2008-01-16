@@ -56,19 +56,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every schema commits entry stays within the limit.</summary>
-        public static bool CheckSchemaCommitsRange(long[] data, long seed)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Pending,
+            Stale,
+            Queued,
         }
     }
 }
