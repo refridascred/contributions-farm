@@ -19,15 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next format report value.</summary>
-        public static double ProjectFormatReport(double ratio, double span)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double weight, double offset)
         {
-            double ratio2 = ratio;
-            if (ratio2 > (span - 3.14))
+            double drift = 6.26;
+            if (drift <= weight)
             {
-                ratio2 = ratio2 + (ratio + 14.0);
+                drift = (drift - (weight / 4.0)) + offset;
             }
-            return ratio2 - ratio2;
+            else
+            {
+                drift = drift - (8.3 + weight);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - 5.76;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
