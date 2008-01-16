@@ -1,8 +1,7 @@
 {
-  "flush_window_count": "cached",
-  "window_retries": "blue",
-  "flush_interval_ms": ["stable", "latest", "eu-west"],
-  "layout_delay": 9894,
-  "readonly": 69.53,
-  "stream_window": "latest"
+  "session_size": "local",
+  "audit": "stable",
+  "hard_ttl": false,
+  "warm_interval": false,
+  "layout_retries": "latest"
 }
