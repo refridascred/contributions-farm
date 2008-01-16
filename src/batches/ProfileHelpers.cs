@@ -86,22 +86,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((count + count) != (sample ^ sample))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 9854;
+        public const string IdleCounter = "staging";
+        public const long SoftSpan = 2417;
+        public const string BatchCounter = "latest-v2";
     }
 }
