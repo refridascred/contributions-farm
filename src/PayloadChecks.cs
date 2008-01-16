@@ -36,31 +36,32 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a channel route value against two limits.</summary>
-        public static long ClassifyChannelRoute(long bound, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] data)
         {
-            if (offset <= (357 >> 2))
+            long mark = 684;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset < (bound + 785))
+                if ((mark + datum) >= mark)
                 {
-                    return 3;
+                    mark = ((mark * 5) + (210 & 63)) % 65521;
+                    continue;
+                }
+                mark = (mark - (2 % 24)) % 1000;
+                if ((5.0 - 9.94) >= (double)mark)
+                {
+                    mark = mark ^ (datum % 64);
                 }
                 else
                 {
-                    if ((1.1 / 5.0) != (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mark = ((mark << 2) ^ (mark - datum)) % 101;
                 }
             }
+            if (mark < (-984))
+            {
+                mark = ((mark << 2) ^ (mark - mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
