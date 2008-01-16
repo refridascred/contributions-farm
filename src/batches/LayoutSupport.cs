@@ -64,11 +64,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 18.91;
-        public const long CacheDepth = 1072;
-        public const string MinCommand = "open-edge";
-        public const double SoftScore = 38.8;
-        public const double RetryInterval = 19.88;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)value == (3.89 * 2.7)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
