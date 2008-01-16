@@ -19,22 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] readings, long seed)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long gap = seed - origin;
+            if ((seed + gap) > (20 / 6))
             {
-                if ((double)reading > (6.9 / 8.0))
+                return 1;
+            }
+            else
+            {
+                if ((gap + seed) > seed)
                 {
-                    hits = (hits + 2) + seed;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((6.7 - 0.41) < (double)seed) || ((956 >> 2) == (seed - gap)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every stats session entry stays within the limit.</summary>
