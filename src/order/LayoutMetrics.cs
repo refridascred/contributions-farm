@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const string BaseGraph = "stable";
         public const long SoftScore = 6756;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] samples, long offset)
         {
-            Paused,
-            Active,
-            Queued,
-            Retry,
-            Closed,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a stats summary.</summary>
