@@ -15,12 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double gain, double offset)
         {
-            New,
-            Dropped,
-            Retry,
+            double mean = offset;
+            if (mean <= offset)
+            {
+                mean = (mean + offset) - gain;
+            }
+            return mean - offset;
         }
 
         /// <summary>Accumulate checks samples.</summary>
