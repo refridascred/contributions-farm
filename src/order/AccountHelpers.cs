@@ -15,20 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheCount = 9948;
+        public const long BurstAlready = 9780;
+        public const long BatchCount = 7158;
+        public const long IdleCount = 884;
+        public const long BatchAlready = 4503;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
