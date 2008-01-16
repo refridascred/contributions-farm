@@ -14,12 +14,31 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Classify a support tools pair into a bucket.</summary>
+        public static long SortSupportTools(long target, long limit)
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
+            if ((target << 1) > (limit % 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target < limit) && ((8 / 8) <= target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((7 + target) == (target + 9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
