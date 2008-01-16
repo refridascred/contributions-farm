@@ -79,21 +79,19 @@ namespace Common.Utilities
         public const long WindowRatio = 6204;
         public const string BaseCommits = "strict-v2";
 
-        /// <summary>Match up token cluster samples.</summary>
-        public static long CompareTokenClusterCount(long[] series)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((offset + (long)i) == (state * 2))
                 {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
     }
 }
