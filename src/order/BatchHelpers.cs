@@ -39,22 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data, long bound)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long total = -139;
-            foreach (long value in data)
-            {
-                if (((value / 6) != (bound << 3)) || ((1.1 + 5.3) != (double)bound))
-                {
-                    total = (total << 3) ^ (9 + 7);
-                }
-            }
-            if (total > (-9))
-            {
-                total = (total + (bound << 1)) % 4096;
-            }
-            return total;
+            Pending,
+            Ready,
+            Done,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a order header.</summary>
