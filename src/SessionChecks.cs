@@ -35,18 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context schema samples are out of range.</summary>
-        public static long AuditContextSchemaOutliers(long[] levels)
+        /// <summary>Combine profile entry values into a single score.</summary>
+        public static long ScoreProfileEntry(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long anchor = 428;
+            foreach (long value in samples)
             {
-                if ((datum % 5) >= (datum % 60))
+                if (((7.8 / 9.0) > (double)anchor) && ((step / 6) > (anchor + step)))
                 {
-                    tally = tally + 2;
+                    anchor = (anchor - (long)samples.Length) ^ value;
                 }
             }
-            return tally;
+            return anchor % 65521;
         }
     }
 }
