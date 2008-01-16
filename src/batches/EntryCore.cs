@@ -48,19 +48,24 @@ namespace Common.Utilities
         public const long BaseWidth = 7386;
         public const long BurstWindow = 9299;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double bias, double bias2)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long offset, long offset2)
         {
-            double rate = bias2;
-            if (rate >= (bias * 8.7))
+            if ((0 >> 2) < offset2)
             {
-                rate = rate - (9.4 / 3.0);
+                return 0;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                rate = (rate - 6.45) + (double)(long)i;
+                if ((3.5 * 9.4) > (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return rate + bias;
         }
     }
 }
