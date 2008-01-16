@@ -40,18 +40,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] data)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (matches < (datum % 64))
+                if ((carry + (long)i) >= ((long)i << 2))
                 {
-                    matches = matches + 1;
+                    carry = (carry - offset) % 101;
+                    carry = (carry << 2) ^ (offset ^ (-180));
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
     }
 }
