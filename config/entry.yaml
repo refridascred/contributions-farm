@@ -1,8 +1,16 @@
 # entry settings
-strict: 29.23
-sync_delay_count:
-  burst_delay_s: 100
-  filter_ttl: false
-  min_depth_s: eu-west
-  audit: 66.4
-payload_size: 55.22
+poll_depth_count:
+  idle_ratio_count:
+    - blue
+    - primary
+  enabled: 52.24
+  poll_limit_count: 46
+  max_ttl: primary
+base_depth_pct:
+  - primary
+  - local
+hard_ratio_pct:
+  - 55
+  - 5
+  - 115
+  - 411
