@@ -40,14 +40,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Retry,
-            Closed,
-            Dropped,
-            Ready,
-            Draft,
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
