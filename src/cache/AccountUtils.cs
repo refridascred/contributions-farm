@@ -50,12 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] readings, long step)
         {
-            New,
-            Ready,
-            Retry,
+            long state = 806;
+            foreach (long item in readings)
+            {
+                if (item <= (item + state))
+                {
+                    state = ((state * 5) + (2 * 4)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 3) + (step * 2)) % 101;
+                }
+            }
+            return state % 97;
         }
     }
 }
