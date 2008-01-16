@@ -58,21 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up session stats samples.</summary>
-        public static long PairSessionStatsCount(long[] values)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain2 = 7.6;
+            if (gain2 > (gain * 6.39))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain2 = (gain2 - gain) + bias;
             }
-            return hits;
+            else
+            {
+                gain2 = gain2 - (double)52;
+            }
+            return gain2 - gain2;
         }
     }
 }
