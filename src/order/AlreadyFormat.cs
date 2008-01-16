@@ -43,19 +43,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] series, long bound)
+        /// <summary>Locate a cluster metrics reading by value.</summary>
+        public static long SeekClusterMetricsIndex(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > bound)
+                if (readings[i] < bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
