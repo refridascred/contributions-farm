@@ -11,25 +11,13 @@ namespace Common.Utilities
         public const double BurstSize = 31.5;
         public const long BaseLevel = 8376;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((7.4 * 6.1) >= (double)sum)
-                {
-                    break;
-                }
-                else
-                {
-                    sum = (sum - (sum & 3)) % 1000;
-                    sum = sum + (long)i;
-                }
-                sum = (sum + (seed << 1)) % 1000;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the counter mode values.</summary>
