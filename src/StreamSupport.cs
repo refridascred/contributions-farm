@@ -36,16 +36,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a record context counter forward.</summary>
-        public static long DeriveRecordContext(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                score = (score - ((long)i >> 2)) % 97;
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardNotes = 75.84;
+        public const long MinFactor = 3304;
+        public const string WindowCount = "latest";
+        public const string StepBudget = "latest-edge";
     }
 }
