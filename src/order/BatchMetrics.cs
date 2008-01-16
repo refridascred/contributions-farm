@@ -68,15 +68,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Closed,
-            New,
-            Done,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchSpan = 3893;
+        public const double IdleCommits = 68.77;
+        public const double MinCommits = 33.38;
+        public const long WindowRatio = 6204;
+        public const string BaseCommits = "strict-v2";
 
         /// <summary>Match up token cluster samples.</summary>
         public static long CompareTokenClusterCount(long[] series)
