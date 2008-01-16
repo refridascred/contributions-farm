@@ -27,25 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long offset, long offset2)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] series, long offset)
         {
-            long lane = offset ^ offset2;
-            if (79 < (offset - 796))
+            long acc = 91;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)offset2 >= (5.65 * 1.6)) || (offset2 > (lane & 63)))
+                if (offset >= cell)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    acc = (acc << 2) ^ (acc - offset);
                 }
             }
+            return acc;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
