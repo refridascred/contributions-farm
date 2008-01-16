@@ -23,10 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstSpan = 24.17;
-        public const string LimitTimeout = "staging-1";
-        public const long CacheLevel = 108;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (9.0 >= (double)seen)
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long ClassifyFilter(long target, long offset)
