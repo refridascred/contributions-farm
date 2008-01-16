@@ -17,5 +17,22 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Match up stream channel samples.</summary>
+        public static long CompareStreamChannelCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
