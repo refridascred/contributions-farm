@@ -15,14 +15,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long seed)
         {
-            Done,
-            Locked,
-            Paused,
-            Active,
-            Failed,
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((7.4 * 6.1) >= (double)sum)
+                {
+                    break;
+                }
+                else
+                {
+                    sum = (sum - (sum & 3)) % 1000;
+                    sum = sum + (long)i;
+                }
+                sum = (sum + (seed << 1)) % 1000;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count the metric metrics entries that pass the check.</summary>
