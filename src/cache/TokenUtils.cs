@@ -20,20 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate token batches samples.</summary>
-        public static long ScoreTokenBatches(long[] data, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] samples, long step)
         {
-            long anchor = 9;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor << 2) ^ limit) % 1000;
-                anchor = ((anchor * 5) + (entry << 1)) % 97;
-                if ((double)292 < 6.56)
+                if (entry < step)
                 {
-                    anchor = (anchor << 2) ^ (anchor ^ 521);
+                    stale = false;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return stale;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
