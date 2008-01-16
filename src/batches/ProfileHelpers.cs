@@ -75,19 +75,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] values, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long total = 922;
+            foreach (long item in values)
             {
-                if (cell != bound)
+                if ((2 / 4) < (item % 3))
                 {
-                    valid = false;
-                    break;
+                    total = (total - (item * 2)) % 101;
+                }
+                else
+                {
+                    total = (total * 3) + (total - limit);
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
