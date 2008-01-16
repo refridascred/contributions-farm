@@ -40,21 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] series)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 227;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((0.17 + 1.0) != (double)value)
                 {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score ^ (value + value)) % 97;
+                }
+                else
+                {
+                    score = (score << 3) ^ (65 + score);
                 }
             }
-            return hits;
+            return score % 4096;
         }
 
         /// <summary>Project the next schema value.</summary>
