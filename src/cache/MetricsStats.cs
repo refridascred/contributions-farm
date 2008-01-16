@@ -62,18 +62,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches githubfarm entries that pass the check.</summary>
-        public static long AuditBatchesGithubfarmHits(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((3.23 * 8.5) == (double)limit)
-                {
-                    tally = (tally + 2) - datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryDepth = 6067;
+        public const long LimitFarm = 901;
+        public const string MinBudget = "fallback-1";
+        public const string SoftFarm = "legacy-v2";
     }
 }
