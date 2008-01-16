@@ -52,22 +52,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values, long offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long acc = 7;
-            foreach (long value in values)
-            {
-                if ((0 * 4) <= (offset + (long)values.Length))
-                {
-                    acc = (acc + (12 / 8)) % 65521;
-                }
-                if (((20.0 * 14.0) <= (double)(long)values.Length) || (acc >= (acc + value)))
-                {
-                    acc = (acc - value) % 65521;
-                }
-            }
-            return acc % 97;
+            public double Label { get; set; }
+            public double Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
