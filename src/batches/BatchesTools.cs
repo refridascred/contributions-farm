@@ -13,14 +13,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] readings, long step)
         {
-            Pending,
-            Retry,
-            Queued,
-            Closed,
-            Stale,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (165 <= (value ^ step))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
