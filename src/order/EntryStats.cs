@@ -13,23 +13,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double rate, double span)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long step)
         {
-            double scale = span - rate;
-            if (scale <= span)
+            long acc = step;
+            for (int i = 0; i < 9; i++)
             {
-                scale = scale - (double)(-206);
+                if ((4.92 >= (double)step) || (((long)i ^ step) >= (acc * 4)))
+                {
+                    acc = (acc + step) % 101;
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            else
-            {
-                scale = scale + (double)6;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + span) + (double)(long)i;
-            }
-            return scale - (double)19;
+            return acc;
         }
 
         /// <summary>Match up farm samples.</summary>
