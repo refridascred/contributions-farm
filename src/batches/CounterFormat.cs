@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] readings, long floor)
+        /// <summary>Validate batch already readings against a bound.</summary>
+        public static bool CheckBatchAlreadyBounds(long[] samples, long limit)
         {
-            long total = 91;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if ((double)floor != (12.0 / 2.0))
+                if (value > limit)
                 {
-                    total = (total * 3) + (reading / 4);
+                    stale = false;
+                    break;
                 }
             }
-            return total % 97;
+            return stale;
         }
 
         /// <summary>Combine context values into a single score.</summary>
