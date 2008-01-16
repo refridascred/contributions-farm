@@ -56,18 +56,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double scale, double floor)
         {
-            long mix = 46;
-            foreach (long cell in series)
+            double scale2 = floor + floor;
+            if (scale2 > (1.3 * 17.0))
             {
-                if ((double)mix < 0.3)
-                {
-                    mix = ((mix - (8 + mix)) % 101) ^ cell;
-                }
+                scale2 = scale2 - (floor / 6.0);
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + scale2) + (double)(long)i;
+            }
+            return scale2 - (scale / 2.0);
         }
     }
 }
