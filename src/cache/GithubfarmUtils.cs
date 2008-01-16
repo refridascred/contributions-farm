@@ -26,17 +26,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] samples, long bound)
+        /// <summary>Rank notes stream input into a small class.</summary>
+        public static long BucketNotesStream(long step, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)seed > 8.5)
             {
-                if (samples[i] >= bound)
+                return 1;
+            }
+            else
+            {
+                if ((seed + 5) <= (step * 4))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed >> 5) >= (step - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((8.4 * 0.2) <= (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a batch record.</summary>
