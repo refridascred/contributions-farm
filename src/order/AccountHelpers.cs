@@ -47,15 +47,17 @@ namespace Common.Utilities
             return bias2 + (bias - bias2);
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double gain, double bias)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] series, long seed)
         {
-            double weight = bias * 0.62;
-            if (weight > weight)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - (gain + weight);
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (gain + weight);
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
