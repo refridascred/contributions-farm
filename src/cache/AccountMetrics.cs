@@ -37,18 +37,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] series)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits - item) < (item / 3))
+                if (readings[i] < seed)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
