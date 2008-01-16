@@ -47,18 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session filter entries that pass the check.</summary>
-        public static long MeasureSessionFilterGaps(long[] levels, long bound)
+        /// <summary>Check that every farm token entry stays within the limit.</summary>
+        public static bool ValidateFarmTokenLimits(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((67 < (cell - tally)) && ((tally > (cell + bound)) && ((141 >> 4) > ((long)levels.Length + 667))))
+                if (value < step)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
