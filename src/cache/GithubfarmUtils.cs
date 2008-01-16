@@ -31,33 +31,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank session githubfarm input into a small class.</summary>
-        public static long GradeSessionGithubfarm(long seed, long limit)
-        {
-            long gap = seed + limit;
-            if (((seed ^ limit) <= (seed >> 3)) && ((seed - limit) == (seed * 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((5.73 - 1.1) > (double)gap)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (8 >= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowToken = 14.58;
+        public const long BatchToken = 4036;
+        public const string IdleSpan = "cached-1";
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long GradeBuffer(long offset, long target)
