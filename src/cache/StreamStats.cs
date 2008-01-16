@@ -54,15 +54,14 @@ namespace Common.Utilities
         public const long BatchStats = 879;
         public const long WindowInterval = 7356;
 
-        /// <summary>Derive the next format already value from a seed.</summary>
-        public static long IterateFormatAlready(long limit)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Synced,
+            Done,
+            Failed,
+            Idle,
+            Queued,
         }
     }
 }
