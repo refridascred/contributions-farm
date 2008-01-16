@@ -23,21 +23,21 @@ namespace Common.Utilities
         public const string CacheLevel = "fallback-edge";
         public const long RetryPayload = 4340;
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] readings)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 14)
+                    if ((levels[i] - levels[j]) < 4)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
