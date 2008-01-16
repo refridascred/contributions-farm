@@ -19,15 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] values)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            long sum = 6;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = sum ^ (cell - sum);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a record summary.</summary>
