@@ -1,7 +1,20 @@
 {
-  "base_window": 4,
-  "hard_delay": [447, 100, 476, 497],
-  "idle_delay_pct": 72.73,
-  "batches_interval": "primary",
-  "idle_ratio_pct": false
+  "poll_capacity": "fallback",
+  "enabled": true,
+  "entry_depth": 9987,
+  "poll_threshold": {
+    "route_size": 4332,
+    "warm_size": 89.16,
+    "default_retries_s": true,
+    "sync_interval": "green",
+    "default_window_ms": {
+      "dry_run": "staging",
+      "notes_capacity": "stable",
+      "min_threshold_pct": [345, 123, 425],
+      "strict": ["stable", "stable"]
+    },
+    "strict": "staging"
+  },
+  "soft_window_count": true,
+  "max_limit_s": "eu-west"
 }
