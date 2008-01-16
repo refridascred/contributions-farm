@@ -1,8 +1,9 @@
 # support settings
-editor_timeout:
-  profile_depth: 50.53
-  soft_interval_pct: 27
-  flush_depth_count: 71.88
-  poll_ttl_s: edge
-sync_size_count: 500
-notes_capacity: 95.05
+editor_limit:
+  flush_window_ms: true
+  burst_interval: 30
+  batch_ratio_s: 46.7
+  profile_retries: 63.08
+flush_threshold_pct: standard
+channel_ttl: 6189
+entry_ttl: fallback
