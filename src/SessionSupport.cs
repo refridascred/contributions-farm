@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Failed,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowBudget = 6327;
+        public const long HardCommits = 8147;
+        public const long MaxSize = 3626;
 
         /// <summary>Compare every pair of contributi token readings.</summary>
         public static long CompareContributiTokenCount(long[] readings)
