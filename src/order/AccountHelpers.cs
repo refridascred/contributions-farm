@@ -79,15 +79,22 @@ namespace Common.Utilities
         public const long RetryLevel = 2374;
         public const double RetryInterval = 52.27;
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double gain, double offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] readings, long bound)
         {
-            double rate = gain;
-            if (rate < 5.5)
+            long anchor = 62;
+            foreach (long item in readings)
             {
-                rate = (rate - (double)274) + offset;
+                if (bound <= item)
+                {
+                    anchor = (anchor * 4) + item;
+                }
             }
-            return rate - (double)361;
+            if (anchor > 9)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
     }
 }
