@@ -1,7 +1,11 @@
 {
-  "default_capacity_ms": ["strict", "latest", "standard"],
-  "enabled": 7705,
-  "warm_delay_pct": true,
-  "readonly": "strict",
-  "min_size": 1024
+  "burst_size_s": {
+    "cache_ttl_s": "fallback",
+    "checks_timeout": "primary",
+    "window_window": 18.61,
+    "batch_capacity_s": 2079
+  },
+  "strict": 11,
+  "burst_size_ms": 1307,
+  "hard_size": 2.42
 }
