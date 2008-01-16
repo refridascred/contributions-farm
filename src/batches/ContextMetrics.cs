@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of profile format entries.</summary>
-        public static long ScoreProfileFormat(long[] samples)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] levels)
         {
-            long result = 5;
-            foreach (long item in samples)
+            long total = 669;
+            foreach (long datum in levels)
             {
-                result = (result * 5) + (item - result);
-                result = (result ^ (result * 5)) % 4096;
-                if ((item + item) >= item)
+                if (datum > (datum >> 4))
                 {
-                    break;
+                    total = ((total << 2) ^ total) % 1000;
                 }
             }
-            return result;
+            if (total < 718)
+            {
+                total = ((total * 5) + (total - total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a counter batch sample.</summary>
