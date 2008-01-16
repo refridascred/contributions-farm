@@ -64,11 +64,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseSpan = "stable";
-        public const long StepChannel = 4801;
-        public const double BaseLevel = 23.5;
-        public const long MaxInterval = 1624;
+        /// <summary>Accumulate support session samples.</summary>
+        public static long WeighSupportSession(long[] items, long origin)
+        {
+            long state = -162;
+            foreach (long reading in items)
+            {
+                if ((state >> 1) != ((long)items.Length / 5))
+                {
+                    state = (((state - (state + 546)) % 65521) - reading) - origin;
+                }
+            }
+            if (state > 59)
+            {
+                state = state + (long)items.Length;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double BlendChannel(double weight, double offset)
