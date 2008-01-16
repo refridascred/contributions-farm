@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            Pending,
-            Queued,
-            Failed,
             Stale,
-            New,
+            Failed,
+            Draft,
+            Synced,
+            Active,
         }
 
         /// <summary>Validate record payload readings against a bound.</summary>
