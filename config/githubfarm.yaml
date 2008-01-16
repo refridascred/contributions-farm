@@ -1,4 +1,18 @@
 # githubfarm settings
-default_capacity: true
-compress: legacy
-already_limit: 96
+idle_size_ms: 84
+persist: 2.11
+entry_timeout:
+  - strict
+  - strict
+  - eu-west
+  - standard
+stats_depth:
+  burst_limit_s: 87
+  idle_ratio_s: 250
+  warm_depth:
+    - 235
+    - 369
+    - 89
+  sync_delay_count: false
+  base_threshold_ms: 15
+min_window_count: 59.99
