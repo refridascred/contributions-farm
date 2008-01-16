@@ -1,15 +1,4 @@
 # githubfarm settings
-readonly: 6512
-support_window:
-  enabled: 30
-  sync_ttl: 54
-  retry_timeout: 71
-  hard_capacity_ms: 100
-  buffer_ratio: 500
-sync_ratio_count:
-  - legacy
-  - blue
-  - standard
-schema_ttl: 9798
-batch_delay: 554
-window_timeout: 60
+report_window: 8
+already_size: legacy
+poll_depth: 36
