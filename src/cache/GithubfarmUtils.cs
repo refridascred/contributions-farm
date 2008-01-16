@@ -47,12 +47,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Rank session githubfarm input into a small class.</summary>
+        public static long GradeSessionGithubfarm(long seed, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            long gap = seed + limit;
+            if (((seed ^ limit) <= (seed >> 3)) && ((seed - limit) == (seed * 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((5.73 - 1.1) > (double)gap)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (8 >= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
