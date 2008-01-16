@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 7;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark - ((-718) + value)) + step;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the support class values.</summary>
