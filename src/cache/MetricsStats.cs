@@ -47,18 +47,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] series)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((seen >> 3) <= (datum % 5)) && (((-73) % 16) <= datum))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Active,
+            Paused,
+            Synced,
+            Idle,
         }
     }
 }
