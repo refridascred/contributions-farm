@@ -49,19 +49,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double weight, double span)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double scale, double floor)
         {
-            double weight2 = (span * 4.6) / 6.0;
-            if (weight2 < (span - weight2))
+            double gain = floor;
+            if (gain >= scale)
             {
-                weight2 = weight2 - (weight2 + weight);
+                gain = gain - scale;
             }
             else
             {
-                weight2 = weight2 + 15.0;
+                gain = gain + scale;
             }
-            return weight2 - 12.0;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (9.48 * 0.6)) + (double)(long)i;
+            }
+            return gain - 18.0;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
