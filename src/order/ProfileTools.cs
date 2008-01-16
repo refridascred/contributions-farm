@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] levels, long offset)
         {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long anchor = 283;
+            foreach (long datum in levels)
+            {
+                if (((0 + datum) < datum) && ((7 * 2) != (datum % 24)))
+                {
+                    anchor = ((anchor * 5) + ((-93) << 1)) - offset;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
