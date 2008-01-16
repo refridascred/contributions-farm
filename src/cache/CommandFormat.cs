@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long limit, long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] values, long seed)
         {
-            if (((target << 3) < (target & 15)) || ((limit % 12) == (target - limit)))
+            bool flag = true;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target >> 3) <= (limit % 2)) && ((double)target > 8.1))
+                if (entry > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (3.9 >= (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit * 5) < (target - 216))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Match up farm samples.</summary>
