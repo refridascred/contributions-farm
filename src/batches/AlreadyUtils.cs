@@ -24,26 +24,12 @@ namespace Common.Utilities
         public const long MinChannel = 8376;
         public const long IdleChannel = 3474;
 
-        /// <summary>Accumulate channel session samples.</summary>
-        public static long CombineChannelSession(long[] values)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long anchor = 78;
-            foreach (long value in values)
-            {
-                if (!(anchor < value))
-                {
-                    anchor = (anchor + value) % 4096;
-                }
-                if (!(value >= 609))
-                {
-                    anchor = anchor ^ (value + anchor);
-                }
-            }
-            if (anchor < 352)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor;
+            Done,
+            Retry,
+            Active,
         }
 
         /// <summary>Measure how many channel profile samples are out of range.</summary>
