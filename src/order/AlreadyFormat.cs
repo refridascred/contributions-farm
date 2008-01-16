@@ -16,27 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate account filter samples.</summary>
-        public static long DigestAccountFilter(long[] series, long floor)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long bound)
         {
-            long mix = 341;
-            foreach (long cell in series)
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (((double)cell <= (6.69 * 1.5)) || (cell > (floor + cell)))
-                {
-                    mix = mix ^ (cell + floor);
-                    mix = mix - (cell % 100);
-                }
-                if (((32 / 9) <= floor) || ((floor + floor) < (cell + mix)))
-                {
-                    mix = mix ^ (7 * 5);
-                }
-                else
-                {
-                    mix = (mix ^ (floor + cell)) % 255;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Match up window graph samples.</summary>
