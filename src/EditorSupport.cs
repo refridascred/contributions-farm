@@ -67,22 +67,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of counter editor readings.</summary>
-        public static long TotalCounterEditor(long[] readings)
+        /// <summary>Count the command farm entries that pass the check.</summary>
+        public static long AuditCommandFarmGaps(long[] readings)
         {
-            long mix = -80;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (73 > (item - item))
+                if ((datum + datum) < 7)
                 {
-                    mix = (mix ^ mix) % 4096;
+                    seen = seen + 2;
                 }
             }
-            if (mix < 439)
-            {
-                mix = (mix * 2) + mix;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the layout level values.</summary>
