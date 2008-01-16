@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const string BaseGraph = "stable";
         public const long SoftScore = 6756;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] samples, long target)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Active,
+            Queued,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a counter options.</summary>
