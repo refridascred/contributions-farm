@@ -64,19 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] data, long bound)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
