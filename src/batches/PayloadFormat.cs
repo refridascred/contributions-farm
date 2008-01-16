@@ -29,12 +29,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardAccount = 93.95;
-        public const string SoftAccount = "open";
-        public const long IdleAccount = 2356;
-        public const long BaseAccount = 3431;
-        public const long RetryWidth = 5304;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public bool Limit { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long CombineTools(long[] samples)
