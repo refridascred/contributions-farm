@@ -19,17 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a stats batches sample.</summary>
-        public static long LookupStatsBatchesIndex(long[] items, long target)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
