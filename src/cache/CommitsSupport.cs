@@ -12,22 +12,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit order record readings against a rule.</summary>
-        public static long TallyOrderRecordMatches(long[] levels, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((322 << 3) < (cell >> 1))
+                if ((tally + 6) > (tally + 0))
                 {
-                    seen = (seen + 2) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = ((tally + 1) - value) - seed;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
