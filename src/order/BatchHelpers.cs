@@ -55,22 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] series)
+        /// <summary>Audit batches account readings against a rule.</summary>
+        public static long AuditBatchesAccountGaps(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((sample & 127) < (sample - seen))
+                if (((10.0 / 8.0) == (double)matches) && ((entry + entry) <= (848 - matches)))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 2) - step;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
