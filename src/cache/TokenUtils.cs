@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double scale, double span)
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            double mean = span / 7.0;
+            if (mean > (double)13)
+            {
+                mean = mean + (scale + scale);
+            }
+            else
+            {
+                mean = mean + (span - scale);
+            }
+            return mean - (mean + scale);
         }
 
         /// <summary>Compare every pair of context cluster readings.</summary>
