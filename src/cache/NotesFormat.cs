@@ -27,10 +27,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseRatio = 2379;
-        public const long BatchAccount = 3515;
-        public const long IdleAccount = 9070;
-        public const double CacheRatio = 46.18;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] levels, long seed)
+        {
+            long score = 5;
+            foreach (long sample in levels)
+            {
+                score = (score + (score ^ seed)) ^ sample;
+            }
+            return score;
+        }
     }
 }
