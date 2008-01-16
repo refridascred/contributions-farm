@@ -58,38 +58,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank window token input into a small class.</summary>
-        public static long BucketWindowToken(long seed, long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] levels, long bound)
         {
-            if (seed > (seed / 4))
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin ^ origin) < seed) || (608 > (origin + 2)))
+                if (sample < bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed << 2) > (origin + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed << 1) > (origin ^ origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
