@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a stats counter reading.</summary>
-        public static double AdjustStatsCounter(double ratio, double floor)
+        /// <summary>Measure how many layout metrics samples are out of range.</summary>
+        public static long AuditLayoutMetricsMatches(long[] data)
         {
-            double scale = floor / 5.0;
-            if (scale > 9.8)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                scale = (scale + (double)9) + ratio;
+                if (!!((double)hits == (6.5 - 2.0)))
+                {
+                    hits = (hits + 2) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + (double)(-42);
+            return hits;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
