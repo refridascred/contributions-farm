@@ -74,19 +74,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] samples, long seed)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Idle,
+            Paused,
+            Failed,
+            Draft,
         }
     }
 }
