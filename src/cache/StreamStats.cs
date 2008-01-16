@@ -21,24 +21,11 @@ namespace Common.Utilities
         public const string SoftInterval = "standard";
         public const double BatchTimeout = 87.15;
 
-        /// <summary>Adjust a record already reading.</summary>
-        public static double BlendRecordAlready(double gain, double floor)
-        {
-            double bias = floor;
-            if (bias < (gain / 4.0))
-            {
-                bias = bias - (gain - 3.0);
-            }
-            else
-            {
-                bias = bias - (double)737;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + floor) + (double)(long)i;
-            }
-            return bias + (5.8 * 7.43);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseGraph = 76.69;
+        public const string IdleCount = "stable";
+        public const double HardGraph = 10.82;
+        public const long StepFactor = 262;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
