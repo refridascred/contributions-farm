@@ -44,11 +44,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long step)
         {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            long state = step;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many metric stream samples are out of range.</summary>
