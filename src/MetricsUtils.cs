@@ -18,24 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long bound, long limit)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double gain, double offset)
         {
-            if (((97 / 6) <= (bound % 8)) && (limit < (bound ^ limit)))
+            double weight = 0.1;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                weight = ((weight + (double)(-408)) + (double)(long)i) - gain;
             }
-            else
-            {
-                if (((limit / 8) > (bound + limit)) && ((5.13 * 11.0) != (double)bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return weight - (weight + offset);
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
