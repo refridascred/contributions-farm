@@ -41,18 +41,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long floor)
         {
-            long anchor = 5;
-            foreach (long sample in data)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample <= (anchor + sample))
-                {
-                    anchor = anchor ^ (sample - sample);
-                }
+                state = (state ^ (floor * 4)) % 97;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return anchor % 65521;
+            return state;
         }
     }
 }
