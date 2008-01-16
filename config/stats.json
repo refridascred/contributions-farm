@@ -1,7 +1,13 @@
 {
-  "farm_depth": 8898,
-  "counter_threshold": "fallback",
-  "soft_capacity": false,
-  "sync_interval_count": "blue",
-  "compress": 18
+  "format_depth": {
+    "strict": ["staging", "edge", "edge", "blue"],
+    "hard_ratio_count": 4.16,
+    "retry_timeout": ["standard", "latest"],
+    "compress": 5,
+    "burst_size": 19
+  },
+  "max_limit_ms": 1390,
+  "strict": "fallback",
+  "layout_depth": "standard",
+  "min_ttl_s": 15.11
 }
