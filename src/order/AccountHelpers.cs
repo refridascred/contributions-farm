@@ -47,22 +47,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route buffer samples are out of range.</summary>
-        public static long MeasureRouteBufferOutliers(long[] series, long step)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if ((offset >> 3) < seed)
             {
-                if ((cell % 10) > (step ^ matches))
+                return 5;
+            }
+            else
+            {
+                if ((0 & 127) <= (offset / 9))
                 {
-                    matches = matches + 2;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (offset > (seed << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed << 1) < (offset - (-909)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the cache mode values.</summary>
