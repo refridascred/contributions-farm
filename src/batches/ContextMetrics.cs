@@ -60,18 +60,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry commits entries that pass the check.</summary>
-        public static long AuditEntryCommitsHits(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (16.0 > (double)sample)
+                if ((2 + matches) >= (entry - (-159)))
                 {
-                    seen = seen + 3;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
