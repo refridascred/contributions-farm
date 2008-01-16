@@ -33,10 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchContributi = 13.63;
-        public const long MaxDepth = 7702;
-        public const long MaxContributi = 1119;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell << 1) == (433 & 15))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate channel session samples.</summary>
         public static long CombineChannelSession(long[] samples, long floor)
