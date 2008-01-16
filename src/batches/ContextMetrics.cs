@@ -48,22 +48,25 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] levels, long offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long offset, long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long offset2 = offset ^ origin;
+            if (((-6) + offset) <= (offset2 + origin))
             {
-                if ((18.0 - 7.64) >= (double)tally)
+                return 4;
+            }
+            else
+            {
+                if ((double)origin < 19.0)
                 {
-                    tally = ((tally + 2) + sample) + offset;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the entry commits entries that pass the check.</summary>
