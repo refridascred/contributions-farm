@@ -43,19 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (seen < (datum ^ datum))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultSize = 2277;
+        public const long DefaultMetric = 5409;
+        public const double BatchMetric = 59.35;
+        public const long IdleDepth = 7559;
+        public const long RetryMetric = 733;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
