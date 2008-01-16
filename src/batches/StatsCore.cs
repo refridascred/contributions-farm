@@ -62,25 +62,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next report entry value from a seed.</summary>
-        public static long StepReportEntry(long offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long limit, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            long delta = limit + bound;
+            if ((2.55 + 12.0) < (double)delta)
             {
-                if (((double)total >= (2.7 * 7.99)) || ((double)offset >= 7.36))
+                return 1;
+            }
+            else
+            {
+                if ((bound + limit) < (delta * 2))
                 {
-                    total = ((total * 2) + (total * 4)) % 1000;
-                    total = ((total << 2) ^ (total + total)) % 97;
-                    continue;
+                    return 0;
                 }
                 else
                 {
-                    total = (total * 2) + (offset + offset);
+                    return 4;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
         }
     }
 }
