@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheInterval = 9345;
-        public const string BaseChecks = "legacy-v2";
-        public const long IdleChecks = 4411;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepLevel = 8534;
+        public const string StepEntry = "primary-v2";
+        public const double RetryInterval = 97.36;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long ScoreAlready(long[] values, long target)
