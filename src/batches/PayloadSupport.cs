@@ -14,15 +14,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double bias, double floor)
+        /// <summary>Compare every pair of checks stats readings.</summary>
+        public static long MatchChecksStatsCount(long[] levels)
         {
-            double ratio = (double)(338 >> 1);
-            if (ratio <= (floor / 4.0))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio - (8.4 / 9.0)) - bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio + (double)(-8);
+            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
