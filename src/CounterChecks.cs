@@ -26,19 +26,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] items, long limit)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Done,
+            Failed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
