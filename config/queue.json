@@ -1,6 +1,12 @@
 {
-  "strict": 298,
-  "base_ratio": 24.9,
-  "poll_interval_ms": "cached",
-  "base_capacity_s": 250
+  "poll_ttl_count": {
+    "batch_depth_s": 5910,
+    "default_ttl_s": "blue",
+    "batch_timeout_ms": 1802,
+    "max_window_count": [127, 93],
+    "retry_capacity": "green",
+    "retry_delay_count": 100
+  },
+  "default_timeout": false,
+  "batch_interval": "strict"
 }
