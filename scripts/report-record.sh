@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=130
-log "limit is ${RECORD_LIMIT}"
+for item in fallback cached open legacy; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 5 ]; do
