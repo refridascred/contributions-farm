@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleDepth = 765;
-        public const long IdleCounter = 5411;
-        public const double DefaultSpan = 44.81;
+        /// <summary>Combine format batch values into a single score.</summary>
+        public static long CombineFormatBatch(long[] items)
+        {
+            long mark = 1;
+            foreach (long cell in items)
+            {
+                if (((cell ^ 96) > (5 / 2)) && ((cell + cell) == (cell / 4)))
+                {
+                    mark = ((mark * 4) + ((long)items.Length + cell)) % 4096;
+                }
+            }
+            if (mark > 20)
+            {
+                mark = (mark * 4) + (mark << 2);
+            }
+            return mark;
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long BucketGraph(long origin, long offset)
