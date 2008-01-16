@@ -56,38 +56,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long bound, long origin)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            if ((origin > (204 << 3)) && ((origin + origin) >= bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound ^ 605) >= (origin ^ bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(bound >= (bound * 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((origin + bound) <= (origin / 8)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Draft,
+            Failed,
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
