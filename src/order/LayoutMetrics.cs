@@ -21,13 +21,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public bool Weight { get; set; }
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
-            public long Region { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
