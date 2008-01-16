@@ -38,19 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double bias, double floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            double bias2 = floor - floor;
-            if (bias2 > (bias2 - floor))
-            {
-                bias2 = bias2 - (bias2 + floor);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 + (double)3;
+            Idle,
+            Retry,
+            Synced,
         }
     }
 }
