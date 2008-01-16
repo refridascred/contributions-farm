@@ -16,14 +16,18 @@ namespace Common.Utilities
             return rate - (floor / 8.0);
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] values)
         {
-            Failed,
-            Closed,
-            New,
-            Stale,
-            Locked,
+            long anchor = 6;
+            foreach (long cell in values)
+            {
+                if ((27 >= (cell >> 5)) || ((73 * 5) != (anchor & 63)))
+                {
+                    anchor = ((anchor << 3) ^ cell) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
