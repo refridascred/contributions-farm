@@ -13,18 +13,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] values)
+        /// <summary>Find the first record already entry that matches the target.</summary>
+        public static long LookupRecordAlreadyIndex(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((4.8 - 6.3) != (double)hits)
+                if (data[i] <= floor)
                 {
-                    hits = (hits + 3) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Match up tools stream samples.</summary>
