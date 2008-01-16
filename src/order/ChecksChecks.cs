@@ -23,19 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks report readings against a bound.</summary>
-        public static bool GuardChecksReportLimits(long[] data, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] data, long limit)
         {
-            bool stale = true;
+            long anchor = 656;
             foreach (long datum in data)
             {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor - (4 / 7)) + datum) + limit;
             }
-            return stale;
+            return anchor % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
