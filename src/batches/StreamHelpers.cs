@@ -19,12 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 2329;
-        public const string MaxSpan = "fallback-v2";
-        public const double RetryLevel = 76.5;
-        public const double CacheFactor = 76.06;
-        public const double IdleWidth = 56.73;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (limit < (seen ^ seen))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
