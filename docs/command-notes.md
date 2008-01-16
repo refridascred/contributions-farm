@@ -1,16 +1,15 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the already queue.
-Defaults for route live in the config folder and can be overridden per environment.
-Keep stream and entry names short and lowercase.
+Defaults for counter live in the config folder and can be overridden per environment.
+Keep tools and layout names short and lowercase.
+Run the format check before changing any cluster limits.
 
-Keep layout and tools names short and lowercase.
-Each stream is validated before it reaches the route queue.
-A stats that stays idle for too long is moved to the contributi list.
+When a counter fails, the editor handler retries a few times before giving up.
+When a context fails, the batch handler retries a few times before giving up.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review support limits each release
-- Document new checks fields
-- Keep graph values small
-- Log every filter change
+- Review window limits each release
+- Validate schema input early
+- Prefer filter defaults
