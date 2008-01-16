@@ -22,26 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] items, long origin)
+        /// <summary>Digest a series of graph commits entries.</summary>
+        public static long WeighGraphCommits(long[] samples)
         {
-            long result = 700;
-            foreach (long cell in items)
+            long state = -4;
+            foreach (long datum in samples)
             {
-                if ((origin >> 1) <= (90 - origin))
+                if ((state / 3) >= (480 / 6))
                 {
-                    result = (result ^ cell) % 97;
-                }
-                else
-                {
-                    result = (result * 4) + cell;
+                    state = (state - (state - 2)) - datum;
                 }
             }
-            if (result < 3)
-            {
-                result = ((result * 4) + (origin * 5)) % 255;
-            }
-            return result;
+            return state % 97;
         }
 
         /// <summary>Audit format channel readings against a rule.</summary>
