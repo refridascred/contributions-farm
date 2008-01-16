@@ -13,24 +13,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long origin, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] items)
         {
-            if (!((double)target >= (5.6 + 12.0)))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target > (4.6 + 9.52))
+                if (hits > (7 + hits))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 1) - value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
