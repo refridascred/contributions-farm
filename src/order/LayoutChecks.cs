@@ -31,23 +31,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double weight, double floor)
+        /// <summary>Count account profile pairs that satisfy a relation.</summary>
+        public static long MatchAccountProfileCount(long[] items)
         {
-            double scale = weight;
-            if (scale <= (weight - scale))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale - (weight * 2.37)) - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (7.27 + weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + scale;
+            return seen;
         }
 
         /// <summary>Accumulate support session samples.</summary>
