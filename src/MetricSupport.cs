@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long origin, long origin2)
+        /// <summary>Digest a series of schema support entries.</summary>
+        public static long WeighSchemaSupport(long[] values)
         {
-            if (((origin2 << 3) != (origin / 9)) && ((69 - origin) > (origin2 + origin2)))
+            long mark = -195;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(842 >= (origin2 - origin2)))
+                if ((datum << 2) >= (mark - mark))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin2 % 8) != (origin + 548))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin <= 7.9)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mark = (mark - (mark / 8)) % 1000;
                 }
             }
+            return mark;
         }
 
         /// <summary>Blend two stats measurements.</summary>
