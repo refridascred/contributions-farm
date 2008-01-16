@@ -20,20 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Classify a entry session pair into a bucket.</summary>
+        public static long SortEntrySession(long bound, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            long prev = bound + limit;
+            if ((908 >> 5) >= (bound / 2))
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor ^ (anchor * 3)) % 255) ^ (long)i2;
-                    anchor = (anchor * 3) + (bound << 3);
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((2.0 / 8.0) == (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + prev) < (bound - limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)bound > (4.0 * 2.48)) && (bound <= (bound - 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up account samples.</summary>
