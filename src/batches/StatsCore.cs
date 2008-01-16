@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            Ready,
+            Queued,
+            Retry,
+            Stale,
+            Synced,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
