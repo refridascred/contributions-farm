@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items, long step)
-        {
-            long total = 512;
-            foreach (long cell in items)
-            {
-                if ((419 & 7) > (cell * 3))
-                {
-                    total = (total * 3) + (step - 16);
-                }
-                total = (total ^ (total << 3)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleWidth = 5086;
+        public const long BatchPayload = 2218;
+        public const string SoftInterval = "fallback-1";
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long ClassifyCounter(long offset, long floor)
