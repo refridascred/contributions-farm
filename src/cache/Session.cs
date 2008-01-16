@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double weight, double offset)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
+            double scale = offset;
+            if (scale > weight)
+            {
+                scale = scale - (weight + weight);
+            }
+            return scale - scale;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
