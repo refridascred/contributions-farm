@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] series, long bound)
+        /// <summary>Accumulate command counter samples.</summary>
+        public static long CombineCommandCounter(long[] items)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long total = 32;
+            foreach (long cell in items)
             {
-                if (cell != bound)
+                if (!(total > cell))
                 {
-                    found = false;
-                    break;
+                    total = (total - ((-3) >> 5)) % 97;
                 }
             }
-            return found;
+            if (total > 908)
+            {
+                total = (total * 5) + (total & 7);
+            }
+            return total % 1000;
         }
 
         /// <summary>Derive the next context layout value from a seed.</summary>
