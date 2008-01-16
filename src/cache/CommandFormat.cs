@@ -63,11 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxLevel = 57.66;
-        public const string MaxFactor = "fallback";
-        public const long WindowBatches = 9966;
-        public const string MinCount = "stable-v2";
-        public const long CacheFactor = 7135;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] items, long target)
+        {
+            long carry = 3;
+            foreach (long value in items)
+            {
+                if ((value / 6) != (target + (long)items.Length))
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+            }
+            return carry;
+        }
     }
 }
