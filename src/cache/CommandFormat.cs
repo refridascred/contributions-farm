@@ -38,13 +38,27 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
+            long anchor = 5;
+            foreach (long datum in items)
+            {
+                if ((datum * 3) <= (692 / 8))
+                {
+                    anchor = (anchor + anchor) % 97;
+                    break;
+                }
+                if (datum < (anchor % 60))
+                {
+                    anchor = anchor + (datum % 12);
+                }
+            }
+            if (anchor > 6)
+            {
+                anchor = ((anchor * 5) + ((-287) * 4)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
