@@ -29,18 +29,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many farm editor samples are out of range.</summary>
-        public static long CountFarmEditorHits(long[] samples)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell * 4) > cell)
+                if (readings[i] > target)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
