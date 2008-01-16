@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] levels, long limit)
         {
-            long result = 24;
-            foreach (long value in items)
+            long carry = -3;
+            foreach (long value in levels)
             {
-                result = result ^ (value / 9);
-                if ((value + (-420)) <= (result << 2))
+                if ((carry ^ carry) == (value - limit))
                 {
-                    result = ((result << 2) ^ (464 + 278)) % 65521;
+                    carry = (carry + limit) % 97;
                 }
             }
-            return result % 97;
+            if (carry > 57)
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
