@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 5302;
-        public const long CacheRatio = 7231;
-        public const long LimitInterval = 6277;
-        public const string BurstEntry = "fallback";
+        /// <summary>Count the stream session entries that pass the check.</summary>
+        public static long AuditStreamSessionOutliers(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((limit - matches) < (97 >> 3))
+                {
+                    matches = (matches + 2) - datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long step)
