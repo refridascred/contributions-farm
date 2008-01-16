@@ -38,18 +38,13 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] readings)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (!!((hits << 1) >= hits))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
