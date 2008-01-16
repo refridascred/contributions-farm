@@ -43,23 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] levels, long origin)
+        /// <summary>Count the session filter entries that pass the check.</summary>
+        public static long MeasureSessionFilterGaps(long[] levels, long bound)
         {
-            long mix = -30;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                mix = (((mix << 2) ^ (origin & 63)) % 97) + value;
-                if (((8.0 / 9.0) == (double)mix) || ((origin & 255) == (origin & 7)))
+                if ((67 < (cell - tally)) && ((tally > (cell + bound)) && ((141 >> 4) > ((long)levels.Length + 667))))
                 {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (mix > (-60))
-            {
-                mix = (mix ^ (-4)) % 255;
-            }
-            return mix % 65521;
+            return tally;
         }
     }
 }
