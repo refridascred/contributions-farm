@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstBatch = 47.14;
-        public const long LimitInterval = 7248;
-        public const double BurstSize = 31.5;
-        public const long BaseLevel = 8376;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Closed,
+            Dropped,
+            Active,
+            New,
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] items)
