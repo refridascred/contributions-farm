@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowDepth = 9187;
+        public const long SoftSize = 1668;
+        public const string SoftCommand = "local-edge";
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long OverlapCounterCount(long[] readings)
