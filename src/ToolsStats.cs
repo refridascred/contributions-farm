@@ -47,19 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((matches / 9) >= value)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdlePayload = "staging-edge";
+        public const long DefaultCount = 514;
+        public const long StepWidth = 8318;
+        public const long BurstRatio = 5499;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string LimitCount = "local";
