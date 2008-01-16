@@ -22,26 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command payload values into a single score.</summary>
-        public static long WeighCommandPayload(long[] readings, long floor)
+        /// <summary>Check that every command channel entry stays within the limit.</summary>
+        public static bool CheckCommandChannelBounds(long[] levels, long floor)
         {
-            long mark = 81;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((floor - item) < floor)
+                if (cell < floor)
                 {
-                    mark = (mark ^ (floor / 3)) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ (floor % 2)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            if (mark > 17)
-            {
-                mark = ((mark << 3) ^ (floor % 60)) % 1000;
-            }
-            return mark;
+            return ready;
         }
 
         /// <summary>Find the first graph window entry that matches the target.</summary>
