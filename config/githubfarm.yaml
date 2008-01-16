@@ -1,7 +1,31 @@
 # githubfarm settings
-schema_timeout: false
-flush_threshold_s: standard
-batch_ratio_s: 73.34
-counter_delay: blue
-batch_delay_s: 7066
-soft_ttl_ms: 250
+sync_window: 8
+poll_size_ms: blue
+verbose:
+  - fallback
+  - primary
+default_limit_count:
+  audit: true
+  metrics_retries:
+    verbose: primary
+    audit:
+      - 141
+      - 94
+      - 380
+      - 401
+    already_delay: 500
+    entry_threshold: 99
+    batch_timeout_count: 35.15
+  sync_window_s: primary
+burst_limit:
+  readonly: true
+  batches_retries: standard
+  warm_interval:
+    idle_size_count: 40.85
+    contributi_capacity: staging
+    graph_timeout: 34.17
+    batch_window: local
+    dry_run: false
+  audit: 3.63
+  token_depth: cached
+min_retries: legacy
