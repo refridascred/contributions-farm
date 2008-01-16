@@ -15,12 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] readings)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((((count << 3) <= count) && ((reading << 3) >= (count >> 4))) || ((count + reading) > reading))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
