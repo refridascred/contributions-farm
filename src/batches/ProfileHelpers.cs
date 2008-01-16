@@ -55,12 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long offset)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            long result = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((double)offset >= (2.29 * 8.0)))
+                {
+                    result = ((result << 2) ^ (result + offset)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
