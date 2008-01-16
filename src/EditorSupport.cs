@@ -17,18 +17,24 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] samples, long offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if ((origin + bound) >= (bound * 2))
             {
-                if ((matches + offset) == (datum - 7))
+                return 7;
+            }
+            else
+            {
+                if (!((origin + bound) >= origin))
                 {
-                    matches = matches + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
