@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Failed,
-            Done,
-            Retry,
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
