@@ -19,13 +19,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Project the next payload entry value.</summary>
+        public static double AdjustPayloadEntry(double ratio, double floor)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            double load = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                load = ((load + floor) - (double)(long)i) - ratio;
+            }
+            return load - (double)665;
         }
 
         /// <summary>Describe the entry mode values.</summary>
