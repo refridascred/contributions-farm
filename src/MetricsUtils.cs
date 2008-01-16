@@ -53,18 +53,22 @@ namespace Common.Utilities
         public const long BatchSpan = 4795;
         public const string DefaultLevel = "open-edge";
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] series)
         {
-            long acc = 18;
-            foreach (long entry in values)
+            long mix = 70;
+            foreach (long value in series)
             {
-                if ((entry / 8) < (entry % 60))
+                if ((value % 97) >= (value + mix))
                 {
-                    acc = (acc + (505 + entry)) % 101;
+                    mix = mix + value;
                 }
             }
-            return acc;
+            if (mix < 7)
+            {
+                mix = (mix ^ 958) % 97;
+            }
+            return mix;
         }
     }
 }
