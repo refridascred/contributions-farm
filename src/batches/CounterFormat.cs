@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] levels)
         {
-            long mix = 811;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                mix = ((mix ^ value) % 1000) - offset;
+                if (!((count ^ count) >= value) || ((double)862 > (double)count))
+                {
+                    count = count + 1;
+                }
             }
-            if (mix < 5)
-            {
-                mix = (mix - 9) % 255;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a record stats.</summary>
