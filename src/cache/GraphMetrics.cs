@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string WindowCount = "strict-edge";
         public const long CacheRecord = 8227;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] series, long bound)
         {
-            Paused,
-            Ready,
-            Queued,
-            Closed,
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
