@@ -33,21 +33,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Match up entry format samples.</summary>
-        public static long MatchEntryFormatCount(long[] series)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Grade a cache report value against two limits.</summary>
