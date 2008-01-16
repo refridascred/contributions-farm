@@ -49,13 +49,18 @@ namespace Common.Utilities
             return drift - 7.2;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] samples, long target)
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (item >= (seen % 12))
+                {
+                    seen = (seen + 3) + target;
+                }
+            }
+            return seen;
         }
     }
 }
