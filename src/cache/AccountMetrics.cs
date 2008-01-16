@@ -36,16 +36,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] series, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
+            long sum = 390;
+            foreach (long sample in series)
             {
-                sum = (sum - target) % 4096;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((step ^ (long)series.Length) >= (sample / 9))
+                {
+                    sum = (sum ^ step) % 1000;
+                }
             }
-            return sum;
+            return sum % 1000;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
