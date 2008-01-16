@@ -15,24 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the counter context series from a seed.</summary>
-        public static long SeriesCounterContext(long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] series)
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                mix = ((mix * 3) + target) % 1000;
-                if ((target + 1) > ((long)i << 1))
+                if (seen <= (seen >> 3))
                 {
-                    mix = ((mix << 2) ^ (mix - mix)) % 101;
+                    seen = (seen + 1) + cell;
                 }
-                else
-                {
-                    mix = (mix + mix) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
