@@ -46,17 +46,9 @@ namespace Common.Utilities
         public const long LimitWidth = 6243;
         public const long StepLevel = 9343;
 
-        /// <summary>Find the first already tools entry that matches the target.</summary>
-        public static long LookupAlreadyToolsIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultLevel = 1;
+        public const string WindowRecord = "alpha-edge";
+        public const long StepCount = 8545;
     }
 }
