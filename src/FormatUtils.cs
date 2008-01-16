@@ -78,22 +78,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit token notes readings against a rule.</summary>
-        public static long CountTokenNotesMatches(long[] levels, long limit)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long seed, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            if ((double)seed > (double)6)
             {
-                if ((limit << 1) < count)
+                return 3;
+            }
+            else
+            {
+                if (((762 / 7) != (offset ^ seed)) && ((seed / 9) < (seed + 74)))
                 {
-                    count = (count + 1) ^ reading;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((seed * 3) >= (offset * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((0 * 3) > (offset - offset)) && (offset < (seed + seed)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
