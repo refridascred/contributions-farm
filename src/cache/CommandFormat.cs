@@ -63,26 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] values, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long limit)
         {
-            long state = 0;
-            foreach (long entry in values)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((limit - entry) != (limit ^ entry)))
-                {
-                    state = (state + (entry << 3)) % 1000;
-                }
-                if ((state * 4) > 13)
-                {
-                    state = state + (state << 3);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (limit << 2)) % 1000;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return state % 65521;
+            return score;
         }
     }
 }
