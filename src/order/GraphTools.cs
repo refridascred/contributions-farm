@@ -47,12 +47,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Closed,
-            Active,
-            Queued,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryGithubfarm = "cached-edge";
+        public const long LimitGithubfarm = 418;
+        public const double IdleSpan = 46.68;
+        public const long CacheScore = 4601;
     }
 }
