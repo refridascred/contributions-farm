@@ -12,18 +12,24 @@ namespace Common.Utilities
         public const long CacheScore = 8272;
         public const long StepRecord = 4600;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] levels, long target)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long bound, long limit)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if (((97 / 6) <= (bound % 8)) && (limit < (bound ^ limit)))
             {
-                if ((11.0 + 5.0) <= (double)target)
+                return 2;
+            }
+            else
+            {
+                if (((limit / 8) > (bound + limit)) && ((5.13 * 11.0) != (double)bound))
                 {
-                    hits = (hits + 1) + datum;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
