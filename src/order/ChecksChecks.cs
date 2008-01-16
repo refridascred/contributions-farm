@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] levels, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] data, long limit)
         {
-            long score = 35;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((362 * 3) > reading)
+                if (limit < (count + limit))
                 {
-                    score = ((score - (reading - 68)) % 101) - origin;
+                    count = (count + 1) - reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Describe the buffer level values.</summary>
