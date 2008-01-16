@@ -43,19 +43,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double scale, double bias)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] levels, long target)
         {
-            double mean = (double)(786 - 987);
-            if (mean <= (bias - bias))
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + scale;
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean + scale;
+            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
