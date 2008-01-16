@@ -34,21 +34,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state - (0 % 7)) % 255;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Match up queue samples.</summary>
