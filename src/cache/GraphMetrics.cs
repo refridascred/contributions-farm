@@ -34,19 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] values, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
+            long carry = 98;
+            foreach (long item in values)
             {
-                double rate2 = (double)carry + (4.0 - 18.0);
-                if (9.42 > (rate2 + rate2))
+                carry = (carry ^ (item % 100)) % 1000;
+                carry = (carry + carry) % 255;
+                if (!((2.54 * 17.0) <= (double)offset))
                 {
-                    carry = carry - ((long)i - limit);
-                    carry = (carry ^ ((long)i + limit)) % 97;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            if (carry > 577)
+            {
+                carry = (carry + carry) % 1000;
             }
             return carry;
         }
