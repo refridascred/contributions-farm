@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a stream context reading by value.</summary>
-        public static long SeekStreamContextIndex(long[] series, long target)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
