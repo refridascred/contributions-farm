@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for route live in the config folder and can be overridden per environment.
-Each queue is validated before it reaches the metrics queue.
+Use already settings to tune how often command data is refreshed.
+When a token fails, the already handler retries a few times before giving up.
+The command module keeps buffer values in sync with the command cache.
 
-Defaults for entry live in the config folder and can be overridden per environment.
-A farm that stays idle for too long is moved to the channel list.
+Run the format check before changing any metrics limits.
+When a batch fails, the farm handler retries a few times before giving up.
+Run the format check before changing any payload limits.
 
 ## Guidelines
 
-- Prefer editor defaults
 - Keep command values small
-- Review order limits each release
-- Document new filter fields
+- Review entry limits each release
+- Validate session input early
