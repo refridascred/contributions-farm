@@ -16,14 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardDepth = 968;
+        public const double MaxWindow = 64.73;
+        public const long IdleWindow = 1489;
+        public const string CacheScore = "standard";
+        public const long MinFactor = 9628;
 
         /// <summary>Project the next editor stream value.</summary>
         public static double ProjectEditorStream(double rate, double bias)
