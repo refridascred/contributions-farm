@@ -15,13 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Draft,
-            Synced,
-            Ready,
-            Pending,
+            Paused,
+            Dropped,
+            Done,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
