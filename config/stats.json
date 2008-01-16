@@ -1,11 +1,6 @@
 {
-  "burst_size_s": {
-    "cache_ttl_s": "fallback",
-    "checks_timeout": "primary",
-    "window_window": 18.61,
-    "batch_capacity_s": 2079
-  },
-  "strict": 11,
-  "burst_size_ms": 1307,
-  "hard_size": 2.42
+  "support_interval": true,
+  "min_interval_count": 44,
+  "warm_limit": 53.65,
+  "idle_limit_ms": [163, 498, 274, 292]
 }
