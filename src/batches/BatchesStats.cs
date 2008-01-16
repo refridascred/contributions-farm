@@ -30,21 +30,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Fold a list of session counter readings.</summary>
+        public static long CombineSessionCounter(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 17;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (((state ^ (32 - 598)) % 101) + entry) + step;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Check that every farm token entry stays within the limit.</summary>
