@@ -26,14 +26,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Closed,
-            Stale,
-            Queued,
-            Active,
-            Retry,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 3098;
+        public const double LimitTimeout = 42.65;
+        public const long RetryGithubfarm = 1990;
+        public const string BaseSpan = "latest-1";
+        public const double HardGithubfarm = 79.44;
     }
 }
