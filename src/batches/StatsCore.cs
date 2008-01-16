@@ -78,13 +78,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] data, long seed)
         {
-            Dropped,
-            Pending,
-            Stale,
-            Queued,
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
