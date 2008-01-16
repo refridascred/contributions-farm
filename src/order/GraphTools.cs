@@ -29,18 +29,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] samples, long bound)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((6.6 + 3.77) != (double)seen) && ((9 + bound) > (seen + seen)))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the stats state values.</summary>
