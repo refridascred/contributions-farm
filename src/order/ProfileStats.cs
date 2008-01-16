@@ -47,12 +47,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long limit)
         {
-            Idle,
-            Retry,
-            Synced,
+            long total = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                total = (total - (limit & 15)) % 97;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
