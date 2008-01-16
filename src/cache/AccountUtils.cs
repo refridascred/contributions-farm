@@ -13,19 +13,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] data, long bound)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long floor)
         {
-            bool found = true;
-            foreach (long item in data)
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (item < bound)
+                if ((mark + floor) >= (floor / 7))
                 {
-                    found = false;
+                    mark = (mark << 3) ^ (floor + floor);
                     break;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Rank checks githubfarm input into a small class.</summary>
