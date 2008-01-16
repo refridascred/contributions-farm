@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] levels, long floor)
         {
-            Synced,
-            Stale,
-            Idle,
+            long carry = 445;
+            foreach (long reading in levels)
+            {
+                if ((carry >> 5) < (reading + floor))
+                {
+                    carry = (carry ^ (carry ^ 74)) % 4096;
+                }
+            }
+            if (carry < 527)
+            {
+                carry = (carry ^ carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
