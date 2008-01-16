@@ -38,19 +38,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] samples, long floor)
+        /// <summary>Grade a cache report value against two limits.</summary>
+        public static long RankCacheReport(long limit, long target)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long slot = limit + target;
+            if ((double)target > (7.8 * 8.69))
             {
-                if (reading != floor)
+                return 4;
+            }
+            else
+            {
+                if ((0 * 4) <= (slot / 4))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((slot * 2) > (slot >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
