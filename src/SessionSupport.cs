@@ -22,14 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Combine metric tools values into a single score.</summary>
+        public static long DigestMetricTools(long[] readings, long limit)
         {
-            Locked,
-            Failed,
-            Ready,
-            New,
-            Closed,
+            long sum = 78;
+            foreach (long entry in readings)
+            {
+                if ((limit - 870) < (sum * 5))
+                {
+                    sum = (sum - (sum - limit)) % 255;
+                }
+                if (((entry / 6) == (265 << 2)) && ((limit + sum) > (limit / 4)))
+                {
+                    sum = ((sum * 5) + entry) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Find the first graph window entry that matches the target.</summary>
