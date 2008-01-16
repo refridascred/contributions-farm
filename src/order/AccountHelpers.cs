@@ -47,13 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public string Stamp { get; set; } = "";
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            Idle,
+            Closed,
+            Active,
+            New,
         }
 
         /// <summary>Describe the cache mode values.</summary>
