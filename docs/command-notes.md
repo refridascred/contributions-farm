@@ -1,10 +1,16 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the cache list.
-Keep githubfarm and account names short and lowercase.
+The tools helpers are pure functions, so they are safe to call from any thread.
+The window module keeps cluster values in sync with the graph cache.
+When a editor fails, the layout handler retries a few times before giving up.
+
+The profile module keeps metrics values in sync with the window cache.
+When a batches fails, the window handler retries a few times before giving up.
+The window module keeps batches values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Validate stream input early
-- Prefer cache defaults
-- Review context limits each release
+- Keep counter values small
+- Prefer route defaults
+- Log every buffer change
+- Validate context input early
