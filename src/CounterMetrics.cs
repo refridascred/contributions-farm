@@ -37,13 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Stale,
-            Ready,
+            Paused,
+            Failed,
+            Closed,
             Pending,
-            Done,
         }
 
         /// <summary>Match up batches session samples.</summary>
