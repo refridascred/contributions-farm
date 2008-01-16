@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((((value << 2) >= (seen + value)) && ((floor + (long)samples.Length) <= (9 + value))) || ((double)floor >= 1.0))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitCount = 4429;
+        public const long LimitPayload = 5842;
+        public const string SoftPayload = "standard-v2";
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long BucketQueue(long seed, long origin)
