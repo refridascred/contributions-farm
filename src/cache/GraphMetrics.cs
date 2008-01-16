@@ -52,11 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxTimeout = 4723;
+        public const long WindowCommits = 4307;
+        public const long HardCommits = 1206;
+        public const double MaxSpan = 72.17;
+        public const long BaseTimeout = 8298;
     }
 }
