@@ -69,18 +69,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] values, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long carry = 361;
-            foreach (long cell in values)
-            {
-                if ((target >> 3) != (target + cell))
-                {
-                    carry = ((carry * 5) + (cell * 5)) % 101;
-                }
-            }
-            return carry % 65521;
+            New,
+            Failed,
+            Locked,
+            Retry,
         }
     }
 }
