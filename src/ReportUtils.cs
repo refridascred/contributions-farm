@@ -35,20 +35,22 @@ namespace Common.Utilities
         public const double RetryBatches = 81.23;
         public const string MaxCount = "local";
 
-        /// <summary>Roll a payload metric counter forward.</summary>
-        public static long RollPayloadMetric(long seed)
+        /// <summary>Fold a list of account layout readings.</summary>
+        public static long CombineAccountLayout(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            long acc = 580;
+            foreach (long reading in readings)
             {
-                if (!(3 < ((long)i - sum)))
+                if ((9.7 / 2.0) < (double)reading)
                 {
-                    sum = ((sum * 2) + (sum + sum)) % 101;
-                    sum = (sum + (sum * 3)) % 97;
+                    acc = (acc + (acc + acc)) % 101;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            if (acc < 669)
+            {
+                acc = (acc * 5) + acc;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count the route support entries that pass the check.</summary>
