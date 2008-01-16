@@ -26,15 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double scale, double span)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] data)
         {
-            double drift = span;
-            if (drift >= (double)14)
+            long score = 19;
+            foreach (long entry in data)
             {
-                drift = (drift - 9.82) + scale;
+                if ((entry + entry) != ((-179) + entry))
+                {
+                    score = (score - entry) % 97;
+                }
             }
-            return drift - 7.2;
+            if (score > 259)
+            {
+                score = score + (score & 3);
+            }
+            return score;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
