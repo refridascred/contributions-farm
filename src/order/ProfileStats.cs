@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double bias, double offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double weight = 7.9;
-            if (weight > 4.0)
-            {
-                weight = (weight - (offset - 14.0)) - bias;
-            }
-            return weight - 7.92;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
