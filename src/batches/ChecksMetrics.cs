@@ -33,21 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)tally != (17.0 * 2.8)))
                 {
-                    if ((items[i] ^ items[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) ^ entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
