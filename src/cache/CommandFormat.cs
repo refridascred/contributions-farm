@@ -63,18 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] items, long target)
+        /// <summary>Find the first already tools entry that matches the target.</summary>
+        public static long LookupAlreadyToolsIndex(long[] readings, long floor)
         {
-            long carry = 3;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value / 6) != (target + (long)items.Length))
+                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
                 {
-                    carry = (carry << 2) ^ carry;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
