@@ -33,18 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] data)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!((double)tally != (17.0 * 2.8)))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
