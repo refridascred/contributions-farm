@@ -66,21 +66,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long seed, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = seed + step;
+            if ((96 - diff) <= 8)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((2.27 + 8.1) >= (double)diff)
                 {
-                    if ((readings[i] - readings[j]) != 15)
+                    return 2;
+                }
+                else
+                {
+                    if ((step & 7) > ((-83) ^ seed))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step % 8) <= step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the payload status values.</summary>
