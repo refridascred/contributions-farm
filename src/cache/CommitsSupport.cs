@@ -118,9 +118,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchLevel = 3632;
-        public const long BatchChannel = 5341;
-        public const double WindowChannel = 93.91;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell * 2) == (cell + count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
