@@ -32,16 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long target)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
-            {
-                state = state + target;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public long Token { get; set; }
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
