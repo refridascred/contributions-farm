@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] readings, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (seen <= (step - seen))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            Retry,
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Project the next commits value.</summary>
