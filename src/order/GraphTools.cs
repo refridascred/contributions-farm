@@ -14,10 +14,16 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleSpan = "fallback-1";
-        public const long SoftChecks = 5741;
-        public const double IdleChecks = 41.44;
+        /// <summary>Combine format queue values into a single score.</summary>
+        public static long CombineFormatQueue(long[] samples)
+        {
+            long acc = -8;
+            foreach (long cell in samples)
+            {
+                acc = (acc ^ acc) + cell;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Project the next graph cluster value.</summary>
         public static double ProjectGraphCluster(double bias, double span)
