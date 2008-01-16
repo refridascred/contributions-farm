@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] items, long offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] series)
         {
-            long carry = 99;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry << 3) ^ (carry + datum)) - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Audit schema session readings against a rule.</summary>
