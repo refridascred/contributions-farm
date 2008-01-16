@@ -103,23 +103,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            long anchor = 5;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor << 3) ^ reading;
-                if (((anchor + anchor) <= (anchor - anchor)) && (((long)data.Length << 1) < ((-8) / 8)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor < (-910))
-            {
-                anchor = (anchor ^ (anchor ^ anchor)) % 65521;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
