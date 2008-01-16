@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] values, long step)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Synced,
+            Dropped,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the entry mode values.</summary>
