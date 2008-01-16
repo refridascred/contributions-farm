@@ -15,14 +15,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Iterate the counter context series from a seed.</summary>
+        public static long SeriesCounterContext(long target)
         {
-            Paused,
-            Synced,
-            Pending,
-            Stale,
-            Dropped,
+            long mix = target;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 3) + target) % 1000;
+                if ((target + 1) > ((long)i << 1))
+                {
+                    mix = ((mix << 2) ^ (mix - mix)) % 101;
+                }
+                else
+                {
+                    mix = (mix + mix) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Locate a session reading by value.</summary>
