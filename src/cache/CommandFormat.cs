@@ -23,14 +23,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Compare every pair of batch farm readings.</summary>
+        public static long PairBatchFarmCount(long[] values)
         {
-            Ready,
-            Retry,
-            Queued,
-            Idle,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
