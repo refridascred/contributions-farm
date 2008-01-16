@@ -43,18 +43,11 @@ namespace Common.Utilities
             return ((ratio + (3.0 / 2.0)) + scale) + bias;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] series)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((((double)9 >= (double)reading) || ((matches / 8) == (691 - matches))) || (((990 + reading) < (70 / 3)) && ((matches - reading) >= 929)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the order phase values.</summary>
