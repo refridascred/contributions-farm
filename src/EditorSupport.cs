@@ -45,14 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] levels)
         {
-            Dropped,
-            Retry,
-            Synced,
-            Draft,
-            Ready,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (seen < (datum ^ datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a support snapshot.</summary>
