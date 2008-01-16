@@ -28,27 +28,38 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long bound, long origin)
         {
-            long sum = 782;
-            foreach (long sample in samples)
+            if ((origin > (204 << 3)) && ((origin + origin) >= bound))
             {
-                sum = sum - sample;
-                if (sum >= (sum + sum))
+                return 3;
+            }
+            else
+            {
+                if ((bound ^ 605) >= (origin ^ bound))
                 {
-                    sum = (sum - (sample + 4)) % 4096;
+                    return 4;
                 }
-                if (7.8 >= (double)sum)
+                else
                 {
-                    break;
+                    if (!(bound >= (bound * 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((origin + bound) <= (origin / 8)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (sum > 945)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum % 65521;
         }
 
         /// <summary>Hold a report stats.</summary>
