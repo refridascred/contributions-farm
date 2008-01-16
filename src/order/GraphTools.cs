@@ -48,18 +48,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] series, long limit)
+        /// <summary>Look up the position of a payload profile sample.</summary>
+        public static long SeekPayloadProfileIndex(long[] levels, long origin)
         {
-            long anchor = 4;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit < (anchor - anchor)) && (reading < ((long)series.Length & 15)))
+                if (levels[i] <= origin)
                 {
-                    anchor = ((anchor * 2) + (reading / 8)) % 255;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
     }
 }
