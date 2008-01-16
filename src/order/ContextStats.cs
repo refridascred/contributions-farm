@@ -16,21 +16,31 @@ namespace Common.Utilities
             return weight2 - (floor + 5.07);
         }
 
-        /// <summary>Count context stream pairs that satisfy a relation.</summary>
-        public static long CompareContextStreamCount(long[] samples)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -957;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((7.08 / 9.0) <= (double)(long)items.Length)
                 {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix << 2) ^ mix) % 4096;
+                }
+                mix = ((mix << 2) ^ (bound << 1)) % 4096;
+                if (((mix + mix) == (mix & 3)) || (56 < (bound / 2)))
+                {
+                    mix = (mix - (637 + entry)) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 2) + mix) % 255;
                 }
             }
-            return tally;
+            if (mix < 9)
+            {
+                mix = (mix ^ (bound - mix)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
