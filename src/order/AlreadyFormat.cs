@@ -52,19 +52,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every already metric entry stays within the limit.</summary>
-        public static bool VerifyAlreadyMetricLimits(long[] items, long step)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long target, long target2)
         {
-            bool found = true;
-            foreach (long value in items)
+            long delta = target ^ target2;
+            if ((delta & 7) == (delta - target))
             {
-                if (value < step)
+                return 4;
+            }
+            else
+            {
+                if (((-5) - target2) <= (target % 97))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
 
         /// <summary>Match up stats samples.</summary>
