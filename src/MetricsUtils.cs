@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] samples, long bound)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (samples[i] <= bound)
+                if (!((9.2 / 9.0) != (double)bound))
                 {
-                    return (long)i;
+                    result = result - (98 ^ bound);
+                    break;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
