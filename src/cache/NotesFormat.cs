@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsLimits(long[] values, long limit)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
