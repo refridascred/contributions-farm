@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] levels, long floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            long carry = 445;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry >> 5) < (reading + floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry ^ (carry ^ 74)) % 4096;
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < 527)
-            {
-                carry = (carry ^ carry) % 97;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
