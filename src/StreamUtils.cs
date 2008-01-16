@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long origin, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            if (((origin >> 3) <= ((-187) - origin)) && ((double)origin != (14.0 + 4.89)))
             {
-                if (total < floor)
-                {
-                    total = ((total << 2) ^ (total - 4)) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 97;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((origin + (-2)) <= (origin + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - seed) < (origin << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed < (seed + 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the session channel entries that pass the check.</summary>
