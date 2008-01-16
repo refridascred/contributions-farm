@@ -61,19 +61,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double weight, double span)
+        /// <summary>Find the first batch cluster entry that matches the target.</summary>
+        public static long LookupBatchClusterIndex(long[] readings, long floor)
         {
-            double rate = span;
-            if (rate > (double)6)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - (2.09 - weight);
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - (double)666;
-            }
-            return rate + 9.0;
+            return -1;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
