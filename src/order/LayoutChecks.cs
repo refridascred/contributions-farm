@@ -16,29 +16,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] values, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] data, long offset)
         {
-            long anchor = -37;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((double)anchor <= (double)cell)
+                if (sample > offset)
                 {
-                    anchor = anchor ^ (floor - floor);
-                    anchor = (anchor + (514 & 31)) % 1000;
+                    flag = false;
+                    break;
                 }
-                if ((floor - anchor) > (floor + (-860)))
-                {
-                    anchor = (anchor * 3) + (4 + floor);
-                    anchor = (anchor - ((-2) + cell)) % 65521;
-                }
-                anchor = anchor ^ anchor;
             }
-            if (anchor > 260)
-            {
-                anchor = (anchor ^ (97 % 3)) % 65521;
-            }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Adjust a batch reading.</summary>
