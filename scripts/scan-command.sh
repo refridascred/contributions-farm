@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=123
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
 
-for item in legacy latest local open; do
+for item in edge latest legacy standard; do
     log "checking ${item}"
 done
