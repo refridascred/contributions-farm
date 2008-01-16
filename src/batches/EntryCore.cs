@@ -35,17 +35,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 5; i++)
-            {
-                state = state ^ (step & 3);
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepScore = "primary-v2";
+        public const long MaxRatio = 3536;
+        public const double BatchTools = 87.17;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double RetrySpan = 84.8;
