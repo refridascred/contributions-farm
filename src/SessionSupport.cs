@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] series, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] values, long bound)
         {
-            long mark = 22;
-            foreach (long value in series)
+            long total = 17;
+            foreach (long cell in values)
             {
-                if ((value + 2) != (bound & 255))
+                if (!((bound / 8) != (bound + cell)))
                 {
-                    mark = ((mark * 5) + (value * 5)) % 1000;
-                }
-                if (!((13.0 / 4.0) > (double)bound))
-                {
-                    break;
+                    total = total - (bound & 255);
                 }
             }
-            if (mark > 512)
-            {
-                mark = mark + bound;
-            }
-            return mark % 4096;
+            return total;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
