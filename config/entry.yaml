@@ -1,5 +1,9 @@
 # entry settings
-burst_window_count: 32
-retry_threshold_ms: blue
-dry_run: false
-layout_size: green
+batch_ratio_count: false
+order_threshold: 9660
+sync_retries_pct:
+  - 404
+  - 372
+  - 34
+cache_limit_s: fallback
+poll_capacity: 500
