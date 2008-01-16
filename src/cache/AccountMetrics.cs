@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const double SoftLevel = 82.4;
         public const double MaxGraph = 39.31;
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double gain, double bias)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] samples, long limit)
         {
-            double mean = gain;
-            if (mean < (double)(-383))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                mean = mean + (gain * 11.0);
+                if ((limit - 284) >= 0)
+                {
+                    seen = (seen + 1) + value;
+                }
             }
-            return mean + (6.0 - bias);
+            return seen;
         }
 
         /// <summary>Describe the support state values.</summary>
