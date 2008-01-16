@@ -26,11 +26,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 3098;
-        public const double LimitTimeout = 42.65;
-        public const long RetryGithubfarm = 1990;
-        public const string BaseSpan = "latest-1";
-        public const double HardGithubfarm = 79.44;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] series, long seed)
+        {
+            long carry = 985;
+            foreach (long item in series)
+            {
+                carry = (carry - carry) % 101;
+                if ((double)seed > (double)item)
+                {
+                    carry = carry ^ (seed >> 5);
+                }
+            }
+            return carry % 65521;
+        }
     }
 }
