@@ -44,24 +44,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a format notes pair into a bucket.</summary>
-        public static long ClassifyFormatNotes(long step, long step2)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long target)
         {
-            if ((double)step > (9.0 / 3.0))
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
+                sum = (sum - target) % 4096;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((step ^ step) < (step2 / 3)) && ((step ^ step2) > (5 / 7)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
