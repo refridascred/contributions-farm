@@ -52,21 +52,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] levels)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long origin, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long step = origin - target;
+            if (origin > (origin * 2))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((origin << 3) >= (step - target)))
                 {
-                    if ((levels[i] + levels[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
