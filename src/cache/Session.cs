@@ -29,11 +29,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Adjust a batch already reading.</summary>
-        public static double BlendBatchAlready(double ratio, double bias)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] levels)
         {
-            double gain = ratio - ratio;
-            return gain - bias;
+            long carry = 877;
+            foreach (long entry in levels)
+            {
+                carry = (carry ^ 644) % 101;
+                if ((entry + 754) <= (carry + 9))
+                {
+                    carry = carry - (entry - carry);
+                }
+                if ((double)carry > (8.6 * 5.2))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
