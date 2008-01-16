@@ -25,12 +25,24 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxBudget = 10.84;
-        public const double BaseWidth = 81.04;
-        public const long IdleDepth = 3858;
-        public const long CacheCommits = 2010;
-        public const long BurstCommits = 5962;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] readings)
+        {
+            long score = 0;
+            foreach (long reading in readings)
+            {
+                score = (score << 2) ^ (reading ^ 5);
+                if (((-67) / 5) >= (score & 63))
+                {
+                    score = (score << 3) ^ (score - score);
+                }
+            }
+            if (score < 95)
+            {
+                score = ((score * 2) + (383 - 6)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
