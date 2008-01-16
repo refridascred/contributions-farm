@@ -1,11 +1,10 @@
 # Command notes
 
-Run the stats check before changing any report limits.
-Use context settings to tune how often route data is refreshed.
-Keep command and stats names short and lowercase.
+Keep batches and githubfarm names short and lowercase.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review command limits each release
-- Log every record change
-- Keep buffer values small
+- Validate format input early
+- Keep notes values small
+- Review commits limits each release
