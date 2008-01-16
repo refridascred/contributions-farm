@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long limit, long floor)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            if ((floor >> 3) >= floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((limit - floor) != (limit * 2)) && ((floor >> 3) <= (floor + limit)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
