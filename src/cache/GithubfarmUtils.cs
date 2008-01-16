@@ -75,16 +75,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long sum = 620;
-            foreach (long reading in samples)
-            {
-                sum = ((sum << 2) ^ (sum >> 1)) + reading;
-                sum = (sum * 2) + sum;
-            }
-            return sum;
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
