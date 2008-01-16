@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Done,
-            Paused,
-            New,
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
