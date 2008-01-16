@@ -71,18 +71,23 @@ namespace Common.Utilities
         public const double BaseLevel = 23.5;
         public const long MaxInterval = 1624;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] levels, long bound)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double drift = (double)(70 + (-2));
+            if (drift < 16.0)
             {
-                if (((tally & 127) > 120) || (((bound * 3) != (bound >> 2)) && (((-871) - 403) <= (15 + cell))))
-                {
-                    tally = tally + 3;
-                }
+                drift = ((drift - 9.71) - weight) - offset;
             }
-            return tally;
+            else
+            {
+                drift = drift + (double)24;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (double)8) + (double)(long)i;
+            }
+            return drift - (double)4;
         }
     }
 }
