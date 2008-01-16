@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long origin)
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            long state = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                state = state + (state & 255);
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
