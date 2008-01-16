@@ -1,7 +1,9 @@
-id,state,region,score
-1,legacy,458,cached
-2,local,85,61.92
-3,19.43,238,82.97
-4,9.3,28.62,513
-5,971,74,763
-6,green,33.27,433
+id,weight,label,count
+1,81.02,875,864
+2,standard,green,94.25
+3,66.44,standard,47.2
+4,stable,510,green
+5,primary,410,767
+6,54.32,green,strict
+7,594,752,643
+8,staging,local,231
