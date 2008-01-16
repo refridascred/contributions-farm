@@ -12,38 +12,14 @@ namespace Common.Utilities
         public const long MaxCommits = 3691;
         public const long BurstCommits = 7574;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long limit, long limit2)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            if (limit2 > (limit2 & 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((137 << 3) <= limit2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit2 <= (limit + limit2)) || ((limit * 4) > ((-3) + limit2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((limit & 31) > (limit2 ^ limit)) || ((limit2 + limit2) > (limit2 * 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Retry,
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a contributi summary.</summary>
