@@ -1,6 +1,5 @@
 {
-  "cache_retries": ["latest", "standard", "staging"],
-  "entry_interval": "legacy",
-  "profile_window": 81.74,
-  "soft_ttl": 1024
+  "enabled": "legacy",
+  "stats_ttl": [421, 298, 225, 63],
+  "soft_ratio_pct": "fallback"
 }
