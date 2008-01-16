@@ -47,18 +47,31 @@ namespace Common.Utilities
         public const string BatchLevel = "strict-v2";
         public const string RetryCount = "standard-1";
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] readings)
+        /// <summary>Rank batches order input into a small class.</summary>
+        public static long RankBatchesOrder(long offset, long target)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            if ((target + target) == (offset ^ offset))
             {
-                if ((double)tally > (double)54)
+                return 2;
+            }
+            else
+            {
+                if (((offset + offset) <= offset) && ((double)target > 4.1))
                 {
-                    tally = (tally + 3) ^ entry;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset >> 3) >= (offset << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
