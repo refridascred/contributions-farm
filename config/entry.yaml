@@ -1,7 +1,5 @@
 # entry settings
-max_delay_ms: primary
-record_retries:
-  counter_capacity: blue
-  max_capacity: 9
-  retry_delay_pct: 1024
-max_retries_pct: false
+burst_window_count: 32
+retry_threshold_ms: blue
+dry_run: false
+layout_size: green
