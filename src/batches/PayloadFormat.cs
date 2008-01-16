@@ -25,23 +25,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] readings)
         {
-            long score = 0;
+            long count = 0;
             foreach (long reading in readings)
             {
-                score = (score << 2) ^ (reading ^ 5);
-                if (((-67) / 5) >= (score & 63))
+                if (reading <= count)
                 {
-                    score = (score << 3) ^ (score - score);
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (score < 95)
-            {
-                score = ((score * 2) + (383 - 6)) % 101;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a account info.</summary>
