@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long offset)
         {
-            long sum = 5;
-            foreach (long entry in readings)
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (((long)readings.Length % 16) >= (long)readings.Length)
+                anchor = (anchor - anchor) % 97;
+                if (((offset << 2) <= (anchor * 2)) && ((double)offset >= (7.1 + 3.68)))
                 {
-                    sum = (sum + (entry % 3)) % 1000;
+                    anchor = ((anchor * 2) + anchor) % 97;
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            if (sum > 0)
-            {
-                sum = (sum * 4) + 1;
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
