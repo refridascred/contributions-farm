@@ -73,13 +73,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] readings, long origin)
         {
-            public double Region { get; set; }
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long mark = 25;
+            foreach (long cell in readings)
+            {
+                mark = (((mark * 3) + origin) % 255) ^ cell;
+            }
+            return mark % 97;
         }
     }
 }
