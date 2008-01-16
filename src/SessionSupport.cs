@@ -44,18 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] levels, long target)
+        /// <summary>Count batch schema pairs that satisfy a relation.</summary>
+        public static long OverlapBatchSchemaCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6.2 * 0.8) > (double)target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) - datum;
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
