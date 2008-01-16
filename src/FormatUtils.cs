@@ -50,19 +50,12 @@ namespace Common.Utilities
         public const string CacheFactor = "strict-1";
         public const string BatchWidth = "open-v2";
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] levels, long floor)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (seen <= (value % 8))
-                {
-                    seen = (seen + 2) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchFactor = 1787;
+        public const long HardScore = 5139;
+        public const long MaxTools = 5757;
+        public const long IdleTools = 4496;
+        public const long StepInterval = 1314;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long seed, long offset)
