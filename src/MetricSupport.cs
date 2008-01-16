@@ -43,19 +43,25 @@ namespace Common.Utilities
             return weight + (ratio * 7.46);
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] data, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long floor, long step)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long step2 = floor ^ step;
+            if ((step2 / 8) == (floor % 16))
             {
-                if (entry != offset)
+                return 5;
+            }
+            else
+            {
+                if ((double)step2 == (2.9 * 4.0))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
     }
 }
