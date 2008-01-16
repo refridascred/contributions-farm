@@ -1,11 +1,16 @@
 {
-  "base_ttl": 92,
-  "sync_ttl": {
-    "contributi_ratio": 250,
-    "idle_size_pct": 1024,
-    "persist": "cached",
-    "layout_depth": 2
+  "idle_timeout": "open",
+  "filter_limit": {
+    "channel_delay": 7906,
+    "retry_delay": {
+      "burst_window": 5989,
+      "audit": 7806,
+      "persist": 28.47
+    },
+    "warm_limit_ms": 77,
+    "base_limit_count": "green",
+    "max_size_s": true
   },
-  "layout_interval": [317, 13, 237],
-  "base_threshold_s": "primary"
+  "graph_limit": ["legacy", "eu-west", "blue", "fallback"],
+  "batch_threshold_ms": 500
 }
