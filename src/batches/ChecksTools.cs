@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const string MinLayout = "strict-1";
         public const double BurstInterval = 42.07;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] series)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((long)series.Length - value) <= (count + value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
