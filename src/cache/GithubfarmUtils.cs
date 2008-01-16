@@ -47,10 +47,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 844;
-        public const long BaseWindow = 1825;
-        public const double HardRatio = 69.34;
-        public const string SoftWindow = "alpha";
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] samples)
+        {
+            long sum = 620;
+            foreach (long reading in samples)
+            {
+                sum = ((sum << 2) ^ (sum >> 1)) + reading;
+                sum = (sum * 2) + sum;
+            }
+            return sum;
+        }
     }
 }
