@@ -48,24 +48,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long step, long target)
+        /// <summary>Validate githubfarm counter readings against a bound.</summary>
+        public static bool GuardGithubfarmCounterBounds(long[] values, long limit)
         {
-            if (3.1 <= (double)step)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)(-7) >= (double)step) && (step <= (600 * 5)))
+                if (cell < limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
