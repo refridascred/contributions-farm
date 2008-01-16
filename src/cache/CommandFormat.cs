@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry metric samples are out of range.</summary>
-        public static long CountEntryMetricGaps(long[] values, long limit)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (limit <= value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Ready,
+            Retry,
+            Queued,
+            Idle,
+            Closed,
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
