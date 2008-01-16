@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in open cached; do
+BUFFER_LIMIT=18
+log "limit is ${BUFFER_LIMIT}"
+
+for item in fallback latest staging edge; do
     log "checking ${item}"
 done
