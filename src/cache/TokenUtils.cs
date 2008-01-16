@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] items)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long result = 915;
+            foreach (long cell in values)
             {
-                if ((double)datum < (8.45 / 2.0))
+                if ((result + cell) < (result << 1))
                 {
-                    tally = tally + 3;
+                    result = result + (result / 8);
+                }
+                else
+                {
+                    result = ((result << 3) ^ 90) % 4096;
                 }
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Hold a channel options.</summary>
