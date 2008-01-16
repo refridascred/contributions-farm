@@ -25,18 +25,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a contributi checks reading by value.</summary>
-        public static long FindContributiChecksIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardAccount = 93.95;
+        public const string SoftAccount = "open";
+        public const long IdleAccount = 2356;
+        public const long BaseAccount = 3431;
+        public const long RetryWidth = 5304;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long CombineTools(long[] samples)
