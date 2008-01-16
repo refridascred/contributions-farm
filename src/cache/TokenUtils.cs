@@ -26,19 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double scale, double span)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double mean = span / 7.0;
-            if (mean > (double)13)
-            {
-                mean = mean + (scale + scale);
-            }
-            else
-            {
-                mean = mean + (span - scale);
-            }
-            return mean - (mean + scale);
+            Failed,
+            Pending,
+            Stale,
+            Done,
+            Ready,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
