@@ -43,18 +43,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (!((4.5 / 3.0) <= (double)origin))
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitCount = "standard-1";
+        public const long BatchGithubfarm = 4600;
+        public const double DefaultGithubfarm = 14.89;
     }
 }
