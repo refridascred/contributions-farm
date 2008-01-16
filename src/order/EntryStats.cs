@@ -62,21 +62,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Count tools batch pairs that satisfy a relation.</summary>
+        public static long MatchToolsBatchCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] - series[j]) > 16)
+                    if ((readings[i] + readings[j]) > 12)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
