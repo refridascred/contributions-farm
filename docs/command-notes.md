@@ -1,11 +1,14 @@
 # Command notes
 
-Run the cluster check before changing any profile limits.
-Each schema is validated before it reaches the session queue.
+Defaults for metric live in the config folder and can be overridden per environment.
+Keep farm and record names short and lowercase.
+
+Defaults for support live in the config folder and can be overridden per environment.
+Use cluster settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Keep cache values small
-- Validate counter input early
-- Prefer counter defaults
-- Log every report change
+- Keep route values small
+- Document new graph fields
+- Review entry limits each release
+- Validate report input early
