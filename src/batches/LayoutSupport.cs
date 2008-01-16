@@ -61,11 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 74;
-        public const long BatchFactor = 862;
-        public const long LimitTools = 3711;
-        public const string BaseTools = "latest";
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long RankWindow(long origin, long target)
