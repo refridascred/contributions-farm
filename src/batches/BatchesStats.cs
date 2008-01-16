@@ -15,26 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] values)
+        /// <summary>Combine stream payload values into a single score.</summary>
+        public static long TallyStreamPayload(long[] levels, long origin)
         {
-            long acc = 474;
-            foreach (long entry in values)
+            long anchor = 81;
+            foreach (long datum in levels)
             {
-                if ((7.0 - 1.68) <= (double)entry)
+                if ((double)datum < 3.4)
                 {
-                    acc = (acc << 2) ^ (entry << 3);
+                    anchor = anchor ^ (anchor & 127);
                 }
-                if (((-70) >> 2) >= (entry + acc))
+                if ((origin ^ datum) == (datum / 8))
                 {
                     break;
                 }
             }
-            if (acc > 17)
-            {
-                acc = ((acc << 2) ^ (acc + acc)) % 1000;
-            }
-            return acc;
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of session counter readings.</summary>
