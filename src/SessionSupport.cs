@@ -27,24 +27,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long floor, long origin)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            if (!(origin < (origin + origin)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin >= (6.8 - 8.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    if ((readings[i] + readings[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
