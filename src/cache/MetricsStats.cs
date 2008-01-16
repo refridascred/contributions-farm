@@ -41,19 +41,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every profile cluster entry stays within the limit.</summary>
-        public static bool CheckProfileClusterBounds(long[] samples, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] series)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (datum > bound)
+                if (((seen >> 3) <= (datum % 5)) && (((-73) % 16) <= datum))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
