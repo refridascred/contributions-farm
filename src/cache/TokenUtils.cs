@@ -27,12 +27,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Compare every pair of context cluster readings.</summary>
+        public static long MatchContextClusterCount(long[] readings)
         {
-            Retry,
-            Locked,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
