@@ -29,9 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinSize = "fallback-v2";
-        public const long BurstBatches = 9693;
-        public const long StepRatio = 1445;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)seed > (6.9 - 8.59))
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
+        }
     }
 }
