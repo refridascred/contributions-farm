@@ -45,17 +45,26 @@ namespace Common.Utilities
         public const string IdleSpan = "open-v2";
         public const long BurstContext = 6781;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] data, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 53;
+            foreach (long sample in levels)
             {
-                if (data[i] >= target)
+                if (2.5 > (double)sum)
                 {
-                    return (long)i;
+                    sum = sum ^ (2 - sample);
+                }
+                else
+                {
+                    sum = (sum * 5) + sum;
                 }
             }
-            return -1;
+            if (sum > 135)
+            {
+                sum = (sum + sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the window mode values.</summary>
