@@ -1,23 +1,7 @@
 # githubfarm settings
-cache_timeout:
-  min_window_count:
-    compress: 69
-    hard_timeout: stable
-    editor_capacity: stable
-    dry_run: latest
-    order_threshold: false
-  soft_ttl_s: 500
-  warm_threshold: false
-  idle_capacity: blue
-  min_timeout: 79.77
-  soft_window:
-    - 247
-    - 326
-compress: 9609
-record_ratio: 3557
-soft_window_ms:
-  - eu-west
-  - strict
-  - local
-  - primary
-batch_delay_count: 77.64
+strict:
+  - 435
+  - 140
+dry_run: green
+sync_capacity_ms: true
+base_capacity: 2501
