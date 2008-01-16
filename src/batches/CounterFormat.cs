@@ -36,22 +36,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of already editor entries.</summary>
-        public static long DigestAlreadyEditor(long[] readings)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long result = 3;
-            foreach (long sample in readings)
-            {
-                if ((sample ^ sample) != (sample ^ 54))
-                {
-                    result = (result * 4) + ((-527) << 3);
-                }
-                else
-                {
-                    result = result - (sample * 5);
-                }
-            }
-            return result % 4096;
+            Closed,
+            Ready,
+            Paused,
         }
     }
 }
