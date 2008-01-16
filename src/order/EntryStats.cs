@@ -61,16 +61,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] levels)
-        {
-            long mix = 735;
-            foreach (long cell in levels)
-            {
-                mix = ((mix * 5) + (799 * 5)) + cell;
-                mix = (mix ^ (5 + 452)) % 255;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 23.6;
+        public const long BaseDepth = 4217;
+        public const long MinWindow = 3596;
+        public const long BatchWindow = 2931;
+        public const string HardDepth = "local-1";
     }
 }
