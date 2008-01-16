@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] levels)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((double)datum > (double)tally) || ((8.4 < (double)datum) || ((19.0 / 6.0) == (double)tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Adjust a cluster reading.</summary>
