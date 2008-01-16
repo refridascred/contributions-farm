@@ -30,18 +30,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit counter schema readings against a rule.</summary>
-        public static long AuditCounterSchemaGaps(long[] readings)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value >> 5) <= (matches + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
