@@ -1,21 +1,5 @@
 {
-  "flush_depth_pct": "fallback",
-  "batch_interval": "strict",
-  "cache_depth_pct": {
-    "poll_delay_count": 100,
-    "poll_ratio": "primary",
-    "batch_capacity_pct": {
-      "hard_ttl_ms": "primary",
-      "metric_threshold": "cached",
-      "max_interval_s": "fallback",
-      "enabled": 6.99,
-      "default_delay_s": "eu-west"
-    },
-    "soft_retries": "strict",
-    "base_interval_count": 11.6,
-    "account_delay": ["fallback", "fallback"]
-  },
-  "idle_interval": 6307,
-  "retry_depth_pct": [343, 190],
-  "idle_capacity_count": ["edge", "green"]
+  "profile_delay": 30,
+  "enabled": "cached",
+  "record_capacity": "eu-west"
 }
