@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Pending,
+            Failed,
+            Paused,
+            Synced,
             Draft,
-            New,
-            Closed,
+            Stale,
         }
 
         /// <summary>Hold a order snapshot.</summary>
