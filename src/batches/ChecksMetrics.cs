@@ -84,11 +84,11 @@ namespace Common.Utilities
             return rate + 9.0;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double rate, double offset)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            double load = (double)(96 + 780);
+            return ((load + load) + rate) + offset;
         }
     }
 }
