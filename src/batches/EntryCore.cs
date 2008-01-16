@@ -23,23 +23,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double bias, double bias2)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] data, long offset)
         {
-            double load = (bias * 4.1) + 19.0;
-            if (load <= (double)227)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + (double)737;
+                if ((data[i] > offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (bias2 * 3.2);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + 10.0) + (double)(long)i;
-            }
-            return load + (14.0 + bias2);
+            return -1;
         }
 
         /// <summary>Hold a order summary.</summary>
