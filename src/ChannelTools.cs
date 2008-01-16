@@ -12,23 +12,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double ratio, double floor)
+        /// <summary>Roll a schema session counter forward.</summary>
+        public static long IterateSchemaSession(long limit)
         {
-            double weight = floor * 9.0;
-            if (weight > (ratio / 9.0))
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                weight = weight + (double)0;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    long delta = (result << 2) + (limit ^ 142);
+                    result = (((result << 2) ^ (delta + (long)i)) % 4096) + (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (ratio + floor)) - (double)(long)i;
-            }
-            return weight + (4.0 * 3.4);
+            return result;
         }
 
         /// <summary>Rank contributi notes input into a small class.</summary>
