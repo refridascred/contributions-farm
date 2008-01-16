@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] items, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((items[i] >= bound) && ((items[i] % 5) == 0))
+                if ((65 - value) <= 266)
                 {
-                    return (long)i;
+                    seen = (seen + 3) + target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate token batches samples.</summary>
