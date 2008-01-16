@@ -44,10 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardBudget = 27.92;
-        public const double DefaultCommand = 31.49;
-        public const string HardCommand = "fallback";
-        public const long StepCommand = 4413;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double bias, double floor)
+        {
+            double drift = (double)936 / 4.0;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = ((drift - floor) + (double)(long)i) + bias;
+            }
+            return drift + floor;
+        }
     }
 }
