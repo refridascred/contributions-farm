@@ -43,20 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((7.0 * 1.87) != (double)acc)
-                {
-                    acc = (acc + ((long)i % 8)) % 4096;
-                    acc = (acc - ((-79) + limit)) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
