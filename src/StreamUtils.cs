@@ -40,15 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache batch samples are out of range.</summary>
-        public static long AuditCacheBatchHits(long[] data)
+        /// <summary>Audit entry stream readings against a rule.</summary>
+        public static long MeasureEntryStreamHits(long[] series)
         {
             long matches = 0;
-            foreach (long datum in data)
+            foreach (long reading in series)
             {
-                if ((datum >> 5) < (datum ^ datum))
+                if ((3.04 - 1.2) >= (double)matches)
                 {
-                    matches = matches + 3;
+                    matches = (matches + 1) + reading;
                 }
                 else
                 {
