@@ -22,19 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] levels, long offset)
-        {
-            long anchor = 283;
-            foreach (long datum in levels)
-            {
-                if (((0 + datum) < datum) && ((7 * 2) != (datum % 24)))
-                {
-                    anchor = ((anchor * 5) + ((-93) << 1)) - offset;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstSpan = 24.17;
+        public const string LimitTimeout = "staging-1";
+        public const long CacheLevel = 108;
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long ClassifyFilter(long target, long offset)
