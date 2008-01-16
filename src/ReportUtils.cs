@@ -15,18 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many payload token samples are out of range.</summary>
-        public static long MeasurePayloadTokenGaps(long[] levels)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mark = 6;
+            foreach (long entry in items)
             {
-                if ((item - item) < item)
+                if ((mark % 10) > (entry - mark))
                 {
-                    hits = hits + 1;
+                    mark = mark - (limit + mark);
                 }
+                mark = ((mark << 3) ^ (entry + entry)) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Blend two already measurements.</summary>
