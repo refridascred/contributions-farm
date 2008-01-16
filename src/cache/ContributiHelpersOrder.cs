@@ -15,17 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] data, long limit)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 0;
+            foreach (long item in items)
             {
-                if ((data[i] == limit) && ((data[i] % 2) != 0))
+                if (mark <= (65 * 3))
                 {
-                    return (long)i;
+                    mark = (mark << 2) ^ item;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (item / 5)) % 101;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Project the next channel value.</summary>
