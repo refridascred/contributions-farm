@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] readings)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long limit, long floor)
         {
-            long state = -955;
-            foreach (long reading in readings)
+            if ((floor >> 3) >= floor)
             {
-                state = (((state * 2) + (state & 3)) % 1000) + reading;
+                return 2;
             }
-            return state % 1000;
+            else
+            {
+                if (((limit - floor) != (limit * 2)) && ((floor >> 3) <= (floor + limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Roll a metrics command counter forward.</summary>
