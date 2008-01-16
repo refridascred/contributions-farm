@@ -46,17 +46,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                state = (state - (0 % 7)) % 255;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 513;
+        public const long LimitFactor = 8855;
+        public const string RetrySession = "strict-1";
 
         /// <summary>Match up queue samples.</summary>
         public static long MatchQueueCount(long[] levels)
