@@ -34,11 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            long anchor = 861;
+            foreach (long item in samples)
+            {
+                if ((double)anchor != (5.6 - 8.28))
+                {
+                    anchor = (anchor << 2) ^ (item % 97);
+                }
+            }
+            if (anchor > 10)
+            {
+                anchor = (anchor ^ (35 >> 2)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
