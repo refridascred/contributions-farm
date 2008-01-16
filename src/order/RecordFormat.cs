@@ -44,18 +44,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] values)
+        /// <summary>Rank already cluster input into a small class.</summary>
+        public static long ClassifyAlreadyCluster(long origin, long step)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long step2 = origin ^ step;
+            if (step >= (step ^ step))
             {
-                if (!((tally - 0) <= tally))
+                return 5;
+            }
+            else
+            {
+                if ((double)origin <= (double)step)
                 {
-                    tally = (tally + 1) + datum;
+                    return 8;
+                }
+                else
+                {
+                    if ((6 + step2) <= (origin << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((2.0 / 9.0) != (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next queue value.</summary>
