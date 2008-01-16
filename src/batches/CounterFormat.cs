@@ -35,25 +35,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long seed, long seed2)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long delta = seed - seed2;
-            if ((delta + 4) == (seed & 15))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed2 - seed2) < (delta * 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Total { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
