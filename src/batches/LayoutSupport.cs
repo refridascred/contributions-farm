@@ -52,15 +52,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double weight, double span)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            double load = weight * 9.0;
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - span) + (double)(long)i;
-            }
-            return load + (weight - span);
+            Synced,
+            Locked,
+            Stale,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
