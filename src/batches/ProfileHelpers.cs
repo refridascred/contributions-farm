@@ -43,10 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 513;
-        public const long LimitFactor = 8855;
-        public const string RetrySession = "strict-1";
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TallyEntry(long[] samples)
