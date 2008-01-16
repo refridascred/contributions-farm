@@ -31,31 +31,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long offset, long offset2)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            if ((16.0 + 2.3) >= (double)offset2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((11.0 - 3.0) > (double)offset2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.7 + 17.0) <= (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public double Level { get; set; }
         }
     }
 }
