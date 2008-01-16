@@ -47,25 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long origin, long floor)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long prev = origin - floor;
-            if (((8.78 + 7.86) > (double)origin) && ((floor - floor) < prev))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor > prev) || ((prev & 31) >= (origin >> 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Ready,
+            Retry,
         }
     }
 }
