@@ -15,11 +15,33 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitSize = 7015;
-        public const double BurstScore = 58.02;
-        public const long LimitChannel = 4140;
-        public const long BatchRatio = 884;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long seed, long limit)
+        {
+            long bound = seed - limit;
+            if ((5 & 63) >= limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((bound * 3) < bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(((-9) >> 1) <= (limit % 100)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long MatchClusterCount(long[] values)
