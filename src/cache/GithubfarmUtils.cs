@@ -34,15 +34,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double scale, double bias)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            double weight = 2.8;
-            if (weight <= weight)
-            {
-                weight = ((weight + 4.0) - scale) + bias;
-            }
-            return weight - 8.1;
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
