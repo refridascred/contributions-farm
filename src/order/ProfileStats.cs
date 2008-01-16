@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 5;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)readings.Length % 16) >= (long)readings.Length)
                 {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum + (entry % 3)) % 1000;
                 }
             }
-            return matches;
+            if (sum > 0)
+            {
+                sum = (sum * 4) + 1;
+            }
+            return sum;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
