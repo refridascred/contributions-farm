@@ -59,19 +59,11 @@ namespace Common.Utilities
         public const long RetryLevel = 3793;
         public const long HardSpan = 6402;
 
-        /// <summary>Validate payload batch readings against a bound.</summary>
-        public static bool GuardPayloadBatchLimits(long[] values, long bound)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
