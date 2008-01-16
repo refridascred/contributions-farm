@@ -22,26 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] samples)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] samples, long target)
         {
-            long carry = 81;
-            foreach (long entry in samples)
+            long total = 333;
+            foreach (long cell in samples)
             {
-                if (((9.8 - 0.7) <= (double)carry) || ((double)carry <= 1.24))
+                if ((total + target) <= (target << 2))
                 {
-                    carry = ((carry << 3) ^ (long)samples.Length) % 4096;
+                    total = (total ^ target) ^ cell;
                 }
-                if ((carry <= (carry >> 3)) && (entry >= 7))
+                else
                 {
-                    carry = (carry << 2) ^ (carry + entry);
+                    total = total + (total % 100);
                 }
             }
-            if (carry > 63)
-            {
-                carry = ((carry * 4) + (carry * 4)) % 65521;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
