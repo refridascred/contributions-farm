@@ -52,18 +52,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] levels, long floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long step, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            if (!((double)step <= (4.1 * 1.3)))
             {
-                if (floor >= (floor & 255))
+                return 0;
+            }
+            else
+            {
+                if ((double)seed > (double)69)
                 {
-                    tally = (tally + 2) ^ item;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up commits samples.</summary>
