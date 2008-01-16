@@ -29,19 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] values, long origin)
+        /// <summary>Find the first graph window entry that matches the target.</summary>
+        public static long FindGraphWindowIndex(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < origin)
+                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
