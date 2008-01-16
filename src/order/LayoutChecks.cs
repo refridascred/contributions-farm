@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema session readings against a rule.</summary>
-        public static long TallySchemaSessionHits(long[] data, long seed)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9 + 93) >= (seed % 12))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 1) - cell;
+                    if ((data[i] - data[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the layout mode values.</summary>
