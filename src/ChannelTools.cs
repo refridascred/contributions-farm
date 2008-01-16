@@ -38,16 +38,15 @@ namespace Common.Utilities
             return weight + (4.0 * 3.4);
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double bias, double offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            double load = (double)2 + offset;
+            if (load > offset)
             {
-                anchor = ((anchor << 3) ^ bound) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                load = (load - (10.0 - offset)) - bias;
             }
-            return anchor;
+            return load + (double)52;
         }
     }
 }
