@@ -1,19 +1,8 @@
 # githubfarm settings
-profile_timeout: 98.14
-hard_depth_s: cached
-sync_delay_ms:
-  record_retries: edge
-  dry_run: 78
-  audit: 1.19
-  burst_depth_count: stable
-  verbose:
-    - 125
-    - 100
-  strict:
-    metrics_window: 30.0
-    readonly: standard
-    verbose: strict
-    cache_interval: false
-dry_run:
-  - legacy
-  - stable
+cache_threshold_s: 9278
+payload_threshold: latest
+channel_window:
+  - 75
+  - 157
+  - 391
+record_ratio: open
