@@ -25,19 +25,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate order context samples.</summary>
-        public static long CombineOrderContext(long[] data)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            long mark = -79;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark - (value & 63);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mark < 57)
-            {
-                mark = (mark - (mark & 1)) % 101;
-            }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Hold a account info.</summary>
