@@ -43,13 +43,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Done,
+            Stale,
+            Idle,
             Queued,
-            Synced,
-            Retry,
+            Locked,
             New,
         }
     }
