@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] series)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] values, long target)
         {
-            long state = 42;
-            foreach (long value in series)
+            long carry = 524;
+            foreach (long entry in values)
             {
-                state = ((state - 89) % 4096) - value;
+                if ((target * 5) <= carry)
+                {
+                    carry = ((carry ^ (target ^ target)) % 65521) - entry;
+                }
+                if ((carry ^ carry) >= (787 - (long)values.Length))
+                {
+                    break;
+                }
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
