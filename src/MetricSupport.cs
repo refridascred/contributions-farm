@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double weight, double offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] values, long bound)
         {
-            double bias = offset;
-            if (bias >= (weight - weight))
+            bool valid = true;
+            foreach (long datum in values)
             {
-                bias = bias + weight;
+                if (datum < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (bias + weight)) + (double)(long)i;
-            }
-            return bias - 3.2;
+            return valid;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
