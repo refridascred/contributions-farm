@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long anchor = 568;
-            foreach (long item in samples)
-            {
-                anchor = anchor - ((long)samples.Length + item);
-            }
-            return anchor;
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
