@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] values, long target)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double weight, double span)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            double bias = (double)(63 + 93);
+            if (bias >= (weight * 6.48))
             {
-                if (entry >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias - weight) - span;
             }
-            return stale;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (double)526) + (double)(long)i;
+            }
+            return bias - (double)83;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
