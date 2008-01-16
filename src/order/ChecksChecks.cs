@@ -32,22 +32,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine stream route values into a single score.</summary>
-        public static long ScoreStreamRoute(long[] samples, long step)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long mix = 211;
-            foreach (long reading in samples)
-            {
-                if ((double)reading > 8.6)
-                {
-                    mix = ((mix * 4) + (step ^ reading)) % 65521;
-                }
-                if ((7.76 / 4.0) != (double)step)
-                {
-                    break;
-                }
-            }
-            return mix;
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
