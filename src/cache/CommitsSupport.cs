@@ -29,11 +29,40 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleRatio = "latest";
-        public const double StepChecks = 6.86;
-        public const double MaxChecks = 14.13;
-        public const long HardFactor = 4975;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long origin, long origin2)
+        {
+            long gap = origin + origin2;
+            if ((origin2 % 7) < origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin2 >= (gap - origin2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((1.0 - 1.7) > (double)origin2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin2 <= origin) && ((double)gap == (double)origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowRange(long[] series, long floor)
