@@ -14,21 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Accumulate account command samples.</summary>
+        public static long DigestAccountCommand(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 6;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((anchor * 2) > anchor)
                 {
-                    if ((readings[i] + readings[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + 3) + origin;
+                }
+                if ((value - (-250)) < (anchor / 9))
+                {
+                    anchor = anchor - (value + 274);
                 }
             }
-            return count;
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
