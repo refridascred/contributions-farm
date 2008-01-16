@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit order metric readings against a rule.</summary>
-        public static long AuditOrderMetricHits(long[] data)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((15.0 / 3.0) >= (double)matches)
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Project the next report farm value.</summary>
