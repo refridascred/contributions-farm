@@ -26,21 +26,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Hold a command info.</summary>
