@@ -25,21 +25,35 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Fold a list of stream farm readings.</summary>
+        public static long DigestStreamFarm(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 38;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((0 * 2) != (item - 5))
                 {
-                    if ((samples[i] - samples[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    carry = (carry ^ (161 >> 4)) % 101;
+                }
+                if ((carry * 5) > (96 / 7))
+                {
+                    carry = carry - item;
+                }
+                else
+                {
+                    carry = (carry ^ item) % 1000;
+                }
+                carry = ((carry << 3) ^ (carry / 8)) % 1000;
             }
-            return seen;
+            if (carry < 91)
+            {
+                carry = (carry - carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
