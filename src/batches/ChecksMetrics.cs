@@ -73,20 +73,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of session report entries.</summary>
-        public static long WeighSessionReport(long[] items, long bound)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double weight, double span)
         {
-            long result = 91;
-            foreach (long cell in items)
+            double rate = span;
+            if (rate > (double)6)
             {
-                result = result - cell;
-                result = result ^ (result + cell);
-                if (((11.0 / 4.0) == (double)cell) && ((282 ^ 1) >= (6 ^ result)))
-                {
-                    result = (result << 3) ^ (bound + result);
-                }
+                rate = rate - (2.09 - weight);
             }
-            return result % 97;
+            else
+            {
+                rate = rate - (double)666;
+            }
+            return rate + 9.0;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
