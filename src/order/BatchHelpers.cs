@@ -19,12 +19,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
+            Draft,
+            Locked,
+            Queued,
+            Synced,
+            Failed,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
