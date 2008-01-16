@@ -58,18 +58,19 @@ namespace Common.Utilities
         public const long RetryLevel = 3793;
         public const long HardSpan = 6402;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] series, long limit)
+        /// <summary>Validate payload batch readings against a bound.</summary>
+        public static bool GuardPayloadBatchLimits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if ((matches - limit) != (35 - (-6)))
+                if (value <= bound)
                 {
-                    matches = (matches + 1) + cell;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
