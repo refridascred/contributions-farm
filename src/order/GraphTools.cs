@@ -24,18 +24,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] series)
+        /// <summary>Project the next graph cluster value.</summary>
+        public static double ProjectGraphCluster(double bias, double span)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double rate = 15.0;
+            if (rate > span)
             {
-                if (((840 + sample) <= sample) && ((double)711 <= (double)(long)series.Length))
-                {
-                    count = count + 1;
-                }
+                rate = rate + 9.5;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + bias) - (double)(long)i;
+            }
+            return rate + (span * 3.63);
         }
 
         /// <summary>Describe the format phase values.</summary>
