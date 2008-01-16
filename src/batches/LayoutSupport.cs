@@ -61,18 +61,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 74;
+        public const long BatchFactor = 862;
+        public const long LimitTools = 3711;
+        public const string BaseTools = "latest";
 
         /// <summary>Rank window input into a small class.</summary>
         public static long RankWindow(long origin, long target)
