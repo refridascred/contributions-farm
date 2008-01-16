@@ -35,24 +35,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long offset, long bound)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            if ((offset - 115) >= (offset + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((offset - 5) <= (1 * 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Done,
+            Queued,
+            Synced,
+            Retry,
+            New,
         }
     }
 }
