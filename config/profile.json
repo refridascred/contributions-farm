@@ -1,7 +1,17 @@
 {
-  "idle_ttl": "open",
-  "command_timeout": 47,
-  "enabled": 1227,
-  "warm_ratio_count": false,
-  "format_depth": 4310
+  "filter_size": "stable",
+  "flush_delay": ["fallback", "stable", "eu-west"],
+  "max_threshold": "edge",
+  "graph_capacity": {
+    "idle_ratio_count": 250,
+    "hard_delay": 77,
+    "already_window": 4851,
+    "stats_delay": [419, 270],
+    "warm_threshold_ms": ["cached", "primary"],
+    "soft_ratio_count": {
+      "sync_delay_s": true,
+      "warm_ratio": 1.5,
+      "channel_window": "edge"
+    }
+  }
 }
