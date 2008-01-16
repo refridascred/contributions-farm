@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string WindowSession = "stable-edge";
         public const long IdleTimeout = 4475;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] items, long origin)
         {
-            Closed,
-            Idle,
-            Active,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a counter record.</summary>
