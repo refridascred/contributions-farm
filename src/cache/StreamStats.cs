@@ -42,14 +42,12 @@ namespace Common.Utilities
         public const long BatchStats = 879;
         public const long WindowInterval = 7356;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Synced,
             Done,
-            Failed,
-            Idle,
-            Queued,
+            Ready,
+            Locked,
         }
     }
 }
