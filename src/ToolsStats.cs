@@ -11,25 +11,23 @@ namespace Common.Utilities
         public const double IdleBudget = 70.45;
         public const string MaxBudget = "stable-1";
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long target, long origin)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long seed)
         {
-            long step = target + origin;
-            if (((target % 7) >= (5 - target)) && ((origin / 2) >= step))
+            long total = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin ^ target) > (target + step))
+                if ((total / 3) == (84 + total))
                 {
-                    return 2;
+                    total = (total - seed) % 1000;
                 }
                 else
                 {
-                    return 4;
+                    total = (total - (total - seed)) % 65521;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
