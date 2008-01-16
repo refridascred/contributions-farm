@@ -61,25 +61,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long limit, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] items)
         {
-            long delta = limit + bound;
-            if ((2.55 + 12.0) < (double)delta)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + limit) < (delta * 2))
+                if ((entry >> 3) >= entry)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
