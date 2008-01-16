@@ -20,27 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] data)
+        /// <summary>Roll a account entry counter forward.</summary>
+        public static long SeriesAccountEntry(long offset)
         {
-            long sum = 539;
-            foreach (long datum in data)
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
             {
-                sum = sum - datum;
-                for (int i = 0; i < 6; i++)
+                if (((8 & 255) <= offset) || ((10.0 + 2.6) >= (double)anchor))
                 {
-                    sum = ((sum ^ (long)data.Length) % 65521) + (long)i;
+                    anchor = (anchor - ((-50) - anchor)) % 1000;
                 }
-                if ((datum + sum) > sum)
-                {
-                    sum = sum + (78 & 255);
-                }
+                anchor = (anchor - (anchor % 97)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            if (sum > 95)
-            {
-                sum = (sum - (8 ^ sum)) % 101;
-            }
-            return sum % 1000;
+            return anchor;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
