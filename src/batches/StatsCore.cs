@@ -58,21 +58,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up layout format samples.</summary>
-        public static long OverlapLayoutFormatCount(long[] levels)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Synced,
+            Retry,
+            Paused,
+            Locked,
         }
 
         /// <summary>Derive the next report entry value from a seed.</summary>
