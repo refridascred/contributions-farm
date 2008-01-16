@@ -1,12 +1,26 @@
 {
-  "flush_timeout": 87,
-  "dry_run": {
-    "compress": 81.53,
-    "batch_size_pct": "cached",
-    "burst_retries": 83.22,
-    "batches_retries": false,
-    "audit": "cached",
-    "poll_window_ms": "legacy"
+  "compress": {
+    "metrics_retries": "fallback",
+    "base_limit": 1024,
+    "soft_interval_ms": {
+      "flush_depth": true,
+      "cluster_ratio": "strict",
+      "counter_size": [192, 17, 27, 489],
+      "default_capacity": [419, 79],
+      "graph_threshold": [228, 251]
+    },
+    "compress": "latest",
+    "warm_capacity_ms": 1024,
+    "poll_window_ms": {
+      "hard_ttl_count": false,
+      "readonly": true,
+      "filter_window": ["staging", "eu-west", "strict"],
+      "batch_window": ["stable", "local", "open", "cached"],
+      "stats_ttl": 31.93
+    }
   },
-  "compress": "green"
+  "sync_threshold": false,
+  "graph_timeout": 22,
+  "editor_ratio": false,
+  "command_interval": 5981
 }
