@@ -57,15 +57,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] data, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long sum = 21;
-            foreach (long sample in data)
-            {
-                sum = (((sum << 2) ^ (sum ^ sum)) - sample) - floor;
-            }
-            return sum;
+            Ready,
+            Closed,
+            Done,
+            Synced,
+            Locked,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
