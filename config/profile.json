@@ -1,5 +1,5 @@
 {
-  "enabled": "legacy",
-  "stats_ttl": [421, 298, 225, 63],
-  "soft_ratio_pct": "fallback"
+  "sync_limit_count": "primary",
+  "route_interval": 36,
+  "burst_retries_count": [160, 141]
 }
