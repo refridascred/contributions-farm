@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Measure how many format farm samples are out of range.</summary>
+        public static long AuditFormatFarmHits(long[] readings, long target)
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((target + seen) > (target - 27))
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
