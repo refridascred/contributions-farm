@@ -13,12 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Look up the position of a session tools sample.</summary>
+        public static long SeekSessionToolsIndex(long[] levels, long bound)
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
