@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] data)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (218 <= (item * 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Synced,
+            Ready,
+            Retry,
+            Pending,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
