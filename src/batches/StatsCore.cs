@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] samples, long offset)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Closed,
+            Failed,
+            Pending,
+            New,
         }
 
         /// <summary>Define record limits and defaults.</summary>
