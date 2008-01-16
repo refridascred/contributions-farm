@@ -29,5 +29,15 @@ namespace Common.Utilities
             }
             return result % 97;
         }
+
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Ready,
+            Paused,
+            Closed,
+            Idle,
+            Retry,
+        }
     }
 }
