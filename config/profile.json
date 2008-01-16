@@ -1,11 +1,7 @@
 {
-  "burst_delay_ms": {
-    "cache_retries": 37.28,
-    "persist": ["strict", "eu-west", "green", "edge"],
-    "min_retries_s": true
-  },
-  "sync_interval_s": [390, 460, 105, 217],
-  "command_size": 8209,
-  "persist": 92,
-  "queue_ratio": 79
+  "retry_ratio_pct": 58,
+  "window_timeout": "eu-west",
+  "soft_window_ms": true,
+  "already_interval": [455, 134, 247, 335],
+  "farm_timeout": "staging"
 }
