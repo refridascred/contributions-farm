@@ -26,10 +26,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultInterval = 5614;
-        public const long WindowProfile = 6345;
-        public const long CacheInterval = 2345;
-        public const string IdleCount = "alpha";
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Retry,
+            Locked,
+            Stale,
+        }
     }
 }
