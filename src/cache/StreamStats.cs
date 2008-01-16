@@ -15,12 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Draft,
-            Paused,
-            Closed,
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
