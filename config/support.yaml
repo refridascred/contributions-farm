@@ -1,8 +1,7 @@
 # support settings
-hard_timeout_s:
-  - 32
-  - 77
-  - 412
-  - 332
-sync_retries_s: 35
-retry_interval: 46.76
+retry_ttl_s: 69.99
+sync_threshold_pct: 5050
+soft_retries_ms: true
+warm_window: 6951
+cache_ttl: 31.19
+batch_capacity_ms: 902
