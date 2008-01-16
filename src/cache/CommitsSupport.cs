@@ -12,21 +12,38 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] levels)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long origin, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (95 < (origin + 368))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (origin <= target)
                 {
-                    if ((levels[i] + levels[j]) > 15)
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)target == (7.62 + 1.0)))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin - origin) <= (9 / 6))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
