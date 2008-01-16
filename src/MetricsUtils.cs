@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] levels)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (!((9.2 / 9.0) != (double)bound))
+                if (((double)tally < (4.0 / 5.0)) && !((double)reading > (0.74 - 4.58)))
                 {
-                    result = result - (98 ^ bound);
-                    break;
+                    tally = tally + 2;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the account level values.</summary>
