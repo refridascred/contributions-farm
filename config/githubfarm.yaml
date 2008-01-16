@@ -1,7 +1,11 @@
 # githubfarm settings
-strict:
-  - 435
-  - 140
-dry_run: green
-sync_capacity_ms: true
-base_capacity: 2501
+tools_depth:
+  - 284
+  - 290
+flush_threshold_pct: 8520
+flush_ttl_pct: 190
+context_threshold:
+  - 454
+  - 304
+  - 160
+  - 38
