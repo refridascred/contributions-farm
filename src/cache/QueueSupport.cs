@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((2.29 * 2.0) >= (double)datum)
+                if ((datum / 4) != (hits << 3))
                 {
-                    matches = matches + 2;
+                    hits = (hits + 2) + limit;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Roll a record counter forward.</summary>
