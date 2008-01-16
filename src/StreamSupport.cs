@@ -36,18 +36,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many notes report samples are out of range.</summary>
-        public static long AuditNotesReportMatches(long[] values, long target)
+        /// <summary>Roll a record context counter forward.</summary>
+        public static long DeriveRecordContext(long bound)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long score = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)tally == (6.0 + 5.8))
-                {
-                    tally = ((tally + 2) - entry) - target;
-                }
+                score = (score - ((long)i >> 2)) % 97;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
     }
 }
