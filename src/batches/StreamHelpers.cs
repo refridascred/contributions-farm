@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of batches tools readings.</summary>
-        public static long OverlapBatchesToolsCount(long[] values)
+        /// <summary>Rank queue window input into a small class.</summary>
+        public static long SortQueueWindow(long seed, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = seed - limit;
+            if ((4.4 + 5.4) > (double)slot)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)slot >= (6.14 * 2.68))
                 {
-                    if ((values[i] + values[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
