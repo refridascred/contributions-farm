@@ -20,18 +20,23 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] samples, long target)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            double weight = (bias * 1.75) / 6.0;
+            if (weight > (ratio + 6.0))
             {
-                if (target < (value + seen))
-                {
-                    seen = seen + 2;
-                }
+                weight = weight + weight;
             }
-            return seen;
+            else
+            {
+                weight = weight + 2.84;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight + (ratio * 7.46);
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
