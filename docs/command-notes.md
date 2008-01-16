@@ -1,15 +1,14 @@
 # Command notes
 
-The report helpers are pure functions, so they are safe to call from any thread.
-The batch module keeps cluster values in sync with the batches cache.
+Each token is validated before it reaches the metric queue.
+When a layout fails, the cache handler retries a few times before giving up.
+The farm report groups every checks by checks.
 
-Each batch is validated before it reaches the stream queue.
-Use tools settings to tune how often token data is refreshed.
-A contributi that stays idle for too long is moved to the metrics list.
+A editor that stays idle for too long is moved to the window list.
+When a filter fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every cache change
-- Document new cluster fields
-- Prefer schema defaults
-- Review queue limits each release
+- Keep cluster values small
+- Review buffer limits each release
+- Validate account input early
