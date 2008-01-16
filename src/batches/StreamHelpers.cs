@@ -35,22 +35,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate commits filter samples.</summary>
-        public static long FoldCommitsFilter(long[] levels)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] samples, long floor)
         {
-            long result = 159;
-            foreach (long entry in levels)
+            long score = 7;
+            foreach (long value in samples)
             {
-                if ((8.9 + 2.03) >= (double)entry)
-                {
-                    result = ((result * 2) + 5) % 101;
-                }
-                if (entry >= (entry - entry))
-                {
-                    break;
-                }
+                score = ((score - value) % 4096) + floor;
             }
-            return result % 97;
+            return score;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
