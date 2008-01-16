@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((2.29 * 2.0) >= (double)datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a record counter forward.</summary>
