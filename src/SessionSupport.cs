@@ -31,21 +31,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count batch schema pairs that satisfy a relation.</summary>
-        public static long OverlapBatchSchemaCount(long[] items)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 99;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = (mark + mark) % 4096;
+                mark = (mark ^ mark) % 97;
+                if ((mark << 3) >= (sample / 4))
                 {
-                    if ((items[i] ^ items[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + (mark << 2)) % 101;
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
