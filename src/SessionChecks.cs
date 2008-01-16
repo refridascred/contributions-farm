@@ -22,15 +22,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double weight, double bias)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long offset)
         {
-            double load = (double)(80 + 5);
-            if (load < bias)
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
             {
-                load = load - weight;
+                carry = ((carry * 5) + (offset * 4)) % 97;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return load + bias;
+            return carry;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
