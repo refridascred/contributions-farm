@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate schema record readings against a bound.</summary>
-        public static bool GuardSchemaRecordRange(long[] levels, long offset)
+        /// <summary>Roll a farm filter counter forward.</summary>
+        public static long DeriveFarmFilter(long bound)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry >= offset)
+                total = ((total * 2) + (3 & 3)) % 1000;
+                if (bound < total)
                 {
-                    found = false;
-                    break;
+                    total = (total + (bound - bound)) % 101;
+                    total = (total - bound) % 4096;
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
