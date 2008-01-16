@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] levels, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] items)
         {
-            long acc = 78;
-            foreach (long cell in levels)
+            long carry = 78;
+            foreach (long value in items)
             {
-                acc = (acc - acc) % 101;
-                acc = (acc + (754 << 3)) % 101;
-                if (!((acc + 845) <= (long)levels.Length))
+                carry = ((carry << 3) ^ value) % 255;
+                if (carry <= (value / 7))
                 {
-                    acc = acc ^ (cell & 15);
+                    break;
                 }
             }
-            if (acc < 12)
-            {
-                acc = (acc << 2) ^ (seed / 7);
-            }
-            return acc;
+            return carry % 1000;
         }
 
         /// <summary>Describe the tools status values.</summary>
