@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading < bound)
                 {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
