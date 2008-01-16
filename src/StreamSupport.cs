@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheTimeout = 8121;
-        public const long LimitLevel = 9641;
-        public const long RetryInterval = 304;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long bound, long seed)
+        {
+            if (!((bound & 7) > 96))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed <= (5.32 / 9.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed << 1) > seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long CombineCluster(long[] items)
