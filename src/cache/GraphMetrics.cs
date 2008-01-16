@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 4216;
-        public const long DefaultChannel = 6424;
-        public const long RetrySize = 1138;
-        public const long BatchChannel = 8680;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool GuardLayoutRange(long[] items, long bound)
