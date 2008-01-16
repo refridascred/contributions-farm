@@ -21,18 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] items)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (hits > (7 + hits))
-                {
-                    hits = (hits + 1) - value;
-                }
-            }
-            return hits;
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
