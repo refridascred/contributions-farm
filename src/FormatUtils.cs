@@ -17,21 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] items)
+        /// <summary>Measure how many context metric samples are out of range.</summary>
+        public static long AuditContextMetricMatches(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((target * 3) >= (count / 5)) || ((target / 2) == (count ^ (-639))))
                 {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) - value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine editor batches values into a single score.</summary>
