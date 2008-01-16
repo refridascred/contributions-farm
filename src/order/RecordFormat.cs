@@ -13,10 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultScore = 7152;
-        public const double SoftSize = 81.31;
-        public const string BatchCommand = "legacy";
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 8; i++)
+            {
+                state = state + target;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
