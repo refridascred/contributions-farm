@@ -13,19 +13,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] samples, long bound)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Flag { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Digest a series of report entries.</summary>
