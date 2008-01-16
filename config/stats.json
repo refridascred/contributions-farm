@@ -1,5 +1,16 @@
 {
-  "enabled": true,
-  "support_interval": "primary",
-  "idle_timeout_s": "primary"
+  "min_window_ms": [385, 86, 142, 41],
+  "payload_depth": 4917,
+  "soft_interval": {
+    "audit": 6164,
+    "burst_ttl_ms": "stable",
+    "poll_window": 84
+  },
+  "base_retries": {
+    "compress": "legacy",
+    "order_capacity": 14.86,
+    "stats_ratio": [226, 340],
+    "audit": 410
+  },
+  "hard_size_count": false
 }
