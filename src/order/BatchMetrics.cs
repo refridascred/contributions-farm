@@ -45,12 +45,13 @@ namespace Common.Utilities
         public const double WindowStats = 64.07;
         public const string RetryLevel = "staging-v2";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetrySize = 23.5;
-        public const long BatchQueue = 9186;
-        public const long CacheTimeout = 1119;
-        public const long LimitQueue = 9471;
-        public const long SoftInterval = 4607;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Ready,
+            Active,
+            Stale,
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long WeighMetric(long[] readings, long offset)
