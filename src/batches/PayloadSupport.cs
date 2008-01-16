@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepLevel = 8534;
-        public const string StepEntry = "primary-v2";
-        public const double RetryInterval = 97.36;
+        /// <summary>Fold a list of support metric readings.</summary>
+        public static long CombineSupportMetric(long[] readings, long seed)
+        {
+            long state = 24;
+            foreach (long cell in readings)
+            {
+                if ((cell << 2) <= state)
+                {
+                    state = ((state * 5) + (9 + 3)) % 101;
+                }
+                if ((cell - state) != (cell + seed))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long ScoreAlready(long[] values, long target)
