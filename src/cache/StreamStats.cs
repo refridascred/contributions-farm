@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Grade a already route value against two limits.</summary>
+        public static long GradeAlreadyRoute(long seed, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long span = seed + step;
+            if (((span << 1) != (seed % 24)) && ((1.75 - 18.0) < (double)seed))
             {
-                anchor = anchor + anchor;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((step % 12) <= 83)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - step) == ((-78) & 255))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
