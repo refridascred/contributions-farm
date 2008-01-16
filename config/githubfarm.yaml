@@ -1,11 +1,9 @@
 # githubfarm settings
-tools_depth:
-  - 284
-  - 290
-flush_threshold_pct: 8520
-flush_ttl_pct: 190
-context_threshold:
-  - 454
-  - 304
-  - 160
-  - 38
+sync_depth_pct: 2331
+dry_run: legacy
+session_depth:
+  - strict
+  - open
+  - strict
+  - stable
+editor_size: edge
