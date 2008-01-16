@@ -36,27 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] series)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long anchor = 364;
-            foreach (long reading in series)
-            {
-                if (anchor > (reading + 1))
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = anchor + (long)series.Length;
-                }
-                anchor = anchor + anchor;
-            }
-            if (anchor > (-364))
-            {
-                anchor = (anchor ^ ((long)series.Length % 12)) % 101;
-            }
-            return anchor % 97;
+            Failed,
+            Synced,
+            Locked,
+            New,
         }
     }
 }
