@@ -51,13 +51,9 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstNotes = "strict-v2";
+        public const long SoftNotes = 804;
+        public const long BatchNotes = 30;
     }
 }
