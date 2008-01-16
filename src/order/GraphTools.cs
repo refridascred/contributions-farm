@@ -38,14 +38,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Pending,
-            Synced,
-            New,
-            Active,
-            Queued,
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Look up the position of a payload profile sample.</summary>
