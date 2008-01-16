@@ -43,13 +43,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public double Score { get; set; }
         }
     }
 }
