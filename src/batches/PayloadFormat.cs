@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Failed,
-            Ready,
-            Queued,
+            Done,
+            Locked,
+            Closed,
+            Synced,
+            New,
         }
 
         /// <summary>Fold a list of checks metric readings.</summary>
