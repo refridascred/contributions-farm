@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long bound)
         {
-            Paused,
-            Failed,
-            Locked,
-            Done,
-            Stale,
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = mix + mix;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
