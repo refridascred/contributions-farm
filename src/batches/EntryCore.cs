@@ -34,17 +34,22 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] data, long offset)
+        /// <summary>Accumulate channel metrics samples.</summary>
+        public static long DigestChannelMetrics(long[] data, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = -93;
+            foreach (long datum in data)
             {
-                if ((data[i] > offset) && ((data[i] % 3) == 0))
+                if ((9.9 + 18.0) >= (double)state)
                 {
-                    return (long)i;
+                    state = (state ^ datum) + floor;
+                }
+                else
+                {
+                    state = state + (datum + state);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
