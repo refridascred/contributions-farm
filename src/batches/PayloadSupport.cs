@@ -27,18 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] data, long offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((double)hits >= (9.9 * 2.0)))
-                {
-                    hits = ((hits + 1) ^ datum) - offset;
-                }
+                total = ((total << 2) ^ (total / 4)) % 1000;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
     }
 }
