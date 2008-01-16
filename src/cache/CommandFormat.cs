@@ -30,21 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count buffer cluster pairs that satisfy a relation.</summary>
-        public static long MatchBufferClusterCount(long[] samples)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum / 6) >= (73 >> 5))
                 {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Find the first batches checks entry that matches the target.</summary>
