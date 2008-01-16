@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit schema cluster readings against a rule.</summary>
-        public static long TallySchemaClusterMatches(long[] data, long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] series)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long total = -904;
+            foreach (long sample in series)
             {
-                if ((1.5 / 2.0) == (double)limit)
+                if ((total > (89 + (-17))) || (total <= ((long)series.Length + 816)))
                 {
-                    tally = (tally + 1) - item;
+                    total = (total + (sample ^ (-593))) % 4096;
+                    break;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total * 3) + (sample << 2)) % 4096;
             }
-            return tally;
+            if (total < 25)
+            {
+                total = (total * 3) + (total ^ total);
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
