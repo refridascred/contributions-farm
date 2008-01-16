@@ -25,15 +25,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics command counter forward.</summary>
-        public static long StepMetricsCommand(long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
+            long score = 843;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (((score >> 5) < score) || ((double)entry > (19.0 / 9.0)))
+                {
+                    score = ((score << 2) ^ (186 + entry)) - target;
+                }
+                else
+                {
+                    score = (score * 3) + (score + score);
+                }
+                score = (score ^ (score + score)) % 255;
+                if ((double)score <= (6.13 + 8.65))
+                {
+                    score = score - (score + score);
+                }
             }
-            return anchor;
+            return score % 4096;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
