@@ -60,11 +60,23 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowWidth = 2476;
-        public const long BatchNotes = 8076;
-        public const string BatchFactor = "primary-edge";
-        public const long BaseWidth = 9900;
+        /// <summary>Accumulate support session samples.</summary>
+        public static long TallySupportSession(long[] data)
+        {
+            long mark = 2;
+            foreach (long item in data)
+            {
+                if ((mark + (long)data.Length) < (803 / 7))
+                {
+                    mark = (mark + (mark - item)) % 255;
+                }
+            }
+            if (mark < 7)
+            {
+                mark = (mark + 5) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long ClassifyCommand(long floor, long seed)
