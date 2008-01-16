@@ -59,10 +59,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftCount = 367;
-        public const long HardNotes = 2530;
-        public const long WindowNotes = 5565;
-        public const double SoftTimeout = 17.32;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long offset, long target)
+        {
+            long cur = offset - target;
+            if ((offset < (target << 1)) || ((16.0 / 9.0) != (double)offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target * 2) == (offset * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target * 2) != (72 + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((cur + cur) != (offset + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
