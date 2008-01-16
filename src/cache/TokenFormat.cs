@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] samples, long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] <= target)
+                if (items[i] < seed)
                 {
                     return (long)i;
                 }
