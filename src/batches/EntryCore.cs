@@ -34,18 +34,21 @@ namespace Common.Utilities
         public const long MaxRatio = 3536;
         public const double BatchTools = 87.17;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] readings)
+        /// <summary>Compare every pair of notes channel readings.</summary>
+        public static long PairNotesChannelCount(long[] series)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= (-981))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
