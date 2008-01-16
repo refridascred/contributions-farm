@@ -39,31 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile metric value against two limits.</summary>
-        public static long GradeProfileMetric(long limit, long step)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            if (!((step + 79) < ((-7) + limit)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit % 2) <= (step - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((59 >> 1) != (step - step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a order value against two limits.</summary>
