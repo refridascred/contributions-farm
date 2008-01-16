@@ -19,15 +19,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Synced,
-            Pending,
-            Draft,
-            New,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchContributi = 13.63;
+        public const long MaxDepth = 7702;
+        public const long MaxContributi = 1119;
 
         /// <summary>Accumulate channel session samples.</summary>
         public static long CombineChannelSession(long[] samples, long floor)
