@@ -15,10 +15,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 563;
-        public const string BatchSpan = "standard";
-        public const long WindowRecord = 4235;
+        /// <summary>Classify a graph cache pair into a bucket.</summary>
+        public static long SortGraphCache(long bound, long step)
+        {
+            if (bound < (-94))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound >> 5) != (bound - step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step > (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
