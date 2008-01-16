@@ -72,20 +72,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state + floor) % 4096) ^ (long)i2;
-                    state = (state ^ (long)i) % 65521;
+                    if ((items[i] + items[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
