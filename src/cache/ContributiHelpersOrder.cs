@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double BurstSize = 31.5;
         public const long BaseLevel = 8376;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] levels)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (((4 - cell) > cell) || ((double)count != (8.2 - 3.0)))
+                if (value <= seed)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a editor stats.</summary>
