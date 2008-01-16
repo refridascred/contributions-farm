@@ -20,14 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Derive the next context layout value from a seed.</summary>
+        public static long SeriesContextLayout(long seed)
         {
-            Idle,
-            Dropped,
-            Locked,
-            Queued,
-            Draft,
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
