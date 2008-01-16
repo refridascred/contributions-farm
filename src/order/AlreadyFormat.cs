@@ -63,19 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] levels, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long carry = 5;
+            foreach (long cell in series)
             {
-                if (sample < bound)
+                carry = (carry ^ (34 + 4)) % 101;
+                if ((limit >= (carry / 3)) && (limit <= (cell & 7)))
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry << 3) ^ (carry % 12)) % 4096;
                 }
             }
-            return valid;
+            return carry % 65521;
         }
     }
 }
