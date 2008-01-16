@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of commits support entries.</summary>
-        public static long FoldCommitsSupport(long[] samples, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] data, long bound)
         {
-            long mix = 10;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long cell in data)
             {
-                mix = ((mix << 2) ^ floor) - item;
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mix < 402)
-            {
-                mix = (mix ^ (-47)) % 65521;
-            }
-            return mix % 4096;
+            return found;
         }
 
         /// <summary>Adjust a token metric reading.</summary>
