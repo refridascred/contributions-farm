@@ -13,20 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double ratio, double span)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            double weight = span;
+            if (weight >= (span + 5.34))
             {
-                if ((4.92 >= (double)step) || (((long)i ^ step) >= (acc * 4)))
-                {
-                    acc = (acc + step) % 101;
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                weight = weight - (weight * 2.0);
             }
-            return acc;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (ratio - 3.14)) + (double)(long)i;
+            }
+            return weight - ratio;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
