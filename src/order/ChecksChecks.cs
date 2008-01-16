@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Iterate the format entry series from a seed.</summary>
+        public static long StepFormatEntry(long seed)
         {
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 4) + seed) % 255;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
