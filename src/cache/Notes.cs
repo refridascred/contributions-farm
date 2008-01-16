@@ -52,19 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] items, long seed)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Size { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
