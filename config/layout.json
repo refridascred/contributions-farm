@@ -1,8 +1,17 @@
 {
-  "idle_depth": "latest",
-  "flush_limit_count": "stable",
-  "default_ratio_s": 58.22,
-  "dry_run": 500,
-  "graph_window": "local",
-  "sync_window_count": "strict"
+  "schema_capacity": 38.74,
+  "metrics_delay": 76,
+  "warm_ratio": {
+    "hard_timeout": 98,
+    "notes_ratio": 17.99,
+    "hard_capacity": "primary",
+    "retry_limit_pct": {
+      "sync_delay_pct": ["edge", "local", "green", "staging"],
+      "dry_run": true,
+      "sync_limit_count": 250,
+      "hard_capacity": 69.92
+    }
+  },
+  "audit": 6691,
+  "idle_size": "primary"
 }
