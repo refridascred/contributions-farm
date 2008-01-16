@@ -37,19 +37,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double gain, double offset)
+        /// <summary>Classify a format notes pair into a bucket.</summary>
+        public static long ClassifyFormatNotes(long step, long step2)
         {
-            double drift = offset;
-            if (drift > offset)
+            if ((double)step > (9.0 / 3.0))
             {
-                drift = (drift + drift) - gain;
+                return 7;
             }
             else
             {
-                drift = drift + 8.99;
+                if (((step ^ step) < (step2 / 3)) && ((step ^ step2) > (5 / 7)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return drift - (drift - drift);
         }
 
         /// <summary>Validate session readings against a bound.</summary>
