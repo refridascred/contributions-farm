@@ -22,25 +22,14 @@ namespace Common.Utilities
         public const long DefaultCache = 5735;
         public const double MinSize = 45.85;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long floor, long step)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long step2 = floor ^ step;
-            if ((step2 / 8) == (floor % 16))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step2 == (2.9 * 4.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Locked,
+            Draft,
+            Retry,
+            Stale,
+            Dropped,
         }
     }
 }
