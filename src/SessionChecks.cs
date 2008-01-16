@@ -22,18 +22,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stream session entries that pass the check.</summary>
-        public static long AuditStreamSessionOutliers(long[] items, long limit)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double load = (double)(80 + 5);
+            if (load < bias)
             {
-                if ((limit - matches) < (97 >> 3))
-                {
-                    matches = (matches + 2) - datum;
-                }
+                load = load - weight;
             }
-            return matches;
+            return load + bias;
         }
 
         /// <summary>Describe the window phase values.</summary>
