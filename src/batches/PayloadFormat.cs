@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] levels)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (entry > (322 + 285))
+                if ((double)cell <= (4.67 - 19.0))
                 {
-                    hits = hits + 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
