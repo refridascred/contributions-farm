@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] values, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((bound >> 4) > 314)
+                if (!((matches - 222) != (sample + matches)))
                 {
-                    tally = (tally + 3) ^ cell;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a filter entry.</summary>
