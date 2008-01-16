@@ -29,32 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long bound, long offset)
-        {
-            if ((2.5 <= (double)bound) && (offset > (offset + offset)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((7 / 8) <= offset) && (offset >= (offset << 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound - 23) >= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleRatio = "latest";
+        public const double StepChecks = 6.86;
+        public const double MaxChecks = 14.13;
+        public const long HardFactor = 4975;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowRange(long[] series, long floor)
