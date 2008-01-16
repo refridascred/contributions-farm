@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the tools cache entries that pass the check.</summary>
-        public static long TallyToolsCacheGaps(long[] series, long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((5.0 - 7.27) < (double)origin)
-                {
-                    tally = (tally + 3) ^ cell;
-                }
+                anchor = (anchor - (anchor << 3)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
