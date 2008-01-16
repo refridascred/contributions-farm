@@ -1,5 +1,6 @@
 {
-  "min_interval": 100,
-  "flush_limit_count": ["blue", "primary", "primary"],
-  "idle_interval_ms": 3597
+  "retry_window": "cached",
+  "burst_depth": "edge",
+  "poll_threshold": 60,
+  "min_threshold_pct": ["primary", "standard", "legacy", "edge"]
 }
