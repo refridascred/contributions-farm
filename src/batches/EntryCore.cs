@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two contributi stats measurements.</summary>
-        public static double SmoothContributiStats(double gain, double bias)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double gain2 = (double)(3 % 100);
-            return ((gain2 - (double)898) + gain) + bias;
+            Queued,
+            Failed,
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
