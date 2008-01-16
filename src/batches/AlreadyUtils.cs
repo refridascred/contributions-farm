@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Draft,
-            Dropped,
-            Active,
+            Pending,
             Idle,
+            New,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
