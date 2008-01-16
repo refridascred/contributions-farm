@@ -59,17 +59,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchEntry = "alpha";
+        public const string HardWidth = "staging-edge";
+        public const double WindowCount = 85.34;
+        public const long StepInterval = 4774;
     }
 }
