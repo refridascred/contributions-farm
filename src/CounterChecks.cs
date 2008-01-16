@@ -48,22 +48,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] data)
         {
-            long seen = 0;
+            long count = 0;
             foreach (long item in data)
             {
-                if ((2 + item) < (item & 63))
+                if ((item > 669) || ((item + (long)data.Length) == (723 & 3)))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
