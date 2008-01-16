@@ -20,17 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] levels, long floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > floor) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many cache batch samples are out of range.</summary>
