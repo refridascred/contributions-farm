@@ -1,8 +1,7 @@
 # githubfarm settings
-burst_retries_ms: 63
-soft_limit_ms: 58
-counter_threshold:
-  - cached
-  - strict
-  - blue
-metric_size: 58.09
+idle_threshold_count:
+  - 449
+  - 59
+  - 142
+strict: local
+enabled: 70.18
