@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a route entry value against two limits.</summary>
-        public static long ClassifyRouteEntry(long bound, long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] values, long target)
         {
-            if (!((bound / 2) <= offset))
+            bool stale = true;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset - bound) <= offset) && ((offset - 978) > bound))
+                if (entry >= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (3 > (bound + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
