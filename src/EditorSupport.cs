@@ -23,19 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a metrics format reading.</summary>
-        public static double ScaleMetricsFormat(double ratio, double offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] samples, long offset)
         {
-            double weight = ratio;
-            if (weight > (ratio + weight))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                weight = weight - 8.97;
+                if ((matches + offset) == (datum - 7))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (ratio + offset)) + (double)(long)i;
-            }
-            return weight + ratio;
+            return matches;
         }
 
         /// <summary>Blend two window route measurements.</summary>
