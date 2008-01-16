@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long limit, long floor)
+        /// <summary>Grade a layout cache value against two limits.</summary>
+        public static long GradeLayoutCache(long step, long origin)
         {
-            long offset = limit + floor;
-            if ((offset >> 5) == (floor + floor))
+            long diff = step ^ origin;
+            if (step > (diff << 1))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (((double)floor < (6.0 / 5.0)) && ((offset & 15) >= floor))
+                if (((double)step >= 3.97) && ((70 << 3) == (38 + origin)))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((limit + floor) >= (floor >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit - floor) > (offset / 8))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
