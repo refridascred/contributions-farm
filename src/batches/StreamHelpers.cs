@@ -52,12 +52,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public double Label { get; set; }
-            public double Total { get; set; }
-            public bool Mode { get; set; }
+            Failed,
+            Ready,
+            Idle,
+            Stale,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
