@@ -1,12 +1,14 @@
 # Command notes
 
-The route module keeps already values in sync with the buffer cache.
-Defaults for window live in the config folder and can be overridden per environment.
-Each schema is validated before it reaches the record queue.
+Use schema settings to tune how often counter data is refreshed.
+When a metric fails, the queue handler retries a few times before giving up.
+
+Run the route check before changing any metrics limits.
+Keep cache and stats names short and lowercase.
+The already module keeps report values in sync with the notes cache.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Validate token input early
-- Review route limits each release
-- Document new stats fields
+- Document new token fields
+- Review order limits each release
+- Prefer context defaults
