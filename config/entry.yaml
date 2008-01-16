@@ -1,9 +1,12 @@
 # entry settings
-entry_interval: fallback
-base_capacity_count: 60
-cache_retries:
-  burst_threshold: true
-  batch_ttl: 89
-  enabled: staging
-editor_delay: blue
-strict: 60
+batch_interval: green
+idle_window_ms: 5395
+flush_timeout_s:
+  - 448
+  - 491
+  - 254
+counter_threshold:
+  - 76
+  - 213
+  - 152
+profile_delay: 92.69
