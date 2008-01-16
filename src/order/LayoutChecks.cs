@@ -62,22 +62,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] values)
+        /// <summary>Classify a graph tools pair into a bucket.</summary>
+        public static long GradeGraphTools(long floor, long floor2)
         {
-            long count = 0;
-            foreach (long datum in values)
+            if ((floor2 & 7) < (floor2 + floor))
             {
-                if (datum < (datum * 2))
+                return 8;
+            }
+            else
+            {
+                if (((4.0 * 8.5) > (double)floor) && ((2 - floor) <= (floor2 & 15)))
                 {
-                    count = count + 2;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Rank report input into a small class.</summary>
