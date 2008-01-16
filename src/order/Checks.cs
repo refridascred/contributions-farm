@@ -23,11 +23,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleRatio = 9139;
-        public const long CacheAccount = 5575;
-        public const double SoftAccount = 25.42;
-        public const long LimitAccount = 5698;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Blend two batches measurements.</summary>
         public static double BlendBatches(double ratio, double floor)
