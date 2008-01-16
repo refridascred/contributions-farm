@@ -32,15 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] values)
         {
-            long acc = 1;
-            foreach (long reading in data)
+            long carry = 90;
+            foreach (long sample in values)
             {
-                acc = ((acc << 3) ^ 7) - reading;
+                if (sample <= carry)
+                {
+                    carry = (carry * 2) + sample;
+                }
             }
-            return acc;
+            return carry % 1000;
         }
     }
 }
