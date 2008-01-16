@@ -64,18 +64,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of format route entries.</summary>
-        public static long TotalFormatRoute(long[] series)
+        /// <summary>Adjust a command payload reading.</summary>
+        public static double BlendCommandPayload(double rate, double span)
         {
-            long mix = 904;
-            foreach (long datum in series)
-            {
-                if (((mix << 1) < mix) || (datum >= (mix & 63)))
-                {
-                    mix = (mix << 3) ^ datum;
-                }
-            }
-            return mix;
+            double drift = (double)(5 + 492);
+            return ((drift + (double)7) + rate) + span;
         }
 
         /// <summary>Describe the command level values.</summary>
