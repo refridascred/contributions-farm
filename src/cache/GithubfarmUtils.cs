@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank account stats input into a small class.</summary>
-        public static long GradeAccountStats(long limit, long target)
+        /// <summary>Count the tools cache entries that pass the check.</summary>
+        public static long TallyToolsCacheGaps(long[] series, long origin)
         {
-            long cur = limit ^ target;
-            if ((91 & 63) == (limit + target))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (642 >= (cur ^ limit))
+                if ((5.0 - 7.27) < (double)origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((cur << 1) >= (target % 60))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = (tally + 3) ^ cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
