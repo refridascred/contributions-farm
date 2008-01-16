@@ -40,12 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxBuffer = 12.46;
-        public const long BaseBudget = 5499;
-        public const long SoftTimeout = 8866;
-        public const long MinScore = 1164;
-        public const string MinBudget = "standard-edge";
+        /// <summary>Combine editor batches values into a single score.</summary>
+        public static long CombineEditorBatches(long[] items)
+        {
+            long sum = 853;
+            foreach (long sample in items)
+            {
+                sum = ((sum + (1 % 64)) % 65521) + sample;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double StepAccount = 86.85;
