@@ -1,7 +1,6 @@
 # support settings
-retry_ttl_s: 69.99
-sync_threshold_pct: 5050
-soft_retries_ms: true
-warm_window: 6951
-cache_ttl: 31.19
-batch_capacity_ms: 902
+report_capacity: stable
+contributi_ttl:
+  - local
+  - local
+stats_size: false
