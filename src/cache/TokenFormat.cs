@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many format farm samples are out of range.</summary>
-        public static long AuditFormatFarmHits(long[] readings, long target)
+        /// <summary>Classify a stream editor pair into a bucket.</summary>
+        public static long SortStreamEditor(long limit, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            if (((90 & 3) < limit) || ((limit ^ limit) > bound))
             {
-                if ((target + seen) > (target - 27))
+                return 4;
+            }
+            else
+            {
+                if ((double)limit > (8.0 + 5.0))
                 {
-                    seen = (seen + 2) + reading;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (limit < (73 >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
