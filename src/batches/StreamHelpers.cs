@@ -19,23 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (limit < (seen ^ seen))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheInterval = 74.22;
+        public const double MaxFarm = 79.02;
+        public const string WindowRatio = "alpha-1";
+        public const double MaxInterval = 7.11;
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
