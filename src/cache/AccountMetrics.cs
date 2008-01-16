@@ -50,20 +50,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] series, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 67.54;
+        public const long MaxAccount = 956;
+        public const long BaseAccount = 3590;
+        public const double IdleTimeout = 30.38;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BurstMetrics = 22.77;
