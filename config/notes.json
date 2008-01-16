@@ -1,5 +1,5 @@
 {
-  "hard_window": 5398,
-  "readonly": "strict",
-  "retry_delay": 63
+  "flush_retries_count": 59,
+  "burst_timeout": 23.97,
+  "flush_retries_pct": "standard"
 }
