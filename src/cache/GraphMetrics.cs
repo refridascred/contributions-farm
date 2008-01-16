@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double ratio, double floor)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] values, long step)
         {
-            double rate = floor;
-            if (rate >= (double)85)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate + (floor + floor)) - ratio;
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return rate - (floor / 8.0);
+            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
