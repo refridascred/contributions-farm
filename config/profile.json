@@ -1,17 +1,8 @@
 {
-  "filter_size": "stable",
-  "flush_delay": ["fallback", "stable", "eu-west"],
-  "max_threshold": "edge",
-  "graph_capacity": {
-    "idle_ratio_count": 250,
-    "hard_delay": 77,
-    "already_window": 4851,
-    "stats_delay": [419, 270],
-    "warm_threshold_ms": ["cached", "primary"],
-    "soft_ratio_count": {
-      "sync_delay_s": true,
-      "warm_ratio": 1.5,
-      "channel_window": "edge"
-    }
-  }
+  "warm_capacity_pct": "green",
+  "dry_run": "open",
+  "base_ttl": 100,
+  "hard_retries": "latest",
+  "command_capacity": false,
+  "compress": "blue"
 }
