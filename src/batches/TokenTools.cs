@@ -29,18 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] series, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((double)seed > (6.9 - 8.59))
+                if ((3.1 + 5.4) > (double)origin)
                 {
-                    hits = (hits + 3) + datum;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
