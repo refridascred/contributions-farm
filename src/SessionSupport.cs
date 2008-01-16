@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Paused,
-            Pending,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepSpan = 32.89;
+        public const long SoftInterval = 3298;
+        public const long WindowReport = 7682;
+        public const string MinReport = "legacy-edge";
 
         /// <summary>Accumulate account command samples.</summary>
         public static long DigestAccountCommand(long[] samples, long origin)
