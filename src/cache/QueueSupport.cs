@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] series, long limit)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((datum / 4) != (hits << 3))
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
+            Pending,
+            Draft,
+            Active,
+            New,
         }
 
         /// <summary>Blend two layout measurements.</summary>
