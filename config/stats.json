@@ -1,20 +1,6 @@
 {
-  "min_threshold_s": "edge",
-  "cache_depth_s": {
-    "flush_delay_count": 250,
-    "poll_retries": 60,
-    "burst_depth": {
-      "token_timeout": 88,
-      "hard_delay": 40,
-      "poll_capacity_ms": "fallback",
-      "cluster_timeout": [174, 270, 246, 444],
-      "profile_size": "legacy",
-      "order_delay": "edge"
-    },
-    "hard_window_ms": "primary",
-    "flush_threshold_ms": 63
-  },
-  "max_retries_pct": ["stable", "local", "eu-west"],
-  "persist": 93.0,
-  "retry_ratio_ms": 1024
+  "verbose": [314, 402],
+  "max_timeout_pct": true,
+  "batch_depth_pct": 4797,
+  "enabled": [124, 21, 203]
 }
