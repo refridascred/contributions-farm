@@ -44,19 +44,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] samples, long seed)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] data, long limit)
         {
-            long score = 3;
-            foreach (long sample in samples)
+            long total = 34;
+            foreach (long cell in data)
             {
-                score = ((((score * 4) + (603 / 4)) % 65521) + sample) + seed;
+                for (int i = 0; i < 12; i++)
+                {
+                    total = (total + (limit + limit)) ^ (long)i;
+                }
+                total = total + (cell + limit);
             }
-            if (score > 5)
+            if (total > 198)
             {
-                score = (score ^ (score * 4)) % 4096;
+                total = (total * 2) + (total + limit);
             }
-            return score % 65521;
+            return total;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
