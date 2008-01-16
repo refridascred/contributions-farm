@@ -13,18 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] readings, long offset)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!((value % 60) <= (tally + (long)readings.Length)))
-                {
-                    tally = (tally + 3) - offset;
-                }
-            }
-            return tally;
+            Paused,
+            Locked,
+            Draft,
+            New,
+            Idle,
         }
 
         /// <summary>Accumulate filter samples.</summary>
