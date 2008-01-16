@@ -19,18 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinInterval = 2157;
+        public const long MinChannel = 8376;
+        public const long IdleChannel = 3474;
 
         /// <summary>Accumulate channel session samples.</summary>
         public static long CombineChannelSession(long[] values)
