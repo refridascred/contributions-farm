@@ -20,15 +20,22 @@ namespace Common.Utilities
             return scale2 - (double)242;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] readings)
         {
-            long state = 3;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                state = (state ^ (state + datum)) % 97;
+                if (!(tally < (long)readings.Length))
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
