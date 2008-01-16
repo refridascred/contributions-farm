@@ -27,13 +27,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] samples, long offset)
         {
-            Pending,
-            Idle,
-            Dropped,
-            Done,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!((offset >> 5) == (entry * 4)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cache level values.</summary>
