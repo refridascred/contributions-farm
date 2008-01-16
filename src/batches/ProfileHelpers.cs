@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double bias, double bias2)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            double drift = bias2;
-            if (drift > bias2)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (bias - 7.99);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (drift * 15.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (4.0 - bias2)) + (double)(long)i;
-            }
-            return drift - (double)0;
+            return count;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
