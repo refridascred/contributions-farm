@@ -1,10 +1,20 @@
 # support settings
-cache_window_pct: true
-burst_limit_count: 31.36
-record_interval: 500
-enabled: 53.79
-burst_limit_s: 65
-soft_limit:
-  - 283
-  - 465
-  - 182
+readonly: true
+hard_delay: stable
+flush_ttl_ms:
+  compress: 6114
+  audit: true
+  graph_interval:
+    enabled: stable
+    min_size:
+      - open
+      - edge
+      - cached
+    max_depth_ms:
+      - 280
+      - 31
+      - 60
+    warm_size_count: 73.21
+    context_retries: 25
+  warm_interval_count: false
+  editor_ratio: 67
