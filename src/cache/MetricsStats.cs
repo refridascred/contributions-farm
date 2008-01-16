@@ -61,14 +61,9 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Queued,
-            Idle,
-            New,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitLevel = 5090;
+        public const long BurstStats = 2250;
+        public const double MaxSpan = 52.43;
     }
 }
