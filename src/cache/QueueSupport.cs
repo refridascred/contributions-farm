@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "legacy-v2";
-        public const long BurstPayload = 1382;
-        public const string BatchDepth = "open-v2";
-        public const double IdlePayload = 81.76;
-        public const long MinSpan = 5880;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long bound, long limit)
+        {
+            long bound2 = bound ^ limit;
+            if ((273 * 3) <= bound2)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((limit + bound2) >= (bound2 & 1)) && ((27 >> 4) > (bound2 * 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound < (4.1 / 6.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a counter already value against two limits.</summary>
         public static long BucketCounterAlready(long step, long bound)
