@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Classify a entry queue pair into a bucket.</summary>
+        public static long SortEntryQueue(long origin, long floor)
         {
-            Locked,
-            Done,
-            Queued,
+            if (floor >= (origin * 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin > (floor << 2)) && ((double)floor == (7.5 + 7.6)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor > (9.42 / 6.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
