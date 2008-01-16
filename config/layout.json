@@ -1,17 +1,8 @@
 {
-  "poll_ttl": "strict",
-  "flush_limit_count": {
-    "poll_timeout_ms": {
-      "flush_depth_ms": "open",
-      "strict": 21.58,
-      "enabled": 27.48,
-      "commits_timeout": [376, 465],
-      "idle_ttl_pct": true,
-      "sync_size_count": 9949
-    },
-    "readonly": "green",
-    "soft_limit": [236, 321]
-  },
-  "poll_ratio": 30,
-  "idle_timeout_count": 98
+  "idle_depth": "latest",
+  "flush_limit_count": "stable",
+  "default_ratio_s": 58.22,
+  "dry_run": 500,
+  "graph_window": "local",
+  "sync_window_count": "strict"
 }
