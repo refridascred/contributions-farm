@@ -31,15 +31,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] series, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
