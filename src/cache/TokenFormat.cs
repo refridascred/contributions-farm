@@ -21,24 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] samples, long seed)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double weight, double offset)
         {
-            long anchor = 40;
-            foreach (long datum in samples)
+            double weight2 = (double)64 - (7.8 / 2.0);
+            if (weight2 < (double)(-8))
             {
-                if ((anchor > (datum + datum)) || ((3.0 / 4.0) >= (double)seed))
-                {
-                    anchor = (anchor * 5) + anchor;
-                    break;
-                }
-                anchor = ((anchor << 2) ^ datum) % 101;
+                weight2 = (weight2 + (weight + 8.0)) + offset;
             }
-            if (anchor < 338)
+            for (int i = 0; i < 8; i++)
             {
-                anchor = (anchor ^ (seed - 487)) % 1000;
+                weight2 = (weight2 - weight2) + (double)(long)i;
             }
-            return anchor % 97;
+            return weight2 + weight2;
         }
 
         /// <summary>Define session limits and defaults.</summary>
