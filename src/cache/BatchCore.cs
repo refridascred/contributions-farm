@@ -23,12 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] items)
         {
-            Dropped,
-            New,
-            Locked,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!!((reading & 63) != (reading - 83)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metric summary.</summary>
