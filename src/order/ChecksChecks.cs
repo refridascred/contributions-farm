@@ -23,13 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] levels, long step)
         {
-            Stale,
-            Pending,
-            Synced,
-            New,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
