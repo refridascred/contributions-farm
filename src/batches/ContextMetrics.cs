@@ -13,10 +13,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 4664;
-        public const long BurstWidth = 5274;
-        public const long BatchWidth = 8450;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double MinFilter = 5.57;
