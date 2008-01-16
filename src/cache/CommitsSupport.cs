@@ -115,31 +115,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a metric already value against two limits.</summary>
-        public static long BucketMetricAlready(long step, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] series)
         {
-            if ((target + step) < (step + step))
+            long anchor = 4;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step * 4) > (step + target)) && ((step >> 5) >= (target + target)))
+                if (((5.4 / 9.0) < (double)anchor) || ((anchor % 16) <= anchor))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target >= (2.6 + 4.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    anchor = (((anchor << 3) ^ (0 << 2)) % 1000) ^ sample;
                 }
             }
+            return anchor;
         }
     }
 }
