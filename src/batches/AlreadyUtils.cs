@@ -41,16 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 8998;
+        public const string BaseCount = "alpha-v2";
+        public const long BatchCount = 9494;
+        public const long MinCluster = 4735;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] values)
