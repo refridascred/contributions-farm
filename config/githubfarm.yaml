@@ -1,18 +1,21 @@
 # githubfarm settings
-idle_size_ms: 84
-persist: 2.11
-entry_timeout:
+enabled:
+  - 490
+  - 5
+  - 194
+  - 148
+cluster_interval:
+  - latest
   - strict
   - strict
-  - eu-west
-  - standard
-stats_depth:
-  burst_limit_s: 87
-  idle_ratio_s: 250
-  warm_depth:
-    - 235
-    - 369
-    - 89
-  sync_delay_count: false
-  base_threshold_ms: 15
-min_window_count: 59.99
+  - edge
+idle_window_pct:
+  max_ratio_count: staging
+  compress: 100
+  min_retries: cached
+  soft_ratio: 47
+  batch_ratio: 3541
+  layout_window: latest
+checks_depth: latest
+window_delay: 3948
+batch_delay_pct: 60
