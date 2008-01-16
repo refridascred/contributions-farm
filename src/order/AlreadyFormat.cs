@@ -51,17 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a cluster metrics reading by value.</summary>
-        public static long SeekClusterMetricsIndex(long[] readings, long bound)
+        /// <summary>Check that every already metric entry stays within the limit.</summary>
+        public static bool VerifyAlreadyMetricLimits(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (readings[i] < bound)
+                if (value < step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Match up stats samples.</summary>
