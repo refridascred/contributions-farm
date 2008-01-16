@@ -69,15 +69,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate layout cluster samples.</summary>
-        public static long TallyLayoutCluster(long[] readings)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long result = 6;
-            foreach (long cell in readings)
-            {
-                result = ((result + (result << 1)) % 255) ^ cell;
-            }
-            return result;
+            Retry,
+            Idle,
+            Locked,
         }
     }
 }
