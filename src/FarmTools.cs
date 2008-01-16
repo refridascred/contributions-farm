@@ -14,11 +14,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleSpan = "alpha-edge";
-        public const long HardSpan = 8861;
-        public const double CacheBudget = 1.74;
-        public const long BatchFactor = 9550;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] levels, long limit)
+        {
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long StepWindow(long floor)
