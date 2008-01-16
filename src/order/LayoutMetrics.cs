@@ -29,24 +29,14 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] items, long seed)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long acc = 949;
-            foreach (long entry in items)
-            {
-                acc = (((acc ^ acc) % 4096) ^ entry) + seed;
-                acc = (acc << 2) ^ 546;
-                if (!((double)52 == (double)acc))
-                {
-                    acc = ((acc << 2) ^ (acc * 2)) % 255;
-                }
-            }
-            if (acc > (-6))
-            {
-                acc = (acc + (acc ^ acc)) % 97;
-            }
-            return acc;
+            Draft,
+            Locked,
+            Pending,
+            Dropped,
+            Ready,
         }
     }
 }
