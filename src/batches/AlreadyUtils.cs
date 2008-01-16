@@ -19,10 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinInterval = 2157;
-        public const long MinChannel = 8376;
-        public const long IdleChannel = 3474;
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
