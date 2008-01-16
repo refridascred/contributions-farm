@@ -1,15 +1,14 @@
 # Command notes
 
-Use already settings to tune how often command data is refreshed.
-When a token fails, the already handler retries a few times before giving up.
-The command module keeps buffer values in sync with the command cache.
+When a payload fails, the schema handler retries a few times before giving up.
+Each filter is validated before it reaches the payload queue.
 
-Run the format check before changing any metrics limits.
-When a batch fails, the farm handler retries a few times before giving up.
-Run the format check before changing any payload limits.
+The profile report groups every layout by order.
+The order helpers are pure functions, so they are safe to call from any thread.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep command values small
-- Review entry limits each release
-- Validate session input early
+- Keep format values small
+- Review support limits each release
+- Validate record input early
