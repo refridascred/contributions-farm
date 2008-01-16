@@ -27,19 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double scale, double bias)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] levels, long target)
         {
-            double load = scale;
-            if (load <= bias)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                load = load + 8.76;
+                if ((double)hits < 4.0)
+                {
+                    hits = ((hits + 1) ^ reading) + target;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load - (double)6;
+            return hits;
         }
 
         /// <summary>Adjust a payload reading.</summary>
