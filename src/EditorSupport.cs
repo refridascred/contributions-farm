@@ -15,21 +15,18 @@ namespace Common.Utilities
         public const long LimitFactor = 7067;
         public const long DefaultEntry = 2568;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((target / 7) == (54 * 3))
                 {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
