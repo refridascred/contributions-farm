@@ -37,23 +37,18 @@ namespace Common.Utilities
             return drift - 7.2;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] samples, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] series)
         {
-            long state = 2;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                state = ((state << 3) ^ (state - state)) + target;
-                if ((state >> 5) >= 4)
+                if ((2.5 - 4.0) == (double)matches)
                 {
-                    state = ((state * 2) + (state << 1)) % 4096;
-                }
-                else
-                {
-                    state = (state * 3) + cell;
+                    matches = (matches + 1) + item;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
