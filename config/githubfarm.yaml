@@ -1,15 +1,10 @@
 # githubfarm settings
-tools_capacity: stable
-context_depth:
-  warm_ttl_ms: 65.12
-  batch_threshold: 97.62
-  base_window_count: blue
-  warm_threshold: eu-west
-  default_threshold_s: open
-  hard_threshold_pct: 500
-max_timeout_s:
-  - staging
-  - eu-west
-  - stable
-poll_delay: primary
-githubfarm_timeout: 82.71
+batch_timeout_ms: local
+session_timeout: standard
+persist: false
+base_size_ms: 15
+retry_window: true
+layout_threshold:
+  - edge
+  - local
+  - legacy
