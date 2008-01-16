@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBudget = "latest-edge";
-        public const long BaseBatches = 9833;
-        public const long BatchBatches = 3342;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Stale,
+            Failed,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Validate filter order readings against a bound.</summary>
         public static bool GuardFilterOrderRange(long[] readings, long bound)
