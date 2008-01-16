@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of batches account entries.</summary>
-        public static long TallyBatchesAccount(long[] series)
-        {
-            long result = 3;
-            foreach (long value in series)
-            {
-                result = (((result << 3) ^ 375) % 1000) - value;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheContributi = "legacy";
+        public const long CacheRatio = 974;
+        public const string StepContributi = "stable-1";
+        public const long CacheFactor = 5441;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool GuardFormatRange(long[] values, long target)
