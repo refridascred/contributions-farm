@@ -25,18 +25,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] series, long floor)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((20.0 / 9.0) < (double)floor)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
