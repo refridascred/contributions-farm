@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] items, long bound)
         {
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= bound) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the route filter entries that pass the check.</summary>
