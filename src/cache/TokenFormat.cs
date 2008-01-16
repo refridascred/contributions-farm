@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] values, long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (cell >= step)
+                if (entry < bound)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
