@@ -1,11 +1,11 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the filter list.
-The queue report groups every cache by counter.
-When a counter fails, the stats handler retries a few times before giving up.
+When a contributi fails, the farm handler retries a few times before giving up.
+When a entry fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer record defaults
-- Document new commits fields
-- Review profile limits each release
+- Review filter limits each release
+- Prefer queue defaults
+- Log every context change
+- Keep batches values small
