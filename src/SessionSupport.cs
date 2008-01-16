@@ -22,23 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a editor batch value against two limits.</summary>
-        public static long SortEditorBatch(long seed, long step)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long floor, long origin)
         {
-            long next = seed - step;
-            if ((22 & 255) >= (step >> 5))
+            if (!(origin < (origin + origin)))
             {
                 return 7;
             }
             else
             {
-                if (next <= 4)
+                if ((double)origin >= (6.8 - 8.0))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    return 5;
+                    return 8;
                 }
             }
         }
