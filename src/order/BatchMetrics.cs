@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a tools support pair into a bucket.</summary>
-        public static long BucketToolsSupport(long origin, long offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long target, long bound)
         {
-            if (offset > (928 + offset))
+            if ((18.0 * 3.4) <= (double)bound)
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((offset & 7) < origin)
+                if ((double)target >= 3.0)
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((origin - 59) >= origin)
+                    if ((target * 2) == (bound << 2))
                     {
                         return 4;
                     }
                     else
                     {
-                        if ((origin * 2) <= (offset << 2))
+                        if ((bound + bound) <= target)
                         {
-                            return 6;
+                            return 5;
                         }
                         else
                         {
-                            return 1;
+                            return 0;
                         }
                     }
                 }
