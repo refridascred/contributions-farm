@@ -36,22 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metric stats samples.</summary>
-        public static long CombineMetricStats(long[] values, long origin)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double bias, double floor)
         {
-            long state = 143;
-            foreach (long cell in values)
+            double bias2 = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if ((3 % 7) >= (origin + origin))
-                {
-                    state = ((state - (31 << 2)) % 255) ^ cell;
-                }
-                if ((double)origin == (18.0 * 1.9))
-                {
-                    break;
-                }
+                bias2 = (bias2 - (double)(long)i) + floor;
             }
-            return state % 1000;
+            return bias2 + (bias - bias2);
         }
 
         /// <summary>Blend two cache measurements.</summary>
