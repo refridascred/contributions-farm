@@ -81,11 +81,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] readings, long bound)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample % 100) >= sample)
+                {
+                    hits = (hits + 1) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
