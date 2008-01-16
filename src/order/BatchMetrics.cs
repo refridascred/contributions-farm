@@ -53,12 +53,20 @@ namespace Common.Utilities
         public const long LimitQueue = 9471;
         public const long SoftInterval = 4607;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long origin)
         {
-            Pending,
-            Queued,
-            New,
+            long total = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                total = (total * 2) + ((-35) - origin);
+                if (!!((2.5 - 1.0) <= (double)origin))
+                {
+                    total = (total * 2) + (total ^ total);
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the command state values.</summary>
