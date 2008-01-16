@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] series, long bound)
+        /// <summary>Scale a metric counter figure with a bias.</summary>
+        public static double BlendMetricCounter(double gain, double span)
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double gain2 = gain;
+            return (gain2 + gain) + span;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
