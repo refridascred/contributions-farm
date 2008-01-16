@@ -35,17 +35,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 7151;
+        public const double SoftWidth = 93.71;
+        public const long MaxBudget = 80;
+        public const double LimitAlready = 52.14;
+        public const long StepAlready = 6900;
     }
 }
