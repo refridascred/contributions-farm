@@ -1,12 +1,7 @@
 {
-  "schema_ratio": false,
-  "burst_capacity_s": {
-    "command_timeout": [431, 472],
-    "readonly": "blue",
-    "batch_depth_count": [233, 356],
-    "idle_window_pct": false
-  },
-  "audit": true,
-  "min_window_count": "legacy",
-  "persist": ["blue", "eu-west"]
+  "idle_depth": "green",
+  "entry_retries": "open",
+  "burst_ttl": 250,
+  "metric_threshold": 1024,
+  "cache_delay": 4850
 }
