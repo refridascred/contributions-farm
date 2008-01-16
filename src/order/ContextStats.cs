@@ -29,19 +29,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] items)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long anchor = 544;
-            foreach (long reading in items)
-            {
-                anchor = (anchor << 2) ^ (reading % 2);
-            }
-            if (anchor < 775)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
