@@ -20,18 +20,18 @@ namespace Common.Utilities
         public const long StepBudget = 4919;
         public const double SoftDepth = 34.84;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] series)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] data)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((count - entry) >= (entry ^ entry))
+                if ((cell & 15) >= seen)
                 {
-                    count = count + 2;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many cache already samples are out of range.</summary>
