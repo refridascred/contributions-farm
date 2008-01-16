@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long limit, long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
+            if ((double)limit < (9.03 - 1.31))
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((double)limit < 5.0)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit * 2) != (5 ^ 0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer header.</summary>
