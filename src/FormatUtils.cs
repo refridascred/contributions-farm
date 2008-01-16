@@ -56,12 +56,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 2707;
-        public const double StepTimeout = 22.29;
-        public const long HardWidth = 8098;
-        public const long SoftSpan = 3612;
-        public const long DefaultLevel = 4779;
+        /// <summary>Fold a list of channel already readings.</summary>
+        public static long ScoreChannelAlready(long[] levels)
+        {
+            long acc = 515;
+            foreach (long cell in levels)
+            {
+                acc = (acc ^ (cell + cell)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of session layout entries.</summary>
         public static long CombineSessionLayout(long[] values)
