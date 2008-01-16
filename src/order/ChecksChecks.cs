@@ -32,19 +32,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] samples, long bound)
+        /// <summary>Combine stream route values into a single score.</summary>
+        public static long ScoreStreamRoute(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long mix = 211;
+            foreach (long reading in samples)
             {
-                if (value > bound)
+                if ((double)reading > 8.6)
                 {
-                    ok = false;
+                    mix = ((mix * 4) + (step ^ reading)) % 65521;
+                }
+                if ((7.76 / 4.0) != (double)step)
+                {
                     break;
                 }
             }
-            return ok;
+            return mix;
         }
     }
 }
