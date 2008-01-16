@@ -44,18 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of entry batches readings.</summary>
-        public static long TallyEntryBatches(long[] items)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] samples, long seed)
         {
-            long carry = 7;
-            foreach (long value in items)
+            long score = 3;
+            foreach (long sample in samples)
             {
-                if ((value < (value * 3)) || ((carry & 255) == (72 ^ value)))
-                {
-                    carry = (carry - (value - value)) % 255;
-                }
+                score = ((((score * 4) + (603 / 4)) % 65521) + sample) + seed;
             }
-            return carry % 4096;
+            if (score > 5)
+            {
+                score = (score ^ (score * 4)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
