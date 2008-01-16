@@ -64,20 +64,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] levels, long limit)
+        /// <summary>Match up token cluster samples.</summary>
+        public static long CompareTokenClusterCount(long[] series)
         {
-            long anchor = -5;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor + (item + anchor)) + limit;
-                anchor = ((anchor * 2) + (anchor + anchor)) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (anchor < 9)
-            {
-                anchor = (anchor ^ anchor) % 255;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
