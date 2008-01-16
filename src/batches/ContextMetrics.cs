@@ -61,25 +61,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long seed, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] readings)
         {
-            long step = seed - offset;
-            if ((step % 24) >= offset)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset < seed)
+                if ((double)tally > (double)54)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    tally = (tally + 3) ^ entry;
                 }
             }
+            return tally;
         }
     }
 }
