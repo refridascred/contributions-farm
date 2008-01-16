@@ -40,9 +40,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinSupport = "local-1";
-        public const long RetryWidth = 5030;
-        public const long StepSupport = 2781;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
