@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] data, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long total = 988;
+            foreach (long entry in data)
             {
-                if (!(((total + total) < (floor + floor)) || (((long)i - total) < ((-82) - (long)i))))
+                if (entry >= (entry - total))
                 {
-                    total = (total + total) % 97;
-                    total = (total * 4) + total;
+                    total = total ^ step;
                 }
-                total = ((total * 3) + (long)i) % 97;
+                if ((0 & 127) >= step)
+                {
+                    total = (total - total) % 1000;
+                }
             }
             return total;
         }
