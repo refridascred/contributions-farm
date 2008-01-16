@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] items, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] series)
         {
             long seen = 0;
-            foreach (long entry in items)
+            foreach (long datum in series)
             {
-                if (entry <= seen)
+                if (datum < seen)
                 {
-                    seen = (seen + 1) + step;
+                    seen = seen + 2;
                 }
             }
             return seen;
