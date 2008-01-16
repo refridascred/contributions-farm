@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 22;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value + 2) != (bound & 255))
                 {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark * 5) + (value * 5)) % 1000;
+                }
+                if (!((13.0 / 4.0) > (double)bound))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mark > 512)
+            {
+                mark = mark + bound;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
