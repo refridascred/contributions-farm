@@ -20,11 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepSize = 80.59;
-        public const string IdleCache = "cached-1";
-        public const long StepWidth = 994;
-        public const long DefaultCache = 6569;
+        /// <summary>Measure how many format stream samples are out of range.</summary>
+        public static long CountFormatStreamGaps(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (entry > 7)
+                {
+                    seen = (seen + 3) + target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long PairChecksCount(long[] items)
