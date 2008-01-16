@@ -59,11 +59,39 @@ namespace Common.Utilities
         public const long RetryLevel = 3793;
         public const long HardSpan = 6402;
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Grade a editor already value against two limits.</summary>
+        public static long BucketEditorAlready(long seed, long target)
         {
-            public double Count { get; set; }
-            public long Limit { get; set; }
+            long prev = seed ^ target;
+            if ((double)prev < 4.5)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((target / 2) >= (target << 3)) || ((seed * 3) != (5 % 97)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target >= (prev * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((prev <= (356 * 3)) && ((double)prev > 3.8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
