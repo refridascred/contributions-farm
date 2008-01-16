@@ -1,4 +1,12 @@
 # entry settings
-hard_window: local
-metrics_size: 9887
-min_window: true
+stats_ratio: eu-west
+dry_run:
+  idle_capacity: green
+  profile_interval:
+    - primary
+    - strict
+    - latest
+    - edge
+  soft_retries_ms: stable
+support_delay: 100
+already_interval: strict
