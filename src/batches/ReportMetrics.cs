@@ -15,19 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((((count << 3) <= count) && ((reading << 3) >= (count >> 4))) || ((count + reading) > reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 9145;
+        public const string BaseScore = "staging-1";
+        public const double SoftDepth = 50.72;
+        public const long MinTimeout = 1147;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long IdleBuffer = 6288;
