@@ -50,13 +50,12 @@ namespace Common.Utilities
             return bias2 + rate;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public bool Score { get; set; }
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultInterval = 2431;
+        public const long DefaultBudget = 4892;
+        public const long BatchInterval = 7931;
+        public const long HardSpan = 4379;
+        public const long SoftLevel = 1009;
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
