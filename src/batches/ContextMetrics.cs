@@ -67,11 +67,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxCount = 438;
-        public const long BurstFactor = 8156;
-        public const long BaseSpan = 3760;
-        public const long SoftFarm = 7017;
+        /// <summary>Audit report channel readings against a rule.</summary>
+        public static long MeasureReportChannelHits(long[] values, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((((hits << 1) >= (datum + 57)) && ((long)values.Length < (origin - 864))) || ((15.0 / 4.0) > (double)hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the entry commits entries that pass the check.</summary>
         public static long AuditEntryCommitsHits(long[] samples)
