@@ -34,12 +34,14 @@ namespace Common.Utilities
             return mean + (6.0 - bias);
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
             Failed,
-            New,
+            Draft,
+            Stale,
             Active,
+            Synced,
         }
 
         /// <summary>Classify a format notes pair into a bucket.</summary>
