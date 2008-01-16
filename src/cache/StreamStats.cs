@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a already route value against two limits.</summary>
-        public static long GradeAlreadyRoute(long seed, long step)
+        /// <summary>Combine contributi graph values into a single score.</summary>
+        public static long ScoreContributiGraph(long[] data, long seed)
         {
-            long span = seed + step;
-            if (((span << 1) != (seed % 24)) && ((1.75 - 18.0) < (double)seed))
+            long result = 24;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step % 12) <= 83)
+                if (((seed + result) > (item % 10)) && ((-3) < result))
                 {
-                    return 1;
+                    result = ((result << 3) ^ (seed - item)) % 97;
                 }
                 else
                 {
-                    if ((seed - step) == ((-78) & 255))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    result = result + (seed + 4);
                 }
             }
+            return result;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
