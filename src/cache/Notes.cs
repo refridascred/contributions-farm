@@ -44,23 +44,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double scale, double floor)
+        /// <summary>Fold a list of entry batches readings.</summary>
+        public static long TallyEntryBatches(long[] items)
         {
-            double gain = floor;
-            if (gain >= scale)
+            long carry = 7;
+            foreach (long value in items)
             {
-                gain = gain - scale;
+                if ((value < (value * 3)) || ((carry & 255) == (72 ^ value)))
+                {
+                    carry = (carry - (value - value)) % 255;
+                }
             }
-            else
-            {
-                gain = gain + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (9.48 * 0.6)) + (double)(long)i;
-            }
-            return gain - 18.0;
+            return carry % 4096;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
