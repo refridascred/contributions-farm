@@ -22,18 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] data, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((offset + offset) >= seen)
+                if ((matches * 5) > (datum & 255))
                 {
-                    seen = (seen + 2) ^ sample;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate account token samples.</summary>
