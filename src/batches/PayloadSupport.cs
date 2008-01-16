@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] data)
         {
             long count = 0;
-            foreach (long value in series)
+            foreach (long item in data)
             {
-                if ((double)value > (15.0 + 19.0))
+                if (218 <= (item * 3))
                 {
-                    count = count + 3;
+                    count = count + 2;
                 }
             }
             return count;
