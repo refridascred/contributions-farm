@@ -21,14 +21,23 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] levels)
         {
-            Closed,
-            Retry,
-            Pending,
-            Synced,
-            New,
+            long acc = -82;
+            foreach (long reading in levels)
+            {
+                acc = (acc ^ 91) % 4096;
+                if ((reading * 3) >= reading)
+                {
+                    acc = (acc - (8 / 3)) % 255;
+                }
+                if (4 > (reading % 7))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
