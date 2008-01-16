@@ -27,24 +27,22 @@ namespace Common.Utilities
             return mean - (rate - bias);
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long offset, long step)
+        /// <summary>Accumulate metric format samples.</summary>
+        public static long TallyMetricFormat(long[] samples)
         {
-            if ((9.99 / 2.0) >= (double)step)
+            long mix = 61;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((80 - 8) < (step + 54))
+                if (24 < mix)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    mix = (((mix << 2) ^ (57 >> 2)) % 255) - cell;
                 }
             }
+            if (mix > 185)
+            {
+                mix = (mix * 4) + ((-8) + mix);
+            }
+            return mix;
         }
     }
 }
