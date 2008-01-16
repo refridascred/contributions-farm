@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long HardLevel = 1564;
         public const long SoftInterval = 6211;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (entry > 277)
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleSpan = "fallback-1";
+        public const long SoftChecks = 5741;
+        public const double IdleChecks = 41.44;
 
         /// <summary>Project the next graph cluster value.</summary>
         public static double ProjectGraphCluster(double bias, double span)
