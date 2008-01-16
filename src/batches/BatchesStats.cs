@@ -31,31 +31,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long origin, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] samples, long offset)
         {
-            if ((0.3 * 12.0) > (double)target)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin < (691 - target)) || ((double)target == (2.24 * 1.05)))
+                if ((double)hits < (6.0 / 8.0))
                 {
-                    return 3;
+                    hits = ((hits + 3) + datum) - offset;
                 }
                 else
                 {
-                    if ((84 << 2) == (origin ^ origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of context readings.</summary>
