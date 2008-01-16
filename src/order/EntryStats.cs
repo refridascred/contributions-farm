@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double bias, double floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] levels, long offset)
         {
-            double ratio = floor - bias;
-            if (ratio < 5.0)
+            long anchor = 636;
+            foreach (long entry in levels)
             {
-                ratio = ratio - ratio;
+                anchor = ((anchor - anchor) % 255) + entry;
             }
-            return ratio + (bias - bias);
+            if (anchor < 86)
+            {
+                anchor = ((anchor * 3) + (offset % 7)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
