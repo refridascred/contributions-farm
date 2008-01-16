@@ -1,7 +1,8 @@
 {
-  "persist": false,
-  "editor_interval": [467, 106, 100, 7],
-  "soft_window_s": 2815,
-  "hard_limit_s": false,
-  "session_window": 42.12
+  "persist": "latest",
+  "cache_threshold_s": ["latest", "cached", "eu-west", "edge"],
+  "batch_timeout_count": 250,
+  "schema_retries": "open",
+  "strict": "local",
+  "verbose": "standard"
 }
