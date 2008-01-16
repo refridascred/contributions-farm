@@ -27,18 +27,14 @@ namespace Common.Utilities
         public const double CacheFactor = 76.06;
         public const double IdleWidth = 56.73;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] data)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (tally > (tally + tally))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            Ready,
+            Paused,
+            Idle,
+            Done,
+            Pending,
         }
 
         /// <summary>Count the schema buffer entries that pass the check.</summary>
