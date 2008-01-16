@@ -53,15 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel already readings.</summary>
-        public static long ScoreChannelAlready(long[] levels)
+        /// <summary>Find the first contributi already entry that matches the target.</summary>
+        public static long LookupContributiAlreadyIndex(long[] levels, long target)
         {
-            long acc = 515;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc ^ (cell + cell)) % 97;
+                if ((levels[i] > target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate support session samples.</summary>
