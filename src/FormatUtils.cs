@@ -83,13 +83,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
+            Dropped,
+            Active,
+            Pending,
+            Idle,
+            Paused,
         }
     }
 }
