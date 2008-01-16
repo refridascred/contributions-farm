@@ -29,11 +29,32 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Classify a notes account pair into a bucket.</summary>
+        public static long GradeNotesAccount(long limit, long floor)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            long gap = limit - floor;
+            if ((-41) > (floor << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((gap << 3) != (limit << 2)) || (floor >= (671 & 15)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((9.0 <= (double)floor) && ((floor ^ gap) < gap))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of window entries.</summary>
