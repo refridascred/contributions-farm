@@ -34,19 +34,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] data, long bound)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long offset)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry * 3) + (carry / 5);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return stale;
+            return carry;
         }
     }
 }
