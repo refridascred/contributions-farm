@@ -14,29 +14,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long target, long seed)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long target, long origin)
         {
-            if ((target < (target * 2)) && ((seed & 1) >= target))
+            long step = target + origin;
+            if (((target % 7) >= (5 - target)) && ((origin / 2) >= step))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((seed << 1) != (target + 2))
+                if ((origin ^ target) > (target + step))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if ((793 >= (seed - seed)) || ((seed ^ target) <= (target - seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 4;
                 }
             }
         }
