@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double gain, double bias)
         {
-            Stale,
-            Failed,
-            Locked,
-            Paused,
+            double load = bias;
+            if (load < (double)28)
+            {
+                load = load + gain;
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load - (double)951;
         }
 
         /// <summary>Check that every counter support entry stays within the limit.</summary>
