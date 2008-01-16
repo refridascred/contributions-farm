@@ -37,18 +37,11 @@ namespace Common.Utilities
             return drift - 5.76;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((((long)samples.Length << 1) < (cell & 1)) && ((-569) <= (cell % 100)))
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowWidth = 79.11;
+        public const string HardSize = "cached-1";
+        public const long RetryCounter = 1756;
+        public const string HardCounter = "legacy-v2";
+        public const long BaseTimeout = 7766;
     }
 }
