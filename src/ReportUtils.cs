@@ -15,12 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Measure how many payload token samples are out of range.</summary>
+        public static long MeasurePayloadTokenGaps(long[] levels)
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((item - item) < item)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two already measurements.</summary>
