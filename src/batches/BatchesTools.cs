@@ -19,27 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] levels, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] readings, long step)
         {
-            long mark = -93;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (!(((-9) ^ (long)levels.Length) >= (mark - mark)))
+                if (seen <= (step - seen))
                 {
-                    mark = mark - bound;
-                    break;
-                }
-                if ((7.4 - 17.0) > (double)bound)
-                {
-                    mark = (mark << 2) ^ (mark * 3);
-                }
-                else
-                {
-                    mark = (mark ^ (cell + mark)) % 255;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
