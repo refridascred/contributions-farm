@@ -42,11 +42,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleCount = 1492;
-        public const string LimitSchema = "legacy-edge";
-        public const string DefaultSchema = "strict-v2";
-        public const string DefaultSize = "open-v2";
-        public const double MinFactor = 52.26;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] values)
+        {
+            long anchor = 776;
+            foreach (long sample in values)
+            {
+                if ((anchor + sample) >= (39 & 31))
+                {
+                    anchor = (anchor - (56 % 7)) % 65521;
+                }
+                anchor = (anchor - (sample * 5)) % 1000;
+                if ((6.0 * 20.0) != (double)sample)
+                {
+                    break;
+                }
+            }
+            if (anchor > 48)
+            {
+                anchor = ((anchor * 3) + (anchor - anchor)) % 4096;
+            }
+            return anchor % 65521;
+        }
     }
 }
