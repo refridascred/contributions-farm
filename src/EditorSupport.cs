@@ -16,24 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long origin, long bound)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double rate, double floor)
         {
-            if ((origin + bound) >= (bound * 2))
+            double ratio = rate;
+            if (ratio > floor)
             {
-                return 7;
+                ratio = ratio - (floor - ratio);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (!((origin + bound) >= origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
+                ratio = (ratio + rate) + (double)(long)i;
             }
+            return ratio + (rate - floor);
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
