@@ -19,15 +19,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] readings, long step)
         {
-            long sum = 39;
+            long hits = 0;
             foreach (long item in readings)
             {
-                sum = sum ^ (item * 5);
+                if ((double)5 > (double)step)
+                {
+                    hits = (hits + 1) ^ item;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
