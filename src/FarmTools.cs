@@ -20,13 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] data)
         {
-            Closed,
-            New,
-            Queued,
-            Retry,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry != (double)count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
