@@ -40,11 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepDepth = "cached-1";
-        public const long BatchEditor = 4127;
-        public const long LimitWidth = 6243;
-        public const long StepLevel = 9343;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long DefaultLevel = 1;
