@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftTimeout = 914;
+        public const string SoftScore = "strict-1";
+        public const double IdleBudget = 70.45;
+        public const string MaxBudget = "stable-1";
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long SortBatch(long target, long origin)
