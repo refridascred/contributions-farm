@@ -1,34 +1,15 @@
 # githubfarm settings
-strict: 6564
-record_capacity: true
-default_ttl_count:
-  burst_interval_count:
-    - 74
-    - 447
-    - 187
-  verbose:
-    - open
-    - blue
-  batch_retries_count: legacy
-  min_size_pct:
-    - 260
-    - 196
-    - 95
-    - 312
-  stats_window:
-    - eu-west
-    - primary
-    - stable
-    - staging
-  base_retries_pct: blue
-burst_threshold_count:
-  retry_delay_s: 68.7
-  persist:
-    - 80
-    - 364
-  already_window: 70.68
-  sync_window_count:
-    - 442
-    - 71
-  compress: 100
-graph_retries: 8
+default_limit_ms: 2233
+sync_window_count:
+  base_delay: false
+  default_ttl_s: strict
+  audit: 4
+  warm_retries_ms:
+    audit: false
+    session_retries: true
+    sync_size_ms: 100
+    idle_interval_pct: stable
+  soft_delay_count: 87.79
+  sync_delay: false
+burst_window: false
+min_ratio_count: strict
