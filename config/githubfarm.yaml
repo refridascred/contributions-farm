@@ -1,8 +1,8 @@
 # githubfarm settings
-dry_run: true
-sync_retries: legacy
-readonly: standard
-persist:
-  - open
-  - latest
-default_size_count: false
+farm_size: 15
+retry_ratio_count:
+  - 304
+  - 351
+  - 126
+  - 327
+batch_timeout: false
