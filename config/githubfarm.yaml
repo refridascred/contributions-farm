@@ -1,11 +1,6 @@
 # githubfarm settings
-base_size_s: 87.56
-enabled: staging
-account_retries: latest
-batch_limit:
-  format_ttl: 9501
-  flush_depth_count: strict
-  dry_run:
-    - 238
-    - 368
-default_delay: false
+commits_capacity: 3089
+entry_depth: 974
+enabled: cached
+sync_limit_s: 14
+strict: local
