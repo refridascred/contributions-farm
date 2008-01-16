@@ -20,19 +20,21 @@ namespace Common.Utilities
         public const long MinStream = 7321;
         public const long WindowCount = 4385;
 
-        /// <summary>Combine stream queue values into a single score.</summary>
-        public static long DigestStreamQueue(long[] values)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] samples)
         {
-            long score = 44;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score << 3) ^ cell;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (score < (-866))
-            {
-                score = ((score * 2) + (score + score)) % 4096;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a filter summary.</summary>
