@@ -38,13 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] readings, long offset)
         {
-            Synced,
-            Queued,
-            Pending,
-            Active,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((offset / 7) < seen)
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a route reading.</summary>
