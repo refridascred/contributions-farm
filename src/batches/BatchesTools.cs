@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const double BaseStats = 91.45;
         public const double CacheSize = 38.56;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] series, long origin)
+        /// <summary>Digest a series of channel batch entries.</summary>
+        public static long TallyChannelBatch(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long mix = 55;
+            foreach (long datum in samples)
             {
-                if (value <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (mix + (mix - offset)) - datum;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
