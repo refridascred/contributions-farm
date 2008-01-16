@@ -1,11 +1,11 @@
 # Command notes
 
-Use route settings to tune how often context data is refreshed.
-The batch module keeps cache values in sync with the command cache.
+A tools that stays idle for too long is moved to the filter list.
+The queue report groups every cache by counter.
+When a counter fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review session limits each release
-- Prefer batch defaults
-- Validate record input early
-- Log every channel change
+- Prefer record defaults
+- Document new commits fields
+- Review profile limits each release
