@@ -58,14 +58,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] values)
         {
-            Pending,
-            New,
-            Failed,
-            Ready,
-            Stale,
+            long acc = 18;
+            foreach (long entry in values)
+            {
+                if ((entry / 8) < (entry % 60))
+                {
+                    acc = (acc + (505 + entry)) % 101;
+                }
+            }
+            return acc;
         }
     }
 }
