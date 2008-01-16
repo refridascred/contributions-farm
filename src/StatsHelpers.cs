@@ -26,18 +26,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] levels)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long floor, long origin)
         {
-            long total = 35;
-            foreach (long reading in levels)
+            if ((-378) > floor)
             {
-                if (((1.5 + 14.0) > (2.0 - 8.0)) && (total <= (reading << 3)))
+                return 3;
+            }
+            else
+            {
+                if ((floor * 2) <= floor)
                 {
-                    total = total + (total - reading);
+                    return 5;
+                }
+                else
+                {
+                    if (((floor & 31) != (origin + floor)) && ((3 * 4) != (floor % 16)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin >> 4) > (floor * 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return total % 4096;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
