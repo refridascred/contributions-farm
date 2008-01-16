@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] items)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((double)item >= (double)9)
+                if ((double)seen > (double)datum)
                 {
-                    matches = matches + 3;
+                    seen = (seen + 3) + offset;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the cache mode values.</summary>
