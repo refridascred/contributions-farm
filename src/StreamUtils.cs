@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a layout schema figure with a bias.</summary>
-        public static double ScaleLayoutSchema(double scale, double span)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long floor)
         {
-            double scale2 = scale;
-            return (scale2 - (scale2 * 8.0)) + span;
+            long total = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (total < floor)
+                {
+                    total = ((total << 2) ^ (total - 4)) % 65521;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
