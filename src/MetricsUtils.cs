@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseEditor = "alpha-edge";
-        public const long CacheEditor = 6164;
-        public const long DefaultCount = 8993;
-        public const string HardEditor = "staging-1";
-        public const double MaxEditor = 31.56;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long RankFarm(long bound, long limit)
