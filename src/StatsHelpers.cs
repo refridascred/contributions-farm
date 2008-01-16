@@ -14,27 +14,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels, long target)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            long score = 843;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((score >> 5) < score) || ((double)entry > (19.0 / 9.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score << 2) ^ (186 + entry)) - target;
-                }
-                else
-                {
-                    score = (score * 3) + (score + score);
-                }
-                score = (score ^ (score + score)) % 255;
-                if ((double)score <= (6.13 + 8.65))
-                {
-                    score = score - (score + score);
+                    if ((samples[i] + samples[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
