@@ -58,15 +58,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double ratio, double offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] data, long origin)
         {
-            double weight = ratio;
-            if (weight >= (offset - ratio))
+            long count = 0;
+            foreach (long datum in data)
             {
-                weight = weight + weight;
+                if (!((4.5 / 3.0) <= (double)origin))
+                {
+                    count = (count + 3) ^ datum;
+                }
             }
-            return weight + weight;
+            return count;
         }
     }
 }
