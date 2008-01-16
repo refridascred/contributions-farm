@@ -57,14 +57,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long bound)
         {
-            Ready,
-            Closed,
-            Done,
-            Synced,
-            Locked,
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 255;
+                if (((-7) * 4) >= (sum - (long)i))
+                {
+                    break;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
