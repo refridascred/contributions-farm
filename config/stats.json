@@ -1,6 +1,6 @@
 {
-  "audit": "eu-west",
-  "poll_limit_count": 2262,
-  "soft_capacity_count": [46, 478],
-  "buffer_depth": "legacy"
+  "batch_ratio": false,
+  "idle_ttl": "strict",
+  "retry_capacity_pct": false,
+  "max_timeout": true
 }
