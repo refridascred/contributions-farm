@@ -26,38 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank notes stream input into a small class.</summary>
-        public static long BucketNotesStream(long step, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            if ((double)seed > 8.5)
+            long sum = 482;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + 5) <= (step * 4))
+                if ((double)sample < 2.0)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed >> 5) >= (step - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8.4 * 0.2) <= (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    sum = (sum + (sum / 2)) % 65521;
                 }
             }
+            return sum;
         }
 
         /// <summary>Hold a batch record.</summary>
