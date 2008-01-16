@@ -1,4 +1,9 @@
 # entry settings
-hard_size_ms: open
-cluster_limit: 1380
-flush_capacity: stable
+soft_ratio_ms: 60.18
+retry_delay: 59
+default_window_ms:
+  - blue
+  - stable
+poll_limit_count:
+  - 95
+  - 239
