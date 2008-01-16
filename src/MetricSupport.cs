@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((long)items.Length / 7) == (step >> 5))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "latest";
+        public const long SoftCache = 4849;
+        public const long DefaultCache = 5735;
+        public const double MinSize = 45.85;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long GradeEntry(long floor, long step)
