@@ -1,20 +1,7 @@
 {
-  "poll_window_s": "stable",
-  "profile_interval": 16.67,
-  "default_window_s": {
-    "min_delay": 2383,
-    "dry_run": 2803,
-    "idle_size": true,
-    "retry_retries_ms": 30,
-    "batch_window_count": {
-      "compress": [214, 411, 238, 123],
-      "enabled": 3982,
-      "min_capacity_count": true,
-      "default_ratio_ms": [27, 344, 83, 135],
-      "persist": "staging"
-    }
-  },
-  "layout_threshold": "primary",
-  "soft_retries": "open",
-  "cache_depth_count": 22.56
+  "flush_capacity": "fallback",
+  "graph_delay": false,
+  "burst_ttl": 4686,
+  "warm_retries_count": "green",
+  "hard_threshold": true
 }
