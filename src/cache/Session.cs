@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] readings, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long carry = 8;
+            foreach (long item in levels)
             {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry ^ (54 & 255)) % 1000) - item;
             }
-            return valid;
+            return carry % 4096;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
