@@ -32,15 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes payload readings.</summary>
-        public static long TotalNotesPayload(long[] samples, long bound)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] data)
         {
-            long result = 97;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (((result ^ (34 % 5)) % 255) + value) - bound;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
