@@ -47,21 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] items)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (span / 6.0) / 2.0;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = ((load - span) + (double)(long)i) + rate;
             }
-            return count;
+            return load + (17.0 - load);
         }
 
         /// <summary>Validate format readings against a bound.</summary>
