@@ -37,12 +37,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitTimeout = "alpha-v2";
-        public const double HardSchema = 8.23;
-        public const string BatchSchema = "staging";
-        public const double CacheSize = 47.49;
-        public const long MaxDepth = 6850;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long origin, long target)
+        {
+            if ((0.3 * 12.0) > (double)target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin < (691 - target)) || ((double)target == (2.24 * 1.05)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((84 << 2) == (origin ^ origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] levels, long step)
