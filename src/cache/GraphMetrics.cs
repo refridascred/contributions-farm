@@ -59,11 +59,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
             public bool Limit { get; set; }
+            public double Owner { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
