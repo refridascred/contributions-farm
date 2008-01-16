@@ -22,17 +22,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long limit)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public double Region { get; set; }
         }
     }
 }
