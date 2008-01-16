@@ -11,39 +11,11 @@ namespace Common.Utilities
         public const long IdleRatio = 5960;
         public const double BurstScore = 44.26;
 
-        /// <summary>Classify a entry session pair into a bucket.</summary>
-        public static long SortEntrySession(long bound, long limit)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long prev = bound + limit;
-            if ((908 >> 5) >= (bound / 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((2.0 / 8.0) == (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + prev) < (bound - limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)bound > (4.0 * 2.48)) && (bound <= (bound - 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up account samples.</summary>
