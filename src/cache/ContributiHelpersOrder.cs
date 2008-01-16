@@ -32,24 +32,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long target)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((target - 73) == (746 << 3))
-                {
-                    acc = (acc - (acc - (long)i)) % 255;
-                }
-                if ((double)target == (6.0 + 2.0))
-                {
-                    acc = (acc << 2) ^ acc;
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Stale,
+            Active,
+            Retry,
+            Draft,
         }
     }
 }
