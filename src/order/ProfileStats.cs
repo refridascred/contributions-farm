@@ -16,11 +16,12 @@ namespace Common.Utilities
             return weight - 7.92;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 9410;
-        public const long SoftRecord = 5925;
-        public const long BaseLevel = 3878;
-        public const double BurstRecord = 14.53;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] series)
