@@ -1,7 +1,7 @@
 {
-  "burst_delay_ms": "eu-west",
-  "support_size": 23,
-  "strict": "open",
-  "burst_limit_pct": 13,
-  "soft_depth": "standard"
+  "notes_depth": 66,
+  "hard_interval_s": "latest",
+  "retry_ttl_count": 55.08,
+  "idle_timeout_count": 597,
+  "flush_ratio_ms": 5797
 }
