@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Done,
-            Stale,
-            Queued,
-            Pending,
-            Locked,
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
