@@ -16,26 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate notes editor samples.</summary>
-        public static long TallyNotesEditor(long[] readings, long step)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long score = 58;
-            foreach (long entry in readings)
-            {
-                if (5.0 >= (double)step)
-                {
-                    score = (score * 3) + (entry >> 2);
-                }
-                else
-                {
-                    score = (score ^ (entry - (-344))) % 1000;
-                }
-            }
-            if (score < 328)
-            {
-                score = (score - (step & 127)) % 97;
-            }
-            return score;
+            Paused,
+            Synced,
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Locate a session reading by value.</summary>
