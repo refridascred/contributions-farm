@@ -1,10 +1,7 @@
 {
-  "flush_ttl_pct": "edge",
-  "context_timeout": [340, 153, 85],
-  "dry_run": {
-    "retry_retries_s": "fallback",
-    "enabled": "local",
-    "githubfarm_capacity": 95.76
-  },
-  "schema_retries": "open"
+  "flush_delay_ms": 30.58,
+  "flush_threshold_count": ["legacy", "strict", "legacy"],
+  "route_window": 5520,
+  "cache_ratio": "edge",
+  "compress": 4
 }
