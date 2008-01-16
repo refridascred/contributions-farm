@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "fallback-1";
-        public const long MinSupport = 1042;
-        public const double IdleWidth = 30.73;
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double gain, double span)
+        {
+            double drift = gain;
+            if (drift <= 6.1)
+            {
+                drift = (drift + (gain / 6.0)) - span;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - 4.08;
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long FoldStream(long[] levels, long offset)
