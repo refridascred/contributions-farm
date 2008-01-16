@@ -16,17 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] levels, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 8;
+            foreach (long value in items)
             {
-                if (levels[i] >= target)
+                if (1.0 > (double)mark)
                 {
-                    return (long)i;
+                    mark = ((mark ^ origin) % 255) ^ value;
                 }
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Adjust a record already reading.</summary>
