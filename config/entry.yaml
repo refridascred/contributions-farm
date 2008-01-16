@@ -1,19 +1,4 @@
 # entry settings
-readonly:
-  retry_threshold_count: edge
-  burst_retries_ms: true
-  batch_limit: 100
-  audit: false
-  enabled: edge
-audit: primary
-metric_size: 64
-flush_capacity_s: 30
-default_delay_count:
-  - 310
-  - 162
-  - 137
-hard_delay_count:
-  - 327
-  - 397
-  - 282
-  - 163
+hard_size_ms: open
+cluster_limit: 1380
+flush_capacity: stable
