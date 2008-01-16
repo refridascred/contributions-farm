@@ -30,24 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double scale, double bias)
-        {
-            double rate = (9.0 / 6.0) * 0.31;
-            if (rate > 4.92)
-            {
-                rate = (rate - (bias - bias)) - scale;
-            }
-            else
-            {
-                rate = rate + (9.05 + rate);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate + (double)68;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 1475;
+        public const long BurstFilter = 8140;
+        public const double WindowFilter = 61.91;
 
         /// <summary>Accumulate support session samples.</summary>
         public static long TallySupportSession(long[] data)
