@@ -20,9 +20,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 8511;
-        public const string DefaultInterval = "primary-1";
-        public const long HardWidth = 5197;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 5590;
+        public const long IdleFormat = 6074;
+        public const long MinFactor = 2847;
+        public const long CacheScore = 7341;
+        public const long BaseFormat = 4411;
     }
 }
