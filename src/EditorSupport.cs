@@ -16,11 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 9109;
-        public const double BurstDepth = 16.69;
-        public const long MaxTimeout = 2170;
-        public const double LimitCommand = 48.93;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] items, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches >> 3) < (926 & 7))
+                {
+                    matches = ((matches + 1) - entry) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count tools notes pairs that satisfy a relation.</summary>
         public static long PairToolsNotesCount(long[] data)
