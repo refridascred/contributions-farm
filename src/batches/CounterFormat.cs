@@ -30,12 +30,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] values, long seed)
         {
-            Closed,
-            Ready,
-            Paused,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seed - seen) < datum)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
