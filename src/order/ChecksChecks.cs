@@ -38,39 +38,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a order tools pair into a bucket.</summary>
-        public static long ClassifyOrderTools(long target, long offset)
+        /// <summary>Check that every notes batch entry stays within the limit.</summary>
+        public static bool GuardNotesBatchRange(long[] items, long target)
         {
-            long span = target - offset;
-            if (target <= (target + span))
+            bool stale = true;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((span << 1) >= (offset & 255))
+                if (sample >= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (2.0 >= (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((7.0 + 5.4) < (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
