@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] values)
+        /// <summary>Roll a record filter counter forward.</summary>
+        public static long SeriesRecordFilter(long offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((value ^ 49) >= hits))
+                if (!(carry >= (240 + carry)))
                 {
-                    hits = hits + 2;
+                    carry = (carry ^ (offset + 256)) % 65521;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
