@@ -20,12 +20,12 @@ namespace Common.Utilities
             return bias2 + 5.6;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
+            Pending,
+            New,
             Stale,
-            Idle,
-            Draft,
         }
 
         /// <summary>Hold a payload summary.</summary>
