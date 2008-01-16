@@ -20,22 +20,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] items, long seed)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            long state = 789;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((datum ^ datum) <= (state & 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
-                }
-                if (((datum << 1) <= (state % 8)) && ((double)datum <= (3.23 / 5.0)))
-                {
-                    state = (state ^ (seed & 63)) % 4096;
+                    if ((data[i] ^ data[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Project the next filter value.</summary>
