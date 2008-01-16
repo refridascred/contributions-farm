@@ -29,38 +29,19 @@ namespace Common.Utilities
         public const double SoftAccount = 25.42;
         public const long LimitAccount = 5698;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long seed, long step)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] series, long step)
         {
-            if (step <= (step + step))
+            bool flag = true;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step > (5.7 + 1.0))
+                if (sample > step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed >= (4.4 + 18.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (7.4 <= (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
