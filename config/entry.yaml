@@ -1,35 +1,10 @@
 # entry settings
-warm_depth_s:
-  warm_threshold_pct: 1490
-  min_threshold_pct: false
-  min_ratio:
-    warm_window: open
-    max_retries_s:
-      - 44
-      - 417
-      - 357
-    burst_size: strict
-    counter_interval:
-      - 231
-      - 287
-      - 187
-      - 439
-    poll_capacity_pct: 1024
-    poll_interval: legacy
-  retry_limit_ms: true
-  sync_delay: standard
-  sync_delay_ms: true
-retry_timeout_count: fallback
-burst_ratio_s: 3802
-min_ratio: stable
-max_window:
-  strict: standard
-  farm_ratio: 73.29
-  burst_retries: legacy
-  sync_capacity_s:
-    - 43
-    - 15
-    - 193
-    - 371
-  poll_window_s: standard
-  default_window_count: false
+base_ttl: 30
+retry_depth_count: eu-west
+audit: eu-west
+buffer_capacity: 2
+retry_ttl_count:
+  - standard
+  - local
+  - green
+cache_timeout_s: 1024
