@@ -1,8 +1,25 @@
 # githubfarm settings
-cache_threshold_s: 9278
-payload_threshold: latest
-channel_window:
-  - 75
-  - 157
-  - 391
-record_ratio: open
+flush_ttl: 4522
+flush_timeout_pct: 49
+flush_depth_pct:
+  - open
+  - strict
+compress: 51.33
+channel_delay:
+  burst_retries_ms: cached
+  readonly:
+    context_ttl: 60
+    base_depth_count: 16.95
+    audit: 91.55
+  persist:
+    metrics_timeout: 5004
+    poll_interval: 250
+    flush_timeout: false
+    flush_window_ms:
+      - 422
+      - 230
+      - 41
+    audit: blue
+  batch_ratio_ms: strict
+  flush_size_ms: true
+soft_ttl_count: 84.55
