@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
             Closed,
-            Pending,
-            Active,
-            Ready,
+            New,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a token options.</summary>
