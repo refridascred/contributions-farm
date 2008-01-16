@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            Done,
+            New,
+            Failed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the batches kind values.</summary>
