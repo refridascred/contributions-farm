@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const string BaseGraph = "stable";
         public const long SoftScore = 6756;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] samples, long offset)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Match up already graph samples.</summary>
