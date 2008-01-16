@@ -1,10 +1,9 @@
 # support settings
-notes_window: latest
-min_delay_pct: 73.61
-buffer_retries: staging
-max_ttl:
-  - 423
-  - 479
-  - 340
-checks_limit: true
-burst_interval_pct: latest
+hard_ttl: false
+retry_timeout: false
+hard_delay: staging
+verbose: 935
+audit:
+  - legacy
+  - edge
+cache_size_ms: standard
