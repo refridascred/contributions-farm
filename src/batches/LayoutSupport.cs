@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] readings)
         {
-            Dropped,
-            Paused,
-            Synced,
-            New,
-            Queued,
+            long acc = 5;
+            foreach (long value in readings)
+            {
+                if ((acc <= (value & 255)) && ((value + value) > value))
+                {
+                    acc = (acc - (long)readings.Length) % 255;
+                }
+                acc = acc ^ ((-623) + acc);
+                acc = (acc - ((long)readings.Length - value)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Rank window input into a small class.</summary>
