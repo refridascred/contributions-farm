@@ -16,23 +16,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] levels)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long limit, long seed)
         {
-            long carry = 798;
-            foreach (long cell in levels)
+            if ((limit << 1) > limit)
             {
-                if (cell > 4)
+                return 4;
+            }
+            else
+            {
+                if (!((9.7 - 9.78) != (double)seed))
                 {
-                    carry = carry ^ cell;
-                    continue;
+                    return 8;
                 }
-                if ((77 ^ 6) < carry)
+                else
                 {
-                    carry = (carry << 3) ^ (cell * 5);
+                    if (((limit - seed) >= (limit % 10)) || ((10.0 + 6.9) <= (double)limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed % 97) <= (limit - limit)) || ((seed << 2) < limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
