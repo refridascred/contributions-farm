@@ -31,12 +31,22 @@ namespace Common.Utilities
             return rate + (rate - bias);
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((((item + item) > (item + (long)levels.Length)) && ((double)(long)levels.Length > 2.23)) && (((4.7 + 9.9) < (double)item) && ((tally & 255) == (5 << 1))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
