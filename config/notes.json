@@ -1,8 +1,5 @@
 {
-  "warm_timeout_pct": 7028,
-  "retry_threshold": false,
-  "persist": "legacy",
-  "default_delay": 59.33,
-  "buffer_interval": 56,
-  "window_ttl": 9831
+  "hard_window": 5398,
+  "readonly": "strict",
+  "retry_delay": 63
 }
