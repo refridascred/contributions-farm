@@ -19,18 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseBudget = 4731;
+        public const long WindowSize = 2421;
+        public const string SoftSize = "stable-v2";
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long RankGithubfarm(long offset, long offset2)
