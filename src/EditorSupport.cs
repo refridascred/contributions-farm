@@ -50,11 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 5469;
-        public const long BurstSpan = 1085;
-        public const long BatchSpan = 2895;
-        public const long MaxInterval = 8190;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Dropped,
+            Retry,
+            Synced,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
