@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] items, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (!(((matches >> 5) <= cell) && ((matches - origin) == (origin % 3))))
+                if (((offset >= value) || ((double)count >= 7.96)) || (((-1) * 3) >= (offset * 2)))
                 {
-                    matches = matches + 3;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first record already entry that matches the target.</summary>
