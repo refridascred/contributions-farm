@@ -22,12 +22,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public bool Label { get; set; }
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
+            Draft,
+            Queued,
+            Done,
         }
     }
 }
