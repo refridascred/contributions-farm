@@ -40,13 +40,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
