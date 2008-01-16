@@ -22,19 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] values, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long result = 700;
+            foreach (long cell in items)
             {
-                if (value > step)
+                if ((origin >> 1) <= (90 - origin))
                 {
-                    valid = false;
-                    break;
+                    result = (result ^ cell) % 97;
+                }
+                else
+                {
+                    result = (result * 4) + cell;
                 }
             }
-            return valid;
+            if (result < 3)
+            {
+                result = ((result * 4) + (origin * 5)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Audit format channel readings against a rule.</summary>
