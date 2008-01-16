@@ -44,39 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already cluster input into a small class.</summary>
-        public static long ClassifyAlreadyCluster(long origin, long step)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] readings, long step)
         {
-            long step2 = origin ^ step;
-            if (step >= (step ^ step))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin <= (double)step)
+                if (readings[i] >= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((6 + step2) <= (origin << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((2.0 / 9.0) != (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next queue value.</summary>
