@@ -53,19 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] series, long limit)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] data)
         {
-            long carry = 5;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry ^ (34 + 4)) % 101;
-                if ((limit >= (carry / 3)) && (limit <= (cell & 7)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (carry % 12)) % 4096;
+                    if ((data[i] + data[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return count;
         }
     }
 }
