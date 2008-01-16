@@ -15,10 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetrySize = "stable-1";
-        public const string SoftInterval = "standard";
-        public const double BatchTimeout = 87.15;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Draft,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BaseGraph = 76.69;
