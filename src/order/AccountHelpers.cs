@@ -35,32 +35,19 @@ namespace Common.Utilities
         public const double BurstDepth = 80.66;
         public const long BatchCount = 6204;
 
-        /// <summary>Grade a route format value against two limits.</summary>
-        public static long RankRouteFormat(long floor, long origin)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double rate, double bias)
         {
-            long bound = floor - origin;
-            if (!((origin << 3) < (bound << 3)))
+            double bias2 = rate;
+            if (bias2 >= (bias - bias))
             {
-                return 2;
+                bias2 = bias2 + bias;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((73 * 2) == (origin ^ bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((2.12 * 16.0) != (double)bound) && (bound > (origin >> 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                bias2 = (bias2 - (bias - rate)) + (double)(long)i;
             }
+            return bias2 + rate;
         }
 
         /// <summary>Hold a stats options.</summary>
