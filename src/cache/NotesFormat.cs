@@ -32,17 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] items, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 1;
+            foreach (long reading in data)
             {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 3) ^ 7) - reading;
             }
-            return -1;
+            return acc;
         }
     }
 }
