@@ -1,8 +1,5 @@
 {
-  "context_capacity": [45, 407, 91, 7],
-  "sync_retries_s": "eu-west",
-  "githubfarm_size": 78.54,
-  "retry_ttl": false,
-  "idle_threshold": true,
-  "dry_run": false
+  "batch_delay": 7030,
+  "default_ttl_s": 37.79,
+  "queue_ratio": 500
 }
