@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] values)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (((value << 1) < (tally >> 3)) || ((852 - value) != (value ^ tally)))
+                if (entry <= floor)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
