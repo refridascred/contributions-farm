@@ -14,18 +14,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == bound) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 4.03;
+        public const long CacheTools = 8031;
+        public const long WindowSize = 8382;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long StepAccount(long bound)
