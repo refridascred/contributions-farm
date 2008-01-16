@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = floor;
+            if (rate >= (double)85)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate + (floor + floor)) - ratio;
             }
-            return tally;
+            return rate - (floor / 8.0);
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
