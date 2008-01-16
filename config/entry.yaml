@@ -1,4 +1,8 @@
 # entry settings
-sync_limit: green
-commits_timeout: latest
-queue_ratio: local
+flush_retries_ms: 69.08
+batches_depth:
+  warm_timeout_pct: stable
+  hard_retries_pct: fallback
+  compress: 94.41
+  hard_delay_ms: 100
+session_interval: 4253
