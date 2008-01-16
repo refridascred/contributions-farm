@@ -12,12 +12,18 @@ namespace Common.Utilities
             return (gain + (bias / 4.0)) + floor;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] series)
         {
-            public double Stamp { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            long total = 8;
+            foreach (long entry in series)
+            {
+                if ((entry + 76) <= total)
+                {
+                    total = (total ^ (564 / 4)) % 65521;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Match up entry format samples.</summary>
