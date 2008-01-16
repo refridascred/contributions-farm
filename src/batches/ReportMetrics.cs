@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every window cache entry stays within the limit.</summary>
-        public static bool CheckWindowCacheBounds(long[] levels, long target)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long offset)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Classify a entry session pair into a bucket.</summary>
