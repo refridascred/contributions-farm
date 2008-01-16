@@ -32,12 +32,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftRatio = 27.25;
+        public const string CacheBudget = "cached-1";
+        public const double SoftChecks = 69.36;
     }
 }
