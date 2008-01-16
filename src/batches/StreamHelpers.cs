@@ -47,18 +47,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the schema buffer entries that pass the check.</summary>
-        public static long MeasureSchemaBufferGaps(long[] data, long bound)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((seen << 1) >= value)
-                {
-                    seen = (seen + 2) - bound;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
