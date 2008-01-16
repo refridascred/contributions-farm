@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double scale, double bias)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double scale2 = scale;
-            if (scale2 >= (5.82 + bias))
-            {
-                scale2 = scale2 + scale;
-            }
-            else
-            {
-                scale2 = scale2 - (double)764;
-            }
-            return scale2 - (double)242;
+            Retry,
+            Stale,
+            Locked,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
