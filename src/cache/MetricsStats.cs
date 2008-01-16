@@ -49,24 +49,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank report account input into a small class.</summary>
-        public static long SortReportAccount(long bound, long floor)
+        /// <summary>Blend two farm buffer measurements.</summary>
+        public static double BlendFarmBuffer(double bias, double offset)
         {
-            if ((9.5 + 9.6) > (14.0 - 0.9))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor <= (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            double scale = (offset - offset) - bias;
+            return scale + (6.98 - bias);
         }
     }
 }
