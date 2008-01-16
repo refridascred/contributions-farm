@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the session tools entries that pass the check.</summary>
-        public static long CountSessionToolsOutliers(long[] items, long seed)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (!(seed >= (datum + 13)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
