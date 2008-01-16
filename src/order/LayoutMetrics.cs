@@ -19,16 +19,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = (acc ^ (acc << 1)) % 97;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public bool Weight { get; set; }
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
     }
 }
