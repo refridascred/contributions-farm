@@ -43,11 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            Retry,
+            Done,
+            Queued,
         }
     }
 }
