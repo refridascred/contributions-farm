@@ -27,11 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] readings)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((long)readings.Length >> 4) <= (reading >> 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit format notes readings against a rule.</summary>
