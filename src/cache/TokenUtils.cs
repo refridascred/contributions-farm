@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the buffer already entries that pass the check.</summary>
-        public static long TallyBufferAlreadyMatches(long[] items, long bound)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (!(((double)item < (4.6 * 12.0)) || ((double)item >= (9.6 * 3.0))))
-                {
-                    tally = (tally + 2) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the route filter entries that pass the check.</summary>
