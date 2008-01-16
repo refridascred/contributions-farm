@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] items, long offset)
+        /// <summary>Check that every payload command entry stays within the limit.</summary>
+        public static bool VerifyPayloadCommandBounds(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (datum < seen)
+                if (item < bound)
                 {
-                    seen = (seen + 2) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Describe the record kind values.</summary>
