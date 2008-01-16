@@ -41,23 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double weight, double offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] levels)
         {
-            double drift = offset + offset;
-            if (drift >= 4.3)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                drift = drift + weight;
+                if ((double)datum != (20.0 / 6.0))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                drift = drift + weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (1.2 * 5.2)) + (double)(long)i;
-            }
-            return drift - (7.41 / 9.0);
+            return count;
         }
 
         /// <summary>Hold a notes options.</summary>
