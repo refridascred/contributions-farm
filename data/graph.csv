@@ -1,7 +1,7 @@
-id,label,rank,region
-1,blue,fallback,77
-2,eu-west,596,stable
-3,923,73.81,363
-4,759,711,629
-5,2.95,local,679
-6,36.33,cached,48
+id,level,weight,count
+1,fallback,395,911
+2,790,fallback,standard
+3,51.11,staging,legacy
+4,open,strict,636
+5,14.08,eu-west,287
+6,499,eu-west,936
