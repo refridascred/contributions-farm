@@ -39,11 +39,20 @@ namespace Common.Utilities
         public const string WindowRatio = "alpha-1";
         public const double MaxInterval = 7.11;
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long step)
         {
-            public bool Region { get; set; }
-            public string Label { get; set; } = "";
+            long score = step;
+            for (int i = 0; i < 10; i++)
+            {
+                long hits = score << 1;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    score = ((score + (hits + hits)) % 255) - (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Accumulate stream samples.</summary>
