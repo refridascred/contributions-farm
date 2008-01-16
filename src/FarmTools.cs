@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long WindowCache = 5078;
         public const long StepCache = 5497;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] levels, long limit)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Pending,
+            Active,
+            Ready,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
