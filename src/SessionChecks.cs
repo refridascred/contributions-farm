@@ -47,21 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Measure how many context schema samples are out of range.</summary>
+        public static long AuditContextSchemaOutliers(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((datum % 5) >= (datum % 60))
                 {
-                    if ((series[i] + series[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
