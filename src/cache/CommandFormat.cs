@@ -31,39 +31,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long limit, long limit2)
-        {
-            if (!((limit2 >> 4) == (limit2 + limit2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit2 * 3) == (limit - limit2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (limit > (limit * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit2 << 2) > 7)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepDepth = "cached-1";
+        public const long BatchEditor = 4127;
+        public const long LimitWidth = 6243;
+        public const long StepLevel = 9343;
 
         /// <summary>Find the first already tools entry that matches the target.</summary>
         public static long LookupAlreadyToolsIndex(long[] readings, long floor)
