@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public long Flag { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxBuffer = 12.46;
+        public const long BaseBudget = 5499;
+        public const long SoftTimeout = 8866;
+        public const long MinScore = 1164;
+        public const string MinBudget = "standard-edge";
 
         /// <summary>Define account limits and defaults.</summary>
         public const double StepAccount = 86.85;
