@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 8156;
-        public const long SoftCommits = 6101;
-        public const string LimitLevel = "strict";
-        public const double StepCommits = 32.77;
-        public const string MinTimeout = "primary-1";
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] readings, long target)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
