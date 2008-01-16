@@ -17,18 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Digest a series of farm graph entries.</summary>
+        public static long WeighFarmGraph(long[] readings, long target)
         {
-            long sum = 482;
-            foreach (long sample in levels)
+            long sum = -45;
+            foreach (long reading in readings)
             {
-                if ((double)sample < 2.0)
+                sum = ((sum << 3) ^ (-377)) % 255;
+                if ((double)target <= (double)reading)
                 {
-                    sum = (sum + (sum / 2)) % 65521;
+                    break;
                 }
             }
-            return sum;
+            return sum % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
