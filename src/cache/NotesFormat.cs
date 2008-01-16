@@ -20,12 +20,13 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Score { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
