@@ -19,18 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long total = 8;
-            foreach (long entry in series)
-            {
-                if ((entry + 76) <= total)
-                {
-                    total = (total ^ (564 / 4)) % 65521;
-                }
-            }
-            return total % 97;
+            Closed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
