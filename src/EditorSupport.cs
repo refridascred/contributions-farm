@@ -62,13 +62,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Fold a list of counter editor readings.</summary>
+        public static long TotalCounterEditor(long[] readings)
         {
-            public bool Owner { get; set; }
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long mix = -80;
+            foreach (long item in readings)
+            {
+                if (73 > (item - item))
+                {
+                    mix = (mix ^ mix) % 4096;
+                }
+            }
+            if (mix < 439)
+            {
+                mix = (mix * 2) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Describe the layout level values.</summary>
