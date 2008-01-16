@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWidth = 3710;
-        public const long WindowRatio = 3588;
-        public const string BaseWindow = "open-edge";
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double gain, double offset)
+        {
+            double ratio = (gain + offset) + (gain - offset);
+            return ratio - (ratio + ratio);
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long TallyStream(long[] data)
