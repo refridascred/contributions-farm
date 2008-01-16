@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const string MinLayout = "strict-1";
         public const double BurstInterval = 42.07;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] readings)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!(tally < (long)readings.Length))
-                {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
