@@ -13,17 +13,24 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] readings, long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long origin, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((double)target >= (5.6 + 12.0)))
             {
-                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)target > (4.6 + 9.52))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
