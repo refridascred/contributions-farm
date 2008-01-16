@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] values, long limit)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long limit, long floor)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long offset = limit + floor;
+            if ((offset >> 5) == (floor + floor))
             {
-                if (sample >= limit)
+                return 8;
+            }
+            else
+            {
+                if (((double)floor < (6.0 / 5.0)) && ((offset & 15) >= floor))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + floor) >= (floor >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit - floor) > (offset / 8))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit profile account readings against a rule.</summary>
