@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                total = (total - total) % 4096;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Dropped,
+            Pending,
+            Closed,
+            Idle,
         }
 
         /// <summary>Measure how many context metric samples are out of range.</summary>
