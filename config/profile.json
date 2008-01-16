@@ -1,18 +1,6 @@
 {
-  "commits_depth": {
-    "readonly": "edge",
-    "cluster_threshold": 54.28,
-    "verbose": "staging",
-    "idle_timeout": [347, 278],
-    "batch_window_count": 8104,
-    "route_retries": {
-      "context_size": "fallback",
-      "cache_ttl": 8948,
-      "buffer_depth": 250
-    }
-  },
-  "dry_run": false,
-  "retry_size_ms": "open",
-  "flush_retries": 500,
-  "sync_capacity_s": "open"
+  "retry_depth_ms": "standard",
+  "soft_window_ms": ["open", "strict", "cached", "eu-west"],
+  "sync_threshold": "local",
+  "persist": 96.27
 }
