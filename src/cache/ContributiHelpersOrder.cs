@@ -37,12 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public double Score { get; set; }
         }
     }
 }
