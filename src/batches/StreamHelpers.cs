@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] items)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long offset, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long prev = offset ^ step;
+            if ((offset << 3) != (prev >> 5))
             {
-                if ((1.0 - 9.3) > (double)sample)
+                return 6;
+            }
+            else
+            {
+                if ((prev & 127) == (offset / 4))
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (((offset - offset) < (step ^ prev)) || ((7.9 - 6.0) > (double)step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
