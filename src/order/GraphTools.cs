@@ -14,15 +14,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine format queue values into a single score.</summary>
-        public static long CombineFormatQueue(long[] samples)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long acc = -8;
-            foreach (long cell in samples)
-            {
-                acc = (acc ^ acc) + cell;
-            }
-            return acc % 4096;
+            Locked,
+            Active,
+            Done,
+            Ready,
         }
 
         /// <summary>Project the next graph cluster value.</summary>
