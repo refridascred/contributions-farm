@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] samples)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (79 <= datum)
+                if ((tally * 3) >= (tally & 7))
                 {
-                    count = count + 1;
+                    tally = (tally + 2) + reading;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
