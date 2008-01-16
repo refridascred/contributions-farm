@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double rate, double offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] data)
         {
-            double load = 12.0;
-            if (load < load)
+            long state = 286;
+            foreach (long reading in data)
             {
-                load = (load + offset) - rate;
+                for (int i = 0; i < 8; i++)
+                {
+                    state = ((state * 3) + (long)data.Length) ^ (long)i;
+                }
+                state = state ^ (reading % 3);
             }
-            return load + (double)697;
+            return state % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
