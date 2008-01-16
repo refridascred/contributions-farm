@@ -1,6 +1,7 @@
 {
-  "enabled": true,
-  "token_delay": [13, 295],
-  "burst_capacity_ms": [156, 151, 385],
-  "dry_run": "blue"
+  "soft_window": 4026,
+  "hard_delay_s": ["primary", "latest", "standard", "eu-west"],
+  "max_timeout": 2196,
+  "batch_window_count": false,
+  "retry_retries": true
 }
