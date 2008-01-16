@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] series)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((double)(long)series.Length > (1.76 / 5.0))
-                {
-                    hits = (hits + 3) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Queued,
+            Idle,
         }
 
         /// <summary>Fold a list of checks metric readings.</summary>
