@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] samples, long target)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double bias = scale / 2.0;
+            return bias - (scale + offset);
         }
 
         /// <summary>Roll a order counter forward.</summary>
