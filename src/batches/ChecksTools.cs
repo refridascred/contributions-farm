@@ -37,18 +37,11 @@ namespace Common.Utilities
             return drift - 7.2;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] samples, long target)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (item >= (seen % 12))
-                {
-                    seen = (seen + 3) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitWidth = 2251;
+        public const long CacheCount = 3600;
+        public const long BatchTools = 9493;
+        public const long LimitScore = 67;
+        public const double MinTools = 62.8;
     }
 }
