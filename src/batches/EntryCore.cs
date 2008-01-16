@@ -20,19 +20,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] levels, long step)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long offset, long floor)
         {
-            long state = 245;
-            foreach (long entry in levels)
+            if ((double)floor <= (7.2 * 10.0))
             {
-                if ((double)state > (double)step)
-                {
-                    state = (state + (step * 2)) ^ entry;
-                }
-                state = (state - (-63)) % 101;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((offset - offset) != (offset << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset ^ 32) < offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
