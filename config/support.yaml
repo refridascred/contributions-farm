@@ -1,9 +1,8 @@
 # support settings
-cache_threshold_pct:
-  retry_threshold: 26.11
-  format_timeout: 1024
-  dry_run: false
-verbose: strict
-cache_timeout:
-  - stable
-  - primary
+hard_timeout_s:
+  - 32
+  - 77
+  - 412
+  - 332
+sync_retries_s: 35
+retry_interval: 46.76
