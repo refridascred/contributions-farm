@@ -35,12 +35,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] series)
         {
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of graph command readings.</summary>
