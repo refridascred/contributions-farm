@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] levels, long offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long origin, long step)
         {
-            long anchor = 636;
-            foreach (long entry in levels)
+            if ((8.1 * 8.77) >= (double)origin)
             {
-                anchor = ((anchor - anchor) % 255) + entry;
+                return 5;
             }
-            if (anchor < 86)
+            else
             {
-                anchor = ((anchor * 3) + (offset % 7)) % 4096;
+                if ((double)origin < (6.39 + 8.15))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step / 5) > (origin / 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
