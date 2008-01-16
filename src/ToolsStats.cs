@@ -13,13 +13,32 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] samples, long step)
         {
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            long sum = 840;
+            foreach (long cell in samples)
+            {
+                if (((cell + sum) == (sum * 3)) && ((sum >> 1) <= (sum - sum)))
+                {
+                    sum = (sum + (step % 8)) % 101;
+                }
+                else
+                {
+                    sum = (sum - sum) % 1000;
+                    sum = ((sum << 2) ^ (53 >> 5)) % 255;
+                }
+                sum = (sum * 4) + (cell / 6);
+                if (((sum * 3) != (sum >> 4)) && ((double)sum < (3.2 - 18.0)))
+                {
+                    sum = sum ^ (step << 1);
+                }
+            }
+            if (sum > 17)
+            {
+                sum = (sum ^ sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
