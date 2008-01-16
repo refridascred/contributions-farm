@@ -64,12 +64,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
+            Pending,
+            Queued,
             New,
-            Closed,
-            Synced,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
