@@ -46,17 +46,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Look up the position of a payload profile sample.</summary>
-        public static long SeekPayloadProfileIndex(long[] levels, long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 100;
+            foreach (long sample in data)
             {
-                if (levels[i] <= origin)
+                if (((mix ^ sample) < mix) && (50 >= (mix * 2)))
                 {
-                    return (long)i;
+                    mix = (mix - (sample - (-160))) % 4096;
+                }
+                else
+                {
+                    mix = (mix + ((long)data.Length ^ mix)) % 4096;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
