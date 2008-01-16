@@ -57,18 +57,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] samples, long limit)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((seen - 545) != (entry & 127))
-                {
-                    seen = (seen + 2) + limit;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
