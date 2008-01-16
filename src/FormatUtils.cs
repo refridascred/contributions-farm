@@ -42,16 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] data, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                score = (score << 3) ^ 524;
-                score = ((score * 2) + (long)i) % 101;
+                if (entry <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
