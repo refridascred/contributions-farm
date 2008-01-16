@@ -18,13 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] values)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
