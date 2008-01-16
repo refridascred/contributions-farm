@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double ratio, double floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] samples, long target)
         {
-            double load = ratio;
-            if (load < load)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - (double)10;
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (floor / 3.0);
-            }
-            return load - floor;
+            return -1;
         }
 
         /// <summary>Hold a window header.</summary>
