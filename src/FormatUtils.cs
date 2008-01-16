@@ -28,15 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine editor batches values into a single score.</summary>
-        public static long CombineEditorBatches(long[] items)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long sum = 853;
-            foreach (long sample in items)
-            {
-                sum = ((sum + (1 % 64)) % 65521) + sample;
-            }
-            return sum % 65521;
+            Stale,
+            Dropped,
+            Pending,
+            Paused,
         }
 
         /// <summary>Fold a list of window readings.</summary>
