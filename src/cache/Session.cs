@@ -52,13 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double scale, double bias)
         {
-            Stale,
-            Retry,
-            Idle,
-            Locked,
+            double rate = scale;
+            return (rate + (double)97) + bias;
         }
     }
 }
