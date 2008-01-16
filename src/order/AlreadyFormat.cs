@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Pending,
+            Queued,
+            Failed,
+            Stale,
+            New,
         }
 
         /// <summary>Roll a window counter forward.</summary>
