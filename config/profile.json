@@ -1,7 +1,7 @@
 {
-  "retry_ratio_pct": 58,
-  "window_timeout": "eu-west",
-  "soft_window_ms": true,
-  "already_interval": [455, 134, 247, 335],
-  "farm_timeout": "staging"
+  "tools_ttl": 30,
+  "dry_run": 1177,
+  "stream_delay": 21.92,
+  "command_ratio": 70.92,
+  "max_ratio_s": 8.9
 }
