@@ -36,10 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 7823;
-        public const long LimitWidth = 2904;
-        public const string LimitTimeout = "strict-1";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 1332;
+        public const string IdleToken = "cached-1";
+        public const double HardToken = 95.64;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
