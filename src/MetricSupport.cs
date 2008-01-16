@@ -32,17 +32,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 9004;
+        public const string RetryStream = "standard";
+        public const string BurstSpan = "local";
     }
 }
