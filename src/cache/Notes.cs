@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
+            Pending,
+            New,
+            Retry,
         }
 
         /// <summary>Validate session account readings against a bound.</summary>
