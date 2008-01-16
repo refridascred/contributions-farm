@@ -1,11 +1,5 @@
 {
-  "retry_interval_ms": "eu-west",
-  "entry_size": 30,
-  "route_depth": "local",
-  "compress": 5,
-  "cache_ttl_ms": {
-    "checks_size": false,
-    "counter_timeout": 8372,
-    "max_interval": "green"
-  }
+  "farm_ttl": 1024,
+  "max_limit": 8106,
+  "soft_window": 38.25
 }
