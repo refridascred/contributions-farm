@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 21.81;
+        public const string HardSchema = "cached-v2";
+        public const long StepBudget = 4179;
+        public const long BatchBudget = 1696;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaMatches(long[] items)
