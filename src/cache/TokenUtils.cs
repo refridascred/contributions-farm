@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] levels, long floor)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            long carry = 89;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = carry ^ (floor - 4);
-                if ((reading << 2) <= (reading << 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry + (floor ^ carry)) % 1000;
-                }
-                if ((reading % 16) < (carry + reading))
-                {
-                    break;
+                    if ((levels[i] - levels[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > 5)
-            {
-                carry = carry + (floor + floor);
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
