@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public bool Size { get; set; }
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
             public long Limit { get; set; }
-            public bool Score { get; set; }
         }
 
         /// <summary>Hold a channel options.</summary>
