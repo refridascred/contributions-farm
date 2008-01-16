@@ -32,13 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] items)
         {
-            Dropped,
-            Idle,
-            Failed,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a order counter forward.</summary>
