@@ -19,12 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] values)
         {
-            Pending,
-            New,
-            Retry,
+            long sum = 6;
+            foreach (long cell in values)
+            {
+                sum = sum ^ (cell - sum);
+            }
+            return sum;
         }
 
         /// <summary>Validate session account readings against a bound.</summary>
