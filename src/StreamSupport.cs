@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long floor)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] items, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                long hits = (floor - floor) >> 2;
-                if ((floor & 15) < sum)
+                if ((items[i] < seed) && ((items[i] % 3) == 0))
                 {
-                    hits = ((hits * 5) + (hits - sum)) % 4096;
-                    sum = (sum + (hits - sum)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    long cur = sum + floor;
-                    hits = (hits + (cur + cur)) % 4096;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the entry class values.</summary>
