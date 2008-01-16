@@ -13,12 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] series)
         {
-            Active,
-            Retry,
-            Pending,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((value + value) > value)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
