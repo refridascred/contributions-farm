@@ -19,15 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Synced,
-            Queued,
-            Draft,
-            Retry,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxLevel = "staging-edge";
+        public const long WindowTools = 4785;
+        public const long BurstCount = 2431;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long DigestTools(long[] values)
