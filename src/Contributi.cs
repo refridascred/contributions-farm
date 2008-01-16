@@ -19,24 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long floor, long bound)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] values, long origin)
         {
-            if ((bound & 127) == (bound + bound))
+            bool ok = true;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound >= (907 % 64)) || ((floor - bound) <= bound))
+                if (cell < origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the batches level values.</summary>
