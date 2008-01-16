@@ -20,16 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the schema stats series from a seed.</summary>
-        public static long StepSchemaStats(long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 2) + (origin * 4)) % 1000;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Queued,
+            Done,
+            Idle,
+            Locked,
         }
 
         /// <summary>Accumulate report samples.</summary>
