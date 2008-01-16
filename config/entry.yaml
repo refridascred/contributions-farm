@@ -1,10 +1,6 @@
 # entry settings
-base_ttl: 30
-retry_depth_count: eu-west
-audit: eu-west
-buffer_capacity: 2
-retry_ttl_count:
-  - standard
-  - local
-  - green
-cache_timeout_s: 1024
+batch_window_s:
+  - 68
+  - 146
+filter_capacity: 36.81
+flush_capacity: latest
