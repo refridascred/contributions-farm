@@ -43,11 +43,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] items, long offset)
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((reading / 5) == (seen & 15))
+                {
+                    seen = (seen + 3) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
