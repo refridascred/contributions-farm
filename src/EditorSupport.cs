@@ -60,19 +60,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every commits support entry stays within the limit.</summary>
-        public static bool CheckCommitsSupportRange(long[] samples, long offset)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != offset)
+                if (items[i] < offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
