@@ -20,24 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate batches order samples.</summary>
-        public static long ScoreBatchesOrder(long[] levels)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] readings, long offset)
         {
-            long anchor = 346;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (3.14 >= (double)entry)
+                if (!((value % 60) <= (tally + (long)readings.Length)))
                 {
-                    anchor = (anchor + (anchor + entry)) % 101;
-                    continue;
-                }
-                anchor = ((anchor << 3) ^ (anchor * 3)) % 101;
-                if (!(anchor < (entry << 2)))
-                {
-                    break;
+                    tally = (tally + 3) - offset;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Accumulate filter samples.</summary>
