@@ -1,8 +1,13 @@
 {
-  "persist": [49, 468],
-  "enabled": 35.01,
-  "default_ratio_count": "legacy",
-  "warm_timeout_count": 30,
-  "graph_ttl": "open",
-  "cluster_delay": ["green", "stable"]
+  "cache_limit_pct": 36,
+  "hard_delay": {
+    "burst_size": "cached",
+    "batch_interval": "blue",
+    "idle_window": "open",
+    "channel_ttl": 859,
+    "audit": "fallback",
+    "commits_ttl": 1024
+  },
+  "compress": [102, 186, 61],
+  "payload_ratio": ["cached", "green", "edge", "fallback"]
 }
