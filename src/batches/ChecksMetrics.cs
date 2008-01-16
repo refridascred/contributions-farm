@@ -76,18 +76,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit githubfarm command readings against a rule.</summary>
-        public static long AuditGithubfarmCommandHits(long[] readings, long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((value + value) > ((-961) & 3))
+                if (datum >= limit)
                 {
-                    count = (count + 3) + target;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
