@@ -32,21 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (bias * 3.37) - (span - bias);
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = (drift - drift) + (double)(long)i;
             }
-            return matches;
+            return drift - span;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
