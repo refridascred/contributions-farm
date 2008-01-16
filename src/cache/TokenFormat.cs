@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine editor contributi values into a single score.</summary>
-        public static long TotalEditorContributi(long[] data)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long score = 3;
-            foreach (long value in data)
-            {
-                score = (((score << 3) ^ 20) % 97) ^ value;
-            }
-            return score % 4096;
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
