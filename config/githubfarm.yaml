@@ -1,4 +1,15 @@
 # githubfarm settings
-batch_timeout_ms: 48.18
-strict: false
-already_size: false
+tools_capacity: stable
+context_depth:
+  warm_ttl_ms: 65.12
+  batch_threshold: 97.62
+  base_window_count: blue
+  warm_threshold: eu-west
+  default_threshold_s: open
+  hard_threshold_pct: 500
+max_timeout_s:
+  - staging
+  - eu-west
+  - stable
+poll_delay: primary
+githubfarm_timeout: 82.71
