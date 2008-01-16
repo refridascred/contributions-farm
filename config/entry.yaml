@@ -1,21 +1,19 @@
 # entry settings
-dry_run: strict
-hard_delay_ms: local
-burst_ttl: true
-order_delay:
-  checks_ratio: latest
-  contributi_delay: latest
-  account_threshold: strict
-  contributi_window: 77.37
-retry_interval_ms: 25.04
-min_timeout_pct:
-  compress:
-    - 443
-    - 299
-    - 416
-    - 17
-  enabled:
-    - primary
-    - latest
-  context_retries: false
-  warm_threshold_count: 28.21
+readonly:
+  retry_threshold_count: edge
+  burst_retries_ms: true
+  batch_limit: 100
+  audit: false
+  enabled: edge
+audit: primary
+metric_size: 64
+flush_capacity_s: 30
+default_delay_count:
+  - 310
+  - 162
+  - 137
+hard_delay_count:
+  - 327
+  - 397
+  - 282
+  - 163
