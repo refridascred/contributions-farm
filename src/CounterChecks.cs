@@ -33,21 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] levels)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry != limit)
                 {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
