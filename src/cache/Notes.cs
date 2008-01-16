@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Stale,
-            Retry,
-            Locked,
-            Dropped,
+            Paused,
+            Idle,
             Active,
         }
 
