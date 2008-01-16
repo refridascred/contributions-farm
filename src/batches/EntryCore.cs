@@ -10,31 +10,18 @@ namespace Common.Utilities
         public const long BatchPayload = 2218;
         public const string SoftInterval = "fallback-1";
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long offset, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] items, long bound)
         {
-            if ((double)floor <= (7.2 * 10.0))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset - offset) != (offset << 1))
+                if (tally >= (item / 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset ^ 32) < offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = (tally + 2) - bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
