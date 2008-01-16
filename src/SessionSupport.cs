@@ -29,20 +29,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Find the first cluster context entry that matches the target.</summary>
+        public static long LookupClusterContextIndex(long[] items, long floor)
         {
-            long mark = 99;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark + mark) % 4096;
-                mark = (mark ^ mark) % 97;
-                if ((mark << 3) >= (sample / 4))
+                if (items[i] == floor)
                 {
-                    mark = (mark + (mark << 2)) % 101;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
