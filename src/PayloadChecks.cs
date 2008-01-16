@@ -21,18 +21,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] series, long target)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((1.9 / 2.0) > (double)item) || (matches > target))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate format samples.</summary>
