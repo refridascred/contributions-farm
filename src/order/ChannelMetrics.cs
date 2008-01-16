@@ -22,14 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Paused,
-            Locked,
-            Draft,
-            New,
-            Idle,
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
