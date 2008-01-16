@@ -64,23 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] data, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] series, long step)
         {
-            long anchor = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((offset > 76) && (value >= (34 % 2)))
+                if (entry > step)
                 {
-                    continue;
-                }
-                anchor = anchor - (89 + offset);
-                if ((6.4 + 13.0) <= (double)offset)
-                {
+                    valid = false;
                     break;
                 }
             }
-            return anchor;
+            return valid;
         }
     }
 }
