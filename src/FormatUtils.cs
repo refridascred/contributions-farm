@@ -88,23 +88,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double weight, double offset)
+        /// <summary>Audit token notes readings against a rule.</summary>
+        public static long CountTokenNotesMatches(long[] levels, long limit)
         {
-            double drift = (double)(70 + (-2));
-            if (drift < 16.0)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                drift = ((drift - 9.71) - weight) - offset;
+                if ((limit << 1) < count)
+                {
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                drift = drift + (double)24;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (double)8) + (double)(long)i;
-            }
-            return drift - (double)4;
+            return count;
         }
     }
 }
