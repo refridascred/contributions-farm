@@ -50,18 +50,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] samples, long limit)
+        /// <summary>Compare every pair of graph command readings.</summary>
+        public static long CompareGraphCommandCount(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)hits > (14.0 + 2.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 2) ^ cell) + limit;
+                    if ((items[i] - items[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
