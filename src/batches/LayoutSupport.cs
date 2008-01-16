@@ -53,19 +53,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Iterate the channel account series from a seed.</summary>
-        public static long SeriesChannelAccount(long bound)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] levels)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)i < (carry & 127))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry - carry;
+                    if ((levels[i] + levels[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
     }
 }
