@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Grade a route entry value against two limits.</summary>
+        public static long ClassifyRouteEntry(long bound, long offset)
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            if (!((bound / 2) <= offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset - bound) <= offset) && ((offset - 978) > bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (3 > (bound + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
