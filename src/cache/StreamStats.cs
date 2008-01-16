@@ -16,19 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] items, long origin)
-        {
-            long mark = 8;
-            foreach (long value in items)
-            {
-                if (1.0 > (double)mark)
-                {
-                    mark = ((mark ^ origin) % 255) ^ value;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetrySize = "stable-1";
+        public const string SoftInterval = "standard";
+        public const double BatchTimeout = 87.15;
 
         /// <summary>Adjust a record already reading.</summary>
         public static double BlendRecordAlready(double gain, double floor)
