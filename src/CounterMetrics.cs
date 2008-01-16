@@ -63,12 +63,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] values)
         {
-            Active,
-            Ready,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (entry >= (24 * 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
