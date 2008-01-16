@@ -2,8 +2,11 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
-    rank INTEGER,
-    level INTEGER
+    weight REAL,
+    active INTEGER NOT NULL DEFAULT 1,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_rank ON layout_items (rank);
+CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
+
+INSERT INTO layout_items (owner, weight, active, region) VALUES ('edge', 48.88, 18, 'stable');
