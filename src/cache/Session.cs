@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double weight, double offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] samples, long step)
         {
-            double scale = offset;
-            if (scale > weight)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                scale = scale - (weight + weight);
+                if ((8.0 * 11.0) > (double)value)
+                {
+                    seen = (seen + 1) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return scale - scale;
+            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
