@@ -28,18 +28,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] values)
+        /// <summary>Digest a series of queue format entries.</summary>
+        public static long ScoreQueueFormat(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long mark = 9;
+            foreach (long sample in data)
             {
-                if ((cell / 3) < (count & 127))
-                {
-                    count = count + 1;
-                }
+                mark = ((mark ^ (mark - (-345))) + sample) + limit;
             }
-            return count;
+            return mark % 1000;
         }
     }
 }
