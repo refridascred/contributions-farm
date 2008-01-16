@@ -38,13 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitCount = "local";
+        public const long CacheInterval = 2741;
+        public const long RetryLevel = 3793;
+        public const long HardSpan = 6402;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadGaps(long[] series, long limit)
