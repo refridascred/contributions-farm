@@ -18,18 +18,14 @@ namespace Common.Utilities
         public const double SoftSize = 81.31;
         public const string BatchCommand = "legacy";
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] samples)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (tally >= (long)samples.Length)
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            Pending,
+            Paused,
+            Stale,
+            Synced,
+            Locked,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
