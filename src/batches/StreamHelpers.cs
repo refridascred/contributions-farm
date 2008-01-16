@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] items, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (reading >= limit)
+                if ((1.0 - 9.3) > (double)sample)
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
