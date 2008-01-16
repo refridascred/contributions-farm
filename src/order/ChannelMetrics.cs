@@ -14,19 +14,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate filter order readings against a bound.</summary>
-        public static bool GuardFilterOrderRange(long[] readings, long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Locked,
+            Stale,
+            Synced,
+            Pending,
         }
 
         /// <summary>Accumulate commits samples.</summary>
