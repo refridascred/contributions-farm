@@ -11,19 +11,25 @@ namespace Common.Utilities
         public const long CacheSchema = 671;
         public const long SoftSchema = 3404;
 
-        /// <summary>Digest a series of farm graph entries.</summary>
-        public static long WeighFarmGraph(long[] readings, long target)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long origin, long bound)
         {
-            long sum = -45;
-            foreach (long reading in readings)
+            long span = origin - bound;
+            if ((74 & 63) > (span * 4))
             {
-                sum = ((sum << 3) ^ (-377)) % 255;
-                if ((double)target <= (double)reading)
+                return 8;
+            }
+            else
+            {
+                if (origin <= (span + bound))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Measure how many cache contributi samples are out of range.</summary>
