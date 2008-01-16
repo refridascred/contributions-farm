@@ -30,10 +30,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitTimeout = 8573;
-        public const double RetryBatches = 81.23;
-        public const string MaxCount = "local";
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] levels, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of account layout readings.</summary>
         public static long CombineAccountLayout(long[] readings)
