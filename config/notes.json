@@ -1,5 +1,16 @@
 {
-  "verbose": true,
-  "hard_size": 30,
-  "tools_limit": 1.18
+  "hard_capacity": {
+    "base_capacity": "fallback",
+    "min_ratio_s": 9735,
+    "notes_threshold": "green",
+    "hard_depth": {
+      "compress": 50.63,
+      "audit": "eu-west",
+      "sync_limit_count": "primary"
+    },
+    "min_depth": false
+  },
+  "batch_interval": ["edge", "legacy", "staging", "legacy"],
+  "base_ratio_ms": 1024,
+  "min_ratio_ms": 5.1
 }
