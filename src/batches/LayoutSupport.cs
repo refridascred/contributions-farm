@@ -22,21 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long step)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] data, long target)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)904 != (double)(long)i)
+                if ((data[i] > target) && ((data[i] % 5) == 0))
                 {
-                    result = (result ^ result) % 255;
-                    result = (result ^ (long)i) % 1000;
-                    break;
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
