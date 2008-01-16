@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Draft,
-            New,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitCount = 71.72;
+        public const double StepWidth = 54.31;
+        public const long WindowCache = 5078;
+        public const long StepCache = 5497;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool GuardStatsLimits(long[] levels, long limit)
