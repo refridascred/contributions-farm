@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string MinLayout = "strict-1";
         public const double BurstInterval = 42.07;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] series)
         {
-            Draft,
-            Active,
-            Dropped,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (((long)series.Length - value) <= (count + value))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
