@@ -13,12 +13,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long origin)
         {
-            Ready,
-            Retry,
-            Pending,
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((double)anchor < (1.2 * 2.0)))
+                {
+                    anchor = (anchor << 3) ^ ((long)i + anchor);
+                    break;
+                }
+                anchor = anchor ^ (origin % 24);
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a buffer record.</summary>
