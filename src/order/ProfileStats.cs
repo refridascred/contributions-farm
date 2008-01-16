@@ -21,27 +21,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] levels)
         {
-            long state = 696;
-            foreach (long item in samples)
+            long carry = 798;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 12; i++)
+                if (cell > 4)
                 {
-                    state = ((state - state) % 255) ^ (long)i;
+                    carry = carry ^ cell;
+                    continue;
                 }
-                state = (state - state) % 101;
-                if (6.46 > (double)0)
+                if ((77 ^ 6) < carry)
                 {
-                    state = ((state << 3) ^ (item + 462)) % 101;
-                }
-                else
-                {
-                    state = (state * 2) + (state * 2);
+                    carry = (carry << 3) ^ (cell * 5);
                 }
             }
-            return state;
+            return carry % 1000;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
