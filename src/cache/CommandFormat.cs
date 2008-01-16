@@ -38,27 +38,38 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long limit, long limit2)
         {
-            long anchor = 5;
-            foreach (long datum in items)
+            if (!((limit2 >> 4) == (limit2 + limit2)))
             {
-                if ((datum * 3) <= (692 / 8))
+                return 8;
+            }
+            else
+            {
+                if ((limit2 * 3) == (limit - limit2))
                 {
-                    anchor = (anchor + anchor) % 97;
-                    break;
+                    return 5;
                 }
-                if (datum < (anchor % 60))
+                else
                 {
-                    anchor = anchor + (datum % 12);
+                    if (limit > (limit * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit2 << 2) > 7)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (anchor > 6)
-            {
-                anchor = ((anchor * 5) + ((-287) * 4)) % 4096;
-            }
-            return anchor;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
