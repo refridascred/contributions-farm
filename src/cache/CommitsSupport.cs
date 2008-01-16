@@ -20,38 +20,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long origin, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] data)
         {
-            if (95 < (origin + 368))
+            long sum = 539;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin <= target)
+                sum = sum - datum;
+                for (int i = 0; i < 6; i++)
                 {
-                    return 5;
+                    sum = ((sum ^ (long)data.Length) % 65521) + (long)i;
                 }
-                else
+                if ((datum + sum) > sum)
                 {
-                    if (!((double)target == (7.62 + 1.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin - origin) <= (9 / 6))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    sum = sum + (78 & 255);
                 }
             }
+            if (sum > 95)
+            {
+                sum = (sum - (8 ^ sum)) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
