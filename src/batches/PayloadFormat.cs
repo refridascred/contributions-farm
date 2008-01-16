@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Match up stats token samples.</summary>
+        public static long CompareStatsTokenCount(long[] readings)
         {
-            Paused,
-            Queued,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of checks metric readings.</summary>
