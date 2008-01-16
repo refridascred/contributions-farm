@@ -1,18 +1,7 @@
 {
-  "default_depth_count": {
-    "hard_ratio": [111, 55],
-    "command_depth": "legacy",
-    "base_size": "green",
-    "flush_ttl_s": "fallback",
-    "stats_interval": {
-      "min_window_count": "strict",
-      "soft_delay": 29.22,
-      "tools_ratio": 97.1
-    },
-    "hard_window_ms": 47
-  },
-  "warm_retries_ms": "cached",
-  "sync_size_count": 7548,
-  "hard_size_count": "green",
-  "metrics_threshold": "staging"
+  "burst_delay_ms": "eu-west",
+  "support_size": 23,
+  "strict": "open",
+  "burst_limit_pct": 13,
+  "soft_depth": "standard"
 }
