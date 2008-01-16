@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxFactor = 58.57;
-        public const long IdleScore = 2587;
-        public const double BaseChannel = 62.89;
-        public const double BatchChannel = 89.61;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((bound >> 4) > 314)
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
