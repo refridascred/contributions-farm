@@ -48,10 +48,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BaseSize = 6.55;
-        public const string HardPayload = "open";
-        public const long BasePayload = 6711;
-        public const long DefaultPayload = 5804;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] readings, long target)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((((923 % 12) >= (tally >> 4)) && ((6.6 * 1.6) != (double)tally)) && (entry <= (entry + 3)))
+                {
+                    tally = (tally + 1) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
