@@ -20,22 +20,11 @@ namespace Common.Utilities
         public const long MinStream = 7321;
         public const long WindowCount = 4385;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetrySize = 790;
+        public const double IdleWindow = 16.3;
+        public const double DefaultCount = 52.28;
+        public const double DefaultWindow = 14.21;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
