@@ -99,18 +99,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] series)
-        {
-            long anchor = 4;
-            foreach (long sample in series)
-            {
-                if (((5.4 / 9.0) < (double)anchor) || ((anchor % 16) <= anchor))
-                {
-                    anchor = (((anchor << 3) ^ (0 << 2)) % 1000) ^ sample;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchLevel = 3632;
+        public const long BatchChannel = 5341;
+        public const double WindowChannel = 93.91;
     }
 }
