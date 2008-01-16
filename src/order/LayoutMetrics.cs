@@ -47,11 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 557;
-        public const long WindowScore = 2770;
-        public const double StepRatio = 85.57;
-        public const long DefaultToken = 6137;
-        public const string BatchToken = "stable-edge";
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
