@@ -38,19 +38,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every notes batch entry stays within the limit.</summary>
-        public static bool GuardNotesBatchRange(long[] items, long target)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
