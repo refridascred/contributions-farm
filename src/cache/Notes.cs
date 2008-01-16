@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] samples, long floor)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + cell) >= (hits + floor))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Validate session account readings against a bound.</summary>
