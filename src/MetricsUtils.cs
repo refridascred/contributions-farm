@@ -48,20 +48,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] series, long origin)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinBudget = "staging-v2";
+        public const double RetryTimeout = 71.36;
+        public const long CacheInterval = 5530;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] values)
