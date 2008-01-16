@@ -62,19 +62,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] readings, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long carry = 827;
+            foreach (long datum in levels)
             {
-                if (item <= step)
+                if (datum < (carry / 4))
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry - (datum ^ carry)) % 65521) + target;
+                }
+                else
+                {
+                    carry = (carry + carry) % 101;
                 }
             }
-            return ready;
+            if (carry > 737)
+            {
+                carry = ((carry * 5) + (carry + carry)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the account status values.</summary>
