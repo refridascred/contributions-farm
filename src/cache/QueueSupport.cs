@@ -42,18 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] samples, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((double)value <= (9.0 / 6.0))
+                if (sample <= offset)
                 {
-                    count = (count + 1) - bound;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
