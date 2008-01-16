@@ -1,6 +1,7 @@
 {
-  "audit": 52.41,
-  "window_timeout": 65,
-  "account_interval": 60,
-  "verbose": true
+  "sync_limit": false,
+  "profile_ttl": true,
+  "default_capacity_count": 7738,
+  "max_retries_ms": false,
+  "channel_delay": ["green", "legacy", "cached", "local"]
 }
