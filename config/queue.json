@@ -1,14 +1,10 @@
 {
-  "soft_limit_s": [72, 420, 235],
-  "commits_threshold": [5, 130, 469, 478],
-  "checks_ratio": "blue",
-  "warm_size_count": {
-    "context_window": 39.59,
-    "strict": "latest",
-    "enabled": 4,
-    "poll_window_s": 1024,
-    "flush_window_pct": ["local", "strict", "fallback", "staging"]
+  "poll_window_count": {
+    "poll_delay_s": "stable",
+    "already_delay": "green",
+    "soft_retries": "fallback",
+    "retry_ratio_count": 250
   },
-  "contributi_window": 5065,
-  "retry_ratio_pct": 24.63
+  "batch_capacity_pct": 28.73,
+  "min_limit": [95, 75, 306, 460]
 }
