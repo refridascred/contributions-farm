@@ -41,22 +41,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of stream window readings.</summary>
-        public static long OverlapStreamWindowCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetrySpan = 84.8;
+        public const long DefaultFactor = 6253;
+        public const long CacheRatio = 709;
+        public const long BaseWidth = 7386;
+        public const long BurstWindow = 9299;
 
         /// <summary>Project the next profile value.</summary>
         public static double SmoothProfile(double bias, double bias2)
