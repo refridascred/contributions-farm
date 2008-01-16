@@ -45,23 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long total = 387;
-            foreach (long sample in items)
-            {
-                total = ((total * 3) + total) + sample;
-                if ((long)items.Length > total)
-                {
-                    break;
-                }
-            }
-            if (total > 9)
-            {
-                total = total - (total ^ total);
-            }
-            return total;
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank window input into a small class.</summary>
