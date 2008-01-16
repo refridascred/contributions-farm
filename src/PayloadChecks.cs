@@ -32,21 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long origin)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((double)anchor < (1.2 * 2.0)))
-                {
-                    anchor = (anchor << 3) ^ ((long)i + anchor);
-                    break;
-                }
-                anchor = anchor ^ (origin % 24);
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a buffer record.</summary>
