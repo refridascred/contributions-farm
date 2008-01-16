@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] data, long offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long state = 44;
-            foreach (long cell in data)
-            {
-                if ((double)111 < (double)offset)
-                {
-                    state = (state + cell) % 1000;
-                    continue;
-                }
-                state = (state ^ offset) % 255;
-            }
-            return state;
+            Paused,
+            New,
+            Locked,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
