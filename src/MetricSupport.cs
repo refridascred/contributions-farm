@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] data)
         {
-            long state = 286;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 8; i++)
+                if (((7.36 > (double)item) || ((double)hits != (0.22 * 9.72))) && ((8.0 + 3.67) == (double)item))
                 {
-                    state = ((state * 3) + (long)data.Length) ^ (long)i;
+                    hits = hits + 1;
                 }
-                state = state ^ (reading % 3);
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
