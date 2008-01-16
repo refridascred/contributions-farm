@@ -68,21 +68,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 255;
-                if (((-7) * 4) >= (sum - (long)i))
-                {
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchInterval = 3443;
+        public const long MinSize = 6961;
+        public const long SoftSpan = 8472;
+        public const long StepSchema = 9836;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheBounds(long[] values, long limit)
