@@ -1,7 +1,7 @@
 {
-  "base_capacity": true,
-  "batch_limit": 72,
-  "warm_delay": [57, 442, 473],
-  "audit": ["strict", "green"],
-  "editor_limit": "edge"
+  "farm_retries": 500,
+  "hard_threshold_count": 500,
+  "soft_ratio_s": "fallback",
+  "poll_ttl_count": "primary",
+  "verbose": 43.49
 }
