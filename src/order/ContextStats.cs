@@ -41,28 +41,13 @@ namespace Common.Utilities
         public const long LimitWidth = 2904;
         public const string LimitTimeout = "strict-1";
 
-        /// <summary>Roll a metric layout counter forward.</summary>
-        public static long DeriveMetricLayout(long step)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if (793 < (step - state))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = ((state << 3) ^ state) % 4096;
-                }
-                state = state - ((long)i & 15);
-                if (((double)step != (3.6 - 6.4)) || ((double)step != (5.85 / 6.0)))
-                {
-                    state = ((state << 3) ^ (state ^ 5)) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Idle,
+            Locked,
+            Synced,
+            Closed,
         }
     }
 }
