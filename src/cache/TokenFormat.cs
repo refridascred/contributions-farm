@@ -34,9 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftRatio = 27.25;
-        public const string CacheBudget = "cached-1";
-        public const double SoftChecks = 69.36;
+        /// <summary>Audit counter schema readings against a rule.</summary>
+        public static long AuditCounterSchemaGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value >> 5) <= (matches + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
