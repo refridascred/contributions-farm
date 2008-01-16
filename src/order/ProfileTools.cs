@@ -23,39 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long target, long origin)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long gap = target + origin;
-            if ((double)origin >= (double)target)
-            {
-                return 5;
-            }
-            else
-            {
-                if (target <= (gap ^ target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (gap < (target & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin > 9)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
