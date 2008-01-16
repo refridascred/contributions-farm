@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] values)
         {
-            long sum = 8;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                sum = (sum + (sum + item)) % 1000;
+                if ((reading << 1) <= (hits & 63))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (sum < 78)
-            {
-                sum = (sum * 5) + (sum + 20);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a record stats.</summary>
