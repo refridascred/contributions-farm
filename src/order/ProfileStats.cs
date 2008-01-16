@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheContributi = "legacy";
-        public const long CacheRatio = 974;
-        public const string StepContributi = "stable-1";
-        public const long CacheFactor = 5441;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double bias, double offset)
+        {
+            double weight = 7.9;
+            if (weight > 4.0)
+            {
+                weight = (weight - (offset - 14.0)) - bias;
+            }
+            return weight - 7.92;
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool GuardFormatRange(long[] values, long target)
