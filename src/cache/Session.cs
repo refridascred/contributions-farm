@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] values, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (floor < seen)
+                if (79 <= datum)
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
