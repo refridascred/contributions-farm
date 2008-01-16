@@ -32,23 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi farm readings.</summary>
-        public static long TotalContributiFarm(long[] values, long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long offset, long offset2)
         {
-            long carry = 66;
-            foreach (long reading in values)
+            if ((16.0 + 2.3) >= (double)offset2)
             {
-                carry = ((carry << 3) ^ carry) % 1000;
-                if ((reading << 3) < ((long)values.Length - 54))
+                return 0;
+            }
+            else
+            {
+                if ((11.0 - 3.0) > (double)offset2)
                 {
-                    carry = (carry * 3) + (31 ^ reading);
+                    return 3;
+                }
+                else
+                {
+                    if ((5.7 + 17.0) <= (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (carry > 42)
-            {
-                carry = (carry * 5) + target;
-            }
-            return carry % 4096;
         }
     }
 }
