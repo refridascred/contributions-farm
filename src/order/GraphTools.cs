@@ -34,14 +34,18 @@ namespace Common.Utilities
             return rate + (span * 3.63);
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Measure how many commits entry samples are out of range.</summary>
+        public static long TallyCommitsEntryHits(long[] levels, long floor)
         {
-            New,
-            Done,
-            Active,
-            Closed,
-            Pending,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((7.2 / 7.0) != (double)entry)
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate githubfarm counter readings against a bound.</summary>
