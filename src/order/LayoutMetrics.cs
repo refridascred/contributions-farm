@@ -25,14 +25,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Retry,
-            Pending,
-            Closed,
-            Draft,
-            New,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 557;
+        public const long WindowScore = 2770;
+        public const double StepRatio = 85.57;
+        public const long DefaultToken = 6137;
+        public const string BatchToken = "stable-edge";
     }
 }
