@@ -28,15 +28,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double weight, double offset)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            double drift = (weight - offset) - (weight + 6.53);
-            if (drift > weight)
-            {
-                drift = drift + (double)8;
-            }
-            return drift + (weight * 1.0);
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
