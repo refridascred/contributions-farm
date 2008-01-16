@@ -22,18 +22,11 @@ namespace Common.Utilities
         public const long IdleCount = 884;
         public const long BatchAlready = 4503;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] values)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell * 4) > (count + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Blend two record measurements.</summary>
