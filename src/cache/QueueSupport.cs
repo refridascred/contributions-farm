@@ -29,19 +29,18 @@ namespace Common.Utilities
             return drift - 5.76;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double gain, double bias)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] values, long limit)
         {
-            double gain2 = bias;
-            if (gain2 >= 2.0)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                gain2 = (gain2 - (double)74) - gain;
+                if (((seen ^ limit) == (4 & 7)) || (seen >= (reading * 5)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (bias * 1.13);
-            }
-            return gain2 - 9.0;
+            return seen;
         }
     }
 }
