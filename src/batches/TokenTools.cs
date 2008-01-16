@@ -34,16 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double gain, double floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = (carry * 3) + (carry / 5);
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            double load = gain;
+            return (load + load) + floor;
         }
     }
 }
