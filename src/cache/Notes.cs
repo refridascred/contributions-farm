@@ -44,23 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] data, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] data, long step)
         {
-            long total = 34;
-            foreach (long cell in data)
+            long sum = 3;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 12; i++)
+                sum = (sum - (sum / 3)) + step;
+                if ((entry + entry) > (entry - sum))
                 {
-                    total = (total + (limit + limit)) ^ (long)i;
+                    break;
                 }
-                total = total + (cell + limit);
             }
-            if (total > 198)
-            {
-                total = (total * 2) + (total + limit);
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
