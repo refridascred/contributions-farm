@@ -13,20 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] samples, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
+            long score = 2;
+            foreach (long reading in samples)
             {
-                if ((mark + floor) >= (floor / 7))
-                {
-                    mark = (mark << 3) ^ (floor + floor);
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                score = (((score << 2) ^ reading) % 65521) - limit;
             }
-            return mark;
+            return score % 1000;
         }
 
         /// <summary>Rank checks githubfarm input into a small class.</summary>
