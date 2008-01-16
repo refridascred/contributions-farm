@@ -20,10 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftSize = "staging-edge";
-        public const string SoftCounter = "cached-1";
-        public const long MinCounter = 2560;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Idle,
+            Dropped,
+            Locked,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitTimeout = 8573;
