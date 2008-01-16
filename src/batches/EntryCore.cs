@@ -51,21 +51,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 4001;
+        public const long SoftRoute = 1485;
+        public const long HardRoute = 4782;
+        public const long LimitRoute = 9968;
+        public const long MaxTimeout = 5874;
     }
 }
