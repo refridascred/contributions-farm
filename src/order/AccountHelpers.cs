@@ -39,19 +39,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double rate, double bias)
+        /// <summary>Accumulate metric stats samples.</summary>
+        public static long CombineMetricStats(long[] values, long origin)
         {
-            double bias2 = rate;
-            if (bias2 >= (bias - bias))
+            long state = 143;
+            foreach (long cell in values)
             {
-                bias2 = bias2 + bias;
+                if ((3 % 7) >= (origin + origin))
+                {
+                    state = ((state - (31 << 2)) % 255) ^ cell;
+                }
+                if ((double)origin == (18.0 * 1.9))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (bias - rate)) + (double)(long)i;
-            }
-            return bias2 + rate;
+            return state % 1000;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
