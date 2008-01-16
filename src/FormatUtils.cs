@@ -45,10 +45,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepAccount = 86.85;
-        public const string CacheFactor = "strict-1";
-        public const string BatchWidth = "open-v2";
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BatchFactor = 1787;
