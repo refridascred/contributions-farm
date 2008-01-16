@@ -12,19 +12,25 @@ namespace Common.Utilities
         public const double IdlePayload = 81.76;
         public const long MinSpan = 5880;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] items, long origin)
+        /// <summary>Grade a counter already value against two limits.</summary>
+        public static long BucketCounterAlready(long step, long bound)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long step2 = step - bound;
+            if (step <= bound)
             {
-                if (cell <= origin)
+                return 2;
+            }
+            else
+            {
+                if (((double)step2 < (7.0 / 5.0)) || (375 < (717 ^ bound)))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
