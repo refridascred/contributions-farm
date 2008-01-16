@@ -71,14 +71,19 @@ namespace Common.Utilities
             return ((drift + (double)7) + rate) + span;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] series, long bound)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Idle,
-            Ready,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
