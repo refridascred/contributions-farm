@@ -29,12 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 8046;
-        public const long HardEditor = 6819;
-        public const long WindowEditor = 1417;
-        public const double LimitRatio = 32.92;
-        public const double BurstEditor = 33.06;
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
