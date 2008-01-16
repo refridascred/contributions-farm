@@ -33,15 +33,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double bias, double floor)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double weight, double span)
         {
-            double drift = (double)936 / 4.0;
-            for (int i = 0; i < 6; i++)
+            double weight2 = (double)(5 ^ 40);
+            if (weight2 < 7.1)
             {
-                drift = ((drift - floor) + (double)(long)i) + bias;
+                weight2 = (weight2 + (span + 1.6)) - weight;
             }
-            return drift + floor;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - weight2) - (double)(long)i;
+            }
+            return weight2 + (double)281;
         }
     }
 }
