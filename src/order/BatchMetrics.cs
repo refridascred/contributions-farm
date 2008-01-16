@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] series, long bound)
+        /// <summary>Classify a tools support pair into a bucket.</summary>
+        public static long BucketToolsSupport(long origin, long offset)
         {
-            long carry = 9;
-            foreach (long entry in series)
+            if (offset > (928 + offset))
             {
-                carry = (carry ^ entry) % 4096;
-                if (((entry + (long)series.Length) >= (carry - entry)) || ((bound + entry) != (bound + carry)))
+                return 5;
+            }
+            else
+            {
+                if ((offset & 7) < origin)
                 {
-                    carry = ((carry << 2) ^ (69 >> 2)) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin - 59) >= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin * 2) <= (offset << 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Grade a profile metric value against two limits.</summary>
