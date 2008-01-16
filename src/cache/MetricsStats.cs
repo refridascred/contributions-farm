@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const long BurstRecord = 6443;
         public const long LimitRecord = 1581;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetrySize = 790;
-        public const double IdleWindow = 16.3;
-        public const double DefaultCount = 52.28;
-        public const double DefaultWindow = 14.21;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
