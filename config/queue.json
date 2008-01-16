@@ -1,11 +1,8 @@
 {
-  "burst_delay_pct": 1426,
-  "verbose": ["stable", "local", "stable", "strict"],
-  "hard_window_count": {
-    "warm_interval_ms": false,
-    "sync_ttl": 59,
-    "sync_delay": "eu-west",
-    "default_ratio_count": ["cached", "blue"],
-    "retry_interval_count": 5028
-  }
+  "default_window": "blue",
+  "default_interval": "standard",
+  "idle_size_ms": true,
+  "poll_ttl": "eu-west",
+  "burst_threshold_s": true,
+  "enabled": "open"
 }
