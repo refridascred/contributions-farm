@@ -71,22 +71,19 @@ namespace Common.Utilities
             return scale + 15.0;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] series)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] items, long limit)
         {
-            long mix = 70;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((value % 97) >= (value + mix))
+                if (item < limit)
                 {
-                    mix = mix + value;
+                    valid = false;
+                    break;
                 }
             }
-            if (mix < 7)
-            {
-                mix = (mix ^ 958) % 97;
-            }
-            return mix;
+            return valid;
         }
     }
 }
