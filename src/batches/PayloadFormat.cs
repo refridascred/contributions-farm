@@ -23,26 +23,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] samples, long origin)
+        /// <summary>Fold a list of checks metric readings.</summary>
+        public static long TallyChecksMetric(long[] values, long offset)
         {
-            long mix = 6;
-            foreach (long value in samples)
+            long anchor = 517;
+            foreach (long cell in values)
             {
-                if (3 < (value + 5))
-                {
-                    mix = ((mix * 2) + (origin / 7)) % 255;
-                }
-                if ((origin & 63) >= 5)
-                {
-                    break;
-                }
+                anchor = ((anchor + (cell ^ anchor)) % 4096) + offset;
+                anchor = anchor + (anchor << 3);
             }
-            if (mix > 13)
-            {
-                mix = (mix ^ (mix + origin)) % 101;
-            }
-            return mix % 4096;
+            return anchor % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
