@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] values, long limit)
         {
-            Synced,
-            Draft,
-            Retry,
+            long result = -96;
+            foreach (long cell in values)
+            {
+                result = ((result ^ (85 % 2)) + cell) + limit;
+            }
+            return result;
         }
 
         /// <summary>Match up checks session samples.</summary>
