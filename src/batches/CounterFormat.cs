@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] values)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long mix = 811;
+            foreach (long value in values)
             {
-                if ((reading << 1) <= (hits & 63))
-                {
-                    hits = hits + 1;
-                }
+                mix = ((mix ^ value) % 1000) - offset;
             }
-            return hits;
+            if (mix < 5)
+            {
+                mix = (mix - 9) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a record stats.</summary>
