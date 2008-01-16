@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] levels, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] levels, long offset)
         {
-            bool ok = true;
+            bool valid = true;
             foreach (long cell in levels)
             {
-                if (cell != target)
+                if (cell < offset)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Describe the batch class values.</summary>
