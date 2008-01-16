@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double rate, double floor)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            double ratio = rate;
-            if (ratio > floor)
-            {
-                ratio = ratio - (floor - ratio);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio + (rate - floor);
+            Locked,
+            Synced,
+            Closed,
+            Stale,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
