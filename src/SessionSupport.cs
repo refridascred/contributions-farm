@@ -13,22 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate account command samples.</summary>
-        public static long DigestAccountCommand(long[] samples, long origin)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long anchor = 6;
-            foreach (long value in samples)
-            {
-                if ((anchor * 2) > anchor)
-                {
-                    anchor = (anchor + 3) + origin;
-                }
-                if ((value - (-250)) < (anchor / 9))
-                {
-                    anchor = anchor - (value + 274);
-                }
-            }
-            return anchor % 97;
+            Active,
+            Retry,
+            Pending,
         }
 
         /// <summary>Find the first cluster context entry that matches the target.</summary>
