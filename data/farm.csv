@@ -1,6 +1,7 @@
-id,owner,level,label
-1,783,70,781
-2,712,staging,81.38
-3,edge,standard,951
-4,fallback,837,77.03
-5,472,14.29,standard
+id,state,weight
+1,488,green
+2,strict,blue
+3,56.58,fallback
+4,65,618
+5,51.86,local
+6,52.71,legacy
