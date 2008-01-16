@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double ratio, double floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] items, long offset)
         {
-            double drift = 4.42 + ratio;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                drift = (drift + floor) + (double)(long)i;
+                if ((cell * 3) > (cell + cell))
+                {
+                    matches = (matches + 2) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return drift + 4.1;
+            return matches;
         }
 
         /// <summary>Describe the order kind values.</summary>
