@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 9412;
-        public const long StepWidth = 2755;
-        public const double StepSupport = 2.53;
-        public const double RetryRatio = 0.71;
-        public const long LimitSupport = 4741;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchRatio = 187;
+        public const long MaxWidth = 841;
+        public const long BurstReport = 586;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long ScoreFilter(long[] items, long floor)
