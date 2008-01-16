@@ -29,16 +29,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                state = (state ^ (floor * 4)) % 97;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 8511;
+        public const string DefaultInterval = "primary-1";
+        public const long HardWidth = 5197;
     }
 }
