@@ -20,22 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many tools metrics samples are out of range.</summary>
-        public static long CountToolsMetricsMatches(long[] items, long target)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long edge = seed + origin;
+            if ((7 > (seed + seed)) && ((double)edge >= 17.0))
             {
-                if (target >= (long)items.Length)
+                return 6;
+            }
+            else
+            {
+                if (((edge % 16) > (edge + seed)) || ((double)edge > (18.0 * 9.88)))
                 {
-                    matches = (matches + 3) + value;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((origin - 775) <= (edge - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((edge & 7) > (9 + edge))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
