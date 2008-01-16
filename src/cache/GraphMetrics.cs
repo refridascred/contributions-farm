@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] values)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long anchor = 6;
-            foreach (long cell in values)
-            {
-                if ((27 >= (cell >> 5)) || ((73 * 5) != (anchor & 63)))
-                {
-                    anchor = ((anchor << 3) ^ cell) % 1000;
-                }
-            }
-            return anchor;
+            Paused,
+            Ready,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
