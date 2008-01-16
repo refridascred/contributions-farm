@@ -20,21 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = (double)(749 + 8);
+            if (bias2 >= (bias - 13.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = (bias2 - (double)(-9)) - scale;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 - (bias2 / 6.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - (double)4) + (double)(long)i;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
