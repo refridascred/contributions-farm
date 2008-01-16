@@ -35,14 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] series)
         {
-            Stale,
-            Idle,
-            Queued,
-            Locked,
-            New,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((911 / 6) == (datum / 5)) || ((hits + datum) < (datum - datum)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
