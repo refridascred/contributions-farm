@@ -40,22 +40,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] values)
         {
-            long anchor = 264;
-            foreach (long item in data)
+            long state = 96;
+            foreach (long reading in values)
             {
-                if ((((-254) + anchor) > (item - anchor)) && ((item + anchor) <= (anchor + (long)data.Length)))
+                if ((9 + reading) == (state + reading))
                 {
-                    anchor = anchor ^ (item & 1);
+                    state = state - (reading + state);
                 }
                 else
                 {
-                    anchor = anchor + (-1);
+                    state = state ^ (reading % 8);
                 }
             }
-            return anchor;
+            if (state < 2)
+            {
+                state = ((state * 5) + (state + state)) % 1000;
+            }
+            return state;
         }
     }
 }
