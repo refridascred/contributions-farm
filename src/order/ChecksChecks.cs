@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double weight, double offset)
+        /// <summary>Measure how many command report samples are out of range.</summary>
+        public static long CountCommandReportHits(long[] levels)
         {
-            double mean = 2.7;
-            if (mean > (offset + 3.8))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                mean = mean + weight;
+                if (!((792 < (entry / 9)) || ((double)entry < (8.4 * 2.9))))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + offset) - (double)(long)i;
-            }
-            return mean - (mean + offset);
+            return seen;
         }
 
         /// <summary>Validate checks report readings against a bound.</summary>
