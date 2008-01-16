@@ -42,12 +42,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Scale a report account figure with a bias.</summary>
+        public static double AdjustReportAccount(double scale, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
+            double gain = scale + (double)5;
+            if (gain < floor)
+            {
+                gain = gain - 2.4;
+            }
+            else
+            {
+                gain = gain - floor;
+            }
+            return gain - (gain * 3.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
