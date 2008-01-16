@@ -73,17 +73,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] items, long offset)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
     }
 }
