@@ -1,7 +1,8 @@
 # entry settings
-audit: 23
-soft_limit:
-  - cached
-  - cached
-  - primary
-strict: 72.6
+strict:
+  - blue
+  - standard
+  - strict
+compress: 100
+verbose: 39.81
+retry_timeout_count: 34.22
