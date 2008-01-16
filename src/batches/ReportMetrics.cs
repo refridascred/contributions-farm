@@ -15,11 +15,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 9145;
-        public const string BaseScore = "staging-1";
-        public const double SoftDepth = 50.72;
-        public const long MinTimeout = 1147;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long IdleBuffer = 6288;
