@@ -37,23 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] series, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] readings, long origin)
         {
-            long result = 972;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                result = (result ^ (step + 54)) % 101;
-                if ((double)cell >= (double)result)
+                if (((double)cell != (12.0 - 6.45)) || ((matches & 255) <= cell))
                 {
-                    result = result + (cell - step);
+                    matches = (matches + 1) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (result < 2)
-            {
-                result = (result * 2) + (long)series.Length;
-            }
-            return result;
+            return matches;
         }
     }
 }
