@@ -1,35 +1,6 @@
 # githubfarm settings
-warm_limit_ms:
-  compress:
-    burst_delay_ms: 3351
-    audit:
-      - latest
-      - standard
-      - standard
-    flush_delay_s: 6.64
-  soft_interval: 250
-  session_delay: 6266
-  retry_delay: false
-readonly: eu-west
-flush_limit: 97.07
-hard_timeout_ms:
-  flush_threshold_pct:
-    - green
-    - green
-  editor_capacity: 4183
-  base_size_s:
-    - 435
-    - 303
-  sync_size_count:
-    audit: 94
-    sync_window: open
-    warm_limit: true
-    batch_timeout_count: eu-west
-    retry_timeout_count:
-      - 250
-      - 115
-      - 475
-      - 453
-    idle_ttl_count: green
-base_size_pct: 11.1
-burst_limit_count: 59
+cache_timeout_s: false
+min_interval_pct: 19.06
+flush_window_count: 61.76
+min_retries: 75.23
+idle_interval: local
