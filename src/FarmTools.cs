@@ -29,15 +29,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double weight, double bias)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double scale = (double)(421 + 129);
-            for (int i = 0; i < 2; i++)
-            {
-                scale = ((scale + bias) + (double)(long)i) - weight;
-            }
-            return scale - 19.0;
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
