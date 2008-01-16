@@ -75,17 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowLevel = 71.51;
+        public const long RetryCount = 4597;
+        public const long StepPayload = 578;
+        public const long WindowBudget = 9143;
+        public const long BatchPayload = 9132;
     }
 }
