@@ -36,15 +36,31 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of format tools readings.</summary>
-        public static long CombineFormatTools(long[] levels, long bound)
+        /// <summary>Grade a channel route value against two limits.</summary>
+        public static long ClassifyChannelRoute(long bound, long offset)
         {
-            long mix = 99;
-            foreach (long sample in levels)
+            if (offset <= (357 >> 2))
             {
-                mix = (((mix << 3) ^ mix) - sample) - bound;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if (offset < (bound + 785))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((1.1 / 5.0) != (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
