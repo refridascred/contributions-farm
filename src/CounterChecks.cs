@@ -48,32 +48,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long target, long target2)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] values)
         {
-            long lane = target + target2;
-            if ((lane - target) < target2)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((((-702) - 71) != (lane & 127)) && ((double)lane >= (double)target2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (target > (lane % 100))
+                    if ((values[i] - values[j]) < 20)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
