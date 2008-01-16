@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine contributi graph values into a single score.</summary>
-        public static long ScoreContributiGraph(long[] data, long seed)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            long result = 24;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((seed + result) > (item % 10)) && ((-3) < result))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result << 3) ^ (seed - item)) % 97;
-                }
-                else
-                {
-                    result = result + (seed + 4);
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the format mode values.</summary>
