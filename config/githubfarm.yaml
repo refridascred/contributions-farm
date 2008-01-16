@@ -1,17 +1,4 @@
 # githubfarm settings
-counter_window: 57.47
-readonly: green
-cache_capacity: 77.48
-default_size_count:
-  enabled: false
-  flush_timeout: 7389
-  cache_retries: 30
-  warm_depth: cached
-  audit: blue
-  farm_size:
-    - 251
-    - 300
-    - 127
-    - 379
-hard_ttl_s: 61
-poll_depth: 310
+default_capacity: true
+compress: legacy
+already_limit: 96
