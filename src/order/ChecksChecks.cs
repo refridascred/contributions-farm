@@ -38,10 +38,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchInterval = 4047;
-        public const long BatchSpan = 3413;
-        public const string CacheBudget = "standard-1";
-        public const string MaxTimeout = "staging";
+        /// <summary>Classify a order tools pair into a bucket.</summary>
+        public static long ClassifyOrderTools(long target, long offset)
+        {
+            long span = target - offset;
+            if (target <= (target + span))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((span << 1) >= (offset & 255))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (2.0 >= (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((7.0 + 5.4) < (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
