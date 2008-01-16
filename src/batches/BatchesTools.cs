@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long limit)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((mark + (long)i) >= (mark & 3))
+                {
+                    mark = mark - (limit >> 3);
+                }
+                if ((mark + 52) < limit)
+                {
+                    mark = ((mark << 3) ^ (mark + mark)) % 255;
+                    mark = (mark ^ (limit << 3)) % 1000;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Match up cache route samples.</summary>
