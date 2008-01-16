@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 759;
-        public const long BatchFactor = 4054;
-        public const long WindowBuffer = 9898;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long ScoreBatch(long[] items, long seed)
