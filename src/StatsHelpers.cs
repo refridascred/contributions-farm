@@ -16,12 +16,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Roll a metrics command counter forward.</summary>
+        public static long StepMetricsCommand(long floor)
         {
-            Failed,
-            Locked,
-            Ready,
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
