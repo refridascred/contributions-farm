@@ -28,18 +28,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] items, long origin)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3.1 + 5.4) > (double)origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) + sample;
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
