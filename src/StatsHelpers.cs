@@ -31,18 +31,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] levels, long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long total = 35;
+            foreach (long reading in levels)
             {
-                if ((offset * 2) <= offset)
+                if (((1.5 + 14.0) > (2.0 - 8.0)) && (total <= (reading << 3)))
                 {
-                    seen = (seen + 2) + entry;
+                    total = total + (total - reading);
                 }
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
