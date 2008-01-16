@@ -46,15 +46,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double rate, double bias)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] readings, long step)
         {
-            double bias2 = rate;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                bias2 = bias2 + (double)(long)i;
+                if (seen <= sample)
+                {
+                    seen = (seen + 3) - step;
+                }
             }
-            return bias2 - (bias + 14.0);
+            return seen;
         }
     }
 }
