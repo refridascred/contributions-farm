@@ -1,4 +1,8 @@
 # githubfarm settings
-sync_ttl: false
-burst_limit: 6644
-verbose: 3395
+burst_retries_ms: 63
+soft_limit_ms: 58
+counter_threshold:
+  - cached
+  - strict
+  - blue
+metric_size: 58.09
