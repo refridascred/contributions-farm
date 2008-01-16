@@ -51,19 +51,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] items, long limit)
+        /// <summary>Measure how many metric stream samples are out of range.</summary>
+        public static long MeasureMetricStreamGaps(long[] values)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (item < limit)
+                if (hits <= (61 << 3))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) + item;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
