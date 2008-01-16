@@ -36,19 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] series, long seed)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            long carry = 985;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry - carry) % 101;
-                if ((double)seed > (double)item)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry ^ (seed >> 5);
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return matches;
         }
     }
 }
