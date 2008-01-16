@@ -20,18 +20,12 @@ namespace Common.Utilities
             return mean - (mean + offset);
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] values)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((double)count > (double)82)
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
