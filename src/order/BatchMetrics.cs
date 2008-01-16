@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstCount = 3.72;
+        public const long BurstBudget = 9239;
+        public const double WindowStats = 64.07;
+        public const string RetryLevel = "staging-v2";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double RetrySize = 23.5;
