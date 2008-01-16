@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] values)
+        /// <summary>Count layout batch pairs that satisfy a relation.</summary>
+        public static long MatchLayoutBatchCount(long[] items)
         {
-            long total = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total * 3) + 2;
-                total = total - datum;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
