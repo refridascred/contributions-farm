@@ -62,12 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            Done,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the stream status values.</summary>
