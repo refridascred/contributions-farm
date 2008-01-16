@@ -36,14 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleScore = 3060;
+        public const double WindowFarm = 7.14;
+        public const long MaxDepth = 1652;
+        public const string BurstFarm = "latest-1";
+        public const string MinFarm = "latest-1";
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long DigestMetrics(long[] items)
