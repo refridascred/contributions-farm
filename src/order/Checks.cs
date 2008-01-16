@@ -13,11 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] samples, long offset)
         {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item % 12) < (216 % 97))
+                {
+                    count = (count + 2) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a editor options.</summary>
