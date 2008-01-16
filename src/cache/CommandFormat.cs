@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit channel window readings against a rule.</summary>
-        public static long TallyChannelWindowGaps(long[] items)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((68 >> 5) < (seen - datum))
+                if (item <= origin)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Count buffer cluster pairs that satisfy a relation.</summary>
