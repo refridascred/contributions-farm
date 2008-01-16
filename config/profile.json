@@ -1,7 +1,5 @@
 {
-  "tools_ttl": 30,
-  "dry_run": 1177,
-  "stream_delay": 21.92,
-  "command_ratio": 70.92,
-  "max_ratio_s": 8.9
+  "cache_size": "primary",
+  "soft_ttl": 43,
+  "batch_ratio": "standard"
 }
