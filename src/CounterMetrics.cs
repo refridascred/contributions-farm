@@ -40,39 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long offset, long offset2)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] series)
         {
-            long step = offset + offset2;
-            if ((320 >> 4) >= (6 ^ offset))
+            long result = 57;
+            foreach (long datum in series)
             {
-                return 6;
+                result = ((result * 3) + (result - result)) ^ datum;
             }
-            else
-            {
-                if ((8.49 + 11.0) == (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.43 / 3.0) > (double)offset2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((offset2 >> 1) < step) || ((double)step == (double)16))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Describe the cache phase values.</summary>
