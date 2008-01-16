@@ -41,19 +41,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a counter cache reading.</summary>
-        public static double SmoothCounterCache(double scale, double bias)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] samples, long origin)
         {
-            double drift = scale;
-            if (drift > bias)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                drift = drift + bias;
+                if (datum < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (bias - 0.9);
-            }
-            return drift + (0.2 / 6.0);
+            return ok;
         }
     }
 }
