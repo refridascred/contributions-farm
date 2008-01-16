@@ -40,11 +40,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Adjust a counter cache reading.</summary>
+        public static double SmoothCounterCache(double scale, double bias)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            double drift = scale;
+            if (drift > bias)
+            {
+                drift = drift + bias;
+            }
+            else
+            {
+                drift = drift + (bias - 0.9);
+            }
+            return drift + (0.2 / 6.0);
         }
     }
 }
