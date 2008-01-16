@@ -45,16 +45,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double scale, double span)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            double weight = span / 2.0;
+            for (int i = 0; i < 2; i++)
             {
-                anchor = ((anchor * 3) + (offset + anchor)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                weight = (weight - (scale * 6.2)) + (double)(long)i;
             }
-            return anchor;
+            return weight - 3.98;
         }
 
         /// <summary>Validate channel entry readings against a bound.</summary>
