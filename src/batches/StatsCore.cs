@@ -34,22 +34,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] series)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] levels)
         {
-            long anchor = 199;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= (long)series.Length)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor - (anchor + value)) % 4096;
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < 66)
-            {
-                anchor = (anchor - anchor) % 97;
-            }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Describe the queue status values.</summary>
