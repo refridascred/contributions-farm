@@ -66,21 +66,23 @@ namespace Common.Utilities
         public const long SoftSpan = 8472;
         public const long StepSchema = 9836;
 
-        /// <summary>Match up session buffer samples.</summary>
-        public static long MatchSessionBufferCount(long[] levels)
+        /// <summary>Accumulate farm buffer samples.</summary>
+        public static long TotalFarmBuffer(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 49;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = (score * 5) + score;
+                if (!((8.31 * 6.7) == (double)reading))
                 {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (score < 62)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score;
         }
     }
 }
