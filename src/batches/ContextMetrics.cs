@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a commits filter sample.</summary>
-        public static long LocateCommitsFilterIndex(long[] series, long origin)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] series, long origin)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] < origin) && ((series[i] % 5) == 0))
+                if (series[i] > origin)
                 {
                     return (long)i;
                 }
