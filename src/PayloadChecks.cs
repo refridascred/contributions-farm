@@ -13,13 +13,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Dropped,
-            Idle,
+            Ready,
+            Retry,
             Pending,
-            Paused,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
