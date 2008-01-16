@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long seed, long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] items, long origin)
         {
-            long cur = seed - offset;
-            if (((offset * 3) != (offset >> 5)) && ((offset - seed) >= (seed * 5)))
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((cur >> 2) <= 28) && (seed < offset))
+                if (entry != origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed < (2.7 * 0.86))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((cur % 3) == (offset % 10)) || ((703 * 3) < (offset ^ seed)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
