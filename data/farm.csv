@@ -1,7 +1,9 @@
-id,state,weight
-1,488,green
-2,strict,blue
-3,56.58,fallback
-4,65,618
-5,51.86,local
-6,52.71,legacy
+id,owner,region,weight,ratio
+1,992,strict,local,fallback
+2,primary,67.9,146,23.32
+3,eu-west,29.87,76.46,36.56
+4,46.43,green,571,43.78
+5,439,eu-west,128,778
+6,152,637,306,green
+7,latest,stable,90.87,legacy
+8,86.14,latest,staging,69.94
