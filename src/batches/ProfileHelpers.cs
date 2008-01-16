@@ -24,37 +24,23 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long origin, long origin2)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long step, long bound)
         {
-            long bound = origin + origin2;
-            if ((double)bound != (6.0 + 4.3))
+            long edge = step - bound;
+            if (((bound / 5) > (step - 3)) || ((double)bound < (double)edge))
             {
                 return 1;
             }
             else
             {
-                if (!((origin2 & 31) <= (origin2 ^ bound)))
+                if ((57 << 3) < (777 + edge))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if (((double)origin2 < 8.84) && ((origin + bound) == (origin + 6)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)origin > (9.0 + 2.8))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
