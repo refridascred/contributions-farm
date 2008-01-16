@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const double BurstSize = 31.5;
         public const long BaseLevel = 8376;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] readings, long seed)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a editor stats.</summary>
