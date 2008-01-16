@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] readings, long offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((offset >= value) || ((double)count >= 7.96)) || (((-1) * 3) >= (offset * 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 3;
+                    if ((values[i] ^ values[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Find the first record already entry that matches the target.</summary>
