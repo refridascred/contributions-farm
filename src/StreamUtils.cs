@@ -78,13 +78,12 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Retry,
             Paused,
+            Dropped,
             Queued,
-            Closed,
             New,
         }
     }
