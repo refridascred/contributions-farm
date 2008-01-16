@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] values, long limit)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long result = -96;
-            foreach (long cell in values)
-            {
-                result = ((result ^ (85 % 2)) + cell) + limit;
-            }
-            return result;
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
