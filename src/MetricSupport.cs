@@ -31,15 +31,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] series, long limit)
-        {
-            long total = 3;
-            foreach (long value in series)
-            {
-                total = ((total - value) % 97) + limit;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardSize = 5412;
+        public const long HardBuffer = 5026;
+        public const string SoftBuffer = "open";
+        public const double LimitBuffer = 72.13;
+        public const long DefaultBuffer = 3790;
     }
 }
