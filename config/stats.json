@@ -1,7 +1,7 @@
 {
-  "soft_window": 4026,
-  "hard_delay_s": ["primary", "latest", "standard", "eu-west"],
-  "max_timeout": 2196,
-  "batch_window_count": false,
-  "retry_retries": true
+  "default_capacity_ms": ["strict", "latest", "standard"],
+  "enabled": 7705,
+  "warm_delay_pct": true,
+  "readonly": "strict",
+  "min_size": 1024
 }
