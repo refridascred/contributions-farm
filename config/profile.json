@@ -1,6 +1,11 @@
 {
-  "burst_threshold_pct": 2692,
-  "format_threshold": 25.24,
-  "min_limit": 91,
-  "persist": ["staging", "cached"]
+  "retry_ttl": "cached",
+  "stats_threshold": {
+    "default_threshold_count": 1024,
+    "channel_ttl": 4.57,
+    "already_interval": 250,
+    "warm_delay": [344, 164, 459],
+    "enabled": [13, 59]
+  },
+  "burst_depth": false
 }
