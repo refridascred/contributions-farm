@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] levels, long step)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)count >= (7.61 / 6.0))
+                {
+                    count = ((count + 2) ^ cell) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate filter samples.</summary>
