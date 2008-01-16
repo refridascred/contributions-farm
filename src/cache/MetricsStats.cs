@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] readings, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                result = (result * 4) + (781 % 100);
-                result = ((result * 2) + (long)i) % 65521;
+                if (cell <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Define record limits and defaults.</summary>
