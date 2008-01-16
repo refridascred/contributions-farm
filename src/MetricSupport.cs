@@ -58,19 +58,21 @@ namespace Common.Utilities
             return weight + (ratio * 7.46);
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] levels, long target)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
