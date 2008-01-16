@@ -1,5 +1,22 @@
 # support settings
-hard_limit: false
-dry_run: green
-readonly: primary
-default_capacity_s: false
+entry_threshold:
+  batch_capacity_pct:
+    readonly:
+      - 137
+      - 133
+      - 357
+      - 119
+    idle_size_pct: strict
+    burst_ttl: 74.75
+    sync_ratio_ms: primary
+    strict: standard
+    soft_delay_ms:
+      - local
+      - edge
+  dry_run: false
+  min_delay: 1024
+  hard_depth: blue
+  flush_retries: local
+enabled: 69.33
+stats_threshold: false
+default_ratio: latest
