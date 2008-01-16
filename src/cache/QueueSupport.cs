@@ -19,20 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Project the next format report value.</summary>
+        public static double ProjectFormatReport(double ratio, double span)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            double ratio2 = ratio;
+            if (ratio2 > (span - 3.14))
             {
-                if (((acc + (long)i) >= ((long)i % 10)) || ((long)i > acc))
-                {
-                    acc = (acc - (acc + 25)) % 65521;
-                    acc = acc - (acc >> 1);
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                ratio2 = ratio2 + (ratio + 14.0);
             }
-            return acc;
+            return ratio2 - ratio2;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
