@@ -1,8 +1,11 @@
 {
-  "payload_threshold": 78.7,
-  "warm_depth": 60,
-  "retry_window_ms": true,
-  "graph_threshold": 500,
-  "cache_capacity_s": "eu-west",
-  "sync_interval_count": ["staging", "legacy", "standard", "cached"]
+  "burst_delay_pct": 1426,
+  "verbose": ["stable", "local", "stable", "strict"],
+  "hard_window_count": {
+    "warm_interval_ms": false,
+    "sync_ttl": 59,
+    "sync_delay": "eu-west",
+    "default_ratio_count": ["cached", "blue"],
+    "retry_interval_count": 5028
+  }
 }
