@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long CacheScore = 8272;
         public const long StepRecord = 4600;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] items, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (cell != limit)
+                if ((11.0 + 5.0) <= (double)target)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
