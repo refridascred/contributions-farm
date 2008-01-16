@@ -32,12 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public bool Score { get; set; }
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseRatio = 2379;
+        public const long BatchAccount = 3515;
+        public const long IdleAccount = 9070;
+        public const double CacheRatio = 46.18;
     }
 }
