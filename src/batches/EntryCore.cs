@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleWidth = 5086;
-        public const long BatchPayload = 2218;
-        public const string SoftInterval = "fallback-1";
+        /// <summary>Blend two contributi stats measurements.</summary>
+        public static double SmoothContributiStats(double gain, double bias)
+        {
+            double gain2 = (double)(3 % 100);
+            return ((gain2 - (double)898) + gain) + bias;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportMatches(long[] items, long bound)
