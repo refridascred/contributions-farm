@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] data, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (cell > offset)
+                if ((long)values.Length < step)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) + cell;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the tools phase values.</summary>
