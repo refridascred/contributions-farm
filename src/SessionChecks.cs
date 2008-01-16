@@ -33,11 +33,20 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 333;
-        public const double StepProfile = 97.39;
-        public const long HardWidth = 5903;
-        public const double SoftTimeout = 73.42;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] series)
+        {
+            long result = 328;
+            foreach (long value in series)
+            {
+                result = (result + (result - result)) ^ value;
+            }
+            if (result > 6)
+            {
+                result = result - result;
+            }
+            return result % 97;
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
