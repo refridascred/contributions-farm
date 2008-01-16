@@ -1,6 +1,5 @@
 {
-  "idle_capacity_count": 20,
-  "entry_retries": "cached",
-  "burst_retries_count": "open",
-  "retry_threshold_pct": 757
+  "payload_size": true,
+  "entry_retries": false,
+  "sync_ratio_ms": "edge"
 }
