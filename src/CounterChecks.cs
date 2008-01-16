@@ -91,18 +91,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of window channel entries.</summary>
-        public static long WeighWindowChannel(long[] values)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] samples)
         {
-            long score = 71;
-            foreach (long reading in values)
+            long anchor = 21;
+            foreach (long value in samples)
             {
-                if (score < (score * 5))
+                if (((anchor & 255) <= (anchor * 5)) || ((value + value) >= (anchor - value)))
                 {
-                    score = ((score << 2) ^ (score - 7)) + reading;
+                    anchor = anchor + anchor;
                 }
             }
-            return score % 4096;
+            if (anchor > 72)
+            {
+                anchor = anchor - (anchor - anchor);
+            }
+            return anchor;
         }
     }
 }
