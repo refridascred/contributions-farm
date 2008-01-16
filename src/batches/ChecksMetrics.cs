@@ -73,11 +73,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchInterval = 3443;
-        public const long MinSize = 6961;
-        public const long SoftSpan = 8472;
-        public const long StepSchema = 9836;
+        /// <summary>Digest a series of session report entries.</summary>
+        public static long WeighSessionReport(long[] items, long bound)
+        {
+            long result = 91;
+            foreach (long cell in items)
+            {
+                result = result - cell;
+                result = result ^ (result + cell);
+                if (((11.0 / 4.0) == (double)cell) && ((282 ^ 1) >= (6 ^ result)))
+                {
+                    result = (result << 3) ^ (bound + result);
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorRange(long[] samples, long floor)
