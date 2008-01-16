@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long bound, long limit)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long seed)
         {
-            long bound2 = bound ^ limit;
-            if ((273 * 3) <= bound2)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((limit + bound2) >= (bound2 & 1)) && ((27 >> 4) > (bound2 * 3)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 2;
+                    sum = ((sum << 2) ^ (seed + sum)) - (long)i2;
                 }
-                else
-                {
-                    if ((double)bound < (4.1 / 6.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                sum = ((sum * 5) + (seed + seed)) % 101;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Grade a counter already value against two limits.</summary>
