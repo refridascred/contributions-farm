@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] samples, long offset)
         {
-            Ready,
-            Queued,
-            Retry,
-            Stale,
-            Synced,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
