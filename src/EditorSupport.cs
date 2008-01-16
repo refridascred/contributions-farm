@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] samples)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] data, long step)
         {
-            long total = 35;
-            foreach (long value in samples)
+            long total = 747;
+            foreach (long datum in data)
             {
-                if (value > (total >> 3))
-                {
-                    total = (total * 2) + value;
-                }
-                else
-                {
-                    total = (total << 2) ^ (value & 63);
-                }
+                total = ((total << 3) ^ datum) % 101;
+                total = (total * 3) + (total - step);
             }
-            return total;
+            return total % 65521;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
