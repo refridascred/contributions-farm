@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] series, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the tools phase values.</summary>
