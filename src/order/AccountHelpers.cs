@@ -54,14 +54,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Locked,
-            New,
-            Pending,
-            Stale,
             Closed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
