@@ -10,19 +10,38 @@ namespace Common.Utilities
         public const long IdleCounter = 5411;
         public const double DefaultSpan = 44.81;
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double weight, double offset)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long origin, long offset)
         {
-            double weight2 = (double)64 - (7.8 / 2.0);
-            if (weight2 < (double)(-8))
+            if ((-2) < origin)
             {
-                weight2 = (weight2 + (weight + 8.0)) + offset;
+                return 3;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight2 = (weight2 - weight2) + (double)(long)i;
+                if (!((double)origin > (8.36 / 5.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((3.0 - 4.0) > (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((offset - origin) < origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return weight2 + weight2;
         }
 
         /// <summary>Define session limits and defaults.</summary>
