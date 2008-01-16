@@ -1,21 +1,5 @@
 {
-  "cache_threshold_s": true,
-  "burst_window_count": "local",
-  "persist": {
-    "dry_run": "cached",
-    "batch_depth_ms": {
-      "min_window_ms": 385,
-      "retry_size": ["cached", "standard", "latest", "green"],
-      "dry_run": [350, 499, 386]
-    },
-    "readonly": "edge",
-    "metrics_ttl": false,
-    "schema_ttl": {
-      "retry_ratio_pct": true,
-      "channel_timeout": ["green", "strict", "primary"],
-      "soft_size_ms": 60
-    }
-  },
-  "strict": 98.32,
-  "min_ratio_ms": "standard"
+  "enabled": true,
+  "support_interval": "primary",
+  "idle_timeout_s": "primary"
 }
