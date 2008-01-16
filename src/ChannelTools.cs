@@ -13,18 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((((double)hits <= (double)reading) || (7.0 > (double)reading)) && ((89 >> 2) >= reading))
+                if (!((entry % 8) >= (759 << 3)))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 3) - origin;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Rank contributi notes input into a small class.</summary>
