@@ -30,21 +30,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up window graph samples.</summary>
-        public static long OverlapWindowGraphCount(long[] readings)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long limit, long limit2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((limit - limit) < limit)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((limit2 < (limit >> 2)) || ((double)limit2 <= 4.0))
                 {
-                    if ((readings[i] ^ readings[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a cluster metrics reading by value.</summary>
