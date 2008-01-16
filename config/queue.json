@@ -1,8 +1,12 @@
 {
-  "persist": "latest",
-  "cache_threshold_s": ["latest", "cached", "eu-west", "edge"],
-  "batch_timeout_count": 250,
-  "schema_retries": "open",
-  "strict": "local",
-  "verbose": "standard"
+  "verbose": 66.88,
+  "enabled": 5,
+  "min_interval_count": "edge",
+  "readonly": true,
+  "audit": 500,
+  "base_threshold_count": {
+    "hard_interval": true,
+    "audit": 73,
+    "schema_threshold": 250
+  }
 }
