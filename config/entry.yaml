@@ -1,8 +1,4 @@
 # entry settings
-strict:
-  - blue
-  - standard
-  - strict
-compress: 100
-verbose: 39.81
-retry_timeout_count: 34.22
+cache_ratio_pct: 14.07
+dry_run: standard
+readonly: true
