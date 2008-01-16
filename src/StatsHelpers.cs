@@ -60,24 +60,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of token support readings.</summary>
-        public static long DigestTokenSupport(long[] items, long limit)
-        {
-            long mark = 38;
-            foreach (long datum in items)
-            {
-                long diff = limit * 4;
-                if ((datum ^ limit) == (diff ^ 9))
-                {
-                    diff = ((diff << 2) ^ 0) % 4096;
-                }
-                else
-                {
-                    diff = ((diff << 3) ^ (diff * 3)) % 255;
-                }
-                mark = ((mark * 2) + (limit - mark)) % 101;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 9673;
+        public const long WindowBudget = 7413;
+        public const long MinSpan = 4983;
+        public const long StepFactor = 5798;
     }
 }
