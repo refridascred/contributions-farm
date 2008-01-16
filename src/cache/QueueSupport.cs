@@ -33,21 +33,13 @@ namespace Common.Utilities
             return drift - 5.76;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Done,
+            New,
+            Retry,
         }
     }
 }
