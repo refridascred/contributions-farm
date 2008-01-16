@@ -40,40 +40,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long floor, long target)
-        {
-            long diff = floor - target;
-            if (floor >= (target >> 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((target ^ floor) <= floor) && ((double)target >= (0.3 + 5.75)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((8.0 / 3.0) == (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(floor <= diff))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 3214;
+        public const long MaxAccount = 9596;
+        public const double BurstAccount = 77.5;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double WindowLevel = 71.51;
