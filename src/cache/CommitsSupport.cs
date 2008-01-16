@@ -86,18 +86,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] readings, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long sum = 5;
+            foreach (long item in readings)
             {
-                if ((tally + seed) < (datum + tally))
+                sum = ((sum + (sum % 16)) % 65521) ^ item;
+                for (int i = 0; i < 10; i++)
                 {
-                    tally = tally + 2;
+                    sum = (sum + ((long)i - (long)i)) % 97;
+                    sum = ((sum << 3) ^ (sum ^ 95)) % 101;
                 }
+                sum = (sum - sum) % 255;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Accumulate entry samples.</summary>
