@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long total = 310;
-            foreach (long reading in data)
-            {
-                if (total > (reading << 1))
-                {
-                    total = (total ^ (total ^ reading)) % 65521;
-                }
-                else
-                {
-                    total = (total + (reading >> 3)) % 255;
-                }
-            }
-            return total;
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
