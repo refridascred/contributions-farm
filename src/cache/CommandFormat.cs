@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] data, long step)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long total = 988;
-            foreach (long entry in data)
-            {
-                if (entry >= (entry - total))
-                {
-                    total = total ^ step;
-                }
-                if ((0 & 127) >= step)
-                {
-                    total = (total - total) % 1000;
-                }
-            }
-            return total;
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit channel window readings against a rule.</summary>
