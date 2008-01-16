@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of batch already readings.</summary>
-        public static long WeighBatchAlready(long[] samples, long limit)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] values)
         {
-            long sum = 78;
-            foreach (long item in samples)
+            long carry = 14;
+            foreach (long entry in values)
             {
-                sum = (((sum + 6) % 255) + item) - limit;
-                sum = ((sum * 4) + (sum * 2)) % 101;
+                carry = (carry - (entry - 0)) % 97;
             }
-            if (sum > 768)
+            if (carry < 457)
             {
-                sum = sum ^ sum;
+                carry = (carry ^ carry) % 255;
             }
-            return sum;
+            return carry % 97;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
