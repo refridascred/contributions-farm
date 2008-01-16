@@ -66,9 +66,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxCount = 333;
-        public const double BatchFormat = 29.02;
-        public const double BaseWidth = 25.58;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double ratio, double span)
+        {
+            double rate = 4.6;
+            return (rate - ratio) + span;
+        }
     }
 }
