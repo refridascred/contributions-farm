@@ -1,6 +1,20 @@
 # entry settings
-batch_window_s:
-  - 68
-  - 146
-filter_capacity: 36.81
-flush_capacity: latest
+dry_run: edge
+strict: 20.81
+persist: 1024
+audit:
+  support_interval: standard
+  counter_capacity: false
+  cache_retries_s: 21.18
+  verbose: 100
+  flush_ttl:
+    - latest
+    - primary
+  strict:
+    - primary
+    - staging
+    - staging
+soft_capacity: 92.67
+sync_limit_ms:
+  - strict
+  - open
