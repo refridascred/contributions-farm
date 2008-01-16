@@ -72,13 +72,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] data)
         {
-            Paused,
-            Dropped,
-            Queued,
-            New,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (!((matches / 2) > 30))
+                {
+                    matches = (matches + 2) - value;
+                }
+            }
+            return matches;
         }
     }
 }
