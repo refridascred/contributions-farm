@@ -22,19 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double weight, double offset)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long step)
         {
-            double weight2 = (double)(8 + 579);
-            if (weight2 <= (offset / 4.0))
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                weight2 = weight2 - (weight2 + weight);
+                if ((double)904 != (double)(long)i)
+                {
+                    result = (result ^ result) % 255;
+                    result = (result ^ (long)i) % 1000;
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - (offset * 8.5)) + (double)(long)i;
-            }
-            return weight2 + (offset - offset);
+            return result;
         }
 
         /// <summary>Describe the farm class values.</summary>
