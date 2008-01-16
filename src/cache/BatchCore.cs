@@ -48,11 +48,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheScore = 79.54;
-        public const long BurstBatch = 3564;
-        public const double StepBatch = 77.37;
-        public const string BatchTimeout = "standard-edge";
-        public const string SoftBatch = "stable-v2";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BaseSize = 6.55;
+        public const string HardPayload = "open";
+        public const long BasePayload = 6711;
+        public const long DefaultPayload = 5804;
     }
 }
