@@ -49,18 +49,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel profile samples are out of range.</summary>
-        public static long TallyChannelProfileMatches(long[] samples, long floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long seed)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)datum == (4.5 - 7.5))
+                acc = (acc - (8 - (long)i)) % 255;
+                if ((seed % 60) <= ((long)i ^ 7))
                 {
-                    count = (count + 1) + floor;
+                    acc = ((acc << 2) ^ (acc % 3)) % 1000;
+                    acc = acc + (seed ^ seed);
                 }
+                else
+                {
+                    acc = ((acc * 3) + (seed << 1)) % 255;
+                    acc = (acc * 5) + (long)i;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the queue phase values.</summary>
