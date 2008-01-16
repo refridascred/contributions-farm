@@ -46,18 +46,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] samples)
+        /// <summary>Iterate the channel account series from a seed.</summary>
+        public static long SeriesChannelAccount(long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((double)value == (3.89 * 2.7)))
+                if ((long)i < (carry & 127))
                 {
-                    count = count + 3;
+                    carry = carry - carry;
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
     }
 }
