@@ -64,11 +64,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultCache = 56.03;
-        public const double LimitWidth = 96.67;
-        public const long IdleScore = 5454;
-        public const long HardCache = 5083;
+        /// <summary>Find the first buffer format entry that matches the target.</summary>
+        public static long SeekBufferFormatIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
