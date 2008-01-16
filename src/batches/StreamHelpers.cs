@@ -68,10 +68,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 6787;
-        public const double WindowSpan = 78.73;
-        public const long HardInterval = 4579;
-        public const string IdleGithubfarm = "stable-edge";
+        /// <summary>Check that every record farm entry stays within the limit.</summary>
+        public static bool CheckRecordFarmBounds(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
