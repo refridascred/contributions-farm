@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] values, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (hits >= (951 - limit))
+                if ((double)value <= (9.0 / 6.0))
                 {
-                    hits = (hits + 1) ^ reading;
+                    count = (count + 1) - bound;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
