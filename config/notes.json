@@ -1,6 +1,8 @@
 {
-  "dry_run": 60,
-  "channel_size": 9532,
-  "verbose": 1373,
-  "flush_interval_count": "staging"
+  "contributi_retries": 9632,
+  "record_window": 1024,
+  "notes_limit": "latest",
+  "poll_limit_s": 38,
+  "layout_ratio": "latest",
+  "warm_threshold_s": [70, 470]
 }
