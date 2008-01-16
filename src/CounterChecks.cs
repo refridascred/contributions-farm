@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] values, long target)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum != target)
+                if (readings[i] >= limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Count the farm layout entries that pass the check.</summary>
