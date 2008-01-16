@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] items, long step)
         {
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (entry <= seen)
+                {
+                    seen = (seen + 1) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
