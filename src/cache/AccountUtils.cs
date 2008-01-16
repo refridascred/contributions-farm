@@ -22,22 +22,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] samples)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mark = 13;
+            foreach (long cell in readings)
             {
-                if (!((double)value >= (double)matches))
+                if (!(6.6 <= (double)cell))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mark = (mark * 4) + (mark + mark);
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Rank checks githubfarm input into a small class.</summary>
