@@ -1,6 +1,6 @@
-id,state,label
-1,52.23,97.81
-2,80.21,74.31
-3,blue,648
-4,46,primary
-5,723,primary
+id,region,owner
+1,531,123
+2,233,10.8
+3,standard,edge
+4,35.61,strict
+5,181,528
