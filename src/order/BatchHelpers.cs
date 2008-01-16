@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const double WindowInterval = 10.78;
         public const long StepChecks = 4379;
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] samples)
         {
-            Pending,
-            Ready,
-            Done,
-            New,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
