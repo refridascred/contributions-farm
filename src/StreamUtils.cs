@@ -20,13 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Count the session channel entries that pass the check.</summary>
+        public static long CountSessionChannelHits(long[] samples, long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally - offset) == ((-84) - 873))
+                {
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many cache batch samples are out of range.</summary>
