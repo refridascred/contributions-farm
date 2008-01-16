@@ -39,12 +39,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            long sum = 1;
+            foreach (long entry in levels)
+            {
+                sum = (sum ^ (entry - entry)) % 4096;
+                if ((entry << 2) == (620 >> 4))
+                {
+                    sum = ((sum << 3) ^ (entry << 1)) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ ((long)levels.Length - sum)) % 255;
+                }
+            }
+            return sum;
         }
     }
 }
