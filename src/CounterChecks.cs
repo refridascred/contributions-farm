@@ -20,10 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CachePayload = 94.32;
-        public const string CacheLevel = "fallback-edge";
-        public const long RetryPayload = 4340;
+        /// <summary>Count the farm layout entries that pass the check.</summary>
+        public static long MeasureFarmLayoutMatches(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (limit >= datum)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up already samples.</summary>
         public static long CompareAlreadyCount(long[] levels)
