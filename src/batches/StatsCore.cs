@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] series)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long mix = 16;
-            foreach (long value in series)
-            {
-                mix = (((mix << 2) ^ 29) % 97) + value;
-            }
-            if (mix < 56)
-            {
-                mix = (mix ^ (mix % 5)) % 255;
-            }
-            return mix % 97;
+            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
