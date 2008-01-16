@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
+            Locked,
+            Retry,
+            Draft,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
