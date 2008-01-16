@@ -1,4 +1,8 @@
 # entry settings
-min_ratio: strict
-default_ratio_s: latest
-idle_size: 21.94
+support_ttl:
+  - 238
+  - 121
+filter_size: open
+max_timeout: 69
+stream_window: 6.92
+hard_ratio: 71.14
