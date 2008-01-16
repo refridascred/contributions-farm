@@ -38,10 +38,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardNotes = 75.84;
-        public const long MinFactor = 3304;
-        public const string WindowCount = "latest";
-        public const string StepBudget = "latest-edge";
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double ratio, double bias)
+        {
+            double load = bias;
+            if (load < ratio)
+            {
+                load = load - (load - load);
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load + 0.7;
+        }
     }
 }
