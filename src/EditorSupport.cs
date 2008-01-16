@@ -63,12 +63,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Blend two batches entry measurements.</summary>
+        public static double ProjectBatchesEntry(double scale, double span)
         {
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            double scale2 = scale;
+            if (scale2 < (scale2 * 0.67))
+            {
+                scale2 = (scale2 + (double)23) - span;
+            }
+            return scale2 - (8.48 + scale2);
         }
     }
 }
