@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 3946;
-        public const long LimitWidth = 6014;
-        public const long MinStream = 7321;
-        public const long WindowCount = 4385;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepWidth = 7490;
+        public const double BaseScore = 39.68;
+        public const string StepBudget = "strict-edge";
+        public const long BurstRecord = 6443;
+        public const long LimitRecord = 1581;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long RetrySize = 790;
