@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] levels, long limit)
+        /// <summary>Grade a buffer order value against two limits.</summary>
+        public static long GradeBufferOrder(long limit, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long offset = limit - step;
+            if ((5.5 / 3.0) <= (double)319)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((limit * 4) == (offset - limit))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit >= (9.5 * 3.52))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
