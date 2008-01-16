@@ -35,17 +35,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinSize = "fallback-v2";
+        public const long BurstBatches = 9693;
+        public const long StepRatio = 1445;
     }
 }
