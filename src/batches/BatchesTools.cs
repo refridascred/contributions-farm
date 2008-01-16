@@ -23,10 +23,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheSpan = "strict-edge";
-        public const long MinEntry = 4785;
-        public const double StepEntry = 30.87;
-        public const string StepCount = "local-1";
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((count < 5) && ((value + count) != (value >> 2)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
