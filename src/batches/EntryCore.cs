@@ -15,12 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 1790;
-        public const double CacheTools = 9.33;
-        public const double MinTools = 76.73;
-        public const long HardBudget = 8518;
-        public const string WindowBudget = "local";
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double SmoothWindow(double bias, double bias2)
