@@ -23,11 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "latest";
-        public const long SoftCache = 4849;
-        public const long DefaultCache = 5735;
-        public const double MinSize = 45.85;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Pending,
+            Synced,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LookupGraphIndex(long[] data, long bound)
