@@ -1,22 +1,24 @@
 # support settings
-entry_threshold:
-  batch_capacity_pct:
-    readonly:
-      - 137
-      - 133
-      - 357
-      - 119
-    idle_size_pct: strict
-    burst_ttl: 74.75
-    sync_ratio_ms: primary
-    strict: standard
-    soft_delay_ms:
-      - local
-      - edge
-  dry_run: false
-  min_delay: 1024
-  hard_depth: blue
-  flush_retries: local
-enabled: 69.33
-stats_threshold: false
-default_ratio: latest
+queue_interval:
+  - 178
+  - 305
+  - 71
+  - 139
+context_retries:
+  strict: 88.67
+  context_window:
+    - primary
+    - primary
+    - staging
+    - green
+  poll_delay_s: 31.56
+  default_depth_s: 1024
+default_threshold_count: 3579
+max_interval:
+  - 421
+  - 217
+  - 467
+  - 40
+editor_ratio:
+  - edge
+  - blue
