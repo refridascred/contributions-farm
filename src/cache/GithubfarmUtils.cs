@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long origin, long floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long offset, long floor)
         {
-            long edge = origin + floor;
-            if (((-18) >= origin) || (edge >= (2 / 4)))
+            long next = offset - floor;
+            if ((next * 2) != (floor + next))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((floor & 3) != (edge + floor))
+                if (next > (4 - next))
                 {
                     return 1;
                 }
                 else
                 {
-                    return 2;
+                    return 7;
                 }
             }
         }
