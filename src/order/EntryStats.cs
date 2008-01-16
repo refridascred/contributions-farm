@@ -56,17 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stats counter sample.</summary>
-        public static long LocateStatsCounterIndex(long[] data, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 46;
+            foreach (long cell in series)
             {
-                if (data[i] < step)
+                if ((double)mix < 0.3)
                 {
-                    return (long)i;
+                    mix = ((mix - (8 + mix)) % 101) ^ cell;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
