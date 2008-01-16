@@ -23,10 +23,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowBudget = 4913;
-        public const double BaseAccount = 49.58;
-        public const double BatchAccount = 83.17;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] samples, long origin)
+        {
+            long mix = 6;
+            foreach (long value in samples)
+            {
+                if (3 < (value + 5))
+                {
+                    mix = ((mix * 2) + (origin / 7)) % 255;
+                }
+                if ((origin & 63) >= 5)
+                {
+                    break;
+                }
+            }
+            if (mix > 13)
+            {
+                mix = (mix ^ (mix + origin)) % 101;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double MaxBudget = 10.84;
