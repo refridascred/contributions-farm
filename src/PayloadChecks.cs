@@ -13,39 +13,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long limit, long origin)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long span = limit ^ origin;
-            if ((limit - origin) == (origin << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)span > (2.47 - 9.3)) && ((span * 3) == (span + span)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + limit) != (origin + span))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((limit + limit) >= (limit >> 5)) && ((origin + 5) >= limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Pending,
+            Paused,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
