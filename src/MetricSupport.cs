@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double rate, double floor)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double drift = (double)156 + (floor / 2.0);
-            if (drift <= drift)
-            {
-                drift = drift + rate;
-            }
-            return drift - rate;
+            public bool Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Blend two stats measurements.</summary>
