@@ -53,18 +53,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] values, long floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!((floor ^ count) == (floor + 2)))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            Stale,
+            Retry,
+            Idle,
+            Locked,
         }
     }
 }
