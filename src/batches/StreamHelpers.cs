@@ -25,14 +25,24 @@ namespace Common.Utilities
         public const string WindowRatio = "alpha-1";
         public const double MaxInterval = 7.11;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long step, long seed)
         {
-            Ready,
-            Paused,
-            Idle,
-            Done,
-            Pending,
+            if ((0.7 * 2.81) == (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (14.0 <= (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate stream samples.</summary>
