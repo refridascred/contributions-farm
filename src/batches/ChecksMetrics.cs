@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] readings, long origin)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long limit, long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            if ((target + target) <= (90 * 5))
             {
-                if (!((33 << 2) < seen))
+                return 4;
+            }
+            else
+            {
+                if ((double)limit > (15.0 / 4.0))
                 {
-                    seen = ((seen + 2) ^ reading) - origin;
+                    return 0;
+                }
+                else
+                {
+                    if (7.0 < (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many format stream samples are out of range.</summary>
