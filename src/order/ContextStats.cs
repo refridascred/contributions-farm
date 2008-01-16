@@ -34,13 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Pending,
-            Closed,
-            Done,
-            Draft,
+            Paused,
+            New,
+            Queued,
+            Synced,
         }
 
         /// <summary>Fold a list of editor context readings.</summary>
