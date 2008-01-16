@@ -59,18 +59,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] samples, long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed % 100) < 87)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + value;
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
