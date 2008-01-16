@@ -1,11 +1,7 @@
 {
-  "metric_interval": 9,
-  "editor_threshold": true,
-  "hard_interval": 7134,
-  "max_ttl_count": {
-    "max_ratio_pct": "local",
-    "default_threshold_s": 23.53,
-    "audit": 1024
-  },
-  "default_timeout_count": 42.49
+  "stats_threshold": 30.97,
+  "soft_timeout_count": [330, 498, 27, 32],
+  "cluster_depth": 8766,
+  "strict": "local",
+  "flush_size": 250
 }
