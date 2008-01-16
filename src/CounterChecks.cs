@@ -34,18 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] series)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((double)hits <= (0.12 + 3.6))
+                if (entry >= seed)
                 {
-                    hits = (hits + 2) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Match up batch samples.</summary>
