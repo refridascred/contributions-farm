@@ -40,13 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Paused,
-            Draft,
-            Stale,
-            Ready,
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
