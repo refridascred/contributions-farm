@@ -33,25 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank contributi notes input into a small class.</summary>
-        public static long GradeContributiNotes(long bound, long floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long floor)
         {
-            long lane = bound + floor;
-            if ((bound ^ lane) >= floor)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)lane != (double)4)
+                if (((double)score < (9.92 - 7.0)) && (((long)i % 3) >= floor))
                 {
-                    return 1;
+                    score = (score - score) % 255;
                 }
-                else
-                {
-                    return 8;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
+            return score;
         }
     }
 }
