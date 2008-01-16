@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long origin, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] values, long offset)
         {
-            if (((origin >> 3) <= ((-187) - origin)) && ((double)origin != (14.0 + 4.89)))
+            bool found = true;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin + (-2)) <= (origin + seed))
+                if (cell > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed - seed) < (origin << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed < (seed + 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the session channel entries that pass the check.</summary>
