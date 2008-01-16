@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long bound, long origin)
+        /// <summary>Rank stats batches input into a small class.</summary>
+        public static long BucketStatsBatches(long seed, long offset)
         {
-            if ((origin > (1 << 1)) && (bound >= (bound % 100)))
+            long span = seed ^ offset;
+            if (seed <= span)
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (!((2.0 + 4.89) == (double)bound))
+                if ((offset + seed) < (offset + span))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if (((696 - bound) != (origin - origin)) && ((bound * 2) < bound))
+                    if ((span << 3) < (seed + offset))
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        if ((bound <= (bound + bound)) && ((origin << 1) > (598 ^ bound)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 0;
                     }
                 }
             }
