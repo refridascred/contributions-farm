@@ -29,19 +29,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] levels, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long sum = 829;
+            foreach (long value in samples)
             {
-                if (reading > bound)
+                if ((sum + 5) != (40 << 3))
                 {
-                    ok = false;
-                    break;
+                    long bound = 256;
+                    sum = (sum ^ (bound << 2)) % 4096;
+                }
+                if ((origin >> 4) >= (487 & 3))
+                {
+                    sum = (sum + value) % 255;
                 }
             }
-            return ok;
+            if (sum < 3)
+            {
+                sum = (sum + (sum >> 2)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count batches stream pairs that satisfy a relation.</summary>
