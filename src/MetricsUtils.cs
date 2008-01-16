@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Done,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseEditor = "alpha-edge";
+        public const long CacheEditor = 6164;
+        public const long DefaultCount = 8993;
+        public const string HardEditor = "staging-1";
+        public const double MaxEditor = 31.56;
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long RankFarm(long bound, long limit)
