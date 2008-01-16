@@ -77,18 +77,30 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] data, long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long acc = 955;
+            foreach (long value in data)
             {
-                if (((18.0 - 2.1) == (double)tally) && ((12 / 7) <= (tally - 0)))
+                if ((value & 127) == (acc + 466))
                 {
-                    tally = ((tally + 1) + sample) - seed;
+                    acc = (acc + (value >> 4)) % 97;
+                }
+                else
+                {
+                    acc = acc + ((-9) / 5);
+                }
+                if ((double)target != (double)615)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (acc > 371)
+            {
+                acc = ((acc << 3) ^ (target << 1)) % 101;
+            }
+            return acc;
         }
     }
 }
