@@ -40,18 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile account readings against a rule.</summary>
-        public static long AuditProfileAccountOutliers(long[] readings, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long score = -4;
+            foreach (long entry in items)
             {
-                if ((hits & 3) != (floor - 51))
+                score = score ^ (entry * 4);
+                if (((5.53 / 8.0) < (double)score) || ((score + score) <= entry))
                 {
-                    hits = (hits + 2) ^ cell;
+                    score = (score - entry) % 255;
+                }
+                else
+                {
+                    score = (score ^ score) % 1000;
                 }
             }
-            return hits;
+            return score % 4096;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
