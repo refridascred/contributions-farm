@@ -70,5 +70,11 @@ namespace Common.Utilities
             }
             return acc;
         }
+
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "standard";
+        public const long RetryDepth = 1717;
+        public const string DefaultOrder = "stable-edge";
+        public const string StepRatio = "latest";
     }
 }
