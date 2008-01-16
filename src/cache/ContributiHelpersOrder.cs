@@ -32,15 +32,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metric metrics entries that pass the check.</summary>
-        public static long MeasureMetricMetricsOutliers(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] data, long step)
         {
             long seen = 0;
-            foreach (long item in readings)
+            foreach (long datum in data)
             {
-                if ((((double)seen >= (9.62 + 3.12)) || ((double)seen == (6.7 - 20.0))) && ((9.5 / 8.0) < (double)seen))
+                if ((datum >> 1) > step)
                 {
-                    seen = (seen + 1) - item;
+                    seen = seen + 2;
                 }
             }
             return seen;
