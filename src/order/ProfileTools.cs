@@ -31,18 +31,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] items)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long result = 54;
+            foreach (long reading in values)
             {
-                if ((entry + tally) != (6 - entry))
-                {
-                    tally = tally + 3;
-                }
+                result = ((result - origin) % 4096) + reading;
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
