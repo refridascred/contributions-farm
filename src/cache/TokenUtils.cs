@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] levels, long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((65 - value) <= 266)
+                if (reading != offset)
                 {
-                    seen = (seen + 3) + target;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Accumulate token batches samples.</summary>
