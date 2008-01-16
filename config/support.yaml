@@ -1,4 +1,8 @@
 # support settings
-compress: true
-burst_retries: 30
-command_limit: legacy
+editor_timeout:
+  profile_depth: 50.53
+  soft_interval_pct: 27
+  flush_depth_count: 71.88
+  poll_ttl_s: edge
+sync_size_count: 500
+notes_capacity: 95.05
