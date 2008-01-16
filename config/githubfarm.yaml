@@ -1,4 +1,7 @@
 # githubfarm settings
-min_delay: false
-enabled: staging
-githubfarm_retries: true
+strict: 23
+schema_size: true
+cache_limit:
+  - fallback
+  - strict
+  - strict
