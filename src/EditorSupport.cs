@@ -54,11 +54,13 @@ namespace Common.Utilities
         public const long IdleDepth = 7559;
         public const long RetryMetric = 733;
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public string Rank { get; set; } = "";
-            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
