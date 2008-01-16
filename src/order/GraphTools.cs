@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] series, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (entry < origin)
+                if ((matches * 5) > (cell >> 4))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the tools phase values.</summary>
