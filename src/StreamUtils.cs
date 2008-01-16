@@ -42,12 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] levels, long bound)
         {
-            Queued,
-            Idle,
-            Done,
+            long total = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading ^ total) > (reading & 255)) && ((reading + total) > (total & 63)))
+                {
+                    total = ((total - (reading - total)) % 65521) + bound;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
