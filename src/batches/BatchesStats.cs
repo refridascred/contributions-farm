@@ -37,16 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double weight, double span)
-        {
-            double bias = (double)16 / 7.0;
-            if (bias <= (bias * 7.0))
-            {
-                bias = (bias - (weight + 3.0)) - span;
-            }
-            return bias + bias;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitTimeout = "alpha-v2";
+        public const double HardSchema = 8.23;
+        public const string BatchSchema = "staging";
+        public const double CacheSize = 47.49;
+        public const long MaxDepth = 6850;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] levels, long step)
