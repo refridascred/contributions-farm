@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many graph tools samples are out of range.</summary>
-        public static long MeasureGraphToolsOutliers(long[] samples)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((matches & 255) == (25 + reading))
+                if (((value << 1) < (tally >> 3)) || ((852 - value) != (value ^ tally)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
