@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of entry support readings.</summary>
-        public static long FoldEntrySupport(long[] data)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long offset)
         {
-            long score = 59;
-            foreach (long cell in data)
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((score + (long)data.Length) > (score * 3))
-                {
-                    score = ((score - (score + 5)) % 97) + cell;
-                }
+                anchor = ((anchor * 2) + (anchor >> 1)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            if (score < 5)
-            {
-                score = ((score * 5) + (4 * 4)) % 65521;
-            }
-            return score % 97;
+            return anchor;
         }
 
         /// <summary>Match up tools cluster samples.</summary>
