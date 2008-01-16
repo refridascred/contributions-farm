@@ -47,13 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
-            public bool Count { get; set; }
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
