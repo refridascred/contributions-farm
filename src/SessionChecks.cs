@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 2622;
-        public const double StepSize = 48.06;
-        public const long BatchNotes = 2244;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum / 7) <= (datum << 1))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long IterateEntry(long offset)
