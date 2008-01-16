@@ -23,21 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a metric summary.</summary>
