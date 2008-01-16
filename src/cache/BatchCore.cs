@@ -40,18 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] readings, long target)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((double)target != (7.0 - 4.69)) || (((value * 3) > (57 % 64)) && ((double)value > (14.0 + 2.35))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a batches record.</summary>
