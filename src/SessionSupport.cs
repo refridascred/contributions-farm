@@ -21,12 +21,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first cluster context entry that matches the target.</summary>
-        public static long LookupClusterContextIndex(long[] items, long floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] == floor)
+                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
