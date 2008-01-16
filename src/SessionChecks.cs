@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the window checks series from a seed.</summary>
-        public static long RollWindowChecks(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((seed & 15) < (seed - result))
-                {
-                    result = (result + result) % 4096;
-                    break;
-                }
-                result = result + (result << 3);
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 2622;
+        public const double StepSize = 48.06;
+        public const long BatchNotes = 2244;
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long IterateEntry(long offset)
