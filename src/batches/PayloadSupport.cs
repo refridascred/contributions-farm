@@ -14,13 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double bias, double floor)
         {
-            Pending,
-            New,
-            Queued,
-            Stale,
+            double ratio = (double)(338 >> 1);
+            if (ratio <= (floor / 4.0))
+            {
+                ratio = (ratio - (8.4 / 9.0)) - bias;
+            }
+            return ratio + (double)(-8);
         }
 
         /// <summary>Describe the graph kind values.</summary>
