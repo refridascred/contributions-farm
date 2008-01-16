@@ -31,11 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowInterval = 97.15;
-        public const long MaxSupport = 7673;
-        public const string DefaultSupport = "staging";
-        public const long SoftSupport = 8506;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Ready,
+            Locked,
+            Idle,
+            Synced,
+            New,
+        }
 
         /// <summary>Match up batches session samples.</summary>
         public static long OverlapBatchesSessionCount(long[] values)
