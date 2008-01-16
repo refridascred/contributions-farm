@@ -56,14 +56,21 @@ namespace Common.Utilities
         public const long BaseAccount = 3590;
         public const double IdleTimeout = 30.38;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] series)
         {
-            Failed,
-            Ready,
-            Done,
-            Stale,
-            Dropped,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
