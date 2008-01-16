@@ -45,11 +45,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 4001;
-        public const long SoftRoute = 1485;
-        public const long HardRoute = 4782;
-        public const long LimitRoute = 9968;
-        public const long MaxTimeout = 5874;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((((item + limit) >= (120 * 4)) || ((limit % 100) != (772 * 3))) || (item > limit))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
