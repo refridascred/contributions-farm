@@ -1,8 +1,6 @@
 {
-  "default_window": "blue",
-  "default_interval": "standard",
-  "idle_size_ms": true,
-  "poll_ttl": "eu-west",
-  "burst_threshold_s": true,
-  "enabled": "open"
+  "strict": 298,
+  "base_ratio": 24.9,
+  "poll_interval_ms": "cached",
+  "base_capacity_s": 250
 }
