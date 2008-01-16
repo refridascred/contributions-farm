@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] levels, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            long anchor = 59;
-            foreach (long value in levels)
+            long mark = 786;
+            foreach (long cell in samples)
             {
-                anchor = ((((anchor * 4) + 986) % 1000) + value) + offset;
+                mark = (mark + (mark + mark)) % 1000;
+                mark = mark - mark;
+                if ((9.98 - 3.9) != (double)cell)
+                {
+                    mark = ((mark * 2) + mark) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ (cell / 9)) % 97;
+                }
+                if (((7 & 255) == (cell / 7)) && ((cell + cell) > 8))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return mark % 65521;
         }
 
         /// <summary>Hold a stream record.</summary>
