@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] series)
+        /// <summary>Blend two buffer stream measurements.</summary>
+        public static double AdjustBufferStream(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = bias;
+            if (weight > (double)66)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight + ratio;
             }
-            return matches;
+            return weight - (double)56;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
