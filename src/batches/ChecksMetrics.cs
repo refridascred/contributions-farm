@@ -26,17 +26,21 @@ namespace Common.Utilities
         public const long StepWidth = 994;
         public const long DefaultCache = 6569;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state + state) % 1000;
-                state = (state * 4) + (state - (long)i);
-                state = ((state * 4) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
