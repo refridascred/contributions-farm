@@ -38,20 +38,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] readings)
-        {
-            long acc = 5;
-            foreach (long reading in readings)
-            {
-                if ((7.0 <= (double)reading) && ((reading / 3) == (acc >> 5)))
-                {
-                    acc = acc ^ (reading - acc);
-                }
-                acc = (acc - (reading / 4)) % 4096;
-                acc = acc + (acc + acc);
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinWidth = 2027;
+        public const long BatchMetric = 2777;
+        public const long BurstFactor = 9539;
+        public const long IdleSpan = 2116;
     }
 }
