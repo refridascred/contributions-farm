@@ -1,10 +1,7 @@
-id,label,weight
-1,67.3,48.47
-2,443,449
-3,80.11,59.06
-4,blue,78.43
-5,88.54,edge
-6,219,legacy
-7,524,open
-8,standard,eu-west
-9,eu-west,597
+id,state,region,score
+1,legacy,458,cached
+2,local,85,61.92
+3,19.43,238,82.97
+4,9.3,28.62,513
+5,971,74,763
+6,green,33.27,433
