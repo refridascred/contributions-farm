@@ -36,13 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] items, long offset)
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
