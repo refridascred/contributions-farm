@@ -69,19 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report stream entry stays within the limit.</summary>
-        public static bool CheckReportStreamRange(long[] samples, long target)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double gain, double floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            double gain2 = gain;
+            if (gain2 >= (floor - floor))
             {
-                if (value != target)
-                {
-                    found = false;
-                    break;
-                }
+                gain2 = gain2 + (floor - gain2);
             }
-            return found;
+            return gain2 - gain;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
