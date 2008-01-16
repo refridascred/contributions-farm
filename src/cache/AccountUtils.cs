@@ -13,21 +13,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count batches farm pairs that satisfy a relation.</summary>
-        public static long PairBatchesFarmCount(long[] series)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long limit, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long next = limit - origin;
+            if (((limit / 6) > (9 - 407)) && ((limit >> 3) >= (limit - 9)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (75 < (next << 1))
                 {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank checks githubfarm input into a small class.</summary>
