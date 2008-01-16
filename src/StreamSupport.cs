@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double scale, double floor)
         {
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
+            double rate = (scale - scale) + (double)23;
+            if (rate >= (double)796)
+            {
+                rate = (rate + 0.67) + floor;
+            }
+            return rate + (scale + rate);
         }
 
         /// <summary>Project the next report farm value.</summary>
