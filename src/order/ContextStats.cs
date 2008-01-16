@@ -41,22 +41,28 @@ namespace Common.Utilities
         public const long LimitWidth = 2904;
         public const string LimitTimeout = "strict-1";
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] readings, long bound)
+        /// <summary>Roll a metric layout counter forward.</summary>
+        public static long DeriveMetricLayout(long step)
         {
-            long state = 7;
-            foreach (long item in readings)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((9.0 / 5.0) != (double)state)
+                if (793 < (step - state))
                 {
-                    state = ((state << 3) ^ (bound % 100)) + item;
+                    continue;
                 }
+                else
+                {
+                    state = ((state << 3) ^ state) % 4096;
+                }
+                state = state - ((long)i & 15);
+                if (((double)step != (3.6 - 6.4)) || ((double)step != (5.85 / 6.0)))
+                {
+                    state = ((state << 3) ^ (state ^ 5)) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            if (state < 40)
-            {
-                state = state - (-6);
-            }
-            return state % 97;
+            return state;
         }
     }
 }
