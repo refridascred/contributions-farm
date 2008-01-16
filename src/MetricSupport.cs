@@ -22,38 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context layout pair into a bucket.</summary>
-        public static long RankContextLayout(long limit, long origin)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] samples, long limit)
         {
-            if ((20.0 * 18.0) == (double)limit)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin + limit) > (origin - limit)) && ((origin ^ (-168)) > (-21)))
+                if (samples[i] > limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit << 1) > (9 & 31))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin & 3) < (origin + origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
