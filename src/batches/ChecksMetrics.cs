@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long limit, long target)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] levels)
         {
-            if ((target + target) <= (90 * 5))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit > (15.0 / 4.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (7.0 < (double)target)
+                    if ((levels[i] - levels[j]) < 4)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many format stream samples are out of range.</summary>
