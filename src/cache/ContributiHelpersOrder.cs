@@ -22,12 +22,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] levels, long target)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (matches < (matches * 5))
+                {
+                    matches = ((matches + 3) + datum) + target;
+                }
+            }
+            return matches;
         }
     }
 }
