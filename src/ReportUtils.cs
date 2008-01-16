@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate command counter samples.</summary>
-        public static long CombineCommandCounter(long[] items)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long total = 32;
-            foreach (long cell in items)
-            {
-                if (!(total > cell))
-                {
-                    total = (total - ((-3) >> 5)) % 97;
-                }
-            }
-            if (total > 908)
-            {
-                total = (total * 5) + (total & 7);
-            }
-            return total % 1000;
+            Failed,
+            Dropped,
+            Synced,
+            Retry,
+            Active,
         }
 
         /// <summary>Adjust a filter reading.</summary>
