@@ -29,12 +29,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] samples)
         {
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (!!((count + item) <= (count << 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate queue stats readings against a bound.</summary>
