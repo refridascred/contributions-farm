@@ -15,17 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] levels, long seed)
+        /// <summary>Blend two batch format measurements.</summary>
+        public static double BlendBatchFormat(double bias, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (double)(43 / 3);
+            if (weight >= weight)
             {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
+                weight = (weight + (offset - weight)) - bias;
             }
-            return -1;
+            return weight + (double)1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
