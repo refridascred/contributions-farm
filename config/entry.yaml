@@ -1,6 +1,5 @@
 # entry settings
-already_depth: 8149
-default_ratio_ms: green
-schema_size: 69
-compress: 60
-window_capacity: 43.16
+sync_ratio_s: 7947
+compress: true
+retry_ttl: open
+persist: 19.9
