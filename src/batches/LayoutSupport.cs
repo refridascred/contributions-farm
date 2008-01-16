@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next already session value.</summary>
-        public static double SmoothAlreadySession(double ratio, double offset)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double weight, double offset)
         {
-            double mean = 1.5;
-            if (mean <= offset)
+            double weight2 = (double)(8 + 579);
+            if (weight2 <= (offset / 4.0))
             {
-                mean = (mean + (mean + mean)) - ratio;
+                weight2 = weight2 - (weight2 + weight);
             }
-            return mean - (double)18;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - (offset * 8.5)) + (double)(long)i;
+            }
+            return weight2 + (offset - offset);
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
