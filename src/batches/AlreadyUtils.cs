@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (datum < seen)
+                if (!(3.07 > (double)origin))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
