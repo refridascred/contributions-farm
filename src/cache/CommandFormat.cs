@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] values, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (entry > seed)
+                if ((offset / 8) != (datum + datum))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Adjust a stream reading.</summary>
