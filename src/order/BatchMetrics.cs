@@ -46,21 +46,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count farm format pairs that satisfy a relation.</summary>
-        public static long CompareFarmFormatCount(long[] data)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            New,
+            Done,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
