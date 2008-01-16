@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] items, long offset)
+        /// <summary>Locate a already batches reading by value.</summary>
+        public static long LocateAlreadyBatchesIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell * 3) > (cell + cell))
+                if (series[i] >= step)
                 {
-                    matches = (matches + 2) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the order kind values.</summary>
