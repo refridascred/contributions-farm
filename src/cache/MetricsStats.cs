@@ -62,10 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryDepth = 6067;
-        public const long LimitFarm = 901;
-        public const string MinBudget = "fallback-1";
-        public const string SoftFarm = "legacy-v2";
+        /// <summary>Check that every profile cluster entry stays within the limit.</summary>
+        public static bool CheckProfileClusterBounds(long[] samples, long bound)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
