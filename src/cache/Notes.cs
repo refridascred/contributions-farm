@@ -31,24 +31,11 @@ namespace Common.Utilities
             return drift + (floor - scale);
         }
 
-        /// <summary>Grade a cache report value against two limits.</summary>
-        public static long SortCacheReport(long limit, long offset)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            if (((limit & 31) < offset) && ((limit >> 1) < offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (3 < (offset >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
