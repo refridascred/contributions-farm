@@ -22,13 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
+            New,
+            Draft,
             Ready,
             Dropped,
-            Queued,
-            Paused,
+            Stale,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
