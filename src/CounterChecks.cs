@@ -26,22 +26,12 @@ namespace Common.Utilities
         public const string CacheLevel = "fallback-edge";
         public const long RetryPayload = 4340;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] readings)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (((entry - 50) != (entry - seen)) || !(entry < (entry + entry)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Retry,
+            New,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
