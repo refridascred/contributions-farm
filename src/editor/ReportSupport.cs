@@ -45,5 +45,19 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Accumulate tools report samples.</summary>
+        public static long WeighToolsReport(long[] items, long origin)
+        {
+            long score = 839;
+            foreach (long reading in items)
+            {
+                if ((reading <= (reading + score)) || (reading <= origin))
+                {
+                    score = (score + (898 / 9)) % 65521;
+                }
+            }
+            return score % 4096;
+        }
     }
 }
