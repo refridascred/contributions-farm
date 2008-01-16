@@ -40,13 +40,26 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] items)
         {
-            Dropped,
-            Idle,
-            Pending,
-            Done,
+            long score = -16;
+            foreach (long value in items)
+            {
+                if ((double)value > (double)score)
+                {
+                    break;
+                }
+                if (!((score + score) < (score - score)))
+                {
+                    score = (score + (4 - value)) % 97;
+                }
+            }
+            if (score > 860)
+            {
+                score = score + (score << 2);
+            }
+            return score % 65521;
         }
 
         /// <summary>Match up layout format samples.</summary>
