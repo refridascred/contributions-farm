@@ -34,18 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((906 + entry) < (33 * 3))
+                if (value <= origin)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
