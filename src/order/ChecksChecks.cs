@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const long MaxWidth = 841;
         public const long BurstReport = 586;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            Failed,
+            Stale,
+            Pending,
+            Synced,
             New,
-            Ready,
-            Dropped,
-            Draft,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
