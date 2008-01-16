@@ -16,15 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Match up window graph samples.</summary>
