@@ -56,19 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a session already counter forward.</summary>
-        public static long StepSessionAlready(long origin)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = (score - (origin - score)) - (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
     }
 }
