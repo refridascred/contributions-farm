@@ -73,15 +73,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two batches entry measurements.</summary>
-        public static double ProjectBatchesEntry(double scale, double span)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            double scale2 = scale;
-            if (scale2 < (scale2 * 0.67))
-            {
-                scale2 = (scale2 + (double)23) - span;
-            }
-            return scale2 - (8.48 + scale2);
+            Locked,
+            Stale,
+            Closed,
+            Idle,
+            Paused,
         }
     }
 }
