@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long seed, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] data)
         {
-            if ((target << 3) != (target - seed))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((17.0 / 5.0) <= (double)target) && ((double)target > (19.0 - 0.5)))
+                if ((1 + datum) > count)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the account state values.</summary>
