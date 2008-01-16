@@ -1,16 +1,9 @@
 # support settings
-verbose: 58.01
-stats_ratio: eu-west
-cache_threshold:
-  - 319
-  - 165
-  - 272
-  - 436
-max_interval_count:
-  cache_ttl_pct: 3.68
-  flush_window_ms: 44.72
-  compress: 60
-  dry_run: eu-west
-  contributi_ratio: cached
-readonly: true
-report_ttl: 100
+cache_threshold_pct:
+  retry_threshold: 26.11
+  format_timeout: 1024
+  dry_run: false
+verbose: strict
+cache_timeout:
+  - stable
+  - primary
