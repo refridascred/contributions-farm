@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] readings)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long total = 0;
-            foreach (long cell in readings)
-            {
-                if ((total >> 5) <= cell)
-                {
-                    total = total + total;
-                    break;
-                }
-                total = (total * 3) + ((long)readings.Length & 15);
-            }
-            return total;
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
