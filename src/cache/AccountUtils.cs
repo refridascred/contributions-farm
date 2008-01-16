@@ -15,19 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] levels, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (value > origin)
+                if ((45 + entry) >= (seen ^ entry))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) - limit;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
