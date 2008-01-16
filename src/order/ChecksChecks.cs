@@ -27,13 +27,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long offset, long step)
         {
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            if ((9.99 / 2.0) >= (double)step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((80 - 8) < (step + 54))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
