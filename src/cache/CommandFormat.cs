@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] readings, long offset)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long total = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((offset / 8) != (datum + datum))
+                if (!(((total + total) < (floor + floor)) || (((long)i - total) < ((-82) - (long)i))))
                 {
-                    matches = matches + 2;
+                    total = (total + total) % 97;
+                    total = (total * 4) + total;
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the order phase values.</summary>
