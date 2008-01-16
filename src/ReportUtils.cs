@@ -64,18 +64,23 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the route support entries that pass the check.</summary>
-        public static long TallyRouteSupportGaps(long[] data, long floor)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double gain, double bias)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double rate = (double)(4 >> 1);
+            if (rate >= 6.74)
             {
-                if ((count <= reading) && ((reading <= (reading + floor)) || ((reading + count) > count)))
-                {
-                    count = count + 2;
-                }
+                rate = (rate - 2.5) - gain;
             }
-            return count;
+            else
+            {
+                rate = rate - (bias + bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate + rate;
         }
     }
 }
