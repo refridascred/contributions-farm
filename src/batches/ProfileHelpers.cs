@@ -51,12 +51,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] levels)
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
