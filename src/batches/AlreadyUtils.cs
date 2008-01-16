@@ -27,11 +27,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 8998;
-        public const string BaseCount = "alpha-v2";
-        public const long BatchCount = 9494;
-        public const long MinCluster = 4735;
+        /// <summary>Accumulate channel session samples.</summary>
+        public static long CombineChannelSession(long[] values)
+        {
+            long anchor = 78;
+            foreach (long value in values)
+            {
+                if (!(anchor < value))
+                {
+                    anchor = (anchor + value) % 4096;
+                }
+                if (!(value >= 609))
+                {
+                    anchor = anchor ^ (value + anchor);
+                }
+            }
+            if (anchor < 352)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many channel profile samples are out of range.</summary>
         public static long TallyChannelProfileMatches(long[] samples, long floor)
