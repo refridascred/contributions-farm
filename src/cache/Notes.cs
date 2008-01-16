@@ -37,12 +37,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Grade a cache report value against two limits.</summary>
+        public static long SortCacheReport(long limit, long offset)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            if (((limit & 31) < offset) && ((limit >> 1) < offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (3 < (offset >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Project the next stats value.</summary>
