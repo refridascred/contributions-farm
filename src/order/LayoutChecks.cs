@@ -16,20 +16,29 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] values, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] values, long floor)
         {
-            long sum = 23;
-            foreach (long datum in values)
+            long anchor = -37;
+            foreach (long cell in values)
             {
-                sum = (((sum * 5) + (datum >> 4)) % 101) - origin;
-                sum = (sum - datum) % 101;
-                if ((sum % 60) == ((long)values.Length + 326))
+                if ((double)anchor <= (double)cell)
                 {
-                    break;
+                    anchor = anchor ^ (floor - floor);
+                    anchor = (anchor + (514 & 31)) % 1000;
                 }
+                if ((floor - anchor) > (floor + (-860)))
+                {
+                    anchor = (anchor * 3) + (4 + floor);
+                    anchor = (anchor - ((-2) + cell)) % 65521;
+                }
+                anchor = anchor ^ anchor;
             }
-            return sum % 1000;
+            if (anchor > 260)
+            {
+                anchor = (anchor ^ (97 % 3)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
