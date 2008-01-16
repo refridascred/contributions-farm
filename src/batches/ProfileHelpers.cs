@@ -50,21 +50,22 @@ namespace Common.Utilities
         public const long LimitFactor = 8855;
         public const string RetrySession = "strict-1";
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] levels)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = -2;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((4.0 * 1.8) > (double)score) || (score < reading))
                 {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score << 2) ^ (score & 3);
                 }
             }
-            return seen;
+            if (score > 8)
+            {
+                score = ((score * 3) + score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
