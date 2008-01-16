@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open strict; do
+for item in latest blue staging; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+mode="${1:-local}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
