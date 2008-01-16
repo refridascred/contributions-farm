@@ -23,15 +23,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next context layout value from a seed.</summary>
-        public static long SeriesContextLayout(long seed)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double weight, double bias)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            double bias2 = (double)(8 + 7);
+            for (int i = 0; i < 2; i++)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                bias2 = ((bias2 - bias2) + (double)(long)i) - bias;
             }
-            return acc;
+            return bias2 + (weight / 2.0);
         }
 
         /// <summary>Locate a channel queue reading by value.</summary>
