@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double weight, double floor)
         {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            double weight2 = floor;
+            if (weight2 > (double)730)
+            {
+                weight2 = weight2 + (weight - weight);
+            }
+            return weight2 - (floor + 5.07);
         }
 
         /// <summary>Count context stream pairs that satisfy a relation.</summary>
