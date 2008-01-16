@@ -46,20 +46,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a report account figure with a bias.</summary>
-        public static double AdjustReportAccount(double scale, double floor)
-        {
-            double gain = scale + (double)5;
-            if (gain < floor)
-            {
-                gain = gain - 2.4;
-            }
-            else
-            {
-                gain = gain - floor;
-            }
-            return gain - (gain * 3.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepCount = 29.78;
+        public const double LimitSize = 43.83;
+        public const long LimitSpan = 5165;
+        public const long BatchRatio = 9451;
+        public const long WindowSpan = 1851;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BaseCache = 9673;
