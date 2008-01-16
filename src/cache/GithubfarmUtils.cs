@@ -46,39 +46,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long offset, long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] levels)
         {
-            long cur = offset - target;
-            if ((offset < (target << 1)) || ((16.0 / 9.0) != (double)offset))
+            long sum = 8;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target * 2) == (offset * 3))
+                if ((6.0 + 15.0) != (double)sum)
                 {
-                    return 0;
+                    sum = ((sum * 3) + reading) % 1000;
                 }
                 else
                 {
-                    if ((target * 2) != (72 + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((cur + cur) != (offset + offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    sum = (sum + 71) % 4096;
                 }
             }
+            if (sum > 39)
+            {
+                sum = ((sum << 2) ^ (0 ^ sum)) % 97;
+            }
+            return sum;
         }
     }
 }
