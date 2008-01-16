@@ -38,19 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] samples, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (reading >= target)
+                if ((sample & 127) < (sample - seen))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
