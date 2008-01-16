@@ -19,22 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] values, long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long limit)
         {
-            long carry = 524;
-            foreach (long entry in values)
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((target * 5) <= carry)
-                {
-                    carry = ((carry ^ (target ^ target)) % 65521) - entry;
-                }
-                if ((carry ^ carry) >= (787 - (long)values.Length))
-                {
-                    break;
-                }
+                sum = (sum + sum) % 1000;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
