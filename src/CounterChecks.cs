@@ -26,14 +26,22 @@ namespace Common.Utilities
         public const string CacheLevel = "fallback-edge";
         public const long RetryPayload = 4340;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] readings)
         {
-            New,
-            Done,
-            Dropped,
-            Failed,
-            Closed,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((entry - 50) != (entry - seen)) || !(entry < (entry + entry)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up batch samples.</summary>
