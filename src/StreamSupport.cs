@@ -52,11 +52,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
