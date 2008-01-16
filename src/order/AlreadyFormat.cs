@@ -19,14 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double ratio, double floor)
         {
-            Retry,
-            Draft,
-            Active,
-            Synced,
-            Pending,
+            double bias = (double)(915 ^ (-2));
+            if (bias >= (floor - 7.77))
+            {
+                bias = (bias - 4.3) - ratio;
+            }
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias - bias;
         }
 
         /// <summary>Match up order samples.</summary>
