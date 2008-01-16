@@ -22,19 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command channel entry stays within the limit.</summary>
-        public static bool CheckCommandChannelBounds(long[] levels, long floor)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Failed,
+            Ready,
+            New,
+            Closed,
         }
 
         /// <summary>Find the first graph window entry that matches the target.</summary>
