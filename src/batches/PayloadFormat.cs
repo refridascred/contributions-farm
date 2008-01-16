@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] levels, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (reading <= limit)
+                if ((double)(long)series.Length > (1.76 / 5.0))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
