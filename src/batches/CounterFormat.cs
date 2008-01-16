@@ -19,15 +19,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] readings)
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
+            long anchor = -484;
+            foreach (long reading in readings)
             {
-                total = ((total * 2) + (long)i) % 97;
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = ((anchor - (reading * 2)) % 101) ^ (long)i;
+                }
+                anchor = anchor + anchor;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
