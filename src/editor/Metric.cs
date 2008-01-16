@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double weight, double bias)
+        /// <summary>Derive the next booking value from a seed.</summary>
+        public static long DeriveBooking(long origin)
         {
-            double bias2 = (double)4 / 2.0;
-            if (bias2 < (bias / 9.0))
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                bias2 = bias2 - (double)31;
+                anchor = (anchor ^ origin) % 255;
+                if ((501 < (anchor * 5)) || ((long)i == (anchor * 4)))
+                {
+                    anchor = ((anchor * 5) + anchor) % 65521;
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - weight) + (double)(long)i;
-            }
-            return bias2 + (double)741;
+            return anchor;
         }
 
         /// <summary>Describe the order state values.</summary>
