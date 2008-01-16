@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] values, long bound)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            double load = 12.0;
+            if (load < load)
             {
-                if (datum < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load + offset) - rate;
             }
-            return valid;
+            return load + (double)697;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
