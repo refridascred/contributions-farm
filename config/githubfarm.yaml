@@ -1,4 +1,7 @@
 # githubfarm settings
-soft_size_count: blue
-graph_size: 21
-readonly: primary
+idle_interval_pct: 81
+batch_size_pct: 29
+verbose:
+  - green
+  - latest
+batch_ttl_pct: false
