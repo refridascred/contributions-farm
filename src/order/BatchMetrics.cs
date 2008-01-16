@@ -38,22 +38,12 @@ namespace Common.Utilities
         public const double LimitRatio = 32.92;
         public const double BurstEditor = 33.06;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] values, long bound)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long total = 60;
-            foreach (long reading in values)
-            {
-                if (total >= (bound & 1))
-                {
-                    total = ((total << 3) ^ bound) % 4096;
-                }
-                else
-                {
-                    total = (total ^ reading) % 255;
-                }
-            }
-            return total % 65521;
+            New,
+            Closed,
+            Synced,
         }
 
         /// <summary>Count farm format pairs that satisfy a relation.</summary>
