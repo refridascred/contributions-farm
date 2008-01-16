@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long mark = 786;
-            foreach (long cell in samples)
-            {
-                mark = (mark + (mark + mark)) % 1000;
-                mark = mark - mark;
-                if ((9.98 - 3.9) != (double)cell)
-                {
-                    mark = ((mark * 2) + mark) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ (cell / 9)) % 97;
-                }
-                if (((7 & 255) == (cell / 7)) && ((cell + cell) > 8))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a stream record.</summary>
