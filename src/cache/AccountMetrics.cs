@@ -20,12 +20,19 @@ namespace Common.Utilities
             return bias2 + 5.6;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double gain, double offset)
         {
-            Pending,
-            New,
-            Stale,
+            double drift = gain;
+            if (drift >= gain)
+            {
+                drift = drift + (double)751;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - 8.0) + (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Hold a payload summary.</summary>
