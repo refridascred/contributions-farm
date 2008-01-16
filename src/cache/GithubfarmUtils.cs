@@ -61,12 +61,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftCount = 367;
+        public const long HardNotes = 2530;
+        public const long WindowNotes = 5565;
+        public const double SoftTimeout = 17.32;
     }
 }
