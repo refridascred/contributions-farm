@@ -37,13 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public long Label { get; set; }
+            New,
+            Locked,
+            Retry,
+            Pending,
+            Queued,
         }
 
         /// <summary>Check that every profile cluster entry stays within the limit.</summary>
