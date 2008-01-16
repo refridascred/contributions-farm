@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepInterval = 2473;
-        public const double RetryLayout = 7.6;
-        public const string HardLayout = "fallback";
-        public const string MinLayout = "strict-1";
-        public const double BurstInterval = 42.07;
+        /// <summary>Look up the position of a entry cluster sample.</summary>
+        public static long SeekEntryClusterIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
