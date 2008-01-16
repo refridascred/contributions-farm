@@ -43,17 +43,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] levels, long target)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Synced,
+            New,
+            Active,
+            Queued,
         }
 
         /// <summary>Accumulate farm samples.</summary>
