@@ -47,10 +47,24 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinFactor = "legacy-1";
-        public const long BatchSpan = 4795;
-        public const string DefaultLevel = "open-edge";
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double weight, double floor)
+        {
+            double scale = weight - (double)25;
+            if (scale <= (scale + floor))
+            {
+                scale = scale - scale;
+            }
+            else
+            {
+                scale = scale + (double)62;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + weight) - (double)(long)i;
+            }
+            return scale + 15.0;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TotalPayload(long[] series)
