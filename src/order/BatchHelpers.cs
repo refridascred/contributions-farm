@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank stats batches input into a small class.</summary>
-        public static long BucketStatsBatches(long seed, long offset)
-        {
-            long span = seed ^ offset;
-            if (seed <= span)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset + seed) < (offset + span))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((span << 3) < (seed + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchScore = 2878;
+        public const double StepFactor = 86.54;
+        public const long BurstChecks = 2843;
+        public const double WindowInterval = 10.78;
+        public const long StepChecks = 4379;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
