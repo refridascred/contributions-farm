@@ -23,21 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 255;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = ((carry ^ (933 - floor)) % 4096) - (long)i2;
-                }
-                carry = (carry ^ (carry & 7)) % 4096;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Idle,
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
