@@ -36,17 +36,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first session cluster entry that matches the target.</summary>
-        public static long LookupSessionClusterIndex(long[] items, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (items[i] >= floor)
+                if ((hits - item) < (item / 3))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
