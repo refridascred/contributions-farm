@@ -34,18 +34,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit stats farm readings against a rule.</summary>
-        public static long TallyStatsFarmMatches(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (sample < (3 - hits))
+                if (((2 <= value) || ((double)value >= (20.0 / 3.0))) && (floor > (value & 3)))
                 {
-                    hits = hits + 2;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the entry status values.</summary>
