@@ -19,16 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 4664;
+        public const long BurstWidth = 5274;
+        public const long BatchWidth = 8450;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long DigestFarm(long[] samples, long origin)
