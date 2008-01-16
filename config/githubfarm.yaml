@@ -1,21 +1,11 @@
 # githubfarm settings
-enabled:
-  - 490
-  - 5
-  - 194
-  - 148
-cluster_interval:
-  - latest
-  - strict
-  - strict
-  - edge
-idle_window_pct:
-  max_ratio_count: staging
-  compress: 100
-  min_retries: cached
-  soft_ratio: 47
-  batch_ratio: 3541
-  layout_window: latest
-checks_depth: latest
-window_delay: 3948
-batch_delay_pct: 60
+base_size_s: 87.56
+enabled: staging
+account_retries: latest
+batch_limit:
+  format_ttl: 9501
+  flush_depth_count: strict
+  dry_run:
+    - 238
+    - 368
+default_delay: false
