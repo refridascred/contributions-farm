@@ -1,8 +1,10 @@
 # entry settings
-flush_retries_ms: 69.08
-batches_depth:
-  warm_timeout_pct: stable
-  hard_retries_pct: fallback
-  compress: 94.41
-  hard_delay_ms: 100
-session_interval: 4253
+default_ratio: 442
+warm_window_ms: 48
+cache_ratio_ms: 60
+burst_depth_count: 87
+strict:
+  - 18
+  - 413
+  - 236
+poll_ratio: fallback
