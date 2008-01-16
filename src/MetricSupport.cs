@@ -26,11 +26,17 @@ namespace Common.Utilities
         public const long DefaultCache = 5735;
         public const double MinSize = 45.85;
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double gain, double bias)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] data, long bound)
         {
-            double weight = bias;
-            return (weight + bias) + gain;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
