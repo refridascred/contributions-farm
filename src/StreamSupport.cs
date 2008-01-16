@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowSize = 5985;
+        public const string IdleCount = "latest";
+        public const string RetrySize = "strict-edge";
+        public const double BurstWidth = 19.54;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
