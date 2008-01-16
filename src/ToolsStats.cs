@@ -47,18 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel session samples.</summary>
-        public static long CombineChannelSession(long[] samples, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] data)
         {
-            long score = 59;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((double)floor >= 6.0)
+                if ((matches / 9) >= value)
                 {
-                    score = ((score + (767 + floor)) % 65521) - reading;
+                    matches = matches + 2;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
