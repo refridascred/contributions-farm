@@ -26,19 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] samples, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (step > 1)
+                if (samples[i] >= bound)
                 {
-                    continue;
+                    return (long)i;
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a batch record.</summary>
