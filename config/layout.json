@@ -1,6 +1,17 @@
 {
-  "burst_timeout_pct": 4013,
-  "hard_interval_pct": ["strict", "local", "green"],
-  "checks_retries": false,
-  "persist": 9732
+  "checks_capacity": "eu-west",
+  "base_ttl_ms": [46, 58, 412],
+  "checks_window": {
+    "warm_delay": true,
+    "cache_depth_count": "cached",
+    "hard_depth": 50.53,
+    "warm_ttl_s": 37.77,
+    "hard_ratio_s": "blue"
+  },
+  "tools_size": {
+    "burst_ttl": [112, 258, 53],
+    "enabled": true,
+    "report_delay": [362, 292, 207, 485]
+  },
+  "strict": 76.94
 }
