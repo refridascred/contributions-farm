@@ -15,18 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] samples, long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((limit - 284) >= 0)
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            Stale,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a payload summary.</summary>
