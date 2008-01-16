@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] series)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long origin, long origin2)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((origin2 << 3) != (origin / 9)) && ((69 - origin) > (origin2 + origin2)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!(842 >= (origin2 - origin2)))
                 {
-                    if ((series[i] ^ series[j]) != 5)
+                    return 1;
+                }
+                else
+                {
+                    if ((origin2 % 8) != (origin + 548))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin <= 7.9)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two stats measurements.</summary>
