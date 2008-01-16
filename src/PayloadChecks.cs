@@ -64,12 +64,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Digest a series of format route entries.</summary>
+        public static long TotalFormatRoute(long[] series)
         {
-            Done,
-            New,
-            Retry,
+            long mix = 904;
+            foreach (long datum in series)
+            {
+                if (((mix << 1) < mix) || (datum >= (mix & 63)))
+                {
+                    mix = (mix << 3) ^ datum;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the command level values.</summary>
