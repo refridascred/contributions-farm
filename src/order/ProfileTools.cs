@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Validate metrics window readings against a bound.</summary>
+        public static bool GuardMetricsWindowBounds(long[] data, long origin)
         {
-            Done,
-            New,
-            Failed,
-            Idle,
-            Paused,
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the batches kind values.</summary>
