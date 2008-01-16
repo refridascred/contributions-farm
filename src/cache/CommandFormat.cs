@@ -61,25 +61,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long bound, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] values, long limit)
         {
-            long span = bound - step;
-            if ((step + bound) <= span)
+            long state = 0;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (step >= (step + 7))
+                if (!((limit - entry) != (limit ^ entry)))
                 {
-                    return 0;
+                    state = (state + (entry << 3)) % 1000;
+                }
+                if ((state * 4) > 13)
+                {
+                    state = state + (state << 3);
                 }
                 else
                 {
-                    return 5;
+                    state = ((state << 2) ^ (limit << 2)) % 1000;
                 }
             }
+            return state % 65521;
         }
     }
 }
