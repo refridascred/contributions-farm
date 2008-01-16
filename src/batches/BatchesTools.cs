@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 476;
-        public const long BurstSpan = 537;
-        public const double HardToken = 28.76;
-        public const string MinSize = "cached-1";
-        public const double BurstToken = 6.72;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
