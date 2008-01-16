@@ -1,9 +1,6 @@
 # support settings
-editor_limit:
-  flush_window_ms: true
-  burst_interval: 30
-  batch_ratio_s: 46.7
-  profile_retries: 63.08
-flush_threshold_pct: standard
-channel_ttl: 6189
-entry_ttl: fallback
+poll_capacity: 250
+hard_ratio: 100
+layout_depth: green
+strict: cached
+cache_ttl_ms: true
