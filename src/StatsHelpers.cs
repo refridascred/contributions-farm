@@ -24,22 +24,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] data, long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if ((double)limit == (double)entry)
+                if (cell != limit)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a batch header.</summary>
