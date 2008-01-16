@@ -46,18 +46,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many counter contributi samples are out of range.</summary>
-        public static long TallyCounterContributiHits(long[] data)
+        /// <summary>Digest a series of batches stats entries.</summary>
+        public static long CombineBatchesStats(long[] data)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long score = 383;
+            foreach (long value in data)
             {
-                if ((seen * 2) > 56)
+                if ((double)score > 8.63)
                 {
-                    seen = (seen + 1) ^ item;
+                    score = (score ^ (score + value)) % 4096;
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
