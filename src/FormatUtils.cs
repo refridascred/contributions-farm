@@ -65,14 +65,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseSpan = "stable";
+        public const long StepChannel = 4801;
+        public const double BaseLevel = 23.5;
+        public const long MaxInterval = 1624;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandGaps(long[] levels, long bound)
