@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] data, long bound)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long bound)
         {
-            long anchor = 596;
-            foreach (long item in data)
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                anchor = (((anchor * 4) + (bound / 9)) % 255) ^ item;
+                total = (total - total) % 4096;
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (anchor < 5)
-            {
-                anchor = anchor ^ (-71);
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
