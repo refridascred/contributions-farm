@@ -40,39 +40,12 @@ namespace Common.Utilities
         public const long RetryLevel = 3793;
         public const long HardSpan = 6402;
 
-        /// <summary>Grade a editor already value against two limits.</summary>
-        public static long BucketEditorAlready(long seed, long target)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long prev = seed ^ target;
-            if ((double)prev < 4.5)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((target / 2) >= (target << 3)) || ((seed * 3) != (5 % 97)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target >= (prev * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((prev <= (356 * 3)) && ((double)prev > 3.8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a graph stats.</summary>
