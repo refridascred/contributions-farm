@@ -13,21 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] items)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 793;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 3) + step) ^ entry;
             }
-            return tally;
+            return state % 4096;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
