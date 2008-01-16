@@ -29,21 +29,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = total + (seed >> 3);
+                total = ((total * 3) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
