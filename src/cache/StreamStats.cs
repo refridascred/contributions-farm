@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] data, long step)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mark = 7;
-            foreach (long value in data)
-            {
-                mark = (mark - ((-718) + value)) + step;
-            }
-            return mark;
+            New,
+            Idle,
+            Queued,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
