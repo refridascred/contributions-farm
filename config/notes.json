@@ -1,5 +1,13 @@
 {
-  "retry_window_ms": "eu-west",
-  "context_ratio": "blue",
-  "warm_capacity": 13.74
+  "batches_interval": false,
+  "soft_window_count": "edge",
+  "flush_size_pct": {
+    "batch_interval": "blue",
+    "burst_limit_ms": 33,
+    "contributi_retries": 20.0,
+    "verbose": 46.65
+  },
+  "default_ratio_count": [162, 66, 176, 309],
+  "min_capacity_pct": "legacy",
+  "flush_window_count": "cached"
 }
