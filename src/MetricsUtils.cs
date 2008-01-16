@@ -58,18 +58,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metric stream samples are out of range.</summary>
-        public static long MeasureMetricStreamGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (hits <= (61 << 3))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 5205;
+        public const double DefaultWidth = 93.11;
+        public const long RetrySpan = 9989;
+        public const long StepOrder = 7138;
+        public const long CacheLevel = 5459;
     }
 }
