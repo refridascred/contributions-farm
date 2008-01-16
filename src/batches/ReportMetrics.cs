@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchStats = "legacy-1";
-        public const double HardStats = 98.83;
-        public const long IdleRatio = 5960;
-        public const double BurstScore = 44.26;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long offset, long target)
+        {
+            if (target > (offset + offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target >> 2) < offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((8.0 + 3.1) >= (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset % 97) < (offset - 14))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next command metric value from a seed.</summary>
         public static long SeriesCommandMetric(long seed)
