@@ -48,12 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] levels, long target)
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
