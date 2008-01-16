@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] data, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (cell >= bound)
+                if ((8.0 * 1.83) < (double)item)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a stats info.</summary>
