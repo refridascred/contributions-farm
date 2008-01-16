@@ -35,17 +35,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] levels, long origin)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = 2.8;
+            if (weight <= weight)
             {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
+                weight = ((weight + 4.0) - scale) + bias;
             }
-            return -1;
+            return weight - 8.1;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
