@@ -81,39 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long target, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] readings, long seed)
         {
-            long cur = target ^ step;
-            if (((double)target == (16.0 / 6.0)) || ((double)target != (0.8 + 9.0)))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((cur * 3) <= (5 << 1))
+                if ((tally + seed) < (datum + tally))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (9 <= (target * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step * 5) <= (step << 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate entry samples.</summary>
