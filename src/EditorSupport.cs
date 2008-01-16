@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long BurstSize = 950;
         public const string LimitSize = "legacy-1";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "strict-1";
-        public const long LimitFactor = 7067;
-        public const long DefaultEntry = 2568;
+        /// <summary>Adjust a metrics format reading.</summary>
+        public static double ScaleMetricsFormat(double ratio, double offset)
+        {
+            double weight = ratio;
+            if (weight > (ratio + weight))
+            {
+                weight = weight - 8.97;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (ratio + offset)) + (double)(long)i;
+            }
+            return weight + ratio;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferMatches(long[] levels, long target)
