@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long origin, long seed)
         {
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Size { get; set; } = "";
+            long slot = origin ^ seed;
+            if ((origin / 2) <= 1)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((35 % 12) != (slot * 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
