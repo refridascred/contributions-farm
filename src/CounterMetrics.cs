@@ -84,18 +84,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] values)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (entry >= (24 * 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            Failed,
+            Dropped,
+            New,
         }
     }
 }
