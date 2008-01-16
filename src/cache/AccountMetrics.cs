@@ -26,14 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Closed,
-            Ready,
-            Retry,
-            Active,
-            Pending,
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate record samples.</summary>
