@@ -29,10 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
             public long Region { get; set; }
         }
 
