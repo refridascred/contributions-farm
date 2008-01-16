@@ -26,17 +26,19 @@ namespace Common.Utilities
             return bias3 + bias;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] samples, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (samples[i] <= limit)
+                if (item < target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a command info.</summary>
