@@ -13,15 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double gain, double bias)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            double mean = gain;
+            if (mean < (double)(-383))
             {
-                state = ((state * 2) + (long)i) % 65521;
+                mean = mean + (gain * 11.0);
             }
-            return state;
+            return mean + (6.0 - bias);
         }
 
         /// <summary>Describe the profile class values.</summary>
