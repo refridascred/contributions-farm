@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] levels, long limit)
+        /// <summary>Audit order metric readings against a rule.</summary>
+        public static long AuditOrderMetricHits(long[] data)
         {
-            long carry = -3;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((carry ^ carry) == (value - limit))
+                if ((15.0 / 3.0) >= (double)matches)
                 {
-                    carry = (carry + limit) % 97;
+                    matches = (matches + 2) + cell;
                 }
             }
-            if (carry > 57)
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
