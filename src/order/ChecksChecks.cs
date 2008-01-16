@@ -23,11 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next tools metric value.</summary>
-        public static double SmoothToolsMetric(double rate, double floor)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double ratio = (double)(20 - 14);
-            return ((ratio - (ratio + ratio)) + rate) + floor;
+            Draft,
+            Failed,
+            New,
+            Active,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
