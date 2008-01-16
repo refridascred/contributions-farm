@@ -35,18 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (((911 / 6) == (datum / 5)) || ((hits + datum) < (datum - datum)))
+                if ((cell + seed) == (seen * 5))
                 {
-                    hits = hits + 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
