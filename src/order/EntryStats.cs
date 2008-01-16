@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long limit, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] levels, long step)
         {
-            if ((double)limit < (9.03 - 1.31))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit < 5.0)
+                if ((step + value) != (69 + 363))
                 {
-                    return 7;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((limit * 2) != (5 ^ 0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
