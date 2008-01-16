@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] readings, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 98;
+            foreach (long cell in levels)
             {
-                if ((readings[i] == floor) && ((readings[i] % 3) == 0))
+                if ((double)target < (double)result)
                 {
-                    return (long)i;
+                    result = ((result * 3) + cell) % 255;
+                }
+                else
+                {
+                    result = (result - (target + target)) % 255;
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Match up already samples.</summary>
