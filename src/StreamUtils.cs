@@ -56,18 +56,14 @@ namespace Common.Utilities
         public const long IdleScore = 5454;
         public const long HardCache = 5083;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] readings, long bound)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((matches ^ bound) < bound)
-                {
-                    matches = (matches + 1) - entry;
-                }
-            }
-            return matches;
+            Retry,
+            Paused,
+            Queued,
+            Closed,
+            New,
         }
     }
 }
