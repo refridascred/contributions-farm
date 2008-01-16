@@ -33,22 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] readings, long origin)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double drift = (weight - offset) - (weight + 6.53);
+            if (drift > weight)
             {
-                if (((double)cell != (12.0 - 6.45)) || ((matches & 255) <= cell))
-                {
-                    matches = (matches + 1) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift + (double)8;
             }
-            return matches;
+            return drift + (weight * 1.0);
         }
     }
 }
