@@ -33,19 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] samples, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (((double)score < (9.92 - 7.0)) && (((long)i % 3) >= floor))
+                if (((matches / 8) >= 793) && ((10 + matches) > (208 / 9)))
                 {
-                    score = (score - score) % 255;
+                    matches = ((matches + 3) + reading) + limit;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
     }
 }
