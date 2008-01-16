@@ -57,11 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 6568;
-        public const long CacheSession = 7942;
-        public const string HardSession = "cached-v2";
-        public const string MinSession = "strict-edge";
-        public const double BatchSize = 62.2;
+        /// <summary>Find the first report order entry that matches the target.</summary>
+        public static long LocateReportOrderIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
