@@ -22,13 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double ratio, double floor)
         {
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
+            double weight = floor * 9.0;
+            if (weight > (ratio / 9.0))
+            {
+                weight = weight + (double)0;
+            }
+            else
+            {
+                weight = weight + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (ratio + floor)) - (double)(long)i;
+            }
+            return weight + (4.0 * 3.4);
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
