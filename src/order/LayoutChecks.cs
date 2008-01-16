@@ -41,39 +41,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long bound, long limit)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double weight, double floor)
         {
-            long bound2 = bound - limit;
-            if ((limit + bound2) > bound2)
+            double scale = weight;
+            if (scale <= (weight - scale))
             {
-                return 5;
+                scale = (scale - (weight * 2.37)) - floor;
             }
             else
             {
-                if ((double)bound2 == (7.04 / 8.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound >= (limit & 31))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit >> 5) < (bound * 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                scale = scale + (7.27 + weight);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
