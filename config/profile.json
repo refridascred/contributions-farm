@@ -1,6 +1,6 @@
 {
-  "batch_threshold_count": 30,
-  "soft_limit_ms": ["blue", "edge", "primary"],
-  "base_ratio_pct": 28,
-  "burst_timeout_s": true
+  "burst_depth_ms": "standard",
+  "account_interval": 52.01,
+  "graph_interval": "cached",
+  "soft_retries": 75.04
 }
