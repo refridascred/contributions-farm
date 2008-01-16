@@ -26,17 +26,11 @@ namespace Common.Utilities
             return bias2 + (weight / 2.0);
         }
 
-        /// <summary>Locate a channel queue reading by value.</summary>
-        public static long SeekChannelQueueIndex(long[] data, long origin)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)(730 >> 5);
+            return (mean + gain) + floor;
         }
 
         /// <summary>Blend two tools measurements.</summary>
