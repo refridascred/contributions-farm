@@ -27,19 +27,19 @@ namespace Common.Utilities
             return rate + (rate - bias);
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double ratio, double bias)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] readings, long limit)
         {
-            double load = bias;
-            if (load < ratio)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                load = load - (load - load);
+                if (reading < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load + 0.7;
+            return found;
         }
     }
 }
