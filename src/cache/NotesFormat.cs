@@ -29,15 +29,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] levels, long seed)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long score = 5;
-            foreach (long sample in levels)
-            {
-                score = (score + (score ^ seed)) ^ sample;
-            }
-            return score;
+            New,
+            Done,
+            Failed,
+            Retry,
         }
     }
 }
