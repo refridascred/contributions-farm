@@ -56,11 +56,17 @@ namespace Common.Utilities
         public const long BaseAccount = 3590;
         public const double IdleTimeout = 30.38;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 22.77;
-        public const long DefaultRatio = 4418;
-        public const long DefaultScore = 2963;
-        public const string BatchScore = "strict-edge";
-        public const long CacheScore = 5041;
+        /// <summary>Locate a profile notes reading by value.</summary>
+        public static long LookupProfileNotesIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
