@@ -42,17 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first graph window entry that matches the target.</summary>
-        public static long FindGraphWindowIndex(long[] readings, long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
+                if ((6.2 * 0.8) > (double)target)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - datum;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
