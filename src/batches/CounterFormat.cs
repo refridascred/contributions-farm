@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] levels)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            long result = 5;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (((result * 5) + (reading % 10)) % 97) ^ (long)i;
-                }
-                if ((result + result) >= (result - 4))
-                {
-                    result = ((result << 2) ^ (reading % 12)) % 1000;
+                    if ((items[i] + items[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
