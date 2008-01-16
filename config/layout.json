@@ -1,7 +1,6 @@
 {
-  "flush_delay_ms": 30.58,
-  "flush_threshold_count": ["legacy", "strict", "legacy"],
-  "route_window": 5520,
-  "cache_ratio": "edge",
-  "compress": 4
+  "persist": "stable",
+  "burst_capacity": 22.78,
+  "max_ratio": 3054,
+  "burst_ratio_pct": 100
 }
