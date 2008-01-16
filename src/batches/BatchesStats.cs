@@ -48,19 +48,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every farm token entry stays within the limit.</summary>
-        public static bool ValidateFarmTokenLimits(long[] readings, long step)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Level { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
