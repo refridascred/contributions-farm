@@ -59,21 +59,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next token profile value from a seed.</summary>
-        public static long SeriesTokenProfile(long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double rate, double span)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((mark % 12) != (89 / 6)) && ((offset - mark) != (18 ^ 386)))
-                {
-                    mark = mark + offset;
-                    continue;
-                }
-                mark = mark + (mark ^ mark);
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            double scale = span;
+            return (scale + (double)211) + rate;
         }
     }
 }
