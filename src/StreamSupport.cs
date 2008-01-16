@@ -50,12 +50,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Measure how many notes report samples are out of range.</summary>
+        public static long AuditNotesReportMatches(long[] values, long target)
         {
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((double)tally == (6.0 + 5.8))
+                {
+                    tally = ((tally + 2) - entry) - target;
+                }
+            }
+            return tally;
         }
     }
 }
