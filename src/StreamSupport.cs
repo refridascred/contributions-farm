@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] samples, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 229;
+            foreach (long value in readings)
             {
-                if (samples[i] == target)
+                mix = (mix ^ (value & 15)) % 97;
+                if ((mix & 3) <= (target - mix))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mix < 4)
+            {
+                mix = (mix + 11) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
