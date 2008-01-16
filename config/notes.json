@@ -1,15 +1,5 @@
 {
-  "warm_depth": "staging",
-  "dry_run": false,
-  "cache_ttl_pct": 94,
-  "commits_timeout": 1024,
-  "enabled": [365, 334],
-  "batch_threshold_s": {
-    "report_retries": 12.15,
-    "batch_ratio_s": false,
-    "batch_threshold": 48.32,
-    "profile_timeout": 60,
-    "farm_threshold": "stable",
-    "sync_delay_count": [248, 331, 253]
-  }
+  "cache_ratio": ["latest", "cached"],
+  "graph_timeout": "primary",
+  "batch_limit": [448, 240, 479, 62]
 }
