@@ -57,9 +57,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultLevel = 1;
-        public const string WindowRecord = "alpha-edge";
-        public const long StepCount = 8545;
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double ratio, double offset)
+        {
+            double weight = ratio;
+            if (weight >= (offset - ratio))
+            {
+                weight = weight + weight;
+            }
+            return weight + weight;
+        }
     }
 }
