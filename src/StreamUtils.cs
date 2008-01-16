@@ -56,20 +56,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every buffer editor entry stays within the limit.</summary>
-        public static bool CheckBufferEditorBounds(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultCache = 56.03;
+        public const double LimitWidth = 96.67;
+        public const long IdleScore = 5454;
+        public const long HardCache = 5083;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorHits(long[] readings, long bound)
