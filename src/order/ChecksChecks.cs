@@ -19,18 +19,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((double)5 > (double)step)
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchInterval = 4047;
+        public const long BatchSpan = 3413;
+        public const string CacheBudget = "standard-1";
+        public const string MaxTimeout = "staging";
     }
 }
