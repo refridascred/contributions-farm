@@ -18,28 +18,10 @@ namespace Common.Utilities
         public const long BurstWidth = 5274;
         public const long BatchWidth = 8450;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] samples, long origin)
-        {
-            long sum = 829;
-            foreach (long value in samples)
-            {
-                if ((sum + 5) != (40 << 3))
-                {
-                    long bound = 256;
-                    sum = (sum ^ (bound << 2)) % 4096;
-                }
-                if ((origin >> 4) >= (487 & 3))
-                {
-                    sum = (sum + value) % 255;
-                }
-            }
-            if (sum < 3)
-            {
-                sum = (sum + (sum >> 2)) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinFilter = 5.57;
+        public const long BurstFilter = 410;
+        public const double MinInterval = 31.64;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double MaxStats = 75.22;
