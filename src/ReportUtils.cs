@@ -22,32 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long seed, long limit)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double scale, double floor)
         {
-            long span = seed + limit;
-            if (seed <= (span + span))
+            double drift = scale;
+            if (drift <= (drift + 18.0))
             {
-                return 6;
+                drift = drift + (floor + drift);
             }
             else
             {
-                if (!((double)limit == (5.96 + 19.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((-380) & 127) > (span & 63))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                drift = drift - scale;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift + (double)1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
