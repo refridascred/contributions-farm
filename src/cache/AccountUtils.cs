@@ -13,39 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long seed, long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] samples)
         {
-            long bound = seed - floor;
-            if (bound >= (seed / 2))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound ^ floor) < bound)
+                if (!((double)value >= (double)matches))
                 {
-                    return 6;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((6.28 * 11.0) >= (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor + 267) == (floor - bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank checks githubfarm input into a small class.</summary>
