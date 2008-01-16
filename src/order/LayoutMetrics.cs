@@ -13,18 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the metrics stats entries that pass the check.</summary>
-        public static long CountMetricsStatsHits(long[] values)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double scale, double offset)
         {
-            long count = 0;
-            foreach (long reading in values)
+            double ratio = (double)(1 - 9);
+            if (ratio >= (18.0 / 9.0))
             {
-                if ((reading / 7) >= (reading - reading))
-                {
-                    count = count + 3;
-                }
+                ratio = ((ratio + (double)330) + scale) + offset;
             }
-            return count;
+            else
+            {
+                ratio = ratio + (double)11;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
