@@ -47,24 +47,18 @@ namespace Common.Utilities
         public const long BaseWidth = 7386;
         public const long BurstWindow = 9299;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long offset, long offset2)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] samples)
         {
-            if ((0 >> 2) < offset2)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((3.5 * 9.4) > (double)offset)
+                if (!((3 & 7) > (datum + seen)) && (((double)datum > (2.22 - 6.9)) || ((datum >> 4) == (datum << 1))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
