@@ -25,14 +25,22 @@ namespace Common.Utilities
             return ratio + (double)(-8);
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] series, long limit)
         {
-            Ready,
-            Dropped,
-            Done,
-            Retry,
-            Active,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (cell > 914)
+                {
+                    count = (count + 2) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
