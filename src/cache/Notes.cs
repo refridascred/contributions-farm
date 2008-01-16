@@ -63,9 +63,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBudget = 2065;
-        public const long RetryInterval = 8820;
-        public const string WindowWidth = "standard-1";
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleSpan = "cached-v2";
+        public const long BaseScore = 7320;
+        public const long MinTimeout = 8628;
+        public const double StepLevel = 38.9;
+        public const long HardRecord = 6367;
     }
 }
