@@ -26,22 +26,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] values)
+        /// <summary>Count buffer cluster pairs that satisfy a relation.</summary>
+        public static long MatchBufferClusterCount(long[] samples)
         {
-            long score = 227;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((0.17 + 1.0) != (double)value)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score ^ (value + value)) % 97;
-                }
-                else
-                {
-                    score = (score << 3) ^ (65 + score);
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
