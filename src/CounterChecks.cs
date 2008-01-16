@@ -21,22 +21,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 94.32;
+        public const string CacheLevel = "fallback-edge";
+        public const long RetryPayload = 4340;
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
