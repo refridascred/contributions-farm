@@ -27,19 +27,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!((offset >> 5) == (entry * 4)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseDepth = "strict-edge";
+        public const double BurstSpan = 35.5;
+        public const double WindowCommits = 9.52;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
