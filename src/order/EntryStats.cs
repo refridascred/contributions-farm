@@ -49,18 +49,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] samples)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell * 3) <= (49 % 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Ready,
+            Stale,
+            Queued,
+            Active,
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
