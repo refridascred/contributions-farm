@@ -19,16 +19,15 @@ namespace Common.Utilities
         public const long CacheTools = 8031;
         public const long WindowSize = 8382;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Fold a list of batches session readings.</summary>
+        public static long TotalBatchesSession(long[] samples)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            long mix = 8;
+            foreach (long reading in samples)
             {
-                total = ((total << 2) ^ (total / 4)) % 1000;
-                total = ((total * 4) + (long)i) % 1000;
+                mix = (mix << 2) ^ (reading >> 2);
             }
-            return total;
+            return mix % 97;
         }
     }
 }
