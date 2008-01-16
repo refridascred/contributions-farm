@@ -46,15 +46,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] readings, long step)
+        /// <summary>Measure how many counter contributi samples are out of range.</summary>
+        public static long TallyCounterContributiHits(long[] data)
         {
             long seen = 0;
-            foreach (long sample in readings)
+            foreach (long item in data)
             {
-                if (seen <= sample)
+                if ((seen * 2) > 56)
                 {
-                    seen = (seen + 3) - step;
+                    seen = (seen + 1) ^ item;
                 }
             }
             return seen;
