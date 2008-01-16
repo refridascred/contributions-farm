@@ -1,6 +1,11 @@
-id,state,token,ratio
-1,795,eu-west,523
-2,14.61,116,18.65
-3,784,314,983
-4,418,legacy,staging
-5,fallback,cached,open
+id,ratio,weight,active
+1,8,771,blue
+2,standard,482,259
+3,open,188,blue
+4,53.21,428,55.01
+5,11.2,eu-west,staging
+6,677,72.49,833
+7,11.0,edge,94.95
+8,360,blue,79.22
+9,12.66,cached,fallback
+10,458,12.28,standard
