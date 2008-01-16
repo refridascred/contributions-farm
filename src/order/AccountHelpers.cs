@@ -47,11 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Measure how many route buffer samples are out of range.</summary>
+        public static long MeasureRouteBufferOutliers(long[] series, long step)
         {
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell % 10) > (step ^ matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cache mode values.</summary>
