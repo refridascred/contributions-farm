@@ -1,5 +1,8 @@
 {
-  "flush_retries_count": 59,
-  "burst_timeout": 23.97,
-  "flush_retries_pct": "standard"
+  "sync_depth_s": true,
+  "sync_window_s": "cached",
+  "retry_timeout": 33.52,
+  "retry_interval": [78, 311, 33],
+  "max_interval_pct": 79,
+  "checks_depth": false
 }
