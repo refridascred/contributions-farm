@@ -1,5 +1,8 @@
 {
-  "metrics_delay": 64,
-  "retry_limit": "fallback",
-  "default_timeout_pct": "staging"
+  "payload_threshold": 78.7,
+  "warm_depth": 60,
+  "retry_window_ms": true,
+  "graph_threshold": 500,
+  "cache_capacity_s": "eu-west",
+  "sync_interval_count": ["staging", "legacy", "standard", "cached"]
 }
