@@ -47,18 +47,11 @@ namespace Common.Utilities
             return bias2 + (bias - bias2);
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 750;
+        public const double BaseSize = 41.2;
+        public const long RetryLevel = 2374;
+        public const double RetryInterval = 52.27;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowHits(long[] levels, long offset)
