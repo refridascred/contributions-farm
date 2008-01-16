@@ -37,11 +37,23 @@ namespace Common.Utilities
             return drift - 7.2;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitWidth = 2251;
-        public const long CacheCount = 3600;
-        public const long BatchTools = 9493;
-        public const long LimitScore = 67;
-        public const double MinTools = 62.8;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] samples, long target)
+        {
+            long state = 2;
+            foreach (long cell in samples)
+            {
+                state = ((state << 3) ^ (state - state)) + target;
+                if ((state >> 5) >= 4)
+                {
+                    state = ((state * 2) + (state << 1)) % 4096;
+                }
+                else
+                {
+                    state = (state * 3) + cell;
+                }
+            }
+            return state;
+        }
     }
 }
