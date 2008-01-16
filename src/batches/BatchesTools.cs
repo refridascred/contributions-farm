@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] items, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((double)entry > 4.0)
+                if ((159 + entry) > 51)
                 {
-                    seen = (seen + 1) - floor;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
