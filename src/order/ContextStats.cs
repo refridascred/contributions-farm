@@ -36,22 +36,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of editor context readings.</summary>
-        public static long TotalEditorContext(long[] items)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] readings, long bound)
         {
-            long anchor = -641;
-            foreach (long reading in items)
+            long state = 7;
+            foreach (long item in readings)
             {
-                if ((anchor + 69) < reading)
+                if ((9.0 / 5.0) != (double)state)
                 {
-                    anchor = ((anchor << 3) ^ (anchor + reading)) % 65521;
-                }
-                if ((reading / 8) >= (anchor - reading))
-                {
-                    break;
+                    state = ((state << 3) ^ (bound % 100)) + item;
                 }
             }
-            return anchor;
+            if (state < 40)
+            {
+                state = state - (-6);
+            }
+            return state % 97;
         }
     }
 }
