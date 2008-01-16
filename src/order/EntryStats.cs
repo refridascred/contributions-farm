@@ -47,17 +47,10 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                total = total + (seed >> 3);
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 9463;
+        public const long MinMetrics = 338;
+        public const string SoftWidth = "strict";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double MaxMetric = 43.91;
