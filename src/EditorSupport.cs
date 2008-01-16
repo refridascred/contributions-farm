@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] levels, long target)
+        /// <summary>Derive the next buffer stats value from a seed.</summary>
+        public static long SeriesBufferStats(long target)
         {
-            long result = 98;
-            foreach (long cell in levels)
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)target < (double)result)
-                {
-                    result = ((result * 3) + cell) % 255;
-                }
-                else
-                {
-                    result = (result - (target + target)) % 255;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return result % 1000;
+            return anchor;
         }
 
         /// <summary>Match up already samples.</summary>
