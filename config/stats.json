@@ -1,8 +1,6 @@
 {
-  "readonly": false,
-  "layout_capacity": 1024,
-  "min_interval_pct": ["primary", "legacy", "legacy"],
-  "persist": 41,
-  "idle_interval": 1.43,
-  "min_window_count": 76.3
+  "sync_depth": [23, 161, 101],
+  "command_interval": 5483,
+  "poll_capacity_pct": [136, 417],
+  "max_timeout_count": "primary"
 }
