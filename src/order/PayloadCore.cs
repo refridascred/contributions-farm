@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] items)
+        /// <summary>Compare every pair of order editor readings.</summary>
+        public static long PairOrderEditorCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((matches - 222) != (sample + matches)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] ^ items[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a filter entry.</summary>
