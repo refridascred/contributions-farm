@@ -15,16 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of checks metric readings.</summary>
-        public static long TallyChecksMetric(long[] values, long offset)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long anchor = 517;
-            foreach (long cell in values)
-            {
-                anchor = ((anchor + (cell ^ anchor)) % 4096) + offset;
-                anchor = anchor + (anchor << 3);
-            }
-            return anchor % 1000;
+            Synced,
+            Queued,
+            Draft,
+            Retry,
+            Done,
         }
 
         /// <summary>Locate a contributi checks reading by value.</summary>
