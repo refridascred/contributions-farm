@@ -81,10 +81,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchBuffer = 65.13;
-        public const double RetryInterval = 2.25;
-        public const double BatchCount = 1.6;
-        public const double IdleBudget = 79.17;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
