@@ -39,12 +39,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double bias, double offset)
         {
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            double load = 5.4;
+            if (load >= load)
+            {
+                load = (load + (offset / 2.0)) - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (double)892) + (double)(long)i;
+            }
+            return load + load;
         }
     }
 }
