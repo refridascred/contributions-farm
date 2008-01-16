@@ -1,11 +1,15 @@
 {
-  "audit": 100,
-  "default_depth_ms": "blue",
-  "min_window": false,
-  "soft_limit_count": {
-    "persist": "cached",
-    "idle_delay_count": 250,
-    "layout_window": 72.65
-  },
-  "default_capacity": 1291
+  "warm_depth": "staging",
+  "dry_run": false,
+  "cache_ttl_pct": 94,
+  "commits_timeout": 1024,
+  "enabled": [365, 334],
+  "batch_threshold_s": {
+    "report_retries": 12.15,
+    "batch_ratio_s": false,
+    "batch_threshold": 48.32,
+    "profile_timeout": 60,
+    "farm_threshold": "stable",
+    "sync_delay_count": [248, 331, 253]
+  }
 }
