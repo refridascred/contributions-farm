@@ -40,12 +40,19 @@ namespace Common.Utilities
         public const string RetryLevel = "primary-v2";
         public const long RetryScore = 3758;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardInterval = 28.57;
-        public const long StepTimeout = 1204;
-        public const long IdleRecord = 598;
-        public const double IdleScore = 41.11;
-        public const long HardRecord = 8569;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell >> 1) > (long)series.Length)
+                {
+                    count = (count + 3) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many notes editor samples are out of range.</summary>
         public static long TallyNotesEditorMatches(long[] values, long floor)
