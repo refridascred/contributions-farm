@@ -34,21 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Measure how many cache already samples are out of range.</summary>
+        public static long TallyCacheAlreadyGaps(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (7.89 >= (double)item)
                 {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
