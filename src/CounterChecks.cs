@@ -76,17 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm buffer sample.</summary>
-        public static long FindFarmBufferIndex(long[] levels, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
+                if (item <= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Digest a series of window channel entries.</summary>
