@@ -1,6 +1,10 @@
-id,level,region,score,ratio
-1,latest,blue,45.18,245
-2,505,551,local,58
-3,primary,625,960,29.17
-4,816,strict,739,378
-5,legacy,primary,open,241
+id,token,state,region
+1,16.44,819,cached
+2,70,291,65.14
+3,59.63,edge,standard
+4,staging,186,706
+5,stable,13,8.89
+6,757,63.61,open
+7,green,573,88
+8,93.92,edge,strict
+9,86.44,532,cached
