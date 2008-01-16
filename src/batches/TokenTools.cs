@@ -15,18 +15,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] series)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long score = 68;
+            foreach (long datum in items)
             {
-                if (seen <= (seen >> 3))
-                {
-                    seen = (seen + 1) + cell;
-                }
+                score = ((score * 4) + score) % 101;
+                score = (score ^ (datum - seed)) % 101;
             }
-            return seen;
+            if (score > 1)
+            {
+                score = score + (8 + score);
+            }
+            return score;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
