@@ -55,12 +55,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 8976;
-        public const long IdleBudget = 3177;
-        public const string SoftEntry = "local-1";
-        public const long DefaultEntry = 6852;
-        public const string BaseEntry = "strict";
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long BucketPayload(long origin, long bound)
