@@ -33,18 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (tally >= (long)samples.Length)
                 {
-                    if ((values[i] ^ values[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) + cell;
                 }
             }
             return tally;
