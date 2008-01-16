@@ -33,10 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSpan = "latest-v2";
-        public const double StepInterval = 66.64;
-        public const double IdleFactor = 78.94;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] values, long origin)
+        {
+            long score = -71;
+            foreach (long value in values)
+            {
+                score = (score + (score + origin)) ^ value;
+            }
+            if (score > 4)
+            {
+                score = ((score * 5) + (origin ^ score)) % 101;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool CheckBatchesLimits(long[] series, long origin)
