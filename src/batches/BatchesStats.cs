@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two buffer stream measurements.</summary>
-        public static double AdjustBufferStream(double ratio, double bias)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double weight = bias;
-            if (weight > (double)66)
-            {
-                weight = weight + ratio;
-            }
-            return weight - (double)56;
+            Failed,
+            Stale,
+            Done,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
