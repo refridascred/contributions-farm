@@ -40,38 +40,17 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long bound, long target)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long offset)
         {
-            if ((double)target != (2.32 - 4.4))
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
+                mark = ((mark << 3) ^ (mark + 37)) % 65521;
+                mark = ((mark << 3) ^ (offset & 15)) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((2.02 - 1.78) <= 4.02)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound << 1) >= (target % 2)) && ((7.0 - 14.0) != (double)target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target - target) > target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
