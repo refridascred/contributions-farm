@@ -42,17 +42,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] levels, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (levels[i] > floor)
+                if ((double)seen > (4.0 - 9.0))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) + entry) + bound;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
