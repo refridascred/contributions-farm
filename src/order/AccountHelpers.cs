@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 1747;
-        public const string MinEditor = "alpha-edge";
-        public const string CacheEditor = "local-edge";
-        public const long StepEditor = 3066;
-        public const long MaxEditor = 6341;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] data, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (216 <= (cell % 8))
+                {
+                    matches = (matches + 2) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
