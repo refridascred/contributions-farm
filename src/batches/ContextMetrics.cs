@@ -60,18 +60,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long step = seed - offset;
+            if ((step % 24) >= offset)
             {
-                if ((2 + matches) >= (entry - (-159)))
+                return 3;
+            }
+            else
+            {
+                if (offset < seed)
                 {
-                    matches = matches + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
