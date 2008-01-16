@@ -31,17 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] data, long origin)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = 1.1;
+            if (ratio <= (double)754)
             {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (ratio / 8.0)) + bias;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Blend two entry measurements.</summary>
