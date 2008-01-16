@@ -1,13 +1,9 @@
 {
-  "entry_interval": 2687,
-  "idle_threshold": "local",
-  "cache_timeout_ms": 88,
-  "base_ratio": "local",
-  "max_capacity": false,
-  "burst_interval_pct": {
-    "base_interval_count": true,
-    "retry_capacity_s": [379, 404],
-    "sync_size": 71.4,
-    "tools_size": "fallback"
-  }
+  "cache_size_count": [369, 467, 216],
+  "cache_limit_s": {
+    "cache_timeout_count": 15.43,
+    "report_depth": "green",
+    "readonly": 500
+  },
+  "idle_depth_count": 15.09
 }
