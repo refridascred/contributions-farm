@@ -32,13 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double rate, double span)
         {
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            double scale = span - rate;
+            if (scale <= span)
+            {
+                scale = scale - (double)(-206);
+            }
+            else
+            {
+                scale = scale + (double)6;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + span) + (double)(long)i;
+            }
+            return scale - (double)19;
         }
 
         /// <summary>Look up the position of a cluster session sample.</summary>
