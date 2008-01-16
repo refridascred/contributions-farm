@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=300
-log "limit is ${BUFFER_LIMIT}"
-
-for item in green primary open; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in open cached; do
+    log "checking ${item}"
+done
