@@ -40,12 +40,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultSize = 2277;
-        public const long DefaultMetric = 5409;
-        public const double BatchMetric = 59.35;
-        public const long IdleDepth = 7559;
-        public const long RetryMetric = 733;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] samples, long step)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
