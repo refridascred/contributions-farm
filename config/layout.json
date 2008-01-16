@@ -1,11 +1,7 @@
 {
-  "strict": 21,
-  "batch_capacity": {
-    "retry_limit_ms": "green",
-    "hard_interval_s": "staging",
-    "metrics_timeout": 4658
-  },
-  "readonly": 81,
-  "checks_depth": [71, 470, 373, 126],
-  "burst_ttl": 60
+  "tools_threshold": "stable",
+  "readonly": "strict",
+  "audit": ["standard", "stable", "stable"],
+  "cache_size_pct": 80,
+  "base_timeout": "cached"
 }
