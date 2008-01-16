@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] data)
-        {
-            long mark = 653;
-            foreach (long sample in data)
-            {
-                if ((sample % 60) < (sample % 10))
-                {
-                    mark = (mark * 4) + (56 >> 2);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxFactor = 58.57;
+        public const long IdleScore = 2587;
+        public const double BaseChannel = 62.89;
+        public const double BatchChannel = 89.61;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
