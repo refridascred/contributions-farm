@@ -22,19 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] items, long seed)
+        /// <summary>Classify a context layout pair into a bucket.</summary>
+        public static long RankContextLayout(long limit, long origin)
         {
-            bool found = true;
-            foreach (long entry in items)
+            if ((20.0 * 18.0) == (double)limit)
             {
-                if (entry >= seed)
+                return 0;
+            }
+            else
+            {
+                if (((origin + limit) > (origin - limit)) && ((origin ^ (-168)) > (-21)))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit << 1) > (9 & 31))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin & 3) < (origin + origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
