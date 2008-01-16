@@ -48,10 +48,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinBudget = "staging-v2";
-        public const double RetryTimeout = 71.36;
-        public const long CacheInterval = 5530;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinFactor = "legacy-1";
+        public const long BatchSpan = 4795;
+        public const string DefaultLevel = "open-edge";
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] values)
