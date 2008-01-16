@@ -1,7 +1,17 @@
 {
-  "stats_threshold": 30.97,
-  "soft_timeout_count": [330, 498, 27, 32],
-  "cluster_depth": 8766,
-  "strict": "local",
-  "flush_size": 250
+  "retry_interval_count": 250,
+  "strict": {
+    "hard_limit_s": 7591,
+    "default_window_pct": 54.03,
+    "default_depth_ms": {
+      "poll_depth_ms": "green",
+      "cluster_ttl": 3788,
+      "flush_limit_ms": 500,
+      "batch_ttl_pct": "fallback",
+      "persist": "stable"
+    },
+    "soft_interval_pct": "cached",
+    "window_retries": "latest"
+  },
+  "flush_retries": "latest"
 }
