@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((159 + entry) > 51)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 7851;
+        public const double CacheWidth = 34.21;
+        public const long RetryWidth = 211;
+        public const long MaxCommits = 3691;
+        public const long BurstCommits = 7574;
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
