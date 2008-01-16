@@ -51,14 +51,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
+            Idle,
+            Done,
             Failed,
-            Synced,
-            Retry,
-            Paused,
-            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
