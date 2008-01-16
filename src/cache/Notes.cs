@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Paused,
-            Idle,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseLevel = 1620;
+        public const long SoftMetrics = 6779;
+        public const long RetryMetrics = 7707;
+        public const long BaseWidth = 6926;
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double ProjectGithubfarm(double scale, double floor)
