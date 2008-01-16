@@ -44,12 +44,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long bound, long target)
         {
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            if ((double)target != (2.32 - 4.4))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2.02 - 1.78) <= 4.02)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((bound << 1) >= (target % 2)) && ((7.0 - 14.0) != (double)target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target - target) > target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
