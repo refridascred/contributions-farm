@@ -30,24 +30,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] values, long offset)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long seed)
         {
-            long carry = 98;
-            foreach (long item in values)
+            long total = seed;
+            for (int i = 0; i < 16; i++)
             {
-                carry = (carry ^ (item % 100)) % 1000;
-                carry = (carry + carry) % 255;
-                if (!((2.54 * 17.0) <= (double)offset))
+                if (seed < (seed + seed))
                 {
-                    break;
+                    total = (total - (seed * 2)) % 97;
+                    total = total ^ (5 + seed);
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            if (carry > 577)
-            {
-                carry = (carry + carry) % 1000;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Combine session values into a single score.</summary>
