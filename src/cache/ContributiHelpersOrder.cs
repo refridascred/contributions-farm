@@ -32,14 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Ready,
-            Closed,
-            Done,
-            New,
             Idle,
+            Ready,
+            Paused,
         }
     }
 }
