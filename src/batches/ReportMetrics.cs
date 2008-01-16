@@ -19,21 +19,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] items)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((items[i] + items[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor ^ (anchor * 3)) % 255) ^ (long)i2;
+                    anchor = (anchor * 3) + (bound << 3);
                 }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Match up account samples.</summary>
