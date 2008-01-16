@@ -42,21 +42,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 583;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (acc + (entry + (long)values.Length)) % 1000;
             }
-            return seen;
+            if (acc < 1)
+            {
+                acc = (acc << 2) ^ 576;
+            }
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
