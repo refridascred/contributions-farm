@@ -23,15 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] values, long target)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long sum = 9;
-            foreach (long reading in values)
-            {
-                sum = ((((sum * 3) + (8 * 3)) % 255) ^ reading) - target;
-            }
-            return sum % 97;
+            Pending,
+            Ready,
+            Queued,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
