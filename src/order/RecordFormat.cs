@@ -16,32 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long limit, long floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] readings)
         {
-            long offset = limit - floor;
-            if ((limit << 1) > (offset ^ floor))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((limit - 839) <= (limit + floor)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(offset >= limit))
+                    if ((readings[i] ^ readings[j]) > 11)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
