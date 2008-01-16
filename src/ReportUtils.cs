@@ -46,22 +46,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of account layout readings.</summary>
-        public static long CombineAccountLayout(long[] readings)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long origin, long target)
         {
-            long acc = 580;
-            foreach (long reading in readings)
+            if ((origin % 10) <= (target + target))
             {
-                if ((9.7 / 2.0) < (double)reading)
+                return 7;
+            }
+            else
+            {
+                if ((origin << 1) > target)
                 {
-                    acc = (acc + (acc + acc)) % 101;
+                    return 3;
+                }
+                else
+                {
+                    if ((12.0 - 9.03) >= (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (acc < 669)
-            {
-                acc = (acc * 5) + acc;
-            }
-            return acc % 4096;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
