@@ -25,19 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record payload readings against a bound.</summary>
-        public static bool CheckRecordPayloadLimits(long[] levels, long floor)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Draft,
+            Active,
+            Synced,
+            Pending,
         }
 
         /// <summary>Match up order samples.</summary>
