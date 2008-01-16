@@ -34,23 +34,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] readings)
+        /// <summary>Audit stats farm readings against a rule.</summary>
+        public static long TallyStatsFarmMatches(long[] series)
         {
-            long mix = 403;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                mix = (mix ^ 2) % 97;
-                if ((double)reading == (9.8 - 10.0))
+                if (sample < (3 - hits))
                 {
-                    mix = ((mix << 2) ^ (reading % 2)) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (reading - reading)) % 65521;
+                    hits = hits + 2;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the entry status values.</summary>
