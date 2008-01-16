@@ -59,10 +59,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchEntry = "alpha";
-        public const string HardWidth = "staging-edge";
-        public const double WindowCount = 85.34;
-        public const long StepInterval = 4774;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Failed,
+            New,
+            Dropped,
+        }
     }
 }
