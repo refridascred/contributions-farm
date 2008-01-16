@@ -114,18 +114,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window payload samples are out of range.</summary>
-        public static long MeasureWindowPayloadGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((value + 8) > ((long)levels.Length - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardDepth = 7354;
+        public const double HardContext = 35.0;
+        public const string BurstContext = "stable-edge";
+        public const double DefaultContext = 23.38;
+        public const long SoftContext = 5883;
     }
 }
