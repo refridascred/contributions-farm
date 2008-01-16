@@ -17,21 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up tools cluster samples.</summary>
-        public static long OverlapToolsClusterCount(long[] series)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
