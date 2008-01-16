@@ -33,16 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Derive the next farm route value from a seed.</summary>
+        public static long RollFarmRoute(long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor * 3) + (anchor & 127);
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                mix = (mix - (origin + origin)) % 4096;
+                if (mix >= ((long)i * 5))
+                {
+                    mix = mix + (5 * 2);
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
