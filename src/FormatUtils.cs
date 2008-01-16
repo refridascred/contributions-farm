@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 596;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (((anchor * 4) + (bound / 9)) % 255) ^ item;
             }
-            return seen;
+            if (anchor < 5)
+            {
+                anchor = anchor ^ (-71);
+            }
+            return anchor;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
