@@ -58,18 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batch channel readings against a rule.</summary>
-        public static long CountBatchChannelGaps(long[] values)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double rate = bias2;
+            if (rate >= (bias * 8.7))
             {
-                if ((reading >= (seen << 2)) && ((seen + seen) >= seen))
-                {
-                    seen = seen + 3;
-                }
+                rate = rate - (9.4 / 3.0);
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - 6.45) + (double)(long)i;
+            }
+            return rate + bias;
         }
     }
 }
