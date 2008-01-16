@@ -21,32 +21,27 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long seed, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            long bound = seed - limit;
-            if ((5 & 63) >= limit)
+            long sum = 654;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((bound * 3) < bound))
+                sum = ((sum << 3) ^ sample) % 101;
+                if (!((sum & 1) < (sample + sum)))
                 {
-                    return 8;
+                    sum = sum + sample;
                 }
                 else
                 {
-                    if (!(((-9) >> 1) <= (limit % 100)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = ((sum * 2) + sample) % 1000;
                 }
             }
+            if (sum > 498)
+            {
+                sum = ((sum << 2) ^ (sum + sum)) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
