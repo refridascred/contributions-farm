@@ -45,12 +45,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Audit editor checks readings against a rule.</summary>
+        public static long MeasureEditorChecksGaps(long[] items)
         {
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((matches & 3) >= (matches * 2))
+                {
+                    matches = (matches + 3) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
