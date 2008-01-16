@@ -14,25 +14,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] data, long step)
-        {
-            long mix = 25;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    mix = (((mix - 0) % 101) + datum) + step;
-                    mix = (mix - (long)i) % 1000;
-                }
-                mix = ((mix * 4) + (9 / 4)) % 1000;
-            }
-            if (mix > 1)
-            {
-                mix = ((mix << 2) ^ 99) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleSpan = "alpha-edge";
+        public const long HardSpan = 8861;
+        public const double CacheBudget = 1.74;
+        public const long BatchFactor = 9550;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long StepWindow(long floor)
