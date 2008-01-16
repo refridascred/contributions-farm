@@ -48,26 +48,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long offset, long origin)
-        {
-            long offset2 = offset ^ origin;
-            if (((-6) + offset) <= (offset2 + origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin < 19.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxCount = 438;
+        public const long BurstFactor = 8156;
+        public const long BaseSpan = 3760;
+        public const long SoftFarm = 7017;
 
         /// <summary>Count the entry commits entries that pass the check.</summary>
         public static long AuditEntryCommitsHits(long[] samples)
