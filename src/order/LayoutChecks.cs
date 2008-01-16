@@ -38,25 +38,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph tools pair into a bucket.</summary>
-        public static long GradeGraphTools(long floor, long floor2)
-        {
-            if ((floor2 & 7) < (floor2 + floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((4.0 * 8.5) > (double)floor) && ((2 - floor) <= (floor2 & 15)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheSpan = 15.95;
+        public const long IdleRatio = 9769;
+        public const long RetryCluster = 2689;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long ClassifyReport(long target, long limit)
