@@ -12,12 +12,27 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultChecks = "alpha-1";
-        public const long CacheChecks = 1180;
-        public const long BurstDepth = 2353;
-        public const long RetryChecks = 5535;
-        public const long BatchChecks = 2904;
+        /// <summary>Digest a series of metrics command entries.</summary>
+        public static long TallyMetricsCommand(long[] levels)
+        {
+            long state = -73;
+            foreach (long entry in levels)
+            {
+                if (state < ((long)levels.Length * 2))
+                {
+                    state = (state ^ state) % 101;
+                }
+                if ((2.06 > (double)entry) || ((state + 17) == (state + entry)))
+                {
+                    break;
+                }
+            }
+            if (state < (-883))
+            {
+                state = ((state * 4) + (0 ^ state)) % 4096;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long MatchBatchesCount(long[] data)
