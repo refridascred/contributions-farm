@@ -66,12 +66,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] series, long target)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] >= target) && ((series[i] % 3) != 0))
+                if (samples[i] <= step)
                 {
                     return (long)i;
                 }
