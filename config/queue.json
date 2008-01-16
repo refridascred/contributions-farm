@@ -1,18 +1,13 @@
 {
-  "poll_size_pct": "standard",
-  "flush_ttl_ms": {
-    "compress": 64.57,
-    "dry_run": "stable",
-    "commits_ratio": true,
-    "batch_threshold": 30,
-    "batch_retries": 1024
+  "command_ttl": {
+    "buffer_ratio": 7424,
+    "metric_ttl": "strict",
+    "audit": 8863,
+    "persist": 88.05,
+    "cache_window": ["staging", "primary"],
+    "report_retries": "primary"
   },
-  "already_delay": {
-    "default_timeout_ms": 82.64,
-    "warm_interval_pct": 100,
-    "poll_window_s": ["strict", "cached", "green"]
-  },
-  "format_depth": 6624,
-  "sync_window_count": "cached",
-  "poll_ttl_count": "edge"
+  "window_delay": false,
+  "retry_delay": ["stable", "eu-west", "blue"],
+  "idle_interval_s": 10.71
 }
