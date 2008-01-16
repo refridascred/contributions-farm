@@ -47,18 +47,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a report entry sample.</summary>
-        public static long SeekReportEntryIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxMetric = 43.91;
+        public const string MaxSize = "legacy-1";
+        public const long StepFactor = 1381;
+        public const long LimitFactor = 2577;
+        public const long BatchMetric = 1135;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double IdleWindow = 23.6;
