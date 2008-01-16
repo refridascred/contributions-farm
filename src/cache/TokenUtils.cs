@@ -35,18 +35,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + seed) == (seen * 5))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultInterval = 5614;
+        public const long WindowProfile = 6345;
+        public const long CacheInterval = 2345;
+        public const string IdleCount = "alpha";
     }
 }
