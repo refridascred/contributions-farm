@@ -31,19 +31,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] series, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (reading > seed)
+                if (datum >= step)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
