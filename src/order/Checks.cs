@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long limit)
         {
-            long state = -70;
-            foreach (long datum in data)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (((874 * 2) >= state) && ((53 + datum) <= (-61)))
-                {
-                    state = ((state << 3) ^ (state + state)) % 101;
-                }
-                else
-                {
-                    state = state + (datum >> 5);
-                }
+                score = (score + score) % 101;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
