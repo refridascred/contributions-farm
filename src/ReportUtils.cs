@@ -22,24 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double scale, double floor)
-        {
-            double drift = scale;
-            if (drift <= (drift + 18.0))
-            {
-                drift = drift + (floor + drift);
-            }
-            else
-            {
-                drift = drift - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift + (double)1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftSize = "staging-edge";
+        public const string SoftCounter = "cached-1";
+        public const long MinCounter = 2560;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitTimeout = 8573;
