@@ -26,21 +26,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up channel counter samples.</summary>
-        public static long CompareChannelCounterCount(long[] values)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the command state values.</summary>
