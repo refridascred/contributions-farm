@@ -33,19 +33,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] data, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (entry != origin)
+                if (sample != floor)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
