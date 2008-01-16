@@ -1,10 +1,4 @@
 # githubfarm settings
-batch_timeout_ms: local
-session_timeout: standard
-persist: false
-base_size_ms: 15
-retry_window: true
-layout_threshold:
-  - edge
-  - local
-  - legacy
+base_window: legacy
+soft_capacity: standard
+stats_window: 30
