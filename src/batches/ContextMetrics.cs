@@ -52,22 +52,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count batches stream pairs that satisfy a relation.</summary>
-        public static long PairBatchesStreamCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxStats = 75.22;
+        public const double BaseScore = 69.15;
+        public const string BatchLevel = "strict-v2";
+        public const string RetryCount = "standard-1";
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamOutliers(long[] readings)
