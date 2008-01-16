@@ -41,13 +41,22 @@ namespace Common.Utilities
         public const long BurstFilter = 8140;
         public const double WindowFilter = 61.91;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] values)
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (datum < (datum * 2))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank report input into a small class.</summary>
