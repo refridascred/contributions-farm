@@ -35,24 +35,18 @@ namespace Common.Utilities
             return (mean + gain) + floor;
         }
 
-        /// <summary>Rank notes report input into a small class.</summary>
-        public static long BucketNotesReport(long target, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] readings)
         {
-            if ((double)target == (8.76 / 4.0))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((7.5 / 5.0) == (double)offset) || ((6.6 / 4.0) < (double)target))
+                if ((88 ^ 9) > (cell * 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
