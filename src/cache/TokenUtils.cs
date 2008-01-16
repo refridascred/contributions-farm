@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Classify a checks batches pair into a bucket.</summary>
+        public static long RankChecksBatches(long bound, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = bound + seed;
+            if ((11.0 + 2.81) < (double)seed)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((20.0 / 2.0) != (double)next)
                 {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
