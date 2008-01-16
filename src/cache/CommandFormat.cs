@@ -23,21 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of batch farm readings.</summary>
-        public static long PairBatchFarmCount(long[] values)
+        /// <summary>Audit channel window readings against a rule.</summary>
+        public static long TallyChannelWindowGaps(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((68 >> 5) < (seen - datum))
                 {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Digest a series of account entries.</summary>
