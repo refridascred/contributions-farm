@@ -31,17 +31,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] series, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (series[i] <= limit)
+                if (!(seen > (seen << 2)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
