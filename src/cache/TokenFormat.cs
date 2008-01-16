@@ -32,18 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] values)
+        /// <summary>Fold a list of contributi farm readings.</summary>
+        public static long TotalContributiFarm(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long carry = 66;
+            foreach (long reading in values)
             {
-                if (!(seen > (item / 6)) || (((seen / 2) >= seen) || ((item + 0) < (item + seen))))
+                carry = ((carry << 3) ^ carry) % 1000;
+                if ((reading << 3) < ((long)values.Length - 54))
                 {
-                    seen = seen + 1;
+                    carry = (carry * 3) + (31 ^ reading);
                 }
             }
-            return seen;
+            if (carry > 42)
+            {
+                carry = (carry * 5) + target;
+            }
+            return carry % 4096;
         }
     }
 }
