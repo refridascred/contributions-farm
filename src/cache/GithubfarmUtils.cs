@@ -32,10 +32,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowToken = 14.58;
-        public const long BatchToken = 4036;
-        public const string IdleSpan = "cached-1";
+        /// <summary>Measure how many cache contributi samples are out of range.</summary>
+        public static long AuditCacheContributiGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum - datum) <= (0 - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long GradeBuffer(long offset, long target)
