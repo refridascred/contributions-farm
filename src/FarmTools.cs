@@ -21,11 +21,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 5590;
-        public const long IdleFormat = 6074;
-        public const long MinFactor = 2847;
-        public const long CacheScore = 7341;
-        public const long BaseFormat = 4411;
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double weight, double bias)
+        {
+            double scale = (double)(421 + 129);
+            for (int i = 0; i < 2; i++)
+            {
+                scale = ((scale + bias) + (double)(long)i) - weight;
+            }
+            return scale - 19.0;
+        }
     }
 }
