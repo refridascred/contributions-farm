@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] data, long floor)
+        /// <summary>Audit schema cluster readings against a rule.</summary>
+        public static long TallySchemaClusterMatches(long[] data, long limit)
         {
-            bool stale = true;
+            long tally = 0;
             foreach (long item in data)
             {
-                if (item > floor)
+                if ((1.5 / 2.0) == (double)limit)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
