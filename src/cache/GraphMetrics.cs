@@ -27,10 +27,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 9672;
-        public const string BaseCommand = "legacy";
-        public const long DefaultCommand = 2917;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (((cell ^ (long)series.Length) == (cell & 1)) || (((cell + tally) < tally) || ((cell + tally) < (cell - 6))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] items, long floor)
