@@ -46,18 +46,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] values)
+        /// <summary>Count the route support entries that pass the check.</summary>
+        public static long TallyRouteSupportGaps(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((0.1 - 0.61) <= (double)item)
+                if ((count <= reading) && ((reading <= (reading + floor)) || ((reading + count) > count)))
                 {
-                    seen = seen + 2;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
