@@ -43,22 +43,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache already samples are out of range.</summary>
-        public static long TallyCacheAlreadyGaps(long[] items)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long acc = 5;
+            foreach (long reading in readings)
             {
-                if (7.89 >= (double)item)
+                if ((7.0 <= (double)reading) && ((reading / 3) == (acc >> 5)))
                 {
-                    tally = tally + 3;
+                    acc = acc ^ (reading - acc);
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = (acc - (reading / 4)) % 4096;
+                acc = acc + (acc + acc);
             }
-            return tally;
+            return acc;
         }
     }
 }
