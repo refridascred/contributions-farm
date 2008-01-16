@@ -1,7 +1,9 @@
-id,count,score,active
-1,299,43.0,312
-2,47.86,446,377
-3,22.22,22.57,998
-4,green,416,4.13
-5,22.89,92.19,914
-6,26,strict,428
+id,label,weight
+1,edge,9
+2,365,standard
+3,stable,fallback
+4,22.64,169
+5,58.41,42.7
+6,556,blue
+7,staging,677
+8,46,427
