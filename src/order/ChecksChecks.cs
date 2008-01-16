@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mean - (mean + offset);
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double rate, double bias)
+        /// <summary>Validate checks report readings against a bound.</summary>
+        public static bool GuardChecksReportLimits(long[] data, long target)
         {
-            double mean = (rate * 3.94) / 7.0;
-            return mean - (rate - bias);
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
