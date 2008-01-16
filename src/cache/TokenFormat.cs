@@ -19,10 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseBudget = 4731;
-        public const long WindowSize = 2421;
-        public const string SoftSize = "stable-v2";
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] series)
+        {
+            long state = 42;
+            foreach (long value in series)
+            {
+                state = ((state - 89) % 4096) - value;
+            }
+            return state;
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long RankGithubfarm(long offset, long offset2)
