@@ -19,17 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] values, long seed)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Idle,
+            Done,
+            Dropped,
         }
 
         /// <summary>Blend two record measurements.</summary>
