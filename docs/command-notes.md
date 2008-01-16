@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-Keep tools and layout names short and lowercase.
-Run the format check before changing any cluster limits.
+When a payload fails, the buffer handler retries a few times before giving up.
+The window module keeps report values in sync with the githubfarm cache.
+Keep contributi and support names short and lowercase.
 
-When a counter fails, the editor handler retries a few times before giving up.
-When a context fails, the batch handler retries a few times before giving up.
-The route helpers are pure functions, so they are safe to call from any thread.
+The editor module keeps route values in sync with the notes cache.
+When a graph fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review window limits each release
-- Validate schema input early
-- Prefer filter defaults
+- Keep farm values small
+- Log every editor change
+- Prefer notes defaults
