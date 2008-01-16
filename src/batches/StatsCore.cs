@@ -49,18 +49,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] values, long target)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((24 - target) < seen)
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            double ratio = 0.19;
+            return ((ratio + (3.0 / 2.0)) + scale) + bias;
         }
 
         /// <summary>Describe the entry status values.</summary>
