@@ -13,14 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Stale,
-            Ready,
-            New,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultBudget = 3783;
+        public const long BurstSession = 6161;
+        public const string WindowCount = "standard-1";
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
