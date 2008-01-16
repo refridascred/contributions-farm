@@ -23,11 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstStream = 40.5;
-        public const long BatchFactor = 2152;
-        public const long BurstFactor = 9011;
-        public const double BaseBudget = 0.17;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((double)count > (double)82)
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
