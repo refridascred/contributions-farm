@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const string BaseGraph = "stable";
         public const long SoftScore = 6756;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] samples, long target)
         {
-            Ready,
-            Queued,
-            Closed,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a counter options.</summary>
