@@ -13,18 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] series)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value + value) > value)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Stale,
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
