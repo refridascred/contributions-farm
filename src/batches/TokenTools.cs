@@ -15,15 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two batch format measurements.</summary>
-        public static double BlendBatchFormat(double bias, double offset)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] values, long limit)
         {
-            double weight = (double)(43 / 3);
-            if (weight >= weight)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                weight = (weight + (offset - weight)) - bias;
+                if (entry > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight + (double)1;
+            return stale;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
