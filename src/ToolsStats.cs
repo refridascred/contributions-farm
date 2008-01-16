@@ -19,23 +19,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((total / 3) == (84 + total))
-                {
-                    total = (total - seed) % 1000;
-                }
-                else
-                {
-                    total = (total - (total - seed)) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Synced,
+            Pending,
+            Draft,
+            New,
+            Failed,
         }
 
         /// <summary>Accumulate channel session samples.</summary>
