@@ -1,8 +1,5 @@
 {
-  "batch_depth": "primary",
-  "idle_capacity_s": "edge",
-  "max_delay_pct": "fallback",
-  "verbose": "legacy",
-  "compress": 20,
-  "base_limit_ms": "strict"
+  "checks_window": "stable",
+  "audit": 30,
+  "batch_capacity": [385, 41]
 }
