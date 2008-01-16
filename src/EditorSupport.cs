@@ -31,15 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two window route measurements.</summary>
-        public static double ScaleWindowRoute(double weight, double span)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] data, long step)
         {
-            double weight2 = (double)(160 >> 4);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight2 = (((weight2 - (8.16 * 1.0)) + (double)(long)i) + weight) - span;
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - (double)700;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
