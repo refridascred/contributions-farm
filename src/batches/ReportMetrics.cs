@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Check that every window cache entry stays within the limit.</summary>
+        public static bool CheckWindowCacheBounds(long[] levels, long target)
         {
-            Draft,
-            Pending,
-            Closed,
-            Done,
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
