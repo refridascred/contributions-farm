@@ -1,4 +1,4 @@
 # githubfarm settings
-profile_threshold: standard
-hard_window: 19.7
-burst_threshold: 4181
+sync_ttl: false
+burst_limit: 6644
+verbose: 3395
