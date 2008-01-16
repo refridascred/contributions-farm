@@ -35,18 +35,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] values, long bound)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!((bound ^ datum) > (bound - bound)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
