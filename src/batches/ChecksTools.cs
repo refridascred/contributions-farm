@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] values)
-        {
-            long carry = 14;
-            foreach (long entry in values)
-            {
-                carry = (carry - (entry - 0)) % 97;
-            }
-            if (carry < 457)
-            {
-                carry = (carry ^ carry) % 255;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepInterval = 2473;
+        public const double RetryLayout = 7.6;
+        public const string HardLayout = "fallback";
+        public const string MinLayout = "strict-1";
+        public const double BurstInterval = 42.07;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportMatches(long[] readings)
