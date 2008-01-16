@@ -63,15 +63,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBudget = 2065;
+        public const long RetryInterval = 8820;
+        public const string WindowWidth = "standard-1";
     }
 }
