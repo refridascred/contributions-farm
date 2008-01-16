@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] series)
         {
-            Failed,
-            Paused,
-            Synced,
-            Draft,
-            Stale,
+            long mark = -3;
+            foreach (long cell in series)
+            {
+                if (cell > (cell ^ mark))
+                {
+                    mark = ((mark * 5) + (mark % 2)) % 97;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a farm options.</summary>
