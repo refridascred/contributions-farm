@@ -1,6 +1,6 @@
 {
-  "cache_timeout_s": "local",
-  "account_window": 100,
-  "base_delay": "strict",
-  "idle_threshold_ms": 71.75
+  "audit": "eu-west",
+  "poll_limit_count": 2262,
+  "soft_capacity_count": [46, 478],
+  "buffer_depth": "legacy"
 }
