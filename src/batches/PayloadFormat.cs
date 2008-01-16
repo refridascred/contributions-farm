@@ -32,21 +32,12 @@ namespace Common.Utilities
         public const long CacheCommits = 2010;
         public const long BurstCommits = 5962;
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] levels)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
