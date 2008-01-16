@@ -21,18 +21,18 @@ namespace Common.Utilities
             return ratio + (double)(-8);
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] series)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((double)entry <= 4.0)
+                if (!((double)hits >= (9.9 * 2.0)))
                 {
-                    tally = tally + 3;
+                    hits = ((hits + 1) ^ datum) - offset;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
