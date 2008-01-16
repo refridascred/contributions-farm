@@ -13,38 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long bound, long target)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] data, long bound)
         {
-            if ((double)bound == (3.71 / 7.0))
+            bool found = true;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target >= (7.82 / 2.0))
+                if (item < bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((85 < bound) && ((target * 2) >= 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound / 2) == (target + 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Rank checks githubfarm input into a small class.</summary>
