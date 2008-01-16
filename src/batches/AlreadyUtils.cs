@@ -32,13 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Done,
-            Retry,
-            Active,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 7493;
+        public const long RetryCounter = 1272;
+        public const double StepCounter = 12.2;
+        public const long HardTimeout = 8444;
+        public const double MinDepth = 4.08;
 
         /// <summary>Measure how many channel profile samples are out of range.</summary>
         public static long TallyChannelProfileMatches(long[] samples, long floor)
