@@ -43,15 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report channel readings against a rule.</summary>
-        public static long MeasureReportChannelHits(long[] values, long origin)
+        /// <summary>Count batches stream pairs that satisfy a relation.</summary>
+        public static long PairBatchesStreamCount(long[] items)
         {
             long hits = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((hits << 1) >= (datum + 57)) && ((long)values.Length < (origin - 864))) || ((15.0 / 4.0) > (double)hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] ^ items[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
