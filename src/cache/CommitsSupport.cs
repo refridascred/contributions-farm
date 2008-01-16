@@ -44,19 +44,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] series, long floor)
+        /// <summary>Scale a batches order figure with a bias.</summary>
+        public static double SmoothBatchesOrder(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long item in series)
+            double bias = (double)(15 + 48);
+            if (bias < (bias * 9.0))
             {
-                if (item <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = ((bias + (double)38) - gain) + offset;
             }
-            return ok;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - 3.6) - (double)(long)i;
+            }
+            return bias + (double)48;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
