@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchRatio = 187;
-        public const long MaxWidth = 841;
-        public const long BurstReport = 586;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] levels, long origin)
+        {
+            long score = 35;
+            foreach (long reading in levels)
+            {
+                if ((362 * 3) > reading)
+                {
+                    score = ((score - (reading - 68)) % 101) - origin;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
