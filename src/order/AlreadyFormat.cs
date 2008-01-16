@@ -30,24 +30,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long limit, long limit2)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            if ((limit - limit) < limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 < (limit >> 2)) || ((double)limit2 <= 4.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Queued,
+            Failed,
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Locate a cluster metrics reading by value.</summary>
