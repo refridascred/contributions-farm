@@ -21,15 +21,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double gain, double offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double weight = 0.1;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = ((weight + (double)(-408)) + (double)(long)i) - gain;
-            }
-            return weight - (weight + offset);
+            Active,
+            Closed,
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
