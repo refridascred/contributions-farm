@@ -36,21 +36,22 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (1.96 >= (double)count)
                 {
-                    if ((values[i] + values[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
