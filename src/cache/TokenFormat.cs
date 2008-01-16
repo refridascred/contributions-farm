@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] samples, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (entry < bound)
+                if ((0 + entry) < (bound + count))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
