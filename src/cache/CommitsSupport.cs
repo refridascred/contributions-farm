@@ -40,23 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] items)
+        /// <summary>Audit order record readings against a rule.</summary>
+        public static long TallyOrderRecordMatches(long[] levels, long bound)
         {
-            long score = -4;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                score = score ^ (entry * 4);
-                if (((5.53 / 8.0) < (double)score) || ((score + score) <= entry))
+                if ((322 << 3) < (cell >> 1))
                 {
-                    score = (score - entry) % 255;
+                    seen = (seen + 2) + bound;
                 }
                 else
                 {
-                    score = (score ^ score) % 1000;
+                    seen = seen - 1;
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
