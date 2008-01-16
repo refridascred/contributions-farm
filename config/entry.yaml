@@ -1,16 +1,4 @@
 # entry settings
-poll_depth_count:
-  idle_ratio_count:
-    - blue
-    - primary
-  enabled: 52.24
-  poll_limit_count: 46
-  max_ttl: primary
-base_depth_pct:
-  - primary
-  - local
-hard_ratio_pct:
-  - 55
-  - 5
-  - 115
-  - 411
+soft_window_count: false
+poll_ttl: 6386
+batch_retries: 67.82
