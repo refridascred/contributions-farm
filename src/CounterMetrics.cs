@@ -31,14 +31,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long origin, long offset)
         {
-            Ready,
-            Locked,
-            Idle,
-            Synced,
-            New,
+            if ((origin % 64) > (offset % 97))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin < (offset & 255)) && ((origin + origin) > (origin + offset)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + offset) >= origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up batches session samples.</summary>
