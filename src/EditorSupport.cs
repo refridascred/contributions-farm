@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] readings, long floor)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
