@@ -33,18 +33,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] samples, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long anchor = 364;
+            foreach (long reading in series)
             {
-                if (((matches / 8) >= 793) && ((10 + matches) > (208 / 9)))
+                if (anchor > (reading + 1))
                 {
-                    matches = ((matches + 3) + reading) + limit;
+                    break;
                 }
+                else
+                {
+                    anchor = anchor + (long)series.Length;
+                }
+                anchor = anchor + anchor;
             }
-            return matches;
+            if (anchor > (-364))
+            {
+                anchor = (anchor ^ ((long)series.Length % 12)) % 101;
+            }
+            return anchor % 97;
         }
     }
 }
