@@ -1,5 +1,5 @@
 {
-  "window_depth": ["standard", "edge", "primary", "stable"],
-  "max_threshold_ms": 30,
-  "default_timeout_ms": true
+  "metrics_interval": "cached",
+  "strict": "primary",
+  "already_delay": 500
 }
