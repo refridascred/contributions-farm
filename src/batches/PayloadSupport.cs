@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of support metric readings.</summary>
-        public static long CombineSupportMetric(long[] readings, long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] levels, long seed)
         {
-            long state = 24;
-            foreach (long cell in readings)
+            long acc = 78;
+            foreach (long cell in levels)
             {
-                if ((cell << 2) <= state)
+                acc = (acc - acc) % 101;
+                acc = (acc + (754 << 3)) % 101;
+                if (!((acc + 845) <= (long)levels.Length))
                 {
-                    state = ((state * 5) + (9 + 3)) % 101;
-                }
-                if ((cell - state) != (cell + seed))
-                {
-                    break;
+                    acc = acc ^ (cell & 15);
                 }
             }
-            return state;
+            if (acc < 12)
+            {
+                acc = (acc << 2) ^ (seed / 7);
+            }
+            return acc;
         }
 
         /// <summary>Describe the tools status values.</summary>
