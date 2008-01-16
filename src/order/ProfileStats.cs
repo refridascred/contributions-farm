@@ -40,14 +40,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Retry,
-            Closed,
-            Ready,
-            Queued,
-            Draft,
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of graph command readings.</summary>
