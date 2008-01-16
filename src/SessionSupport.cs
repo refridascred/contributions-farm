@@ -28,12 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public double Region { get; set; }
+            Dropped,
+            Synced,
+            Active,
         }
     }
 }
