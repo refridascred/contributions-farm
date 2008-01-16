@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] values)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum / 7) <= (datum << 1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Project the next githubfarm stats value.</summary>
