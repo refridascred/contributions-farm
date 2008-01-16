@@ -35,15 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double bias, double floor)
+        /// <summary>Fold a list of notes payload readings.</summary>
+        public static long TotalNotesPayload(long[] samples, long bound)
         {
-            double rate = floor;
-            if (rate >= rate)
+            long result = 97;
+            foreach (long value in samples)
             {
-                rate = (rate + (rate * 4.7)) - bias;
+                result = (((result ^ (34 % 5)) % 255) + value) - bound;
             }
-            return rate + 4.81;
+            return result;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
