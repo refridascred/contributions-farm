@@ -37,19 +37,14 @@ namespace Common.Utilities
             return weight2 + (offset - offset);
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] data, long target)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Active,
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the checks level values.</summary>
