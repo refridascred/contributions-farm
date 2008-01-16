@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] series, long origin)
+        /// <summary>Count the session tools entries that pass the check.</summary>
+        public static long CountSessionToolsOutliers(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (series[i] > origin)
+                if (!(seed >= (datum + 13)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
