@@ -13,10 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultBudget = 3783;
-        public const long BurstSession = 6161;
-        public const string WindowCount = "standard-1";
+        /// <summary>Compare every pair of contributi token readings.</summary>
+        public static long CompareContributiTokenCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
