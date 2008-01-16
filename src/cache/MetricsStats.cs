@@ -19,39 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long bound, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] levels)
         {
-            long offset = bound + target;
-            if ((target + offset) >= (offset ^ target))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target + offset) >= offset) && (offset > (target - bound)))
+                if ((entry - entry) <= (18 + entry))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((offset << 1) != (target / 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound - offset) == (offset & 255))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a window options.</summary>
