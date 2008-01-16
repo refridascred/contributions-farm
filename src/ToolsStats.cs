@@ -59,13 +59,10 @@ namespace Common.Utilities
         public const long RetryLevel = 3793;
         public const long HardSpan = 6402;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 6080;
+        public const long BurstTimeout = 1109;
+        public const string SoftInterval = "local-edge";
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
