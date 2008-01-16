@@ -1,5 +1,5 @@
 {
-  "checks_limit": true,
-  "payload_ratio": ["green", "fallback", "cached"],
-  "verbose": 60
+  "window_depth": ["standard", "edge", "primary", "stable"],
+  "max_threshold_ms": 30,
+  "default_timeout_ms": true
 }
