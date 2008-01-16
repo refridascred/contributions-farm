@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit farm record readings against a rule.</summary>
-        public static long CountFarmRecordHits(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long carry = 936;
+            foreach (long item in samples)
             {
-                if (!((706 - reading) >= reading))
+                if ((2.5 + 7.0) > (double)item)
                 {
-                    matches = matches + 2;
+                    break;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = carry - (4 & 15);
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
