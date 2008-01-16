@@ -1,11 +1,12 @@
 # Command notes
 
-When a contributi fails, the farm handler retries a few times before giving up.
-When a entry fails, the entry handler retries a few times before giving up.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Keep queue and farm names short and lowercase.
+Run the route check before changing any record limits.
 
 ## Guidelines
 
-- Review filter limits each release
-- Prefer queue defaults
-- Log every context change
-- Keep batches values small
+- Review report limits each release
+- Validate session input early
+- Prefer format defaults
+- Keep graph values small
