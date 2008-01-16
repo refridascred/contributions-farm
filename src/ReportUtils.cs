@@ -34,18 +34,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine context support values into a single score.</summary>
-        public static long CombineContextSupport(long[] items, long seed)
+        /// <summary>Locate a channel queue reading by value.</summary>
+        public static long SeekChannelQueueIndex(long[] data, long origin)
         {
-            long state = 17;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(2 < value))
+                if (data[i] == origin)
                 {
-                    state = state - seed;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Match up already samples.</summary>
