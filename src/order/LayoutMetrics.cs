@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 5631;
-        public const long BurstSpan = 9247;
-        public const string BaseGraph = "stable";
-        public const long SoftScore = 6756;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (!((matches ^ matches) < value))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmGaps(long[] samples)
