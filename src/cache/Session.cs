@@ -13,18 +13,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batches stats entries.</summary>
-        public static long DigestBatchesStats(long[] values)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] readings, long step)
         {
-            long carry = 310;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((datum % 16) < (165 % 10))
+                if ((long)readings.Length == (step - cell))
                 {
-                    carry = (carry * 5) + (62 - datum);
+                    tally = tally + 1;
                 }
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Describe the queue mode values.</summary>
