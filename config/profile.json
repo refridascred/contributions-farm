@@ -1,8 +1,10 @@
 {
-  "warm_capacity_pct": "green",
-  "dry_run": "open",
-  "base_ttl": 100,
-  "hard_retries": "latest",
-  "command_capacity": false,
-  "compress": "blue"
+  "stream_retries": {
+    "order_ratio": 5826,
+    "audit": "cached",
+    "burst_ttl": "staging",
+    "layout_ratio": 60
+  },
+  "idle_ratio_s": false,
+  "base_size": ["local", "green", "fallback", "primary"]
 }
