@@ -15,18 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitSize = 7015;
+        public const double BurstScore = 58.02;
+        public const long LimitChannel = 4140;
+        public const long BatchRatio = 884;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long MatchClusterCount(long[] values)
