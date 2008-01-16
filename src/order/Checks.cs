@@ -34,17 +34,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] levels, long bound)
+        /// <summary>Audit format notes readings against a rule.</summary>
+        public static long CountFormatNotesMatches(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
+                if ((double)entry >= (3.0 - 12.0))
                 {
-                    return (long)i;
+                    count = (count + 2) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
