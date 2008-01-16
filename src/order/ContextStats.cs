@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxTimeout = "latest";
-        public const string DefaultDepth = "staging-edge";
-        public const long IdleTools = 8920;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((double)item >= (double)9)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
