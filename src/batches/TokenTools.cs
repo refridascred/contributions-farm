@@ -37,19 +37,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 6324;
+        public const long BatchStats = 8677;
+        public const long WindowStats = 7863;
     }
 }
