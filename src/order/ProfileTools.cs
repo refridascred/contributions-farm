@@ -32,12 +32,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchBudget = 56.81;
-        public const long StepDepth = 5909;
-        public const long RetryLayout = 6757;
-        public const string BurstCount = "staging";
-        public const string BatchWidth = "standard-1";
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((8.39 + 2.5) != (double)value)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsHits(long[] items)
