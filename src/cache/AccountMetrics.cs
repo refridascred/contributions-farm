@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 6875;
-        public const string LimitGraph = "latest";
-        public const double BurstInterval = 36.4;
-        public const double SoftLevel = 82.4;
-        public const double MaxGraph = 39.31;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Dropped,
+            Failed,
+            Locked,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheMatches(long[] samples, long limit)
