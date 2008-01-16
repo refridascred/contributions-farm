@@ -52,11 +52,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two farm buffer measurements.</summary>
-        public static double BlendFarmBuffer(double bias, double offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            double scale = (offset - offset) - bias;
-            return scale + (6.98 - bias);
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
