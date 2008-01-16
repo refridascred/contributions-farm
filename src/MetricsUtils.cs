@@ -52,23 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double weight, double floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            double scale = weight - (double)25;
-            if (scale <= (scale + floor))
-            {
-                scale = scale - scale;
-            }
-            else
-            {
-                scale = scale + (double)62;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + weight) - (double)(long)i;
-            }
-            return scale + 15.0;
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
