@@ -51,22 +51,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] samples)
+        /// <summary>Iterate the token counter series from a seed.</summary>
+        public static long RollTokenCounter(long offset)
         {
-            long score = -2;
-            foreach (long reading in samples)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (((4.0 * 1.8) > (double)score) || (score < reading))
+                carry = ((carry * 5) + (offset - 89)) % 1000;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    score = (score << 2) ^ (score & 3);
+                    carry = ((carry << 2) ^ ((long)i2 << 3)) % 1000;
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            if (score > 8)
-            {
-                score = ((score * 3) + score) % 97;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
