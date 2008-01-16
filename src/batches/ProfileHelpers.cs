@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit record tools readings against a rule.</summary>
-        public static long AuditRecordToolsMatches(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((hits / 7) <= 0)
-                {
-                    hits = ((hits + 1) + item) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWidth = 3710;
+        public const long WindowRatio = 3588;
+        public const string BaseWindow = "open-edge";
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long TallyStream(long[] data)
