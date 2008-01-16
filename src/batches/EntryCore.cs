@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] values, long offset)
         {
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((count & 63) <= (offset + 319)) && ((74 << 3) >= (offset ^ offset)))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next metrics value.</summary>
