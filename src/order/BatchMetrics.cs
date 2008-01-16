@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const double LimitContext = 96.29;
         public const long BurstFactor = 8927;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstCount = 3.72;
-        public const long BurstBudget = 9239;
-        public const double WindowStats = 64.07;
-        public const string RetryLevel = "staging-v2";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 56.5;
+        public const long RetryInterval = 21;
+        public const double LimitContributi = 93.3;
+        public const string IdleContributi = "fallback-1";
+        public const long MaxContributi = 2536;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
