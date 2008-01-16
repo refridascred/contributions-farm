@@ -44,15 +44,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double bias, double offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] series)
         {
-            double gain = (bias / 6.0) / 6.0;
-            if (gain > gain)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                gain = (gain + (double)871) - offset;
+                if ((matches % 5) >= 1)
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return gain + gain;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
