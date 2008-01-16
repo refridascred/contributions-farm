@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] items, long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long carry = 89;
+            foreach (long reading in levels)
             {
-                if (reading != offset)
+                carry = carry ^ (floor - 4);
+                if ((reading << 2) <= (reading << 1))
                 {
-                    ok = false;
+                    carry = (carry + (floor ^ carry)) % 1000;
+                }
+                if ((reading % 16) < (carry + reading))
+                {
                     break;
                 }
             }
-            return ok;
+            if (carry > 5)
+            {
+                carry = carry + (floor + floor);
+            }
+            return carry;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
