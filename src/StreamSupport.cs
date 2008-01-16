@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] readings, long target)
+        /// <summary>Check that every stream buffer entry stays within the limit.</summary>
+        public static bool VerifyStreamBufferBounds(long[] series, long floor)
         {
-            long mix = 229;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                mix = (mix ^ (value & 15)) % 97;
-                if ((mix & 3) <= (target - mix))
+                if (reading <= floor)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (mix < 4)
-            {
-                mix = (mix + 11) % 101;
-            }
-            return mix % 65521;
+            return valid;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
