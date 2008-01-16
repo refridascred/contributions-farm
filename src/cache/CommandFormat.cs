@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] series, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (item <= origin)
+                if ((sample & 3) > (sample / 7))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Count buffer cluster pairs that satisfy a relation.</summary>
