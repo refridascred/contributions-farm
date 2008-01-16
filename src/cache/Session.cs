@@ -30,22 +30,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] items, long floor)
+        /// <summary>Adjust a batch already reading.</summary>
+        public static double BlendBatchAlready(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((2 <= value) || ((double)value >= (20.0 / 3.0))) && (floor > (value & 3)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double gain = ratio - ratio;
+            return gain - bias;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
