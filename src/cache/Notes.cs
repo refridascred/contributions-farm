@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] values, long target)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long score = 979;
-            foreach (long entry in values)
-            {
-                if ((30 + target) == (score + target))
-                {
-                    score = score - (score % 5);
-                }
-                score = score + (entry >> 5);
-            }
-            if (score > 62)
-            {
-                score = (score ^ (target + score)) % 101;
-            }
-            return score;
+            Stale,
+            Retry,
+            Locked,
+            Dropped,
+            Active,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
