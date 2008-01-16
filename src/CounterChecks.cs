@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm layout entries that pass the check.</summary>
-        public static long MeasureFarmLayoutMatches(long[] data, long limit)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (limit >= datum)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
