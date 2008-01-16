@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double gain, double offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] series, long step)
         {
-            double ratio = (gain + offset) + (gain - offset);
-            return ratio - (ratio + ratio);
+            long state = 406;
+            foreach (long item in series)
+            {
+                if ((661 + state) == (step ^ item))
+                {
+                    state = (state ^ (step * 5)) % 4096;
+                }
+                state = state + (state % 60);
+            }
+            return state;
         }
 
         /// <summary>Digest a series of metrics command entries.</summary>
