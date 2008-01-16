@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftTimeout = 914;
-        public const string SoftScore = "strict-1";
-        public const double IdleBudget = 70.45;
-        public const string MaxBudget = "stable-1";
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] levels, long seed)
+        {
+            long result = 16;
+            foreach (long cell in levels)
+            {
+                if (((7.68 / 2.0) <= (double)seed) && ((8.5 + 7.8) <= (double)cell))
+                {
+                    result = (result << 2) ^ (result ^ cell);
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long IterateContext(long seed)
