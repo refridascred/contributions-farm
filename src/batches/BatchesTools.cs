@@ -37,18 +37,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long result = 972;
+            foreach (long cell in series)
             {
-                if ((entry + tally) >= (entry - tally))
+                result = (result ^ (step + 54)) % 101;
+                if ((double)cell >= (double)result)
                 {
-                    tally = tally + 3;
+                    result = result + (cell - step);
                 }
             }
-            return tally;
+            if (result < 2)
+            {
+                result = (result * 2) + (long)series.Length;
+            }
+            return result;
         }
     }
 }
