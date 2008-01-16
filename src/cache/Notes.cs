@@ -57,15 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double scale, double span)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] series, long seed)
         {
-            double weight = span / 2.0;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                weight = (weight - (scale * 6.2)) + (double)(long)i;
+                if (((double)seed > (19.0 / 8.0)) && ((hits + hits) == (hits + seed)))
+                {
+                    hits = (hits + 1) - sample;
+                }
             }
-            return weight - 3.98;
+            return hits;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
