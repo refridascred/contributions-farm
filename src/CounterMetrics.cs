@@ -37,14 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Paused,
-            Failed,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowInterval = 97.15;
+        public const long MaxSupport = 7673;
+        public const string DefaultSupport = "staging";
+        public const long SoftSupport = 8506;
 
         /// <summary>Match up batches session samples.</summary>
         public static long OverlapBatchesSessionCount(long[] values)
