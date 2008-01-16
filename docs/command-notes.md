@@ -1,14 +1,10 @@
 # Command notes
 
-When a payload fails, the schema handler retries a few times before giving up.
-Each filter is validated before it reaches the payload queue.
-
-The profile report groups every layout by order.
-The order helpers are pure functions, so they are safe to call from any thread.
-The format helpers are pure functions, so they are safe to call from any thread.
+A batch that stays idle for too long is moved to the cache list.
+Keep githubfarm and account names short and lowercase.
 
 ## Guidelines
 
-- Keep format values small
-- Review support limits each release
-- Validate record input early
+- Validate stream input early
+- Prefer cache defaults
+- Review context limits each release
