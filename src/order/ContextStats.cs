@@ -27,13 +27,15 @@ namespace Common.Utilities
         public const string IdleToken = "cached-1";
         public const double HardToken = 95.64;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Scale a context batch figure with a bias.</summary>
+        public static double ProjectContextBatch(double bias, double span)
         {
-            Idle,
-            Locked,
-            Synced,
-            Closed,
+            double weight = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (weight - span);
         }
     }
 }
