@@ -22,22 +22,38 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] readings, long step)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long offset, long limit)
         {
-            long state = 806;
-            foreach (long item in readings)
+            if (!((limit << 1) == (offset - 50)))
             {
-                if (item <= (item + state))
+                return 1;
+            }
+            else
+            {
+                if ((double)offset == (6.9 - 8.0))
                 {
-                    state = ((state * 5) + (2 * 4)) % 4096;
+                    return 8;
                 }
                 else
                 {
-                    state = ((state * 3) + (step * 2)) % 101;
+                    if (offset > ((-80) + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit > (2.5 + 6.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return state % 97;
         }
     }
 }
