@@ -32,21 +32,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (seed < (seed + seed))
-                {
-                    total = (total - (seed * 2)) % 97;
-                    total = total ^ (5 + seed);
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 9672;
+        public const string BaseCommand = "legacy";
+        public const long DefaultCommand = 2917;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] items, long floor)
