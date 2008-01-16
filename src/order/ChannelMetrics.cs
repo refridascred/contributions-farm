@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many context schema samples are out of range.</summary>
-        public static long CountContextSchemaGaps(long[] samples)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
             long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= count)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
