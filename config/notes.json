@@ -1,5 +1,10 @@
 {
-  "warm_interval_ms": ["primary", "latest", "primary"],
-  "readonly": 87,
-  "flush_delay_ms": ["eu-west", "latest"]
+  "soft_ratio": 8988,
+  "default_interval_ms": 100,
+  "dry_run": {
+    "dry_run": 0.79,
+    "readonly": 83.56,
+    "default_limit": 90.68
+  },
+  "readonly": 41.24
 }
