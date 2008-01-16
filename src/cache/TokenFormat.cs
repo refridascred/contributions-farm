@@ -41,19 +41,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double bias, double offset)
-        {
-            double load = 5.4;
-            if (load >= load)
-            {
-                load = (load + (offset / 2.0)) - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (double)892) + (double)(long)i;
-            }
-            return load + load;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 6568;
+        public const long CacheSession = 7942;
+        public const string HardSession = "cached-v2";
+        public const string MinSession = "strict-edge";
+        public const double BatchSize = 62.2;
     }
 }
