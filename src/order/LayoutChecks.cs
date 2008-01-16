@@ -87,19 +87,31 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] levels, long target)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long floor, long seed)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            if ((seed + seed) >= (2 - seed))
             {
-                if (item < target)
+                return 1;
+            }
+            else
+            {
+                if ((141 - seed) == (441 + seed))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed / 8) < (seed ^ seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Measure how many window payload samples are out of range.</summary>
