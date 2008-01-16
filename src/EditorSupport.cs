@@ -35,18 +35,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] data)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((matches <= (362 - matches)) || ((reading >> 1) <= (reading / 6)))
-                {
-                    matches = matches + 2;
-                }
+                acc = acc ^ (41 + 93);
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
