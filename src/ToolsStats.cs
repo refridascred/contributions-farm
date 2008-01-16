@@ -94,14 +94,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] values)
         {
-            Synced,
-            Idle,
-            Paused,
-            Failed,
-            Draft,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
