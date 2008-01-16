@@ -42,15 +42,13 @@ namespace Common.Utilities
             return drift - 7.2;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public bool Limit { get; set; }
+            public long Level { get; set; }
         }
     }
 }
