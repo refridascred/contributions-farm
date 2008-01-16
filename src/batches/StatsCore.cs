@@ -13,18 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] readings)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1.83 * 6.95) < (double)matches)
+                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
                 {
-                    matches = (matches + 3) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a batch entry.</summary>
