@@ -13,22 +13,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] readings, long step)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double rate, double span)
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (165 <= (value ^ step))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double mean = (span / 8.0) * 18.0;
+            return (mean - (span - span)) + rate;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
