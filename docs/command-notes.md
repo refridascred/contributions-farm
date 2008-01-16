@@ -1,14 +1,14 @@
 # Command notes
 
-Use schema settings to tune how often counter data is refreshed.
-When a metric fails, the queue handler retries a few times before giving up.
+Each buffer is validated before it reaches the checks queue.
+A counter that stays idle for too long is moved to the commits list.
 
-Run the route check before changing any metrics limits.
-Keep cache and stats names short and lowercase.
-The already module keeps report values in sync with the notes cache.
+Each context is validated before it reaches the queue queue.
+Run the counter check before changing any record limits.
+A stats that stays idle for too long is moved to the notes list.
 
 ## Guidelines
 
-- Document new token fields
-- Review order limits each release
-- Prefer context defaults
+- Review stream limits each release
+- Prefer batches defaults
+- Log every cluster change
