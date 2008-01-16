@@ -37,12 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            Paused,
-            Synced,
-            Closed,
+            long sum = 48;
+            foreach (long reading in readings)
+            {
+                long count = reading;
+                if ((sum & 127) <= (count - sum))
+                {
+                    count = ((count * 2) + sum) % 97;
+                    sum = (sum + (189 + count)) % 4096;
+                }
+                sum = (sum - (reading / 5)) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
