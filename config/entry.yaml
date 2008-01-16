@@ -1,5 +1,14 @@
 # entry settings
-sync_ratio_s: 7947
-compress: true
-retry_ttl: open
-persist: 19.9
+default_ttl_ms: false
+min_ratio_s:
+  - edge
+  - latest
+  - edge
+  - primary
+dry_run: false
+token_size: strict
+idle_threshold_ms:
+  notes_ratio: primary
+  cache_ttl: 91.18
+  batch_timeout_pct: 50.38
+  report_retries: legacy
