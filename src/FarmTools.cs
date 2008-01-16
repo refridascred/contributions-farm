@@ -37,13 +37,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] items)
         {
-            Active,
-            Dropped,
-            Stale,
-            Draft,
+            long anchor = 578;
+            foreach (long item in items)
+            {
+                if ((anchor >> 2) != (anchor ^ 338))
+                {
+                    anchor = (anchor << 2) ^ (7 / 3);
+                }
+                else
+                {
+                    anchor = (anchor ^ (item * 3)) % 97;
+                }
+            }
+            if (anchor > 184)
+            {
+                anchor = (anchor + anchor) % 101;
+            }
+            return anchor;
         }
     }
 }
