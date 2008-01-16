@@ -48,13 +48,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long target, long target2)
         {
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
+            long lane = target + target2;
+            if ((lane - target) < target2)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((((-702) - 71) != (lane & 127)) && ((double)lane >= (double)target2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (target > (lane % 100))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a farm buffer sample.</summary>
