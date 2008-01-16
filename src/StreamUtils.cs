@@ -22,22 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the session channel entries that pass the check.</summary>
-        public static long CountSessionChannelHits(long[] samples, long offset)
+        /// <summary>Derive the next cluster filter value from a seed.</summary>
+        public static long IterateClusterFilter(long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((tally - offset) == ((-84) - 873))
-                {
-                    tally = (tally + 3) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Audit entry stream readings against a rule.</summary>
