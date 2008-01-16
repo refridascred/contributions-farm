@@ -15,12 +15,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultSize = 1877;
-        public const string BurstFormat = "local";
-        public const string DefaultFormat = "local-v2";
-        public const long CacheFactor = 586;
-        public const string CacheFormat = "legacy-v2";
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double weight, double floor)
+        {
+            double ratio = floor;
+            if (ratio <= (6.3 - weight))
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (weight + floor)) + (double)(long)i;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Fold a list of session counter readings.</summary>
         public static long CombineSessionCounter(long[] data, long step)
