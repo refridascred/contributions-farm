@@ -1,5 +1,7 @@
 {
-  "base_ratio": 85,
-  "order_window": ["cached", "eu-west", "open"],
-  "strict": ["latest", "legacy", "standard"]
+  "idle_ttl": "open",
+  "command_timeout": 47,
+  "enabled": 1227,
+  "warm_ratio_count": false,
+  "format_depth": 4310
 }
