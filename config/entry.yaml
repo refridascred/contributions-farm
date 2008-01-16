@@ -1,4 +1,14 @@
 # entry settings
-checks_size: 30
-min_ttl_pct: edge
-min_timeout_s: open
+audit:
+  cache_retries_ms: false
+  cache_interval_s: strict
+  stats_ttl: 100
+idle_threshold_count: 68
+batch_delay_ms:
+  - 122
+  - 66
+  - 411
+  - 25
+min_retries: stable
+soft_retries: 51.87
+batch_size: 47.75
