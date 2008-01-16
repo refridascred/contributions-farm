@@ -51,23 +51,37 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long target, long target2)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long limit, long limit2)
         {
-            long delta = target ^ target2;
-            if ((delta & 7) == (delta - target))
+            long cur = limit - limit2;
+            if ((limit2 + limit) <= (5 - cur))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if (((-5) - target2) <= (target % 97))
+                if (79 < (limit % 12))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    return 7;
+                    if (((limit2 * 4) == (4 * 3)) && ((limit2 & 1) == (cur & 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((double)cur >= (3.8 - 4.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
