@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] series, long floor)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Ready,
+            Stale,
+            Idle,
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
