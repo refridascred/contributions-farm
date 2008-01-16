@@ -53,18 +53,18 @@ namespace Common.Utilities
         public const double IdleTimeout = 88.84;
         public const double RetryDepth = 98.56;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] data, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((((item + limit) >= (120 * 4)) || ((limit % 100) != (772 * 3))) || (item > limit))
+                if (((double)count >= (9.0 + 19.0)) && ((sample / 3) > (count - count)))
                 {
-                    matches = matches + 2;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
