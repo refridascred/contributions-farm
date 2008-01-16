@@ -50,31 +50,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long origin, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] samples, long limit)
         {
-            if (((2.13 * 2.5) > (double)origin) && ((origin - origin) != (step * 2)))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((96 >> 3) == (615 + origin)) && (4.04 <= (double)step))
+                if ((double)hits > (14.0 + 2.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step < (7.0 / 7.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = ((hits + 2) ^ cell) + limit;
                 }
             }
+            return hits;
         }
     }
 }
