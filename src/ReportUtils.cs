@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double bias, double offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            double rate = bias;
-            if (rate <= 1.76)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (rate - (bias + rate)) + offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + bias;
+            return tally;
         }
 
         /// <summary>Rank window input into a small class.</summary>
