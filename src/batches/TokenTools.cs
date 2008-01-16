@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Done,
+            Stale,
+            Queued,
+            Pending,
+            Locked,
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
