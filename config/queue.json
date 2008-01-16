@@ -1,7 +1,7 @@
 {
-  "enabled": true,
-  "sync_delay_pct": 500,
-  "cache_size": true,
-  "min_interval": "eu-west",
-  "warm_timeout_s": [496, 431]
+  "persist": false,
+  "editor_interval": [467, 106, 100, 7],
+  "soft_window_s": 2815,
+  "hard_limit_s": false,
+  "session_window": 42.12
 }
