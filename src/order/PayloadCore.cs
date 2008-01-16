@@ -44,22 +44,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] levels, long origin)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long total = 193;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    total = ((total * 2) + ((long)i - origin)) % 97;
-                }
-                if ((total % 64) >= (reading - reading))
-                {
-                    total = total ^ (reading >> 2);
-                }
-            }
-            return total;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
