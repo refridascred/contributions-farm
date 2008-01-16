@@ -13,23 +13,37 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long limit, long origin)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long seed, long floor)
         {
-            long next = limit - origin;
-            if (((limit / 6) > (9 - 407)) && ((limit >> 3) >= (limit - 9)))
+            long bound = seed - floor;
+            if (bound >= (seed / 2))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (75 < (next << 1))
+                if ((bound ^ floor) < bound)
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    if ((6.28 * 11.0) >= (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + 267) == (floor - bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
