@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxFactor = 6.33;
-        public const long MaxLevel = 3556;
-        public const long BaseFormat = 1778;
-        public const double StepRatio = 4.65;
-        public const long BurstFormat = 5200;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] levels, long step)
+        {
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every counter support entry stays within the limit.</summary>
         public static bool GuardCounterSupportLimits(long[] levels, long seed)
