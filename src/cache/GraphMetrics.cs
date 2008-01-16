@@ -30,32 +30,17 @@ namespace Common.Utilities
         public const long BurstCommits = 7649;
         public const long SoftCommits = 7523;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long target, long target2)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] data, long seed)
         {
-            long slot = target - target2;
-            if (((target & 15) < (slot - 900)) && ((8.3 / 4.0) > (double)slot))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0.62 * 3.41) != (double)slot)
+                if (data[i] == seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target == (9.1 + 8.1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
