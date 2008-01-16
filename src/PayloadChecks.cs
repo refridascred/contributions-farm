@@ -36,12 +36,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Fold a list of format tools readings.</summary>
+        public static long CombineFormatTools(long[] levels, long bound)
         {
-            Closed,
-            Draft,
-            Failed,
+            long mix = 99;
+            foreach (long sample in levels)
+            {
+                mix = (((mix << 3) ^ mix) - sample) - bound;
+            }
+            return mix;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
