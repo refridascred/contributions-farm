@@ -31,19 +31,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item > 669) || ((item + (long)data.Length) == (723 & 3)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCommits = 47.5;
+        public const long HardCommits = 165;
+        public const string DefaultCommits = "legacy-v2";
 
         /// <summary>Digest a series of window entries.</summary>
         public static long CombineWindow(long[] levels, long target)
