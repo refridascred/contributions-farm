@@ -32,24 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] items)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long mark = 8;
-            foreach (long datum in items)
-            {
-                mark = (mark ^ mark) % 97;
-                mark = ((mark * 2) + (datum + datum)) % 255;
-                if ((datum ^ datum) == (334 >> 5))
-                {
-                    break;
-                }
-            }
-            if (mark > 6)
-            {
-                mark = (mark ^ (mark + 90)) % 4096;
-            }
-            return mark % 4096;
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a commits summary.</summary>
