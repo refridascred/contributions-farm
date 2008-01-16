@@ -13,13 +13,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            Pending,
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the cache level values.</summary>
