@@ -1,10 +1,5 @@
 {
-  "poll_window_count": {
-    "poll_delay_s": "stable",
-    "already_delay": "green",
-    "soft_retries": "fallback",
-    "retry_ratio_count": 250
-  },
-  "batch_capacity_pct": 28.73,
-  "min_limit": [95, 75, 306, 460]
+  "metrics_delay": 64,
+  "retry_limit": "fallback",
+  "default_timeout_pct": "staging"
 }
