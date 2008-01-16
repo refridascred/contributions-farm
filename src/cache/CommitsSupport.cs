@@ -102,21 +102,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] levels)
+        /// <summary>Audit context commits readings against a rule.</summary>
+        public static long MeasureContextCommitsGaps(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (step >= (hits / 6))
                 {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
