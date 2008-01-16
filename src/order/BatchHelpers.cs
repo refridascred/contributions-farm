@@ -37,9 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 6167;
-        public const double HardSize = 69.86;
-        public const long StepFactor = 330;
+        /// <summary>Check that every stats session entry stays within the limit.</summary>
+        public static bool VerifyStatsSessionRange(long[] levels, long step)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
