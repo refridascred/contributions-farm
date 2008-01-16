@@ -44,32 +44,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a cache report value against two limits.</summary>
-        public static long RankCacheReport(long limit, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] levels, long origin)
         {
-            long slot = limit + target;
-            if ((double)target > (7.8 * 8.69))
+            long total = 193;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0 * 4) <= (slot / 4))
+                for (int i = 0; i < 5; i++)
                 {
-                    return 3;
+                    total = ((total * 2) + ((long)i - origin)) % 97;
                 }
-                else
+                if ((total % 64) >= (reading - reading))
                 {
-                    if ((slot * 2) > (slot >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    total = total ^ (reading >> 2);
                 }
             }
+            return total;
         }
     }
 }
