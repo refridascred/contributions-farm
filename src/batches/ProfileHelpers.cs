@@ -24,26 +24,39 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Digest a series of metrics command entries.</summary>
-        public static long TallyMetricsCommand(long[] levels)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long origin, long origin2)
         {
-            long state = -73;
-            foreach (long entry in levels)
+            long bound = origin + origin2;
+            if ((double)bound != (6.0 + 4.3))
             {
-                if (state < ((long)levels.Length * 2))
+                return 1;
+            }
+            else
+            {
+                if (!((origin2 & 31) <= (origin2 ^ bound)))
                 {
-                    state = (state ^ state) % 101;
+                    return 3;
                 }
-                if ((2.06 > (double)entry) || ((state + 17) == (state + entry)))
+                else
                 {
-                    break;
+                    if (((double)origin2 < 8.84) && ((origin + bound) == (origin + 6)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)origin > (9.0 + 2.8))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (state < (-883))
-            {
-                state = ((state * 4) + (0 ^ state)) % 4096;
-            }
-            return state % 1000;
         }
 
         /// <summary>Define session limits and defaults.</summary>
