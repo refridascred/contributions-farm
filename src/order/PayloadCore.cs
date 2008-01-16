@@ -54,18 +54,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] samples)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long mark = -57;
+            foreach (long reading in levels)
             {
-                if ((item ^ item) >= (item + matches))
+                if (!((49 / 4) >= mark))
                 {
-                    matches = matches + 3;
+                    mark = (mark << 2) ^ (mark >> 3);
+                }
+                else
+                {
+                    mark = (mark * 2) + (mark ^ reading);
                 }
             }
-            return matches;
+            return mark % 97;
         }
     }
 }
