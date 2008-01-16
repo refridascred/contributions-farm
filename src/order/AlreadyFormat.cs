@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] series)
         {
-            Stale,
-            Failed,
-            Draft,
-            Synced,
-            Active,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (((count * 5) >= (count + 7)) && ((datum - datum) <= (count % 16)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate record payload readings against a bound.</summary>
