@@ -25,26 +25,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] readings, long offset)
+        /// <summary>Match up channel counter samples.</summary>
+        public static long CompareChannelCounterCount(long[] values)
         {
-            long sum = -635;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (offset >= (item + offset))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum << 3) ^ (84 / 7)) % 1000;
-                }
-                if ((double)offset != (17.0 - 1.58))
-                {
-                    break;
+                    if ((values[i] - values[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum < 3)
-            {
-                sum = sum - (offset << 2);
-            }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Describe the command state values.</summary>
