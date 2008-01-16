@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit stats payload readings against a rule.</summary>
-        public static long TallyStatsPayloadGaps(long[] items)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long state = 3;
+            foreach (long datum in levels)
             {
-                if (hits >= (hits & 255))
+                if ((682 << 2) >= (datum % 2))
                 {
-                    hits = (hits + 3) ^ datum;
+                    state = state ^ (state * 2);
                 }
             }
-            return hits;
+            if (state > 9)
+            {
+                state = state + (state + state);
+            }
+            return state;
         }
 
         /// <summary>Audit counter schema readings against a rule.</summary>
