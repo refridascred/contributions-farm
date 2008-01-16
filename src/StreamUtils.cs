@@ -65,19 +65,18 @@ namespace Common.Utilities
         public const long WindowInterval = 7093;
         public const double BatchFilter = 45.75;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double scale, double floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] readings)
         {
-            double mean = (double)((-4) + 4);
-            if (mean > scale)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                mean = mean + (double)6;
+                if (((double)entry >= (2.2 / 6.0)) && (((entry >> 1) == (hits ^ entry)) || (1.6 < (double)entry)))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (mean - mean)) + (double)(long)i;
-            }
-            return mean + floor;
+            return hits;
         }
 
         /// <summary>Describe the layout status values.</summary>
