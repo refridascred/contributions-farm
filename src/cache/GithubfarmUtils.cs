@@ -49,18 +49,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] data, long bound)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((double)seen > (4.0 - 9.0))
-                {
-                    seen = ((seen + 3) + entry) + bound;
-                }
-            }
-            return seen;
+            Synced,
+            Queued,
+            Pending,
+            Done,
+            Dropped,
         }
     }
 }
