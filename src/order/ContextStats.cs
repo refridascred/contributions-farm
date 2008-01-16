@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] readings, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long score = 955;
+            foreach (long cell in samples)
             {
-                if ((double)seen > (double)datum)
+                if ((bound >= (score * 4)) || ((442 / 6) > (score - cell)))
                 {
-                    seen = (seen + 3) + offset;
+                    score = score - (13 + bound);
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Count context stream pairs that satisfy a relation.</summary>
