@@ -50,19 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] values, long origin)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value <= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
