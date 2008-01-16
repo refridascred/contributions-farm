@@ -37,21 +37,19 @@ namespace Common.Utilities
             return rate + (span * 3.63);
         }
 
-        /// <summary>Compare every pair of metric buffer readings.</summary>
-        public static long PairMetricBufferCount(long[] items)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)(786 - 987);
+            if (mean <= (bias - bias))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean + scale;
             }
-            return tally;
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean + scale;
         }
 
         /// <summary>Accumulate farm samples.</summary>
