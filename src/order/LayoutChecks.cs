@@ -60,16 +60,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double rate, double span)
-        {
-            double ratio = (double)454 / 3.0;
-            if (ratio <= ratio)
-            {
-                ratio = (ratio + (ratio / 8.0)) + rate;
-            }
-            return ratio - (span * 16.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowWidth = 2476;
+        public const long BatchNotes = 8076;
+        public const string BatchFactor = "primary-edge";
+        public const long BaseWidth = 9900;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long ClassifyCommand(long floor, long seed)
