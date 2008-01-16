@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first queue already entry that matches the target.</summary>
-        public static long FindQueueAlreadyIndex(long[] series, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (series[i] > offset)
+                if (datum != target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
