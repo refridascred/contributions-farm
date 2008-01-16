@@ -81,22 +81,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] values, long limit)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long total = 922;
-            foreach (long item in values)
-            {
-                if ((2 / 4) < (item % 3))
-                {
-                    total = (total - (item * 2)) % 101;
-                }
-                else
-                {
-                    total = (total * 3) + (total - limit);
-                }
-            }
-            return total;
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
