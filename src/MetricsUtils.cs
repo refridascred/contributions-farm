@@ -27,18 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] series, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] samples)
         {
-            long acc = 91;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (offset >= cell)
+                if (((double)item >= (6.0 * 5.4)) && ((3.6 - 6.0) != (double)(long)samples.Length))
                 {
-                    acc = (acc << 2) ^ (acc - offset);
+                    seen = seen + 3;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
