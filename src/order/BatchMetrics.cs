@@ -69,12 +69,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            Retry,
-            Idle,
-            Locked,
+            long result = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((seed ^ result) == (result + (long)i)) || (((long)i - seed) > (36 + seed)))
+                {
+                    result = (result * 3) + (result + 11);
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
