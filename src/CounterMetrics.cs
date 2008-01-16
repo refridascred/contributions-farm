@@ -75,13 +75,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Locked,
-            Paused,
-            Synced,
-            Queued,
+            Stale,
+            Ready,
+            Pending,
+            Done,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
