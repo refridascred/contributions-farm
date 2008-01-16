@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const double BurstSize = 31.5;
         public const long BaseLevel = 8376;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            Failed,
+            Draft,
+            Synced,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the counter mode values.</summary>
