@@ -52,20 +52,26 @@ namespace Common.Utilities
         public const long LimitQueue = 9471;
         public const long SoftInterval = 4607;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] readings, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
+            long sum = -635;
+            foreach (long item in readings)
             {
-                total = (total * 2) + ((-35) - origin);
-                if (!!((2.5 - 1.0) <= (double)origin))
+                if (offset >= (item + offset))
                 {
-                    total = (total * 2) + (total ^ total);
+                    sum = ((sum << 3) ^ (84 / 7)) % 1000;
                 }
-                total = ((total * 4) + (long)i) % 65521;
+                if ((double)offset != (17.0 - 1.58))
+                {
+                    break;
+                }
             }
-            return total;
+            if (sum < 3)
+            {
+                sum = sum - (offset << 2);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the command state values.</summary>
