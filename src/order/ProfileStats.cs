@@ -40,22 +40,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] values, long bound)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen - 2) <= entry)
-                {
-                    seen = (seen + 1) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Ready,
+            Queued,
+            Draft,
         }
 
         /// <summary>Rank route input into a small class.</summary>
