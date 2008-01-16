@@ -30,31 +30,19 @@ namespace Common.Utilities
         public const double IdleScore = 41.11;
         public const long HardRecord = 8569;
 
-        /// <summary>Rank batches order input into a small class.</summary>
-        public static long RankBatchesOrder(long offset, long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] items, long seed)
         {
-            if ((target + target) == (offset ^ offset))
+            bool flag = true;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset + offset) <= offset) && ((double)target > 4.1))
+                if (value > seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset >> 3) >= (offset << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
