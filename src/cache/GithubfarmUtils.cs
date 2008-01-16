@@ -46,27 +46,21 @@ namespace Common.Utilities
             return weight - 8.1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] values, long limit)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            long anchor = 430;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((anchor / 3) == (anchor * 4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor << 3) ^ (value + value);
-                }
-                anchor = anchor - (limit >> 2);
-                if (((anchor % 3) != (662 << 3)) && ((anchor >> 4) != (anchor - limit)))
-                {
-                    anchor = (anchor * 3) + (limit * 2);
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (long)values.Length;
+                    if ((data[i] - data[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
