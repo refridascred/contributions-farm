@@ -1,13 +1,26 @@
 {
-  "profile_capacity": "latest",
-  "payload_limit": {
-    "schema_delay": "open",
-    "warm_limit": 59,
-    "base_ratio": "legacy",
-    "metric_timeout": 4,
-    "hard_window": 100
+  "audit": "open",
+  "warm_depth": ["legacy", "eu-west", "strict", "fallback"],
+  "idle_capacity_pct": {
+    "audit": "standard",
+    "token_delay": "eu-west",
+    "queue_depth": ["open", "latest"],
+    "metrics_timeout": "standard"
   },
-  "buffer_delay": false,
-  "poll_size": 1024,
-  "checks_size": "legacy"
+  "cache_timeout_pct": ["fallback", "local"],
+  "max_retries_count": {
+    "cache_interval_s": "edge",
+    "metrics_ratio": {
+      "warm_ratio_count": "green",
+      "notes_limit": 16,
+      "profile_interval": true,
+      "idle_ttl_pct": 2028,
+      "readonly": true,
+      "idle_interval": "edge"
+    },
+    "route_depth": true,
+    "batch_limit_s": "cached",
+    "idle_delay": false,
+    "tools_limit": 60
+  }
 }
