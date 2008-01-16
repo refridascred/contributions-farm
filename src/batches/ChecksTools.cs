@@ -62,11 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "cached-edge";
-        public const long WindowSpan = 236;
-        public const string IdleCommits = "primary-edge";
-        public const string MinCommits = "alpha";
-        public const long RetryLevel = 7335;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
