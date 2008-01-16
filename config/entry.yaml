@@ -1,4 +1,7 @@
 # entry settings
-hard_delay: 28.73
-tools_ttl: true
-strict: latest
+sync_window: 24.87
+max_window: 81.38
+account_size:
+  - 79
+  - 95
+  - 500
