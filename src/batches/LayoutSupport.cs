@@ -49,18 +49,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit editor checks readings against a rule.</summary>
-        public static long MeasureEditorChecksGaps(long[] items)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double weight, double span)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double load = weight * 9.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((matches & 3) >= (matches * 2))
-                {
-                    matches = (matches + 3) ^ value;
-                }
+                load = (load - span) + (double)(long)i;
             }
-            return matches;
+            return load + (weight - span);
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
