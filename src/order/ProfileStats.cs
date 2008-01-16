@@ -16,38 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long limit, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] values, long target)
         {
-            if ((limit << 1) > limit)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((9.7 - 9.78) != (double)seed))
+                if (sample <= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit - seed) >= (limit % 10)) || ((10.0 + 6.9) <= (double)limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed % 97) <= (limit - limit)) || ((seed << 2) < limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
