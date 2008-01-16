@@ -29,22 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] values, long target)
         {
-            long anchor = 861;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((double)anchor != (5.6 - 8.28))
+                if (entry <= target)
                 {
-                    anchor = (anchor << 2) ^ (item % 97);
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor > 10)
-            {
-                anchor = (anchor ^ (35 >> 2)) % 1000;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
