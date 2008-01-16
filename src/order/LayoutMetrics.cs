@@ -13,31 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long floor, long target)
+        /// <summary>Count the metrics stats entries that pass the check.</summary>
+        public static long CountMetricsStatsHits(long[] values)
         {
-            if ((double)floor < (13.0 + 6.17))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target * 4) <= target)
+                if ((reading / 7) >= (reading - reading))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((((-786) + target) < floor) || ((floor >> 2) < (floor + floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
