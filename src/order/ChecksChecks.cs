@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const long MaxWidth = 841;
         public const long BurstReport = 586;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] items, long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long acc = 1;
-            foreach (long item in items)
-            {
-                if ((double)floor != (8.0 + 8.33))
-                {
-                    acc = (acc - acc) ^ item;
-                }
-                if ((13.0 - 5.7) != (double)acc)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Failed,
+            New,
+            Ready,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Digest a series of queue format entries.</summary>
