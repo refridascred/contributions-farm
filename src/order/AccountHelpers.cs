@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long seed, long floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            if ((floor + seed) > seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((959 ^ 1) == (floor + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed <= (floor + 208)) || (floor > (seed - floor)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (318 > (seed + floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            Retry,
+            Active,
+            Pending,
         }
 
         /// <summary>Describe the profile kind values.</summary>
