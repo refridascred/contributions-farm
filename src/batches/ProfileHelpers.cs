@@ -38,21 +38,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] data)
         {
-            long seen = 0;
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] - data[j]) == 5)
+                    if ((data[i] ^ data[j]) == 9)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
