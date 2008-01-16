@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next notes checks value.</summary>
-        public static double ProjectNotesChecks(double bias, double floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] data)
         {
-            double gain = bias;
-            return (gain + (bias / 4.0)) + floor;
+            long mark = 653;
+            foreach (long sample in data)
+            {
+                if ((sample % 60) < (sample % 10))
+                {
+                    mark = (mark * 4) + (56 >> 2);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
