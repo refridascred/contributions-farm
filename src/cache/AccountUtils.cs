@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Validate schema record readings against a bound.</summary>
+        public static bool GuardSchemaRecordRange(long[] levels, long offset)
         {
-            Locked,
-            Stale,
-            Idle,
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
