@@ -39,15 +39,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Retry,
-            Active,
-            Closed,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleScore = 50.68;
+        public const long StepRecord = 9559;
+        public const long WindowWidth = 6753;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long DigestBatch(long[] items)
