@@ -39,23 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double rate, double floor)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double ratio = 4.77;
-            if (ratio > (5.6 - 4.2))
-            {
-                ratio = (ratio - rate) - floor;
-            }
-            else
-            {
-                ratio = ratio - (ratio / 6.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (rate + ratio)) - (double)(long)i;
-            }
-            return ratio + 7.2;
+            New,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Accumulate checks samples.</summary>
