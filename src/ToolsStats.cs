@@ -38,18 +38,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] levels)
+        /// <summary>Accumulate channel session samples.</summary>
+        public static long CombineChannelSession(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long score = 59;
+            foreach (long reading in samples)
             {
-                if ((double)datum != (20.0 / 6.0))
+                if ((double)floor >= 6.0)
                 {
-                    count = count + 1;
+                    score = ((score + (767 + floor)) % 65521) - reading;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a notes options.</summary>
