@@ -16,19 +16,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] data, long offset)
+        /// <summary>Audit schema session readings against a rule.</summary>
+        public static long TallySchemaSessionHits(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (sample > offset)
+                if ((9 + 93) >= (seed % 12))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) - cell;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Blend two account measurements.</summary>
