@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] levels, long seed)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] levels, long limit)
         {
-            long result = 16;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((7.68 / 2.0) <= (double)seed) && ((8.5 + 7.8) <= (double)cell))
+                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
                 {
-                    result = (result << 2) ^ (result ^ cell);
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
