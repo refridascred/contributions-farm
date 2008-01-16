@@ -35,22 +35,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the buffer metrics entries that pass the check.</summary>
-        public static long AuditBufferMetricsGaps(long[] series, long bound)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (839 >= (value + value))
-                {
-                    count = (count + 3) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowInterval = "cached-edge";
+        public const long LimitContributi = 8674;
+        public const string HardBudget = "cached";
     }
 }
