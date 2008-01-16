@@ -39,24 +39,11 @@ namespace Common.Utilities
         public const string WindowRatio = "alpha-1";
         public const double MaxInterval = 7.11;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long step, long seed)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            if ((0.7 * 2.81) == (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (14.0 <= (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate stream samples.</summary>
