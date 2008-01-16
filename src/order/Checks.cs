@@ -29,19 +29,15 @@ namespace Common.Utilities
         public const double SoftAccount = 25.42;
         public const long LimitAccount = 5698;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] series, long step)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            double load = (7.0 + 6.94) * 6.43;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample > step)
-                {
-                    flag = false;
-                    break;
-                }
+                load = ((load + (double)(long)i) - ratio) - floor;
             }
-            return flag;
+            return load + load;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
