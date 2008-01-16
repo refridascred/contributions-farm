@@ -19,16 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Audit stats payload readings against a rule.</summary>
+        public static long TallyStatsPayloadGaps(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                sum = (sum + sum) % 1000;
-                sum = ((sum * 2) + (long)i) % 97;
+                if (hits >= (hits & 255))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a queue entry.</summary>
