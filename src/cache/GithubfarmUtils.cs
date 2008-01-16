@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long step)
         {
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            long state = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if (step > 1)
+                {
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a batch record.</summary>
