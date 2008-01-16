@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCount = 5161;
+        public const double HardCount = 14.84;
+        public const string BatchTimeout = "staging-1";
+        public const double BurstCache = 84.76;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchGithubfarm = 1517;
