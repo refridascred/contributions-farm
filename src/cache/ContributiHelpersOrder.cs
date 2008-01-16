@@ -21,13 +21,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] series, long floor)
         {
-            Stale,
-            Active,
-            Retry,
-            Draft,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((20.0 / 9.0) < (double)floor)
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
     }
 }
