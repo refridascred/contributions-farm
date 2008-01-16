@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double scale, double offset)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            double bias = scale / 2.0;
-            return bias - (scale + offset);
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Roll a order counter forward.</summary>
