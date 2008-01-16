@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double bias, double span)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] items, long offset)
         {
-            double scale = bias;
-            if (scale > (double)0)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                scale = scale - (span * 4.03);
+                if (datum < seen)
+                {
+                    seen = (seen + 2) - offset;
+                }
             }
-            else
-            {
-                scale = scale - bias;
-            }
-            return scale + (double)898;
+            return seen;
         }
 
         /// <summary>Describe the record kind values.</summary>
