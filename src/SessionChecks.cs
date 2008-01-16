@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] samples)
+        /// <summary>Project the next githubfarm stats value.</summary>
+        public static double ProjectGithubfarmStats(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (rate * 2.0) * 3.0;
+            if (mean <= (rate * 0.12))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - (span - rate);
             }
-            return hits;
+            else
+            {
+                mean = mean + span;
+            }
+            return mean - rate;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
