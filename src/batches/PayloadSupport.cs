@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowDepth = 9187;
-        public const long SoftSize = 1668;
-        public const string SoftCommand = "local-edge";
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((double)value > (15.0 + 19.0))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long OverlapCounterCount(long[] readings)
