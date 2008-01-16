@@ -1,4 +1,35 @@
 # entry settings
-cache_ratio_pct: 14.07
-dry_run: standard
-readonly: true
+account_limit:
+  - eu-west
+  - cached
+  - green
+  - local
+compress: 250
+window_window:
+  farm_delay: false
+  compress: local
+  poll_limit: 100
+  retry_retries_ms: 1752
+  metric_interval: legacy
+poll_interval_s: 45
+warm_interval_pct: 100
+command_delay:
+  warm_retries_pct: true
+  burst_size_count:
+    stream_depth: true
+    payload_interval:
+      - cached
+      - edge
+      - open
+    hard_delay_s: standard
+    soft_limit:
+      - 422
+      - 289
+      - 358
+      - 103
+  max_delay_count: 86
+  hard_ttl_s:
+    - 322
+    - 392
+    - 457
+  cache_ratio: legacy
