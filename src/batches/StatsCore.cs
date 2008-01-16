@@ -34,21 +34,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Compare every pair of commits profile readings.</summary>
+        public static long PairCommitsProfileCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 14)
+                    if ((readings[i] + readings[j]) < 2)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the queue status values.</summary>
