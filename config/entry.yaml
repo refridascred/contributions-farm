@@ -1,7 +1,4 @@
 # entry settings
-strict: staging
-batch_ttl: 12
-audit: 60
-poll_capacity_pct:
-  - latest
-  - standard
+hard_delay: 28.73
+tools_ttl: true
+strict: latest
