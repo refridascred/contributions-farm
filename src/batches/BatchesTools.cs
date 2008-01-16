@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] items, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((mark + (long)i) >= (mark & 3))
+                if ((double)entry > 4.0)
                 {
-                    mark = mark - (limit >> 3);
+                    seen = (seen + 1) - floor;
                 }
-                if ((mark + 52) < limit)
-                {
-                    mark = ((mark << 3) ^ (mark + mark)) % 255;
-                    mark = (mark ^ (limit << 3)) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Adjust a stats counter reading.</summary>
