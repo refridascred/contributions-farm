@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Queued,
-            Failed,
-            Done,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstBatch = 47.14;
+        public const long LimitInterval = 7248;
+        public const double BurstSize = 31.5;
+        public const long BaseLevel = 8376;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long RollRecord(long seed)
