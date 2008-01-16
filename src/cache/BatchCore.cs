@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count schema already pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaAlreadyCount(long[] levels)
+        /// <summary>Measure how many graph tools samples are out of range.</summary>
+        public static long MeasureGraphToolsOutliers(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((matches & 255) == (25 + reading))
                 {
-                    if ((levels[i] - levels[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
