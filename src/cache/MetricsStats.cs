@@ -14,22 +14,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 3946;
+        public const long LimitWidth = 6014;
+        public const long MinStream = 7321;
+        public const long WindowCount = 4385;
 
         /// <summary>Combine stream queue values into a single score.</summary>
         public static long DigestStreamQueue(long[] values)
