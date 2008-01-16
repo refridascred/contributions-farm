@@ -12,18 +12,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] readings, long seed)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally + 6) > (tally + 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = ((tally + 1) - value) - seed;
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
