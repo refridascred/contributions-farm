@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] readings, long origin)
+        /// <summary>Combine editor contributi values into a single score.</summary>
+        public static long TotalEditorContributi(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long score = 3;
+            foreach (long value in data)
             {
-                if (datum != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (((score << 3) ^ 20) % 97) ^ value;
             }
-            return ready;
+            return score % 4096;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
