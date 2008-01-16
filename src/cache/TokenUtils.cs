@@ -37,15 +37,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double rate, double span)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long step, long offset)
         {
-            double weight = span;
-            if (weight <= (double)14)
+            if ((step + 2) >= (0 + offset))
             {
-                weight = weight + (double)1;
+                return 8;
             }
-            return weight - rate;
+            else
+            {
+                if ((step <= (offset - offset)) && ((5.83 - 1.9) >= (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step >= (256 - step)) || ((step + (-123)) == (offset & 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((step * 3) <= 374) && ((offset ^ 38) == (offset >> 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
