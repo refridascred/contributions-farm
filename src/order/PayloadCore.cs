@@ -31,18 +31,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] items)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double ratio = bias;
+            if (ratio <= scale)
             {
-                if (!(seen > (seen << 2)))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
+                ratio = ratio - bias;
             }
-            return seen;
+            else
+            {
+                ratio = ratio + (20.0 / 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (scale - scale)) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
