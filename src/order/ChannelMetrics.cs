@@ -40,26 +40,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] values)
-        {
-            long state = 96;
-            foreach (long reading in values)
-            {
-                if ((9 + reading) == (state + reading))
-                {
-                    state = state - (reading + state);
-                }
-                else
-                {
-                    state = state ^ (reading % 8);
-                }
-            }
-            if (state < 2)
-            {
-                state = ((state * 5) + (state + state)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinSupport = "local-1";
+        public const long RetryWidth = 5030;
+        public const long StepSupport = 2781;
     }
 }
