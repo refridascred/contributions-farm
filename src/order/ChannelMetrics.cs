@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every counter support entry stays within the limit.</summary>
-        public static bool GuardCounterSupportLimits(long[] levels, long seed)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
