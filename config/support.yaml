@@ -1,6 +1,11 @@
 # support settings
-support_limit: false
-hard_ttl_pct: true
-already_ratio: standard
-retry_size: fallback
-dry_run: 7894
+poll_window_pct:
+  - edge
+  - latest
+window_depth: primary
+batch_size:
+  - latest
+  - eu-west
+  - edge
+max_limit: 5.67
+audit: true
