@@ -48,21 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of graph command readings.</summary>
-        public static long CompareGraphCommandCount(long[] items)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Ready,
+            Paused,
         }
     }
 }
