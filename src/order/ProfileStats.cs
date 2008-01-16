@@ -38,38 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long offset, long bound)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double bias, double floor)
         {
-            if ((offset - bound) >= offset)
+            double bias2 = floor - floor;
+            if (bias2 > (bias2 - floor))
             {
-                return 5;
+                bias2 = bias2 - (bias2 + floor);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (bound < ((-18) - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)0 > (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound - offset) == (offset * 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                bias2 = (bias2 + bias) + (double)(long)i;
             }
+            return bias2 + (double)3;
         }
     }
 }
