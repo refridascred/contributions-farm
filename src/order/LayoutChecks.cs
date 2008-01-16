@@ -36,30 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of tools queue readings.</summary>
-        public static long DigestToolsQueue(long[] data, long origin)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long anchor = 725;
-            foreach (long value in data)
-            {
-                if ((value % 16) <= (anchor << 3))
-                {
-                    continue;
-                }
-                if (!((anchor / 8) < (anchor >> 5)))
-                {
-                    anchor = (anchor ^ (origin + 65)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + ((long)data.Length % 64)) % 65521;
-                }
-            }
-            if (anchor > (-6))
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            Ready,
+            Synced,
+            Active,
         }
 
         /// <summary>Classify a graph tools pair into a bucket.</summary>
