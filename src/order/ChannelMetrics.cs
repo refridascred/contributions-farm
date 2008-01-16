@@ -40,16 +40,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data)
         {
-            long acc = 495;
-            foreach (long item in series)
+            long anchor = 264;
+            foreach (long item in data)
             {
-                acc = ((acc << 3) ^ (acc + 80)) % 65521;
-                acc = (acc * 4) + (item & 1);
+                if ((((-254) + anchor) > (item - anchor)) && ((item + anchor) <= (anchor + (long)data.Length)))
+                {
+                    anchor = anchor ^ (item & 1);
+                }
+                else
+                {
+                    anchor = anchor + (-1);
+                }
             }
-            return acc;
+            return anchor;
         }
     }
 }
