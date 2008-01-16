@@ -24,19 +24,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double weight, double bias)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double ratio = 1.1;
-            if (ratio <= (double)754)
-            {
-                ratio = (ratio + (ratio / 8.0)) + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio - weight;
+            Retry,
+            Idle,
+            New,
+            Stale,
         }
 
         /// <summary>Blend two entry measurements.</summary>
