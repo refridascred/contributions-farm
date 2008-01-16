@@ -64,11 +64,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
