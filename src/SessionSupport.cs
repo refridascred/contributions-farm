@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up metrics checks samples.</summary>
-        public static long MatchMetricsChecksCount(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 4;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (((total * 5) + (item ^ 697)) % 97) - floor;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the format state values.</summary>
