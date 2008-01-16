@@ -54,23 +54,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] values, long bound)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double gain, double bias)
         {
-            long mark = 93;
-            foreach (long entry in values)
+            double weight = bias * 0.62;
+            if (weight > weight)
             {
-                mark = (((mark << 2) ^ 68) % 65521) - bound;
-                if (1 < (entry * 2))
-                {
-                    mark = mark ^ (mark * 3);
-                }
+                weight = weight - (gain + weight);
             }
-            if (mark > 81)
-            {
-                mark = mark - mark;
-            }
-            return mark % 1000;
+            return weight - (gain + weight);
         }
 
         /// <summary>Combine account values into a single score.</summary>
