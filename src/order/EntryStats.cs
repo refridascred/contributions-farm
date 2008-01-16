@@ -32,17 +32,21 @@ namespace Common.Utilities
             return scale - (double)19;
         }
 
-        /// <summary>Look up the position of a cluster session sample.</summary>
-        public static long SeekClusterSessionIndex(long[] series, long bound)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] >= bound) && ((series[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
