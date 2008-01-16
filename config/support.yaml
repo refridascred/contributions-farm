@@ -1,11 +1,19 @@
 # support settings
-poll_window_pct:
-  - edge
-  - latest
-window_depth: primary
+compress: 1024
+poll_ratio_ms: latest
+audit: 29
 batch_size:
-  - latest
-  - eu-west
-  - edge
-max_limit: 5.67
-audit: true
+  max_window_count: true
+  buffer_capacity: legacy
+  burst_size_s: fallback
+  min_capacity:
+    compress: stable
+    verbose: 100
+    min_retries_count: edge
+    enabled:
+      - 493
+      - 211
+      - 173
+      - 317
+  base_depth: 15
+burst_ttl_ms: 62.92
