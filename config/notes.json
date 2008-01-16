@@ -1,26 +1,5 @@
 {
-  "readonly": "strict",
-  "cache_limit": "open",
-  "token_capacity": 91,
-  "support_window": {
-    "idle_ratio_count": 250,
-    "enabled": {
-      "record_depth": false,
-      "default_ttl_s": true,
-      "max_depth_count": "green",
-      "audit": 9
-    },
-    "min_interval_count": "legacy",
-    "readonly": true,
-    "audit": {
-      "readonly": "strict",
-      "entry_interval": 60,
-      "compress": 500,
-      "cache_delay": "eu-west",
-      "retry_size_count": ["primary", "legacy", "stable", "cached"],
-      "max_size": [449, 400]
-    }
-  },
-  "tools_retries": 4.25,
-  "window_timeout": false
+  "retry_window_ms": "eu-west",
+  "context_ratio": "blue",
+  "warm_capacity": 13.74
 }
