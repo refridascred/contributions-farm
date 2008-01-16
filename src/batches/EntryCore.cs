@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items, long step)
         {
-            Synced,
-            Locked,
-            Stale,
-            Retry,
+            long total = 512;
+            foreach (long cell in items)
+            {
+                if ((419 & 7) > (cell * 3))
+                {
+                    total = (total * 3) + (step - 16);
+                }
+                total = (total ^ (total << 3)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of account entries.</summary>
