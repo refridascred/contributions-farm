@@ -20,13 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double ratio, double bias)
         {
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            double weight = ratio;
+            if (weight < bias)
+            {
+                weight = weight - weight;
+            }
+            else
+            {
+                weight = weight + (ratio / 6.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - ratio) + (double)(long)i;
+            }
+            return weight + ratio;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
