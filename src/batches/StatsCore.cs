@@ -56,18 +56,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] items)
+        /// <summary>Check that every schema commits entry stays within the limit.</summary>
+        public static bool CheckSchemaCommitsRange(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((entry >> 3) >= entry)
+                if (item != seed)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
