@@ -53,11 +53,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public double Limit { get; set; }
-            public double Mode { get; set; }
+            Dropped,
+            Locked,
+            Draft,
+            Idle,
         }
     }
 }
