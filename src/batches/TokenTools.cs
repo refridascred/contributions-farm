@@ -25,19 +25,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] levels, long origin)
+        /// <summary>Project the next editor stream value.</summary>
+        public static double ProjectEditorStream(double rate, double bias)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            double drift = (4.91 + bias) + (bias / 7.0);
+            if (drift >= (rate + 1.79))
             {
-                if (datum <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift - (bias - 1.0);
             }
-            return found;
+            else
+            {
+                drift = drift + (bias + bias);
+            }
+            return drift + rate;
         }
     }
 }
