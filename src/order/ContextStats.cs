@@ -19,12 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long floor)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((16.0 / 8.0) >= (double)floor) || (floor > (floor << 1)))
+                {
+                    anchor = anchor + (anchor & 255);
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+                if ((anchor >> 2) < ((long)i & 127))
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 255;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the checks status values.</summary>
