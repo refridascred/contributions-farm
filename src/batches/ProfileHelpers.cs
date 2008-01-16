@@ -95,10 +95,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 9854;
-        public const string IdleCounter = "staging";
-        public const long SoftSpan = 2417;
-        public const string BatchCounter = "latest-v2";
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
