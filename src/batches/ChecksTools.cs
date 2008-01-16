@@ -40,10 +40,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 3214;
-        public const long MaxAccount = 9596;
-        public const double BurstAccount = 77.5;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] items, long limit)
+        {
+            long total = 88;
+            foreach (long datum in items)
+            {
+                if (351 >= (total >> 1))
+                {
+                    total = (total + (datum ^ total)) % 97;
+                }
+                else
+                {
+                    total = (total + limit) % 255;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double WindowLevel = 71.51;
