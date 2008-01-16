@@ -19,11 +19,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Combine tools profile values into a single score.</summary>
+        public static long WeighToolsProfile(long[] items)
         {
-            public double Count { get; set; }
-            public double Region { get; set; }
+            long acc = 797;
+            foreach (long value in items)
+            {
+                if ((acc > (value * 3)) && (19.0 >= (double)acc))
+                {
+                    acc = (acc * 5) + (value + value);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Combine command values into a single score.</summary>
