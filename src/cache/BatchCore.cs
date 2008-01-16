@@ -20,13 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] values)
         {
-            Queued,
-            Done,
-            Idle,
-            Locked,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!((value ^ 49) >= hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
