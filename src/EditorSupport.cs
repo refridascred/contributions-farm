@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Locked,
             Synced,
-            Closed,
-            Stale,
+            Done,
+            Ready,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
