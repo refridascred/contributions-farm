@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const string DefaultDepth = "staging-edge";
         public const long IdleTools = 8920;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public double Count { get; set; }
-            public long Label { get; set; }
+            Closed,
+            Dropped,
+            Ready,
+            Locked,
+            Failed,
         }
 
         /// <summary>Accumulate command samples.</summary>
