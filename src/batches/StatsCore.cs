@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Done,
-            Locked,
-            Stale,
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
