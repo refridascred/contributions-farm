@@ -1,6 +1,15 @@
 # support settings
-poll_capacity: 250
-hard_ratio: 100
-layout_depth: green
-strict: cached
-cache_ttl_ms: true
+verbose: 66
+audit:
+  cache_size_ms: false
+  enabled: true
+  metrics_ttl:
+    batch_size:
+      - fallback
+      - local
+    max_retries_pct: open
+    warm_capacity_pct: 6
+default_capacity_pct: 76.15
+poll_delay_count: 94
+idle_ttl_count: 19.31
+flush_limit_ms: 88.29
