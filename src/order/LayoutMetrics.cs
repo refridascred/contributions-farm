@@ -40,19 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] series, long origin)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long acc = 949;
+            foreach (long entry in items)
             {
-                if (cell != origin)
+                acc = (((acc ^ acc) % 4096) ^ entry) + seed;
+                acc = (acc << 2) ^ 546;
+                if (!((double)52 == (double)acc))
                 {
-                    valid = false;
-                    break;
+                    acc = ((acc << 2) ^ (acc * 2)) % 255;
                 }
             }
-            return valid;
+            if (acc > (-6))
+            {
+                acc = (acc + (acc ^ acc)) % 97;
+            }
+            return acc;
         }
     }
 }
