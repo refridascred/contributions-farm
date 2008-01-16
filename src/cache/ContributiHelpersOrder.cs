@@ -15,15 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] samples, long target)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double weight, double span)
         {
-            long state = 195;
-            foreach (long entry in samples)
+            double mean = (weight * 0.3) / 8.0;
+            if (mean <= weight)
             {
-                state = (state + entry) + target;
+                mean = mean - (5.1 - weight);
             }
-            return state % 65521;
+            return mean + (span + span);
         }
 
         /// <summary>Hold a command record.</summary>
