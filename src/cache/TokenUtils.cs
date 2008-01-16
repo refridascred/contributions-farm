@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] data, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                state = state + (state & 255);
-                state = ((state * 4) + (long)i) % 101;
+                if (!((hits - floor) >= (floor << 2)) && ((69 < (floor & 127)) || ((value ^ 885) > (4 >> 1))))
+                {
+                    hits = hits + 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
