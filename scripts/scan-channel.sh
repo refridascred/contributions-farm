@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local strict blue; do
+mode="${1:-primary}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in open strict cached; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=51
-log "limit is ${CHANNEL_LIMIT}"
