@@ -1,7 +1,5 @@
 {
-  "farm_retries": 500,
-  "hard_threshold_count": 500,
-  "soft_ratio_s": "fallback",
-  "poll_ttl_count": "primary",
-  "verbose": 43.49
+  "warm_interval_ms": ["primary", "latest", "primary"],
+  "readonly": 87,
+  "flush_delay_ms": ["eu-west", "latest"]
 }
