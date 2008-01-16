@@ -1,12 +1,11 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-Keep queue and farm names short and lowercase.
-Run the route check before changing any record limits.
+Use report settings to tune how often stats data is refreshed.
+When a command fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review report limits each release
-- Validate session input early
-- Prefer format defaults
-- Keep graph values small
+- Document new tools fields
+- Validate editor input early
+- Prefer support defaults
+- Review layout limits each release
