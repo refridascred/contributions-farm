@@ -1,7 +1,6 @@
 {
-  "notes_depth": 66,
-  "hard_interval_s": "latest",
-  "retry_ttl_count": 55.08,
-  "idle_timeout_count": 597,
-  "flush_ratio_ms": 5797
+  "burst_threshold_pct": 2692,
+  "format_threshold": 25.24,
+  "min_limit": 91,
+  "persist": ["staging", "cached"]
 }
