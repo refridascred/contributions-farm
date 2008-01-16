@@ -47,11 +47,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "staging-edge";
-        public const long DefaultCount = 514;
-        public const long StepWidth = 8318;
-        public const long BurstRatio = 5499;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long offset, long offset2)
+        {
+            long edge = offset - offset2;
+            if ((3 & 255) >= edge)
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset2 < (offset + offset2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string LimitCount = "local";
