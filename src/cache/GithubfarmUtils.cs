@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Ready,
-            Draft,
-            Stale,
-            Queued,
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Project the next cache value.</summary>
