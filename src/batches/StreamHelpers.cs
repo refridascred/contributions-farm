@@ -55,16 +55,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] samples, long floor)
-        {
-            long score = 7;
-            foreach (long value in samples)
-            {
-                score = ((score - value) % 4096) + floor;
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftReport = 7.94;
+        public const long BaseSpan = 5738;
+        public const double BaseCount = 43.22;
+        public const long HardScore = 4765;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long DeriveContext(long seed)
