@@ -20,16 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 563;
+        public const string BatchSpan = "standard";
+        public const long WindowRecord = 4235;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
