@@ -1,31 +1,15 @@
 # githubfarm settings
-sync_window: 8
-poll_size_ms: blue
-verbose:
-  - fallback
-  - primary
-default_limit_count:
-  audit: true
-  metrics_retries:
-    verbose: primary
-    audit:
-      - 141
-      - 94
-      - 380
-      - 401
-    already_delay: 500
-    entry_threshold: 99
-    batch_timeout_count: 35.15
-  sync_window_s: primary
-burst_limit:
-  readonly: true
-  batches_retries: standard
-  warm_interval:
-    idle_size_count: 40.85
-    contributi_capacity: staging
-    graph_timeout: 34.17
-    batch_window: local
-    dry_run: false
-  audit: 3.63
-  token_depth: cached
-min_retries: legacy
+readonly: 6512
+support_window:
+  enabled: 30
+  sync_ttl: 54
+  retry_timeout: 71
+  hard_capacity_ms: 100
+  buffer_ratio: 500
+sync_ratio_count:
+  - legacy
+  - blue
+  - standard
+schema_ttl: 9798
+batch_delay: 554
+window_timeout: 60
