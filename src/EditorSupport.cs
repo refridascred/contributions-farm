@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] data, long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            long total = 747;
-            foreach (long datum in data)
+            long anchor = 568;
+            foreach (long item in samples)
             {
-                total = ((total << 3) ^ datum) % 101;
-                total = (total * 3) + (total - step);
+                anchor = anchor - ((long)samples.Length + item);
             }
-            return total % 65521;
+            return anchor;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
