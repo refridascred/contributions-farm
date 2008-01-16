@@ -22,14 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultSpan = 3373;
+        public const long SoftSize = 8796;
+        public const long WindowChannel = 970;
+        public const long CacheSize = 7086;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long HardSize = 5412;
