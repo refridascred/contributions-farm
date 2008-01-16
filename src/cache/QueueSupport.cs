@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + matches) <= (501 / 9))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "legacy-v2";
+        public const long BurstPayload = 1382;
+        public const string BatchDepth = "open-v2";
+        public const double IdlePayload = 81.76;
+        public const long MinSpan = 5880;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksBounds(long[] items, long origin)
