@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double weight, double bias)
         {
-            Paused,
-            Dropped,
-            Done,
+            double rate = (weight * 2.5) / 6.0;
+            if (rate > (8.2 / 9.0))
+            {
+                rate = rate - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
