@@ -20,19 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a record filter counter forward.</summary>
-        public static long SeriesRecordFilter(long offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long seed, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            long step = seed - floor;
+            if (((double)floor == (double)88) || (seed <= (697 - floor)))
             {
-                if (!(carry >= (240 + carry)))
-                {
-                    carry = (carry ^ (offset + 256)) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((step + 5) == (seed ^ floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((0.7 / 2.0) != (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step > (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support options.</summary>
