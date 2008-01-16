@@ -40,12 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a batches record.</summary>
