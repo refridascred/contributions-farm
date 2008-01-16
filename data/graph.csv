@@ -1,10 +1,7 @@
-id,owner,label,weight
-1,722,685,740
-2,31.48,edge,local
-3,214,7.92,143
-4,strict,87.8,56.49
-5,75.5,staging,25.35
-6,fallback,884,528
-7,local,blue,83.74
-8,889,21.5,green
-9,62.14,863,242
+id,region,ratio
+1,680,cached
+2,582,964
+3,green,72.28
+4,468,blue
+5,657,cached
+6,290,34.59
