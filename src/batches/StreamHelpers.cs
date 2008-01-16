@@ -47,13 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Count the schema buffer entries that pass the check.</summary>
+        public static long MeasureSchemaBufferGaps(long[] data, long bound)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen << 1) >= value)
+                {
+                    seen = (seen + 2) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the farm kind values.</summary>
