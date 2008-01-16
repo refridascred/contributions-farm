@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] series)
+        /// <summary>Look up the position of a commits filter sample.</summary>
+        public static long LocateCommitsFilterIndex(long[] series, long origin)
         {
-            long total = -904;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((total > (89 + (-17))) || (total <= ((long)series.Length + 816)))
+                if ((series[i] < origin) && ((series[i] % 5) == 0))
                 {
-                    total = (total + (sample ^ (-593))) % 4096;
-                    break;
+                    return (long)i;
                 }
-                total = ((total * 3) + (sample << 2)) % 4096;
             }
-            if (total < 25)
-            {
-                total = (total * 3) + (total ^ total);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
