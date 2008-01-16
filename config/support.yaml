@@ -1,22 +1,4 @@
 # support settings
-idle_retries_s:
-  retry_limit_pct:
-    - eu-west
-    - green
-    - green
-  metrics_ttl:
-    retry_threshold: true
-    cache_interval: 500
-    persist: 54.32
-  strict:
-    cache_delay: edge
-    command_ratio: 100
-    enabled: fallback
-    compress: true
-    record_timeout: true
-  poll_timeout_count: staging
-batch_timeout_s: local
-githubfarm_threshold:
-  - primary
-  - local
-  - eu-west
+editor_retries: fallback
+hard_retries: 48.68
+idle_window_ms: 39
