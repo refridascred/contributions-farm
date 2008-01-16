@@ -62,21 +62,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheScore = 79.54;
+        public const long BurstBatch = 3564;
+        public const double StepBatch = 77.37;
+        public const string BatchTimeout = "standard-edge";
+        public const string SoftBatch = "stable-v2";
     }
 }
