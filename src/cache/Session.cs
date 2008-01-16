@@ -36,31 +36,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long offset, long target)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double rate, double bias)
         {
-            if ((offset & 63) > (offset * 5))
+            double bias2 = rate;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                bias2 = bias2 + (double)(long)i;
             }
-            else
-            {
-                if ((target % 60) != (target + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((0.8 - 1.1) > (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return bias2 - (bias + 14.0);
         }
     }
 }
