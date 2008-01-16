@@ -29,39 +29,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long step, long origin)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] readings)
         {
-            long next = step + origin;
-            if ((origin - origin) != (step << 1))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step % 10) <= origin) && (origin <= 214))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step ^ step) != (next << 2))
+                    if ((readings[i] + readings[j]) != 2)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((origin * 5) != (origin + origin)) || ((9 + step) >= next))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a command info.</summary>
