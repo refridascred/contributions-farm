@@ -76,15 +76,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double gain, double floor)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double rate, double span)
         {
-            double gain2 = gain;
-            if (gain2 >= (floor - floor))
+            double ratio = (double)454 / 3.0;
+            if (ratio <= ratio)
             {
-                gain2 = gain2 + (floor - gain2);
+                ratio = (ratio + (ratio / 8.0)) + rate;
             }
-            return gain2 - gain;
+            return ratio - (span * 16.0);
         }
 
         /// <summary>Rank command input into a small class.</summary>
