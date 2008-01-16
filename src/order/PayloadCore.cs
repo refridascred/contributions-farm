@@ -48,15 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double bias, double bias2)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double mean = 2.6;
-            if (mean > mean)
-            {
-                mean = (mean - 3.0) - bias2;
-            }
-            return mean + (mean - bias);
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
