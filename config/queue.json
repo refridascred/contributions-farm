@@ -1,12 +1,11 @@
 {
-  "verbose": 66.88,
-  "enabled": 5,
-  "min_interval_count": "edge",
-  "readonly": true,
-  "audit": 500,
-  "base_threshold_count": {
-    "hard_interval": true,
-    "audit": 73,
-    "schema_threshold": 250
-  }
+  "metric_interval": 9,
+  "editor_threshold": true,
+  "hard_interval": 7134,
+  "max_ttl_count": {
+    "max_ratio_pct": "local",
+    "default_threshold_s": 23.53,
+    "audit": 1024
+  },
+  "default_timeout_count": 42.49
 }
