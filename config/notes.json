@@ -1,22 +1,7 @@
 {
-  "sync_size": {
-    "commits_timeout": false,
-    "min_size_count": {
-      "counter_capacity": "eu-west",
-      "graph_size": 57.25,
-      "stats_capacity": 30,
-      "order_delay": 100,
-      "poll_threshold_pct": 60.63,
-      "base_limit_count": [201, 65, 90, 295]
-    },
-    "burst_capacity_s": {
-      "default_depth_ms": 33.47,
-      "format_delay": 3929,
-      "cache_window_ms": 250
-    },
-    "flush_limit_s": 308,
-    "readonly": "latest"
-  },
-  "sync_threshold_s": 8664,
-  "warm_limit_s": [200, 8]
+  "dry_run": 18.12,
+  "hard_interval_ms": true,
+  "cache_timeout_ms": [475, 405, 417, 151],
+  "flush_capacity_pct": true,
+  "hard_threshold": "eu-west"
 }
