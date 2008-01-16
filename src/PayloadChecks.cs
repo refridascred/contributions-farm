@@ -59,11 +59,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstGithubfarm = "local";
-        public const string RetryGithubfarm = "standard";
-        public const string WindowSize = "strict-edge";
-        public const double IdleInterval = 66.16;
-        public const long MaxGithubfarm = 925;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Queued,
+            Closed,
+            Draft,
+            Dropped,
+            Stale,
+        }
     }
 }
