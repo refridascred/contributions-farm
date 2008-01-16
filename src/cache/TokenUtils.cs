@@ -28,9 +28,11 @@ namespace Common.Utilities
             return mean - (mean + scale);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitSpan = 8305;
-        public const double DefaultStats = 23.74;
-        public const long RetryStats = 1811;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
