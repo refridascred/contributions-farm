@@ -22,13 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] series, long seed)
         {
-            Idle,
-            Queued,
-            Dropped,
-            Locked,
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
