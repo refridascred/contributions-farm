@@ -24,11 +24,23 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Combine metrics report values into a single score.</summary>
+        public static long TallyMetricsReport(long[] data, long bound)
         {
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
+            long mark = -7;
+            foreach (long sample in data)
+            {
+                if ((bound - 409) >= mark)
+                {
+                    mark = mark + (345 % 8);
+                    continue;
+                }
+                if ((sample / 9) < (sample << 1))
+                {
+                    mark = mark - (sample / 7);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
