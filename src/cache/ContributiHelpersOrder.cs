@@ -22,18 +22,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] levels, long target)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            double drift = 4.29 + rate;
+            if (drift < (16.0 / 4.0))
             {
-                if (matches < (matches * 5))
-                {
-                    matches = ((matches + 3) + datum) + target;
-                }
+                drift = (drift - (double)430) - offset;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + 12.0) + (double)(long)i;
+            }
+            return drift - (double)62;
         }
     }
 }
