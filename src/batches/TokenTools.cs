@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 777;
-        public const string CacheFactor = "alpha";
-        public const string HardCount = "stable-edge";
-        public const long WindowNotes = 1982;
-        public const long BurstRatio = 5579;
+        /// <summary>Check that every cluster cache entry stays within the limit.</summary>
+        public static bool VerifyClusterCacheBounds(long[] samples, long bound)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
