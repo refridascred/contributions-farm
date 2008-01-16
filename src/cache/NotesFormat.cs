@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] samples, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 325;
+            foreach (long item in levels)
             {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
+                state = ((state + floor) % 1000) + item;
             }
-            return -1;
+            if (state > 927)
+            {
+                state = state + (floor + state);
+            }
+            return state;
         }
 
         /// <summary>Hold a window header.</summary>
