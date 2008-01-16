@@ -15,17 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] data, long seed)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            Ready,
+            Pending,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
