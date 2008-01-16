@@ -27,31 +27,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a graph cache pair into a bucket.</summary>
-        public static long SortGraphCache(long bound, long step)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long limit)
         {
-            if (bound < (-94))
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
+                sum = (sum << 2) ^ limit;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((bound >> 5) != (bound - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step > (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a batch entry.</summary>
