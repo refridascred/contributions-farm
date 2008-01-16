@@ -17,11 +17,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] samples, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            long sum = 9;
+            foreach (long entry in samples)
+            {
+                if ((bound + entry) <= (bound - (long)samples.Length))
+                {
+                    sum = sum - (456 * 3);
+                    sum = (sum * 2) + (bound - 17);
+                }
+                if ((43 * 4) > (entry ^ entry))
+                {
+                    sum = ((sum << 2) ^ (entry % 60)) % 65521;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
