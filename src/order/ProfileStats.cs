@@ -46,12 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] samples, long origin)
         {
-            Locked,
-            Ready,
-            Paused,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
