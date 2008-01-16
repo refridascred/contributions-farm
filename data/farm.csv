@@ -1,6 +1,9 @@
-id,weight,score
-1,28.99,35.31
-2,987,44.25
-3,55.01,39.77
-4,413,4.99
-5,606,local
+id,owner,level
+1,842,strict
+2,88.99,edge
+3,primary,edge
+4,green,blue
+5,staging,542
+6,primary,78.01
+7,625,fallback
+8,235,edge
