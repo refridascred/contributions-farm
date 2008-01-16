@@ -1,7 +1,8 @@
 {
-  "dry_run": 18.12,
-  "hard_interval_ms": true,
-  "cache_timeout_ms": [475, 405, 417, 151],
-  "flush_capacity_pct": true,
-  "hard_threshold": "eu-west"
+  "warm_timeout_pct": 7028,
+  "retry_threshold": false,
+  "persist": "legacy",
+  "default_delay": 59.33,
+  "buffer_interval": 56,
+  "window_ttl": 9831
 }
