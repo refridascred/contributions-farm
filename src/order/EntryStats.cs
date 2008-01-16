@@ -62,21 +62,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count tools batch pairs that satisfy a relation.</summary>
-        public static long MatchToolsBatchCount(long[] readings)
+        /// <summary>Look up the position of a stats counter sample.</summary>
+        public static long LocateStatsCounterIndex(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] < step)
                 {
-                    if ((readings[i] + readings[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
