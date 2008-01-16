@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double bias, double floor)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            double weight = 4.57;
-            if (weight >= (floor + bias))
-            {
-                weight = weight + (bias - floor);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - 9.0) + (double)(long)i;
-            }
-            return weight - (bias - floor);
+            Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
