@@ -83,20 +83,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (((seed ^ result) == (result + (long)i)) || (((long)i - seed) > (36 + seed)))
+                carry = (carry + ((long)i + 677)) % 101;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    result = (result * 3) + (result + 11);
-                    break;
+                    carry = (carry ^ (seed % 5)) - (long)i2;
+                    carry = (carry * 4) + seed;
                 }
-                result = ((result * 3) + (long)i) % 65521;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return result;
+            return carry;
         }
     }
 }
