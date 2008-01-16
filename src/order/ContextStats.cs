@@ -29,13 +29,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public bool Limit { get; set; }
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public double Level { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate queue stats readings against a bound.</summary>
