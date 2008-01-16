@@ -28,11 +28,18 @@ namespace Common.Utilities
             return mean - (mean + scale);
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Audit queue commits readings against a rule.</summary>
+        public static long TallyQueueCommitsHits(long[] values, long bound)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((bound ^ 506) <= (bound + bound))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
     }
 }
