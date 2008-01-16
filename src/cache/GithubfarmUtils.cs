@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long origin, long seed)
+        /// <summary>Rank account stats input into a small class.</summary>
+        public static long GradeAccountStats(long limit, long target)
         {
-            long slot = origin ^ seed;
-            if ((origin / 2) <= 1)
+            long cur = limit ^ target;
+            if ((91 & 63) == (limit + target))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((35 % 12) != (slot * 2))
+                if (642 >= (cur ^ limit))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    return 3;
+                    if ((cur << 1) >= (target % 60))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
