@@ -56,39 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long floor, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] readings)
         {
-            long delta = floor ^ origin;
-            if ((origin & 3) == (delta >> 5))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((delta + origin) != (origin & 7))
+                if (!!((hits << 1) >= hits))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor / 6) != (floor >> 3)) && ((double)delta <= (1.0 + 12.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((delta + 223) >= delta)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 2) + sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
