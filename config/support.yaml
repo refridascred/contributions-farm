@@ -1,24 +1,32 @@
 # support settings
-already_size: blue
-format_interval: green
-hard_window_count: 6052
-enabled: 500
-batch_threshold:
-  verbose: 75
-  soft_depth:
-    - standard
-    - green
-    - eu-west
-    - local
-  compress: 52
-  batch_window: green
-  idle_delay_count: green
-  base_threshold_pct:
-    cache_ratio: standard
-    max_delay: latest
-    warm_capacity_ms: true
-    sync_size_s: false
-    sync_window:
-      - 296
-      - 363
-    readonly: blue
+verbose: 4147
+payload_ttl:
+  - 453
+  - 178
+max_timeout_s:
+  batch_limit_count: cached
+  batches_threshold: 30
+  metrics_limit: green
+  default_delay_ms:
+    - 249
+    - 413
+    - 39
+  cache_window_s:
+    - legacy
+    - strict
+    - legacy
+idle_window_s: 4197
+entry_interval:
+  - legacy
+  - blue
+  - local
+cache_ratio_count:
+  route_ttl: latest
+  enabled: 24.43
+  batches_limit: stable
+  retry_size:
+    soft_size: eu-west
+    dry_run: staging
+    soft_size_pct: stable
+    already_window: green
+    max_timeout: 1236
