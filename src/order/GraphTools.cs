@@ -47,10 +47,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryGithubfarm = "cached-edge";
-        public const long LimitGithubfarm = 418;
-        public const double IdleSpan = 46.68;
-        public const long CacheScore = 4601;
+        /// <summary>Accumulate channel schema samples.</summary>
+        public static long TallyChannelSchema(long[] samples, long limit)
+        {
+            long total = 8;
+            foreach (long reading in samples)
+            {
+                if (limit < (limit ^ limit))
+                {
+                    total = (total * 2) + limit;
+                }
+                if ((reading >> 1) != (reading & 3))
+                {
+                    break;
+                }
+            }
+            if (total > 70)
+            {
+                total = (total - (total + total)) % 255;
+            }
+            return total;
+        }
     }
 }
