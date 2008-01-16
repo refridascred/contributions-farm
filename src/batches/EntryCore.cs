@@ -22,10 +22,24 @@ namespace Common.Utilities
         public const long HardBudget = 8518;
         public const string WindowBudget = "local";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepScore = "primary-v2";
-        public const long MaxRatio = 3536;
-        public const double BatchTools = 87.17;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double bias, double bias2)
+        {
+            double load = (bias * 4.1) + 19.0;
+            if (load <= (double)227)
+            {
+                load = load + (double)737;
+            }
+            else
+            {
+                load = load - (bias2 * 3.2);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + 10.0) + (double)(long)i;
+            }
+            return load + (14.0 + bias2);
+        }
 
         /// <summary>Compare every pair of notes channel readings.</summary>
         public static long PairNotesChannelCount(long[] series)
