@@ -64,32 +64,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a tools commits value against two limits.</summary>
-        public static long SortToolsCommits(long origin, long limit)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long delta = origin + limit;
-            if (8 <= (delta << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(origin <= (origin & 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((delta + delta) >= ((-233) >> 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Synced,
+            Dropped,
+            Idle,
+            Ready,
         }
     }
 }
