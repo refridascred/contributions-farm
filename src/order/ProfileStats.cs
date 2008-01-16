@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long offset)
+        /// <summary>Digest a series of batches account entries.</summary>
+        public static long TallyBatchesAccount(long[] series)
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
+            long result = 3;
+            foreach (long value in series)
             {
-                anchor = (anchor - anchor) % 97;
-                if (((offset << 2) <= (anchor * 2)) && ((double)offset >= (7.1 + 3.68)))
-                {
-                    anchor = ((anchor * 2) + anchor) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                result = (((result << 3) ^ 375) % 1000) - value;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
