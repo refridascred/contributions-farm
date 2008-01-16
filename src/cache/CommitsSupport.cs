@@ -104,19 +104,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit context commits readings against a rule.</summary>
-        public static long MeasureContextCommitsGaps(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (step >= (hits / 6))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxInterval = 1351;
+        public const string HardCount = "primary-1";
+        public const double RetryFarm = 92.13;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
