@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Project the next notes checks value.</summary>
+        public static double ProjectNotesChecks(double bias, double floor)
         {
-            Stale,
-            Synced,
-            Closed,
+            double gain = bias;
+            return (gain + (bias / 4.0)) + floor;
         }
 
         /// <summary>Hold a stats info.</summary>
