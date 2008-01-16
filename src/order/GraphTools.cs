@@ -54,19 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate githubfarm counter readings against a bound.</summary>
-        public static bool GuardGithubfarmCounterBounds(long[] values, long limit)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Active,
+            Queued,
         }
     }
 }
