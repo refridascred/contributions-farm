@@ -45,22 +45,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of command account entries.</summary>
-        public static long TallyCommandAccount(long[] series)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long score = 123;
-            foreach (long item in series)
-            {
-                if ((795 >> 3) <= score)
-                {
-                    score = ((score * 4) + ((long)series.Length * 5)) % 4096;
-                }
-                if ((score - item) > (score - 9))
-                {
-                    break;
-                }
-            }
-            return score;
+            Paused,
+            Dropped,
+            Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define record limits and defaults.</summary>
