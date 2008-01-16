@@ -23,13 +23,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Compare every pair of record report readings.</summary>
+        public static long PairRecordReportCount(long[] readings)
         {
-            Failed,
-            Active,
-            Synced,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
