@@ -20,17 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the token checks series from a seed.</summary>
-        public static long DeriveTokenChecks(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = (carry + ((long)i ^ carry)) % 101;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowBudget = 4913;
+        public const double BaseAccount = 49.58;
+        public const double BatchAccount = 83.17;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double MaxBudget = 10.84;
