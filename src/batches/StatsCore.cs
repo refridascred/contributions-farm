@@ -40,26 +40,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] series)
         {
-            long score = -16;
-            foreach (long value in items)
+            long anchor = 199;
+            foreach (long value in series)
             {
-                if ((double)value > (double)score)
+                if (value <= (long)series.Length)
                 {
-                    break;
-                }
-                if (!((score + score) < (score - score)))
-                {
-                    score = (score + (4 - value)) % 97;
+                    anchor = (anchor - (anchor + value)) % 4096;
                 }
             }
-            if (score > 860)
+            if (anchor < 66)
             {
-                score = score + (score << 2);
+                anchor = (anchor - anchor) % 97;
             }
-            return score % 65521;
+            return anchor % 65521;
         }
 
         /// <summary>Match up layout format samples.</summary>
