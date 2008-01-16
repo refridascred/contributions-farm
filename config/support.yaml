@@ -1,21 +1,4 @@
 # support settings
-sync_ttl_count: 49
-retry_interval_ms: 24
-cluster_ttl: standard
-already_interval: 33.33
-support_window:
-  flush_capacity: false
-  compress:
-    - 398
-    - 357
-    - 391
-    - 285
-  default_threshold_pct: cached
-  min_timeout_pct:
-    strict: 100
-    compress: 5800
-    base_retries: 60
-    min_capacity_ms: legacy
-    cache_retries_s: blue
-    idle_limit: 5166
-  default_retries_s: 1260
+compress: true
+burst_retries: 30
+command_limit: legacy
