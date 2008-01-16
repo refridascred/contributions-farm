@@ -20,18 +20,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] levels, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)seen <= (9.78 - 9.51)) || (((18.0 / 3.0) >= (double)offset) || (6.0 > (double)seen)))
                 {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
