@@ -47,14 +47,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Synced,
-            Queued,
-            Pending,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 844;
+        public const long BaseWindow = 1825;
+        public const double HardRatio = 69.34;
+        public const string SoftWindow = "alpha";
     }
 }
