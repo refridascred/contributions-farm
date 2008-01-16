@@ -24,23 +24,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Combine metrics report values into a single score.</summary>
-        public static long TallyMetricsReport(long[] data, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] samples, long floor)
         {
-            long mark = -7;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((bound - 409) >= mark)
+                if ((cell + cell) >= (hits + floor))
                 {
-                    mark = mark + (345 % 8);
-                    continue;
-                }
-                if ((sample / 9) < (sample << 1))
-                {
-                    mark = mark - (sample / 7);
+                    hits = hits + 2;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
