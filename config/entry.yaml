@@ -1,12 +1,4 @@
 # entry settings
-stats_ratio: eu-west
-dry_run:
-  idle_capacity: green
-  profile_interval:
-    - primary
-    - strict
-    - latest
-    - edge
-  soft_retries_ms: stable
-support_delay: 100
-already_interval: strict
+min_ratio: strict
+default_ratio_s: latest
+idle_size: 21.94
