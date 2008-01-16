@@ -19,22 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many layout metrics samples are out of range.</summary>
-        public static long AuditLayoutMetricsMatches(long[] data)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long mark = -93;
+            foreach (long cell in levels)
             {
-                if (!!((double)hits == (6.5 - 2.0)))
+                if (!(((-9) ^ (long)levels.Length) >= (mark - mark)))
                 {
-                    hits = (hits + 2) - entry;
+                    mark = mark - bound;
+                    break;
+                }
+                if ((7.4 - 17.0) > (double)bound)
+                {
+                    mark = (mark << 2) ^ (mark * 3);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mark = (mark ^ (cell + mark)) % 255;
                 }
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
