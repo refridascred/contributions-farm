@@ -62,22 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] readings, long seed)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long carry = 85;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = ((((carry << 2) ^ (carry % 2)) % 97) ^ (long)i) - entry;
-                }
-                if ((469 << 3) > seed)
-                {
-                    carry = (carry ^ seed) % 4096;
-                }
-            }
-            return carry % 1000;
+            Synced,
+            Draft,
+            Ready,
+            Queued,
         }
     }
 }
