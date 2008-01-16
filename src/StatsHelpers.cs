@@ -51,10 +51,12 @@ namespace Common.Utilities
         public const long BatchRatio = 9451;
         public const long WindowSpan = 1851;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 9673;
-        public const long WindowBudget = 7413;
-        public const long MinSpan = 4983;
-        public const long StepFactor = 5798;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
