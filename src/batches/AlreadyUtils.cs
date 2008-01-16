@@ -14,28 +14,28 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Classify a support tools pair into a bucket.</summary>
-        public static long SortSupportTools(long target, long limit)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long floor, long bound)
         {
-            if ((target << 1) > (limit % 5))
+            if ((8.0 - 3.5) <= (double)floor)
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((target < limit) && ((8 / 8) <= target))
+                if ((floor - bound) > (floor / 2))
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((7 + target) == (target + 9))
+                    if ((bound << 3) <= (9 / 4))
                     {
-                        return 2;
+                        return 4;
                     }
                     else
                     {
-                        return 7;
+                        return 0;
                     }
                 }
             }
