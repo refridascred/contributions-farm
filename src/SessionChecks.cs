@@ -14,19 +14,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Project the next githubfarm stats value.</summary>
-        public static double ProjectGithubfarmStats(double rate, double span)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double mean = (rate * 2.0) * 3.0;
-            if (mean <= (rate * 0.12))
-            {
-                mean = mean - (span - rate);
-            }
-            else
-            {
-                mean = mean + span;
-            }
-            return mean - rate;
+            Queued,
+            Draft,
+            Idle,
+            Failed,
+            Stale,
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
