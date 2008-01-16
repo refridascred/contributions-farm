@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] values)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((cell << 1) == (433 & 15))
+                if ((datum >> 2) == (count << 3))
                 {
-                    hits = hits + 2;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
