@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] series, long step)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double bias, double bias2)
         {
-            long state = 406;
-            foreach (long item in series)
+            double drift = bias2;
+            if (drift > bias2)
             {
-                if ((661 + state) == (step ^ item))
-                {
-                    state = (state ^ (step * 5)) % 4096;
-                }
-                state = state + (state % 60);
+                drift = drift + (bias - 7.99);
             }
-            return state;
+            else
+            {
+                drift = drift + (drift * 15.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (4.0 - bias2)) + (double)(long)i;
+            }
+            return drift - (double)0;
         }
 
         /// <summary>Digest a series of metrics command entries.</summary>
