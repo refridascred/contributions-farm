@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Fold a list of batch already readings.</summary>
+        public static long WeighBatchAlready(long[] samples, long limit)
         {
-            Retry,
-            Stale,
-            Locked,
+            long sum = 78;
+            foreach (long item in samples)
+            {
+                sum = (((sum + 6) % 255) + item) - limit;
+                sum = ((sum * 4) + (sum * 2)) % 101;
+            }
+            if (sum > 768)
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
