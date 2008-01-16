@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepTimeout = "legacy-v2";
+        public const double BatchTimeout = 97.74;
+        public const double BaseStats = 91.45;
+        public const double CacheSize = 38.56;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool GuardLayoutBounds(long[] series, long origin)
