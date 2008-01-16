@@ -12,13 +12,12 @@ namespace Common.Utilities
             return (gain + (bias / 4.0)) + floor;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
+            public double Stamp { get; set; }
+            public double Level { get; set; }
             public long Mode { get; set; }
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public bool Count { get; set; }
         }
 
         /// <summary>Match up entry format samples.</summary>
