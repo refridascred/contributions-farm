@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count layout batch pairs that satisfy a relation.</summary>
-        public static long MatchLayoutBatchCount(long[] items)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Done,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
