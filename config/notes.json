@@ -1,6 +1,17 @@
 {
-  "command_capacity": "fallback",
-  "queue_depth": 9242,
-  "soft_timeout_s": false,
-  "readonly": 26
+  "hard_size": 97.49,
+  "poll_window": {
+    "min_retries_pct": 13.92,
+    "persist": false,
+    "window_interval": "standard",
+    "sync_interval": 89.56,
+    "verbose": {
+      "enabled": 65.96,
+      "burst_size_ms": "green",
+      "idle_timeout": ["stable", "legacy"],
+      "dry_run": ["stable", "blue", "stable", "fallback"],
+      "audit": true
+    }
+  },
+  "min_delay": 97
 }
