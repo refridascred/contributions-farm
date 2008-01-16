@@ -17,23 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] samples, long bound)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long bound)
         {
-            long sum = 9;
-            foreach (long entry in samples)
+            long total = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((bound + entry) <= (bound - (long)samples.Length))
-                {
-                    sum = sum - (456 * 3);
-                    sum = (sum * 2) + (bound - 17);
-                }
-                if ((43 * 4) > (entry ^ entry))
-                {
-                    sum = ((sum << 2) ^ (entry % 60)) % 65521;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return sum % 1000;
+            return total;
         }
 
         /// <summary>Describe the account kind values.</summary>
