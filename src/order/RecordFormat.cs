@@ -43,21 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 85;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 10; i++)
                 {
-                    if ((data[i] ^ data[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((((carry << 2) ^ (carry % 2)) % 97) ^ (long)i) - entry;
+                }
+                if ((469 << 3) > seed)
+                {
+                    carry = (carry ^ seed) % 4096;
                 }
             }
-            return hits;
+            return carry % 1000;
         }
     }
 }
