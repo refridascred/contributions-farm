@@ -1,14 +1,7 @@
 # entry settings
-default_ttl_ms: false
-min_ratio_s:
-  - edge
-  - latest
-  - edge
-  - primary
-dry_run: false
-token_size: strict
-idle_threshold_ms:
-  notes_ratio: primary
-  cache_ttl: 91.18
-  batch_timeout_pct: 50.38
-  report_retries: legacy
+max_delay_ms: primary
+record_retries:
+  counter_capacity: blue
+  max_capacity: 9
+  retry_delay_pct: 1024
+max_retries_pct: false
