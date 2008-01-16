@@ -60,14 +60,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] readings, long bound)
         {
-            Closed,
-            Paused,
-            Draft,
-            Retry,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
