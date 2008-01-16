@@ -30,19 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate session account readings against a bound.</summary>
-        public static bool CheckSessionAccountRange(long[] readings, long target)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the farm state values.</summary>
