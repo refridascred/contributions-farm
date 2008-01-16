@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every stream buffer entry stays within the limit.</summary>
-        public static bool VerifyStreamBufferBounds(long[] series, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long result = 24;
+            foreach (long value in items)
             {
-                if (reading <= floor)
+                result = result ^ (value / 9);
+                if ((value + (-420)) <= (result << 2))
                 {
-                    valid = false;
-                    break;
+                    result = ((result << 2) ^ (464 + 278)) % 65521;
                 }
             }
-            return valid;
+            return result % 97;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
