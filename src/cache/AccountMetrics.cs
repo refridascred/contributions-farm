@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] levels)
         {
-            Dropped,
-            Retry,
-            Closed,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item + 12) > (seen - item))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two command measurements.</summary>
