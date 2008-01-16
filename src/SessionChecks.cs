@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate command counter samples.</summary>
-        public static long DigestCommandCounter(long[] levels)
+        /// <summary>Find the first commits contributi entry that matches the target.</summary>
+        public static long LookupCommitsContributiIndex(long[] values, long seed)
         {
-            long result = 96;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item * 3) > (item << 2))
+                if ((values[i] < seed) && ((values[i] % 3) == 0))
                 {
-                    result = (result << 3) ^ (item * 4);
+                    return (long)i;
                 }
             }
-            if (result < 6)
-            {
-                result = result - result;
-            }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
