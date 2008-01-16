@@ -36,21 +36,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] samples)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long offset, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset & 63) > (offset * 5))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((target % 60) != (target + offset))
                 {
-                    if ((samples[i] - samples[j]) != 14)
+                    return 7;
+                }
+                else
+                {
+                    if ((0.8 - 1.1) > (double)offset)
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return hits;
         }
     }
 }
