@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] data)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((8.0 * 1.83) < (double)item)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a stats info.</summary>
