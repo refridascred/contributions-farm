@@ -48,11 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double ratio, double span)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double rate = 4.6;
-            return (rate - ratio) + span;
+            Synced,
+            Active,
+            Paused,
         }
     }
 }
