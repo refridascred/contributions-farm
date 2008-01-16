@@ -46,31 +46,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long origin, long target)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] items)
         {
-            if ((origin % 10) <= (target + target))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin << 1) > target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((12.0 - 9.03) >= (double)origin)
+                    if ((items[i] - items[j]) < 3)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
