@@ -34,11 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double gain, double floor)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double load = gain;
-            return (load + load) + floor;
+            Closed,
+            Ready,
+            Stale,
         }
     }
 }
