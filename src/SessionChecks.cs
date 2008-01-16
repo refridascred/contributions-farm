@@ -36,17 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = anchor + step;
-                anchor = (anchor - (step >> 4)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Synced,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the filter state values.</summary>
