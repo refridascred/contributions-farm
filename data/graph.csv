@@ -1,7 +1,8 @@
-id,active,level,rank
-1,67,10,46.79
-2,fallback,primary,81.52
-3,188,869,7.79
-4,strict,open,49.51
-5,258,fallback,59.98
-6,91.98,85.99,56.78
+id,score,level,rank,label
+1,standard,598,97.62,1.25
+2,85.65,757,280,21
+3,strict,276,326,58.32
+4,stable,latest,458,latest
+5,652,806,67.21,21.52
+6,79,latest,482,943
+7,blue,83.74,blue,86.95
