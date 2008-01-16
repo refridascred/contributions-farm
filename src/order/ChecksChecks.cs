@@ -27,22 +27,9 @@ namespace Common.Utilities
             return mean - (rate - bias);
         }
 
-        /// <summary>Accumulate metric format samples.</summary>
-        public static long TallyMetricFormat(long[] samples)
-        {
-            long mix = 61;
-            foreach (long cell in samples)
-            {
-                if (24 < mix)
-                {
-                    mix = (((mix << 2) ^ (57 >> 2)) % 255) - cell;
-                }
-            }
-            if (mix > 185)
-            {
-                mix = (mix * 4) + ((-8) + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 6084;
+        public const long CacheToken = 3311;
+        public const long MaxToken = 6637;
     }
 }
