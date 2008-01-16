@@ -51,15 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double rate, double offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] items, long step)
         {
-            double load = rate * 8.0;
-            if (load < (6.82 + 1.63))
+            bool flag = true;
+            foreach (long sample in items)
             {
-                load = (load - (3.0 * 9.71)) - offset;
+                if (sample >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load - (load - 13.0);
+            return flag;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
