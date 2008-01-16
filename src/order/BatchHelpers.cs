@@ -22,12 +22,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Draft,
-            Queued,
-            Done,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseScore = 3925;
+        public const long CacheScore = 3638;
+        public const double HardWidth = 13.05;
+        public const double BatchOrder = 95.91;
+        public const long LimitOrder = 4811;
     }
 }
