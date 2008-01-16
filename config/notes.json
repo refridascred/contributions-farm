@@ -1,8 +1,11 @@
 {
-  "sync_depth_s": true,
-  "sync_window_s": "cached",
-  "retry_timeout": 33.52,
-  "retry_interval": [78, 311, 33],
-  "max_interval_pct": 79,
-  "checks_depth": false
+  "retry_threshold_pct": "eu-west",
+  "strict": 60,
+  "warm_timeout": {
+    "checks_depth": 100,
+    "queue_size": 60,
+    "max_limit": false,
+    "poll_interval": false
+  },
+  "verbose": 500
 }
