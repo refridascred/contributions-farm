@@ -41,21 +41,13 @@ namespace Common.Utilities
             return load + (14.0 + bias2);
         }
 
-        /// <summary>Compare every pair of notes channel readings.</summary>
-        public static long PairNotesChannelCount(long[] series)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
