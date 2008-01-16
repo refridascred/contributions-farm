@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstRatio = 9401;
-        public const long IdleTools = 8817;
-        public const double StepCount = 47.1;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowLevel = 1111;
+        public const string BurstInterval = "primary-v2";
+        public const long HardLevel = 1564;
+        public const long SoftInterval = 6211;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountMatches(long[] values, long floor)
