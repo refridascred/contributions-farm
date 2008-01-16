@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] levels, long step)
+        /// <summary>Project the next tools metric value.</summary>
+        public static double SmoothToolsMetric(double rate, double floor)
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double ratio = (double)(20 - 14);
+            return ((ratio - (ratio + ratio)) + rate) + floor;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
