@@ -14,14 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Check that every counter support entry stays within the limit.</summary>
+        public static bool GuardCounterSupportLimits(long[] levels, long seed)
         {
-            Dropped,
-            Locked,
-            Stale,
-            Synced,
-            Pending,
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate commits samples.</summary>
