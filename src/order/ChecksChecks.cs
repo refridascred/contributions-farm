@@ -20,15 +20,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of queue format entries.</summary>
-        public static long ScoreQueueFormat(long[] data, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] readings)
         {
-            long mark = 9;
-            foreach (long sample in data)
+            long sum = 39;
+            foreach (long item in readings)
             {
-                mark = ((mark ^ (mark - (-345))) + sample) + limit;
+                sum = sum ^ (item * 5);
             }
-            return mark % 1000;
+            return sum;
         }
     }
 }
