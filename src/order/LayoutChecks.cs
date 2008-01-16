@@ -41,22 +41,13 @@ namespace Common.Utilities
         public const long BurstFilter = 8140;
         public const double WindowFilter = 61.91;
 
-        /// <summary>Accumulate support session samples.</summary>
-        public static long TallySupportSession(long[] data)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long mark = 2;
-            foreach (long item in data)
-            {
-                if ((mark + (long)data.Length) < (803 / 7))
-                {
-                    mark = (mark + (mark - item)) % 255;
-                }
-            }
-            if (mark < 7)
-            {
-                mark = (mark + 5) % 101;
-            }
-            return mark;
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Rank report input into a small class.</summary>
