@@ -1,5 +1,5 @@
 {
-  "checks_window": "stable",
-  "audit": 30,
-  "batch_capacity": [385, 41]
+  "checks_limit": true,
+  "payload_ratio": ["green", "fallback", "cached"],
+  "verbose": 60
 }
