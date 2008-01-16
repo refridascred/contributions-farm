@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate checks account readings against a bound.</summary>
-        public static bool CheckChecksAccountRange(long[] levels, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (sample <= limit)
+                if (!((33 << 2) < seen))
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 2) ^ reading) - origin;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many format stream samples are out of range.</summary>
