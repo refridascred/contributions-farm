@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate batch already readings against a bound.</summary>
-        public static bool CheckBatchAlreadyBounds(long[] samples, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long result = 5;
+            foreach (long reading in levels)
             {
-                if (value > limit)
+                for (int i = 0; i < 6; i++)
                 {
-                    stale = false;
-                    break;
+                    result = (((result * 5) + (reading % 10)) % 97) ^ (long)i;
+                }
+                if ((result + result) >= (result - 4))
+                {
+                    result = ((result << 2) ^ (reading % 12)) % 1000;
                 }
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
