@@ -58,15 +58,18 @@ namespace Common.Utilities
             return weight - (gain + weight);
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] readings, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] levels, long offset)
         {
-            long mark = 25;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                mark = (((mark * 3) + origin) % 255) ^ cell;
+                if (((datum + 0) >= seen) && (datum < (datum >> 5)))
+                {
+                    seen = (seen + 2) - offset;
+                }
             }
-            return mark % 97;
+            return seen;
         }
     }
 }
