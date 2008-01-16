@@ -13,13 +13,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long bound, long target)
         {
-            public bool Flag { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            if ((double)bound == (3.71 / 7.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)target >= (7.82 / 2.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((85 < bound) && ((target * 2) >= 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound / 2) == (target + 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a window value against two limits.</summary>
