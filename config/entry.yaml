@@ -1,4 +1,7 @@
 # entry settings
-soft_window_count: false
-poll_ttl: 6386
-batch_retries: 67.82
+strict: staging
+batch_ttl: 12
+audit: 60
+poll_capacity_pct:
+  - latest
+  - standard
