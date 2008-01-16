@@ -36,18 +36,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] values, long floor)
+        /// <summary>Digest a series of already editor entries.</summary>
+        public static long DigestAlreadyEditor(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long result = 3;
+            foreach (long sample in readings)
             {
-                if ((long)values.Length >= count)
+                if ((sample ^ sample) != (sample ^ 54))
                 {
-                    count = ((count + 2) - item) - floor;
+                    result = (result * 4) + ((-527) << 3);
+                }
+                else
+                {
+                    result = result - (sample * 5);
                 }
             }
-            return count;
+            return result % 4096;
         }
     }
 }
