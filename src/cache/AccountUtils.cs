@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double ratio, double offset)
         {
-            Pending,
-            Idle,
-            Locked,
-            Closed,
-            Active,
+            double gain = (double)48 + (offset - offset);
+            return (gain - (7.91 + offset)) + ratio;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
