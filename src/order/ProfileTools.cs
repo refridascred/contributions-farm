@@ -23,18 +23,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] levels)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long target, long origin)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long gap = target + origin;
+            if ((double)origin >= (double)target)
             {
-                if (9.0 >= (double)seen)
+                return 5;
+            }
+            else
+            {
+                if (target <= (gap ^ target))
                 {
-                    seen = (seen + 1) ^ datum;
+                    return 3;
+                }
+                else
+                {
+                    if (gap < (target & 63))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin > 9)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
