@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long offset, long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long next = offset - floor;
-            if ((next * 2) != (floor + next))
-            {
-                return 4;
-            }
-            else
-            {
-                if (next > (4 - next))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
