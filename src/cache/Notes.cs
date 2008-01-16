@@ -24,12 +24,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] readings, long seed)
         {
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a record summary.</summary>
