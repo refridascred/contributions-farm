@@ -51,9 +51,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstNotes = "strict-v2";
-        public const long SoftNotes = 804;
-        public const long BatchNotes = 30;
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
