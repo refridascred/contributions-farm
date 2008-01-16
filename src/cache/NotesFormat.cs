@@ -20,13 +20,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Match up checks session samples.</summary>
+        public static long MatchChecksSessionCount(long[] levels)
         {
-            public long Level { get; set; }
-            public double Score { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
