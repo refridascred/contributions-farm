@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] readings, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (!((entry % 8) >= (759 << 3)))
+                if (matches < (offset - 1))
                 {
-                    tally = (tally + 3) - origin;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Rank contributi notes input into a small class.</summary>
