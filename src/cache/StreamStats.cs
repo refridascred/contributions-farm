@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] series, long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            New,
+            Idle,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
