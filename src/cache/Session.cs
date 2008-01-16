@@ -13,20 +13,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Derive the next counter entry value from a seed.</summary>
-        public static long DeriveCounterEntry(long bound)
+        /// <summary>Digest a series of batches stats entries.</summary>
+        public static long DigestBatchesStats(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            long carry = 310;
+            foreach (long datum in values)
             {
-                if (((178 >> 4) == ((long)i - anchor)) || (anchor <= bound))
+                if ((datum % 16) < (165 % 10))
                 {
-                    anchor = anchor - (anchor + 6);
-                    anchor = anchor + anchor;
+                    carry = (carry * 5) + (62 - datum);
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return carry % 4096;
         }
 
         /// <summary>Describe the queue mode values.</summary>
