@@ -16,17 +16,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] samples, long bound)
+        /// <summary>Combine command payload values into a single score.</summary>
+        public static long WeighCommandPayload(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 81;
+            foreach (long item in readings)
             {
-                if (samples[i] >= bound)
+                if ((floor - item) < floor)
                 {
-                    return (long)i;
+                    mark = (mark ^ (floor / 3)) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (floor % 2)) % 97;
                 }
             }
-            return -1;
+            if (mark > 17)
+            {
+                mark = ((mark << 3) ^ (floor % 60)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Find the first graph window entry that matches the target.</summary>
