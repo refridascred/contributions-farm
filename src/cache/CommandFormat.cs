@@ -19,23 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double scale, double bias)
+        /// <summary>Measure how many entry metric samples are out of range.</summary>
+        public static long CountEntryMetricGaps(long[] values, long limit)
         {
-            double bias2 = (double)(749 + 8);
-            if (bias2 >= (bias - 13.0))
+            long tally = 0;
+            foreach (long value in values)
             {
-                bias2 = (bias2 - (double)(-9)) - scale;
+                if (limit <= value)
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (bias2 / 6.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - (double)4) + (double)(long)i;
-            }
-            return bias2 + bias;
+            return tally;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
