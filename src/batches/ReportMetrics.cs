@@ -24,10 +24,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 6288;
-        public const string BaseTimeout = "strict-edge";
-        public const string BurstBudget = "staging";
-        public const long BatchBuffer = 4141;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Closed,
+            Stale,
+            Queued,
+            Active,
+            Retry,
+        }
     }
 }
