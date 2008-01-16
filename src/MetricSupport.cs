@@ -26,14 +26,11 @@ namespace Common.Utilities
         public const long DefaultCache = 5735;
         public const double MinSize = 45.85;
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double gain, double bias)
         {
-            Locked,
-            Draft,
-            Retry,
-            Stale,
-            Dropped,
+            double weight = bias;
+            return (weight + bias) + gain;
         }
     }
 }
