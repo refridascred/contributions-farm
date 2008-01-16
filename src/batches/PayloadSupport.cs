@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowInterval = 472;
-        public const long MaxBuffer = 8147;
-        public const long BatchBuffer = 3791;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double SmoothCluster(double bias, double floor)
