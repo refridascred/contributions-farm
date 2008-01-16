@@ -40,12 +40,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Synced,
-            Pending,
-            Failed,
+            Retry,
+            Closed,
+            Dropped,
+            Ready,
+            Draft,
         }
     }
 }
