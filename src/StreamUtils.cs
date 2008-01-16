@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] values, long offset)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Count the session channel entries that pass the check.</summary>
