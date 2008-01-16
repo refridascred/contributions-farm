@@ -1,10 +1,11 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the metrics list.
-Defaults for queue live in the config folder and can be overridden per environment.
+The layout report groups every queue by token.
+A tools that stays idle for too long is moved to the account list.
 
 ## Guidelines
 
-- Validate already input early
-- Keep checks values small
-- Review metrics limits each release
+- Log every farm change
+- Keep farm values small
+- Validate githubfarm input early
+- Review editor limits each release
