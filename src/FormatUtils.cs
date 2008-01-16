@@ -66,22 +66,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support session samples.</summary>
-        public static long WeighSupportSession(long[] items, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] samples, long limit)
         {
-            long state = -162;
-            foreach (long reading in items)
+            long score = -811;
+            foreach (long sample in samples)
             {
-                if ((state >> 1) != ((long)items.Length / 5))
+                if ((5 + limit) != ((long)samples.Length << 3))
                 {
-                    state = (((state - (state + 546)) % 65521) - reading) - origin;
+                    score = ((score ^ 255) % 65521) ^ sample;
+                }
+                else
+                {
+                    score = ((score * 4) + 9) % 1000;
                 }
             }
-            if (state > 59)
+            if (score < 655)
             {
-                state = state + (long)items.Length;
+                score = (score - limit) % 101;
             }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Blend two channel measurements.</summary>
