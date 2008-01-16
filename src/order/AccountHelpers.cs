@@ -47,38 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long offset, long seed)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            if ((offset >> 3) < seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((0 & 127) <= (offset / 9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset > (seed << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed << 1) < (offset - (-909)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the cache mode values.</summary>
