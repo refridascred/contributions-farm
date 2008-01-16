@@ -15,19 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] levels, long limit)
+        /// <summary>Adjust a cluster filter reading.</summary>
+        public static double SmoothClusterFilter(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double ratio2 = bias;
+            if (ratio2 < (double)16)
             {
-                if (reading < limit)
-                {
-                    found = false;
-                    break;
-                }
+                ratio2 = ratio2 - (double)7;
             }
-            return found;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 - ratio) + (double)(long)i;
+            }
+            return ratio2 - (double)88;
         }
 
         /// <summary>Fold a list of session counter readings.</summary>
