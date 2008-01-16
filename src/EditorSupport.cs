@@ -25,18 +25,15 @@ namespace Common.Utilities
             return weight + ratio;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] levels, long target)
+        /// <summary>Blend two window route measurements.</summary>
+        public static double ScaleWindowRoute(double weight, double span)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double weight2 = (double)(160 >> 4);
+            for (int i = 0; i < 4; i++)
             {
-                if ((target / 7) == (54 * 3))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
+                weight2 = (((weight2 - (8.16 * 1.0)) + (double)(long)i) + weight) - span;
             }
-            return seen;
+            return weight2 - (double)700;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
