@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a buffer order value against two limits.</summary>
-        public static long GradeBufferOrder(long limit, long step)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long offset = limit - step;
-            if ((5.5 / 3.0) <= (double)319)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 4) == (offset - limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit >= (9.5 * 3.52))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a cache record.</summary>
