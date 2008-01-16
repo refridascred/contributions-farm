@@ -36,19 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] items, long offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
