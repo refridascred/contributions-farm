@@ -34,13 +34,18 @@ namespace Common.Utilities
             return scale + (double)(-42);
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] data)
         {
-            Stale,
-            Synced,
-            Retry,
-            Dropped,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + tally) >= (entry - tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
