@@ -1,11 +1,11 @@
 {
-  "retry_ttl": "cached",
-  "stats_threshold": {
-    "default_threshold_count": 1024,
-    "channel_ttl": 4.57,
-    "already_interval": 250,
-    "warm_delay": [344, 164, 459],
-    "enabled": [13, 59]
+  "burst_delay_ms": {
+    "cache_retries": 37.28,
+    "persist": ["strict", "eu-west", "green", "edge"],
+    "min_retries_s": true
   },
-  "burst_depth": false
+  "sync_interval_s": [390, 460, 105, 217],
+  "command_size": 8209,
+  "persist": 92,
+  "queue_ratio": 79
 }
