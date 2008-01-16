@@ -34,12 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] levels, long origin)
         {
-            Closed,
-            Ready,
-            Stale,
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
