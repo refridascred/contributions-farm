@@ -27,26 +27,39 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long floor, long target)
         {
-            long total = 88;
-            foreach (long datum in readings)
+            long diff = floor - target;
+            if (floor >= (target >> 1))
             {
-                if ((total << 2) <= total)
+                return 7;
+            }
+            else
+            {
+                if (((target ^ floor) <= floor) && ((double)target >= (0.3 + 5.75)))
                 {
-                    total = ((total * 4) + (total - total)) % 65521;
+                    return 4;
                 }
                 else
                 {
-                    total = total + datum;
+                    if ((8.0 / 3.0) == (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(floor <= diff))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (total < 89)
-            {
-                total = (total ^ (total & 1)) % 101;
-            }
-            return total % 65521;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
