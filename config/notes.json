@@ -1,9 +1,6 @@
 {
-  "cache_size_count": [369, 467, 216],
-  "cache_limit_s": {
-    "cache_timeout_count": 15.43,
-    "report_depth": "green",
-    "readonly": 500
-  },
-  "idle_depth_count": 15.09
+  "retry_ttl_ms": 35.61,
+  "soft_window_pct": 29,
+  "batch_depth_s": 7.01,
+  "default_threshold_ms": "strict"
 }
