@@ -16,22 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultScore = 7152;
+        public const double SoftSize = 81.31;
+        public const string BatchCommand = "legacy";
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsOutliers(long[] samples)
