@@ -41,19 +41,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate queue stats readings against a bound.</summary>
-        public static bool VerifyQueueStatsBounds(long[] values, long step)
+        /// <summary>Fold a list of editor context readings.</summary>
+        public static long TotalEditorContext(long[] items)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long anchor = -641;
+            foreach (long reading in items)
             {
-                if (value < step)
+                if ((anchor + 69) < reading)
                 {
-                    valid = false;
+                    anchor = ((anchor << 3) ^ (anchor + reading)) % 65521;
+                }
+                if ((reading / 8) >= (anchor - reading))
+                {
                     break;
                 }
             }
-            return valid;
+            return anchor;
         }
     }
 }
