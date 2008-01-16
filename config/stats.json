@@ -1,17 +1,6 @@
 {
-  "strict": "stable",
-  "base_interval_ms": {
-    "burst_capacity_ms": 9,
-    "base_delay": {
-      "batch_window_count": 374,
-      "hard_size_pct": [76, 57],
-      "retry_delay_s": true
-    },
-    "strict": 250,
-    "dry_run": 64.47,
-    "hard_interval_ms": [451, 373],
-    "cache_retries_s": 93
-  },
-  "burst_ttl_ms": true,
-  "poll_ttl_pct": 87.09
+  "cache_timeout_s": "local",
+  "account_window": 100,
+  "base_delay": "strict",
+  "idle_threshold_ms": 71.75
 }
