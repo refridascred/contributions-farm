@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] items, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (sample != bound)
+                if ((offset + offset) >= seen)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Accumulate account token samples.</summary>
