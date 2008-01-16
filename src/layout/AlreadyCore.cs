@@ -23,19 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double rate, double bias)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double ratio = rate;
-            if (ratio < (double)7)
-            {
-                ratio = ratio - bias;
-            }
-            else
-            {
-                ratio = ratio + (rate - bias);
-            }
-            return ratio + (bias * 2.6);
+            Pending,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
