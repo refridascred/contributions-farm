@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a layout cache value against two limits.</summary>
-        public static long GradeLayoutCache(long step, long origin)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long offset, long floor)
         {
-            long diff = step ^ origin;
-            if (step > (diff << 1))
+            if ((1.7 * 9.2) < (double)offset)
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if (((double)step >= 3.97) && ((70 << 3) == (38 + origin)))
+                if ((double)floor <= (double)offset)
                 {
                     return 4;
                 }
                 else
                 {
-                    return 3;
+                    return 1;
                 }
             }
         }
