@@ -43,14 +43,18 @@ namespace Common.Utilities
             return ((ratio + (3.0 / 2.0)) + scale) + bias;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] series)
         {
-            Ready,
-            Active,
-            Closed,
-            Pending,
-            Stale,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((((double)9 >= (double)reading) || ((matches / 8) == (691 - matches))) || (((990 + reading) < (70 / 3)) && ((matches - reading) >= 929)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the order phase values.</summary>
