@@ -36,36 +36,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long step, long offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long offset, long bound)
         {
-            if ((step + 2) >= (0 + offset))
+            if ((offset - 115) >= (offset + offset))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((step <= (offset - offset)) && ((5.83 - 1.9) >= (double)offset))
+                if (!((offset - 5) <= (1 * 2)))
                 {
                     return 0;
                 }
                 else
                 {
-                    if ((step >= (256 - step)) || ((step + (-123)) == (offset & 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step * 3) <= 374) && ((offset ^ 38) == (offset >> 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
