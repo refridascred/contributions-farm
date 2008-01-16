@@ -1,6 +1,8 @@
 {
-  "burst_threshold_pct": 79.25,
-  "queue_capacity": "stable",
   "readonly": false,
-  "farm_timeout": [321, 453, 38]
+  "layout_capacity": 1024,
+  "min_interval_pct": ["primary", "legacy", "legacy"],
+  "persist": 41,
+  "idle_interval": 1.43,
+  "min_window_count": 76.3
 }
