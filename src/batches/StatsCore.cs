@@ -13,17 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] readings, long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a batch entry.</summary>
