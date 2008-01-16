@@ -16,23 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine order tools values into a single score.</summary>
-        public static long CombineOrderTools(long[] readings, long bound)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] items, long target)
         {
-            long acc = 788;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (((2.7 * 6.6) != (double)reading) && ((bound - reading) < reading))
+                if (reading <= target)
                 {
-                    acc = (acc - (bound - bound)) % 101;
+                    flag = false;
+                    break;
                 }
-                acc = acc - acc;
             }
-            if (acc < 88)
-            {
-                acc = (acc << 3) ^ (acc * 5);
-            }
-            return acc % 97;
+            return flag;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
