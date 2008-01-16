@@ -33,20 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm route value from a seed.</summary>
-        public static long RollFarmRoute(long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                mix = (mix - (origin + origin)) % 4096;
-                if (mix >= ((long)i * 5))
+                carry = ((carry * 3) + (long)i) % 255;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    mix = mix + (5 * 2);
+                    carry = ((carry ^ (933 - floor)) % 4096) - (long)i2;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
+                carry = (carry ^ (carry & 7)) % 4096;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
