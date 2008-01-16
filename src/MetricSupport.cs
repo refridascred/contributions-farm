@@ -24,23 +24,18 @@ namespace Common.Utilities
             return bias - 3.2;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double ratio, double bias)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] items, long step)
         {
-            double weight = (bias * 1.75) / 6.0;
-            if (weight > (ratio + 6.0))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                weight = weight + weight;
+                if (((long)items.Length / 7) == (step >> 5))
+                {
+                    tally = (tally + 3) + entry;
+                }
             }
-            else
-            {
-                weight = weight + 2.84;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight + (ratio * 7.46);
+            return tally;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
