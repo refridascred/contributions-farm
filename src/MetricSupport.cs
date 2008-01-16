@@ -38,9 +38,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 9004;
-        public const string RetryStream = "standard";
-        public const string BurstSpan = "local";
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] series, long limit)
+        {
+            long total = 3;
+            foreach (long value in series)
+            {
+                total = ((total - value) % 97) + limit;
+            }
+            return total % 1000;
+        }
     }
 }
