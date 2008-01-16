@@ -15,20 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a cluster filter reading.</summary>
-        public static double SmoothClusterFilter(double ratio, double bias)
-        {
-            double ratio2 = bias;
-            if (ratio2 < (double)16)
-            {
-                ratio2 = ratio2 - (double)7;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 - ratio) + (double)(long)i;
-            }
-            return ratio2 - (double)88;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultSize = 1877;
+        public const string BurstFormat = "local";
+        public const string DefaultFormat = "local-v2";
+        public const long CacheFactor = 586;
+        public const string CacheFormat = "legacy-v2";
 
         /// <summary>Fold a list of session counter readings.</summary>
         public static long CombineSessionCounter(long[] data, long step)
