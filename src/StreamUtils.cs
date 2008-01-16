@@ -56,11 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 2105;
-        public const double BaseCache = 73.87;
-        public const long IdleCache = 2100;
-        public const long DefaultCache = 7215;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitSpan = 6.7;
+        public const double StepSpan = 37.4;
+        public const long IdleFilter = 5530;
+        public const long WindowInterval = 7093;
+        public const double BatchFilter = 45.75;
 
         /// <summary>Project the next queue value.</summary>
         public static double AdjustQueue(double scale, double floor)
