@@ -13,15 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] samples, long limit)
+        /// <summary>Count batches farm pairs that satisfy a relation.</summary>
+        public static long PairBatchesFarmCount(long[] series)
         {
-            long score = 2;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (((score << 2) ^ reading) % 65521) - limit;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Rank checks githubfarm input into a small class.</summary>
