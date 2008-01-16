@@ -52,19 +52,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] values, long floor)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
