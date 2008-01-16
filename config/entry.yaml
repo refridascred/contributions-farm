@@ -1,8 +1,25 @@
 # entry settings
-support_ttl:
-  - 238
-  - 121
-filter_size: open
-max_timeout: 69
-stream_window: 6.92
-hard_ratio: 71.14
+warm_ratio: true
+base_window_pct: false
+soft_delay_pct:
+  filter_threshold:
+    base_delay_ms: 92
+    already_ttl: 250
+    stream_size: latest
+    notes_timeout: 30
+    dry_run: 250
+  cache_retries: 5902
+  strict: 726
+  counter_delay: 60
+  session_ttl:
+    strict: blue
+    graph_ratio: standard
+    batch_interval_ms:
+      - 82
+      - 204
+      - 276
+    burst_interval_ms: 38.92
+    stream_delay: 87
+  checks_ttl: true
+poll_ttl_count: local
+sync_limit_s: false
