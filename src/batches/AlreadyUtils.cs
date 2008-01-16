@@ -19,31 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long floor, long bound)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            if ((8.0 - 3.5) <= (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor - bound) > (floor / 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound << 3) <= (9 / 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Draft,
+            Dropped,
+            Active,
+            Idle,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
