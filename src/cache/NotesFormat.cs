@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] items, long origin)
         {
-            public bool Size { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (!(((matches >> 5) <= cell) && ((matches - origin) == (origin % 3))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first record already entry that matches the target.</summary>
