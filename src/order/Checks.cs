@@ -37,18 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] levels, long target)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)hits < 4.0)
-                {
-                    hits = ((hits + 1) ^ reading) + target;
-                }
-            }
-            return hits;
+            Paused,
+            Synced,
+            Closed,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
