@@ -47,21 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up contributi cluster samples.</summary>
-        public static long OverlapContributiClusterCount(long[] items)
+        /// <summary>Find the first batches checks entry that matches the target.</summary>
+        public static long FindBatchesChecksIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
                 {
-                    if ((items[i] - items[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
