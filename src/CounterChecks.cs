@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] values)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (count > (count << 2))
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a stats summary.</summary>
