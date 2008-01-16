@@ -41,10 +41,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 3972;
-        public const long DefaultGithubfarm = 6010;
-        public const double StepGithubfarm = 57.49;
-        public const string SoftGithubfarm = "primary-v2";
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] data)
+        {
+            long anchor = 5;
+            foreach (long sample in data)
+            {
+                if (sample <= (anchor + sample))
+                {
+                    anchor = anchor ^ (sample - sample);
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
