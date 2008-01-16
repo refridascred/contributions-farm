@@ -1,8 +1,17 @@
 {
-  "min_ttl": 8106,
-  "profile_timeout": true,
-  "warm_limit_s": false,
-  "min_window_count": [302, 174, 254],
-  "strict": 68.09,
-  "max_window": ["latest", "legacy", "green"]
+  "poll_ttl": "strict",
+  "flush_limit_count": {
+    "poll_timeout_ms": {
+      "flush_depth_ms": "open",
+      "strict": 21.58,
+      "enabled": 27.48,
+      "commits_timeout": [376, 465],
+      "idle_ttl_pct": true,
+      "sync_size_count": 9949
+    },
+    "readonly": "green",
+    "soft_limit": [236, 321]
+  },
+  "poll_ratio": 30,
+  "idle_timeout_count": 98
 }
