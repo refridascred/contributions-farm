@@ -42,22 +42,15 @@ namespace Common.Utilities
             return load - (double)6;
         }
 
-        /// <summary>Audit format notes readings against a rule.</summary>
-        public static long CountFormatNotesMatches(long[] samples, long offset)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double rate, double offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            double load = rate * 8.0;
+            if (load < (6.82 + 1.63))
             {
-                if ((double)entry >= (3.0 - 12.0))
-                {
-                    count = (count + 2) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = (load - (3.0 * 9.71)) - offset;
             }
-            return count;
+            return load - (load - 13.0);
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
