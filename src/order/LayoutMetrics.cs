@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Queued,
-            Failed,
-            Pending,
-            Ready,
+            Done,
+            Paused,
+            New,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
