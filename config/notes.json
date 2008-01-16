@@ -1,8 +1,13 @@
 {
-  "contributi_retries": 9632,
-  "record_window": 1024,
-  "notes_limit": "latest",
-  "poll_limit_s": 38,
-  "layout_ratio": "latest",
-  "warm_threshold_s": [70, 470]
+  "profile_capacity": "latest",
+  "payload_limit": {
+    "schema_delay": "open",
+    "warm_limit": 59,
+    "base_ratio": "legacy",
+    "metric_timeout": 4,
+    "hard_window": 100
+  },
+  "buffer_delay": false,
+  "poll_size": 1024,
+  "checks_size": "legacy"
 }
