@@ -32,18 +32,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] data, long step)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum >> 1) > step)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            Closed,
+            Done,
+            New,
+            Idle,
         }
     }
 }
