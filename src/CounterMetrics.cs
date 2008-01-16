@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public bool Label { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            Failed,
+            Closed,
+            Idle,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
