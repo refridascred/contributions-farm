@@ -1,32 +1,10 @@
 # support settings
-verbose: 4147
-payload_ttl:
-  - 453
-  - 178
-max_timeout_s:
-  batch_limit_count: cached
-  batches_threshold: 30
-  metrics_limit: green
-  default_delay_ms:
-    - 249
-    - 413
-    - 39
-  cache_window_s:
-    - legacy
-    - strict
-    - legacy
-idle_window_s: 4197
-entry_interval:
-  - legacy
-  - blue
-  - local
-cache_ratio_count:
-  route_ttl: latest
-  enabled: 24.43
-  batches_limit: stable
-  retry_size:
-    soft_size: eu-west
-    dry_run: staging
-    soft_size_pct: stable
-    already_window: green
-    max_timeout: 1236
+notes_window: latest
+min_delay_pct: 73.61
+buffer_retries: staging
+max_ttl:
+  - 423
+  - 479
+  - 340
+checks_limit: true
+burst_interval_pct: latest
