@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long origin, long target)
+        /// <summary>Digest a series of profile format entries.</summary>
+        public static long ScoreProfileFormat(long[] samples)
         {
-            if (target < (target + origin))
+            long result = 5;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin - origin) >= (890 - 657)) && (9 >= target))
+                result = (result * 5) + (item - result);
+                result = (result ^ (result * 5)) % 4096;
+                if ((item + item) >= item)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + origin) != (origin & 63))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin <= (origin / 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
