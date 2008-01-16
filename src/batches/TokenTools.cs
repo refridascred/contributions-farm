@@ -23,19 +23,17 @@ namespace Common.Utilities
         public const string CacheScore = "standard";
         public const long MinFactor = 9628;
 
-        /// <summary>Project the next editor stream value.</summary>
-        public static double ProjectEditorStream(double rate, double bias)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] series, long offset)
         {
-            double drift = (4.91 + bias) + (bias / 7.0);
-            if (drift >= (rate + 1.79))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (bias - 1.0);
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (bias + bias);
-            }
-            return drift + rate;
+            return -1;
         }
     }
 }
