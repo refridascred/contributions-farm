@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] readings, long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (readings[i] >= limit)
+                if (count > (count << 2))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the farm layout entries that pass the check.</summary>
