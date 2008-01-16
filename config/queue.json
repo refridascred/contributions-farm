@@ -1,5 +1,11 @@
 {
-  "farm_ttl": 1024,
-  "max_limit": 8106,
-  "soft_window": 38.25
+  "base_ttl": 92,
+  "sync_ttl": {
+    "contributi_ratio": 250,
+    "idle_size_pct": 1024,
+    "persist": "cached",
+    "layout_depth": 2
+  },
+  "layout_interval": [317, 13, 237],
+  "base_threshold_s": "primary"
 }
