@@ -47,14 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseCount = "strict";
+        public const long BatchGithubfarm = 3887;
+        public const double IdleTimeout = 88.84;
+        public const double RetryDepth = 98.56;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryOutliers(long[] data, long limit)
