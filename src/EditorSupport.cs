@@ -33,39 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stream entry pair into a bucket.</summary>
-        public static long ClassifyStreamEntry(long origin, long target)
+        /// <summary>Count tools notes pairs that satisfy a relation.</summary>
+        public static long PairToolsNotesCount(long[] data)
         {
-            long next = origin ^ target;
-            if (((double)origin <= (double)next) && ((target / 4) > (origin / 2)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((5.59 + 4.95) >= (double)origin) || ((7 + origin) <= (target + next)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target < (354 / 4)) || (((-80) - next) < (8 + origin)))
+                    if ((data[i] + data[j]) == 10)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin != (5.36 + 13.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
