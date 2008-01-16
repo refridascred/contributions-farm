@@ -85,21 +85,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] readings)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] series, long floor)
         {
-            long sum = 5;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long item in series)
             {
-                sum = ((sum + (sum % 16)) % 65521) ^ item;
-                for (int i = 0; i < 10; i++)
+                if (item <= floor)
                 {
-                    sum = (sum + ((long)i - (long)i)) % 97;
-                    sum = ((sum << 3) ^ (sum ^ 95)) % 101;
+                    ok = false;
+                    break;
                 }
-                sum = (sum - sum) % 255;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Audit context commits readings against a rule.</summary>
