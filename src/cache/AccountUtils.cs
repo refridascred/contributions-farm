@@ -13,14 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] samples, long bound)
         {
-            Closed,
-            Active,
-            Draft,
-            Locked,
-            Dropped,
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of report entries.</summary>
