@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long HardCommits = 8147;
         public const long MaxSize = 3626;
 
-        /// <summary>Compare every pair of contributi token readings.</summary>
-        public static long CompareContributiTokenCount(long[] readings)
+        /// <summary>Measure how many editor payload samples are out of range.</summary>
+        public static long CountEditorPayloadGaps(long[] readings, long origin)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((8 < value) || ((value - origin) != (seen - value)))
                 {
-                    if ((readings[i] ^ readings[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
