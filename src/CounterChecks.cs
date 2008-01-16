@@ -48,22 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] items, long floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading < 5.71)
-                {
-                    hits = (hits + 2) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Look up the position of a farm buffer sample.</summary>
