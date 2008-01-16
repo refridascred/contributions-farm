@@ -84,11 +84,19 @@ namespace Common.Utilities
             return rate + 9.0;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double rate, double offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double gain, double offset)
         {
-            double load = (double)(96 + 780);
-            return ((load + load) + rate) + offset;
+            double gain2 = (double)2 / 4.0;
+            if (gain2 <= (double)227)
+            {
+                gain2 = (gain2 + (gain2 / 9.0)) - gain;
+            }
+            else
+            {
+                gain2 = gain2 + (double)(-955);
+            }
+            return gain2 - offset;
         }
     }
 }
