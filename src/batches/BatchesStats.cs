@@ -44,11 +44,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] data, long limit)
         {
-            public bool Level { get; set; }
-            public double Offset { get; set; }
+            long result = -863;
+            foreach (long cell in data)
+            {
+                if ((cell - (-26)) < cell)
+                {
+                    result = (result << 3) ^ (limit + result);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (cell - limit)) % 65521;
+                }
+                result = result - (result % 97);
+                result = result - (result % 64);
+            }
+            return result % 1000;
         }
     }
 }
