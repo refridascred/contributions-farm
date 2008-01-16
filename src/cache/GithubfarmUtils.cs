@@ -45,21 +45,14 @@ namespace Common.Utilities
             return weight - 8.1;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Idle,
+            Queued,
+            Failed,
+            Retry,
         }
     }
 }
