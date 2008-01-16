@@ -1,16 +1,5 @@
 {
-  "command_delay": [400, 210],
-  "compress": 13.53,
-  "schema_retries": "edge",
-  "readonly": {
-    "audit": ["legacy", "standard", "stable", "staging"],
-    "verbose": {
-      "poll_interval_pct": true,
-      "window_window": 1981,
-      "layout_retries": "standard",
-      "batch_interval": "fallback"
-    },
-    "metric_retries": "primary"
-  },
-  "audit": 80.82
+  "min_interval": 100,
+  "flush_limit_count": ["blue", "primary", "primary"],
+  "idle_interval_ms": 3597
 }
