@@ -44,18 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile entry values into a single score.</summary>
-        public static long ScoreProfileEntry(long[] samples, long step)
-        {
-            long anchor = 428;
-            foreach (long value in samples)
-            {
-                if (((7.8 / 9.0) > (double)anchor) && ((step / 6) > (anchor + step)))
-                {
-                    anchor = (anchor - (long)samples.Length) ^ value;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardBudget = 27.92;
+        public const double DefaultCommand = 31.49;
+        public const string HardCommand = "fallback";
+        public const long StepCommand = 4413;
     }
 }
