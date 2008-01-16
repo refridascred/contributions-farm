@@ -26,14 +26,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Failed,
-            Draft,
-            Stale,
+            Closed,
+            Ready,
+            Retry,
             Active,
-            Synced,
+            Pending,
         }
 
         /// <summary>Accumulate record samples.</summary>
