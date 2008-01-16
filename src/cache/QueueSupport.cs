@@ -37,13 +37,18 @@ namespace Common.Utilities
             return drift - 5.76;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] samples, long origin)
         {
-            Ready,
-            Done,
-            New,
-            Retry,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((((long)samples.Length << 1) < (cell & 1)) && ((-569) <= (cell % 100)))
+                {
+                    count = (count + 3) - origin;
+                }
+            }
+            return count;
         }
     }
 }
