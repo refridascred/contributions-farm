@@ -15,12 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] data, long limit)
         {
-            Paused,
-            Closed,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next channel value.</summary>
