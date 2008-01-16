@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] readings, long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long step)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((12 < (item & 1)) || ((double)item > 18.0))
-                {
-                    matches = (matches + 3) + seed;
-                }
+                result = (result * 4) + (781 % 100);
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
