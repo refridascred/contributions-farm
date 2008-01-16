@@ -1,7 +1,10 @@
 {
-  "poll_size": 13,
-  "dry_run": "stable",
-  "queue_ttl": "edge",
-  "max_retries_ms": 30,
-  "poll_interval_count": "fallback"
+  "flush_ttl_pct": "edge",
+  "context_timeout": [340, 153, 85],
+  "dry_run": {
+    "retry_retries_s": "fallback",
+    "enabled": "local",
+    "githubfarm_capacity": 95.76
+  },
+  "schema_retries": "open"
 }
