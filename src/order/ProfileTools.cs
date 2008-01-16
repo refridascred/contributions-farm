@@ -22,13 +22,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
+            Active,
+            Synced,
+            Stale,
+            New,
+            Locked,
         }
 
         /// <summary>Digest a series of record entries.</summary>
