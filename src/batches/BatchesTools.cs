@@ -34,27 +34,13 @@ namespace Common.Utilities
             return scale + (double)(-42);
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] values)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long anchor = 776;
-            foreach (long sample in values)
-            {
-                if ((anchor + sample) >= (39 & 31))
-                {
-                    anchor = (anchor - (56 % 7)) % 65521;
-                }
-                anchor = (anchor - (sample * 5)) % 1000;
-                if ((6.0 * 20.0) != (double)sample)
-                {
-                    break;
-                }
-            }
-            if (anchor > 48)
-            {
-                anchor = ((anchor * 3) + (anchor - anchor)) % 4096;
-            }
-            return anchor % 65521;
+            Stale,
+            Synced,
+            Retry,
+            Dropped,
         }
     }
 }
