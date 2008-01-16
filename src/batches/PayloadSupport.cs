@@ -13,17 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a session tools sample.</summary>
-        public static long SeekSessionToolsIndex(long[] levels, long bound)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
