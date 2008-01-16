@@ -25,22 +25,18 @@ namespace Common.Utilities
             return ratio + (double)(-8);
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] series, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] series)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (cell > 914)
+                if ((double)entry <= 4.0)
                 {
-                    count = (count + 2) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
