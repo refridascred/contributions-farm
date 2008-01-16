@@ -58,39 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long target, long offset)
-        {
-            if (target <= (target - target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset < (9.0 + 1.78))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((1.4 / 9.0) != (double)target) && ((double)offset <= (3.0 - 2.21)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((3.01 * 2.0) != (double)offset) || ((25 ^ target) < (-847)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchBudget = 56.81;
+        public const long StepDepth = 5909;
+        public const long RetryLayout = 6757;
+        public const string BurstCount = "staging";
+        public const string BatchWidth = "standard-1";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsHits(long[] items)
