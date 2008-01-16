@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double bias, double floor)
         {
-            Dropped,
-            Failed,
-            Locked,
-            Retry,
-            Paused,
+            double bias2 = (floor - bias) + (floor * 13.0);
+            if (bias2 <= (bias * 8.01))
+            {
+                bias2 = bias2 + floor;
+            }
+            else
+            {
+                bias2 = bias2 - 1.7;
+            }
+            return bias2 + 5.6;
         }
 
         /// <summary>Describe the entry class values.</summary>
