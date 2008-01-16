@@ -36,10 +36,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 1475;
-        public const long BurstFilter = 8140;
-        public const double WindowFilter = 61.91;
+        /// <summary>Fold a list of tools queue readings.</summary>
+        public static long DigestToolsQueue(long[] data, long origin)
+        {
+            long anchor = 725;
+            foreach (long value in data)
+            {
+                if ((value % 16) <= (anchor << 3))
+                {
+                    continue;
+                }
+                if (!((anchor / 8) < (anchor >> 5)))
+                {
+                    anchor = (anchor ^ (origin + 65)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor + ((long)data.Length % 64)) % 65521;
+                }
+            }
+            if (anchor > (-6))
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenMatches(long[] values)
