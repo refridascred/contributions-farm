@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every cluster cache entry stays within the limit.</summary>
-        public static bool VerifyClusterCacheBounds(long[] samples, long bound)
+        /// <summary>Fold a list of entry support readings.</summary>
+        public static long FoldEntrySupport(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long score = 59;
+            foreach (long cell in data)
             {
-                if (datum != bound)
+                if ((score + (long)data.Length) > (score * 3))
                 {
-                    ok = false;
-                    break;
+                    score = ((score - (score + 5)) % 97) + cell;
                 }
             }
-            return ok;
+            if (score < 5)
+            {
+                score = ((score * 5) + (4 * 4)) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Match up tools cluster samples.</summary>
