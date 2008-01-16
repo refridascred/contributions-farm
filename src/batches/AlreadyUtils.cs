@@ -55,19 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] samples)
-        {
-            long state = 7;
-            foreach (long cell in samples)
-            {
-                if ((640 + (-6)) == (22 + state))
-                {
-                    state = (state + (9 + cell)) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 8976;
+        public const long IdleBudget = 3177;
+        public const string SoftEntry = "local-1";
+        public const long DefaultEntry = 6852;
+        public const string BaseEntry = "strict";
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long BucketPayload(long origin, long bound)
