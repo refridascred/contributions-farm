@@ -64,23 +64,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double gain, double bias)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] readings, long offset)
         {
-            double rate = (double)(4 >> 1);
-            if (rate >= 6.74)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate - 2.5) - gain;
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - (bias + bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate + rate;
+            return -1;
         }
     }
 }
