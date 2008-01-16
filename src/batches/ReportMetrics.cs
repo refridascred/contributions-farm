@@ -19,18 +19,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine tools profile values into a single score.</summary>
-        public static long WeighToolsProfile(long[] items)
+        /// <summary>Locate a channel entry reading by value.</summary>
+        public static long LocateChannelEntryIndex(long[] data, long origin)
         {
-            long acc = 797;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc > (value * 3)) && (19.0 >= (double)acc))
+                if ((data[i] <= origin) && ((data[i] % 2) == 0))
                 {
-                    acc = (acc * 5) + (value + value);
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Combine command values into a single score.</summary>
