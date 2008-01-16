@@ -19,11 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next schema support value.</summary>
-        public static double BlendSchemaSupport(double bias, double bias2)
+        /// <summary>Project the next already session value.</summary>
+        public static double SmoothAlreadySession(double ratio, double offset)
         {
-            double bias3 = bias2;
-            return bias3 + bias;
+            double mean = 1.5;
+            if (mean <= offset)
+            {
+                mean = (mean + (mean + mean)) - ratio;
+            }
+            return mean - (double)18;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
