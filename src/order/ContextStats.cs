@@ -29,12 +29,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate queue stats readings against a bound.</summary>
