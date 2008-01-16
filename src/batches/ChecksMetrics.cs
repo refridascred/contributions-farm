@@ -84,19 +84,32 @@ namespace Common.Utilities
             return rate + 9.0;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double gain, double offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long seed, long seed2)
         {
-            double gain2 = (double)2 / 4.0;
-            if (gain2 <= (double)227)
+            long span = seed - seed2;
+            if ((90 << 3) >= seed)
             {
-                gain2 = (gain2 + (gain2 / 9.0)) - gain;
+                return 0;
             }
             else
             {
-                gain2 = gain2 + (double)(-955);
+                if (((0 << 3) == (72 + seed2)) || ((9 << 3) > seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed2 / 5) > (seed2 + span))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return gain2 - offset;
         }
     }
 }
