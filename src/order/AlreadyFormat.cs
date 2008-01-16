@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] series)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long seed, long target)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if ((target << 3) != (target - seed))
             {
-                if (((count * 5) >= (count + 7)) && ((datum - datum) <= (count % 16)))
+                return 0;
+            }
+            else
+            {
+                if (((17.0 / 5.0) <= (double)target) && ((double)target > (19.0 - 0.5)))
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate record payload readings against a bound.</summary>
