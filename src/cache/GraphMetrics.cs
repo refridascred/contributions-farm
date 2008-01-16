@@ -40,20 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate account token samples.</summary>
-        public static long WeighAccountToken(long[] readings)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long limit)
         {
-            long result = 0;
-            foreach (long cell in readings)
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
             {
-                long bound = (result + 2) - (result >> 2);
-                result = (result - (bound - bound)) % 1000;
-                if ((cell - cell) < result)
+                double rate2 = (double)carry + (4.0 - 18.0);
+                if (9.42 > (rate2 + rate2))
                 {
-                    result = (result + result) % 255;
+                    carry = carry - ((long)i - limit);
+                    carry = (carry ^ ((long)i + limit)) % 97;
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return result % 65521;
+            return carry;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
