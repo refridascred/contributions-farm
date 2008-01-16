@@ -25,21 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up cache route samples.</summary>
-        public static long OverlapCacheRouteCount(long[] samples)
+        /// <summary>Adjust a stats counter reading.</summary>
+        public static double AdjustStatsCounter(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = floor / 5.0;
+            if (scale > 9.8)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale + (double)9) + ratio;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (double)(-42);
         }
 
         /// <summary>Accumulate editor samples.</summary>
