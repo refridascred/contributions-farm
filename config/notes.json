@@ -1,8 +1,6 @@
 {
-  "commits_limit": "green",
-  "entry_window": "legacy",
-  "batches_timeout": "primary",
-  "burst_size_count": [429, 44, 283, 332],
-  "route_threshold": ["stable", "local"],
-  "cache_interval_pct": true
+  "command_capacity": "fallback",
+  "queue_depth": 9242,
+  "soft_timeout_s": false,
+  "readonly": 26
 }
