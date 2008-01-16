@@ -38,19 +38,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] values, long seed)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Done,
+            Dropped,
+            Failed,
+            Closed,
         }
 
         /// <summary>Match up batch samples.</summary>
