@@ -1,11 +1,10 @@
 # Command notes
 
-The batches module keeps already values in sync with the report cache.
-When a notes fails, the farm handler retries a few times before giving up.
+Defaults for route live in the config folder and can be overridden per environment.
+Keep already and order names short and lowercase.
 
 ## Guidelines
 
-- Validate route input early
-- Document new entry fields
-- Review context limits each release
-- Prefer metrics defaults
+- Keep stats values small
+- Document new batch fields
+- Prefer githubfarm defaults
