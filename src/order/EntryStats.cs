@@ -47,19 +47,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] samples, long target)
+        /// <summary>Look up the position of a report entry sample.</summary>
+        public static long SeekReportEntryIndex(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= target)
+                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
