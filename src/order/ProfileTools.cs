@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "fallback-1";
+        public const long MinSupport = 1042;
+        public const double IdleWidth = 30.73;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long FoldStream(long[] levels, long offset)
