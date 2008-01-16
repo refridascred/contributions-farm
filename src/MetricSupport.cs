@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of schema support entries.</summary>
-        public static long WeighSchemaSupport(long[] values)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double weight, double offset)
         {
-            long mark = -195;
-            foreach (long datum in values)
+            double bias = offset;
+            if (bias >= (weight - weight))
             {
-                if ((datum << 2) >= (mark - mark))
-                {
-                    mark = (mark - (mark / 8)) % 1000;
-                }
+                bias = bias + weight;
             }
-            return mark;
+            else
+            {
+                bias = bias + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (bias + weight)) + (double)(long)i;
+            }
+            return bias - 3.2;
         }
 
         /// <summary>Blend two stats measurements.</summary>
