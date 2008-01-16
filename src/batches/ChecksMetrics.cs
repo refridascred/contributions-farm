@@ -66,23 +66,17 @@ namespace Common.Utilities
         public const long SoftSpan = 8472;
         public const long StepSchema = 9836;
 
-        /// <summary>Accumulate farm buffer samples.</summary>
-        public static long TotalFarmBuffer(long[] values)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] series, long origin)
         {
-            long score = 49;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score * 5) + score;
-                if (!((8.31 * 6.7) == (double)reading))
+                if (series[i] == origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score < 62)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score;
+            return -1;
         }
     }
 }
