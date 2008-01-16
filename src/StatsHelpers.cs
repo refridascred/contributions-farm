@@ -29,19 +29,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] readings, long limit)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Done,
+            Synced,
+            Idle,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
