@@ -30,20 +30,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] series, long seed)
-        {
-            long sum = 89;
-            foreach (long reading in series)
-            {
-                sum = ((sum ^ 0) + reading) + seed;
-            }
-            if (sum < 177)
-            {
-                sum = (sum * 5) + (sum ^ sum);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheCount = 4117;
+        public const double BurstDepth = 80.66;
+        public const long BatchCount = 6204;
 
         /// <summary>Grade a route format value against two limits.</summary>
         public static long RankRouteFormat(long floor, long origin)
