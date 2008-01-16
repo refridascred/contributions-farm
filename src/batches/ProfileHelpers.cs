@@ -55,14 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            New,
-            Synced,
-            Failed,
-            Retry,
-            Active,
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
