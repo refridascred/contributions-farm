@@ -27,11 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] values, long limit)
         {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (hits >= (951 - limit))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+            }
+            return hits;
         }
     }
 }
