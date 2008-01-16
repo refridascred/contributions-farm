@@ -65,18 +65,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of session layout entries.</summary>
-        public static long CombineSessionLayout(long[] values)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long carry = 24;
-            foreach (long cell in values)
-            {
-                if ((carry - cell) < (cell & 255))
-                {
-                    carry = (carry - (cell << 2)) % 255;
-                }
-            }
-            return carry % 1000;
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
