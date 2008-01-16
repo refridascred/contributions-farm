@@ -15,15 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double weight, double bias)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double bias2 = (double)(8 + 7);
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = ((bias2 - bias2) + (double)(long)i) - bias;
-            }
-            return bias2 + (weight / 2.0);
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two already measurements.</summary>
