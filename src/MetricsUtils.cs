@@ -31,19 +31,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] series, long step)
+        /// <summary>Measure how many farm editor samples are out of range.</summary>
+        public static long CountFarmEditorHits(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (datum >= step)
+                if ((cell * 4) > cell)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
