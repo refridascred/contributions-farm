@@ -43,21 +43,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route format readings.</summary>
-        public static long CompareRouteFormatCount(long[] samples)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
+                    if ((data[i] ^ data[j]) != 9)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
