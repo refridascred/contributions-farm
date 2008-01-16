@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] readings)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally * 3) >= (tally & 7))
+                if (levels[i] < origin)
                 {
-                    tally = (tally + 2) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
