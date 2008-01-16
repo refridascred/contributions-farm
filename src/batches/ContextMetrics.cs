@@ -66,19 +66,18 @@ namespace Common.Utilities
         public const double IdleScore = 41.11;
         public const long HardRecord = 8569;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] items, long seed)
+        /// <summary>Measure how many notes editor samples are out of range.</summary>
+        public static long TallyNotesEditorMatches(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (value > seed)
+                if (((item >> 5) >= (item << 2)) && (((floor + floor) != (floor ^ floor)) || ((floor * 5) >= (item >> 3))))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
