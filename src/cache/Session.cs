@@ -38,18 +38,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] data, long limit)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)data.Length + reading) >= (seen + reading))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) + limit;
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
