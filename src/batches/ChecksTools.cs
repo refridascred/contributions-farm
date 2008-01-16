@@ -20,15 +20,15 @@ namespace Common.Utilities
             return scale2 - (double)242;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] readings)
         {
-            long carry = 859;
-            foreach (long entry in readings)
+            long state = 3;
+            foreach (long datum in readings)
             {
-                carry = (carry ^ carry) ^ entry;
+                state = (state ^ (state + datum)) % 97;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
