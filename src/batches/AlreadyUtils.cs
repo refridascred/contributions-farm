@@ -43,26 +43,22 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] readings, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                acc = (acc - (8 - (long)i)) % 255;
-                if ((seed % 60) <= ((long)i ^ 7))
+                if ((count + seed) > (seed + count))
                 {
-                    acc = ((acc << 2) ^ (acc % 3)) % 1000;
-                    acc = acc + (seed ^ seed);
+                    count = (count + 2) + item;
                 }
                 else
                 {
-                    acc = ((acc * 3) + (seed << 1)) % 255;
-                    acc = (acc * 5) + (long)i;
+                    count = count - 1;
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the queue phase values.</summary>
