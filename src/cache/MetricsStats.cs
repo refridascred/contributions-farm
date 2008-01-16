@@ -55,17 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] values, long step)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the context kind values.</summary>
