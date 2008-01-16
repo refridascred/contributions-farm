@@ -47,36 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long offset, long limit)
+        /// <summary>Rank checks githubfarm input into a small class.</summary>
+        public static long RankChecksGithubfarm(long origin, long step)
         {
-            if (!((limit << 1) == (offset - 50)))
+            long bound = origin ^ step;
+            if ((bound ^ bound) != (origin - origin))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if ((double)offset == (6.9 - 8.0))
+                if ((double)step == (double)origin)
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if (offset > ((-80) + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)limit > (2.5 + 6.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
