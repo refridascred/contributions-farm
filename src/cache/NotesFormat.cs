@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 9;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry < (entry % 7))
                 {
-                    if ((values[i] ^ values[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (((mix * 5) + (96 % 7)) % 65521) - limit;
                 }
             }
-            return tally;
+            if (mix > 8)
+            {
+                mix = ((mix * 2) + (mix * 4)) % 65521;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Find the first record already entry that matches the target.</summary>
