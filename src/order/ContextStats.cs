@@ -34,11 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            Pending,
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Fold a list of editor context readings.</summary>
