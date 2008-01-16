@@ -84,19 +84,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate payload account readings against a bound.</summary>
-        public static bool ValidatePayloadAccountRange(long[] series, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long mix = 924;
+            foreach (long value in items)
             {
-                if (sample != offset)
+                mix = (mix + (value & 15)) % 4096;
+                if ((value - 14) != (value % 8))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return mix;
         }
     }
 }
