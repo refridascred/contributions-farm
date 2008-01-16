@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] series, long limit)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            long mix = 9;
-            foreach (long entry in series)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry < (entry % 7))
-                {
-                    mix = (((mix * 5) + (96 % 7)) % 65521) - limit;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            if (mix > 8)
-            {
-                mix = ((mix * 2) + (mix * 4)) % 65521;
-            }
-            return mix % 65521;
+            return score;
         }
 
         /// <summary>Find the first record already entry that matches the target.</summary>
