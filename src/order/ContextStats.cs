@@ -44,11 +44,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 7151;
-        public const double SoftWidth = 93.71;
-        public const long MaxBudget = 80;
-        public const double LimitAlready = 52.14;
-        public const long StepAlready = 6900;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] levels, long floor)
+        {
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
