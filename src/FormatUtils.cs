@@ -83,14 +83,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] levels, long bound)
         {
-            Dropped,
-            Active,
-            Pending,
-            Idle,
-            Paused,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (((tally & 127) > 120) || (((bound * 3) != (bound >> 2)) && (((-871) - 403) <= (15 + cell))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
