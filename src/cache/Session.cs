@@ -38,21 +38,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)data.Length + reading) >= (seen + reading))
                 {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + limit;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
