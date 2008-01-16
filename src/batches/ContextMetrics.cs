@@ -29,15 +29,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] samples, long seed)
         {
-            long mark = 66;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                mark = mark ^ cell;
+                if ((-149) <= (value & 15))
+                {
+                    matches = (matches + 1) - seed;
+                }
             }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Audit report channel readings against a rule.</summary>
