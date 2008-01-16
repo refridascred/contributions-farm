@@ -1,9 +1,10 @@
 # support settings
-dry_run:
-  - local
-  - blue
-  - edge
-min_size_s: open
-tools_threshold:
-  - strict
-  - staging
+cache_window_pct: true
+burst_limit_count: 31.36
+record_interval: 500
+enabled: 53.79
+burst_limit_s: 65
+soft_limit:
+  - 283
+  - 465
+  - 182
