@@ -20,23 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double scale, double bias)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] values, long limit)
         {
-            double drift = (double)(954 + 993);
-            if (drift > 5.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift - drift) + scale;
+                if ((values[i] >= limit) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (3.9 + 0.01);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift - bias;
+            return -1;
         }
 
         /// <summary>Audit checks report readings against a rule.</summary>
