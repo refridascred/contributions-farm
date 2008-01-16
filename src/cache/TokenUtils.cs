@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] samples, long step)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
