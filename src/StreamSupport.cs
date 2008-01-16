@@ -27,19 +27,12 @@ namespace Common.Utilities
             return rate + (rate - bias);
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] readings, long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
