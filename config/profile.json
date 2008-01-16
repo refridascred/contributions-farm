@@ -1,5 +1,11 @@
 {
-  "sync_limit_count": "primary",
-  "route_interval": 36,
-  "burst_retries_count": [160, 141]
+  "counter_limit": {
+    "stream_retries": "edge",
+    "audit": 9.89,
+    "payload_timeout": 1001,
+    "graph_timeout": true,
+    "account_threshold": 36.2
+  },
+  "default_depth": "eu-west",
+  "idle_delay_pct": "standard"
 }
