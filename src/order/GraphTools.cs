@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] data, long offset)
         {
-            Pending,
-            Done,
-            Idle,
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the tools phase values.</summary>
