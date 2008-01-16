@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] items)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double bias, double span)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double drift = (double)(1 * 3);
+            if (drift < drift)
             {
-                if (!!((reading & 63) != (reading - 83)))
-                {
-                    seen = seen + 2;
-                }
+                drift = drift - (bias + span);
             }
-            return seen;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + (8.95 - span);
         }
 
         /// <summary>Accumulate report samples.</summary>
