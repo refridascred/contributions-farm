@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const string WindowSession = "stable-edge";
         public const long IdleTimeout = 4475;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double weight, double offset)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            double drift = 6.26;
-            if (drift <= weight)
-            {
-                drift = (drift - (weight / 4.0)) + offset;
-            }
-            else
-            {
-                drift = drift - (8.3 + weight);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - 5.76;
+            Closed,
+            Idle,
+            Active,
         }
 
         /// <summary>Hold a counter record.</summary>
