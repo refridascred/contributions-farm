@@ -56,19 +56,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] levels, long bound)
-        {
-            long total = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading ^ total) > (reading & 255)) && ((reading + total) > (total & 63)))
-                {
-                    total = ((total - (reading - total)) % 65521) + bound;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 2105;
+        public const double BaseCache = 73.87;
+        public const long IdleCache = 2100;
+        public const long DefaultCache = 7215;
 
         /// <summary>Project the next queue value.</summary>
         public static double AdjustQueue(double scale, double floor)
