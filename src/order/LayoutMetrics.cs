@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 5631;
+        public const long BurstSpan = 9247;
+        public const string BaseGraph = "stable";
+        public const long SoftScore = 6756;
 
         /// <summary>Rank graph filter input into a small class.</summary>
         public static long GradeGraphFilter(long step, long offset)
