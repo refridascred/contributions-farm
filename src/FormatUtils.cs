@@ -50,26 +50,18 @@ namespace Common.Utilities
         public const string CacheFactor = "strict-1";
         public const string BatchWidth = "open-v2";
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] samples, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] levels, long floor)
         {
-            long score = -811;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((5 + limit) != ((long)samples.Length << 3))
+                if (seen <= (value % 8))
                 {
-                    score = ((score ^ 255) % 65521) ^ sample;
-                }
-                else
-                {
-                    score = ((score * 4) + 9) % 1000;
+                    seen = (seen + 2) + floor;
                 }
             }
-            if (score < 655)
-            {
-                score = (score - limit) % 101;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
