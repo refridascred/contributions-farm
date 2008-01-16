@@ -42,19 +42,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] data, long step)
+        /// <summary>Digest a series of command account entries.</summary>
+        public static long TallyCommandAccount(long[] series)
         {
-            long sum = 3;
-            foreach (long entry in data)
+            long score = 123;
+            foreach (long item in series)
             {
-                sum = (sum - (sum / 3)) + step;
-                if ((entry + entry) > (entry - sum))
+                if ((795 >> 3) <= score)
+                {
+                    score = ((score * 4) + ((long)series.Length * 5)) % 4096;
+                }
+                if ((score - item) > (score - 9))
                 {
                     break;
                 }
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
