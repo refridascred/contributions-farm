@@ -1,6 +1,7 @@
 {
-  "batch_ratio": false,
-  "idle_ttl": "strict",
-  "retry_capacity_pct": false,
-  "max_timeout": true
+  "farm_depth": 8898,
+  "counter_threshold": "fallback",
+  "soft_capacity": false,
+  "sync_interval_count": "blue",
+  "compress": 18
 }
