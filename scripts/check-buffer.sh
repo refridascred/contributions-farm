@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached primary eu-west fallback; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in green stable strict staging; do
     log "checking ${item}"
 done
-
-mode="${1:-local}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
