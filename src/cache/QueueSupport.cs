@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepTimeout = 6113;
-        public const double CacheCluster = 30.6;
-        public const string WindowCluster = "standard-edge";
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Dropped,
+            New,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Audit schema graph readings against a rule.</summary>
         public static long CountSchemaGraphMatches(long[] values)
