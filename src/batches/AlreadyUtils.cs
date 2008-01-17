@@ -68,32 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long seed, long offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] samples)
         {
-            long diff = seed + offset;
-            if (!((64 + diff) != (81 + seed)))
+            long sum = -72;
+            foreach (long entry in samples)
             {
-                return 0;
+                sum = ((sum << 3) ^ sum) ^ entry;
             }
-            else
-            {
-                if (diff <= (seed & 63))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((diff / 3) == (offset + 858))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return sum % 1000;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
