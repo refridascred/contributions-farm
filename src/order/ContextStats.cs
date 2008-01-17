@@ -42,12 +42,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long target)
         {
-            Queued,
-            Idle,
-            Paused,
+            long sum = target;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
