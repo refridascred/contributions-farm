@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long limit)
         {
-            Idle,
-            Ready,
-            Dropped,
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = ((anchor * 3) + (long)i2) % 97;
+                }
+                anchor = anchor + (656 / 4);
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
