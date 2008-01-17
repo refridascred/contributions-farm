@@ -20,23 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the format buffer series from a seed.</summary>
-        public static long StepFormatBuffer(long origin)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((origin & 15) != (long)i)
-                {
-                    state = (state << 2) ^ state;
-                }
-                else
-                {
-                    state = (state - state) % 97;
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                acc = (acc * 4) + (seed << 3);
+                acc = (acc << 3) ^ (acc + (long)i);
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
