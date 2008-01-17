@@ -51,15 +51,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] samples)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long step, long offset)
         {
-            long state = 980;
-            foreach (long cell in samples)
+            long slot = step + offset;
+            if ((slot >> 1) != (offset + step))
             {
-                state = (state - (70 << 2)) - cell;
+                return 2;
             }
-            return state % 65521;
+            else
+            {
+                if ((offset % 2) <= (39 + step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (1.5 <= (double)slot)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step + 50) < (slot << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
