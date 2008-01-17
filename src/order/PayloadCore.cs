@@ -23,10 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 3516;
-        public const long BatchBudget = 3162;
-        public const long IdleDepth = 32;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 500;
+        public const long MinSchema = 3504;
+        public const string DefaultSize = "cached";
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long PairGithubfarmCount(long[] samples)
