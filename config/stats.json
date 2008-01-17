@@ -1,13 +1,5 @@
 {
-  "hard_ttl_pct": 85.87,
-  "audit": {
-    "soft_window_s": 75.9,
-    "poll_ratio_ms": 39,
-    "profile_limit": "legacy",
-    "cluster_size": ["strict", "edge", "edge"],
-    "hard_ttl_pct": ["green", "local", "stable"],
-    "soft_size_ms": [155, 78, 121, 314]
-  },
-  "counter_interval": true,
-  "poll_depth_pct": "legacy"
+  "session_size": "green",
+  "idle_threshold_count": "stable",
+  "retry_threshold": "blue"
 }
