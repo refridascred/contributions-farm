@@ -45,21 +45,13 @@ namespace Common.Utilities
         public const double BaseWidth = 34.97;
         public const long MinBatch = 8731;
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] data)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the editor mode values.</summary>
