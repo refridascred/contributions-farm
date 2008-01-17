@@ -46,18 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] values)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double weight = floor - gain;
+            if (weight <= (gain / 8.0))
             {
-                if (!(((6.67 + 2.9) > (double)tally) && ((double)tally == (double)650)))
-                {
-                    tally = (tally + 1) + datum;
-                }
+                weight = weight + (weight - floor);
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight + (2.6 + weight);
         }
     }
 }
