@@ -1,7 +1,14 @@
 # githubfarm settings
-farm_delay: local
-enabled: 83.84
-context_delay: 7199
-retry_ttl: fallback
-sync_limit_s: 5169
-poll_size: staging
+base_limit_pct:
+  verbose:
+    - eu-west
+    - cached
+    - primary
+    - stable
+  persist: 39
+  base_threshold_count: 43
+  batch_timeout: false
+  stats_limit: true
+  poll_interval_count: 100
+batch_ttl_pct: fallback
+min_interval_s: fallback
