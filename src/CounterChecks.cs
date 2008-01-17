@@ -40,13 +40,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] readings, long seed)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
