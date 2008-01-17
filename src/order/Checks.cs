@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the route cache series from a seed.</summary>
-        public static long RollRouteCache(long seed)
+        /// <summary>Count the profile notes entries that pass the check.</summary>
+        public static long CountProfileNotesMatches(long[] series)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((seed < (36 + mix)) || ((9.7 + 2.03) == (double)(long)i))
+                if (!((reading + reading) <= reading))
                 {
-                    mix = ((mix * 5) + (seed * 4)) % 97;
+                    hits = hits + 3;
                 }
-                mix = mix ^ mix;
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
