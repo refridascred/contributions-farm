@@ -1,17 +1,16 @@
 {
-  "persist": 500,
-  "filter_limit": 47.56,
-  "base_capacity_s": {
-    "graph_capacity": 100,
-    "soft_capacity_ms": {
-      "verbose": 12.88,
-      "idle_delay_count": "local",
-      "readonly": 100
-    },
-    "report_ttl": 77.15,
-    "batch_ttl": 69,
-    "strict": true
+  "sync_limit_s": {
+    "cache_capacity": "fallback",
+    "default_ttl_count": 2540,
+    "commits_delay": {
+      "audit": "local",
+      "burst_threshold": [111, 442, 237],
+      "strict": ["green", "strict"]
+    }
   },
-  "entry_window": 62.22,
-  "min_limit_ms": true
+  "max_timeout": "primary",
+  "retry_limit_count": 91.25,
+  "soft_timeout_pct": 30,
+  "readonly": 52.57,
+  "warm_depth_pct": 8930
 }
