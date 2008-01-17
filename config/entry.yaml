@@ -1,6 +1,6 @@
 # entry settings
-enabled: 74.16
-report_timeout: cached
-retry_capacity_ms: 89.98
-base_depth_pct: 67
-audit: 49.85
+warm_limit_pct: legacy
+hard_ratio_ms: false
+idle_timeout_ms: 100
+default_timeout: 9
+burst_size_s: 62.55
