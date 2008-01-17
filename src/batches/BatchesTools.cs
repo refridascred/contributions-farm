@@ -20,27 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] samples, long target)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long limit, long bound)
         {
-            long result = -112;
-            foreach (long cell in samples)
+            long bound2 = limit - bound;
+            if (((bound2 >> 5) <= limit) || ((bound2 & 31) <= (64 - 37)))
             {
-                if ((39 ^ result) > (result + result))
+                return 1;
+            }
+            else
+            {
+                if ((double)bound2 <= (5.1 * 8.01))
                 {
-                    result = (result + (target ^ result)) % 65521;
+                    return 5;
                 }
-                result = (result + (cell - 4)) % 255;
-                if (3.96 < (double)cell)
+                else
                 {
-                    break;
+                    if (0 < (bound2 + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound <= (16 & 127)) && ((bound2 >> 4) == (bound2 + bound2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (result < 23)
-            {
-                result = (result << 3) ^ ((-8) ^ 307);
-            }
-            return result;
         }
 
         /// <summary>Blend two account buffer measurements.</summary>
