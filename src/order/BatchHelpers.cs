@@ -28,10 +28,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepTimeout = "standard";
-        public const string WindowLevel = "primary-edge";
-        public const long MinMetric = 547;
-        public const long DefaultMetric = 8888;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
