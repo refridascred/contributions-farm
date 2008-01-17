@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many window notes samples are out of range.</summary>
-        public static long TallyWindowNotesOutliers(long[] readings, long offset)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (!((offset & 127) == (item >> 1)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            New,
+            Retry,
+            Locked,
+            Failed,
         }
 
         /// <summary>Validate context farm readings against a bound.</summary>
