@@ -1,14 +1,9 @@
 {
-  "buffer_timeout": 9.2,
-  "default_retries": ["legacy", "strict", "green"],
-  "batch_interval_ms": {
-    "sync_limit_s": 7598,
-    "retry_capacity": {
-      "format_capacity": [286, 193, 286],
-      "retry_depth": 25,
-      "retry_ttl": 60,
-      "audit": ["stable", "primary", "green"]
-    },
-    "idle_capacity_pct": [416, 412, 182]
-  }
+  "enabled": 7911,
+  "metrics_size": {
+    "cache_window": "stable",
+    "max_interval": ["strict", "legacy"],
+    "default_limit": "staging"
+  },
+  "poll_delay": [8, 62, 443]
 }
