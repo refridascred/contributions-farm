@@ -60,21 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache command samples.</summary>
-        public static long OverlapCacheCommandCount(long[] items)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item < origin)
                 {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
