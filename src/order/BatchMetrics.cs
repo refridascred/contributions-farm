@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] data, long seed)
+        /// <summary>Find the first channel cache entry that matches the target.</summary>
+        public static long LookupChannelCacheIndex(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < seed)
+                if (readings[i] < step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
