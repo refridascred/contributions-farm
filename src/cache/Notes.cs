@@ -41,12 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] samples, long limit)
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
