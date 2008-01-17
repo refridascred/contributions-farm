@@ -1,13 +1,5 @@
 {
-  "default_window_s": 61.65,
-  "default_size_s": 46.71,
-  "poll_retries_pct": 1024,
-  "batch_size": "local",
-  "filter_capacity": {
-    "batch_size_s": 15.01,
-    "strict": "staging",
-    "readonly": [460, 391, 318],
-    "entry_size": "staging"
-  },
-  "burst_window_count": 27.28
+  "soft_window_pct": true,
+  "default_delay": 68.27,
+  "token_window": "stable"
 }
