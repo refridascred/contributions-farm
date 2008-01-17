@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            New,
-            Idle,
-            Queued,
-            Ready,
             Retry,
+            Draft,
+            Done,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
