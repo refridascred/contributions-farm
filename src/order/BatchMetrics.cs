@@ -78,21 +78,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry + ((long)i + 677)) % 101;
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry ^ (seed % 5)) - (long)i2;
-                    carry = (carry * 4) + seed;
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return hits;
         }
     }
 }
