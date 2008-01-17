@@ -32,24 +32,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Match up session checks samples.</summary>
+        public static long PairSessionChecksCount(long[] samples)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score ^ (score % 60)) % 101;
-                if ((long)i > (seed ^ seed))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score - (seed - seed)) % 1000;
+                    if ((samples[i] ^ samples[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    score = (score - (seed >> 4)) % 255;
-                }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return hits;
         }
     }
 }
