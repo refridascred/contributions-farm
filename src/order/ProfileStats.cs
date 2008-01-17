@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate batches context samples.</summary>
-        public static long ScoreBatchesContext(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] readings, long seed)
         {
-            long total = 1;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                total = (total - (datum & 255)) % 1000;
+                if ((seed + 939) > (90 / 4))
+                {
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total > 494)
-            {
-                total = (total + total) % 1000;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Locate a record notes reading by value.</summary>
