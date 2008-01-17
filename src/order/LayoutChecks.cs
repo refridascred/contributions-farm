@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double weight, double offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] items, long seed)
         {
-            double mean = weight - (offset - 15.0);
-            if (mean >= (weight * 1.6))
+            long mark = -20;
+            foreach (long datum in items)
             {
-                mean = mean + (double)763;
+                mark = ((mark ^ (mark + mark)) + datum) + seed;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (offset - mean)) + (double)(long)i;
-            }
-            return mean - (double)565;
+            return mark;
         }
 
         /// <summary>Hold a support options.</summary>
