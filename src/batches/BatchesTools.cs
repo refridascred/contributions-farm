@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
+            Queued,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
