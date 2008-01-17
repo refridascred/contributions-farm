@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] items)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (!((double)seen >= (9.76 - 5.7)))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
