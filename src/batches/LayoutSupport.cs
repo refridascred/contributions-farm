@@ -57,19 +57,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] readings)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((((long)i / 2) == (bound + (long)i)) && (sum >= (bound - sum)))
+                if ((tally >> 1) <= tally)
                 {
-                    break;
+                    tally = (tally + 2) + reading;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return tally;
         }
     }
 }
