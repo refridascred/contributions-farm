@@ -1,13 +1,7 @@
 {
-  "sync_threshold_pct": 32.1,
-  "soft_window_pct": [397, 468],
-  "retry_threshold_ms": 81.85,
-  "base_delay": {
-    "order_ratio": 74,
-    "default_timeout_s": false,
-    "audit": false,
-    "already_ratio": false,
-    "max_ttl_count": "edge"
-  },
-  "session_size": [297, 275, 74]
+  "enabled": "open",
+  "base_capacity_ms": ["open", "edge", "eu-west", "strict"],
+  "max_delay_ms": ["eu-west", "primary", "stable", "green"],
+  "order_interval": "primary",
+  "cache_delay_pct": "edge"
 }
