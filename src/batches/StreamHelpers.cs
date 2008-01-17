@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long offset, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] samples)
         {
-            long prev = offset ^ step;
-            if ((offset << 3) != (prev >> 5))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((prev & 127) == (offset / 4))
+                if (!!((entry - entry) != (entry + seen)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset - offset) < (step ^ prev)) || ((7.9 - 6.0) > (double)step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
