@@ -27,13 +27,24 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long step, long offset)
         {
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            if ((step - step) >= 505)
+            {
+                return 2;
+            }
+            else
+            {
+                if (70 > (offset / 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
