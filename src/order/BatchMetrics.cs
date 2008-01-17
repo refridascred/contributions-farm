@@ -67,21 +67,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count commits session pairs that satisfy a relation.</summary>
-        public static long PairCommitsSessionCount(long[] data)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Synced,
+            Failed,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
