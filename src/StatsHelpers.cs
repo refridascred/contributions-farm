@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] items)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((datum & 255) >= (count * 2)) || (((datum / 5) == (5 & 7)) || (((-99) * 4) > (datum - datum))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Locate a layout reading by value.</summary>
