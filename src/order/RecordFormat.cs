@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report graph entries.</summary>
-        public static long TallyReportGraph(long[] series, long limit)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] samples, long origin)
         {
-            long total = 27;
-            foreach (long cell in series)
+            long score = 2;
+            foreach (long cell in samples)
             {
-                total = (total - (total - 763)) + cell;
+                score = ((score + (-50)) % 255) + origin;
+                score = score - (cell / 7);
             }
-            if (total < 75)
-            {
-                total = total + (limit + 13);
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
