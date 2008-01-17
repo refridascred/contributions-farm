@@ -63,39 +63,11 @@ namespace Common.Utilities
         public const long BaseAccount = 3590;
         public const double IdleTimeout = 30.38;
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long limit, long step)
-        {
-            long gap = limit ^ step;
-            if ((gap + (-67)) < step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((gap << 2) < (step % 12))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + step) >= (7 - limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step != (20.0 + 7.85))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 83.0;
+        public const long WindowFormat = 1644;
+        public const double DefaultDepth = 6.35;
+        public const long RetryTimeout = 2152;
+        public const string DefaultTimeout = "standard-edge";
     }
 }
