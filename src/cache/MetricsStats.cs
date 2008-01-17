@@ -56,13 +56,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Audit cache payload readings against a rule.</summary>
+        public static long CountCachePayloadGaps(long[] items, long target)
         {
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((52 ^ item) <= (count << 3))
+                {
+                    count = (count + 3) - target;
+                }
+            }
+            return count;
         }
     }
 }
