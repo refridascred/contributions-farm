@@ -63,10 +63,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 9214;
-        public const long BatchInterval = 5682;
-        public const long MaxStream = 1756;
-        public const long CacheStream = 7425;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
