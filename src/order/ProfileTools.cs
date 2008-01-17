@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] values, long offset)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)offset != (double)394)
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
