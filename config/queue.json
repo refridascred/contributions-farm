@@ -1,5 +1,8 @@
 {
-  "verbose": 250,
-  "audit": 41.39,
-  "soft_threshold_count": 4275
+  "audit": 79.67,
+  "soft_delay": 500,
+  "contributi_retries": 100,
+  "cache_depth": 4183,
+  "burst_timeout": 21.38,
+  "notes_depth": "primary"
 }
