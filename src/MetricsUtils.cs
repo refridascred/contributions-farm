@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of graph buffer entries.</summary>
-        public static long TotalGraphBuffer(long[] series, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] data, long bound)
         {
-            long mix = 11;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                mix = (((mix << 3) ^ (reading ^ mix)) % 65521) + floor;
+                if ((entry + count) == (bound + 7))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mix > 73)
-            {
-                mix = mix - (mix - mix);
-            }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Audit account githubfarm readings against a rule.</summary>
