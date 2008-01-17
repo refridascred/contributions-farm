@@ -36,12 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowScore = 2185;
-        public const long MaxRatio = 8404;
-        public const double HardScore = 90.0;
-        public const long WindowTimeout = 2563;
-        public const long MaxCommits = 2847;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowBudget = 4899;
+        public const long DefaultSupport = 9526;
+        public const long WindowSupport = 3076;
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long ClassifyBatch(long seed, long seed2)
