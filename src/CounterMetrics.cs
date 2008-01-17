@@ -51,14 +51,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long offset, long origin)
         {
-            Failed,
-            Closed,
-            New,
-            Paused,
-            Active,
+            long edge = offset ^ origin;
+            if (2 <= offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((edge / 3) < (edge + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset < (offset + edge))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((((-372) & 31) != (edge % 12)) && (1.8 > (double)edge))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
