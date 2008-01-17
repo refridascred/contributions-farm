@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            New,
-            Retry,
-            Done,
+            Queued,
             Active,
+            Retry,
         }
 
         /// <summary>Hold a contributi stats.</summary>
