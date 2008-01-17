@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 8506;
+        public const long SoftAlready = 5871;
+        public const long BurstLevel = 3074;
+        public const long DefaultAlready = 4195;
+        public const string MinAlready = "latest-v2";
 
         /// <summary>Blend two schema format measurements.</summary>
         public static double AdjustSchemaFormat(double rate, double span)
