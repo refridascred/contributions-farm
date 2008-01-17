@@ -25,12 +25,32 @@ namespace Common.Utilities
         public const string IdleContributi = "fallback-1";
         public const long MaxContributi = 2536;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Roll a batch commits counter forward.</summary>
+        public static long StepBatchCommits(long limit)
         {
-            Ready,
-            Active,
-            Stale,
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if (sum > (0 + limit))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = (sum ^ (limit + (long)i)) % 4096;
+                    sum = ((sum << 2) ^ ((long)i + 632)) % 1000;
+                }
+                if ((sum ^ limit) <= (sum / 3))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = (sum - sum) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate window samples.</summary>
