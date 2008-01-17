@@ -16,18 +16,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] readings, long step)
+        /// <summary>Iterate the already schema series from a seed.</summary>
+        public static long SeriesAlreadySchema(long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((long)readings.Length == (step - cell))
-                {
-                    tally = tally + 1;
-                }
+                sum = (sum - sum) % 4096;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Compare every pair of stream tools readings.</summary>
