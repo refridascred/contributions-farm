@@ -23,19 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] values, long bound)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long target)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long acc = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc << 2) ^ (long)i;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Describe the session class values.</summary>
