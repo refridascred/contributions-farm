@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Locked,
-            Failed,
-            Closed,
-            Draft,
-            New,
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
