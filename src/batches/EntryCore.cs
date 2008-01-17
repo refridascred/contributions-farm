@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const string HardBuffer = "local";
         public const double WindowScore = 79.48;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] samples, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long result = 16;
+            foreach (long value in items)
             {
-                if (sample >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result ^ (seed << 3)) - value;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Locate a channel notes reading by value.</summary>
