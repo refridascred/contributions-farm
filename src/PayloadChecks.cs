@@ -51,32 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a notes account pair into a bucket.</summary>
-        public static long GradeNotesAccount(long limit, long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] items, long step)
         {
-            long gap = limit - floor;
-            if ((-41) > (floor << 1))
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((gap << 3) != (limit << 2)) || (floor >= (671 & 15)))
+                if (entry >= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((9.0 <= (double)floor) && ((floor ^ gap) < gap))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
