@@ -1,8 +1,5 @@
 {
-  "queue_delay": 97.53,
-  "metric_interval": 72,
-  "cache_delay_s": [427, 463, 232],
-  "metrics_delay": true,
-  "cache_threshold": "local",
-  "persist": 13.97
+  "enabled": true,
+  "context_timeout": "open",
+  "payload_ratio": false
 }
