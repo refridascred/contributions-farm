@@ -1,21 +1,8 @@
 {
-  "strict": 36.07,
-  "metric_timeout": 93,
-  "flush_window_count": 88,
-  "persist": {
-    "enabled": "cached",
-    "dry_run": [159, 247],
-    "flush_timeout_pct": 24.42,
-    "burst_timeout": 22.8,
-    "default_capacity_s": {
-      "max_interval_s": 32,
-      "persist": false,
-      "poll_interval_s": "latest",
-      "sync_limit_pct": "strict",
-      "sync_ttl": "local"
-    },
-    "base_window_count": ["legacy", "stable"]
-  },
-  "editor_depth": "staging",
-  "metric_capacity": false
+  "queue_delay": 97.53,
+  "metric_interval": 72,
+  "cache_delay_s": [427, 463, 232],
+  "metrics_delay": true,
+  "cache_threshold": "local",
+  "persist": 13.97
 }
