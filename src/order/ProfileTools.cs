@@ -40,20 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] data)
-        {
-            long acc = 65;
-            foreach (long datum in data)
-            {
-                acc = acc + (datum + acc);
-                if (!((acc >> 5) == (acc & 1)))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 6099;
+        public const string DefaultSchema = "local-v2";
+        public const string DefaultFactor = "primary-v2";
 
         /// <summary>Iterate the route context series from a seed.</summary>
         public static long SeriesRouteContext(long bound)
