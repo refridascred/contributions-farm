@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] levels, long target)
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
+            long carry = 7;
+            foreach (long value in levels)
+            {
+                if ((((-556) << 1) <= carry) && ((1 / 8) > (target + value)))
+                {
+                    carry = carry + (target / 5);
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of payload buffer entries.</summary>
