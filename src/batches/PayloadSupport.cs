@@ -20,11 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 8889;
-        public const long BaseContributi = 8032;
-        public const string LimitContributi = "latest-1";
-        public const long BaseDepth = 2503;
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double scale, double offset)
+        {
+            double ratio = (double)3 + (0.9 * 1.0);
+            if (ratio >= (offset - offset))
+            {
+                ratio = (ratio + (double)49) - scale;
+            }
+            return ratio + 1.9;
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
