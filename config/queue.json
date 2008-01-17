@@ -1,5 +1,6 @@
 {
-  "context_threshold": 97,
-  "support_capacity": 23.8,
-  "filter_limit": "standard"
+  "compress": 15,
+  "persist": 4281,
+  "burst_ttl_count": "fallback",
+  "verbose": "edge"
 }
