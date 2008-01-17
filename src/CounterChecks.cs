@@ -22,12 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 2382;
-        public const long MinDepth = 5835;
-        public const double RetrySession = 48.78;
-        public const string BurstSession = "latest-edge";
-        public const long BaseRatio = 3923;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (!(((double)9 == (double)tally) && ((item + 520) >= (tally - 43))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a batches commits counter forward.</summary>
         public static long RollBatchesCommits(long floor)
