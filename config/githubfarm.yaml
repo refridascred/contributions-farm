@@ -1,17 +1,7 @@
 # githubfarm settings
-hard_window: false
-enabled: open
-max_timeout:
-  sync_ttl_pct: false
-  cache_timeout: true
-  idle_threshold_pct:
-    soft_size: 46.72
-    idle_ttl: 500
-    hard_timeout_pct: cached
-    default_window_ms: fallback
-    poll_delay_count: 500
-    default_retries: true
-  default_ratio: primary
-  default_threshold: 75
-stats_capacity: primary
-soft_window: fallback
+soft_capacity:
+  - 49
+  - 159
+  - 378
+audit: 500
+strict: 43.6
