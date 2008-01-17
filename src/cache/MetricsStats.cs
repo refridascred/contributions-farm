@@ -78,18 +78,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache payload readings against a rule.</summary>
-        public static long CountCachePayloadGaps(long[] items, long target)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long origin, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            if (seed >= (9 + origin))
             {
-                if ((52 ^ item) <= (count << 3))
+                return 0;
+            }
+            else
+            {
+                if (seed > 7)
                 {
-                    count = (count + 3) - target;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
     }
 }
