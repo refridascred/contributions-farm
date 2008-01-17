@@ -42,18 +42,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] series, long step)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell ^ cell) >= (hits / 4))
-                {
-                    hits = (hits + 3) + step;
-                }
-            }
-            return hits;
+            Failed,
+            Retry,
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a order info.</summary>
