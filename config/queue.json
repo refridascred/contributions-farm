@@ -1,6 +1,6 @@
 {
-  "compress": 15,
-  "persist": 4281,
-  "burst_ttl_count": "fallback",
-  "verbose": "edge"
+  "flush_window": "stable",
+  "hard_limit_count": false,
+  "persist": false,
+  "base_capacity_ms": "green"
 }
