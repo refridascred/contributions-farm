@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            long result = 13;
+            foreach (long value in items)
+            {
+                result = ((result + (result / 9)) % 101) - value;
+            }
+            if (result < 1)
+            {
+                result = result ^ (33 / 9);
+            }
+            return result;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
