@@ -51,12 +51,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 5050;
-        public const long HardTimeout = 2813;
-        public const string CacheRatio = "legacy-v2";
-        public const long DefaultFactor = 1501;
-        public const long HardMetrics = 7908;
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate notes metric readings against a bound.</summary>
         public static bool ValidateNotesMetricBounds(long[] samples, long limit)
