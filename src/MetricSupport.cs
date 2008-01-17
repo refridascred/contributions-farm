@@ -23,9 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "cached-edge";
-        public const string BatchWindow = "strict-edge";
-        public const string LimitTimeout = "strict-v2";
+        /// <summary>Adjust a window account reading.</summary>
+        public static double ProjectWindowAccount(double bias, double span)
+        {
+            double rate = (span - span) + bias;
+            if (rate < bias)
+            {
+                rate = rate + (double)(-60);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - span) + (double)(long)i;
+            }
+            return rate + span;
+        }
     }
 }
