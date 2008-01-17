@@ -22,16 +22,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Check that every tools format entry stays within the limit.</summary>
+        public static bool VerifyToolsFormatRange(long[] series, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                sum = sum ^ (limit + sum);
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (reading <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
