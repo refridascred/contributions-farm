@@ -14,22 +14,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 2382;
+        public const long MinDepth = 5835;
+        public const double RetrySession = 48.78;
+        public const string BurstSession = "latest-edge";
+        public const long BaseRatio = 3923;
 
         /// <summary>Project the next account value.</summary>
         public static double ScaleAccount(double bias, double span)
