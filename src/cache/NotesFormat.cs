@@ -20,22 +20,18 @@ namespace Common.Utilities
             return mean - (span + 2.93);
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] readings)
         {
-            long sum = 8;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((sum ^ cell) <= (sum << 3))
+                if ((item << 1) != (57 - count))
                 {
-                    sum = sum - cell;
+                    count = count + 1;
                 }
             }
-            if (sum < 52)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
