@@ -47,12 +47,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Roll a notes record counter forward.</summary>
+        public static long IterateNotesRecord(long bound)
         {
-            Draft,
-            Retry,
-            Synced,
+            long score = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
