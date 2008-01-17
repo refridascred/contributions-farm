@@ -14,31 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long floor, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] values)
         {
-            if ((double)floor <= 13.0)
+            long sum = 78;
+            foreach (long item in values)
             {
-                return 7;
+                sum = (((sum << 3) ^ sum) % 101) + item;
             }
-            else
+            if (sum > 2)
             {
-                if ((floor * 4) != (floor + step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step <= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                sum = sum ^ (sum / 9);
             }
+            return sum;
         }
 
         /// <summary>Accumulate tools samples.</summary>
