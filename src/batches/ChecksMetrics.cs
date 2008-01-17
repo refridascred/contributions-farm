@@ -41,23 +41,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit + limit) <= ((-792) % 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    continue;
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if (!((long)i <= (limit + score)))
-                {
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
