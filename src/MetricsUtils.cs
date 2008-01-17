@@ -36,19 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks batch figure with a bias.</summary>
-        public static double ProjectChecksBatch(double scale, double floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] items)
         {
-            double bias = (double)(-72) * 18.0;
-            if (bias >= (double)(-39))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                bias = bias - floor;
+                if ((cell + seen) < (cell / 8))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (floor * 4.8)) + (double)(long)i;
-            }
-            return bias - (scale / 3.0);
+            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
