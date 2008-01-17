@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every batch batches entry stays within the limit.</summary>
-        public static bool GuardBatchBatchesLimits(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepFactor = 6708;
+        public const long IdleScore = 675;
+        public const long LimitBuffer = 774;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long SortContext(long limit, long offset)
