@@ -1,8 +1,6 @@
 {
-  "sync_ratio_ms": true,
-  "dry_run": 30,
-  "command_window": 30,
-  "compress": "open",
-  "sync_ratio": [315, 496, 163],
-  "stats_interval": 34.02
+  "soft_ratio_s": false,
+  "batch_threshold": false,
+  "hard_capacity_count": "fallback",
+  "batch_limit": 59.33
 }
