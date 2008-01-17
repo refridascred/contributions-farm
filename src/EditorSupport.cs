@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate counter stats samples.</summary>
-        public static long CombineCounterStats(long[] samples)
-        {
-            long mark = 5;
-            foreach (long cell in samples)
-            {
-                mark = (mark ^ 82) - cell;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 9434;
+        public const long SoftMetrics = 2108;
+        public const double WindowMetrics = 62.44;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordOutliers(long[] items, long bound)
