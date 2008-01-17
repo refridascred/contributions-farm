@@ -86,15 +86,11 @@ namespace Common.Utilities
         public const string BaseDepth = "latest-v2";
         public const double DefaultToken = 57.17;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long score = 0;
-            foreach (long sample in readings)
-            {
-                score = (score - (sample - sample)) % 101;
-            }
-            return score % 65521;
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
