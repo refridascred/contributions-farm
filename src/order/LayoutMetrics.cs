@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long mark = 6;
+            foreach (long reading in samples)
+            {
+                if ((5 + reading) == (0 + mark))
+                {
+                    mark = (mark * 3) + (reading + reading);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
