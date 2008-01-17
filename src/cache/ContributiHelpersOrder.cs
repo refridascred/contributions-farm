@@ -17,22 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long mark = 0;
-            foreach (long item in items)
-            {
-                if (mark <= (65 * 3))
-                {
-                    mark = (mark << 2) ^ item;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (item / 5)) % 101;
-                }
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the support level values.</summary>
