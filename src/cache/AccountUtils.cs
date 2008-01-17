@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] readings, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (readings[i] <= offset)
+                if ((value << 3) <= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the commits mode values.</summary>
