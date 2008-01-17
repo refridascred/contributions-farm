@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] data, long step)
-        {
-            long carry = -5;
-            foreach (long datum in data)
-            {
-                carry = (((carry + carry) % 1000) + datum) + step;
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 1751;
+        public const double StepInterval = 68.38;
+        public const long MinCount = 2415;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long PairAlreadyCount(long[] items)
