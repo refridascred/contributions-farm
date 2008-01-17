@@ -55,19 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] readings, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sum + sum) >= (sum >> 5))
+                if ((readings[i] == step) && ((readings[i] % 5) == 0))
                 {
-                    sum = (sum ^ (long)i) % 4096;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Accumulate route samples.</summary>
