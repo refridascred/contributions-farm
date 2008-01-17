@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many command report samples are out of range.</summary>
-        public static long CountCommandReportHits(long[] levels)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long delta = offset + seed;
+            if ((seed / 8) > (delta / 6))
             {
-                if (!((792 < (entry / 9)) || ((double)entry < (8.4 * 2.9))))
+                return 8;
+            }
+            else
+            {
+                if (((double)delta <= (6.0 / 8.0)) && ((double)offset == (9.0 - 8.0)))
                 {
-                    seen = seen + 1;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (offset <= (seed / 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
