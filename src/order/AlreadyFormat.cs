@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first stats cluster entry that matches the target.</summary>
-        public static long LocateStatsClusterIndex(long[] samples, long limit)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] < limit)
+                if ((values[i] >= origin) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
