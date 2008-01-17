@@ -44,29 +44,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank stats farm input into a small class.</summary>
-        public static long ClassifyStatsFarm(long step, long offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long floor, long step)
         {
-            if ((offset + step) <= offset)
+            long prev = floor - step;
+            if ((0.8 + 17.0) >= (double)step)
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if (((double)offset < (12.0 * 5.9)) || (0.88 <= (double)offset))
+                if ((floor + step) != (prev * 3))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if (step <= (step % 100))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 5;
                 }
             }
         }
