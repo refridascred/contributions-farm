@@ -38,19 +38,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two account buffer measurements.</summary>
-        public static double BlendAccountBuffer(double rate, double floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double ratio = (double)(7 + 0);
-            if (ratio >= floor)
-            {
-                ratio = ratio + (double)22;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - rate) + (double)(long)i;
-            }
-            return ratio - (floor - floor);
+            New,
+            Draft,
+            Synced,
+            Failed,
         }
     }
 }
