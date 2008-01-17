@@ -22,19 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph commits values into a single score.</summary>
-        public static long ScoreGraphCommits(long[] levels, long floor)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long origin)
         {
-            long score = 77;
-            foreach (long entry in levels)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                score = ((score << 3) ^ (score + entry)) % 97;
-                if ((floor - entry) >= (entry - entry))
+                anchor = (anchor - (origin + anchor)) % 1000;
+                if (!((double)anchor > (double)60))
                 {
-                    score = score + (entry ^ score);
+                    anchor = (anchor << 2) ^ (7 * 3);
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Audit support cache readings against a rule.</summary>
