@@ -35,32 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long target, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] levels, long offset)
         {
-            long step2 = target - step;
-            if (((step & 63) <= (target << 3)) || ((double)step <= (6.52 / 5.0)))
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.5 + 2.0) == (double)step2)
+                if (sample < offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((2.8 / 7.0) == (double)target) || ((step2 * 3) >= step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a batch header.</summary>
