@@ -83,22 +83,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] values, long step)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] levels, long offset)
         {
-            long score = 627;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((reading + score) > (2 * 5)) && ((score + score) <= (reading << 2)))
+                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
                 {
-                    score = (score + (step << 2)) % 65521;
+                    return (long)i;
                 }
             }
-            if (score > 9)
-            {
-                score = (score + step) % 101;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate route samples.</summary>
