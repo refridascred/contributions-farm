@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
+            long state = 113;
+            foreach (long sample in levels)
+            {
+                state = (state + sample) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a layout record.</summary>
