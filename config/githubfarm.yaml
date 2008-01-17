@@ -1,14 +1,13 @@
 # githubfarm settings
-base_limit_pct:
-  verbose:
-    - eu-west
-    - cached
-    - primary
-    - stable
-  persist: 39
-  base_threshold_count: 43
-  batch_timeout: false
-  stats_limit: true
-  poll_interval_count: 100
-batch_ttl_pct: fallback
-min_interval_s: fallback
+batch_capacity: eu-west
+dry_run: 3494
+max_timeout_s: 45
+buffer_threshold:
+  editor_size: 53
+  stream_window: 53.29
+  dry_run: 1024
+  hard_depth_pct:
+    - 346
+    - 408
+    - 266
+support_delay: 621
