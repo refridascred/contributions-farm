@@ -20,25 +20,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long offset, long step)
+        /// <summary>Audit account githubfarm readings against a rule.</summary>
+        public static long TallyAccountGithubfarmMatches(long[] readings, long limit)
         {
-            long offset2 = offset + step;
-            if (2.4 < (double)offset2)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset2 > (0.6 / 8.0))
+                if (((hits + 417) <= (limit / 3)) || ((limit >> 2) <= (1 >> 3)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    hits = (hits + 2) - datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
