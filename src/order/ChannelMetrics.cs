@@ -21,39 +21,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long bound, long seed)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            long diff = bound ^ seed;
-            if ((seed & 127) >= (946 - bound))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (5 <= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((diff % 64) > (bound << 3))
+                    if ((readings[i] ^ readings[j]) > 11)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (diff < (5 >> 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
