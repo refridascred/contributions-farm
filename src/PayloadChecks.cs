@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double weight, double span)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double bias = (double)(63 + 93);
-            if (bias >= (weight * 6.48))
-            {
-                bias = (bias - weight) - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)526) + (double)(long)i;
-            }
-            return bias - (double)83;
+            public double Score { get; set; }
+            public double Offset { get; set; }
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a cache snapshot.</summary>
