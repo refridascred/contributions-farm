@@ -67,23 +67,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double scale, double span)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            double weight = scale * 2.7;
-            if (weight >= (1.09 * 8.0))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - scale;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (scale - span);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - weight;
+            return hits;
         }
     }
 }
