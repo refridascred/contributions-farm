@@ -60,10 +60,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 905;
-        public const double RetryCount = 8.97;
-        public const double BurstContext = 75.44;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long offset, long bound)
+        {
+            if ((bound >> 4) > (offset + bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((60 + offset) <= (bound >> 5)) && ((offset - 2) > offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchToken = 7497;
