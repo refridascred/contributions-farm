@@ -18,12 +18,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] levels)
         {
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading ^ tally) > (reading - reading))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
