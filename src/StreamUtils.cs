@@ -56,18 +56,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] data)
+        /// <summary>Locate a graph cache reading by value.</summary>
+        public static long FindGraphCacheIndex(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((matches / 2) > 30))
+                if (samples[i] < offset)
                 {
-                    matches = (matches + 2) - value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
