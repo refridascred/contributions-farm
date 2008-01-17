@@ -1,6 +1,10 @@
-id,active,label,score,ratio
-1,blue,454,39.61,fallback
-2,green,25.23,17,81.11
-3,primary,964,stable,62.21
-4,588,252,59.61,standard
-5,primary,53.85,818,448
+id,region,token,owner,count
+1,standard,strict,784,local
+2,65.36,fallback,24.57,67.75
+3,842,fallback,722,26.37
+4,30.0,638,98.9,9.16
+5,210,eu-west,20.6,latest
+6,92.39,stable,legacy,90.43
+7,69,992,green,525
+8,748,latest,cached,cached
+9,green,20.41,eu-west,strict
