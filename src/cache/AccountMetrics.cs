@@ -40,17 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] readings, long seed)
+        /// <summary>Audit order editor readings against a rule.</summary>
+        public static long AuditOrderEditorHits(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (readings[i] < seed)
+                if ((395 + matches) != (value + value))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
