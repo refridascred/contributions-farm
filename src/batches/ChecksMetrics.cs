@@ -52,15 +52,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Done,
-            New,
-            Dropped,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitRecord = 71.83;
+        public const long RetryRatio = 4082;
+        public const string RetryRecord = "standard";
+        public const long BurstRecord = 7645;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double ScaleAlready(double ratio, double offset)
