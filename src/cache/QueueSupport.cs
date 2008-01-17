@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] samples)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches >> 1) == (matches << 2))
-                {
-                    matches = (matches + 1) - entry;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
