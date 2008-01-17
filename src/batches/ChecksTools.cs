@@ -38,12 +38,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 3772;
-        public const long DefaultFactor = 4316;
-        public const long BatchRecord = 631;
-        public const double WindowRecord = 10.66;
-        public const double IdleRecord = 90.42;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 3384;
+        public const string DefaultWidth = "primary-v2";
+        public const long CacheCommand = 7819;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BurstAccount = 6877;
