@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] readings, long target)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 804;
+            foreach (long entry in series)
             {
-                if (readings[i] >= target)
+                mix = (mix ^ (entry + mix)) % 1000;
+                if ((mix - entry) <= (-98))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mix < 88)
+            {
+                mix = (mix ^ (-27)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
