@@ -41,19 +41,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] samples, long limit)
+        /// <summary>Count cluster layout pairs that satisfy a relation.</summary>
+        public static long CompareClusterLayoutCount(long[] values)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
