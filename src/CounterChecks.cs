@@ -56,11 +56,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
