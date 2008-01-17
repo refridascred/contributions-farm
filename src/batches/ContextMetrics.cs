@@ -24,18 +24,12 @@ namespace Common.Utilities
             return mean - (floor / 5.0);
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 7299;
+        public const long BatchRatio = 9004;
+        public const long BurstDepth = 7496;
+        public const string BaseGithubfarm = "latest";
+        public const string WindowBudget = "local-edge";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long IdleRatio = 6116;
