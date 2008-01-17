@@ -43,32 +43,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long seed, long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double weight, double bias)
         {
-            long diff = seed + limit;
-            if ((diff + limit) < 799)
+            double weight2 = (weight / 9.0) / 5.0;
+            if (weight2 < (weight / 4.0))
             {
-                return 3;
+                weight2 = (weight2 + 12.0) - bias;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((4.62 + 9.72) == (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit ^ seed) > 78)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                weight2 = (weight2 - weight) + (double)(long)i;
             }
+            return weight2 + 2.53;
         }
 
         /// <summary>Hold a profile stats.</summary>
