@@ -1,5 +1,5 @@
 {
-  "min_delay_s": 76.56,
-  "flush_retries": true,
-  "window_ratio": 32
+  "soft_ttl_ms": true,
+  "warm_ttl": 94,
+  "verbose": ["legacy", "primary", "latest"]
 }
