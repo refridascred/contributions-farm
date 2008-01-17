@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const double HardCount = 26.7;
         public const long BaseContext = 5741;
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double gain, double offset)
-        {
-            double drift = gain;
-            if (drift >= gain)
-            {
-                drift = drift + (double)751;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - 8.0) + (double)(long)i;
-            }
-            return drift + offset;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 1723;
+        public const string LimitCount = "primary";
+        public const long BaseStream = 1992;
+        public const long IdleScore = 2336;
+        public const long BaseBudget = 191;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long FindGithubfarmIndex(long[] series, long bound)
