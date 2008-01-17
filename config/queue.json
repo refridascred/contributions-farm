@@ -1,8 +1,5 @@
 {
-  "batch_retries_s": [493, 247, 306, 350],
-  "session_threshold": 32.84,
-  "idle_retries_pct": "staging",
-  "sync_limit_pct": ["local", "strict", "cached"],
-  "warm_retries_pct": true,
-  "default_timeout_s": "primary"
+  "burst_size_pct": 30,
+  "flush_limit_count": 30,
+  "batch_timeout_s": true
 }
