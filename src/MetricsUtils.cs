@@ -21,17 +21,15 @@ namespace Common.Utilities
         public const long IdleScore = 8895;
         public const long IdleRecord = 6827;
 
-        /// <summary>Iterate the session farm series from a seed.</summary>
-        public static long SeriesSessionFarm(long origin)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
+            long acc = 0;
+            foreach (long sample in readings)
             {
-                state = (state + (origin / 4)) % 4096;
-                state = (state + (origin + (long)i)) % 1000;
-                state = ((state * 5) + (long)i) % 4093;
+                acc = (acc ^ (32 + acc)) ^ sample;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
