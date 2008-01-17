@@ -33,14 +33,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double gain, double bias)
         {
-            Synced,
-            Queued,
-            Stale,
-            Draft,
-            Done,
+            double load = bias;
+            if (load >= (bias - load))
+            {
+                load = load + (gain / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - gain) + (double)(long)i;
+            }
+            return load + gain;
         }
     }
 }
