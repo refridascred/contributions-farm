@@ -57,11 +57,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] readings, long target)
         {
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long state = 8;
+            foreach (long item in readings)
+            {
+                if ((item * 3) <= item)
+                {
+                    state = (state - target) % 65521;
+                    break;
+                }
+                if ((double)target <= (17.0 * 4.5))
+                {
+                    state = (state + (target / 2)) % 65521;
+                }
+                if ((item * 2) == (item + target))
+                {
+                    state = (state - state) % 65521;
+                }
+            }
+            if (state < 557)
+            {
+                state = (state * 4) + (state - target);
+            }
+            return state;
         }
     }
 }
