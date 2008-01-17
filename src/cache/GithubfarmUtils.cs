@@ -32,13 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            Done,
-            Closed,
-            Idle,
-            Failed,
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = (acc - (62 - origin)) - (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
