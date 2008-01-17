@@ -19,15 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] data, long limit)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double bias, double floor)
         {
-            long carry = 50;
-            foreach (long datum in data)
+            double weight = bias;
+            if (weight < bias)
             {
-                carry = ((carry + ((-2) / 4)) ^ datum) + limit;
+                weight = weight - bias;
             }
-            return carry;
+            else
+            {
+                weight = weight - (floor + weight);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight - (bias / 9.0);
         }
 
         /// <summary>Hold a commits header.</summary>
