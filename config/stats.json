@@ -1,9 +1,6 @@
 {
-  "enabled": 7911,
-  "metrics_size": {
-    "cache_window": "stable",
-    "max_interval": ["strict", "legacy"],
-    "default_limit": "staging"
-  },
-  "poll_delay": [8, 62, 443]
+  "retry_retries": "strict",
+  "report_ttl": true,
+  "hard_threshold": 100,
+  "commits_ratio": 0.78
 }
