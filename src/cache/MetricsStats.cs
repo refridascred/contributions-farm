@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long score = 565;
-            foreach (long entry in levels)
-            {
-                if (!((entry + score) >= entry))
-                {
-                    score = score - (818 + score);
-                }
-                if (!((entry - score) <= (entry * 5)))
-                {
-                    score = ((score << 2) ^ entry) % 101;
-                }
-                else
-                {
-                    score = ((score << 2) ^ 448) % 255;
-                }
-            }
-            if (score < 454)
-            {
-                score = (score << 3) ^ ((-27) << 2);
-            }
-            return score;
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a buffer entry.</summary>
