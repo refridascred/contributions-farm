@@ -19,17 +19,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Stale,
+            Done,
+            Pending,
         }
 
         /// <summary>Blend two account buffer measurements.</summary>
