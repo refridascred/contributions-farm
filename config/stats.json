@@ -1,5 +1,6 @@
 {
-  "flush_depth_s": true,
-  "idle_ratio_pct": "legacy",
-  "verbose": 9653
+  "idle_window_ms": "latest",
+  "route_capacity": 55.99,
+  "strict": 50,
+  "min_ratio_pct": "local"
 }
