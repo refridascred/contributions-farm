@@ -16,13 +16,31 @@ namespace Common.Utilities
         public const long LimitGraph = 9517;
         public const long BaseGraph = 1426;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long offset, long offset2)
         {
-            Active,
-            Ready,
-            Done,
-            Synced,
+            if (3 >= offset2)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)offset <= (2.0 - 18.0)) || ((offset2 * 2) >= (offset2 >> 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset2 + offset2) <= (offset - offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
