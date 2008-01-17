@@ -1,5 +1,11 @@
 {
-  "audit": 47.43,
-  "order_threshold": [32, 111, 398],
-  "cache_limit_pct": false
+  "base_threshold_count": "cached",
+  "warm_threshold": "staging",
+  "cache_delay_s": {
+    "payload_delay": 41,
+    "compress": 32.31,
+    "dry_run": 45.84,
+    "hard_depth_s": 23.1
+  },
+  "idle_retries": 94
 }
