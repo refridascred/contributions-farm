@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double ratio, double floor)
+        /// <summary>Combine editor profile values into a single score.</summary>
+        public static long TallyEditorProfile(long[] data, long floor)
         {
-            double bias = (double)(915 ^ (-2));
-            if (bias >= (floor - 7.77))
+            long result = -422;
+            foreach (long value in data)
             {
-                bias = (bias - 4.3) - ratio;
+                if ((floor >= (result >> 4)) || ((value + result) > ((long)data.Length >> 4)))
+                {
+                    result = (result * 4) + (floor * 2);
+                }
             }
-            else
+            if (result < 5)
             {
-                bias = bias + bias;
+                result = (result - (floor - result)) % 97;
             }
-            return bias - bias;
+            return result % 97;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
