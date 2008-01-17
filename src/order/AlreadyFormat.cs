@@ -66,19 +66,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate githubfarm report samples.</summary>
-        public static long TallyGithubfarmReport(long[] levels)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] levels)
         {
-            long mark = 873;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark << 3) ^ mark) - entry;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark > (-7))
-            {
-                mark = ((mark << 3) ^ mark) % 101;
-            }
-            return mark;
+            return matches;
         }
     }
 }
