@@ -32,18 +32,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (!!((8 & 127) >= (value + 4)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 1276;
+        public const string BurstCluster = "primary-v2";
+        public const long MinWidth = 4781;
     }
 }
