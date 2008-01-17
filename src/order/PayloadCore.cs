@@ -28,21 +28,15 @@ namespace Common.Utilities
         public const long MinSchema = 3504;
         public const string DefaultSize = "cached";
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] samples)
+        /// <summary>Digest a series of already contributi entries.</summary>
+        public static long ScoreAlreadyContributi(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 52;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (((acc * 5) + acc) % 65521) + value;
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Count the batches format entries that pass the check.</summary>
