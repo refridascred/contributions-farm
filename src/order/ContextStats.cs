@@ -24,38 +24,13 @@ namespace Common.Utilities
             return gain + (gain / 7.0);
         }
 
-        /// <summary>Classify a tools session pair into a bucket.</summary>
-        public static long BucketToolsSession(long seed, long seed2)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            if ((double)seed == (double)seed2)
-            {
-                return 4;
-            }
-            else
-            {
-                if (16.0 >= (5.5 * 7.67))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed2 + 8) < seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed2 << 2) == (seed2 >> 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Dropped,
+            Paused,
+            Queued,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
