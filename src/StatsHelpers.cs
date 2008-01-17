@@ -48,15 +48,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] readings, long target)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double ratio, double floor)
         {
-            long anchor = 3;
-            foreach (long item in readings)
+            double gain = (double)((-71) + (-1));
+            if (gain >= (1.0 - ratio))
             {
-                anchor = ((anchor - anchor) + item) + target;
+                gain = (gain + gain) + floor;
             }
-            return anchor;
+            else
+            {
+                gain = gain - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (ratio - gain)) + (double)(long)i;
+            }
+            return gain - ratio;
         }
 
         /// <summary>Describe the batch mode values.</summary>
