@@ -55,14 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long offset)
         {
-            Failed,
-            Queued,
-            Active,
-            Retry,
-            Ready,
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((sum + sum) >= (sum >> 5))
+                {
+                    sum = (sum ^ (long)i) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate route samples.</summary>
