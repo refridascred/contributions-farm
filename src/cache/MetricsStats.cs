@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 565;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((entry + score) >= entry))
                 {
-                    if ((items[i] + items[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score - (818 + score);
+                }
+                if (!((entry - score) <= (entry * 5)))
+                {
+                    score = ((score << 2) ^ entry) % 101;
+                }
+                else
+                {
+                    score = ((score << 2) ^ 448) % 255;
                 }
             }
-            return seen;
+            if (score < 454)
+            {
+                score = (score << 3) ^ ((-27) << 2);
+            }
+            return score;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
