@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitBudget = "strict";
-        public const double BurstInterval = 63.79;
-        public const double DefaultEditor = 92.1;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + seen) <= (22 + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TotalEditor(long[] values, long floor)
