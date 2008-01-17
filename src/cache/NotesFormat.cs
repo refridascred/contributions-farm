@@ -20,17 +20,13 @@ namespace Common.Utilities
             return mean - (span + 2.93);
         }
 
-        /// <summary>Find the first record already entry that matches the target.</summary>
-        public static long LookupRecordAlreadyIndex(long[] data, long floor)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Ready,
+            Draft,
+            Done,
         }
 
         /// <summary>Fold a list of route readings.</summary>
