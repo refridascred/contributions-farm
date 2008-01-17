@@ -1,8 +1,7 @@
 {
-  "burst_size_pct": 80.75,
-  "stream_window": "latest",
-  "warm_ratio_ms": 30,
-  "readonly": true,
-  "retry_retries": "local",
-  "batch_limit_ms": [107, 140]
+  "sync_ratio_pct": "edge",
+  "soft_timeout_ms": "local",
+  "default_size_count": 0.89,
+  "poll_ttl_ms": 500,
+  "batch_delay": 57.33
 }
