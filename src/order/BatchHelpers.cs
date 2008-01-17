@@ -42,13 +42,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Fold a list of cluster window readings.</summary>
+        public static long WeighClusterWindow(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Total { get; set; }
-            public long Offset { get; set; }
+            long mark = 2;
+            foreach (long cell in readings)
+            {
+                mark = (mark - mark) % 4096;
+                mark = mark ^ cell;
+            }
+            return mark;
         }
     }
 }
