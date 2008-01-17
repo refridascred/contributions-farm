@@ -40,20 +40,9 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((carry + (long)i) >= ((long)i << 2))
-                {
-                    carry = (carry - offset) % 101;
-                    carry = (carry << 2) ^ (offset ^ (-180));
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 990;
+        public const string HardAccount = "cached-edge";
+        public const long HardTimeout = 538;
     }
 }
