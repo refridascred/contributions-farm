@@ -34,31 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long step, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long origin)
         {
-            if (((step % 12) <= (seed >> 5)) || ((seed + 354) < seed))
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)seed >= (5.6 - 19.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - step) <= (step ^ step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
