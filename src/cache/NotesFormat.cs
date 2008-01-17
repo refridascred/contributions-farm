@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 75.83;
-        public const long StepFormat = 3510;
-        public const long HardBudget = 9080;
-        public const long DefaultTimeout = 6324;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a order filter reading by value.</summary>
         public static long FindOrderFilterIndex(long[] readings, long offset)
