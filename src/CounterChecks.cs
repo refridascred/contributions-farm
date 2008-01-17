@@ -36,10 +36,14 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 47.5;
-        public const long HardCommits = 165;
-        public const string DefaultCommits = "legacy-v2";
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Measure how many schema queue samples are out of range.</summary>
         public static long AuditSchemaQueueHits(long[] items, long step)
