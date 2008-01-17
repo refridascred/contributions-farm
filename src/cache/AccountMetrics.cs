@@ -27,24 +27,17 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long step, long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] series, long bound)
         {
-            if ((step - step) >= 505)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (70 > (offset / 9))
+                if ((series[i] >= bound) && ((series[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
