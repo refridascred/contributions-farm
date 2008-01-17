@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm filter readings.</summary>
-        public static long DigestGithubfarmFilter(long[] data)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long sum = 768;
-            foreach (long entry in data)
-            {
-                sum = (sum - (sum % 8)) % 101;
-                if ((sum * 2) > (entry + entry))
-                {
-                    sum = ((sum << 2) ^ 467) % 101;
-                }
-            }
-            return sum % 1000;
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
