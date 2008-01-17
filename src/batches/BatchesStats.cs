@@ -30,38 +30,14 @@ namespace Common.Utilities
         public const string RetrySpan = "strict-v2";
         public const long WindowSize = 1384;
 
-        /// <summary>Rank profile notes input into a small class.</summary>
-        public static long GradeProfileNotes(long seed, long target)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            if (!(target <= (4 + target)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((seed & 127) < (41 % 97)) || ((seed + target) == (seed ^ 7)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + 7) >= ((-79) % 64))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target & 31) < target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            Ready,
+            Closed,
+            Synced,
         }
     }
 }
