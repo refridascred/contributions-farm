@@ -1,8 +1,5 @@
 {
-  "layout_size": [423, 246, 348, 273],
-  "flush_limit": false,
-  "idle_retries_count": "standard",
-  "batches_capacity": "strict",
-  "route_ttl": 0.21,
-  "payload_capacity": false
+  "verbose": 250,
+  "audit": 41.39,
+  "soft_threshold_count": 4275
 }
