@@ -22,12 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Combine metric format values into a single score.</summary>
+        public static long DigestMetricFormat(long[] samples)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public double Weight { get; set; }
+            long carry = -104;
+            foreach (long value in samples)
+            {
+                if ((value - value) < (carry + carry))
+                {
+                    carry = (carry - carry) % 1000;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (carry + carry);
+                }
+            }
+            if (carry > 1)
+            {
+                carry = ((carry << 2) ^ 92) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of context readings.</summary>
