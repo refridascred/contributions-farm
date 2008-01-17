@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a checks batches pair into a bucket.</summary>
-        public static long RankChecksBatches(long bound, long seed)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long next = bound + seed;
-            if ((11.0 + 2.81) < (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((20.0 / 2.0) != (double)next)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Retry,
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Describe the batch class values.</summary>
