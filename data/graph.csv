@@ -1,6 +1,9 @@
-id,level,owner,active,score
-1,31.49,323,323,25.9
-2,25.38,standard,strict,222
-3,latest,eu-west,89.45,primary
-4,strict,open,44,501
-5,open,994,local,241
+id,token,ratio
+1,783,46.67
+2,green,58.29
+3,961,68.32
+4,83.44,31.09
+5,65,90.31
+6,843,34.9
+7,968,521
+8,217,standard
