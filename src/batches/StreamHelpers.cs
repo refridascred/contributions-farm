@@ -47,15 +47,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a notes record counter forward.</summary>
-        public static long IterateNotesRecord(long bound)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public long Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a stream stats.</summary>
