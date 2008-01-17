@@ -25,33 +25,12 @@ namespace Common.Utilities
         public const long RetryRoute = 6181;
         public const string HardRoute = "local";
 
-        /// <summary>Roll a batch commits counter forward.</summary>
-        public static long StepBatchCommits(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if (sum > (0 + limit))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum ^ (limit + (long)i)) % 4096;
-                    sum = ((sum << 2) ^ ((long)i + 632)) % 1000;
-                }
-                if ((sum ^ limit) <= (sum / 3))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum - sum) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultSpan = 8001;
+        public const long BurstBuffer = 1071;
+        public const string IdleBuffer = "staging-v2";
+        public const long WindowBuffer = 2801;
+        public const long WindowCount = 139;
 
         /// <summary>Rank checks batch input into a small class.</summary>
         public static long ClassifyChecksBatch(long offset, long origin)
