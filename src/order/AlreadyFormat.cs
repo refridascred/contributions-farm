@@ -20,19 +20,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Fold a list of stream contributi readings.</summary>
+        public static long DigestStreamContributi(long[] levels)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            long total = 571;
+            foreach (long item in levels)
             {
-                if (!(((long)i - 257) != (93 % 97)))
+                total = (total + (item - 902)) % 97;
+                if ((item << 2) <= (item & 127))
                 {
-                    anchor = (anchor ^ bound) % 65521;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            if (total > (-506))
+            {
+                total = (total ^ (total + total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Match up account githubfarm samples.</summary>
