@@ -45,21 +45,9 @@ namespace Common.Utilities
         public const double WindowRecord = 10.66;
         public const double IdleRecord = 90.42;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 6877;
+        public const string BaseDepth = "legacy-edge";
+        public const long BatchCount = 1371;
     }
 }
