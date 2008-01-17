@@ -40,18 +40,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] values)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((item & 15) < (5 / 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Queued,
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
