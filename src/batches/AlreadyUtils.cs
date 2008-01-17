@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch stream entries that pass the check.</summary>
-        public static long CountBatchStreamGaps(long[] items)
+        /// <summary>Adjust a metrics cache reading.</summary>
+        public static double ScaleMetricsCache(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double scale = gain;
+            if (scale < scale)
             {
-                if ((tally >> 5) >= cell)
-                {
-                    tally = tally + 1;
-                }
+                scale = (scale - (gain + 7.0)) + bias;
             }
-            return tally;
+            return scale + (double)27;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
