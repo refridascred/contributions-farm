@@ -1,10 +1,15 @@
 # entry settings
-flush_timeout_s: 0.21
-verbose: 60
-dry_run:
-  format_interval: 72
-  already_retries: 500
-  audit: 4759
-  stats_timeout: 500
-cache_timeout: false
-contributi_retries: true
+metric_ttl:
+  sync_ttl_s: true
+  warm_interval_ms: 22
+  buffer_retries:
+    retry_limit: 100
+    batches_capacity: green
+    flush_size_s: 67.17
+  sync_ratio: standard
+poll_delay_pct: 4485
+warm_capacity: standard
+audit:
+  enabled: staging
+  sync_size: strict
+  base_retries_ms: 2870
