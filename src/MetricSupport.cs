@@ -32,18 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] samples)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((double)value == (double)count)
+                if (entry != bound)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
