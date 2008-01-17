@@ -1,8 +1,7 @@
-id,region,weight,ratio
-1,219,stable,31.11
-2,40.75,789,143
-3,244,121,72.63
-4,blue,latest,603
-5,standard,673,316
-6,509,blue,499
-7,17.84,77.21,796
+id,state,token,region
+1,36.09,local,31.08
+2,763,strict,536
+3,603,edge,39.14
+4,31.42,0.67,30.64
+5,41.0,260,24.53
+6,514,stable,local
