@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 5108;
-        public const long MaxBuffer = 5499;
-        public const long WindowBuffer = 7293;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryRatio = 4140;
+        public const long StepRatio = 1911;
+        public const long BatchFactor = 6330;
+        public const long CacheBudget = 9935;
+        public const string StepWidth = "alpha-1";
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TotalFarm(long[] values)
