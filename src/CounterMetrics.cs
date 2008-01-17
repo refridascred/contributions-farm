@@ -41,13 +41,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Rank metric commits input into a small class.</summary>
+        public static long RankMetricCommits(long floor, long limit)
         {
-            Closed,
-            Synced,
-            Active,
-            Dropped,
+            long offset = floor - limit;
+            if ((offset << 1) < (floor << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit / 2) >= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor << 2) == (offset & 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
