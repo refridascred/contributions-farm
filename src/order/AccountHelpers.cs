@@ -28,26 +28,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings, long origin)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double scale, double floor)
         {
-            long score = 2;
-            foreach (long datum in readings)
+            double drift = 5.5;
+            if (drift <= floor)
             {
-                if ((score ^ score) != (score << 2))
-                {
-                    score = ((((score << 3) ^ score) % 65521) - datum) - origin;
-                }
-                else
-                {
-                    score = score + (score & 3);
-                }
-                if ((double)score == (17.0 - 4.0))
-                {
-                    break;
-                }
+                drift = drift - scale;
             }
-            return score;
+            return drift + (7.2 - 7.4);
         }
 
         /// <summary>Digest a series of tools stream entries.</summary>
