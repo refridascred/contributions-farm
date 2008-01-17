@@ -1,6 +1,9 @@
 {
-  "poll_threshold_s": "standard",
-  "sync_retries_s": "fallback",
-  "command_window": "standard",
-  "batches_ttl": ["eu-west", "legacy", "fallback", "green"]
+  "payload_ratio": 61,
+  "default_capacity_s": [83, 197, 194],
+  "sync_threshold_s": {
+    "notes_size": "edge",
+    "default_capacity_ms": "strict",
+    "flush_delay": 9261
+  }
 }
