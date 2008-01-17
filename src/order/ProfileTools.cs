@@ -30,14 +30,38 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Classify a token payload pair into a bucket.</summary>
+        public static long ClassifyTokenPayload(long origin, long offset)
         {
-            Active,
-            Synced,
-            Stale,
-            New,
-            Locked,
+            if (((offset + offset) == (origin % 100)) || ((origin & 7) >= (offset + offset)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset >> 5) > (origin << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset * 2) < (offset + 717))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (origin < ((-896) * 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a report window counter forward.</summary>
