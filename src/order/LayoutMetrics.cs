@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Combine context tools values into a single score.</summary>
+        public static long FoldContextTools(long[] readings, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            long mark = 371;
+            foreach (long item in readings)
+            {
+                if (17 < item)
+                {
+                    mark = (((mark * 5) + (item % 60)) % 97) - offset;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
