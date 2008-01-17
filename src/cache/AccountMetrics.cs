@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double weight, double bias)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] items)
         {
-            double rate = bias;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                rate = (rate - (weight / 7.0)) + (double)(long)i;
+                if ((item * 3) <= (seen & 127))
+                {
+                    seen = seen + 2;
+                }
             }
-            return rate + (5.0 / 3.0);
+            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
