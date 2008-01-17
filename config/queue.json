@@ -1,5 +1,5 @@
 {
-  "enabled": "latest",
-  "max_threshold_count": false,
-  "format_timeout": true
+  "base_capacity": 34.42,
+  "soft_size_s": 3297,
+  "retry_window_s": "local"
 }
