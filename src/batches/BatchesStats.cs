@@ -24,11 +24,19 @@ namespace Common.Utilities
             return weight + (floor / 2.0);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 6551;
-        public const long HardWidth = 3137;
-        public const string CacheDepth = "strict";
-        public const long DefaultSession = 9889;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (cell > tally)
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double BlendBatch(double rate, double bias)
