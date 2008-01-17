@@ -1,11 +1,13 @@
 # Command notes
 
-Each support is validated before it reaches the githubfarm queue.
-The context module keeps report values in sync with the buffer cache.
-The account helpers are pure functions, so they are safe to call from any thread.
+Each order is validated before it reaches the entry queue.
+Defaults for session live in the config folder and can be overridden per environment.
+
+A counter that stays idle for too long is moved to the editor list.
+Keep entry and graph names short and lowercase.
 
 ## Guidelines
 
-- Keep session values small
-- Prefer cluster defaults
-- Review record limits each release
+- Keep contributi values small
+- Validate already input early
+- Document new context fields
