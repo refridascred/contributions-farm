@@ -1,16 +1,5 @@
 {
-  "readonly": 781,
-  "warm_retries": [156, 183, 381, 215],
-  "sync_threshold": {
-    "farm_delay": 27.56,
-    "cache_retries_s": {
-      "context_threshold": 57,
-      "base_interval": true,
-      "schema_ttl": 34,
-      "soft_timeout_s": 84.0,
-      "hard_ratio": "green"
-    },
-    "tools_threshold": 8620
-  },
-  "idle_limit": "local"
+  "contributi_threshold": true,
+  "poll_threshold_count": "strict",
+  "session_depth": 26
 }
