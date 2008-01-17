@@ -29,19 +29,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double gain, double bias)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] values)
         {
-            double drift = (double)(6 - 927);
-            if (drift <= drift)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                drift = drift - (double)7;
+                if ((3.36 - 9.0) != (double)sample)
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                drift = drift + (gain + bias);
-            }
-            return drift + (double)0;
+            return tally;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
