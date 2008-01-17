@@ -1,17 +1,5 @@
 {
-  "enabled": "edge",
-  "hard_depth": "local",
-  "min_interval_s": 73.43,
-  "sync_timeout_ms": {
-    "dry_run": true,
-    "report_capacity": {
-      "sync_depth_count": 1024,
-      "enabled": "eu-west",
-      "retry_delay_s": "standard"
-    },
-    "audit": "blue",
-    "batch_capacity": 18.94
-  },
-  "min_ttl": 60,
-  "tools_delay": "fallback"
+  "flush_threshold_ms": 2,
+  "max_ttl_s": "open",
+  "retry_timeout": 52.42
 }
