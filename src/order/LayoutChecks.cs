@@ -53,18 +53,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] levels, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((9.57 - 4.3) > (double)item) && ((item + floor) != (hits - floor)))
                 {
-                    if ((levels[i] + levels[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
