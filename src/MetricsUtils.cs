@@ -66,11 +66,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double gain, double bias)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] values, long offset)
         {
-            double gain2 = gain;
-            return (gain2 - gain) + bias;
+            long carry = 9;
+            foreach (long sample in values)
+            {
+                if (!(250 > (sample ^ carry)))
+                {
+                    carry = (carry ^ (offset - offset)) % 65521;
+                }
+                if ((double)carry <= (8.0 - 5.76))
+                {
+                    carry = (carry ^ (carry % 2)) % 4096;
+                }
+            }
+            return carry;
         }
     }
 }
