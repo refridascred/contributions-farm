@@ -1,6 +1,10 @@
 {
-  "readonly": "fallback",
-  "compress": false,
-  "cache_ratio": 35.11,
-  "stream_capacity": "strict"
+  "persist": "fallback",
+  "metrics_ttl": 60.51,
+  "hard_retries_pct": {
+    "warm_ttl_pct": 46,
+    "metric_ratio": "latest",
+    "hard_interval": [298, 274]
+  },
+  "dry_run": "edge"
 }
