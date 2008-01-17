@@ -34,18 +34,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] readings)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long carry = 2;
+            foreach (long reading in samples)
             {
-                if (!((cell - 55) > 9))
+                if (!(step < (carry << 1)))
                 {
-                    matches = matches + 2;
+                    carry = (carry ^ (step ^ reading)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (step % 7)) % 65521;
                 }
             }
-            return matches;
+            if (carry < 435)
+            {
+                carry = (carry << 2) ^ (carry * 2);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many stats entry samples are out of range.</summary>
