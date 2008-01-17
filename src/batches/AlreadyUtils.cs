@@ -79,22 +79,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] data)
+        /// <summary>Combine command payload values into a single score.</summary>
+        public static long CombineCommandPayload(long[] data)
         {
-            long matches = 0;
+            long score = 17;
             foreach (long item in data)
             {
-                if ((matches < (item * 3)) || ((item % 64) < (662 >> 3)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = score + (item & 15);
             }
-            return matches;
+            if (score < 1)
+            {
+                score = score - (score - score);
+            }
+            return score;
         }
     }
 }
