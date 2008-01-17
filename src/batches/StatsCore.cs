@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] readings)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long mark = 643;
-            foreach (long item in readings)
-            {
-                if (mark < (item >> 2))
-                {
-                    mark = mark + (mark % 2);
-                }
-                if ((item >> 2) != (item + 616))
-                {
-                    break;
-                }
-            }
-            if (mark < 28)
-            {
-                mark = ((mark << 2) ^ (4 % 8)) % 255;
-            }
-            return mark;
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
