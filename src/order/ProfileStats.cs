@@ -47,22 +47,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] values)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum ^ datum) < (datum + 43))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
