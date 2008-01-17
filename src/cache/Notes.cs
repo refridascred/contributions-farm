@@ -25,19 +25,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((double)seed > (19.0 / 8.0)) && ((hits + hits) == (hits + seed)))
-                {
-                    hits = (hits + 1) - sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSize = 3242;
+        public const long MaxSupport = 9463;
+        public const string IdleWidth = "staging-edge";
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long CombineBatches(long[] levels)
