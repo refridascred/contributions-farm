@@ -32,24 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long floor)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total << 2) ^ 752) % 1000;
-                if ((floor ^ total) < (floor * 4))
-                {
-                    total = total ^ (5 + 261);
-                }
-                else
-                {
-                    total = total ^ (total / 4);
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
