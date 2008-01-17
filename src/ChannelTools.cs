@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account queue readings against a rule.</summary>
-        public static long TallyAccountQueueOutliers(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell <= (8.0 * 2.3))
-                {
-                    seen = (seen + 1) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 8413;
+        public const string DefaultWidth = "legacy";
+        public const double BaseRoute = 72.77;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long SeekCommandIndex(long[] data, long floor)
