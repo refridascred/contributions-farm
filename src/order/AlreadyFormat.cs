@@ -50,15 +50,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double bias, double bias2)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double bias, double offset)
         {
-            double rate = bias;
-            if (rate > (bias + bias))
+            double gain = (double)((-6) - 94);
+            if (gain >= gain)
             {
-                rate = rate + bias2;
+                gain = (gain + offset) + bias;
             }
-            return rate - rate;
+            return gain - (double)154;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
