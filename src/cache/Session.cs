@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] samples, long step)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((8.0 * 11.0) > (double)value)
-                {
-                    seen = (seen + 1) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
