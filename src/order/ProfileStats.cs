@@ -27,11 +27,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double weight, double offset)
+        /// <summary>Look up the position of a queue schema sample.</summary>
+        public static long SeekQueueSchemaIndex(long[] items, long bound)
         {
-            double drift = (9.88 * 18.0) * 5.6;
-            return ((drift - drift) + weight) + offset;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
