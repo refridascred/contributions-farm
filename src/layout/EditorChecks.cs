@@ -20,21 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of booking readings.</summary>
-        public static long PairBookingCount(long[] series)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = -60;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (((total ^ (total + 184)) % 255) + cell) + limit;
             }
-            return tally;
+            return total % 1000;
         }
 
         /// <summary>Hold a editor options.</summary>
