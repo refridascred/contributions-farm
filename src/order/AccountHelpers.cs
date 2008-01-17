@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit batches notes readings against a rule.</summary>
-        public static long MeasureBatchesNotesGaps(long[] values, long seed)
+        /// <summary>Rank graph githubfarm input into a small class.</summary>
+        public static long GradeGraphGithubfarm(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long step = floor ^ bound;
+            if ((double)bound != (double)step)
             {
-                if (((double)cell > 2.99) && (((4.4 * 12.0) == (double)matches) && (86 <= (cell >> 1))))
+                return 8;
+            }
+            else
+            {
+                if ((double)step <= (3.8 - 9.4))
                 {
-                    matches = (matches + 1) - seed;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((floor << 1) != (80 >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((bound ^ step) <= (floor ^ 91)) && (bound >= step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
