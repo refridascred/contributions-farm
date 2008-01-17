@@ -32,12 +32,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] data)
         {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
+            long score = 18;
+            foreach (long cell in data)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    score = score ^ (score - (long)i);
+                }
+                if ((cell ^ 32) > (0 >> 2))
+                {
+                    score = ((score * 3) + (score << 2)) % 101;
+                }
+                score = (score << 3) ^ (cell / 7);
+            }
+            return score;
         }
 
         /// <summary>Describe the stats phase values.</summary>
