@@ -19,18 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] levels, long seed)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (!(9.7 > (double)value))
+                if (reading != offset)
                 {
-                    seen = (seen + 2) - seed;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a batch summary.</summary>
