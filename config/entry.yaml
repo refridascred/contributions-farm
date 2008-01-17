@@ -1,7 +1,10 @@
 # entry settings
-poll_ratio_s: 77.73
-burst_limit_count:
-  - 56
-  - 161
-  - 308
-dry_run: 250
+verbose: 250
+support_size: 4512
+sync_ttl_s:
+  - 439
+  - 99
+  - 246
+  - 476
+flush_size_ms: 96
+warm_capacity_ms: primary
