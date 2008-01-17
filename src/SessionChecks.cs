@@ -32,19 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] samples, long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (value > step)
+                if (sample < target)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Hold a queue info.</summary>
