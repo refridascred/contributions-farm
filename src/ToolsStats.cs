@@ -79,22 +79,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] items)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((double)sample != (double)tally)
+                if (hits <= (hits + cell))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the entry level values.</summary>
