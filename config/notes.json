@@ -1,24 +1,5 @@
 {
-  "base_limit": false,
-  "base_ttl_pct": true,
-  "githubfarm_capacity": 3661,
-  "burst_ttl_count": 50.07,
-  "report_timeout": {
-    "order_size": {
-      "persist": "staging",
-      "default_depth": "green",
-      "max_timeout_count": "fallback",
-      "notes_ratio": false,
-      "idle_capacity": [186, 402, 159]
-    },
-    "sync_depth_pct": {
-      "sync_retries": false,
-      "max_capacity_ms": 12,
-      "counter_depth": false,
-      "idle_delay": true
-    },
-    "commits_capacity": "staging",
-    "hard_retries_pct": ["latest", "cached", "green"]
-  },
-  "metrics_capacity": true
+  "idle_size": [426, 123],
+  "idle_capacity": false,
+  "command_capacity": "cached"
 }
