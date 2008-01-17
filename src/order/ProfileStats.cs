@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] readings, long seed)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seed + 939) > (90 / 4))
-                {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a layout summary.</summary>
