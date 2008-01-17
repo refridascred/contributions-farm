@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] readings, long target)
+        /// <summary>Roll a buffer command counter forward.</summary>
+        public static long DeriveBufferCommand(long origin)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (target < (target / 4))
-                {
-                    hits = (hits + 3) ^ item;
-                }
+                state = (state - (long)i) % 65521;
+                state = state + (long)i;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
