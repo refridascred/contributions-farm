@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] readings)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((hits & 3) > (datum - hits))
+                if (entry > seed)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Count the context order entries that pass the check.</summary>
