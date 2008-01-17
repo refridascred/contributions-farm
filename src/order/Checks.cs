@@ -72,13 +72,11 @@ namespace Common.Utilities
             return ratio - (double)40;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Locked,
-            Ready,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 27.84;
+        public const double BatchChecks = 72.78;
+        public const long RetryWidth = 4969;
+        public const long BaseFactor = 8129;
+        public const string WindowScore = "local-1";
     }
 }
