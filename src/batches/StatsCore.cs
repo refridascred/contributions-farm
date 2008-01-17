@@ -65,17 +65,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] series, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (series[i] < bound)
+                if (5.0 <= (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + value;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
