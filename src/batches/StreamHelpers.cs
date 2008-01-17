@@ -33,16 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next contributi stats value from a seed.</summary>
-        public static long IterateContributiStats(long offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] data, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
+            long carry = 50;
+            foreach (long datum in data)
             {
-                anchor = (anchor + ((long)i << 2)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                carry = ((carry + ((-2) / 4)) ^ datum) + limit;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Hold a commits header.</summary>
