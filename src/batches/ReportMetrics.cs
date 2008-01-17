@@ -24,19 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] data, long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] data)
         {
-            bool ok = true;
+            long seen = 0;
             foreach (long reading in data)
             {
-                if (reading < origin)
+                if (!((reading & 15) < (seen * 4)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
