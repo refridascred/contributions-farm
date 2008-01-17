@@ -22,24 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metric format values into a single score.</summary>
-        public static long DigestMetricFormat(long[] samples)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long target)
         {
-            long carry = -104;
-            foreach (long value in samples)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((value - value) < (carry + carry))
-                {
-                    carry = (carry - carry) % 1000;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (carry + carry);
-                }
-            }
-            if (carry > 1)
-            {
-                carry = ((carry << 2) ^ 92) % 65521;
+                carry = ((carry * 3) + (long)i) % 101;
             }
             return carry;
         }
