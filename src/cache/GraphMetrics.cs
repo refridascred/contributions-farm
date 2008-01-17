@@ -39,19 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every payload token entry stays within the limit.</summary>
-        public static bool ValidatePayloadTokenBounds(long[] data, long bound)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a profile snapshot.</summary>
