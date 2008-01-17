@@ -1,11 +1,12 @@
 {
-  "strict": 29,
-  "sync_ttl_pct": ["blue", "latest", "stable"],
-  "warm_timeout_s": {
-    "audit": "primary",
-    "support_interval": 1769,
-    "retry_limit": 59,
-    "cache_ttl": 30,
-    "warm_timeout_s": false
-  }
+  "max_capacity_s": {
+    "sync_retries": 47.41,
+    "poll_depth": "blue",
+    "sync_delay": true,
+    "max_limit": "standard"
+  },
+  "filter_ttl": 16,
+  "readonly": 8916,
+  "default_window": "cached",
+  "flush_size_s": 73.93
 }
