@@ -19,19 +19,24 @@ namespace Common.Utilities
         public const long StepOrder = 8934;
         public const double MinSize = 26.41;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] values, long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long carry = 8;
+            foreach (long sample in data)
             {
-                if (sample < bound)
+                carry = (carry + target) % 101;
+                carry = ((carry * 2) + (carry >> 4)) % 255;
+                if ((5.87 - 4.43) != (double)target)
                 {
-                    valid = false;
-                    break;
+                    carry = carry ^ (sample & 1);
+                }
+                else
+                {
+                    carry = (carry - (sample >> 2)) % 1000;
                 }
             }
-            return valid;
+            return carry;
         }
     }
 }
