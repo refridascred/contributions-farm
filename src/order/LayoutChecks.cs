@@ -47,12 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Audit stats token readings against a rule.</summary>
+        public static long TallyStatsTokenMatches(long[] items)
         {
-            Idle,
-            Pending,
-            Ready,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((double)value <= 14.0)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the command window series from a seed.</summary>
