@@ -53,12 +53,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] readings, long floor)
         {
-            Done,
-            New,
-            Idle,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)33 != (double)seen)
+                {
+                    seen = ((seen + 2) - datum) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a editor info.</summary>
