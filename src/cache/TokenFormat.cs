@@ -23,13 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Retry,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultGraph = 73.93;
+        public const long LimitLevel = 9741;
+        public const double MaxGraph = 27.08;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long ScoreLayout(long[] items)
