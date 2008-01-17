@@ -32,18 +32,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer metric samples are out of range.</summary>
-        public static long CountBufferMetricGaps(long[] samples, long offset)
+        /// <summary>Grade a report farm value against two limits.</summary>
+        public static long SortReportFarm(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long cur = offset + bound;
+            if ((456 - 86) <= bound)
             {
-                if (!(cell >= (offset + 7)) && (((hits ^ cell) == (cell ^ hits)) && ((offset + offset) >= (cell + cell))))
+                return 0;
+            }
+            else
+            {
+                if ((1.06 * 6.3) >= (double)bound)
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((12.0 / 2.0) == (double)cur)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the checks phase values.</summary>
