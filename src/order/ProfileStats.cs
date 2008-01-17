@@ -46,21 +46,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] values)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long floor, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((floor << 1) > (5 - 0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor % 10) > (53 % 12))
                 {
-                    if ((values[i] + values[j]) > 8)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor >= (3.61 * 13.0))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
     }
 }
