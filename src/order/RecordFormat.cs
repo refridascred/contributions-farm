@@ -76,18 +76,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] values, long seed)
+        /// <summary>Validate context checks readings against a bound.</summary>
+        public static bool CheckContextChecksLimits(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (seed <= (sample << 2))
+                if (reading >= limit)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
