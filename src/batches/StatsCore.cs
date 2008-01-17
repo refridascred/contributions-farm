@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] series, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (series[i] == offset)
+                if ((count >> 1) < (696 * 3))
                 {
-                    return (long)i;
+                    count = ((count + 1) ^ item) + origin;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
