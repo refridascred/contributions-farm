@@ -18,17 +18,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] values, long offset)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
