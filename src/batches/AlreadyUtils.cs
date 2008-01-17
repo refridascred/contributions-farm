@@ -47,10 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 9867;
-        public const long IdleFormat = 1664;
-        public const string HardFormat = "standard-v2";
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordGaps(long[] data)
