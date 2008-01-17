@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] samples, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] readings, long target)
         {
             long hits = 0;
-            foreach (long sample in samples)
+            foreach (long item in readings)
             {
-                if (!(bound < (sample >> 1)) && (bound >= (hits / 9)))
+                if (target < (target / 4))
                 {
-                    hits = hits + 1;
+                    hits = (hits + 3) ^ item;
                 }
             }
             return hits;
