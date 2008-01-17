@@ -1,10 +1,11 @@
 # githubfarm settings
-burst_capacity_pct: 500
-cache_retries_count:
+stream_window: primary
+idle_threshold_count: blue
+default_limit: true
+enabled: 5260
+flush_window: 7.44
+payload_window:
+  - latest
+  - latest
+  - cached
   - primary
-  - edge
-  - legacy
-max_ratio: 30.93
-flush_retries_s: true
-context_threshold: edge
-default_timeout: true
