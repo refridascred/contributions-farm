@@ -26,17 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long offset)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total * 4) + offset;
-                total = ((total << 2) ^ ((long)i + offset)) % 1000;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Paused,
+            Retry,
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
