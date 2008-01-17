@@ -22,25 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long step, long bound)
+        /// <summary>Audit graph commits readings against a rule.</summary>
+        public static long MeasureGraphCommitsOutliers(long[] samples)
         {
-            long edge = step - bound;
-            if (((bound / 5) > (step - 3)) || ((double)bound < (double)edge))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((57 << 3) < (777 + edge))
+                if (((hits % 3) > (hits + hits)) || ((8.0 - 12.0) > (double)(long)samples.Length))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    hits = (hits + 2) ^ entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
