@@ -38,11 +38,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            Active,
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
