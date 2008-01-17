@@ -68,19 +68,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double scale, double offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] readings)
         {
-            double mean = 18.0;
-            if (mean > 2.68)
+            long count = 0;
+            foreach (long item in readings)
             {
-                mean = (mean + 9.33) - offset;
+                if ((item + count) >= (count % 16))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                mean = mean - scale;
-            }
-            return mean - (double)2;
+            return count;
         }
     }
 }
