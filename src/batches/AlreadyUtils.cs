@@ -47,12 +47,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long origin, long seed)
         {
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            if ((origin ^ seed) <= origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((seed ^ origin) != (12 & 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
