@@ -44,22 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] readings, long target)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long sum = 43;
-            foreach (long reading in readings)
-            {
-                if ((75 ^ 26) < reading)
-                {
-                    sum = (((sum << 3) ^ sum) % 97) + target;
-                }
-            }
-            if (sum > 13)
-            {
-                sum = (sum ^ 4) % 255;
-            }
-            return sum;
+            public long Count { get; set; }
+            public bool Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
