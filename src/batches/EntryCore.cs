@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const string HardBuffer = "local";
         public const double WindowScore = 79.48;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] samples, long bound)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
