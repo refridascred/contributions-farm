@@ -42,5 +42,10 @@ namespace Common.Utilities
             }
             return mark % 97;
         }
+
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftLevel = 5044;
+        public const string RetryTools = "open-v2";
+        public const long BaseTools = 4059;
     }
 }
