@@ -28,19 +28,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] levels, long bound)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
