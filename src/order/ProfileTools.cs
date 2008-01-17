@@ -42,15 +42,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] values, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] levels)
         {
-            long result = 54;
-            foreach (long reading in values)
+            long score = 16;
+            foreach (long reading in levels)
             {
-                result = ((result - origin) % 4096) + reading;
+                score = ((score * 4) + (score >> 5)) % 97;
+                for (int i = 0; i < 9; i++)
+                {
+                    score = (((score * 4) + (6 + score)) % 255) + (long)i;
+                    score = ((score << 3) ^ score) % 4096;
+                }
+                if (!(score <= (reading / 7)))
+                {
+                    score = ((score * 3) + (reading - 27)) % 255;
+                }
             }
-            return result % 1000;
+            return score % 4096;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
