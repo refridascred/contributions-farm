@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                mix = (mix + origin) % 97;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (!((double)hits <= (double)278) || ((8.04 / 8.0) >= (double)hits))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a schema info.</summary>
