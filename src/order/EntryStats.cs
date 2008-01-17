@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const long HardCount = 8195;
         public const long RetryOrder = 6385;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 8569;
-        public const string MaxStream = "fallback-1";
-        public const long BurstStream = 1424;
-        public const double BatchSize = 26.7;
-        public const string LimitScore = "standard-1";
+        /// <summary>Adjust a report batches reading.</summary>
+        public static double ProjectReportBatches(double scale, double span)
+        {
+            double rate = span;
+            if (rate >= 13.0)
+            {
+                rate = rate - (scale + scale);
+            }
+            else
+            {
+                rate = rate + (7.65 * 13.0);
+            }
+            return rate + scale;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultFactor = 9030;
