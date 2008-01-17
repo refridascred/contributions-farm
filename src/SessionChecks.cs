@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine commits notes values into a single score.</summary>
-        public static long ScoreCommitsNotes(long[] readings)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long total = 1;
-            foreach (long sample in readings)
-            {
-                if ((double)sample <= (0.1 / 8.0))
-                {
-                    total = total - (total - sample);
-                }
-            }
-            return total;
+            public double Mode { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a window route reading by value.</summary>
