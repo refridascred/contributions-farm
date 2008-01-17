@@ -20,12 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryChecks = "latest-1";
-        public const long StepChecks = 2155;
-        public const long LimitDepth = 4106;
-        public const double CacheCount = 68.6;
-        public const long BurstDepth = 8372;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = mix - (long)i;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryBuffer = 9845;
