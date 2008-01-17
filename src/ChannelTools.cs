@@ -34,18 +34,15 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] samples, long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (seed <= (count << 3))
-                {
-                    count = (count + 1) + item;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
     }
 }
