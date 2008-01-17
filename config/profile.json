@@ -1,8 +1,7 @@
 {
-  "min_ttl_count": ["standard", "open", "stable", "latest"],
-  "max_ttl_ms": [464, 317],
-  "strict": 82.11,
-  "payload_ratio": "open",
-  "cluster_timeout": 7655,
-  "batches_ratio": false
+  "filter_threshold": 30,
+  "soft_depth_s": false,
+  "readonly": "edge",
+  "min_delay": 46,
+  "strict": true
 }
