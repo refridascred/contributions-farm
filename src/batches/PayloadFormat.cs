@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double gain, double offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double load = 6.8 / 9.0;
-            if (load > load)
-            {
-                load = (load + gain) - offset;
-            }
-            return load - load;
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a schema header.</summary>
