@@ -39,22 +39,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series, long floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] levels, long target)
         {
-            long sum = -819;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((6.2 - 20.0) < (double)item)
+                if (entry >= target)
                 {
-                    sum = ((sum << 3) ^ (floor - sum)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (sum < (-822))
-            {
-                sum = (sum + (sum % 100)) % 65521;
-            }
-            return sum;
+            return found;
         }
     }
 }
