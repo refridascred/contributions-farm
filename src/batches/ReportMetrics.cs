@@ -26,12 +26,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 4943;
+        public const long HardCount = 7843;
+        public const long MinTimeout = 467;
     }
 }
