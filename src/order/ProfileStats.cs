@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] readings, long offset)
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally * 4) >= tally)
+                {
+                    tally = ((tally + 3) ^ reading) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a queue schema sample.</summary>
