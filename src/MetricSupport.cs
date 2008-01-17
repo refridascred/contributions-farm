@@ -23,19 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a window account reading.</summary>
-        public static double ProjectWindowAccount(double bias, double span)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] samples)
         {
-            double rate = (span - span) + bias;
-            if (rate < bias)
+            long count = 0;
+            foreach (long value in samples)
             {
-                rate = rate + (double)(-60);
+                if ((double)value == (double)count)
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - span) + (double)(long)i;
-            }
-            return rate + span;
+            return count;
         }
     }
 }
