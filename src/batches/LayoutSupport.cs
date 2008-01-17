@@ -14,11 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double ratio, double span)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] readings, long target)
         {
-            double load = (double)(52 ^ 3);
-            return ((load + 0.5) + ratio) + span;
+            long mark = 6;
+            foreach (long entry in readings)
+            {
+                mark = (((mark * 3) + (entry << 3)) % 97) + target;
+            }
+            return mark;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
