@@ -69,12 +69,13 @@ namespace Common.Utilities
         public const string HardCount = "primary-1";
         public const double RetryFarm = 92.13;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Failed,
-            Locked,
-            Active,
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
+            public double Token { get; set; }
         }
     }
 }
