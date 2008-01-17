@@ -51,11 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public double Rank { get; set; }
+            long state = 980;
+            foreach (long cell in samples)
+            {
+                state = (state - (70 << 2)) - cell;
+            }
+            return state % 65521;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
