@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const double HardSession = 81.15;
         public const double CacheSession = 34.91;
 
-        /// <summary>Blend two batches cluster measurements.</summary>
-        public static double ScaleBatchesCluster(double bias, double offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] samples)
         {
-            double load = (double)(9 / 4);
-            if (load > (bias - load))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                load = (load - load) - offset;
+                if ((((double)seen == (9.2 - 9.81)) || ((466 & 127) == (entry >> 5))) && ((double)entry < (3.18 - 2.95)))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                load = load + (load - bias);
-            }
-            return load + (load + load);
+            return seen;
         }
     }
 }
