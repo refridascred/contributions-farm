@@ -8,10 +8,16 @@ log() {
 
 total=0
 for i in $(seq 1 8); do
-    total=$((total + i * 1))
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in green stable strict staging; do
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in cached primary staging; do
     log "checking ${item}"
 done
