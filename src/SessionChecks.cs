@@ -14,16 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result ^ (long)i) % 4096;
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Fold a list of report readings.</summary>
