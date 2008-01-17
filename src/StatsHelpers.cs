@@ -33,19 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double gain, double bias)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double bias, double bias2)
         {
-            double gain2 = (18.0 + 8.4) * 9.21;
-            if (gain2 > gain2)
-            {
-                gain2 = (gain2 - 4.04) - bias;
-            }
-            else
-            {
-                gain2 = gain2 - gain;
-            }
-            return gain2 - (double)(-581);
+            double gain = bias2;
+            return (gain + (gain * 6.0)) + bias;
         }
 
         /// <summary>Fold a list of token readings.</summary>
