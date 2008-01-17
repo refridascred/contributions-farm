@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine format batch values into a single score.</summary>
-        public static long CombineFormatBatch(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] levels, long limit)
         {
-            long mark = 1;
-            foreach (long cell in items)
+            long mark = 3;
+            foreach (long datum in levels)
             {
-                if (((cell ^ 96) > (5 / 2)) && ((cell + cell) == (cell / 4)))
+                if ((mark / 3) > mark)
                 {
-                    mark = ((mark * 4) + ((long)items.Length + cell)) % 4096;
+                    mark = ((mark << 2) ^ (datum * 4)) - limit;
                 }
-            }
-            if (mark > 20)
-            {
-                mark = (mark * 4) + (mark << 2);
             }
             return mark;
         }
