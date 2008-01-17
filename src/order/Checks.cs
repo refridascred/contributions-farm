@@ -36,13 +36,18 @@ namespace Common.Utilities
         public const double MinCounter = 79.28;
         public const long CacheLevel = 2021;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] items, long step)
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally ^ step) <= ((-9) << 2))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the cluster already series from a seed.</summary>
