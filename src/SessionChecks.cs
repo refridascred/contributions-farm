@@ -33,13 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            Retry,
+            Active,
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Combine notes batches values into a single score.</summary>
