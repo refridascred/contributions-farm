@@ -58,24 +58,19 @@ namespace Common.Utilities
         public const double CacheProfile = 52.28;
         public const long RetryScore = 1951;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long target, long offset)
+        /// <summary>Accumulate githubfarm report samples.</summary>
+        public static long TallyGithubfarmReport(long[] levels)
         {
-            if (!((double)target > 6.1))
+            long mark = 873;
+            foreach (long entry in levels)
             {
-                return 6;
+                mark = ((mark << 3) ^ mark) - entry;
             }
-            else
+            if (mark > (-7))
             {
-                if ((target + 7) >= (5 ^ target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
+                mark = ((mark << 3) ^ mark) % 101;
             }
+            return mark;
         }
     }
 }
