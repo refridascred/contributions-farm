@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const long BurstCommits = 7649;
         public const long SoftCommits = 7523;
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 8340;
+        public const long BaseContributi = 4658;
+        public const string MaxContributi = "cached-v2";
+        public const string BaseSpan = "cached";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxTimeout = 4723;
