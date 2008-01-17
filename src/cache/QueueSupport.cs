@@ -24,9 +24,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 3924;
-        public const double MinInterval = 93.4;
-        public const long MinEntry = 4411;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double ratio, double span)
+        {
+            double mean = ratio;
+            if (mean < 9.07)
+            {
+                mean = mean - (ratio / 8.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + ratio) + (double)(long)i;
+            }
+            return mean + span;
+        }
     }
 }
