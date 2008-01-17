@@ -78,12 +78,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Measure how many context farm samples are out of range.</summary>
+        public static long MeasureContextFarmMatches(long[] samples, long target)
         {
-            Failed,
-            Queued,
-            Pending,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum > (matches % 5)) || ((target & 7) != (66 * 2)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
