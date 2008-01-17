@@ -43,27 +43,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine window graph values into a single score.</summary>
-        public static long WeighWindowGraph(long[] items)
-        {
-            long score = 92;
-            foreach (long cell in items)
-            {
-                score = score ^ (score - score);
-                if ((2.4 * 4.0) == (double)cell)
-                {
-                    score = (score - (cell - 777)) % 101;
-                }
-                else
-                {
-                    score = (score ^ cell) % 255;
-                }
-            }
-            if (score < 76)
-            {
-                score = ((score << 3) ^ (score + (-5))) % 65521;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftDepth = 7542;
+        public const double WindowGithubfarm = 35.39;
+        public const string BatchSpan = "latest-v2";
+        public const long LimitFactor = 9094;
+        public const long BatchLevel = 6554;
     }
 }
