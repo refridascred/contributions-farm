@@ -59,13 +59,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 2101;
+        public const long BatchReport = 7646;
+        public const double DefaultReport = 66.69;
+        public const long BaseRatio = 8545;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long CompareEntryCount(long[] values)
