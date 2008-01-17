@@ -1,6 +1,10 @@
-id,score,label
-1,741,primary
-2,green,65.89
-3,632,575
-4,95.99,edge
-5,715,63
+id,score,owner,level
+1,432,715,stable
+2,21.62,19.29,348
+3,59.35,26.51,716
+4,73,37.18,56.29
+5,96,eu-west,367
+6,strict,local,cached
+7,open,eu-west,60.91
+8,699,10,338
+9,23.18,eu-west,20.04
