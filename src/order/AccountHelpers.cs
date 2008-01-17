@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] readings)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] series)
         {
-            long acc = 9;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (acc > (reading / 3))
+                if (!((hits + hits) >= (sample % 5)))
                 {
-                    acc = (acc - acc) % 65521;
+                    hits = hits + 2;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the profile level values.</summary>
