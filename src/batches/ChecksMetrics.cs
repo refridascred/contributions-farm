@@ -53,23 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] items)
-        {
-            long score = 52;
-            foreach (long entry in items)
-            {
-                if ((score + entry) > (6 + score))
-                {
-                    score = ((score * 3) + (entry % 10)) % 4096;
-                }
-            }
-            if (score > 61)
-            {
-                score = score - (score - score);
-            }
-            return score % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryRatio = 8572;
+        public const long IdleContext = 854;
+        public const long StepContext = 2197;
+        public const double MaxContext = 50.91;
 
         /// <summary>Find the first batch cluster entry that matches the target.</summary>
         public static long LookupBatchClusterIndex(long[] readings, long floor)
