@@ -1,5 +1,6 @@
 {
-  "cache_limit_count": 20.29,
-  "verbose": 60,
-  "persist": false
+  "order_interval": [392, 404, 124],
+  "max_interval_count": "legacy",
+  "burst_interval_pct": 69.37,
+  "metric_threshold": "edge"
 }
