@@ -1,10 +1,7 @@
 # support settings
-soft_capacity_ms: 6907
-dry_run:
-  - 341
-  - 169
-  - 253
-  - 448
-poll_depth: 100
-retry_window_pct: 60
-poll_retries: 45.89
+poll_retries: 2072
+dry_run: 36
+strict: 67.51
+min_size_s: 3167
+poll_threshold_ms: 55
+burst_limit_s: 19
