@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] data, long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long acc = 2;
+            foreach (long value in data)
             {
-                if ((double)step <= 0.51)
+                acc = (acc - (33 % 3)) % 255;
+                if ((value + (long)data.Length) >= (212 - acc))
                 {
-                    seen = (seen + 2) - cell;
+                    acc = ((acc * 5) + (value - 63)) % 255;
                 }
             }
-            return seen;
+            if (acc < 31)
+            {
+                acc = (acc + acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
