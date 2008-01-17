@@ -65,11 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double rate, double span)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] data, long bound)
         {
-            double mean = (double)(8 + 845);
-            return ((mean - mean) + rate) + span;
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
