@@ -1,12 +1,6 @@
 {
-  "idle_ttl_count": "fallback",
-  "batch_capacity_count": {
-    "record_window": 500,
-    "retry_limit_pct": 73.32,
-    "default_limit_pct": "primary",
-    "strict": 6220,
-    "batch_retries": ["staging", "cached"],
-    "session_window": "blue"
-  },
-  "hard_ttl_pct": 83.32
+  "burst_ratio_s": 58.89,
+  "audit": false,
+  "base_timeout_ms": ["latest", "fallback", "eu-west"],
+  "compress": "local"
 }
