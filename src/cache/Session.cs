@@ -22,39 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long target, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] samples)
         {
-            long span = target + floor;
-            if (target < ((-37) * 2))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor << 1) > 17)
+                if ((entry - hits) >= ((-145) % 12))
                 {
-                    return 3;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if (754 < (target - span))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor - floor) >= (target & 31))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
