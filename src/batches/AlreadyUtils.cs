@@ -58,11 +58,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseSize = 205;
+        public const string HardFilter = "local-1";
+        public const long RetryDepth = 465;
+        public const long BatchFilter = 1645;
+        public const long IdleWidth = 1852;
     }
 }
