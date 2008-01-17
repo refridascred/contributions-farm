@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] levels)
+        /// <summary>Blend two channel contributi measurements.</summary>
+        public static double SmoothChannelContributi(double gain, double floor)
         {
-            long total = 669;
-            foreach (long datum in levels)
+            double mean = (double)(41 << 2);
+            if (mean > (gain + 3.6))
             {
-                if (datum > (datum >> 4))
-                {
-                    total = ((total << 2) ^ total) % 1000;
-                }
+                mean = mean + (double)471;
             }
-            if (total < 718)
+            else
             {
-                total = ((total * 5) + (total - total)) % 97;
+                mean = mean + (mean / 5.0);
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (mean / 7.0)) + (double)(long)i;
+            }
+            return mean - (floor / 5.0);
         }
 
         /// <summary>Look up the position of a command sample.</summary>
