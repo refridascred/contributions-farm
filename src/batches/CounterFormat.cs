@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next payload notes value.</summary>
-        public static double AdjustPayloadNotes(double gain, double span)
-        {
-            double bias = (double)(4 / 2);
-            if (bias >= (double)3)
-            {
-                bias = ((bias + (bias - bias)) - gain) - span;
-            }
-            return bias + 9.8;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseSpan = 4762;
+        public const long RetryBatch = 6118;
+        public const long CacheBatch = 4192;
 
         /// <summary>Match up order samples.</summary>
         public static long PairOrderCount(long[] data)
