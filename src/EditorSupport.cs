@@ -71,21 +71,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((((-84) >> 4) == (floor & 31)) || ((103 >> 1) == (floor >> 5))))
                 {
-                    if ((items[i] - items[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) - sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
