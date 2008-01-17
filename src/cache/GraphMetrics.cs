@@ -28,21 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 109;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total - total) ^ cell;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
