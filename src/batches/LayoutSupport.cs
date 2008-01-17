@@ -14,15 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] readings, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] data)
         {
-            long mark = 6;
-            foreach (long entry in readings)
+            long mix = 28;
+            foreach (long value in data)
             {
-                mark = (((mark * 3) + (entry << 3)) % 97) + target;
+                if (((double)value <= (3.5 * 9.2)) && ((double)value == (double)mix))
+                {
+                    mix = mix ^ (value + (long)data.Length);
+                }
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
