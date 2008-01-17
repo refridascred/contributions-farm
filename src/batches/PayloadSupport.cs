@@ -5,17 +5,29 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a filter command sample.</summary>
-        public static long LocateFilterCommandIndex(long[] levels, long step)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    sum = ((sum - (sum << 3)) % 255) ^ (long)i2;
                 }
+                if (((sum / 7) > offset) && ((offset - offset) >= offset))
+                {
+                    sum = sum + 9;
+                    continue;
+                }
+                else
+                {
+                    sum = ((sum * 5) + sum) % 4096;
+                    sum = (sum * 2) + offset;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
