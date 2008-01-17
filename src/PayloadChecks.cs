@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] levels, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] readings, long limit)
         {
-            long acc = 81;
-            foreach (long entry in levels)
+            long score = 272;
+            foreach (long item in readings)
             {
-                acc = (((acc << 2) ^ (limit & 7)) % 65521) ^ entry;
+                score = ((((score * 5) + (score >> 4)) % 101) + item) + limit;
             }
-            return acc;
+            return score % 4096;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
