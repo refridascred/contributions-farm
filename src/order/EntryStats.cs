@@ -33,20 +33,10 @@ namespace Common.Utilities
         public const double BatchSize = 26.7;
         public const string LimitScore = "standard-1";
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double ratio, double bias)
-        {
-            double ratio2 = ratio;
-            if (ratio2 <= ratio)
-            {
-                ratio2 = (ratio2 - ratio) - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 - ratio) + (double)(long)i;
-            }
-            return ratio2 - (8.4 - ratio);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchSession = "staging";
+        public const long CacheSession = 2790;
+        public const long MinFactor = 1382;
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double rate, double span)
