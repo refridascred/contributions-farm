@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long bound, long seed)
         {
-            Retry,
-            Idle,
-            Closed,
+            if (((seed + seed) <= (bound * 3)) || ((seed / 3) != (seed * 5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((17.0 + 6.07) <= (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound << 3) == (bound & 63))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
