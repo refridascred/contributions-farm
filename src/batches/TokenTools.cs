@@ -44,21 +44,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 661;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry * 5) >= (acc & 3))
                 {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc * 2) + (501 % 97);
                 }
             }
-            return matches;
+            if (acc > 27)
+            {
+                acc = (acc ^ (acc - 14)) % 1000;
+            }
+            return acc;
         }
     }
 }
