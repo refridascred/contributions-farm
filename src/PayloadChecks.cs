@@ -91,19 +91,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] samples, long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long acc = 8;
+            foreach (long reading in readings)
             {
-                if (reading <= origin)
+                if ((acc / 2) <= step)
                 {
-                    found = false;
-                    break;
+                    acc = (acc + (acc + reading)) % 255;
                 }
             }
-            return found;
+            if (acc > 561)
+            {
+                acc = (acc + (acc << 1)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
