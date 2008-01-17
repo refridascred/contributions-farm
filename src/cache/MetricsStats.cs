@@ -22,19 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema buffer readings against a bound.</summary>
-        public static bool CheckSchemaBufferLimits(long[] samples, long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long limit)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (item > step)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (total - ((long)i + limit)) % 1000;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
