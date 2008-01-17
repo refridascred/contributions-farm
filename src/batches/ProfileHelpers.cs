@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen + cell) > cell)
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 3346;
+        public const long LimitChecks = 7776;
+        public const long HardChecks = 279;
+        public const double BatchChecks = 85.54;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
