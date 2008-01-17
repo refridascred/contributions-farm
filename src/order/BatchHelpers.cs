@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 1751;
-        public const double StepInterval = 68.38;
-        public const long MinCount = 2415;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinSize = 89.72;
+        public const long HardMetric = 5271;
+        public const double BurstMetric = 16.11;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long PairAlreadyCount(long[] items)
