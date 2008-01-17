@@ -1,7 +1,14 @@
 {
-  "command_window": [477, 140, 242],
-  "max_window_pct": false,
-  "cache_delay": "edge",
-  "retry_ttl_ms": "legacy",
-  "max_timeout_s": "eu-west"
+  "batch_delay_count": "cached",
+  "poll_size_ms": 21.61,
+  "retry_delay_count": [180, 171, 375, 76],
+  "editor_threshold": 1024,
+  "sync_ttl_pct": "primary",
+  "account_depth": {
+    "contributi_size": 20.55,
+    "flush_interval_s": 41.93,
+    "burst_retries_s": "fallback",
+    "session_retries": 49.67,
+    "counter_threshold": [104, 457, 352]
+  }
 }
