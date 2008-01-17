@@ -53,11 +53,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 67.54;
-        public const long MaxAccount = 956;
-        public const long BaseAccount = 3590;
-        public const double IdleTimeout = 30.38;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Rank counter session input into a small class.</summary>
         public static long RankCounterSession(long bound, long bound2)
