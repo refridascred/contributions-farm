@@ -71,18 +71,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] series, long floor)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (!((((-84) >> 4) == (floor & 31)) || ((103 >> 1) == (floor >> 5))))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
