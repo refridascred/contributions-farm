@@ -18,32 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long seed, long offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long diff = seed + offset;
-            if ((double)diff != (4.5 * 2.2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) <= (offset & 63))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)seed <= (double)diff))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
