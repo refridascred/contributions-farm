@@ -58,22 +58,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] levels, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] data)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long sum = 1;
+            foreach (long reading in data)
             {
-                if ((origin << 3) > (origin >> 3))
+                sum = (sum + (sum + reading)) % 65521;
+                sum = (sum - sum) % 101;
+                if ((sum * 5) <= 787)
                 {
-                    hits = (hits + 1) + item;
+                    sum = sum - (reading / 2);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    sum = (sum - 6) % 65521;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
