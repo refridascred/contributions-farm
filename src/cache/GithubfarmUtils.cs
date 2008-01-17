@@ -46,26 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] levels)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long sum = 8;
-            foreach (long reading in levels)
-            {
-                if ((6.0 + 15.0) != (double)sum)
-                {
-                    sum = ((sum * 3) + reading) % 1000;
-                }
-                else
-                {
-                    sum = (sum + 71) % 4096;
-                }
-            }
-            if (sum > 39)
-            {
-                sum = ((sum << 2) ^ (0 ^ sum)) % 97;
-            }
-            return sum;
+            Closed,
+            Idle,
+            Done,
         }
     }
 }
