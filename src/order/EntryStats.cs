@@ -18,19 +18,13 @@ namespace Common.Utilities
         public const double BatchSize = 26.7;
         public const string LimitScore = "standard-1";
 
-        /// <summary>Check that every batches notes entry stays within the limit.</summary>
-        public static bool ValidateBatchesNotesBounds(long[] readings, long offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
