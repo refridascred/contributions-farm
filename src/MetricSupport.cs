@@ -19,10 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultBudget = 3473;
-        public const double HardSession = 81.15;
-        public const double CacheSession = 34.91;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((5.0 > (double)floor) && ((cell >= (907 ^ floor)) && ((seen << 3) < cell)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long ScoreContext(long[] levels, long seed)
