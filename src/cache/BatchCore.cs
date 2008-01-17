@@ -16,32 +16,17 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long limit, long bound)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] levels, long bound)
         {
-            long delta = limit + bound;
-            if ((limit - limit) < (limit % 97))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((delta + limit) >= bound)
+                if (levels[i] > bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((169 / 9) < bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
