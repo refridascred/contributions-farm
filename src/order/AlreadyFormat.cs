@@ -52,18 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] levels)
         {
-            long total = 8;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((double)item >= (3.19 + 20.0))
+                if (996 < (37 - value))
                 {
-                    total = ((total * 4) + total) % 255;
+                    tally = tally + 2;
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm report samples.</summary>
