@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] items)
         {
-            Dropped,
-            Active,
-            Ready,
-            Queued,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((double)matches < (0.6 - 20.0))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine window values into a single score.</summary>
