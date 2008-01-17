@@ -32,12 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Done,
-            New,
-            Synced,
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
