@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a account githubfarm figure with a bias.</summary>
-        public static double AdjustAccountGithubfarm(double scale, double offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series, long offset)
         {
-            double rate = (scale * 9.9) * 5.72;
-            for (int i = 0; i < 3; i++)
+            long total = 49;
+            foreach (long value in series)
             {
-                rate = (rate - (1.63 * 1.2)) + (double)(long)i;
+                total = (total - 20) % 65521;
+                total = (total - (offset + total)) % 4096;
+                if ((double)value < (double)4)
+                {
+                    total = ((total << 2) ^ (offset % 60)) % 101;
+                }
             }
-            return rate + offset;
+            return total;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
