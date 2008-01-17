@@ -22,12 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstDepth = 8711;
-        public const string SoftRatio = "primary-1";
-        public const long RetryOrder = 803;
-        public const long SoftSpan = 1671;
-        public const long BaseRatio = 6930;
+        /// <summary>Validate schema buffer readings against a bound.</summary>
+        public static bool CheckSchemaBufferLimits(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long SeekAlreadyIndex(long[] items, long step)
