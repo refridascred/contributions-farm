@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long SoftBudget = 7903;
         public const long BatchSpan = 6561;
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] samples, long step)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Locked,
+            Synced,
         }
 
         /// <summary>Digest a series of metric entries.</summary>
