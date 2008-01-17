@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] readings, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (readings[i] == origin)
+                if (item < bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
