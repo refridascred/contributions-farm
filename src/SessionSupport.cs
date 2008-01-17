@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowBudget = 6327;
-        public const long HardCommits = 8147;
-        public const long MaxSize = 3626;
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long HardGraph = 9521;
