@@ -42,19 +42,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] items, long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long acc = -608;
-            foreach (long value in items)
-            {
-                acc = acc - bound;
-                if (value <= acc)
-                {
-                    acc = ((acc << 3) ^ (acc + value)) % 101;
-                }
-            }
-            return acc % 97;
+            Locked,
+            Pending,
+            Paused,
         }
     }
 }
