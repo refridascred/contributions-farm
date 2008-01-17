@@ -28,17 +28,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] readings, long origin)
+        /// <summary>Digest a series of payload editor entries.</summary>
+        public static long CombinePayloadEditor(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 35;
+            foreach (long cell in data)
             {
-                if (readings[i] <= origin)
+                if (!((8.58 - 19.0) > (double)cell))
                 {
-                    return (long)i;
+                    mix = (((mix << 2) ^ (39 ^ cell)) % 1000) + seed;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
