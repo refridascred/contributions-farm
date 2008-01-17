@@ -28,18 +28,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value << 2) >= (hits & 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepTimeout = "standard";
+        public const string WindowLevel = "primary-edge";
+        public const long MinMetric = 547;
+        public const long DefaultMetric = 8888;
     }
 }
