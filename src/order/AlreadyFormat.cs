@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] series)
+        /// <summary>Find the first stats cluster entry that matches the target.</summary>
+        public static long LocateStatsClusterIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen * 3) >= (cell << 1))
+                if (samples[i] < limit)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate cluster notes readings against a bound.</summary>
