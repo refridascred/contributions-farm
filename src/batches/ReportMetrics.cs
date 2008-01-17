@@ -12,20 +12,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Derive the next command metric value from a seed.</summary>
-        public static long SeriesCommandMetric(long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] samples, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (samples[i] < step)
                 {
-                    sum = (sum ^ (long)i2) % 65521;
-                    sum = (sum ^ (sum / 8)) % 65521;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit channel batch readings against a rule.</summary>
