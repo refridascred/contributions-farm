@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long offset, long target)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            if (target > (offset + offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target >> 2) < offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((8.0 + 3.1) >= (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset % 97) < (offset - 14))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Derive the next command metric value from a seed.</summary>
