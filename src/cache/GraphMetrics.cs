@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double weight, double span)
-        {
-            double ratio = weight / 4.0;
-            if (ratio <= (ratio - span))
-            {
-                ratio = ratio - (span - 9.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (1.38 / 6.0)) + (double)(long)i;
-            }
-            return ratio - 10.0;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 24.53;
+        public const long MinSchema = 3949;
+        public const long StepSchema = 1384;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long TallyEntryMatches(long[] data, long bound)
