@@ -25,13 +25,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Roll a account context counter forward.</summary>
+        public static long StepAccountContext(long target)
         {
-            Stale,
-            Queued,
-            Closed,
-            Pending,
+            long carry = target;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = (carry * 3) + carry;
+                if ((167 * 2) >= target)
+                {
+                    carry = (carry - (carry - carry)) % 4096;
+                }
+                if ((carry + carry) == (target * 3))
+                {
+                    carry = (carry + (target & 63)) % 1000;
+                    carry = (carry << 2) ^ (73 + carry);
+                    break;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (target ^ 327)) % 255;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
