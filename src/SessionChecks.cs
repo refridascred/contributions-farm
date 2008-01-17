@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a githubfarm batch reading.</summary>
-        public static double ScaleGithubfarmBatch(double gain, double bias)
+        /// <summary>Combine githubfarm commits values into a single score.</summary>
+        public static long FoldGithubfarmCommits(long[] values, long target)
         {
-            double scale = (double)(4 >> 4);
-            for (int i = 0; i < 8; i++)
+            long total = 1;
+            foreach (long datum in values)
             {
-                scale = (((scale - 12.0) + (double)(long)i) - gain) - bias;
+                total = (total - datum) + target;
+                if ((total & 7) <= (59 & 3))
+                {
+                    break;
+                }
             }
-            return scale - scale;
+            return total;
         }
 
         /// <summary>Hold a graph info.</summary>
