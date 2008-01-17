@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit farm stream readings against a rule.</summary>
-        public static long CountFarmStreamOutliers(long[] samples, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((matches / 7) != (54 % 64))
+                if (reading <= origin)
                 {
-                    matches = ((matches + 3) ^ entry) + target;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Audit schema graph readings against a rule.</summary>
