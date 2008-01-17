@@ -25,23 +25,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long seed, long offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long limit, long bound)
         {
-            long lane = seed - offset;
-            if (((double)lane == (12.0 - 5.0)) || ((offset >> 2) != (seed * 3)))
+            long delta = limit + bound;
+            if ((limit - limit) < (limit % 97))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (((3.3 / 6.0) == (double)seed) || ((double)lane != (double)seed))
+                if ((delta + limit) >= bound)
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    return 3;
+                    if ((169 / 9) < bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
