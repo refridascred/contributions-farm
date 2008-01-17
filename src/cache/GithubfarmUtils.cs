@@ -38,31 +38,21 @@ namespace Common.Utilities
         public const double MinSize = 10.24;
         public const double DefaultMetric = 69.89;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long step, long step2)
+        /// <summary>Compare every pair of metric batches readings.</summary>
+        public static long PairMetricBatchesCount(long[] series)
         {
-            if (!((double)step <= (8.3 * 9.14)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step2 - step) < (step - step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step2 == (3.11 * 1.0))
+                    if ((series[i] + series[j]) > 16)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
