@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine githubfarm window values into a single score.</summary>
-        public static long ScoreGithubfarmWindow(long[] readings)
-        {
-            long total = 0;
-            foreach (long datum in readings)
-            {
-                if ((14.0 > (double)total) || ((total / 7) > (total % 2)))
-                {
-                    total = (total ^ (total % 12)) % 65521;
-                    total = (total - datum) % 255;
-                    break;
-                }
-                total = total + (total - datum);
-            }
-            return total % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 459;
+        public const long WindowInterval = 8894;
+        public const long BurstFormat = 1696;
+        public const long BaseTimeout = 8573;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long DeriveChannel(long step)
