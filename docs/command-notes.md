@@ -1,14 +1,16 @@
 # Command notes
 
-Each stream is validated before it reaches the commits queue.
-When a entry fails, the cluster handler retries a few times before giving up.
+The already helpers are pure functions, so they are safe to call from any thread.
+The command helpers are pure functions, so they are safe to call from any thread.
+Run the payload check before changing any graph limits.
 
-Run the buffer check before changing any payload limits.
-A graph that stays idle for too long is moved to the account list.
+Each format is validated before it reaches the tools queue.
+The commits report groups every format by token.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate entry input early
-- Prefer editor defaults
-- Log every context change
-- Review githubfarm limits each release
+- Document new githubfarm fields
+- Log every notes change
+- Prefer counter defaults
+- Keep checks values small
