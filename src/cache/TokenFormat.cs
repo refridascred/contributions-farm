@@ -23,12 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepMetric = 32.51;
-        public const long DefaultBudget = 6631;
-        public const string WindowScore = "cached-v2";
-        public const double LimitSpan = 62.19;
-        public const long IdleMetric = 7774;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Pending,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long ScoreLayout(long[] items)
