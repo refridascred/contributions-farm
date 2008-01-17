@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long limit, long target)
+        /// <summary>Audit batches notes readings against a rule.</summary>
+        public static long MeasureBatchesNotesGaps(long[] values, long seed)
         {
-            if (((double)limit != (double)target) || ((target + 592) != (target + target)))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit * 4) == (target + limit))
+                if (((double)cell > 2.99) && (((4.4 * 12.0) == (double)matches) && (86 <= (cell >> 1))))
                 {
-                    return 5;
+                    matches = (matches + 1) - seed;
                 }
                 else
                 {
-                    if (((target + limit) > 310) || ((limit + target) != (limit - target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
