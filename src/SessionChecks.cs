@@ -14,22 +14,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] items)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] readings, long seed)
         {
-            long state = 1;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((state * 3) > (state / 4))
+                if ((seed >= (seed & 63)) && (((double)count >= (7.0 + 3.63)) && ((double)seed <= (0.86 * 6.0))))
                 {
-                    state = ((state + state) % 4096) ^ entry;
+                    count = (count + 1) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (state > (-870))
-            {
-                state = (state + (8 + state)) % 101;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a account entry.</summary>
