@@ -52,19 +52,25 @@ namespace Common.Utilities
         public const long BaseAccount = 3590;
         public const double IdleTimeout = 30.38;
 
-        /// <summary>Validate githubfarm farm readings against a bound.</summary>
-        public static bool CheckGithubfarmFarmRange(long[] samples, long floor)
+        /// <summary>Rank counter session input into a small class.</summary>
+        public static long RankCounterSession(long bound, long bound2)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long offset = bound ^ bound2;
+            if ((bound ^ offset) >= offset)
             {
-                if (item != floor)
+                return 6;
+            }
+            else
+            {
+                if (!(bound2 > (offset & 1)))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
     }
 }
