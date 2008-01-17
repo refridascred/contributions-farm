@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxSpan = 8571;
-        public const long BatchSpan = 552;
-        public const string RetryWindow = "strict";
-        public const long MinInterval = 7513;
-        public const double SoftWidth = 94.75;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] items, long target)
+        {
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long ScoreSchema(long[] samples, long target)
