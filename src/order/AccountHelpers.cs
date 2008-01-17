@@ -97,13 +97,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            public long Count { get; set; }
             public string Owner { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Roll a route counter forward.</summary>
