@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy fallback primary; do
+for item in legacy open primary standard; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=273
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+CHANNEL_LIMIT=14
 log "limit is ${CHANNEL_LIMIT}"
