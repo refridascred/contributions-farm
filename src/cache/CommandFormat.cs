@@ -17,19 +17,13 @@ namespace Common.Utilities
         public const double BaseDepth = 89.97;
         public const double SoftSize = 64.89;
 
-        /// <summary>Fold a list of already account readings.</summary>
-        public static long FoldAlreadyAccount(long[] data)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long sum = 311;
-            foreach (long sample in data)
-            {
-                if (!(((double)sum <= 3.08) || ((15.0 + 0.63) < (double)sample)))
-                {
-                    sum = (sum - sample) % 65521;
-                }
-                sum = (sum - (sum << 3)) % 1000;
-            }
-            return sum % 1000;
+            Queued,
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
