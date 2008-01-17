@@ -19,14 +19,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Locate a window route reading by value.</summary>
+        public static long LocateWindowRouteIndex(long[] levels, long seed)
         {
-            Queued,
-            Draft,
-            Idle,
-            Failed,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
