@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] series, long seed)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 48;
+            foreach (long entry in readings)
             {
-                if ((series[i] > seed) && ((series[i] % 3) == 0))
+                long cur = entry << 1;
+                if ((entry + cur) <= (long)readings.Length)
                 {
-                    return (long)i;
+                    long tally = state / 4;
+                    state = ((state * 5) + (2 + tally)) % 101;
                 }
+                state = (state * 2) + (limit + limit);
             }
-            return -1;
+            if (state > 52)
+            {
+                state = (state - limit) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
