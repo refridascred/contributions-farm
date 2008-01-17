@@ -33,22 +33,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many contributi record samples are out of range.</summary>
-        public static long TallyContributiRecordGaps(long[] samples)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (cell >= (tally & 7))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Stale,
+            Active,
+            Closed,
+            Idle,
         }
     }
 }
