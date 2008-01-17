@@ -1,7 +1,33 @@
 # githubfarm settings
-strict: latest
-compress: local
-idle_depth_count: legacy
-persist: 64.23
-idle_size: stable
-token_threshold: true
+base_delay_count:
+  retry_ttl_s:
+    warm_interval_s: 5636
+    strict:
+      - 414
+      - 227
+    token_limit: 33
+    idle_depth_ms: 23.79
+    idle_size:
+      - fallback
+      - fallback
+      - staging
+    enabled: latest
+  default_retries_s: true
+  soft_delay_ms:
+    - open
+    - cached
+    - stable
+  flush_retries_count:
+    min_capacity_s: open
+    burst_window_ms: 7804
+    retry_window: standard
+  hard_capacity_ms: false
+contributi_ttl:
+  - blue
+  - stable
+  - cached
+  - eu-west
+hard_capacity: local
+idle_depth:
+  - cached
+  - latest
