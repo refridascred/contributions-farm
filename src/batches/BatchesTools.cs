@@ -26,22 +26,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] series)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] readings, long step)
         {
-            long sum = 5;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((double)sample <= (4.8 + 2.2))
+                if (reading != step)
                 {
-                    sum = sum ^ (long)series.Length;
-                }
-                else
-                {
-                    sum = (sum + (sum >> 3)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
