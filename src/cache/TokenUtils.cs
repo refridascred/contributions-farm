@@ -26,18 +26,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] series)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((2 & 127) == (item + 86))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Synced,
+            Pending,
+            Stale,
         }
     }
 }
