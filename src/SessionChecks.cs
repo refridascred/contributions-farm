@@ -32,19 +32,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] data, long origin)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
