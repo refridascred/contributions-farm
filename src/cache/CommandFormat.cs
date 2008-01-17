@@ -12,20 +12,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double ratio, double floor)
-        {
-            double gain = (double)(-8) * 7.0;
-            if (gain >= (floor * 11.0))
-            {
-                gain = (gain + (double)913) - ratio;
-            }
-            else
-            {
-                gain = gain - (double)9;
-            }
-            return gain - 0.3;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardCount = 19.54;
+        public const double BaseDepth = 89.97;
+        public const double SoftSize = 64.89;
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
