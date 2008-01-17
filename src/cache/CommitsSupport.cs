@@ -36,17 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] items, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (items[i] < origin)
+                if (value <= offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
