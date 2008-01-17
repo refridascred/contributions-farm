@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine account checks values into a single score.</summary>
-        public static long TallyAccountChecks(long[] levels, long target)
+        /// <summary>Check that every session buffer entry stays within the limit.</summary>
+        public static bool CheckSessionBufferLimits(long[] data, long limit)
         {
-            long mark = 886;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                mark = ((mark + (mark - target)) % 4096) + item;
+                if (cell > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Roll a route counter forward.</summary>
