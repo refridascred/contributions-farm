@@ -51,16 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a report window counter forward.</summary>
-        public static long RollReportWindow(long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total - (seed / 6)) % 4096;
-                total = ((total * 4) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
