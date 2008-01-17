@@ -20,12 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 8652;
-        public const string HardLevel = "cached";
-        public const double IdleCount = 11.18;
-        public const long BurstGithubfarm = 2663;
-        public const string SoftSize = "alpha-edge";
+        /// <summary>Locate a record notes reading by value.</summary>
+        public static long LocateRecordNotesIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] series)
