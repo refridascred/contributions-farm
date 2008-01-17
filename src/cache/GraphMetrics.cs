@@ -58,13 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
