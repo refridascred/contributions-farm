@@ -38,19 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] values, long limit)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)item == (7.5 / 2.0))
-                {
-                    hits = (hits + 3) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 3772;
+        public const long DefaultFactor = 4316;
+        public const long BatchRecord = 631;
+        public const double WindowRecord = 10.66;
+        public const double IdleRecord = 90.42;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long CompareBufferCount(long[] series)
