@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long floor, long step)
-        {
-            long lane = floor + step;
-            if ((393 - step) <= lane)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step << 3) != ((-470) + lane))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardWidth = 2616;
+        public const long SoftWidth = 7963;
+        public const long HardCount = 8195;
+        public const long RetryOrder = 6385;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long StepStream = 8569;
