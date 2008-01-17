@@ -20,11 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultSpan = 3373;
-        public const long SoftSize = 8796;
-        public const long WindowChannel = 970;
-        public const long CacheSize = 7086;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (!((6.0 - 20.0) < (double)hits))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long HardSize = 5412;
