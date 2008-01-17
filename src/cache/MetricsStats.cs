@@ -31,18 +31,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many editor order samples are out of range.</summary>
-        public static long MeasureEditorOrderMatches(long[] values, long floor)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!((double)item != (double)floor))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next stats commits value.</summary>
