@@ -23,19 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((((value / 6) == (seen << 1)) || ((offset + 695) < value)) || (offset > (offset - 27)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 6060;
+        public const string HardSession = "latest-v2";
+        public const long MinScore = 6846;
+        public const string RetrySession = "open";
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long FindOrderIndex(long[] series, long limit)
