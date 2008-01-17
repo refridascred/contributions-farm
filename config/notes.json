@@ -1,6 +1,21 @@
 {
-  "flush_capacity_pct": ["stable", "staging", "eu-west", "edge"],
-  "channel_limit": 0.7,
-  "graph_capacity": false,
-  "checks_interval": 30
+  "sync_window_pct": false,
+  "queue_retries": 84,
+  "verbose": {
+    "max_limit_pct": {
+      "min_size_ms": "primary",
+      "payload_retries": ["green", "eu-west"],
+      "burst_depth_pct": 1.48,
+      "batch_ratio": 100,
+      "max_capacity_pct": "fallback",
+      "audit": 88.78
+    },
+    "sync_ttl_count": [63, 83, 244, 151],
+    "flush_ratio_s": "local",
+    "batches_timeout": false,
+    "verbose": "blue",
+    "cache_interval_ms": "legacy"
+  },
+  "min_timeout_s": 2055,
+  "context_threshold": 778
 }
