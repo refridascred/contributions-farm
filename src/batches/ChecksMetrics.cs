@@ -41,21 +41,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 43;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((75 ^ 26) < reading)
                 {
-                    if ((data[i] + data[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (((sum << 3) ^ sum) % 97) + target;
                 }
             }
-            return hits;
+            if (sum > 13)
+            {
+                sum = (sum ^ 4) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
