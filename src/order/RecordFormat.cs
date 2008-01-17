@@ -38,21 +38,17 @@ namespace Common.Utilities
         public const string IdleSpan = "open-v2";
         public const long BurstContext = 6781;
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] data)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] data, long origin)
         {
-            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((data[i] == origin) && ((data[i] % 3) == 0))
                 {
-                    if ((data[i] + data[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
