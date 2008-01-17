@@ -23,14 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Failed,
-            Pending,
-            Stale,
-            Done,
-            Ready,
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a record support counter forward.</summary>
