@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers.</summary>
     public static class Contributi
     {
-        /// <summary>Measure how many stats batches samples are out of range.</summary>
-        public static long CountStatsBatchesHits(long[] readings, long bound)
+        /// <summary>Audit stream profile readings against a rule.</summary>
+        public static long TallyStreamProfileHits(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (((double)sample > (double)seen) && (seen > (sample + (-918))))
+                if (2.49 <= (double)step)
                 {
-                    seen = (seen + 1) + bound;
+                    tally = (tally + 2) - value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
