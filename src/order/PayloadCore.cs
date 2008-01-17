@@ -32,20 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] series, long offset)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long state = -554;
-            foreach (long item in series)
-            {
-                state = (state + (offset + 684)) % 4096;
-                state = (state + item) % 1000;
-            }
-            if (state > 589)
-            {
-                state = (state - (state + 52)) % 255;
-            }
-            return state;
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
