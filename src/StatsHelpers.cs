@@ -44,12 +44,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepCount = 29.78;
-        public const double LimitSize = 43.83;
-        public const long LimitSpan = 5165;
-        public const long BatchRatio = 9451;
-        public const long WindowSpan = 1851;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
