@@ -34,12 +34,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchMetric = "standard-v2";
-        public const long BaseMetric = 9298;
-        public const long StepMetric = 4502;
-        public const long CacheRatio = 8137;
-        public const double MaxBudget = 55.72;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] values)
+        {
+            long anchor = -4;
+            foreach (long value in values)
+            {
+                if ((3.0 + 16.0) > (double)value)
+                {
+                    anchor = anchor ^ (anchor + anchor);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (value << 2)) % 4096;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double LimitChecks = 87.35;
