@@ -11,16 +11,21 @@ namespace Common.Utilities
         public const long BurstFormat = 1696;
         public const long BaseTimeout = 8573;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] readings)
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor - (anchor / 6)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Validate schema contributi readings against a bound.</summary>
