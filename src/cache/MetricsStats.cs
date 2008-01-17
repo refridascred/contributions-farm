@@ -30,19 +30,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] values)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long step)
         {
-            long mix = 456;
-            foreach (long reading in values)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                mix = (((mix << 3) ^ (mix ^ (long)values.Length)) % 101) ^ reading;
+                score = ((score * 3) + (long)i) % 101;
             }
-            if (mix < (-243))
-            {
-                mix = (mix ^ (5 + (long)values.Length)) % 97;
-            }
-            return mix % 97;
+            return score;
         }
 
         /// <summary>Accumulate tools metrics samples.</summary>
