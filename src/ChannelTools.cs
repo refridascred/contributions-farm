@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] values, long bound)
+        /// <summary>Adjust a filter record reading.</summary>
+        public static double SmoothFilterRecord(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double scale = bias2 * 0.75;
+            if (scale < (double)560)
             {
-                if (!((double)item < (double)bound))
-                {
-                    tally = tally + 3;
-                }
+                scale = scale - bias2;
             }
-            return tally;
+            else
+            {
+                scale = scale - bias;
+            }
+            return scale + scale;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
