@@ -55,22 +55,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] series)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] values, long step)
         {
-            long anchor = 306;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (((-51) % 16) < (anchor * 4))
+                if ((double)value <= (6.3 * 1.2))
                 {
-                    anchor = (anchor - 54) % 4096;
+                    hits = (hits + 1) - step;
                 }
                 else
                 {
-                    anchor = (anchor * 3) + (entry + 5);
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
