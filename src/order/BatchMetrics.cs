@@ -38,13 +38,31 @@ namespace Common.Utilities
         public const double BaseWidth = 34.97;
         public const long MinBatch = 8731;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Classify a cluster graph pair into a bucket.</summary>
+        public static long RankClusterGraph(long bound, long target)
         {
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public double Total { get; set; }
+            if ((bound % 10) >= (bound ^ bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound >> 4) >= bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)bound > (0.1 * 5.69)) || ((bound + 94) == (58 - target)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor mode values.</summary>
