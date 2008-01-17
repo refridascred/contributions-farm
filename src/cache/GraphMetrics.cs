@@ -87,21 +87,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain2 = (8.5 - floor) * 8.21;
+            if (gain2 > (floor * 15.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain2 = gain2 - gain;
             }
-            return hits;
+            return gain2 - (gain / 4.0);
         }
     }
 }
