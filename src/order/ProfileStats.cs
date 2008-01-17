@@ -47,22 +47,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] data)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (((double)item > (double)seen) && ((double)item < (double)seen))
+                if ((datum ^ datum) < (datum + 43))
                 {
-                    seen = seen + 2;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
