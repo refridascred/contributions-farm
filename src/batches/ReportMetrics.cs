@@ -24,18 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel batch readings against a rule.</summary>
-        public static long MeasureChannelBatchOutliers(long[] samples, long step)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (((double)seen <= (double)step) && ((double)seen == (14.0 * 13.0)))
+                if (reading < origin)
                 {
-                    seen = (seen + 2) ^ datum;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
