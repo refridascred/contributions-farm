@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Classify a report stats pair into a bucket.</summary>
+        public static long SortReportStats(long offset, long bound)
         {
-            public double Score { get; set; }
-            public double Offset { get; set; }
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long edge = offset - bound;
+            if (edge < (edge + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound > (bound & 31))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((55 - 1) <= (5 + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache snapshot.</summary>
