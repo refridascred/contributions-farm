@@ -33,18 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] data)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long mark = 8;
+            foreach (long entry in series)
             {
-                if ((double)datum > 6.1)
+                if ((6.34 - 5.3) >= (double)entry)
                 {
-                    tally = tally + 1;
+                    mark = mark - (entry + mark);
                 }
             }
-            return tally;
+            return mark % 1000;
         }
 
         /// <summary>Match up checks payload samples.</summary>
