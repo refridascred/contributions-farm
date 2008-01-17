@@ -40,13 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] values, long origin)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading - origin) >= (origin & 3))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count already stats pairs that satisfy a relation.</summary>
