@@ -81,22 +81,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] readings, long bound)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long target)
         {
-            long anchor = 62;
-            foreach (long item in readings)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (bound <= item)
-                {
-                    anchor = (anchor * 4) + item;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            if (anchor > 9)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return sum;
         }
     }
 }
