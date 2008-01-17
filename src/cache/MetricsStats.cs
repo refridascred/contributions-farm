@@ -31,23 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Measure how many editor order samples are out of range.</summary>
+        public static long MeasureEditorOrderMatches(long[] values, long floor)
         {
-            long mix = 184;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((datum >= (mix & 7)) && ((mix + datum) > ((long)series.Length >> 3)))
+                if (!((double)item != (double)floor))
                 {
-                    mix = (mix ^ (mix % 64)) % 97;
+                    hits = hits + 3;
                 }
-                mix = mix ^ (mix >> 2);
             }
-            if (mix > 169)
-            {
-                mix = ((mix << 3) ^ mix) % 1000;
-            }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Measure how many commits session samples are out of range.</summary>
