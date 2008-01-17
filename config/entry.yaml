@@ -1,6 +1,20 @@
 # entry settings
-warm_limit_pct: legacy
-hard_ratio_ms: false
-idle_timeout_ms: 100
-default_timeout: 9
-burst_size_s: 62.55
+compress:
+  account_delay: 9220
+  sync_ratio: 41.25
+  batch_depth_pct:
+    farm_size: 65.61
+    checks_window: 100
+    soft_threshold_count: 76
+  hard_capacity_pct:
+    batch_limit: edge
+    persist: strict
+    sync_limit_ms: true
+  order_capacity: strict
+command_capacity: 66.61
+cache_limit: 12
+idle_interval: 49
+min_window:
+  - open
+  - stable
+flush_interval_pct: blue
