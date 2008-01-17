@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Active,
-            Dropped,
+            Synced,
+            Failed,
+            Closed,
             Pending,
         }
 
