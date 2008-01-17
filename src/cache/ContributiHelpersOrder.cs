@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] readings, long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((count * 2) == (count + reading))
-                {
-                    count = (count + 1) - origin;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
