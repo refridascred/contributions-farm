@@ -47,13 +47,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double scale, double offset)
         {
-            Active,
-            Paused,
-            Pending,
-            Closed,
+            double mean = 18.0;
+            if (mean > 2.68)
+            {
+                mean = (mean + 9.33) - offset;
+            }
+            else
+            {
+                mean = mean - scale;
+            }
+            return mean - (double)2;
         }
     }
 }
