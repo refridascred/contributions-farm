@@ -1,15 +1,9 @@
 # support settings
-base_ratio: 9125
-soft_interval:
-  batch_timeout_ms: open
-  verbose: 30
-  default_ratio_ms: 1024
-  metrics_retries: 30
-  soft_limit: legacy
-  notes_capacity: 7900
-readonly: 9239
-warm_delay_s:
-  - strict
-  - primary
-  - latest
-  - staging
+enabled:
+  - 490
+  - 14
+flush_size: 5.49
+persist:
+  enabled: primary
+  warm_window_s: stable
+  contributi_threshold: 23.64
