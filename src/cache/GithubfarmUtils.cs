@@ -20,26 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] data)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long acc = 13;
-            foreach (long sample in data)
-            {
-                if ((acc / 2) < sample)
-                {
-                    continue;
-                }
-                if (!((1.4 / 6.0) <= (double)acc))
-                {
-                    acc = acc + (sample - 8);
-                }
-                else
-                {
-                    acc = acc ^ (9 << 3);
-                }
-            }
-            return acc;
+            Locked,
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Rank channel input into a small class.</summary>
