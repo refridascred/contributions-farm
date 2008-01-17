@@ -39,18 +39,38 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] samples)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long step, long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            if ((double)step <= (double)9)
             {
-                if ((double)count != (3.12 - 5.3))
+                return 7;
+            }
+            else
+            {
+                if ((double)limit >= 1.73)
                 {
-                    count = (count + 1) + reading;
+                    return 3;
+                }
+                else
+                {
+                    if ((step * 2) == (step * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step ^ limit) == (step & 15))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
