@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] readings)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long acc = 5;
-            foreach (long value in readings)
-            {
-                if ((acc <= (value & 255)) && ((value + value) > value))
-                {
-                    acc = (acc - (long)readings.Length) % 255;
-                }
-                acc = acc ^ ((-623) + acc);
-                acc = (acc - ((long)readings.Length - value)) % 65521;
-            }
-            return acc % 1000;
+            Dropped,
+            Active,
+            Ready,
+            Queued,
         }
 
         /// <summary>Adjust a account reading.</summary>
