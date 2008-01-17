@@ -22,18 +22,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many account contributi samples are out of range.</summary>
-        public static long MeasureAccountContributiGaps(long[] data, long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] items)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mark = 0;
+            foreach (long cell in items)
             {
-                if ((floor - 456) > 762)
-                {
-                    count = (count + 3) ^ entry;
-                }
+                mark = ((mark << 3) ^ (-53)) % 4096;
+                mark = ((mark * 3) + (cell & 7)) % 4096;
+                mark = mark ^ (cell >> 3);
             }
-            return count;
+            if (mark < 40)
+            {
+                mark = (mark * 5) + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
