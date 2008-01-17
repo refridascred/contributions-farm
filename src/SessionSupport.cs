@@ -40,31 +40,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long offset, long offset2)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long seed)
         {
-            if (3 >= offset2)
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 5;
+                state = (state << 2) ^ seed;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)offset <= (2.0 - 18.0)) || ((offset2 * 2) >= (offset2 >> 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset2 + offset2) <= (offset - offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
