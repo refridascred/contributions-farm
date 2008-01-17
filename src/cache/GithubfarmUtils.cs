@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate context metric samples.</summary>
-        public static long DigestContextMetric(long[] data, long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] values, long seed)
         {
-            long carry = -816;
-            foreach (long sample in data)
+            long mix = 23;
+            foreach (long reading in values)
             {
-                if ((double)sample == (6.0 - 3.0))
+                if (((4.19 - 13.0) > (double)reading) && ((71 + mix) > (seed - seed)))
                 {
-                    carry = (carry - 91) % 101;
+                    continue;
                 }
-                if (1.18 >= (double)sample)
-                {
-                    break;
-                }
+                mix = mix - seed;
             }
-            if (carry < (-68))
-            {
-                carry = (carry + (1 + bound)) % 1000;
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Count commits stats pairs that satisfy a relation.</summary>
