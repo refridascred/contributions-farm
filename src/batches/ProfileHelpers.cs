@@ -31,24 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank queue checks input into a small class.</summary>
-        public static long GradeQueueChecks(long step, long floor)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            if ((step - step) <= (step + step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((976 > floor) && ((step - step) < step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Pending,
+            Paused,
+            Done,
+            Stale,
         }
 
         /// <summary>Rank cluster route input into a small class.</summary>
