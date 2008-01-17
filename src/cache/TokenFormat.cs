@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] readings, long limit)
         {
-            Dropped,
-            Closed,
-            Retry,
-            Stale,
-            Active,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((17.0 / 3.0) != (double)item)
+                {
+                    hits = (hits + 3) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank context input into a small class.</summary>
