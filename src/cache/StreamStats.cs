@@ -19,17 +19,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] data, long bound)
+        /// <summary>Digest a series of schema tools entries.</summary>
+        public static long TotalSchemaTools(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 635;
+            foreach (long value in data)
             {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
+                score = ((score ^ (score + score)) % 101) + value;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the format status values.</summary>
