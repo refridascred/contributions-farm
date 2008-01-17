@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public long Level { get; set; }
-            public double Score { get; set; }
+            New,
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a contributi stats.</summary>
