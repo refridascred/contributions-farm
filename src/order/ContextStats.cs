@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultSize = 6638;
-        public const long BurstChecks = 468;
-        public const long LimitChecks = 9958;
-        public const string RetryFactor = "legacy-edge";
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (count >= (413 + value))
+                {
+                    count = (count + 3) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long floor, long bound)
