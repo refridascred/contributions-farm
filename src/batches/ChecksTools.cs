@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of editor stream readings.</summary>
-        public static long ScoreEditorStream(long[] items)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long origin)
         {
-            long sum = 11;
-            foreach (long sample in items)
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                sum = ((sum * 3) + (58 - sample)) % 65521;
-                sum = ((sum * 5) + (837 + sum)) % 1000;
+                if ((origin + origin) == (long)i)
+                {
+                    sum = (sum << 2) ^ (sum ^ origin);
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            if (sum < 981)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum % 4096;
+            return sum;
         }
 
         /// <summary>Digest a series of support entries.</summary>
