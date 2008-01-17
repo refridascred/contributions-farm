@@ -1,8 +1,8 @@
-id,ratio,weight,rank
-1,standard,staging,stable
-2,edge,721,standard
-3,78,191,strict
-4,primary,green,green
-5,611,58.06,268
-6,strict,32.85,553
-7,92.98,62.29,78
+id,active,state,ratio,token
+1,72.07,staging,70.98,standard
+2,147,65.94,419,70.34
+3,111,fallback,blue,edge
+4,802,786,668,462
+5,288,71.89,506,open
+6,strict,standard,86.75,621
+7,72,strict,open,stable
