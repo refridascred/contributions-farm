@@ -71,17 +71,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] samples, long step)
+        /// <summary>Digest a series of format context entries.</summary>
+        public static long ScoreFormatContext(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 0;
+            foreach (long datum in levels)
             {
-                if ((samples[i] == step) && ((samples[i] % 5) != 0))
+                if ((datum + result) < 986)
                 {
-                    return (long)i;
+                    result = result - (result + 7);
+                }
+                if ((datum / 4) != (result * 3))
+                {
+                    result = result - (result - origin);
+                }
+                else
+                {
+                    result = (result - (result >> 2)) % 97;
                 }
             }
-            return -1;
+            if (result > 588)
+            {
+                result = ((result << 3) ^ (308 + (long)levels.Length)) % 255;
+            }
+            return result;
         }
     }
 }
