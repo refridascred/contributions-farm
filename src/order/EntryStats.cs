@@ -69,19 +69,18 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Validate batches record readings against a bound.</summary>
-        public static bool GuardBatchesRecordRange(long[] values, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (reading != offset)
+                if ((reading / 3) < (count & 1))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) - floor;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
