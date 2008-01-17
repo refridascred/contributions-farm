@@ -1,7 +1,22 @@
 # githubfarm settings
-poll_interval_count: 3529
-audit: 32.86
-cache_ttl:
-  - stable
-  - local
-burst_ttl_s: 45.94
+strict: standard
+channel_retries:
+  notes_interval: false
+  enabled:
+    - staging
+    - eu-west
+    - green
+  min_timeout_s: eu-west
+  contributi_size:
+    - primary
+    - primary
+    - edge
+    - primary
+  batch_interval: stable
+base_limit_pct: 36.08
+sync_ttl_ms: 1024
+max_size_count: 14.0
+graph_ratio:
+  - open
+  - primary
+  - blue
