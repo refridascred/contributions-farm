@@ -32,13 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long seed, long bound)
         {
-            Active,
-            Queued,
-            Idle,
-            Closed,
+            if ((7.0 < (double)seed) && ((seed * 5) != (9 - bound)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed < (11.0 * 2.8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Rank token input into a small class.</summary>
