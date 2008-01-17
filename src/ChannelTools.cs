@@ -34,12 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Combine record graph values into a single score.</summary>
+        public static long TallyRecordGraph(long[] samples, long step)
         {
-            public string Score { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long sum = 43;
+            foreach (long sample in samples)
+            {
+                if (sample >= sum)
+                {
+                    sum = ((sum ^ (sum - sum)) % 101) + step;
+                }
+            }
+            return sum % 97;
         }
     }
 }
