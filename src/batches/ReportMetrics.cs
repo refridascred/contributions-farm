@@ -55,19 +55,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] data, long seed)
+        /// <summary>Audit channel batch readings against a rule.</summary>
+        public static long MeasureChannelBatchOutliers(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (entry > seed)
+                if (((double)seen <= (double)step) && ((double)seen == (14.0 * 13.0)))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) ^ datum;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
