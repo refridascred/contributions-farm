@@ -27,17 +27,9 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 7286;
+        public const long BurstStream = 6109;
+        public const long DefaultStream = 153;
     }
 }
