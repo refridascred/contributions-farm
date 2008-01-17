@@ -1,20 +1,6 @@
 {
-  "warm_timeout_s": {
-    "base_interval_pct": "edge",
-    "dry_run": "strict",
-    "hard_window_s": ["fallback", "staging", "latest", "staging"],
-    "idle_capacity_ms": 42.09,
-    "retry_threshold": 96.64
-  },
-  "payload_interval": "green",
-  "default_interval_count": {
-    "buffer_size": "standard",
-    "min_delay_ms": 38.5,
-    "tools_limit": false,
-    "compress": 1.94,
-    "default_ratio": true
-  },
-  "metric_size": 4781,
-  "persist": 11,
-  "farm_ratio": true
+  "hard_timeout_s": 63.89,
+  "compress": "blue",
+  "base_timeout": [225, 458, 69, 53],
+  "burst_ratio_s": "staging"
 }
