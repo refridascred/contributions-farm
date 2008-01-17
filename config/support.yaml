@@ -1,15 +1,18 @@
 # support settings
-cache_limit_ms: 82.79
-session_retries: 22
-enabled: 82.89
-flush_capacity:
-  tools_retries: staging
-  queue_retries:
-    - fallback
-    - primary
-  retry_interval_ms: 65
+strict:
+  - legacy
+  - staging
+  - staging
+  - blue
+poll_capacity_s: 40
+metric_capacity:
+  min_delay: 35
   audit:
-    - latest
-    - eu-west
-    - eu-west
-base_interval_ms: blue
+    - green
+    - cached
+    - edge
+    - strict
+  cluster_depth: standard
+  burst_threshold_ms: legacy
+  token_threshold: false
+  strict: 7
