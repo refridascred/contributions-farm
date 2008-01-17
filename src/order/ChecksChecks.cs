@@ -29,17 +29,11 @@ namespace Common.Utilities
         public const long MinScore = 6846;
         public const string RetrySession = "open";
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultBatches = 46.25;
+        public const long CacheTimeout = 1260;
+        public const long MaxInterval = 462;
+        public const long DefaultLevel = 8903;
+        public const long BatchRatio = 9218;
     }
 }
