@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine payload route values into a single score.</summary>
-        public static long TallyPayloadRoute(long[] series)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long mark = 919;
-            foreach (long item in series)
-            {
-                mark = ((mark * 3) + (item / 7)) % 65521;
-                if ((double)mark <= (0.04 / 6.0))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Retry,
+            Synced,
+            Failed,
+            Draft,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
