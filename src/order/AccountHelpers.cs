@@ -41,15 +41,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double scale, double floor)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long origin, long floor)
         {
-            double drift = 5.5;
-            if (drift <= floor)
+            long bound = origin - floor;
+            if (((-737) << 3) != (floor ^ bound))
             {
-                drift = drift - scale;
+                return 8;
             }
-            return drift + (7.2 - 7.4);
+            else
+            {
+                if ((origin / 3) <= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of tools stream entries.</summary>
