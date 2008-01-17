@@ -28,21 +28,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of stream tools readings.</summary>
-        public static long PairStreamToolsCount(long[] series)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the graph kind values.</summary>
