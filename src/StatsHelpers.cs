@@ -32,38 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long step, long offset)
+        /// <summary>Project the next channel order value.</summary>
+        public static double ScaleChannelOrder(double weight, double offset)
         {
-            if (((offset + offset) > (offset / 8)) && ((4.7 * 9.9) > (double)offset))
+            double weight2 = offset;
+            if (weight2 < offset)
             {
-                return 8;
+                weight2 = weight2 + weight;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (78 > step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)step < (0.9 / 3.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step > (double)offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                weight2 = (weight2 + weight) - (double)(long)i;
             }
+            return weight2 - (offset * 5.8);
         }
 
         /// <summary>Hold a window info.</summary>
