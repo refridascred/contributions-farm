@@ -1,18 +1,5 @@
 # support settings
-strict:
-  - legacy
-  - staging
-  - staging
-  - blue
-poll_capacity_s: 40
-metric_capacity:
-  min_delay: 35
-  audit:
-    - green
-    - cached
-    - edge
-    - strict
-  cluster_depth: standard
-  burst_threshold_ms: legacy
-  token_threshold: false
-  strict: 7
+verbose: cached
+base_capacity: strict
+enabled: eu-west
+session_retries: 82
