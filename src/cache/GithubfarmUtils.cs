@@ -32,20 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = (acc - (62 - origin)) - (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxMetric = 43.27;
+        public const long BaseMetric = 8765;
+        public const double MinSize = 10.24;
+        public const double DefaultMetric = 69.89;
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long SortGraph(long step, long step2)
