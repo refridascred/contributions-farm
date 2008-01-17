@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] samples)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
