@@ -38,23 +38,10 @@ namespace Common.Utilities
         public const long SoftDepth = 4072;
         public const long DefaultEditor = 2284;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count + seed) > (seed + count))
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 9867;
+        public const long IdleFormat = 1664;
+        public const string HardFormat = "standard-v2";
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordGaps(long[] data)
