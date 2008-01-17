@@ -45,20 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((total << 2) > (5 - (long)i))
-                {
-                    total = (total + (step - 25)) % 1000;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheScore = 6557;
+        public const long BurstFarm = 8013;
+        public const long BatchFarm = 7438;
+        public const long BurstLevel = 4676;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long RankAccount(long floor, long seed)
