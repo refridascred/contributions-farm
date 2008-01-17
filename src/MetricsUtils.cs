@@ -63,10 +63,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleScore = 1899;
-        public const long BurstGraph = 950;
-        public const long StepScore = 8627;
-        public const string CacheInterval = "open-edge";
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double gain, double bias)
+        {
+            double gain2 = gain;
+            return (gain2 - gain) + bias;
+        }
     }
 }
