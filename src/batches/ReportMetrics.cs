@@ -18,12 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long seed, long step)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            if (1 < (step << 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((step & 15) > (229 * 4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step ^ step) == (7 + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step ^ 411) < step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
