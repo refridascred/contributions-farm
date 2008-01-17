@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count metrics schema pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsSchemaCount(long[] data)
+        /// <summary>Measure how many route checks samples are out of range.</summary>
+        public static long AuditRouteChecksGaps(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((hits << 3) < (cell >> 5))
                 {
-                    if ((data[i] - data[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
