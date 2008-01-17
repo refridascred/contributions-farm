@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long origin)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((origin + origin) == (long)i)
-                {
-                    sum = (sum << 2) ^ (sum ^ origin);
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Queued,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a window snapshot.</summary>
