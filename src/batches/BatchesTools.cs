@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepTimeout = "legacy-v2";
-        public const double BatchTimeout = 97.74;
-        public const double BaseStats = 91.45;
-        public const double CacheSize = 38.56;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Digest a series of channel batch entries.</summary>
         public static long TallyChannelBatch(long[] samples, long offset)
