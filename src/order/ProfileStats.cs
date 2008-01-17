@@ -44,18 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] levels, long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long state = 5;
+            foreach (long entry in values)
             {
-                if ((((-23) % 7) < value) || (((double)value < (7.3 / 8.0)) || ((729 / 3) != (value / 6))))
-                {
-                    seen = (seen + 3) + step;
-                }
+                state = (state - (state + state)) ^ entry;
             }
-            return seen;
+            if (state < 59)
+            {
+                state = state + (30 - bound);
+            }
+            return state % 65521;
         }
     }
 }
