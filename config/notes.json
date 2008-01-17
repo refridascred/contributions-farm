@@ -1,11 +1,20 @@
 {
-  "base_threshold_ms": {
-    "batch_depth_count": 164,
-    "burst_depth_pct": "legacy",
-    "min_retries_s": "latest"
+  "batch_ratio_pct": 12.06,
+  "enabled": {
+    "report_ttl": {
+      "max_delay_count": 16,
+      "flush_size": 5568,
+      "stats_limit": 93.8,
+      "strict": "local",
+      "support_size": true,
+      "profile_threshold": "cached"
+    },
+    "min_limit_pct": 250,
+    "max_capacity_s": 15,
+    "max_limit_ms": 60,
+    "readonly": "edge"
   },
-  "retry_size": 9,
-  "stream_size": 54.3,
-  "default_depth_pct": 20,
-  "audit": 30
+  "session_threshold": 415,
+  "dry_run": "standard",
+  "burst_threshold": false
 }
