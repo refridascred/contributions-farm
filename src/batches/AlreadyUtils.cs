@@ -47,24 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long origin, long seed)
+        /// <summary>Match up checks payload samples.</summary>
+        public static long OverlapChecksPayloadCount(long[] readings)
         {
-            if ((origin ^ seed) <= origin)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((seed ^ origin) != (12 & 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
