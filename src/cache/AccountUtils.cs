@@ -33,9 +33,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 7286;
-        public const long BurstStream = 6109;
-        public const long DefaultStream = 153;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (!(((cell >> 5) >= cell) || ((matches + matches) < matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
