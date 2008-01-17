@@ -45,18 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
-        public static long MeasureClusterGithubfarmHits(long[] series, long step)
+        /// <summary>Project the next stats commits value.</summary>
+        public static double SmoothStatsCommits(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)item != (1.84 - 1.6))
-                {
-                    seen = (seen + 3) - step;
-                }
-            }
-            return seen;
+            double mean = (double)((-11) & 7);
+            return ((mean + (6.16 + 1.6)) + ratio) + offset;
         }
 
         /// <summary>Hold a record record.</summary>
