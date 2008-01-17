@@ -45,17 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batches checks entry that matches the target.</summary>
-        public static long FindBatchesChecksIndex(long[] readings, long seed)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
