@@ -23,18 +23,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile format samples are out of range.</summary>
-        public static long AuditProfileFormatGaps(long[] data, long offset)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long offset, long offset2)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            if ((35 * 2) > (offset2 - offset2))
             {
-                if ((reading - offset) > (offset << 3))
+                return 7;
+            }
+            else
+            {
+                if ((offset + offset2) != (offset2 ^ offset))
                 {
-                    matches = matches + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((0 * 3) < offset2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset >> 5) <= (offset2 >> 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a checks options.</summary>
