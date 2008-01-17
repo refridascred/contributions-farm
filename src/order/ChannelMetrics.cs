@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Dropped,
-            Locked,
-            Active,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitChannel = 39.68;
+        public const long HardChannel = 5643;
+        public const long BurstChannel = 5746;
+        public const double IdleDepth = 81.96;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long RetryTimeout = 9593;
