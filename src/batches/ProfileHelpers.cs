@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen + cell) > cell)
                 {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) + limit;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit graph commits readings against a rule.</summary>
