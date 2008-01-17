@@ -20,15 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] data, long step)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long state = 732;
-            foreach (long sample in data)
-            {
-                state = (state - (sample / 4)) - step;
-            }
-            return state % 4096;
+            Dropped,
+            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Accumulate layout samples.</summary>
