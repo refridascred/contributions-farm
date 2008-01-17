@@ -20,15 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Active,
-            Closed,
-            Draft,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitFactor = "legacy";
+        public const long BurstWidth = 1513;
+        public const long MinLevel = 4491;
+        public const string IdleEditor = "legacy-1";
+        public const long SoftEditor = 5745;
 
         /// <summary>Scale a checks batch figure with a bias.</summary>
         public static double ProjectChecksBatch(double scale, double floor)
