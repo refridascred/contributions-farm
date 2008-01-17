@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 6420;
-        public const long BaseFactor = 6164;
-        public const long MinNotes = 4176;
-        public const string BurstNotes = "open";
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LookupGithubfarmIndex(long[] series, long step)
