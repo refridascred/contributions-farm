@@ -46,24 +46,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long origin, long target)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double ratio, double span)
         {
-            if ((2.2 + 1.6) >= (double)origin)
+            double rate = (double)1 / 7.0;
+            if (rate >= (double)114)
             {
-                return 3;
+                rate = rate + (ratio + ratio);
             }
             else
             {
-                if (!((origin - 84) == (target ^ origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
+                rate = rate - rate;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (span + rate)) + (double)(long)i;
+            }
+            return rate - (rate / 4.0);
         }
     }
 }
