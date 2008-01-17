@@ -38,23 +38,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double rate, double bias)
+        /// <summary>Compare every pair of metric report readings.</summary>
+        public static long CompareMetricReportCount(long[] levels)
         {
-            double gain = rate;
-            if (gain < bias)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + (rate / 9.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (13.0 * 15.0)) + (double)(long)i;
-            }
-            return gain + (double)69;
+            return count;
         }
 
         /// <summary>Describe the batch mode values.</summary>
