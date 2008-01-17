@@ -59,24 +59,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long offset, long bound)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            if ((bound >> 4) > (offset + bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((60 + offset) <= (bound >> 5)) && ((offset - 2) > offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Done,
+            New,
+            Dropped,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define token limits and defaults.</summary>
