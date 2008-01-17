@@ -1,6 +1,6 @@
-id,state,active,level
-1,49,366,357
-2,80.37,826,963
-3,668,green,70.27
-4,63.52,staging,947
-5,716,edge,789
+id,active,label,score,ratio
+1,blue,454,39.61,fallback
+2,green,25.23,17,81.11
+3,primary,964,stable,62.21
+4,588,252,59.61,standard
+5,primary,53.85,818,448
