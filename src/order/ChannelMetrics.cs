@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] data, long floor)
+        /// <summary>Roll a support command counter forward.</summary>
+        public static long StepSupportCommand(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
+                result = (result * 4) + (58 + target);
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
