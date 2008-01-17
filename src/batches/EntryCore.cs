@@ -14,19 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long sum = 78;
-            foreach (long item in values)
-            {
-                sum = (((sum << 3) ^ sum) % 101) + item;
-            }
-            if (sum > 2)
-            {
-                sum = sum ^ (sum / 9);
-            }
-            return sum;
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
