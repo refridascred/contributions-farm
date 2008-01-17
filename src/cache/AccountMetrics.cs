@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 1487;
+        public const string IdleTimeout = "stable";
+        public const long BurstTools = 8147;
 
         /// <summary>Blend two payload metrics measurements.</summary>
         public static double ScalePayloadMetrics(double ratio, double span)
