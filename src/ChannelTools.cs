@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((datum % 24) >= seen)
+                if ((-6) >= hits)
                 {
-                    seen = seen + 3;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine record graph values into a single score.</summary>
