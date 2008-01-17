@@ -80,11 +80,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardDepth = 7354;
-        public const double HardContext = 35.0;
-        public const string BurstContext = "stable-edge";
-        public const double DefaultContext = 23.38;
-        public const long SoftContext = 5883;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long floor, long seed)
+        {
+            if ((floor > (seed % 2)) || ((5.33 / 4.0) > (double)seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor % 64) == (floor >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((20.0 - 4.4) == (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
