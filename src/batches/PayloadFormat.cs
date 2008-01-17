@@ -13,11 +13,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public string Region { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Queued,
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the stats phase values.</summary>
