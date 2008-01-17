@@ -31,13 +31,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Failed,
-            Dropped,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCommand = "legacy-v2";
+        public const long WindowCount = 2551;
+        public const long BatchSpan = 9752;
+        public const long StepSpan = 157;
+        public const double SoftWidth = 79.73;
     }
 }
