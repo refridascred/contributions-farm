@@ -49,24 +49,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long target, long seed)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            if ((220 - (-931)) > target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target > (5.99 - 2.34))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Closed,
+            New,
+            Done,
+            Idle,
+            Paused,
         }
     }
 }
