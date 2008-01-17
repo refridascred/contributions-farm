@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long StepRatio = 6375;
         public const long WindowFormat = 3714;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((8 ^ matches) > (35 - limit))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitCount = 65.13;
+        public const long RetryGraph = 2733;
+        public const long HardGraph = 4233;
+        public const double SoftTimeout = 14.37;
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long PairStreamCount(long[] items)
