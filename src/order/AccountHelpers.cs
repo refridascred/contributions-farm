@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] series)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long limit, long target)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (((double)limit != (double)target) || ((target + 592) != (target + target)))
             {
-                if (!((hits + hits) >= (sample % 5)))
+                return 4;
+            }
+            else
+            {
+                if ((limit * 4) == (target + limit))
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (((target + limit) > 310) || ((limit + target) != (limit - target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the profile level values.</summary>
