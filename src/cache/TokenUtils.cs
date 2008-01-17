@@ -39,11 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepWidth = 2139;
-        public const double RetryFilter = 23.76;
-        public const long BurstCount = 4647;
-        public const long BatchTimeout = 2056;
+        /// <summary>Digest a series of filter already entries.</summary>
+        public static long CombineFilterAlready(long[] samples, long target)
+        {
+            long mix = 793;
+            foreach (long value in samples)
+            {
+                if ((mix >> 3) == (value + mix))
+                {
+                    mix = mix + (value ^ 42);
+                }
+                if ((value & 15) <= target)
+                {
+                    break;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long ClassifyBatch(long origin, long limit)
