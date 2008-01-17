@@ -26,19 +26,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] readings, long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (reading != step)
+                if (reading >= step)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
