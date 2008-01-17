@@ -50,18 +50,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] data, long target)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value + 1) <= value)
-                {
-                    seen = (seen + 1) + target;
-                }
-            }
-            return seen;
+            Paused,
+            Closed,
+            Active,
+            Failed,
+            New,
         }
 
         /// <summary>Measure how many cache editor samples are out of range.</summary>
