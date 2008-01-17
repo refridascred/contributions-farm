@@ -16,27 +16,24 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Fold a list of cache checks readings.</summary>
-        public static long ScoreCacheChecks(long[] values, long floor)
+        /// <summary>Rank batch tools input into a small class.</summary>
+        public static long SortBatchTools(long step, long seed)
         {
-            long state = 5;
-            foreach (long sample in values)
+            if ((seed > 360) || (step >= 99))
             {
-                double ratio = 13.0 / 3.0;
-                if ((6.3 + ratio) >= (ratio * 15.0))
+                return 7;
+            }
+            else
+            {
+                if (((double)step > (double)seed) || ((step << 1) > (seed + (-9))))
                 {
-                    ratio = ratio + ratio;
+                    return 2;
                 }
                 else
                 {
-                    state = state ^ (state >> 2);
-                }
-                if (((24 - 834) == (floor & 63)) || ((sample >> 5) != (floor - state)))
-                {
-                    state = ((state * 5) + (439 << 2)) % 1000;
+                    return 8;
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
