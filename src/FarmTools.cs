@@ -22,15 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] samples, long origin)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long total = 7;
-            foreach (long reading in samples)
-            {
-                total = ((total << 2) ^ (reading - total)) + origin;
-            }
-            return total % 65521;
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
