@@ -1,11 +1,6 @@
-id,owner,ratio
-1,36.94,25.33
-2,local,38.51
-3,stable,557
-4,eu-west,587
-5,stable,44.45
-6,30.39,edge
-7,101,green
-8,243,32.84
-9,staging,legacy
-10,standard,527
+id,region,state
+1,standard,standard
+2,867,edge
+3,16.37,green
+4,426,13.09
+5,834,edge
