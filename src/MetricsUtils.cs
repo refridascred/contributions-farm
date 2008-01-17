@@ -32,18 +32,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] values, long bound)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long seed)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (((bound + count) == (count / 6)) && ((count * 5) <= (entry ^ count)))
+                long bound = (seed + acc) / 9;
+                if ((271 ^ bound) >= (bound - bound))
                 {
-                    count = count + 3;
+                    acc = ((acc << 2) ^ (seed + acc)) % 101;
                 }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
