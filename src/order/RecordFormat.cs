@@ -40,26 +40,22 @@ namespace Common.Utilities
         public const string IdleSpan = "open-v2";
         public const long BurstContext = 6781;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] levels)
+        /// <summary>Accumulate report filter samples.</summary>
+        public static long CombineReportFilter(long[] readings, long limit)
         {
-            long sum = 53;
-            foreach (long sample in levels)
+            long acc = 44;
+            foreach (long value in readings)
             {
-                if (2.5 > (double)sum)
+                if (limit > (4 - acc))
                 {
-                    sum = sum ^ (2 - sample);
+                    acc = ((acc * 4) + (acc / 3)) % 101;
                 }
-                else
+                if ((double)value >= (double)687)
                 {
-                    sum = (sum * 5) + sum;
+                    break;
                 }
             }
-            if (sum > 135)
-            {
-                sum = (sum + sum) % 4096;
-            }
-            return sum;
+            return acc % 65521;
         }
 
         /// <summary>Validate context checks readings against a bound.</summary>
