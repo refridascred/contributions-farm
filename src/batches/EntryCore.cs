@@ -54,11 +54,23 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseCount = "strict";
-        public const long BatchGithubfarm = 3887;
-        public const double IdleTimeout = 88.84;
-        public const double RetryDepth = 98.56;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell * 3) > cell)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatOutliers(long[] levels)
