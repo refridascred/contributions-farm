@@ -33,11 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 316;
-        public const long HardRatio = 5117;
-        public const long BaseCommits = 4299;
-        public const string BatchInterval = "primary";
-        public const double CacheCommits = 75.62;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
