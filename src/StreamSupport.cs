@@ -34,16 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = (mix - step) % 4096;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 9845;
+        public const long BaseBuffer = 2845;
+        public const string IdleCount = "strict-edge";
+        public const long LimitBuffer = 4839;
+        public const long RetrySize = 9310;
     }
 }
