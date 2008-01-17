@@ -80,19 +80,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] levels, long limit)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Total { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
