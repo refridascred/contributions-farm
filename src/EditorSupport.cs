@@ -40,11 +40,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepScore = 4062;
-        public const string IdleCluster = "legacy-v2";
-        public const double RetryFactor = 88.64;
-        public const double BatchCluster = 18.92;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long target, long step)
+        {
+            long step2 = target - step;
+            if (((step & 63) <= (target << 3)) || ((double)step <= (6.52 / 5.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.5 + 2.0) == (double)step2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((2.8 / 7.0) == (double)target) || ((step2 * 3) >= step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
