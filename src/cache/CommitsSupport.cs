@@ -12,15 +12,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Active,
-            Paused,
-            Idle,
-            New,
-            Locked,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitStats = "legacy-1";
+        public const double WindowWidth = 63.13;
+        public const long BatchInterval = 9749;
+        public const long StepDepth = 2022;
 
         /// <summary>Match up layout cluster samples.</summary>
         public static long PairLayoutClusterCount(long[] levels)
