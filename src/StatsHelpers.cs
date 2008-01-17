@@ -60,18 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer tools entries.</summary>
-        public static long TotalBufferTools(long[] items)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] levels)
         {
-            long anchor = 89;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)datum == (5.3 - 6.22))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor << 2) ^ (anchor + (-517));
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the batch mode values.</summary>
