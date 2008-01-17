@@ -23,17 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a record notes reading by value.</summary>
-        public static long LocateRecordNotesIndex(long[] values, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (values[i] < seed)
+                if (datum <= bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
