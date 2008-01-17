@@ -29,18 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] readings)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] items)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long sum = 1;
+            foreach (long item in items)
             {
-                if (entry >= (entry / 3))
+                for (int i = 0; i < 6; i++)
                 {
-                    count = count + 1;
+                    sum = ((sum ^ item) % 255) + (long)i;
                 }
+                sum = ((sum * 2) + (1 / 5)) % 101;
             }
-            return count;
+            return sum % 65521;
         }
     }
 }
