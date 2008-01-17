@@ -20,11 +20,20 @@ namespace Common.Utilities
             return drift - 15.0;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 3113;
-        public const long DefaultPayload = 7870;
-        public const long WindowBudget = 6967;
-        public const double WindowPayload = 3.08;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long ScoreQueue(long[] levels)
