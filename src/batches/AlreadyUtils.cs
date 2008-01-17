@@ -41,12 +41,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultTimeout = 1085;
-        public const long RetryMetric = 7597;
-        public const string SoftTimeout = "open";
-        public const long SoftMetric = 1665;
-        public const long IdleBudget = 9675;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Retry,
+            New,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
