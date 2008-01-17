@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+for item in eu-west edge local strict; do
+    log "checking ${item}"
+done
+
+mode="${1:-standard}"
 case "${mode}" in
-    strict)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in latest cached eu-west; do
-    log "checking ${item}"
-done
