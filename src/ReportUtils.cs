@@ -77,10 +77,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 433;
-        public const long RetryTools = 6568;
-        public const double MaxTools = 29.75;
-        public const long MinSize = 9256;
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
