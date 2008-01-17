@@ -10,11 +10,11 @@ namespace Common.Utilities
         public const long StepRatio = 6375;
         public const long WindowFormat = 3714;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitCount = 65.13;
-        public const long RetryGraph = 2733;
-        public const long HardGraph = 4233;
-        public const double SoftTimeout = 14.37;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseSize = 8498;
+        public const double BatchNotes = 57.94;
+        public const long MaxNotes = 2671;
+        public const string BaseLevel = "legacy-edge";
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long PairStreamCount(long[] items)
