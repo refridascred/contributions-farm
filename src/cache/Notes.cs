@@ -28,11 +28,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinScore = 1564;
-        public const long LimitMetrics = 5601;
-        public const string BatchMetrics = "fallback-v2";
-        public const long DefaultMetrics = 5285;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long target)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long GradeRecord(long seed, long limit)
