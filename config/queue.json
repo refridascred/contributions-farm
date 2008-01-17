@@ -1,14 +1,5 @@
 {
-  "soft_ratio_ms": 30,
-  "dry_run": 1007,
-  "persist": {
-    "cache_limit_ms": "staging",
-    "batch_limit": [171, 177, 384],
-    "retry_ttl_ms": "strict",
-    "soft_capacity_count": "eu-west",
-    "cache_interval_count": 60
-  },
-  "flush_interval": 38,
-  "poll_retries_count": 13.62,
-  "readonly": 3427
+  "default_ratio": true,
+  "verbose": 6526,
+  "commits_size": "latest"
 }
