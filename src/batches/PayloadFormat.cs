@@ -31,15 +31,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] series)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double ratio, double span)
         {
-            long state = 989;
-            foreach (long entry in series)
+            double drift = 2.44;
+            if (drift < 3.33)
             {
-                state = (((state * 2) + (509 / 2)) % 1000) + entry;
+                drift = (drift - (span - 5.28)) - ratio;
             }
-            return state;
+            return drift + (double)6;
         }
     }
 }
