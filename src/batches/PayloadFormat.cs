@@ -33,13 +33,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long offset, long origin)
         {
-            Idle,
-            Done,
-            Queued,
-            Synced,
+            if ((origin / 2) > (offset + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((147 / 3) == (offset >> 5)) || ((origin + offset) < (offset << 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the counter route entries that pass the check.</summary>
