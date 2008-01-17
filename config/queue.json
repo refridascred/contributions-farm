@@ -1,5 +1,17 @@
 {
-  "soft_retries": true,
-  "soft_window": "standard",
-  "min_threshold": 100
+  "idle_capacity_pct": {
+    "farm_limit": "open",
+    "dry_run": 1024,
+    "hard_capacity_ms": {
+      "compress": ["stable", "edge", "staging", "eu-west"],
+      "soft_limit_ms": "eu-west",
+      "stream_size": "edge",
+      "dry_run": "fallback"
+    },
+    "idle_timeout_count": "fallback",
+    "idle_interval_pct": [495, 394, 138, 32]
+  },
+  "sync_limit": 9947,
+  "cache_ttl_s": "edge",
+  "tools_delay": "blue"
 }
