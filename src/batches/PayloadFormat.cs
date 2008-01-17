@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Audit account editor readings against a rule.</summary>
+        public static long CountAccountEditorMatches(long[] items)
         {
-            Ready,
-            Idle,
-            Queued,
-            Synced,
-            Locked,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (!((tally % 24) < tally))
+                {
+                    tally = (tally + 2) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a schema header.</summary>
