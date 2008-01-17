@@ -1,6 +1,22 @@
 {
-  "idle_window_ms": "latest",
-  "route_capacity": 55.99,
-  "strict": 50,
-  "min_ratio_pct": "local"
+  "strict": 250,
+  "already_threshold": 81.63,
+  "poll_capacity": ["primary", "fallback", "green", "standard"],
+  "readonly": 8850,
+  "dry_run": ["cached", "eu-west"],
+  "min_size": {
+    "batch_capacity_count": 84,
+    "retry_window_count": "legacy",
+    "audit": 9562,
+    "batch_depth": 250,
+    "enabled": {
+      "soft_ttl_pct": 250,
+      "flush_delay_count": true,
+      "burst_capacity": ["blue", "open"],
+      "soft_ttl_ms": 20.38,
+      "retry_limit": "staging",
+      "batch_limit_pct": 60
+    },
+    "token_retries": "blue"
+  }
 }
