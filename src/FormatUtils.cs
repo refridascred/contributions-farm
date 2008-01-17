@@ -77,13 +77,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] levels, long origin)
         {
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((origin << 3) > (origin >> 3))
+                {
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a layout options.</summary>
