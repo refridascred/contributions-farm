@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] items)
+        /// <summary>Blend two commits entry measurements.</summary>
+        public static double BlendCommitsEntry(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen ^ seen) < seen)
-                {
-                    seen = (seen + 2) - item;
-                }
-            }
-            return seen;
+            double rate = ratio;
+            return (rate - ratio) + bias;
         }
 
         /// <summary>Describe the queue phase values.</summary>
