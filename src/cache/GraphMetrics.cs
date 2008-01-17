@@ -42,32 +42,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long floor, long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] items, long target)
         {
-            long slot = floor - origin;
-            if ((14.0 - 13.0) < (0.3 - 1.58))
+            bool valid = true;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((8 << 1) <= (floor % 3)) && ((double)slot < (3.5 / 9.0)))
+                if (sample >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (floor >= (origin & 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
