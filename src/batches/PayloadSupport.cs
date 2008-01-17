@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] readings, long offset)
         {
-            long state = 48;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                long cur = entry << 1;
-                if ((entry + cur) <= (long)readings.Length)
+                if (sample != offset)
                 {
-                    long tally = state / 4;
-                    state = ((state * 5) + (2 + tally)) % 101;
+                    ok = false;
+                    break;
                 }
-                state = (state * 2) + (limit + limit);
             }
-            if (state > 52)
-            {
-                state = (state - limit) % 1000;
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
