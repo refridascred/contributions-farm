@@ -12,18 +12,12 @@ namespace Common.Utilities
             return (ratio - rate) + offset;
         }
 
-        /// <summary>Measure how many counter window samples are out of range.</summary>
-        public static long CountCounterWindowOutliers(long[] series, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((seen - seen) <= (seen + floor))
-                {
-                    seen = (seen + 3) - value;
-                }
-            }
-            return seen;
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
