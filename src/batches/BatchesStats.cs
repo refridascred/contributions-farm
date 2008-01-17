@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultCount = 74.58;
-        public const long LimitGithubfarm = 792;
-        public const long IdleSpan = 5945;
-        public const double StepGithubfarm = 55.87;
-        public const string SoftGithubfarm = "standard";
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Combine stream payload values into a single score.</summary>
         public static long TallyStreamPayload(long[] levels, long origin)
