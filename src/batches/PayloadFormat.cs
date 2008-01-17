@@ -20,15 +20,14 @@ namespace Common.Utilities
         public const long WindowTools = 4785;
         public const long BurstCount = 2431;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] values)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long result = 106;
-            foreach (long reading in values)
-            {
-                result = ((result + (46 >> 2)) % 4096) - reading;
-            }
-            return result;
+            Stale,
+            Queued,
+            Done,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a account snapshot.</summary>
