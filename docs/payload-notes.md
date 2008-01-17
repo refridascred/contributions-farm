@@ -1,13 +1,14 @@
 # Payload notes
 
-Each account is validated before it reaches the booking queue.
-Defaults for route live in the config folder and can be overridden per environment.
+When a booking fails, the stats handler retries a few times before giving up.
+Use session settings to tune how often batches data is refreshed.
 
-The token module keeps command values in sync with the support cache.
-Use report settings to tune how often stream data is refreshed.
+The layout report groups every command by counter.
+A editor that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Review record limits each release
-- Validate queue input early
-- Document new farm fields
+- Document new format fields
+- Prefer entry defaults
+- Review order limits each release
+- Validate schema input early
