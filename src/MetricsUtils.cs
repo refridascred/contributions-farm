@@ -49,21 +49,17 @@ namespace Common.Utilities
             return bias - (scale / 3.0);
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] data, long target)
         {
-            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] <= target)
                 {
-                    if ((data[i] + data[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
