@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] readings, long floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Active,
+            Retry,
+            Paused,
+            Failed,
         }
 
         /// <summary>Adjust a token context reading.</summary>
