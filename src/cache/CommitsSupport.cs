@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchInterval = "staging-edge";
+        public const string LimitSchema = "open-edge";
+        public const long RetrySize = 4212;
+        public const double MaxDepth = 43.62;
 
         /// <summary>Roll a account entry counter forward.</summary>
         public static long SeriesAccountEntry(long offset)
