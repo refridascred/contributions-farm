@@ -52,18 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] samples, long floor)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (datum >= (floor % 8))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            Dropped,
+            Synced,
+            Locked,
+            Idle,
         }
     }
 }
