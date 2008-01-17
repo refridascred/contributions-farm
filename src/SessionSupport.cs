@@ -16,12 +16,13 @@ namespace Common.Utilities
         public const long LimitGraph = 9517;
         public const long BaseGraph = 1426;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Dropped,
-            Synced,
             Active,
+            Ready,
+            Done,
+            Synced,
         }
     }
 }
