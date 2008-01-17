@@ -76,27 +76,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] values)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            long anchor = 448;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(3.49 >= (double)cell))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor * 4) + (anchor & 255)) % 1000;
-                    break;
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = (((anchor << 2) ^ 0) % 97) - (long)i;
-                }
-                if ((cell - 465) < 151)
-                {
-                    anchor = ((anchor * 2) + (cell % 5)) % 1000;
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 97;
+            return seen;
         }
     }
 }
