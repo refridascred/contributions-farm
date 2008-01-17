@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a layout graph pair into a bucket.</summary>
-        public static long RankLayoutGraph(long offset, long floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long seed, long floor)
         {
-            if (((offset + 25) >= floor) && (22 <= (offset * 3)))
+            if (seed > floor)
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((double)offset >= (double)floor)
+                if (!(floor <= (seed % 7)))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if ((5.0 / 6.0) != (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 3;
                 }
             }
         }
