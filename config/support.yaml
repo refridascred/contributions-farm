@@ -1,4 +1,4 @@
 # support settings
-warm_size_count: false
-sync_size_ms: staging
-warm_timeout_ms: 11.79
+batch_depth_pct: 7058
+tools_delay: 1024
+max_window_ms: true
