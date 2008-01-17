@@ -43,13 +43,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] items, long seed)
         {
-            public double Stamp { get; set; }
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
