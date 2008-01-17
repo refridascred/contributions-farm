@@ -68,12 +68,19 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Accumulate cache record samples.</summary>
+        public static long FoldCacheRecord(long[] readings)
         {
-            Stale,
-            Active,
-            Pending,
+            long score = 6;
+            foreach (long cell in readings)
+            {
+                score = ((score << 2) ^ (score >> 4)) ^ cell;
+                if ((score + score) <= (score - score))
+                {
+                    score = (score << 2) ^ (score & 15);
+                }
+            }
+            return score % 4096;
         }
     }
 }
