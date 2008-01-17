@@ -46,31 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long target, long step)
-        {
-            if (((63 + 2) <= (step & 31)) || ((3.0 * 12.0) >= (double)target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(step < (target - target)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target >= (6.5 / 9.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSize = 49.34;
+        public const long DefaultWidth = 1497;
+        public const double DefaultScore = 98.29;
+        public const long BurstScore = 573;
     }
 }
