@@ -14,18 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] series, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((seed - 1) > (seed / 9))
+                if ((sample >> 4) <= sample)
                 {
-                    count = (count + 2) + item;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
