@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback cached strict edge; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=26
+log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-BUFFER_LIMIT=245
-log "limit is ${BUFFER_LIMIT}"
