@@ -48,22 +48,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long mark = -57;
-            foreach (long reading in levels)
-            {
-                if (!((49 / 4) >= mark))
-                {
-                    mark = (mark << 2) ^ (mark >> 3);
-                }
-                else
-                {
-                    mark = (mark * 2) + (mark ^ reading);
-                }
-            }
-            return mark % 97;
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
