@@ -22,23 +22,36 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long step, long target)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long limit, long origin)
         {
-            long prev = step - target;
-            if ((16.0 + 8.8) == (double)prev)
+            if ((double)origin < (4.0 * 7.6))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (prev <= target)
+                if ((double)origin > 17.0)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    return 3;
+                    if (!((2.63 / 7.0) < (double)origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((limit % 64) >= (limit + limit)) || (limit < (limit ^ 357)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
