@@ -37,18 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] items)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + seen) < (cell / 8))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
