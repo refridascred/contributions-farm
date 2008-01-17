@@ -41,17 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a context batches reading by value.</summary>
-        public static long SeekContextBatchesIndex(long[] items, long offset)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
