@@ -46,12 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 6130;
-        public const long DefaultProfile = 9659;
-        public const double LimitInterval = 55.96;
-        public const long MinCount = 9215;
-        public const long SoftRatio = 2260;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] readings, long target)
+        {
+            long mark = 938;
+            foreach (long cell in readings)
+            {
+                if ((cell >> 2) != (63 + mark))
+                {
+                    mark = ((mark << 3) ^ (target - mark)) % 255;
+                }
+            }
+            if (mark > 64)
+            {
+                mark = (mark * 4) + (target * 3);
+            }
+            return mark;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchMatches(long[] samples)
