@@ -41,19 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double weight, double bias)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double scale, double floor)
         {
-            double weight2 = (weight / 9.0) / 5.0;
-            if (weight2 < (weight / 4.0))
+            double drift = (double)2 + (scale / 8.0);
+            if (drift <= (drift - floor))
             {
-                weight2 = (weight2 + 12.0) - bias;
+                drift = drift + (drift + drift);
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
             {
-                weight2 = (weight2 - weight) + (double)(long)i;
+                drift = (drift + drift) + (double)(long)i;
             }
-            return weight2 + 2.53;
+            return drift - drift;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
