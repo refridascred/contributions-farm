@@ -48,17 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] samples, long origin)
+        /// <summary>Validate layout buffer readings against a bound.</summary>
+        public static bool GuardLayoutBufferBounds(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
+                if (entry != floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
