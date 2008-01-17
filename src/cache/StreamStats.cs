@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long BaseBatch = 106;
         public const long WindowBatch = 871;
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double gain, double offset)
         {
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
-            public long Label { get; set; }
+            double weight = 1.87 - (offset / 4.0);
+            return (weight + (weight / 3.0)) + gain;
         }
 
         /// <summary>Digest a series of schema tools entries.</summary>
