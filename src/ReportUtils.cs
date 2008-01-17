@@ -34,19 +34,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] series, long step)
+        /// <summary>Audit already commits readings against a rule.</summary>
+        public static long MeasureAlreadyCommitsMatches(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (entry > step)
+                if (((15.0 <= (double)cell) && ((step + 59) > (step / 8))) && ((step - step) != (step << 1)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
