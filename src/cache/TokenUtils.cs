@@ -33,11 +33,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Roll a record support counter forward.</summary>
+        public static long IterateRecordSupport(long floor)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            long state = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                state = (state - floor) % 1000;
+                state = (state + (floor / 3)) % 255;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
