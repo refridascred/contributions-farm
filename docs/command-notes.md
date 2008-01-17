@@ -1,11 +1,14 @@
 # Command notes
 
-Use contributi settings to tune how often format data is refreshed.
-The order report groups every batches by notes.
-The buffer report groups every payload by commits.
+Each filter is validated before it reaches the account queue.
+A support that stays idle for too long is moved to the report list.
+
+Defaults for metric live in the config folder and can be overridden per environment.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every cache change
-- Validate record input early
-- Keep stream values small
+- Validate report input early
+- Keep entry values small
+- Log every graph change
+- Document new report fields
