@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer stream measurements.</summary>
-        public static double ScaleBufferStream(double rate, double bias)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            double scale = bias;
-            return (scale - (double)923) + rate;
+            public bool Limit { get; set; }
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a support reading by value.</summary>
