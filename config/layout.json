@@ -1,6 +1,15 @@
 {
-  "burst_ratio_s": 58.89,
-  "audit": false,
-  "base_timeout_ms": ["latest", "fallback", "eu-west"],
-  "compress": "local"
+  "min_delay": {
+    "cache_window_s": 13.89,
+    "flush_depth_ms": "primary",
+    "strict": "local",
+    "hard_threshold_ms": "cached",
+    "verbose": 34.1,
+    "persist": 68
+  },
+  "compress": "open",
+  "cluster_retries": 500,
+  "soft_interval": "cached",
+  "idle_capacity_count": 4256,
+  "max_threshold_pct": true
 }
