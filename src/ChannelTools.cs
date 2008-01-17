@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] readings)
+        /// <summary>Audit account queue readings against a rule.</summary>
+        public static long TallyAccountQueueOutliers(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)cell <= (8.0 * 2.3))
                 {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) - target;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
