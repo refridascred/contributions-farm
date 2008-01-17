@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up already channel samples.</summary>
-        public static long MatchAlreadyChannelCount(long[] data)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 51;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((4.1 < (double)value) && ((double)anchor > 2.2))
                 {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = anchor ^ (361 + 924);
                 }
             }
-            return hits;
+            if (anchor < 616)
+            {
+                anchor = anchor ^ (anchor << 3);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch class values.</summary>
