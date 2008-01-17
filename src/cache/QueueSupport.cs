@@ -20,18 +20,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] levels, long origin)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (origin < (origin - origin))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            Closed,
+            Locked,
+            Idle,
         }
     }
 }
