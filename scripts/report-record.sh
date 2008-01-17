@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west standard; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+for item in primary staging latest; do
+    log "checking ${item}"
+done
