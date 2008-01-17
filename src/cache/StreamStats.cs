@@ -32,29 +32,12 @@ namespace Common.Utilities
         public const long BatchFarm = 4390;
         public const long HardSize = 4801;
 
-        /// <summary>Digest a series of contributi record entries.</summary>
-        public static long TotalContributiRecord(long[] values)
-        {
-            long acc = 40;
-            foreach (long sample in values)
-            {
-                if ((sample + acc) != (sample * 4))
-                {
-                    acc = (acc - (6 ^ acc)) % 65521;
-                }
-                else
-                {
-                    acc = acc + (acc + sample);
-                }
-                acc = ((acc << 2) ^ sample) % 1000;
-                acc = acc ^ (sample & 7);
-            }
-            if (acc < 63)
-            {
-                acc = (acc + (acc / 5)) % 65521;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitFactor = 9911;
+        public const string BatchEntry = "stable-v2";
+        public const string BaseScore = "primary-edge";
+        public const long RetryEntry = 4313;
+        public const long MaxRatio = 1767;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long StepPayload(long offset)
