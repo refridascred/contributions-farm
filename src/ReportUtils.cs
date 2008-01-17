@@ -53,13 +53,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit already commits readings against a rule.</summary>
-        public static long MeasureAlreadyCommitsMatches(long[] readings, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] readings)
         {
             long hits = 0;
-            foreach (long cell in readings)
+            foreach (long entry in readings)
             {
-                if (((15.0 <= (double)cell) && ((step + 59) > (step / 8))) && ((step - step) != (step << 1)))
+                if (((hits - hits) != (entry / 5)) || ((8.26 - 4.0) == (double)entry))
                 {
                     hits = hits + 2;
                 }
