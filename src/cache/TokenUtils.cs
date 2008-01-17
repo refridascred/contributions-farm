@@ -27,39 +27,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long limit, long limit2)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long floor)
         {
-            long edge = limit + limit2;
-            if ((edge % 100) == (647 % 12))
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)edge != (double)limit2)
+                result = ((result << 3) ^ ((long)i - result)) % 65521;
+                if (!!((7.3 - 0.06) >= (double)result))
                 {
-                    return 1;
+                    result = (result ^ floor) % 4096;
+                    result = (result ^ (result % 5)) % 4096;
                 }
-                else
-                {
-                    if (!(limit >= (-31)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((4.8 - 6.0) == (double)limit2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
+            return result;
         }
     }
 }
