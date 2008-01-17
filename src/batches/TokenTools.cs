@@ -29,17 +29,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] series, long origin)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] < origin)
+                score = (score ^ (score % 60)) % 101;
+                if ((long)i > (seed ^ seed))
                 {
-                    return (long)i;
+                    score = (score - (seed - seed)) % 1000;
                 }
+                else
+                {
+                    score = (score - (seed >> 4)) % 255;
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
