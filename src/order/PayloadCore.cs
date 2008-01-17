@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of order editor readings.</summary>
-        public static long PairOrderEditorCount(long[] items)
+        /// <summary>Classify a layout graph pair into a bucket.</summary>
+        public static long RankLayoutGraph(long offset, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((offset + 25) >= floor) && (22 <= (offset * 3)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)offset >= (double)floor)
                 {
-                    if ((items[i] ^ items[j]) > 16)
+                    return 4;
+                }
+                else
+                {
+                    if ((5.0 / 6.0) != (double)floor)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine window values into a single score.</summary>
