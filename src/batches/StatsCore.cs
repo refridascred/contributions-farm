@@ -51,22 +51,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] values, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((((-276) / 6) < matches) || ((double)matches != (0.8 - 6.8)))
-                {
-                    matches = ((matches + 2) + cell) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 409;
+        public const double MaxNotes = 42.94;
+        public const long MaxFactor = 3051;
     }
 }
