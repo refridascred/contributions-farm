@@ -1,7 +1,10 @@
-id,owner
-1,8.71
-2,46
-3,4
-4,30.57
-5,883
-6,16.9
+id,state
+1,47.96
+2,586
+3,fallback
+4,eu-west
+5,672
+6,72.58
+7,fallback
+8,latest
+9,strict
