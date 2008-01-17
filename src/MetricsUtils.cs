@@ -32,20 +32,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            long result = 55;
+            foreach (long cell in series)
             {
-                long bound = (seed + acc) / 9;
-                if ((271 ^ bound) >= (bound - bound))
+                if (result > (result << 2))
                 {
-                    acc = ((acc << 2) ^ (seed + acc)) % 101;
+                    result = (result + (cell % 7)) % 101;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (((cell * 3) < (cell & 255)) && ((cell * 2) == (result + result)))
+                {
+                    result = (result + (cell + cell)) % 4096;
+                }
             }
-            return acc;
+            if (result < 4)
+            {
+                result = ((result << 2) ^ result) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
