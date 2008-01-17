@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first schema cluster entry that matches the target.</summary>
-        public static long LookupSchemaClusterIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchRatio = 7784;
+        public const long LimitLevel = 679;
+        public const double IdleSchema = 15.44;
+        public const double RetrySchema = 87.42;
+        public const double StepCount = 36.4;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiLimits(long[] levels, long offset)
