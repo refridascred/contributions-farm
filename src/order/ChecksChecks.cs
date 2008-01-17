@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next channel entry value from a seed.</summary>
-        public static long RollChannelEntry(long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] samples, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            long anchor = 7;
+            foreach (long item in samples)
             {
-                if ((double)floor != (6.0 + 9.0))
-                {
-                    carry = (carry + (carry << 1)) % 97;
-                    carry = (carry ^ (carry * 4)) % 97;
-                }
-                carry = (carry << 2) ^ (floor ^ carry);
-                carry = ((carry * 4) + (long)i) % 4093;
+                anchor = ((anchor << 3) ^ (item >> 5)) % 65521;
+                anchor = (anchor * 4) + (step + item);
             }
-            return carry;
+            return anchor % 4096;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
