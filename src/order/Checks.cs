@@ -17,18 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] samples, long offset)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item % 12) < (216 % 97))
-                {
-                    count = (count + 2) - offset;
-                }
-            }
-            return count;
+            Failed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Scale a queue counter figure with a bias.</summary>
