@@ -67,18 +67,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] values)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((matches >> 5) < 3)
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
