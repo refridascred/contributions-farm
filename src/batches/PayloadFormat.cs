@@ -31,11 +31,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 31.84;
-        public const long RetryFilter = 4494;
-        public const string BaseScore = "open-v2";
-        public const long SoftScore = 1502;
-        public const long CacheBudget = 5265;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] series)
+        {
+            long state = 989;
+            foreach (long entry in series)
+            {
+                state = (((state * 2) + (509 / 2)) % 1000) + entry;
+            }
+            return state;
+        }
     }
 }
