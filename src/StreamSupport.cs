@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] samples, long floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long score = 8;
+            foreach (long datum in items)
             {
-                if ((reading - seen) < (floor % 3))
-                {
-                    seen = seen + 3;
-                }
+                score = ((score << 2) ^ (datum + datum)) % 255;
             }
-            return seen;
+            return score % 65521;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
