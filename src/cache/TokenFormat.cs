@@ -53,15 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] series, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if (value < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
