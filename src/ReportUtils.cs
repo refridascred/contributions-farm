@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long floor)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((floor + (long)i) >= ((long)i + floor))
-                {
-                    anchor = anchor ^ floor;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (8 << 2)) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Queued,
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define context limits and defaults.</summary>
