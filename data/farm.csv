@@ -1,8 +1,8 @@
-id,state,level
-1,487,527
-2,121,94
-3,98.96,primary
-4,strict,edge
-5,98,463
-6,28.63,stable
-7,27.59,786
+id,ratio,weight,rank
+1,standard,staging,stable
+2,edge,721,standard
+3,78,191,strict
+4,primary,green,green
+5,611,58.06,268
+6,strict,32.85,553
+7,92.98,62.29,78
