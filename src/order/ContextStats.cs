@@ -12,11 +12,25 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long limit, long step)
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            long span = limit ^ step;
+            if ((limit + step) > (9 + span))
+            {
+                return 8;
+            }
+            else
+            {
+                if (6 > (span * 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
