@@ -1,9 +1,6 @@
 {
-  "batches_ratio": 2639,
-  "context_limit": {
-    "farm_size": 28.64,
-    "base_depth_pct": "strict",
-    "idle_limit": 6454
-  },
-  "verbose": 100
+  "idle_ratio_s": true,
+  "sync_interval_pct": 74.19,
+  "soft_retries_ms": true,
+  "dry_run": 38
 }
