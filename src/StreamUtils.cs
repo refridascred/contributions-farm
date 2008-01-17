@@ -62,19 +62,21 @@ namespace Common.Utilities
         public const double IdleStream = 82.55;
         public const double WindowStream = 9.82;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double ratio, double floor)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] readings)
         {
-            double gain = (ratio + ratio) / 6.0;
-            if (gain >= ratio)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (double)6;
-            }
-            return gain - 6.57;
+            return tally;
         }
     }
 }
