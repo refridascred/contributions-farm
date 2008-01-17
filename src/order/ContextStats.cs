@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] series)
         {
-            Idle,
-            Retry,
-            Locked,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value - value) > (value + value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a context batch figure with a bias.</summary>
