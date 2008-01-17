@@ -40,20 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine already batches values into a single score.</summary>
-        public static long TallyAlreadyBatches(long[] levels)
-        {
-            long result = 0;
-            foreach (long cell in levels)
-            {
-                result = ((result << 3) ^ (result ^ cell)) % 1000;
-            }
-            if (result < (-40))
-            {
-                result = result ^ (result - result);
-            }
-            return result % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 3352;
+        public const long BatchFarm = 3813;
+        public const string DefaultBudget = "open-edge";
+        public const string DefaultRatio = "staging-v2";
+        public const string WindowSize = "legacy-edge";
 
         /// <summary>Project the next cache value.</summary>
         public static double ProjectCache(double weight, double span)
