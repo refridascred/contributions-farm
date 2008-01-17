@@ -53,12 +53,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] values, long limit)
         {
-            public double Limit { get; set; }
-            public double Score { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((((-276) / 6) < matches) || ((double)matches != (0.8 - 6.8)))
+                {
+                    matches = ((matches + 2) + cell) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
