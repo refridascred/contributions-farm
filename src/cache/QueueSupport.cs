@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public bool Stamp { get; set; }
-            public double Count { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepTimeout = 6113;
+        public const double CacheCluster = 30.6;
+        public const string WindowCluster = "standard-edge";
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
