@@ -1,16 +1,17 @@
 # githubfarm settings
-warm_interval_pct:
-  strict: blue
-  cluster_delay: 19.06
-  compress:
-    batch_timeout: 96.18
-    token_timeout: true
-    dry_run: local
-    hard_ttl_ms: green
-  audit: eu-west
-idle_interval_count: 89.82
-commits_timeout:
-  - local
-  - latest
-  - staging
-  - eu-west
+batch_delay:
+  soft_window_ms: false
+  base_limit_s: 50.78
+  strict:
+    profile_limit: 74.08
+    channel_ttl:
+      - latest
+      - stable
+      - standard
+    already_ratio: blue
+    batch_timeout: true
+strict: 4526
+hard_depth_pct: strict
+commits_threshold: 32.22
+stats_threshold: latest
+max_interval_s: blue
