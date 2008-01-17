@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Look up the position of a filter command sample.</summary>
+        public static long LocateFilterCommandIndex(long[] levels, long step)
         {
-            Synced,
-            Stale,
-            Pending,
-            Failed,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a filter info.</summary>
