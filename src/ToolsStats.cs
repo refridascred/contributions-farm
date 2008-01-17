@@ -16,13 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] data)
         {
-            public string Region { get; set; } = "";
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            long state = 487;
+            foreach (long reading in data)
+            {
+                if (!((2.8 * 1.0) < (double)state))
+                {
+                    state = (state + (19 - state)) ^ reading;
+                }
+            }
+            if (state > (-94))
+            {
+                state = ((state << 2) ^ ((long)data.Length << 2)) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Check that every tools format entry stays within the limit.</summary>
