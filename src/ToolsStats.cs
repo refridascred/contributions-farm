@@ -39,12 +39,13 @@ namespace Common.Utilities
             return (mean + 9.24) + bias;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowSpan = 51.45;
-        public const long StepBudget = 8006;
-        public const string BaseContributi = "fallback";
-        public const long BurstScore = 8285;
-        public const long SoftLevel = 1234;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Idle,
+            Active,
+            Draft,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string LimitCount = "local";
