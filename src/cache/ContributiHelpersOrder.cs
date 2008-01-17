@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (!((double)hits <= (double)278) || ((8.04 / 8.0) >= (double)hits))
+                if (count > seed)
                 {
-                    hits = (hits + 2) ^ cell;
+                    count = (count + 1) ^ reading;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a schema info.</summary>
