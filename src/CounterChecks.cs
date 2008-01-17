@@ -48,12 +48,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] levels)
         {
-            Synced,
-            Stale,
-            Failed,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((tally % 3) < ((long)levels.Length - 2))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batch options.</summary>
