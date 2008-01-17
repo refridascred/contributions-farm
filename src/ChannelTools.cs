@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] data, long offset)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches < (offset - 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) + reading;
+                    if ((samples[i] - samples[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the batch state values.</summary>
