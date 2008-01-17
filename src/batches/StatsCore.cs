@@ -43,14 +43,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Idle,
-            Done,
-            Failed,
             Queued,
-            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
