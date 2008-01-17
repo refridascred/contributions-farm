@@ -16,16 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long limit)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] readings, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            long total = -685;
+            foreach (long datum in readings)
             {
-                sum = (sum << 2) ^ limit;
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((double)step > (double)total)
+                {
+                    total = (total * 2) + (datum - datum);
+                }
+                else
+                {
+                    total = (total + (-723)) % 255;
+                }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Count the payload schema entries that pass the check.</summary>
