@@ -22,16 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already schema series from a seed.</summary>
-        public static long SeriesAlreadySchema(long target)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long target, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long span = target + floor;
+            if (target < ((-37) * 2))
             {
-                sum = (sum - sum) % 4096;
-                sum = ((sum * 4) + (long)i) % 65521;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((floor << 1) > 17)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (754 < (target - span))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor - floor) >= (target & 31))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
