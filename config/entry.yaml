@@ -1,9 +1,4 @@
 # entry settings
-persist:
-  - local
-  - green
-flush_delay: 39.81
-base_limit:
-  - 393
-  - 494
-  - 462
+warm_interval_ms: eu-west
+retry_interval: local
+cluster_ratio: true
