@@ -22,15 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cluster filter value from a seed.</summary>
-        public static long IterateClusterFilter(long origin)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((origin + origin) < (state % 60))
+                {
+                    state = state - (state >> 5);
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Hold a report stats.</summary>
