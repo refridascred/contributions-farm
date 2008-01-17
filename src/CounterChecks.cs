@@ -51,19 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] readings, long seed)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a metrics entry.</summary>
