@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double ratio, double span)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            double weight = span;
-            if (weight >= (span + 5.34))
+            long total = 7;
+            foreach (long cell in values)
             {
-                weight = weight - (weight * 2.0);
+                if ((cell << 1) >= (cell + total))
+                {
+                    total = ((total * 4) + (total * 5)) % 101;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (ratio - 3.14)) + (double)(long)i;
-            }
-            return weight - ratio;
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
