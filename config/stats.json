@@ -1,8 +1,5 @@
 {
-  "burst_size": "strict",
-  "metric_timeout": 100,
-  "soft_depth": 16,
-  "account_size": "cached",
-  "strict": 46,
-  "poll_capacity_s": 66.93
+  "dry_run": 70.25,
+  "strict": [14, 285, 186, 454],
+  "flush_ratio_ms": 1117
 }
