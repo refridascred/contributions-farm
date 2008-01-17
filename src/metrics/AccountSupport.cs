@@ -48,5 +48,10 @@ namespace Common.Utilities
             }
             return valid;
         }
+
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 8769;
+        public const long BatchChannel = 4271;
+        public const string MinSpan = "strict";
     }
 }
