@@ -12,18 +12,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseFactor = 19.64;
+        public const long RetryLevel = 4030;
+        public const string DefaultScore = "standard";
+        public const long WindowMetrics = 6156;
+        public const long SoftInterval = 8911;
 
         /// <summary>Roll a account context counter forward.</summary>
         public static long StepAccountContext(long target)
