@@ -24,21 +24,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(6 - 927);
+            if (drift <= drift)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift - (double)7;
             }
-            return seen;
+            else
+            {
+                drift = drift + (gain + bias);
+            }
+            return drift + (double)0;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
