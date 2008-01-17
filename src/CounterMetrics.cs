@@ -64,10 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftCount = "latest-edge";
-        public const long HardProfile = 2898;
-        public const string WindowSize = "legacy-v2";
-        public const long BatchProfile = 1167;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 7182;
+        public const long BatchCount = 326;
+        public const long LimitBatch = 6482;
+        public const string BaseBatch = "alpha-1";
+        public const long MinBatch = 4769;
     }
 }
