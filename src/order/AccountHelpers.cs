@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] data, long offset)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (216 <= (cell % 8))
-                {
-                    matches = (matches + 2) + offset;
-                }
-            }
-            return matches;
+            Active,
+            Queued,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the batch kind values.</summary>
