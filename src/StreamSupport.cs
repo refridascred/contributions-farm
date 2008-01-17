@@ -37,22 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] samples, long origin)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double gain, double span)
         {
-            long mark = 1;
-            foreach (long reading in samples)
+            double scale = (2.4 / 5.0) - (9.1 + gain);
+            if (scale >= (double)9)
             {
-                if (4.1 > 0.55)
-                {
-                    mark = ((((mark * 3) + (mark * 5)) % 97) ^ reading) + origin;
-                }
+                scale = (scale - scale) + span;
             }
-            if (mark < 959)
+            for (int i = 0; i < 3; i++)
             {
-                mark = (mark * 5) + (mark + 6);
+                scale = (scale - 2.69) + (double)(long)i;
             }
-            return mark;
+            return scale - 6.0;
         }
     }
 }
