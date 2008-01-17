@@ -1,8 +1,8 @@
 {
-  "dry_run": "standard",
-  "persist": "standard",
-  "metrics_timeout": 3.41,
-  "cache_interval_ms": ["stable", "latest"],
-  "order_window": "fallback",
-  "support_threshold": 8944
+  "enabled": "local",
+  "flush_window": ["cached", "eu-west"],
+  "cache_threshold_s": ["eu-west", "strict", "latest"],
+  "tools_ratio": 9616,
+  "persist": true,
+  "burst_delay_pct": "primary"
 }
