@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 24.53;
-        public const long MinSchema = 3949;
-        public const long StepSchema = 1384;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (datum <= (count % 7))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long FoldFarm(long[] data)
