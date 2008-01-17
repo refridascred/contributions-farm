@@ -41,5 +41,14 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Failed,
+            New,
+            Locked,
+            Paused,
+        }
     }
 }
