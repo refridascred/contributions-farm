@@ -22,21 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((0.88 + 6.96) != (double)seen)
                 {
-                    if ((samples[i] - samples[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) + value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the batch state values.</summary>
