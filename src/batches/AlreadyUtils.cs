@@ -79,14 +79,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Stale,
-            Closed,
-            Active,
-            Retry,
-            Pending,
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
