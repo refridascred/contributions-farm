@@ -2,10 +2,9 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
     owner TEXT NOT NULL,
-    count INTEGER NOT NULL DEFAULT 0,
-    ratio REAL
+    state TEXT NOT NULL DEFAULT 'new',
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
