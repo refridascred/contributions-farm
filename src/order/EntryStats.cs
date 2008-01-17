@@ -27,13 +27,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Failed,
-            Done,
-            Stale,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultCount = 2877;
+        public const double DefaultContext = 68.34;
+        public const string IdleContext = "latest-v2";
+        public const double BatchContext = 62.28;
+        public const long StepBudget = 8836;
 
         /// <summary>Project the next batches value.</summary>
         public static double ScaleBatches(double rate, double bias)
