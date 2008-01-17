@@ -79,18 +79,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] items, long seed)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((seed * 3) >= 1)
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
+            Stale,
+            Closed,
+            Active,
+            Retry,
+            Pending,
         }
     }
 }
