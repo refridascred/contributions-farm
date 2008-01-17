@@ -23,18 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of layout report readings.</summary>
-        public static long ScoreLayoutReport(long[] data)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long anchor = 1;
-            foreach (long datum in data)
-            {
-                if ((datum & 31) >= (datum - 8))
-                {
-                    anchor = (anchor ^ (datum / 3)) % 65521;
-                }
-            }
-            return anchor;
+            Active,
+            Done,
+            Locked,
         }
     }
 }
