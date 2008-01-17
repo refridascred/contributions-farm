@@ -66,22 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] values, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] series, long origin)
         {
-            long carry = 9;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (!(250 > (sample ^ carry)))
+                if (datum > origin)
                 {
-                    carry = (carry ^ (offset - offset)) % 65521;
-                }
-                if ((double)carry <= (8.0 - 5.76))
-                {
-                    carry = (carry ^ (carry % 2)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return carry;
+            return ok;
         }
     }
 }
