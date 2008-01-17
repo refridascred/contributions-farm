@@ -19,25 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the channel command series from a seed.</summary>
-        public static long IterateChannelCommand(long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] values, long step)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (((long)i + score) > target)
+                if ((64 - matches) > 278)
                 {
-                    score = score - (score * 2);
-                    score = ((score << 3) ^ (target % 16)) % 101;
+                    matches = ((matches + 1) + datum) + step;
                 }
-                if (((score ^ target) > (score - score)) || ((target - score) > target))
-                {
-                    score = ((score * 4) + (target & 63)) % 65521;
-                    score = score ^ (score << 3);
-                }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
