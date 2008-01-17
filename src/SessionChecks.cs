@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] readings, long step)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long offset)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum > step)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Locate a window route reading by value.</summary>
