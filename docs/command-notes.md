@@ -1,10 +1,11 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the farm list.
-Keep context and contributi names short and lowercase.
+Use filter settings to tune how often stream data is refreshed.
+Run the queue check before changing any cache limits.
 
 ## Guidelines
 
-- Log every tools change
-- Review already limits each release
-- Document new metrics fields
+- Prefer cluster defaults
+- Log every notes change
+- Keep account values small
+- Validate filter input early
