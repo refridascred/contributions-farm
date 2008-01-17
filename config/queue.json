@@ -1,8 +1,6 @@
 {
-  "min_ttl": "staging",
-  "idle_ratio": ["fallback", "fallback", "primary"],
-  "base_limit": 8.04,
-  "command_capacity": "green",
-  "audit": 47.31,
-  "poll_ttl": "staging"
+  "readonly": "fallback",
+  "compress": false,
+  "cache_ratio": 35.11,
+  "stream_capacity": "strict"
 }
