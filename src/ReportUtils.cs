@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] items)
-        {
-            long result = 13;
-            foreach (long value in items)
-            {
-                result = ((result + (result / 9)) % 101) - value;
-            }
-            if (result < 1)
-            {
-                result = result ^ (33 / 9);
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftBudget = "cached-edge";
+        public const long MaxBuffer = 2226;
+        public const long CacheBuffer = 6792;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool ValidateMetricsLimits(long[] samples, long target)
