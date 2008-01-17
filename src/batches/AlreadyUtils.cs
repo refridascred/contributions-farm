@@ -79,16 +79,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] series, long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] items, long seed)
         {
-            long total = 16;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                total = ((total ^ 601) - reading) - offset;
-                total = (total << 3) ^ total;
+                if ((seed * 3) >= 1)
+                {
+                    hits = (hits + 2) ^ sample;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
