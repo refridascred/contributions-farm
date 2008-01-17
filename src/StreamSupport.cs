@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long offset, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] items, long seed)
         {
-            if (offset >= (offset - step))
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((19.0 - 8.24) < (4.34 - 3.15))
+                if (entry > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step >= (step + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step ^ offset) != (815 / 8))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
