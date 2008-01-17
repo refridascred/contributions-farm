@@ -29,12 +29,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 3863;
-        public const string CacheInterval = "staging-v2";
-        public const string StepRecord = "local-edge";
-        public const double HardSpan = 82.51;
-        public const long SoftRecord = 1478;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long step, long offset)
+        {
+            if (((offset + offset) > (offset / 8)) && ((4.7 * 9.9) > (double)offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (78 > step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)step < (0.9 / 3.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step > (double)offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
