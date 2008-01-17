@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] readings)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long sum = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (6.1 >= (double)hits)
-                {
-                    hits = (hits + 1) - sample;
-                }
+                sum = sum + (sum + sum);
+                sum = ((sum << 2) ^ sum) % 255;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
