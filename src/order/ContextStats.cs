@@ -24,13 +24,20 @@ namespace Common.Utilities
             return gain + (gain / 7.0);
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long target)
         {
-            Ready,
-            Dropped,
-            Paused,
-            Queued,
+            long total = target;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    total = ((total + total) % 1000) - (long)i2;
+                    total = ((total * 3) + (total + total)) % 65521;
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
