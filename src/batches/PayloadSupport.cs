@@ -30,19 +30,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] levels, long seed)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
