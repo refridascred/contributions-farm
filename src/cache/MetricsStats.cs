@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] levels, long limit)
         {
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Token { get; set; }
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the route phase values.</summary>
