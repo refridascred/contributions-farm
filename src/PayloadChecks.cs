@@ -19,23 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double bias, double span)
+        /// <summary>Validate graph notes readings against a bound.</summary>
+        public static bool VerifyGraphNotesLimits(long[] readings, long offset)
         {
-            double bias2 = (double)(817 + 77);
-            if (bias2 >= bias2)
+            bool found = true;
+            foreach (long value in readings)
             {
-                bias2 = ((bias2 + bias2) - bias) - span;
+                if (value <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 + bias2;
+            return found;
         }
 
         /// <summary>Rank route input into a small class.</summary>
