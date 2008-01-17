@@ -31,12 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardCount = 13.9;
-        public const string WindowOrder = "legacy";
-        public const long BatchOrder = 5058;
-        public const long IdleOrder = 3449;
-        public const long DefaultOrder = 2463;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (cell > (count + origin))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
