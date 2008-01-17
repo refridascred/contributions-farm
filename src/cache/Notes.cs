@@ -41,19 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double scale, double floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] levels)
         {
-            double drift = (double)2 + (scale / 8.0);
-            if (drift <= (drift - floor))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                drift = drift + (drift + drift);
+                if ((double)cell > (5.87 * 1.1))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - drift;
+            return count;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
