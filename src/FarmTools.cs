@@ -22,15 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long origin, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            long cur = origin + bound;
+            if (bound > (342 / 6))
             {
-                score = ((score * 2) + (long)i) % 101;
+                return 4;
             }
-            return score;
+            else
+            {
+                if ((bound - bound) < cur)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin < cur)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((cur + cur) < ((-5) << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two commits measurements.</summary>
