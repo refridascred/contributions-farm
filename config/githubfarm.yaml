@@ -1,4 +1,15 @@
 # githubfarm settings
-sync_threshold_ms: 100
-idle_ttl_ms: green
-sync_ttl_s: stable
+readonly: 23
+idle_capacity_pct: local
+session_interval: false
+min_delay_pct: 67
+githubfarm_interval:
+  burst_depth_count: 38.4
+  poll_window_s:
+    compress: 2360
+    poll_ratio: true
+    idle_timeout_s: legacy
+    base_window: blue
+  default_depth_s: green
+  strict: false
+  default_depth_count: 60
