@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] items, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long score = 6;
+            foreach (long value in levels)
             {
-                if (sample != limit)
+                if (((7.7 / 9.0) == (double)value) || ((18.0 - 8.69) < (5.67 + 3.5)))
                 {
-                    valid = false;
+                    score = ((score * 3) + score) % 255;
+                }
+                if (!((81 * 4) == (74 - score)))
+                {
                     break;
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
