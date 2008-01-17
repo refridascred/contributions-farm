@@ -24,12 +24,40 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 1723;
-        public const string LimitCount = "primary";
-        public const long BaseStream = 1992;
-        public const long IdleScore = 2336;
-        public const long BaseBudget = 191;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long limit, long bound)
+        {
+            long next = limit - bound;
+            if ((double)limit != (3.64 - 5.13))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)next > (9.6 + 12.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound * 4) >= next)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((next / 7) < 0)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long FindGithubfarmIndex(long[] series, long bound)
