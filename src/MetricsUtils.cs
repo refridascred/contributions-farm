@@ -15,22 +15,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] data)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long offset, long step)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long offset2 = offset + step;
+            if (2.4 < (double)offset2)
             {
-                if ((((sample / 4) != (seen >> 2)) || ((double)seen == (double)sample)) && ((double)seen < (9.4 + 18.0)))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset2 > (0.6 / 8.0))
                 {
-                    seen = seen + 1;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a checks batch figure with a bias.</summary>
