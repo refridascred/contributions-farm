@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long RetrySize = 4212;
         public const double MaxDepth = 43.62;
 
-        /// <summary>Roll a account entry counter forward.</summary>
-        public static long SeriesAccountEntry(long offset)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((8 & 255) <= offset) || ((10.0 + 2.6) >= (double)anchor))
-                {
-                    anchor = (anchor - ((-50) - anchor)) % 1000;
-                }
-                anchor = (anchor - (anchor % 97)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine counter payload values into a single score.</summary>
