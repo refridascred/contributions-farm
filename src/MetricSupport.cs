@@ -32,22 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] values)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (!((0.82 / 6.0) > (double)entry))
+                if (!!((8 & 127) >= (value + 4)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
