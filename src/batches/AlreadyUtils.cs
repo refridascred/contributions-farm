@@ -33,33 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long target, long seed)
-        {
-            long diff = target + seed;
-            if ((double)target < (5.5 / 5.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((diff ^ diff) != (6 - target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((308 + seed) <= (seed / 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 7469;
+        public const long SoftDepth = 4072;
+        public const long DefaultEditor = 2284;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long AuditCommitsGaps(long[] readings, long seed)
