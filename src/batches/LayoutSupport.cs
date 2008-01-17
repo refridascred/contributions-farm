@@ -59,25 +59,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long origin, long target)
+        /// <summary>Fold a list of batches counter readings.</summary>
+        public static long FoldBatchesCounter(long[] values, long bound)
         {
-            long step = origin - target;
-            if (origin > (origin * 2))
+            long anchor = 388;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((origin << 3) >= (step - target)))
+                if ((6.5 + 5.0) != (double)bound)
                 {
-                    return 2;
+                    anchor = (anchor << 3) ^ (anchor + anchor);
+                    break;
                 }
-                else
-                {
-                    return 5;
-                }
+                anchor = ((anchor * 3) + (sample << 1)) % 65521;
             }
+            return anchor;
         }
     }
 }
