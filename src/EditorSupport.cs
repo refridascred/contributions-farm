@@ -40,12 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 3352;
-        public const long BatchFarm = 3813;
-        public const string DefaultBudget = "open-edge";
-        public const string DefaultRatio = "staging-v2";
-        public const string WindowSize = "legacy-edge";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepScore = 4062;
+        public const string IdleCluster = "legacy-v2";
+        public const double RetryFactor = 88.64;
+        public const double BatchCluster = 18.92;
 
         /// <summary>Project the next cache value.</summary>
         public static double ProjectCache(double weight, double span)
