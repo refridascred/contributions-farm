@@ -20,14 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Dropped,
-            Retry,
-            Failed,
-            New,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryWidth = 41.41;
+        public const long SoftToken = 9252;
+        public const string StepToken = "stable-edge";
+        public const long MaxRatio = 7011;
+        public const long MaxToken = 4182;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long ScoreLayout(long[] items)
