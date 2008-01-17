@@ -27,39 +27,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long seed, long limit)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long step = seed + limit;
-            if ((step + seed) == (step % 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step / 9) <= (step >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit >> 5) > (3 + seed)) || ((step >> 3) > (limit & 31)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit * 4) > (step / 6))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Done,
+            Stale,
         }
 
         /// <summary>Measure how many channel profile samples are out of range.</summary>
