@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Locate a schema metric reading by value.</summary>
+        public static long LocateSchemaMetricIndex(long[] values, long target)
         {
-            Closed,
-            Failed,
-            Stale,
-            Dropped,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a contributi stats.</summary>
