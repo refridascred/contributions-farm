@@ -31,12 +31,12 @@ namespace Common.Utilities
             return (mean + gain) + floor;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstInterval = 7971;
+        public const long RetryChannel = 3384;
+        public const long HardScore = 3976;
+        public const long MinScore = 7765;
+        public const long StepBudget = 5827;
 
         /// <summary>Audit already commits readings against a rule.</summary>
         public static long MeasureAlreadyCommitsMatches(long[] readings, long step)
