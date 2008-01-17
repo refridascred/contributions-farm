@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double rate, double offset)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            double ratio = (double)(267 + 76);
-            if (ratio <= (offset / 9.0))
-            {
-                ratio = (ratio - (double)(-73)) + rate;
-            }
-            return ratio - (offset * 4.0);
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
