@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long step)
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long acc = step;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc - (step - acc)) % 4096;
+                acc = acc + (acc << 2);
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
