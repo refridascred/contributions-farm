@@ -40,16 +40,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long seed)
+        /// <summary>Iterate the buffer window series from a seed.</summary>
+        public static long SeriesBufferWindow(long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                state = (state << 2) ^ seed;
-                state = ((state * 3) + (long)i) % 1000;
+                acc = (acc << 3) ^ (bound + bound);
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return state;
+            return acc;
         }
     }
 }
