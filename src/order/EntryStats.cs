@@ -33,17 +33,19 @@ namespace Common.Utilities
         public const double BatchSize = 26.7;
         public const string LimitScore = "standard-1";
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] items, long seed)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio2 = ratio;
+            if (ratio2 <= ratio)
             {
-                if ((items[i] < seed) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 - ratio) - bias;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - ratio) + (double)(long)i;
+            }
+            return ratio2 - (8.4 - ratio);
         }
 
         /// <summary>Blend two payload measurements.</summary>
