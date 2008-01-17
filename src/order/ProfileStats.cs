@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Classify a queue farm pair into a bucket.</summary>
+        public static long BucketQueueFarm(long offset, long offset2)
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            long prev = offset - offset2;
+            if ((offset2 + offset) == (offset + offset2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset < (double)prev)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((offset2 - offset2) <= (offset2 + offset2)) || ((8 + offset) <= offset2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of farm channel readings.</summary>
