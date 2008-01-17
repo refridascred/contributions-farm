@@ -40,38 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches schema value against two limits.</summary>
-        public static long GradeBatchesSchema(long limit, long offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] series, long floor)
         {
-            if (limit > (limit << 2))
+            long mix = 34;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3.16 * 1.0) == (double)limit)
+                if ((652 - reading) < (floor + floor))
                 {
-                    return 7;
+                    mix = (mix - (mix * 4)) % 101;
                 }
-                else
+                if ((247 / 9) == (reading + floor))
                 {
-                    if (!((double)offset < (2.46 * 14.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((97 * 2) < (offset % 97))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Scale a context batch figure with a bias.</summary>
