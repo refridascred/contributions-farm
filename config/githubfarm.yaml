@@ -1,7 +1,25 @@
 # githubfarm settings
-poll_interval_pct: 6813
-persist: eu-west
-batch_size_s:
-  - 152
-  - 434
-  - 436
+persist: true
+min_limit:
+  default_timeout_pct: 11.04
+  warm_interval_s: blue
+  readonly: cached
+  idle_interval: 1024
+  retry_timeout_ms:
+    soft_size_pct: 93
+    idle_ttl_pct: 9304
+    warm_ratio: legacy
+    audit:
+      - 231
+      - 231
+      - 131
+      - 272
+    cache_delay: 100
+    default_ttl_pct: edge
+poll_threshold:
+  - 247
+  - 243
+  - 433
+  - 361
+metrics_depth: fallback
+already_ttl: green
