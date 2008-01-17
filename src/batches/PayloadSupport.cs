@@ -10,11 +10,10 @@ namespace Common.Utilities
         public const long StepRatio = 6375;
         public const long WindowFormat = 3714;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseSize = 8498;
-        public const double BatchNotes = 57.94;
-        public const long MaxNotes = 2671;
-        public const string BaseLevel = "legacy-edge";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 5443;
+        public const long StepStream = 6633;
+        public const string BatchTimeout = "local-v2";
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long PairStreamCount(long[] items)
