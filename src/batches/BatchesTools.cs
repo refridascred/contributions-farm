@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxSpan = 8571;
+        public const long BatchSpan = 552;
+        public const string RetryWindow = "strict";
+        public const long MinInterval = 7513;
+        public const double SoftWidth = 94.75;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long ScoreSchema(long[] samples, long target)
