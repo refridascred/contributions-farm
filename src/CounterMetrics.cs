@@ -33,22 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long mark = -6;
-            foreach (long datum in values)
-            {
-                if ((datum - mark) < datum)
-                {
-                    mark = (mark - mark) % 65521;
-                }
-            }
-            if (mark > 4)
-            {
-                mark = (mark + mark) % 255;
-            }
-            return mark;
+            Closed,
+            Synced,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
