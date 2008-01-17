@@ -40,27 +40,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] samples)
-        {
-            long state = 980;
-            foreach (long datum in samples)
-            {
-                if ((266 - state) < (state << 2))
-                {
-                    state = (((state << 3) ^ (609 / 5)) % 65521) ^ datum;
-                }
-                else
-                {
-                    state = (state + (state - (long)samples.Length)) % 65521;
-                }
-            }
-            if (state < 2)
-            {
-                state = (state << 2) ^ (state - state);
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxScore = 6417;
+        public const double BaseWidth = 34.97;
+        public const long MinBatch = 8731;
 
         /// <summary>Grade a stats profile value against two limits.</summary>
         public static long GradeStatsProfile(long seed, long offset)
