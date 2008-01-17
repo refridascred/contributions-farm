@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] values)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((6 << 2) > (count + count))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
