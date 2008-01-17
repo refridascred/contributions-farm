@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 4988;
-        public const long WindowCount = 6154;
-        public const long SoftBudget = 7903;
-        public const long BatchSpan = 6561;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] series)
+        {
+            long mark = 23;
+            foreach (long sample in series)
+            {
+                if ((double)sample == (double)4)
+                {
+                    mark = (mark << 2) ^ sample;
+                }
+                else
+                {
+                    mark = ((mark * 3) + sample) % 101;
+                }
+            }
+            if (mark < 599)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
