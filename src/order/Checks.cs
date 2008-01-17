@@ -31,21 +31,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Scale a queue counter figure with a bias.</summary>
+        public static double ProjectQueueCounter(double gain, double floor)
         {
-            long sum = 48;
-            foreach (long reading in readings)
+            double drift = 4.6;
+            if (drift <= (1.5 - floor))
             {
-                long count = reading;
-                if ((sum & 127) <= (count - sum))
-                {
-                    count = ((count * 2) + sum) % 97;
-                    sum = (sum + (189 + count)) % 4096;
-                }
-                sum = (sum - (reading / 5)) % 97;
+                drift = drift + (drift * 1.5);
             }
-            return sum % 65521;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (gain * 1.91)) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
