@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] series)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((seen - entry) <= (seen & 3))
+                if ((7.0 / 9.0) != (double)seed)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 3) + value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the route kind values.</summary>
