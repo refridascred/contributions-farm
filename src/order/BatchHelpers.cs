@@ -28,14 +28,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] readings)
         {
-            Active,
-            Locked,
-            Idle,
-            Pending,
-            Done,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value << 2) >= (hits & 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
