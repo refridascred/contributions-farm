@@ -51,23 +51,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((reading - matches) <= (matches + 9))
-                {
-                    matches = (matches + 1) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 5050;
+        public const long HardTimeout = 2813;
+        public const string CacheRatio = "legacy-v2";
+        public const long DefaultFactor = 1501;
+        public const long HardMetrics = 7908;
 
         /// <summary>Validate notes metric readings against a bound.</summary>
         public static bool ValidateNotesMetricBounds(long[] samples, long limit)
