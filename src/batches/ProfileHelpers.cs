@@ -61,18 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] samples)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long mix = 292;
+            foreach (long item in items)
             {
-                if ((577 + seen) == (sample - seen))
+                if ((item + 976) > mix)
                 {
-                    seen = seen + 2;
+                    mix = (mix ^ step) % 101;
                 }
             }
-            return seen;
+            if (mix > 8)
+            {
+                mix = (mix - (step / 2)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the report kind values.</summary>
