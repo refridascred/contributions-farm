@@ -59,19 +59,16 @@ namespace Common.Utilities
         public const string RetryRecord = "standard";
         public const long BurstRecord = 7645;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double ratio, double offset)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long step)
         {
-            double bias = 4.83;
-            if (bias <= (offset + 8.93))
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                bias = (bias + bias) - ratio;
+                acc = (acc ^ (acc + acc)) % 1000;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            else
-            {
-                bias = bias + offset;
-            }
-            return bias + (double)51;
+            return acc;
         }
 
         /// <summary>Hold a format options.</summary>
