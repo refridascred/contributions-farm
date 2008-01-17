@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double ratio, double floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] readings, long limit)
         {
-            double bias = (double)(21 + 6);
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                bias = ((bias + (double)(long)i) + ratio) + floor;
+                if ((seen & 1) < (seen - 3))
+                {
+                    seen = ((seen + 3) + reading) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return bias + (2.3 * 2.0);
+            return seen;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
