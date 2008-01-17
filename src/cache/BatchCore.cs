@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Measure how many layout already samples are out of range.</summary>
+        public static long TallyLayoutAlreadyGaps(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)hits <= (double)value)
                 {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
