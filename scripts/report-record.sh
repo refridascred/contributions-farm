@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=454
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-latest}"
+mode="${1:-cached}"
 case "${mode}" in
-    open)
+    cached)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in standard fallback cached; do
+RECORD_LIMIT=361
+log "limit is ${RECORD_LIMIT}"
+
+for item in open legacy; do
     log "checking ${item}"
 done
