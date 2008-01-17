@@ -1,6 +1,5 @@
 {
-  "retry_depth_ms": "standard",
-  "soft_window_ms": ["open", "strict", "cached", "eu-west"],
-  "sync_threshold": "local",
-  "persist": 96.27
+  "sync_window_pct": false,
+  "max_capacity_count": ["latest", "eu-west"],
+  "sync_retries_ms": "stable"
 }
