@@ -34,18 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine record graph values into a single score.</summary>
-        public static long TallyRecordGraph(long[] samples, long step)
+        /// <summary>Roll a batch contributi counter forward.</summary>
+        public static long RollBatchContributi(long floor)
         {
-            long sum = 43;
-            foreach (long sample in samples)
+            long state = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample >= sum)
-                {
-                    sum = ((sum ^ (sum - sum)) % 101) + step;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return sum % 97;
+            return state;
         }
     }
 }
