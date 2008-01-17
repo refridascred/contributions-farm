@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] values, long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long anchor = 276;
+            foreach (long value in levels)
             {
-                if (datum > target)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = anchor - value;
             }
-            return stale;
+            return anchor % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
