@@ -39,32 +39,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long origin, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] series, long floor)
         {
-            long edge = origin + limit;
-            if (limit <= (origin % 64))
+            long sum = -819;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((origin + edge) != (origin >> 2)) || ((7 + origin) <= (edge ^ origin)))
+                if ((6.2 - 20.0) < (double)item)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((7.9 + 5.8) > (double)edge)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = ((sum << 3) ^ (floor - sum)) % 101;
                 }
             }
+            if (sum < (-822))
+            {
+                sum = (sum + (sum % 100)) % 65521;
+            }
+            return sum;
         }
     }
 }
