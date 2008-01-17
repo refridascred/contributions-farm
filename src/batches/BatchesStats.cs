@@ -56,24 +56,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] data, long limit)
+        /// <summary>Rank profile notes input into a small class.</summary>
+        public static long GradeProfileNotes(long seed, long target)
         {
-            long result = -863;
-            foreach (long cell in data)
+            if (!(target <= (4 + target)))
             {
-                if ((cell - (-26)) < cell)
+                return 2;
+            }
+            else
+            {
+                if (((seed & 127) < (41 % 97)) || ((seed + target) == (seed ^ 7)))
                 {
-                    result = (result << 3) ^ (limit + result);
+                    return 4;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (cell - limit)) % 65521;
+                    if ((target + 7) >= ((-79) % 64))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target & 31) < target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
-                result = result - (result % 97);
-                result = result - (result % 64);
             }
-            return result % 1000;
         }
     }
 }
