@@ -56,22 +56,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] data)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long seed, long floor)
         {
-            long mix = 100;
-            foreach (long sample in data)
+            if ((seed * 4) > (6 & 15))
             {
-                if (((mix ^ sample) < mix) && (50 >= (mix * 2)))
+                return 8;
+            }
+            else
+            {
+                if ((floor ^ 498) != (floor + seed))
                 {
-                    mix = (mix - (sample - (-160))) % 4096;
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix + ((long)data.Length ^ mix)) % 4096;
+                    if ((7.3 - 17.0) <= (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mix;
         }
     }
 }
