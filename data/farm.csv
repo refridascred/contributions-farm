@@ -1,8 +1,9 @@
-id,active,state,ratio,token
-1,72.07,staging,70.98,standard
-2,147,65.94,419,70.34
-3,111,fallback,blue,edge
-4,802,786,668,462
-5,288,71.89,506,open
-6,strict,standard,86.75,621
-7,72,strict,open,stable
+id,ratio,score
+1,45.57,474
+2,19.5,375
+3,72.49,25
+4,blue,82.33
+5,284,369
+6,440,402
+7,973,legacy
+8,849,cached
