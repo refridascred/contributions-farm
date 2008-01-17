@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] samples, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (cell > floor)
+                if ((tally + 60) > (item - 46))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
