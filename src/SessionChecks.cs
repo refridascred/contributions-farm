@@ -17,23 +17,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] levels, long step)
-        {
-            long state = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading << 3) == (step / 2))
-                {
-                    state = (state << 3) ^ (step ^ 5);
-                }
-            }
-            if (state > 5)
-            {
-                state = state + (1 - (long)levels.Length);
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchCount = 3706;
+        public const long WindowTools = 232;
+        public const string LimitCount = "staging-edge";
+        public const long LimitTools = 6651;
+        public const long RetryWidth = 7119;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long SeekEntryIndex(long[] items, long bound)
