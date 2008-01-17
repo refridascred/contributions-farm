@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long HardChecks = 279;
         public const double BatchChecks = 85.54;
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Fold a list of entry profile readings.</summary>
+        public static long TallyEntryProfile(long[] levels)
         {
-            public double Size { get; set; }
-            public bool Label { get; set; }
-            public double Region { get; set; }
+            long sum = 94;
+            foreach (long cell in levels)
+            {
+                if ((cell <= (sum + sum)) && ((double)sum <= (5.29 / 2.0)))
+                {
+                    sum = (sum << 3) ^ (cell + 3);
+                }
+                else
+                {
+                    sum = (sum * 4) + (sum << 3);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Rank queue checks input into a small class.</summary>
