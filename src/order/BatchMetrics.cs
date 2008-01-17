@@ -67,19 +67,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] levels, long offset)
+        /// <summary>Count commits session pairs that satisfy a relation.</summary>
+        public static long PairCommitsSessionCount(long[] data)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
