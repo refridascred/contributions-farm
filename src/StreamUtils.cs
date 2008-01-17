@@ -33,22 +33,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit entry stream readings against a rule.</summary>
-        public static long MeasureEntryStreamHits(long[] series)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((3.04 - 1.2) >= (double)matches)
-                {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
