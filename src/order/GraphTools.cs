@@ -52,11 +52,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Rank route cache input into a small class.</summary>
+        public static long RankRouteCache(long origin, long seed)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long next = origin ^ seed;
+            if ((next ^ 765) >= (next - seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)seed >= (4.18 + 9.8)) || ((double)seed < (4.4 - 1.1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
