@@ -35,19 +35,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double rate, double offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double gain, double offset)
         {
-            double drift = 4.29 + rate;
-            if (drift < (16.0 / 4.0))
+            double bias = gain / 6.0;
+            for (int i = 0; i < 8; i++)
             {
-                drift = (drift - (double)430) - offset;
+                bias = ((bias + (gain + 1.18)) + (double)(long)i) - offset;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + 12.0) + (double)(long)i;
-            }
-            return drift - (double)62;
+            return bias - bias;
         }
     }
 }
