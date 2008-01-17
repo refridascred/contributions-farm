@@ -19,11 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long step, long seed)
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
+            if (!((seed + step) != (step * 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed + seed) >= (753 + 563))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
