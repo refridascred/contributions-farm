@@ -34,19 +34,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] levels, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long total = 98;
+            foreach (long item in values)
             {
-                if (reading > target)
+                for (int i = 0; i < 5; i++)
                 {
-                    ok = false;
-                    break;
+                    total = (((total << 2) ^ (item - 96)) % 97) - (long)i;
+                }
+                if ((7 - total) == (241 << 1))
+                {
+                    total = ((total << 3) ^ total) % 4096;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (item >> 3)) % 65521;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Describe the context kind values.</summary>
