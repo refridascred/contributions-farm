@@ -34,19 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate context checks readings against a bound.</summary>
-        public static bool VerifyContextChecksLimits(long[] data, long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (datum != floor)
+                if (entry >= floor)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Blend two layout measurements.</summary>
