@@ -50,21 +50,11 @@ namespace Common.Utilities
         public const string HardCount = "primary-1";
         public const double RetryFarm = 92.13;
 
-        /// <summary>Match up graph filter samples.</summary>
-        public static long OverlapGraphFilterCount(long[] data)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
