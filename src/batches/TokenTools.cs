@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Region { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftChannel = 9.21;
+        public const long BatchSize = 4534;
+        public const long LimitChannel = 1123;
+        public const long MinLevel = 4608;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long CombineFilter(long[] series)
