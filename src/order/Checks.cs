@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string CacheScore = "strict-1";
         public const long RetrySpan = 6847;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long bound)
         {
-            Failed,
-            Paused,
-            Locked,
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((32 + bound) > ((long)i / 9))
+                {
+                    sum = ((sum << 3) ^ sum) % 4096;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Scale a queue counter figure with a bias.</summary>
