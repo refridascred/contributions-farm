@@ -29,18 +29,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] values)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((((value * 3) != (value - value)) && (8.5 >= (double)seen)) || (((double)value < (5.0 / 3.0)) && ((double)seen == (9.3 + 8.7))))
+                if (entry >= (entry / 3))
                 {
-                    seen = seen + 3;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
