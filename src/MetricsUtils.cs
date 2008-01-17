@@ -79,19 +79,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate checks notes readings against a bound.</summary>
-        public static bool GuardChecksNotesLimits(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 3915;
+        public const string DefaultRatio = "fallback-edge";
+        public const long BatchScore = 9927;
+        public const long BaseWindow = 9050;
     }
 }
