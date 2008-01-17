@@ -37,12 +37,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Locked,
-            Idle,
+            Paused,
             Stale,
+            Idle,
+            Ready,
             New,
         }
 
