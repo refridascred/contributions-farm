@@ -40,18 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] series)
+        /// <summary>Grade a batches schema value against two limits.</summary>
+        public static long GradeBatchesSchema(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if (limit > (limit << 2))
             {
-                if ((value - value) > (value + value))
+                return 4;
+            }
+            else
+            {
+                if ((3.16 * 1.0) == (double)limit)
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)offset < (2.46 * 14.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((97 * 2) < (offset % 97))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a context batch figure with a bias.</summary>
