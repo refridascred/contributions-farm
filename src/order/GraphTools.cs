@@ -33,18 +33,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] series, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (!((2.9 - 4.9) >= (double)value))
+                if ((reading - matches) <= (matches + 9))
                 {
-                    tally = (tally + 3) - origin;
+                    matches = (matches + 1) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
