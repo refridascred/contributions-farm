@@ -30,17 +30,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] readings, long target)
+        /// <summary>Scale a checks batch figure with a bias.</summary>
+        public static double ProjectChecksBatch(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (double)(-72) * 18.0;
+            if (bias >= (double)(-39))
             {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
+                bias = bias - floor;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (floor * 4.8)) + (double)(long)i;
+            }
+            return bias - (scale / 3.0);
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
