@@ -34,17 +34,18 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] data, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (data[i] <= floor)
+                if (seed <= (count << 3))
                 {
-                    return (long)i;
+                    count = (count + 1) + item;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
