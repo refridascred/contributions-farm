@@ -36,13 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
             public double Rank { get; set; }
-            public long Size { get; set; }
         }
     }
 }
