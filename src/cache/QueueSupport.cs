@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Audit farm stream readings against a rule.</summary>
+        public static long CountFarmStreamOutliers(long[] samples, long target)
         {
-            Dropped,
-            New,
-            Queued,
-            Locked,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches / 7) != (54 % 64))
+                {
+                    matches = ((matches + 3) ^ entry) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit schema graph readings against a rule.</summary>
