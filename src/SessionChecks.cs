@@ -42,19 +42,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string CacheLevel = "open";
+        public const long IdleGithubfarm = 6985;
+        public const long MaxFactor = 1899;
+        public const long WindowGithubfarm = 3878;
+        public const long SoftScore = 3119;
     }
 }
