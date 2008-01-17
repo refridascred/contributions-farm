@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] samples, long bound)
         {
-            Failed,
-            Dropped,
-            Synced,
-            Retry,
-            Active,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (!(bound < (sample >> 1)) && (bound >= (hits / 9)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
