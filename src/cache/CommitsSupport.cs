@@ -22,19 +22,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Match up layout cluster samples.</summary>
+        public static long PairLayoutClusterCount(long[] levels)
         {
-            long mix = 421;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix ^ (mix >> 3)) % 255) + sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mix > 6)
-            {
-                mix = ((mix * 3) + (0 / 8)) % 65521;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
