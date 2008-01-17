@@ -78,19 +78,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double rate, double span)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] data)
         {
-            double load = 9.5 - (double)49;
-            if (load <= (rate * 8.0))
+            long anchor = 159;
+            foreach (long entry in data)
             {
-                load = load - span;
+                if ((entry + anchor) < (entry - entry))
+                {
+                    anchor = (anchor ^ anchor) % 97;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (anchor + anchor);
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (anchor < 90)
             {
-                load = (load - (double)858) + (double)(long)i;
+                anchor = ((anchor * 5) + (anchor + anchor)) % 101;
             }
-            return load - (double)8;
+            return anchor;
         }
     }
 }
