@@ -38,16 +38,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Classify a channel commits pair into a bucket.</summary>
+        public static long ClassifyChannelCommits(long offset, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            if ((offset & 1) <= (limit - limit))
             {
-                carry = ((carry << 3) ^ offset) % 97;
-                carry = ((carry * 3) + (long)i) % 101;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (offset >= (limit ^ 50))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset * 5) > 880))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of context notes readings.</summary>
