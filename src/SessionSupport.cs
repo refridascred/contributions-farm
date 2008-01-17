@@ -22,23 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] samples, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((long)samples.Length < (321 % 7))
-                {
-                    tally = ((tally + 1) - reading) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 5511;
+        public const long MinSize = 7189;
+        public const double WindowCount = 34.88;
+        public const long WindowAlready = 4467;
 
         /// <summary>Audit support cache readings against a rule.</summary>
         public static long CountSupportCacheGaps(long[] data, long offset)
