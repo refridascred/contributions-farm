@@ -27,18 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] values)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((3.36 - 9.0) != (double)sample)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
