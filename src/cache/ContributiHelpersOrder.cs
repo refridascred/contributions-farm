@@ -11,21 +11,14 @@ namespace Common.Utilities
         public const long BurstFormat = 1696;
         public const long BaseTimeout = 8573;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Stale,
+            Paused,
+            Queued,
         }
 
         /// <summary>Validate schema contributi readings against a bound.</summary>
