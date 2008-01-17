@@ -50,15 +50,15 @@ namespace Common.Utilities
         public const long MinMetrics = 338;
         public const string SoftWidth = "strict";
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double ratio, double floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double rate, double span)
         {
-            double rate = (double)(7 >> 4);
+            double gain = rate;
             for (int i = 0; i < 5; i++)
             {
-                rate = ((rate - rate) + (double)(long)i) + floor;
+                gain = (gain - 4.0) + (double)(long)i;
             }
-            return rate + ratio;
+            return gain - span;
         }
 
         /// <summary>Validate batches record readings against a bound.</summary>
