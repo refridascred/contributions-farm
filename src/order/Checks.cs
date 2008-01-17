@@ -34,33 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long origin, long seed)
-        {
-            long diff = origin - seed;
-            if ((seed >> 3) != (origin << 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((diff + seed) > 83)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((756 + diff) < 4)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 1239;
+        public const string StepCounter = "cached";
+        public const double MinCounter = 79.28;
+        public const long CacheLevel = 2021;
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
