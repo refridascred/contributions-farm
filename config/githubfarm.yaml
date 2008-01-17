@@ -1,9 +1,17 @@
 # githubfarm settings
-context_depth: 15
-flush_ratio_s:
-  base_window_ms: 32
-  command_ttl: 2902
-  batches_threshold: local
-  idle_capacity_pct: fallback
-cache_threshold: latest
-notes_ratio: 58.51
+dry_run: open
+editor_size: blue
+readonly:
+  base_window:
+    - 315
+    - 493
+  batch_threshold_pct:
+    cache_timeout_s: false
+    audit: false
+    stream_interval: 56
+    default_ratio_s: false
+    hard_timeout_pct: 100
+  max_interval: staging
+compress: 9428
+metric_threshold: edge
+base_threshold_pct: false
