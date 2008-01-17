@@ -1,5 +1,6 @@
 # entry settings
-flush_size_ms: false
-token_ttl: eu-west
-warm_ratio_ms: 64.91
-poll_window: 5193
+metric_depth: eu-west
+stream_window: fallback
+route_retries:
+  - fallback
+  - standard
