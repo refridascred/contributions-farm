@@ -20,18 +20,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] readings, long bound)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches + item) < item)
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
+            Idle,
+            Retry,
+            Paused,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
