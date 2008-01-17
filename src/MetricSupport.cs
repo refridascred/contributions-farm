@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const double BurstInterval = 63.79;
         public const double DefaultEditor = 92.1;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] series, long seed)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= seed) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            Paused,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
