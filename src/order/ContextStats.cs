@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] series)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double scale, double floor)
         {
-            long total = 10;
-            foreach (long entry in series)
+            double gain = 1.69 / 6.0;
+            if (gain <= (gain + scale))
             {
-                total = ((total + (30 ^ total)) % 65521) - entry;
+                gain = gain - (scale + 2.1);
             }
-            return total;
+            else
+            {
+                gain = gain - (double)(-3);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + floor) + (double)(long)i;
+            }
+            return gain + (gain / 7.0);
         }
 
         /// <summary>Classify a tools session pair into a bucket.</summary>
