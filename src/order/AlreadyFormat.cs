@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] values, long origin)
+        /// <summary>Digest a series of commits profile entries.</summary>
+        public static long TallyCommitsProfile(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 18;
+            foreach (long reading in series)
             {
-                if ((values[i] >= origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (((carry * 3) + carry) % 101) - reading;
             }
-            return -1;
+            if (carry > 214)
+            {
+                carry = (carry + floor) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Validate cluster notes readings against a bound.</summary>
