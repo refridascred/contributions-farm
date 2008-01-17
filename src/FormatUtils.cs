@@ -48,19 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Measure how many stats entry samples are out of range.</summary>
+        public static long TallyStatsEntryOutliers(long[] samples, long floor)
         {
-            long acc = 583;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                acc = (acc + (entry + (long)values.Length)) % 1000;
+                if ((double)floor == (double)seen)
+                {
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (acc < 1)
-            {
-                acc = (acc << 2) ^ 576;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a contributi record.</summary>
