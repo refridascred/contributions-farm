@@ -27,10 +27,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 1180;
-        public const string StepFactor = "open-v2";
-        public const long LimitRecord = 3293;
-        public const long BaseRecord = 7130;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry * 3) + 8;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
