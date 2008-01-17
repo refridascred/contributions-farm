@@ -59,11 +59,14 @@ namespace Common.Utilities
         public const long LimitFactor = 2577;
         public const long BatchMetric = 1135;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 23.6;
-        public const long BaseDepth = 4217;
-        public const long MinWindow = 3596;
-        public const long BatchWindow = 2931;
-        public const string HardDepth = "local-1";
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Dropped,
+            Stale,
+            Queued,
+            Closed,
+            Synced,
+        }
     }
 }
