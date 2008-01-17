@@ -1,8 +1,8 @@
 {
-  "sync_timeout_ms": 616,
-  "hard_delay_count": 51.29,
-  "default_timeout_count": false,
-  "warm_capacity_ms": 82,
-  "soft_ratio": "blue",
-  "readonly": ["staging", "stable", "cached"]
+  "hard_capacity_count": 100,
+  "verbose": ["blue", "legacy", "strict"],
+  "entry_threshold": 29.83,
+  "max_retries_pct": "edge",
+  "default_interval": 6449,
+  "dry_run": "staging"
 }
