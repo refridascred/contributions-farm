@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] samples, long target)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the route kind values.</summary>
