@@ -13,13 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Synced,
-            Ready,
-            Locked,
-            Closed,
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
