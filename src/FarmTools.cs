@@ -22,11 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] levels, long step)
         {
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((((long)levels.Length >= (step * 5)) && (6.5 >= (double)tally)) && ((item + step) == (tally % 16)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a buffer queue counter forward.</summary>
