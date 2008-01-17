@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
+            Paused,
+            Closed,
+            Failed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Fold a list of farm route readings.</summary>
