@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate cluster checks samples.</summary>
-        public static long FoldClusterChecks(long[] series, long limit)
+        /// <summary>Scale a schema queue figure with a bias.</summary>
+        public static double BlendSchemaQueue(double rate, double offset)
         {
-            long carry = 31;
-            foreach (long value in series)
+            double scale = (double)((-7) * 5);
+            if (scale > offset)
             {
-                carry = (((carry * 2) + carry) ^ value) - limit;
+                scale = (scale - scale) + rate;
             }
-            if (carry < 26)
+            else
             {
-                carry = (carry + (carry << 3)) % 97;
+                scale = scale + (double)(-6);
             }
-            return carry;
+            return scale - (double)964;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
