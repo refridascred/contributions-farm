@@ -29,21 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 719;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((296 >> 4) > value))
                 {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc ^ (acc << 2);
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
