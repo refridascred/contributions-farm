@@ -32,16 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already contributi entries.</summary>
-        public static long ScoreAlreadyContributi(long[] values)
-        {
-            long acc = 52;
-            foreach (long value in values)
-            {
-                acc = (((acc * 5) + acc) % 65521) + value;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchSize = 9998;
+        public const string DefaultAccount = "legacy-edge";
+        public const long RetryRatio = 4534;
+        public const long MaxAccount = 7022;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MinScore = 5145;
