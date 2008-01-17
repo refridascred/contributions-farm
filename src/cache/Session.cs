@@ -40,21 +40,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Fold a list of entry editor readings.</summary>
+        public static long WeighEntryEditor(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 260;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((floor << 3) == (value * 3)) || ((double)(long)levels.Length <= (double)value))
                 {
-                    if ((values[i] - values[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total * 2) + floor;
+                }
+                if ((double)total != (1.3 - 12.0))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total < 370)
+            {
+                total = total - (35 * 4);
+            }
+            return total;
         }
 
         /// <summary>Hold a report record.</summary>
