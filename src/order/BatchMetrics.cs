@@ -53,18 +53,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Rank checks batch input into a small class.</summary>
+        public static long ClassifyChecksBatch(long offset, long origin)
         {
-            long result = 16;
-            foreach (long sample in data)
+            if (((4.92 - 4.2) > (double)origin) || ((offset >> 5) <= (origin % 64)))
             {
-                if (((double)sample < (19.0 / 3.0)) || ((7 - sample) >= (sample >> 2)))
+                return 5;
+            }
+            else
+            {
+                if ((double)offset >= (6.0 - 6.0))
                 {
-                    result = result + result;
+                    return 0;
+                }
+                else
+                {
+                    if (!(origin >= (25 / 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Describe the editor mode values.</summary>
