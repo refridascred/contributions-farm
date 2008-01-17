@@ -1,9 +1,9 @@
 # entry settings
-soft_retries_count: open
-metrics_depth: 5720
-strict: staging
-graph_retries:
-  - 51
-  - 343
-  - 68
-  - 71
+poll_size: 6873
+window_ttl:
+  - latest
+  - edge
+  - open
+  - fallback
+cache_interval: true
+warm_limit_ms: 8
