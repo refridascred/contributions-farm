@@ -24,5 +24,14 @@ namespace Common.Utilities
             Stale,
             Done,
         }
+
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public double Score { get; set; }
+            public bool Total { get; set; }
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
+        }
     }
 }
