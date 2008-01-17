@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank metric token input into a small class.</summary>
-        public static long ClassifyMetricToken(long target, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long seed)
         {
-            long delta = target + origin;
-            if ((target << 3) >= target)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.0 / 7.0) == (double)delta)
+                if (((long)i != ((long)i >> 1)) && ((result ^ seed) >= (result + (long)i)))
                 {
-                    return 8;
+                    result = (result + (result - 12)) % 4096;
+                    result = ((result * 4) + (long)i) % 97;
+                    continue;
                 }
-                else
+                result = (result + seed) % 1000;
+                if ((result + 50) <= result)
                 {
-                    return 1;
+                    result = (result + (result + seed)) % 1000;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
