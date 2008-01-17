@@ -47,13 +47,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
