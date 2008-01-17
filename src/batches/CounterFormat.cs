@@ -16,13 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Look up the position of a farm record sample.</summary>
+        public static long LocateFarmRecordIndex(long[] data, long origin)
         {
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > origin) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of layout report readings.</summary>
