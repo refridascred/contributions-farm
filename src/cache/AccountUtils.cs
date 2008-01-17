@@ -23,12 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Blend two buffer stream measurements.</summary>
+        public static double ScaleBufferStream(double rate, double bias)
         {
-            Done,
-            Paused,
-            Dropped,
+            double scale = bias;
+            return (scale - (double)923) + rate;
         }
 
         /// <summary>Locate a support reading by value.</summary>
