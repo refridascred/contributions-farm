@@ -35,17 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a buffer stream reading by value.</summary>
-        public static long LocateBufferStreamIndex(long[] data, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 65;
+            foreach (long datum in data)
             {
-                if (data[i] <= floor)
+                acc = acc + (datum + acc);
+                if (!((acc >> 5) == (acc & 1)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the route context series from a seed.</summary>
