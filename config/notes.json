@@ -1,8 +1,5 @@
 {
-  "max_size": "strict",
-  "batch_ttl_count": true,
-  "compress": "blue",
-  "editor_window": 34.75,
-  "min_limit_pct": "blue",
-  "burst_delay": [335, 362]
+  "cache_limit_count": 20.29,
+  "verbose": 60,
+  "persist": false
 }
