@@ -22,14 +22,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] levels, long bound)
         {
-            Dropped,
-            Synced,
-            Ready,
-            Paused,
-            Pending,
+            long carry = 732;
+            foreach (long value in levels)
+            {
+                if ((768 % 64) > (87 - value))
+                {
+                    carry = ((carry - value) % 255) + bound;
+                }
+            }
+            if (carry < 328)
+            {
+                carry = carry + carry;
+            }
+            return carry % 4096;
         }
     }
 }
