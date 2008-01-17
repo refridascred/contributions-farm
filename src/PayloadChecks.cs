@@ -19,11 +19,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] readings, long step)
         {
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (!((double)step < (3.2 - 3.9)))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank route input into a small class.</summary>
