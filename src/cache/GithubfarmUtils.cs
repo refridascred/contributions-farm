@@ -64,13 +64,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Stale,
-            Idle,
-            Failed,
-            Done,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 3681;
+        public const long StepCount = 7609;
+        public const long LimitSpan = 3927;
+        public const long HardRecord = 3883;
+        public const string WindowInterval = "legacy";
     }
 }
