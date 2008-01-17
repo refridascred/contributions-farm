@@ -12,19 +12,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] levels, long origin)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a order snapshot.</summary>
