@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of buffer format entries.</summary>
-        public static long TotalBufferFormat(long[] items, long limit)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long sum = 3;
-            foreach (long datum in items)
-            {
-                sum = ((sum << 2) ^ (limit - datum)) % 1000;
-                sum = ((sum << 2) ^ (sum >> 2)) % 255;
-                if (((sum * 5) != (376 % 3)) || (5 < (datum + datum)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
