@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftBudget = "cached-edge";
-        public const long MaxBuffer = 2226;
-        public const long CacheBuffer = 6792;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Stale,
+            Active,
+            Idle,
+            New,
+            Retry,
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool ValidateMetricsLimits(long[] samples, long target)
