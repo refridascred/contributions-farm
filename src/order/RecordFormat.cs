@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long RetryDepth = 9141;
         public const long LimitNotes = 9320;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 7184;
-        public const long BatchBuffer = 1668;
-        public const string MaxScore = "fallback-edge";
-        public const long LimitBuffer = 2496;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] readings)
