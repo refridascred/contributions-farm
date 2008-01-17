@@ -1,20 +1,7 @@
 {
-  "dry_run": {
-    "verbose": 500,
-    "counter_window": {
-      "enabled": "local",
-      "order_delay": "edge",
-      "token_delay": false,
-      "soft_timeout": "stable",
-      "token_threshold": "stable",
-      "readonly": "green"
-    },
-    "poll_window_s": 60,
-    "min_interval_pct": ["primary", "blue", "edge"],
-    "audit": 11.18
-  },
-  "token_retries": 3,
-  "poll_ratio": "primary",
-  "metric_size": [301, 58],
-  "max_window": ["strict", "edge"]
+  "soft_capacity_ms": 1629,
+  "persist": "blue",
+  "cluster_capacity": 100,
+  "hard_depth": 100,
+  "strict": 71
 }
