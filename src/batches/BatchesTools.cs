@@ -19,18 +19,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many record farm samples are out of range.</summary>
-        public static long CountRecordFarmGaps(long[] samples)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((72 ^ reading) < (8 + (long)samples.Length))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
