@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Find the first metrics command entry that matches the target.</summary>
+        public static long SeekMetricsCommandIndex(long[] readings, long bound)
         {
-            Queued,
-            Paused,
-            New,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
