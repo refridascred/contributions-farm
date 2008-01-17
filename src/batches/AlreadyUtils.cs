@@ -41,16 +41,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] samples)
-        {
-            long sum = -72;
-            foreach (long entry in samples)
-            {
-                sum = ((sum << 3) ^ sum) ^ entry;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultTimeout = 1085;
+        public const long RetryMetric = 7597;
+        public const string SoftTimeout = "open";
+        public const long SoftMetric = 1665;
+        public const long IdleBudget = 9675;
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
