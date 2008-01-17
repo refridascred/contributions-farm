@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Ready,
-            Queued,
-            New,
-            Done,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstLevel = 81.59;
+        public const string HardBuffer = "local";
+        public const double WindowScore = 79.48;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
