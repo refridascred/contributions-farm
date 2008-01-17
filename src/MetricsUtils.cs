@@ -52,11 +52,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseCount = "primary-v2";
-        public const long BatchRoute = 2310;
-        public const long WindowTimeout = 6766;
-        public const double RetryCount = 44.55;
-        public const long DefaultBudget = 4382;
+        /// <summary>Count tools context pairs that satisfy a relation.</summary>
+        public static long CompareToolsContextCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
