@@ -53,17 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first report order entry that matches the target.</summary>
-        public static long LocateReportOrderIndex(long[] samples, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (samples[i] < floor)
+                if (!((double)reading >= (16.0 / 6.0)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + offset;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
