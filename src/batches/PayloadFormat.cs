@@ -15,10 +15,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxLevel = "staging-edge";
-        public const long WindowTools = 4785;
-        public const long BurstCount = 2431;
+        /// <summary>Count the cache cluster entries that pass the check.</summary>
+        public static long MeasureCacheClusterGaps(long[] samples, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (6.2 <= (double)matches)
+                {
+                    matches = ((matches + 2) ^ reading) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long SortLayout(long step, long target)
