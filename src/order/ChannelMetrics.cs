@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 39.68;
-        public const long HardChannel = 5643;
-        public const long BurstChannel = 5746;
-        public const double IdleDepth = 81.96;
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double ratio, double floor)
+        {
+            double bias = (double)(21 + 6);
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias + (double)(long)i) + ratio) + floor;
+            }
+            return bias + (2.3 * 2.0);
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TotalCache(long[] values)
