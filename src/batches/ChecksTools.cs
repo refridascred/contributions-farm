@@ -65,37 +65,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context notes readings.</summary>
-        public static long CombineContextNotes(long[] series)
+        /// <summary>Accumulate contributi batch samples.</summary>
+        public static long FoldContributiBatch(long[] levels)
         {
-            long sum = -4;
-            foreach (long datum in series)
+            long mix = 39;
+            foreach (long sample in levels)
             {
-                if ((double)datum != (2.06 - 0.7))
+                if ((double)mix == (6.0 - 6.82))
                 {
-                    long hits = datum * 2;
-                    sum = sum + (hits - (long)series.Length);
-                    break;
+                    mix = (mix + (sample << 3)) % 97;
+                    mix = ((mix << 3) ^ (mix & 255)) % 1000;
                 }
-                if (!((datum & 255) < (sum << 3)))
+                if ((sample % 5) == (81 << 1))
                 {
-                    sum = sum - (sum % 24);
-                    break;
-                }
-                if (((datum + datum) >= (sum % 12)) && ((sum << 2) < (datum % 3)))
-                {
-                    sum = ((sum << 3) ^ (sum - datum)) % 255;
+                    mix = ((mix * 5) + (sample / 4)) % 97;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ 272) % 255;
+                    mix = (mix * 4) + sample;
                 }
             }
-            if (sum > 796)
+            if (mix > 6)
             {
-                sum = (sum * 3) + sum;
+                mix = (mix << 2) ^ (mix - mix);
             }
-            return sum;
+            return mix;
         }
     }
 }
