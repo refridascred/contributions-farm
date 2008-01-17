@@ -16,13 +16,11 @@ namespace Common.Utilities
             return rate + (scale + rate);
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Ready,
-            Queued,
-            Synced,
-            Locked,
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
