@@ -42,15 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double ratio, double span)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            double mean = span / 9.0;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = ((mean - (double)67) + (double)(long)i) - ratio;
-            }
-            return mean - 1.04;
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
