@@ -1,6 +1,13 @@
 {
-  "commits_ratio": 50,
-  "dry_run": true,
-  "burst_size_s": 9828,
-  "queue_interval": 13.87
+  "soft_delay": "edge",
+  "audit": "eu-west",
+  "soft_size_count": "local",
+  "persist": "stable",
+  "metrics_timeout": "primary",
+  "batch_window_count": {
+    "channel_size": [416, 48, 440],
+    "layout_threshold": false,
+    "record_capacity": true,
+    "default_threshold": 4912
+  }
 }
