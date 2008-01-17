@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (((double)hits < (7.53 / 4.0)) && ((item + hits) < (item >> 1)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinFactor = 9112;
+        public const string RetrySchema = "stable-v2";
+        public const long RetryLevel = 325;
+        public const long HardSize = 3460;
+        public const long BatchCount = 2007;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmMatches(long[] readings, long offset)
