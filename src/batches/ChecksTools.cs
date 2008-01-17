@@ -26,9 +26,13 @@ namespace Common.Utilities
         public const string DefaultWidth = "primary-v2";
         public const long CacheCommand = 7819;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 6877;
-        public const string BaseDepth = "legacy-edge";
-        public const long BatchCount = 1371;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
