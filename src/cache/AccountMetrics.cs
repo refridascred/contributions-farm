@@ -40,13 +40,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] readings)
         {
-            Queued,
-            Locked,
-            Synced,
-            Closed,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((1.39 - 2.4) != (double)count)
+                {
+                    count = (count + 1) - sample;
+                }
+            }
+            return count;
         }
     }
 }
