@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Rank editor counter input into a small class.</summary>
+        public static long RankEditorCounter(long floor, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            if ((84 - bound) < bound)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((bound >> 1) > (floor - 21))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound == (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
