@@ -41,15 +41,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate tools metrics samples.</summary>
-        public static long TallyToolsMetrics(long[] items)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] data, long limit)
         {
-            long acc = 28;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = acc ^ (sample ^ sample);
+                if ((data[i] >= limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Look up the position of a metric counter sample.</summary>
