@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long bound, long offset)
+        /// <summary>Project the next payload notes value.</summary>
+        public static double AdjustPayloadNotes(double gain, double span)
         {
-            if (5 < (offset / 8))
+            double bias = (double)(4 / 2);
+            if (bias >= (double)3)
             {
-                return 7;
+                bias = ((bias + (bias - bias)) - gain) - span;
             }
-            else
-            {
-                if ((2.6 + 0.7) > (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound * 5) > (7 ^ bound)) && ((9 - 0) > (bound + offset)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return bias + 9.8;
         }
 
         /// <summary>Match up order samples.</summary>
