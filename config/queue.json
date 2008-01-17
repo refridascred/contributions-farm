@@ -1,6 +1,20 @@
 {
-  "batch_depth_count": 76,
-  "cache_threshold": "local",
-  "max_size_count": "green",
-  "soft_window": false
+  "retry_threshold_ms": 92.25,
+  "account_capacity": {
+    "strict": ["primary", "blue", "latest"],
+    "enabled": "latest",
+    "sync_size": "strict",
+    "account_limit": {
+      "verbose": "open",
+      "window_interval": 5430,
+      "graph_threshold": "cached",
+      "burst_window_ms": 9852,
+      "enabled": false,
+      "layout_ratio": 100
+    },
+    "dry_run": 500,
+    "flush_window_ms": ["cached", "legacy"]
+  },
+  "strict": 33,
+  "sync_capacity_ms": "open"
 }
