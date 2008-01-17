@@ -1,6 +1,7 @@
 {
-  "strict": 29.85,
-  "compress": 3.47,
-  "sync_capacity_s": 6096,
-  "base_retries_s": "green"
+  "enabled": ["open", "fallback"],
+  "max_window_count": 62,
+  "metrics_ratio": 3629,
+  "sync_delay_ms": "staging",
+  "verbose": 3328
 }
