@@ -53,19 +53,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] series, long limit)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftBudget = 4949;
+        public const long CacheTimeout = 4953;
+        public const long BaseNotes = 6678;
     }
 }
