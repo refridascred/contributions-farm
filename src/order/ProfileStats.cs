@@ -36,19 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] samples, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (value < origin)
+                if ((((-23) % 7) < value) || (((double)value < (7.3 / 8.0)) || ((729 / 3) != (value / 6))))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) + step;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
