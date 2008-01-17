@@ -19,21 +19,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] data)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) == 15)
+                    if ((readings[i] ^ readings[j]) == 8)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine editor entry values into a single score.</summary>
