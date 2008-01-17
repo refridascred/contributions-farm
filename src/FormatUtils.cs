@@ -59,22 +59,17 @@ namespace Common.Utilities
         public const long WindowMetric = 858;
         public const long BurstMetric = 5910;
 
-        /// <summary>Measure how many stats entry samples are out of range.</summary>
-        public static long TallyStatsEntryOutliers(long[] samples, long floor)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)floor == (double)seen)
+                if ((series[i] == origin) && ((series[i] % 2) != 0))
                 {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
