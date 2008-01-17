@@ -1,15 +1,23 @@
 # entry settings
-metric_ttl:
-  sync_ttl_s: true
-  warm_interval_ms: 22
-  buffer_retries:
-    retry_limit: 100
-    batches_capacity: green
-    flush_size_s: 67.17
-  sync_ratio: standard
-poll_delay_pct: 4485
-warm_capacity: standard
-audit:
-  enabled: staging
-  sync_size: strict
-  base_retries_ms: 2870
+min_delay: 73
+report_timeout: 9.57
+cache_limit:
+  base_window_pct:
+    cache_window_ms: 250
+    idle_ttl_s: local
+    batch_timeout_pct:
+      - open
+      - primary
+      - stable
+  audit:
+    window_window: 50.19
+    base_size_pct: 29.4
+    audit: 96.17
+    persist: stable
+    dry_run: false
+    metrics_size: 59.0
+  cluster_interval: staging
+  hard_ratio_s: 0.18
+  hard_interval_s: strict
+  warm_retries_s: true
+farm_interval: 53.62
