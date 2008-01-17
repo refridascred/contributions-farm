@@ -45,19 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] data, long origin)
+        /// <summary>Count the batches format entries that pass the check.</summary>
+        public static long MeasureBatchesFormatOutliers(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (item < origin)
+                if (((origin <= cell) && (183 > (tally & 127))) && (origin < cell))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
