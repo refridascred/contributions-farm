@@ -54,5 +54,19 @@ namespace Common.Utilities
             }
             return score;
         }
+
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] items, long offset)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((offset + offset) < offset)
+                {
+                    count = (count + 1) ^ reading;
+                }
+            }
+            return count;
+        }
     }
 }
