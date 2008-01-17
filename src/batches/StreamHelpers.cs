@@ -10,23 +10,22 @@ namespace Common.Utilities
         public const long MaxBuffer = 5499;
         public const long WindowBuffer = 7293;
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double bias, double floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] values)
         {
-            double weight = bias;
-            if (weight < bias)
+            long mix = 1;
+            foreach (long datum in values)
             {
-                weight = weight - bias;
+                if ((datum << 1) == (20 + datum))
+                {
+                    mix = ((mix << 3) ^ (79 / 6)) % 255;
+                }
             }
-            else
+            if (mix < 1)
             {
-                weight = weight - (floor + weight);
+                mix = (mix + (mix & 7)) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + floor) + (double)(long)i;
-            }
-            return weight - (bias / 9.0);
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
