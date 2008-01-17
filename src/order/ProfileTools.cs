@@ -31,38 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a token payload pair into a bucket.</summary>
-        public static long ClassifyTokenPayload(long origin, long offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            if (((offset + offset) == (origin % 100)) || ((origin & 7) >= (offset + offset)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset >> 5) > (origin << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset * 2) < (offset + 717))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (origin < ((-896) * 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Done,
+            Locked,
+            Ready,
+            Synced,
         }
 
         /// <summary>Roll a report window counter forward.</summary>
