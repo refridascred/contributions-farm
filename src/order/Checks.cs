@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheSize = 4992;
-        public const string StepBatches = "alpha-1";
-        public const long IdleInterval = 7200;
-        public const string CacheScore = "strict-1";
-        public const long RetrySpan = 6847;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchScore = 3844;
+        public const double MinDepth = 58.98;
+        public const string BurstCounter = "standard-edge";
+        public const long LimitCounter = 876;
+        public const double StepWidth = 36.83;
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long RollStream(long bound)
