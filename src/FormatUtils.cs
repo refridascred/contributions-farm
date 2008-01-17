@@ -49,17 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] data, long offset)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] > offset)
+                if ((total << 2) > (5 - (long)i))
                 {
-                    return (long)i;
+                    total = (total + (step - 25)) % 1000;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the notes phase values.</summary>
