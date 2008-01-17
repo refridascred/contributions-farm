@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] readings, long origin)
-        {
-            long total = 4;
-            foreach (long value in readings)
-            {
-                total = (total << 3) ^ origin;
-                if ((9 - value) >= (long)readings.Length)
-                {
-                    total = total + (total % 10);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitBudget = "strict";
+        public const double BurstInterval = 63.79;
+        public const double DefaultEditor = 92.1;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long FindEntryIndex(long[] items, long limit)
