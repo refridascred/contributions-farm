@@ -19,11 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchStream = 23.23;
-        public const double RetryStream = 62.04;
-        public const long HardSpan = 9823;
-        public const string HardStream = "legacy-v2";
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long floor, long step)
+        {
+            if ((double)floor <= 13.0)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor * 4) != (floor + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (step <= floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long FindEntryIndex(long[] levels, long floor)
