@@ -22,13 +22,17 @@ namespace Common.Utilities
         public const long IdleScore = 8895;
         public const long IdleRecord = 6827;
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Iterate the session farm series from a seed.</summary>
+        public static long SeriesSessionFarm(long origin)
         {
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
+            long state = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                state = (state + (origin / 4)) % 4096;
+                state = (state + (origin + (long)i)) % 1000;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
