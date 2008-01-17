@@ -34,22 +34,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] data, long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long mark = 537;
-            foreach (long cell in data)
-            {
-                if ((double)limit > 3.78)
-                {
-                    mark = ((mark * 5) + cell) % 101;
-                }
-            }
-            if (mark > 68)
-            {
-                mark = mark + 394;
-            }
-            return mark % 97;
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
