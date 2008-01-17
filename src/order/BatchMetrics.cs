@@ -27,10 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxScore = 6417;
-        public const double BaseWidth = 34.97;
-        public const long MinBatch = 8731;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Pending,
+            Idle,
+            New,
+        }
 
         /// <summary>Classify a cluster graph pair into a bucket.</summary>
         public static long RankClusterGraph(long bound, long target)
