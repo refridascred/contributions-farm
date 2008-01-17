@@ -37,21 +37,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Fold a list of route farm readings.</summary>
+        public static long DigestRouteFarm(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 143;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value <= (acc + bound))
                 {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc * 4) + bound;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (69 - bound)) % 65521;
                 }
             }
-            return hits;
+            if (acc > 188)
+            {
+                acc = (acc + acc) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the layout state values.</summary>
