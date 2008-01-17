@@ -59,15 +59,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the profile session series from a seed.</summary>
-        public static long IterateProfileSession(long bound)
+        /// <summary>Blend two notes already measurements.</summary>
+        public static double SmoothNotesAlready(double scale, double span)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            double weight = 5.0;
+            if (weight <= (weight * 0.3))
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                weight = weight - (span + weight);
             }
-            return mix;
+            else
+            {
+                weight = weight - (scale - weight);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - span) - (double)(long)i;
+            }
+            return weight + (double)40;
         }
 
         /// <summary>Roll a session token counter forward.</summary>
