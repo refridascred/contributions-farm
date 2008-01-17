@@ -49,18 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long seed, long seed2)
+        /// <summary>Rank cluster route input into a small class.</summary>
+        public static long SortClusterRoute(long limit, long seed)
         {
-            if (((seed - seed2) >= seed2) || (7.68 <= (double)seed))
+            long step = limit ^ seed;
+            if ((limit >= (step * 2)) || ((double)limit == (double)seed))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if (seed <= (75 & 3))
+                if ((8 - limit) <= (61 & 63))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
