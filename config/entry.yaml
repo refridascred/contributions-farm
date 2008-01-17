@@ -1,15 +1,30 @@
 # entry settings
-warm_threshold_s: 91
-metrics_window:
-  - eu-west
-  - strict
-  - staging
-  - cached
-readonly: false
-token_timeout:
-  - 311
-  - 56
-  - 492
-burst_retries:
-  - 111
-  - 471
+warm_timeout_pct:
+  warm_window: legacy
+  soft_delay:
+    - local
+    - fallback
+    - blue
+  max_interval_s: latest
+  verbose: false
+  githubfarm_delay: 25
+sync_ttl: 7901
+compress:
+  queue_limit: fallback
+  strict: primary
+  batch_timeout_s: 75.68
+  verbose: 88.92
+contributi_delay: local
+readonly:
+  tools_ratio: 2567
+  context_retries:
+    - strict
+    - open
+    - legacy
+    - blue
+  sync_window_count: 81.83
+  strict: legacy
+  enabled: 30
+poll_ttl_s:
+  - local
+  - local
