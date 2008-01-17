@@ -27,12 +27,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Digest a series of channel contributi entries.</summary>
+        public static long ScoreChannelContributi(long[] levels, long target)
         {
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public long Offset { get; set; }
+            long sum = 535;
+            foreach (long entry in levels)
+            {
+                sum = ((sum << 2) ^ (target << 2)) % 4096;
+                sum = sum - (sum - entry);
+                if (!((sum / 9) > (sum + sum)))
+                {
+                    sum = sum - target;
+                }
+                if ((sum + sum) <= (9 << 2))
+                {
+                    break;
+                }
+            }
+            if (sum > 24)
+            {
+                sum = ((sum << 2) ^ sum) % 255;
+            }
+            return sum % 1000;
         }
     }
 }
