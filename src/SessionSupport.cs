@@ -38,18 +38,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit support cache readings against a rule.</summary>
-        public static long CountSupportCacheGaps(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (!(1 < hits))
-                {
-                    hits = ((hits + 1) ^ entry) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 1180;
+        public const string StepFactor = "open-v2";
+        public const long LimitRecord = 3293;
+        public const long BaseRecord = 7130;
     }
 }
