@@ -47,12 +47,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] levels, long offset)
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
+            long score = 2;
+            foreach (long entry in levels)
+            {
+                if (!((offset + entry) <= (offset & 1)))
+                {
+                    score = (score - (entry % 60)) % 255;
+                }
+                if ((offset >> 3) < (offset + offset))
+                {
+                    score = (score + ((-69) / 8)) % 97;
+                }
+            }
+            if (score < 913)
+            {
+                score = (score << 2) ^ (score - score);
+            }
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
