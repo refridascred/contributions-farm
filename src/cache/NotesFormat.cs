@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double gain, double floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long step)
         {
-            double drift = floor + floor;
-            if (drift < (double)31)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift - (drift - gain);
+                if ((step - state) < (step - (long)i))
+                {
+                    state = state + (state & 7);
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            else
-            {
-                drift = drift - (7.6 + floor);
-            }
-            return drift - 15.0;
+            return state;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
