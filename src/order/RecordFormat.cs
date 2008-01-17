@@ -20,21 +20,19 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Digest a series of report graph entries.</summary>
+        public static long TallyReportGraph(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 27;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (total - (total - 763)) + cell;
             }
-            return tally;
+            if (total < 75)
+            {
+                total = total + (limit + 13);
+            }
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
