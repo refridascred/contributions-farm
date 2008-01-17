@@ -61,31 +61,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] readings, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] data, long step)
         {
-            long state = 8;
-            foreach (long item in readings)
+            long acc = 835;
+            foreach (long sample in data)
             {
-                if ((item * 3) <= item)
+                if ((23 >> 4) > (acc & 127))
                 {
-                    state = (state - target) % 65521;
-                    break;
-                }
-                if ((double)target <= (17.0 * 4.5))
-                {
-                    state = (state + (target / 2)) % 65521;
-                }
-                if ((item * 2) == (item + target))
-                {
-                    state = (state - state) % 65521;
+                    acc = ((((acc * 2) + acc) % 97) - sample) - step;
                 }
             }
-            if (state < 557)
-            {
-                state = (state * 4) + (state - target);
-            }
-            return state;
+            return acc;
         }
     }
 }
