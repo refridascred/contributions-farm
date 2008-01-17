@@ -45,24 +45,11 @@ namespace Common.Utilities
         public const double BaseWidth = 34.97;
         public const long MinBatch = 8731;
 
-        /// <summary>Grade a stats profile value against two limits.</summary>
-        public static long GradeStatsProfile(long seed, long offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double rate, double bias)
         {
-            if (((14.0 + 10.0) == (double)offset) && (seed <= (seed + 28)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4.94 * 2.8) == (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            double weight = (bias / 4.0) * 19.0;
+            return (weight - 0.37) + rate;
         }
 
         /// <summary>Describe the editor mode values.</summary>
