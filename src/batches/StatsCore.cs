@@ -33,21 +33,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of commits profile readings.</summary>
-        public static long PairCommitsProfileCount(long[] readings)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Done,
+            Synced,
+            Active,
+            New,
         }
 
         /// <summary>Describe the cache kind values.</summary>
