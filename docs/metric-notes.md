@@ -1,11 +1,12 @@
 # Metric notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-Run the context check before changing any stats limits.
-Keep commits and entry names short and lowercase.
+The metric report groups every batch by farm.
+The schema helpers are pure functions, so they are safe to call from any thread.
+The counter report groups every entry by buffer.
 
 ## Guidelines
 
-- Validate booking input early
-- Prefer metrics defaults
-- Document new already fields
+- Document new contributi fields
+- Prefer order defaults
+- Validate batches input early
+- Keep already values small
