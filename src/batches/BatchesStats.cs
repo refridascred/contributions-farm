@@ -13,15 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a editor order reading.</summary>
-        public static double BlendEditorOrder(double rate, double span)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double ratio = rate;
-            if (ratio < rate)
-            {
-                ratio = (ratio - (rate * 1.2)) - span;
-            }
-            return ratio + rate;
+            Retry,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
