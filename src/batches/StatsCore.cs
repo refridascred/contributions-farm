@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double bias, double floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double gain = bias + (double)(-65);
-            for (int i = 0; i < 8; i++)
-            {
-                gain = ((gain + 2.07) + (double)(long)i) + floor;
-            }
-            return gain - (8.0 / 5.0);
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
