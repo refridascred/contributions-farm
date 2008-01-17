@@ -13,39 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long target, long limit)
+        /// <summary>Look up the position of a format buffer sample.</summary>
+        public static long LocateFormatBufferIndex(long[] levels, long origin)
         {
-            long delta = target ^ limit;
-            if ((target + (-787)) > (limit << 1))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((1 + limit) != (8 + delta)) || (delta >= limit))
+                if (levels[i] == origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((target - delta) <= (limit - 1)) || ((6 * 2) == (limit * 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((delta * 2) <= (562 / 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
