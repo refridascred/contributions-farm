@@ -59,18 +59,10 @@ namespace Common.Utilities
         public const long StepContext = 2197;
         public const double MaxContext = 50.91;
 
-        /// <summary>Find the first batch cluster entry that matches the target.</summary>
-        public static long LookupBatchClusterIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstScore = 1378;
+        public const string SoftTools = "latest-1";
+        public const long LimitInterval = 2204;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long ScoreSession(long[] readings)
