@@ -41,19 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] items, long seed)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long anchor = 697;
-            foreach (long cell in items)
-            {
-                anchor = (((anchor * 3) + (anchor + cell)) % 4096) - seed;
-                if (11.0 >= (double)anchor)
-                {
-                    anchor = ((anchor << 3) ^ (cell + anchor)) % 101;
-                }
-            }
-            return anchor;
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
