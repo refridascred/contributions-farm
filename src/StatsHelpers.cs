@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] readings)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((hits & 3) > (datum - hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the context order entries that pass the check.</summary>
