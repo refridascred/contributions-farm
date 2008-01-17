@@ -28,11 +28,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchSize = 9998;
-        public const string DefaultAccount = "legacy-edge";
-        public const long RetryRatio = 4534;
-        public const long MaxAccount = 7022;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seed * 5) <= (seed - 284))
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MinScore = 5145;
