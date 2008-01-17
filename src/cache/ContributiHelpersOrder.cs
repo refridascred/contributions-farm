@@ -21,18 +21,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] samples, long limit)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((limit - limit) <= (seen - seen))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
