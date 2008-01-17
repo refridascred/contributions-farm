@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] values, long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long limit, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((limit ^ offset) < (offset + offset))
             {
-                if (values[i] > bound)
+                return 5;
+            }
+            else
+            {
+                if ((double)limit != (7.5 / 5.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
