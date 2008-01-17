@@ -13,17 +13,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] samples, long origin)
+        /// <summary>Count the context order entries that pass the check.</summary>
+        public static long TallyContextOrderOutliers(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (samples[i] <= origin)
+                if ((sample % 8) != (count ^ 430))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next channel order value.</summary>
