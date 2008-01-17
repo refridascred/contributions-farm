@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-cached}"
 case "${mode}" in
-    local)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=430
-log "limit is ${COMMAND_LIMIT}"
+for item in edge stable; do
+    log "checking ${item}"
+done
