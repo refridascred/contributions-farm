@@ -47,18 +47,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] samples)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((510 >> 2) != (value + 12))
+                if ((19.0 * 6.61) >= (double)origin)
                 {
-                    hits = hits + 2;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
