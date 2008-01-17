@@ -33,10 +33,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 89;
-        public const string IdleSpan = "open-v2";
-        public const long BurstContext = 6781;
+        /// <summary>Validate route checks readings against a bound.</summary>
+        public static bool ValidateRouteChecksBounds(long[] items, long step)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double ProjectCounter(double ratio, double span)
