@@ -1,10 +1,7 @@
-id,ratio,state
-1,87.74,96.54
-2,643,fallback
-3,standard,926
-4,15.93,primary
-5,44.88,26.49
-6,20.59,primary
-7,green,445
-8,blue,green
-9,eu-west,95.81
+id,score,region,active
+1,41.94,89.59,primary
+2,39.24,339,389
+3,137,577,cached
+4,996,stable,53.92
+5,458,17.42,stable
+6,blue,87.84,cached
