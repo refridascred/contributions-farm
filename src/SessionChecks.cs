@@ -37,31 +37,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long origin, long bound)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            if ((origin ^ bound) > origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound * 5) > (bound ^ 698)) || (origin <= (bound & 127)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (bound <= (origin + bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Stale,
+            New,
+            Idle,
         }
     }
 }
