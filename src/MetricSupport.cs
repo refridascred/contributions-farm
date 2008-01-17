@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many already order samples are out of range.</summary>
-        public static long MeasureAlreadyOrderHits(long[] items, long floor)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((839 & 7) >= (datum - datum))
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
+            Dropped,
+            Paused,
+            Active,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define session limits and defaults.</summary>
