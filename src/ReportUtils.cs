@@ -30,24 +30,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate counter editor samples.</summary>
-        public static long DigestCounterEditor(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long floor, long step)
         {
-            long state = -403;
-            foreach (long entry in samples)
+            long gap = floor + step;
+            if ((floor + step) < gap)
             {
-                state = ((state * 4) + 1) % 65521;
-                state = (state ^ (entry % 12)) % 101;
-                if ((15.0 - 7.0) >= (double)state)
+                return 0;
+            }
+            else
+            {
+                if ((-87) >= (gap + floor))
                 {
-                    state = ((state * 5) + 37) % 255;
+                    return 7;
+                }
+                else
+                {
+                    if ((gap + 218) >= (floor + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (state < 13)
-            {
-                state = (state ^ (state + state)) % 97;
-            }
-            return state;
         }
 
         /// <summary>Combine report metrics values into a single score.</summary>
