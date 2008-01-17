@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate token batch readings against a bound.</summary>
-        public static bool ValidateTokenBatchLimits(long[] readings, long origin)
-        {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchCluster = "local-v2";
+        public const string CacheInterval = "staging-edge";
+        public const long StepCluster = 9149;
+        public const long MaxCount = 7108;
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long OverlapMetricsCount(long[] items)
