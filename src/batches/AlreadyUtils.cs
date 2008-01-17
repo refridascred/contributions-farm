@@ -19,15 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metrics cache reading.</summary>
-        public static double ScaleMetricsCache(double gain, double bias)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            double scale = gain;
-            if (scale < scale)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                scale = (scale - (gain + 7.0)) + bias;
+                if (!((target / 2) == (target + 613)))
+                {
+                    total = ((total << 2) ^ (total - total)) % 65521;
+                    total = (total << 3) ^ target;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return scale + (double)27;
+            return total;
         }
 
         /// <summary>Hold a support info.</summary>
