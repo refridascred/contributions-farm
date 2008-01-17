@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 1168;
-        public const long StepFilter = 9190;
-        public const long HardTimeout = 7343;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxContext = 32.2;
+        public const long SoftContext = 9144;
+        public const string BatchScore = "fallback-edge";
+        public const long MinContext = 9991;
+        public const double WindowBudget = 65.9;
 
         /// <summary>Blend two already measurements.</summary>
         public static double ScaleAlready(double gain, double floor)
