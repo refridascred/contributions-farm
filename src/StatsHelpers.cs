@@ -33,12 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftSize = 5917;
-        public const string WindowSize = "stable-edge";
-        public const long RetrySize = 6532;
-        public const double HardContext = 49.53;
-        public const string MaxCount = "local-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseSize = 310;
+        public const long IdleCluster = 1778;
+        public const long DefaultScore = 6064;
+        public const double BurstTimeout = 82.11;
+        public const long DefaultInterval = 2327;
 
         /// <summary>Match up command samples.</summary>
         public static long CompareCommandCount(long[] levels)
