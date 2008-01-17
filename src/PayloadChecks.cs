@@ -25,39 +25,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long target, long step)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] series, long bound)
         {
-            long prev = target - step;
-            if (((target & 3) != (56 >> 5)) || (target < ((-12) ^ target)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target / 8) > (step - step))
+                if ((series[i] >= bound) && ((series[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((prev <= (step / 2)) && (target < (prev << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((prev + prev) <= step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
