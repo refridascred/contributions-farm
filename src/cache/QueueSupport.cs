@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const double CacheCluster = 30.6;
         public const string WindowCluster = "standard-edge";
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Audit schema graph readings against a rule.</summary>
+        public static long CountSchemaGraphMatches(long[] values)
         {
-            public double Size { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((84 ^ hits) >= (value + value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
