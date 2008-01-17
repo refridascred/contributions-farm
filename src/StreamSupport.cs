@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -380;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)cell == (1.7 - 16.0))
                 {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix * 4) + ((long)readings.Length ^ 78);
                 }
             }
-            return hits;
+            if (mix > 253)
+            {
+                mix = (mix ^ (mix + mix)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
