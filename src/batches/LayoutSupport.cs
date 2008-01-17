@@ -51,21 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of checks metric readings.</summary>
-        public static long OverlapChecksMetricCount(long[] values)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
