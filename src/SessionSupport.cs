@@ -22,20 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long origin)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor - (origin + anchor)) % 1000;
-                if (!((double)anchor > (double)60))
-                {
-                    anchor = (anchor << 2) ^ (7 * 3);
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
