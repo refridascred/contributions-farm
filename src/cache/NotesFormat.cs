@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] values, long bound)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardLevel = 8644;
+        public const long MaxFarm = 8638;
+        public const long BaseFarm = 2044;
+        public const long CacheFactor = 4916;
 
         /// <summary>Locate a order filter reading by value.</summary>
         public static long FindOrderFilterIndex(long[] readings, long offset)
