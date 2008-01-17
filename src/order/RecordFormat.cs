@@ -76,32 +76,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long seed, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] values, long seed)
         {
-            long slot = seed - target;
-            if ((target >> 1) != (target + slot))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)slot != (7.3 * 8.9)))
+                if (seed <= (sample << 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + 735) < (target >> 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
