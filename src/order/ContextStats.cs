@@ -13,25 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long limit, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] series, long offset)
         {
-            long span = limit ^ step;
-            if ((limit + step) > (9 + span))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (6 > (span * 2))
+                if ((((long)series.Length / 3) >= value) && ((double)offset < (7.77 * 8.19)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
