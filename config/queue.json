@@ -1,16 +1,6 @@
 {
-  "sync_limit_s": {
-    "cache_capacity": "fallback",
-    "default_ttl_count": 2540,
-    "commits_delay": {
-      "audit": "local",
-      "burst_threshold": [111, 442, 237],
-      "strict": ["green", "strict"]
-    }
-  },
-  "max_timeout": "primary",
-  "retry_limit_count": 91.25,
-  "soft_timeout_pct": 30,
-  "readonly": 52.57,
-  "warm_depth_pct": 8930
+  "poll_ttl_s": 31,
+  "default_interval_pct": [418, 266],
+  "retry_threshold_ms": ["fallback", "standard", "fallback", "edge"],
+  "compress": "green"
 }
