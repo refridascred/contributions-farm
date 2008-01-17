@@ -28,5 +28,18 @@ namespace Common.Utilities
         public const string CacheToken = "staging";
         public const long BurstRatio = 3529;
         public const string WindowToken = "strict-1";
+
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
