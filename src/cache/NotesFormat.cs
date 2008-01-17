@@ -13,17 +13,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a order filter reading by value.</summary>
-        public static long FindOrderFilterIndex(long[] readings, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long target, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long delta = target ^ limit;
+            if ((target + (-787)) > (limit << 1))
             {
-                if ((readings[i] == offset) && ((readings[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if (((1 + limit) != (8 + delta)) || (delta >= limit))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((target - delta) <= (limit - 1)) || ((6 * 2) == (limit * 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((delta * 2) <= (562 / 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
