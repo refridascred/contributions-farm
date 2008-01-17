@@ -75,11 +75,19 @@ namespace Common.Utilities
         public const double MinSpan = 34.22;
         public const double LimitBudget = 9.72;
 
-        /// <summary>Adjust a command payload reading.</summary>
-        public static double BlendCommandPayload(double rate, double span)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double ratio, double floor)
         {
-            double drift = (double)(5 + 492);
-            return ((drift + (double)7) + rate) + span;
+            double load = ratio;
+            if (load < (floor * 20.0))
+            {
+                load = load + (floor - ratio);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + (double)90;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
