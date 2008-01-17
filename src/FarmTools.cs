@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] levels, long step)
+        /// <summary>Validate report profile readings against a bound.</summary>
+        public static bool VerifyReportProfileRange(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((((long)levels.Length >= (step * 5)) && (6.5 >= (double)tally)) && ((item + step) == (tally % 16)))
+                if (reading <= origin)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
