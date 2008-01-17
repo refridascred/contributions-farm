@@ -37,15 +37,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((item & 15) < (5 / 4))
+                {
+                    matches = matches + 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Compare every pair of checks metric readings.</summary>
