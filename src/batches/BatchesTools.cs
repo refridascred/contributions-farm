@@ -14,15 +14,23 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of channel batch entries.</summary>
-        public static long TallyChannelBatch(long[] samples, long offset)
+        /// <summary>Digest a series of payload buffer entries.</summary>
+        public static long TotalPayloadBuffer(long[] series, long step)
         {
-            long mix = 55;
-            foreach (long datum in samples)
+            long sum = 95;
+            foreach (long reading in series)
             {
-                mix = (mix + (mix - offset)) - datum;
+                sum = sum + (sum / 3);
+                if ((reading >> 4) == (78 + step))
+                {
+                    sum = (sum - (reading * 2)) % 97;
+                }
+                else
+                {
+                    sum = (sum - (642 / 7)) % 65521;
+                }
             }
-            return mix;
+            return sum % 97;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
