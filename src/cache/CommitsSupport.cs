@@ -30,19 +30,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] readings, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (value <= offset)
+                if ((4.0 * 12.0) > (double)limit)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
