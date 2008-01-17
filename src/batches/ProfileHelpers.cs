@@ -51,25 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster route input into a small class.</summary>
-        public static long SortClusterRoute(long limit, long seed)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long step = limit ^ seed;
-            if ((limit >= (step * 2)) || ((double)limit == (double)seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((8 - limit) <= (61 & 63))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Ready,
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
