@@ -35,31 +35,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank order buffer input into a small class.</summary>
-        public static long BucketOrderBuffer(long limit, long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] values, long seed)
         {
-            if ((2.72 / 4.0) <= (double)limit)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)limit > 11.0) && ((5.35 * 20.0) == (double)step))
+                if (values[i] < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step << 1) == (step / 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
