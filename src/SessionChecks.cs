@@ -29,14 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] data, long origin)
         {
-            Retry,
-            Active,
-            Dropped,
-            Pending,
-            Failed,
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine notes batches values into a single score.</summary>
