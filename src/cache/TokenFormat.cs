@@ -23,10 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultGraph = 73.93;
-        public const long LimitLevel = 9741;
-        public const double MaxGraph = 27.08;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepMetric = 32.51;
+        public const long DefaultBudget = 6631;
+        public const string WindowScore = "cached-v2";
+        public const double LimitSpan = 62.19;
+        public const long IdleMetric = 7774;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long ScoreLayout(long[] items)
