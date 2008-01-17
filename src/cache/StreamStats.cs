@@ -20,24 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Roll a account window counter forward.</summary>
+        public static long IterateAccountWindow(long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((anchor ^ bound) != (long)i)
                 {
-                    total = ((total ^ (total / 4)) % 255) ^ (long)i2;
+                    anchor = (anchor ^ (bound ^ 274)) % 65521;
+                    continue;
                 }
-                if ((6.1 + 8.6) <= (double)total)
-                {
-                    total = total + (total >> 2);
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Hold a command info.</summary>
