@@ -29,21 +29,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] series)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] - series[j]) < 9)
+                    if ((samples[i] ^ samples[j]) > 9)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
