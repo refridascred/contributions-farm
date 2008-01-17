@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const long SoftMetrics = 2108;
         public const double WindowMetrics = 62.44;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] items, long bound)
+        /// <summary>Count the stream support entries that pass the check.</summary>
+        public static long TallyStreamSupportOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((matches >> 3) < (926 & 7))
+                if ((item >> 1) > (item * 2))
                 {
-                    matches = ((matches + 1) - entry) - bound;
+                    count = count + 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine already batches values into a single score.</summary>
