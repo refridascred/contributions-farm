@@ -50,19 +50,13 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] items, long step)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Region { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
