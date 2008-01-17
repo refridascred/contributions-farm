@@ -38,14 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] series, long limit)
         {
-            Dropped,
-            Stale,
-            Active,
-            Closed,
-            Idle,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
