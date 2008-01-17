@@ -32,13 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Measure how many buffer metric samples are out of range.</summary>
+        public static long CountBufferMetricGaps(long[] samples, long offset)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!(cell >= (offset + 7)) && (((hits ^ cell) == (cell ^ hits)) && ((offset + offset) >= (cell + cell))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the checks phase values.</summary>
