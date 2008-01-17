@@ -25,12 +25,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheCluster = 83.64;
-        public const long RetryCluster = 2237;
-        public const long IdleCount = 716;
-        public const long SoftCount = 1251;
-        public const long StepBudget = 8340;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((bound & 127) >= datum)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] samples)
