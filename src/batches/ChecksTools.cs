@@ -65,31 +65,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi batch samples.</summary>
-        public static long FoldContributiBatch(long[] levels)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] series)
         {
-            long mix = 39;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)mix == (6.0 - 6.82))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix + (sample << 3)) % 97;
-                    mix = ((mix << 3) ^ (mix & 255)) % 1000;
-                }
-                if ((sample % 5) == (81 << 1))
-                {
-                    mix = ((mix * 5) + (sample / 4)) % 97;
-                }
-                else
-                {
-                    mix = (mix * 4) + sample;
+                    if ((series[i] + series[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix > 6)
-            {
-                mix = (mix << 2) ^ (mix - mix);
-            }
-            return mix;
+            return matches;
         }
     }
 }
