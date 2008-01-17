@@ -1,7 +1,6 @@
 # githubfarm settings
-soft_capacity:
-  - 49
-  - 159
-  - 378
-audit: 500
-strict: 43.6
+strict: blue
+retry_window_s: false
+verbose: local
+batches_interval: 59.72
+default_delay: strict
