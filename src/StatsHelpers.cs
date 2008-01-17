@@ -43,12 +43,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
