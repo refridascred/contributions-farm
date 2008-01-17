@@ -56,10 +56,21 @@ namespace Common.Utilities
         public const double CacheProfile = 52.28;
         public const long RetryScore = 1951;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 6399;
-        public const long CacheGithubfarm = 6864;
-        public const long SoftScore = 4807;
-        public const long WindowGithubfarm = 1624;
+        /// <summary>Compare every pair of cache tools readings.</summary>
+        public static long MatchCacheToolsCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
