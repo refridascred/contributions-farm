@@ -34,18 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit token metrics readings against a rule.</summary>
-        public static long TallyTokenMetricsOutliers(long[] series, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (!((seen >> 2) >= value))
+                if (!((cell - 55) > 9))
                 {
-                    seen = (seen + 2) - step;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Measure how many stats entry samples are out of range.</summary>
