@@ -1,6 +1,5 @@
 {
-  "soft_ratio_s": false,
-  "batch_threshold": false,
-  "hard_capacity_count": "fallback",
-  "batch_limit": 59.33
+  "idle_ratio": "fallback",
+  "flush_ttl": "stable",
+  "githubfarm_window": "green"
 }
