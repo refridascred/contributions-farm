@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = ((mix ^ (target / 3)) % 4096) ^ (long)i2;
-                }
-                long slot = (mix - mix) << 1;
-                mix = (mix + (slot << 1)) % 97;
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the metrics editor entries that pass the check.</summary>
