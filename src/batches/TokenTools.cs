@@ -22,18 +22,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] levels)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((49 + item) < (tally % 64))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Dropped,
+            Synced,
+            Ready,
+            Paused,
+            Pending,
         }
     }
 }
