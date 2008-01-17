@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                score = (score + score) % 101;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheSize = 4992;
+        public const string StepBatches = "alpha-1";
+        public const long IdleInterval = 7200;
+        public const string CacheScore = "strict-1";
+        public const long RetrySpan = 6847;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
