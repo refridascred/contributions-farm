@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] levels, long step)
+        /// <summary>Validate token batch readings against a bound.</summary>
+        public static bool ValidateTokenBatchLimits(long[] readings, long origin)
         {
-            long state = 793;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                state = ((state * 3) + step) ^ entry;
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state % 4096;
+            return stale;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
