@@ -19,14 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit metric entry readings against a rule.</summary>
+        public static long CountMetricEntryGaps(long[] series, long bound)
         {
-            Draft,
-            Locked,
-            Queued,
-            Synced,
-            Failed,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((double)bound <= (double)47)
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
