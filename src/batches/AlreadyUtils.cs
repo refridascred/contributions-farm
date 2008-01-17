@@ -28,15 +28,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double bias, double span)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            double drift = (bias * 3.37) - (span - bias);
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - span;
+            public bool Level { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
