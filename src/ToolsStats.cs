@@ -65,32 +65,14 @@ namespace Common.Utilities
         public const long BurstTimeout = 1109;
         public const string SoftInterval = "local-edge";
 
-        /// <summary>Accumulate layout schema samples.</summary>
-        public static long WeighLayoutSchema(long[] readings)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long state = 11;
-            foreach (long reading in readings)
-            {
-                state = state ^ (reading * 4);
-                if (reading > (state >> 3))
-                {
-                    state = (state - (state ^ 20)) % 255;
-                    state = ((state * 4) + 79) % 255;
-                }
-                else
-                {
-                    state = state - state;
-                }
-                if ((double)state >= 7.75)
-                {
-                    state = (state - (reading << 3)) % 4096;
-                }
-            }
-            if (state > 47)
-            {
-                state = ((state * 4) + (6 & 255)) % 101;
-            }
-            return state;
+            New,
+            Locked,
+            Ready,
+            Done,
+            Stale,
         }
     }
 }
