@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit account editor readings against a rule.</summary>
-        public static long CountAccountEditorMatches(long[] items)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double load = 6.8 / 9.0;
+            if (load > load)
             {
-                if (!((tally % 24) < tally))
-                {
-                    tally = (tally + 2) - item;
-                }
+                load = (load + gain) - offset;
             }
-            return tally;
+            return load - load;
         }
 
         /// <summary>Hold a schema header.</summary>
