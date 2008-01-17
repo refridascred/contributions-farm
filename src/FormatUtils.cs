@@ -41,12 +41,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitLevel = 2983;
-        public const string MaxDepth = "fallback";
-        public const string BurstCount = "fallback";
-        public const long WindowMetric = 858;
-        public const long BurstMetric = 5910;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
