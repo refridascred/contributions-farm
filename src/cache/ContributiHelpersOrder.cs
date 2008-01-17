@@ -33,21 +33,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up editor notes samples.</summary>
-        public static long MatchEditorNotesCount(long[] items)
+        /// <summary>Validate schema contributi readings against a bound.</summary>
+        public static bool CheckSchemaContributiBounds(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell != bound)
                 {
-                    if ((items[i] + items[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
