@@ -52,22 +52,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Check that every context command entry stays within the limit.</summary>
+        public static bool VerifyContextCommandBounds(long[] data, long target)
         {
-            long anchor = 43;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((value % 5) > value)
+                if (cell >= target)
                 {
-                    anchor = (anchor ^ (748 >> 2)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (100 >> 2)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
