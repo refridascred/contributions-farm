@@ -60,14 +60,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Done,
+            Locked,
             Pending,
-            Dropped,
             Idle,
-            Failed,
+            Ready,
         }
     }
 }
