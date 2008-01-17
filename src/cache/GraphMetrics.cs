@@ -46,12 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Match up queue format samples.</summary>
+        public static long OverlapQueueFormatCount(long[] data)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
