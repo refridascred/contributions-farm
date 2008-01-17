@@ -1,7 +1,7 @@
 {
-  "enabled": ["open", "fallback"],
-  "max_window_count": 62,
-  "metrics_ratio": 3629,
-  "sync_delay_ms": "staging",
-  "verbose": 3328
+  "buffer_threshold": "eu-west",
+  "retry_timeout": [196, 399, 14, 250],
+  "base_retries_pct": "strict",
+  "persist": [333, 150, 72, 426],
+  "enabled": 30
 }
