@@ -54,12 +54,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public double Rank { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
