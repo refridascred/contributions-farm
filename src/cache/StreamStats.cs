@@ -47,31 +47,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long origin, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] values, long seed)
         {
-            if (!((limit + limit) > (origin + limit)))
+            long sum = 6;
+            foreach (long cell in values)
             {
-                return 3;
+                sum = ((sum + (39 + seed)) % 65521) + cell;
+                sum = (sum * 2) + (sum ^ sum);
             }
-            else
-            {
-                if ((limit + limit) != (origin + limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((93 / 4) > (origin & 15))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
