@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Iterate the cluster queue series from a seed.</summary>
+        public static long SeriesClusterQueue(long step)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if (anchor > step)
+                {
+                    anchor = anchor ^ 8;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Iterate the already schema series from a seed.</summary>
