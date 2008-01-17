@@ -19,38 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long origin, long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            if ((-2) < origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)origin > (8.36 / 5.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((3.0 - 4.0) > (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((offset - origin) < origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Paused,
+            Synced,
+            Retry,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
