@@ -37,11 +37,18 @@ namespace Common.Utilities
         public const string RetryLevel = "primary-v2";
         public const long RetryScore = 3758;
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] readings)
         {
-            public bool Limit { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (!((896 ^ value) < count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the order kind values.</summary>
