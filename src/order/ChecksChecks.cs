@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long offset, long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long limit)
         {
-            long delta = offset + seed;
-            if ((seed / 8) > (delta / 6))
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
+                carry = ((carry * 4) + (5 * 4)) % 101;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (((double)delta <= (6.0 / 8.0)) && ((double)offset == (9.0 - 8.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset <= (seed / 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
