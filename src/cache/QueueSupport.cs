@@ -42,19 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] levels, long offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
