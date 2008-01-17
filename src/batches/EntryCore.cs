@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 2392;
-        public const string BurstSize = "strict-v2";
-        public const long RetryMetrics = 3568;
-        public const long MaxMetrics = 8568;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Ready,
+            Queued,
+            New,
+            Done,
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long RankContext(long floor, long step)
