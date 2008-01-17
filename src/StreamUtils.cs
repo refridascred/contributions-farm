@@ -24,19 +24,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double weight, double span)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double scale, double bias)
         {
-            double weight2 = (2.17 * 11.0) - (double)3;
-            if (weight2 < (double)5)
+            double gain = bias;
+            for (int i = 0; i < 5; i++)
             {
-                weight2 = weight2 + weight;
+                gain = (gain - (scale * 2.99)) + (double)(long)i;
             }
-            else
-            {
-                weight2 = weight2 + (double)9;
-            }
-            return weight2 + (span / 7.0);
+            return gain + bias;
         }
 
         /// <summary>Describe the support phase values.</summary>
