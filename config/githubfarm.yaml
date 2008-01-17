@@ -1,17 +1,17 @@
 # githubfarm settings
-dry_run: open
-editor_size: blue
-readonly:
-  base_window:
-    - 315
-    - 493
-  batch_threshold_pct:
-    cache_timeout_s: false
-    audit: false
-    stream_interval: 56
-    default_ratio_s: false
-    hard_timeout_pct: 100
-  max_interval: staging
-compress: 9428
-metric_threshold: edge
-base_threshold_pct: false
+hard_window: false
+enabled: open
+max_timeout:
+  sync_ttl_pct: false
+  cache_timeout: true
+  idle_threshold_pct:
+    soft_size: 46.72
+    idle_ttl: 500
+    hard_timeout_pct: cached
+    default_window_ms: fallback
+    poll_delay_count: 500
+    default_retries: true
+  default_ratio: primary
+  default_threshold: 75
+stats_capacity: primary
+soft_window: fallback
