@@ -22,24 +22,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long step, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double weight, double offset)
         {
-            if ((step + floor) > (792 + floor))
+            double ratio = (double)(86 % 60);
+            if (ratio >= offset)
             {
-                return 1;
+                ratio = ratio - (4.89 / 4.0);
             }
             else
             {
-                if ((1.07 / 2.0) >= (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
+                ratio = ratio + (double)3;
             }
+            return ratio - (ratio + weight);
         }
 
         /// <summary>Describe the session status values.</summary>
