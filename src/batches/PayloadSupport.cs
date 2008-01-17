@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = mark - (45 ^ mark);
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 8889;
+        public const long BaseContributi = 8032;
+        public const string LimitContributi = "latest-1";
+        public const long BaseDepth = 2503;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
