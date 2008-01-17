@@ -62,11 +62,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinScore = 43.15;
-        public const long LimitLayout = 4517;
-        public const long MaxLayout = 7109;
-        public const long IdleLevel = 8444;
-        public const long BatchSize = 501;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "open";
+        public const double LimitOrder = 82.92;
+        public const long HardOrder = 2459;
+        public const long BurstSpan = 8236;
     }
 }
