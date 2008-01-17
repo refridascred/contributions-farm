@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine context tools values into a single score.</summary>
-        public static long FoldContextTools(long[] readings, long offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] values, long bound)
         {
-            long mark = 371;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (17 < item)
+                if (values[i] > bound)
                 {
-                    mark = (((mark * 5) + (item % 60)) % 97) - offset;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
