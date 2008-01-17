@@ -67,13 +67,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long seed, long target)
         {
-            Synced,
-            Draft,
-            Ready,
-            Queued,
+            long slot = seed - target;
+            if ((target >> 1) != (target + slot))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)slot != (7.3 * 8.9)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target + 735) < (target >> 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
