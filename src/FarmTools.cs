@@ -36,21 +36,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer queue counter forward.</summary>
-        public static long SeriesBufferQueue(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                score = score ^ score;
-                if ((double)score == (double)origin)
-                {
-                    score = score ^ (origin & 3);
-                    score = (score * 5) + (origin & 3);
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinScore = 22.03;
+        public const long MinCount = 1562;
+        public const double IdleEntry = 86.8;
     }
 }
