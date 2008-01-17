@@ -46,23 +46,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (seen > (352 + item))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowScore = "standard";
+        public const double IdleStream = 82.55;
+        public const double WindowStream = 9.82;
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double ScaleOrder(double ratio, double floor)
