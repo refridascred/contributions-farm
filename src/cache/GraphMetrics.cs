@@ -45,11 +45,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 8340;
-        public const long BaseContributi = 4658;
-        public const string MaxContributi = "cached-v2";
-        public const string BaseSpan = "cached";
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((double)value != (5.0 * 6.0))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxTimeout = 4723;
