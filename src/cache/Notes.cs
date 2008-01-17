@@ -27,19 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] data, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (entry >= target)
+                if ((count - count) < count)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + cell;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
