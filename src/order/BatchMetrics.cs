@@ -64,10 +64,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftPayload = 15.04;
-        public const double BurstWidth = 12.34;
-        public const long WindowSpan = 8870;
-        public const long BatchPayload = 191;
+        /// <summary>Match up command entry samples.</summary>
+        public static long PairCommandEntryCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
