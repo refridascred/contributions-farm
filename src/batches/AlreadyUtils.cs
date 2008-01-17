@@ -57,12 +57,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Synced,
-            Active,
-            Paused,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinDepth = 4948;
+        public const long RetryCount = 9444;
+        public const double CacheSupport = 79.48;
+        public const double MinSize = 85.41;
     }
 }
