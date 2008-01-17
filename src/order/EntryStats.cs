@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] series, long origin)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] > origin)
+                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
