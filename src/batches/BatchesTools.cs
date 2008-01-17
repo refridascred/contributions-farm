@@ -21,22 +21,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine session format values into a single score.</summary>
-        public static long CombineSessionFormat(long[] series, long seed)
+        /// <summary>Look up the position of a cache payload sample.</summary>
+        public static long LookupCachePayloadIndex(long[] data, long offset)
         {
-            long sum = 7;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((cell + sum) != (sum >> 4)))
+                if (data[i] >= offset)
                 {
-                    sum = sum + (seed << 1);
-                }
-                else
-                {
-                    sum = (sum + seed) % 97;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
