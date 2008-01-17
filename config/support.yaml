@@ -1,7 +1,4 @@
 # support settings
-record_limit:
-  - edge
-  - strict
-enabled: 70
-min_retries: edge
-idle_capacity: local
+min_window_ms: 74
+flush_size: true
+retry_threshold: 85.06
