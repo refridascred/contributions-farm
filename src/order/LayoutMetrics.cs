@@ -20,19 +20,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] samples, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] readings, long bound)
         {
             long matches = 0;
-            foreach (long reading in samples)
+            foreach (long item in readings)
             {
-                if ((reading + reading) >= (matches + origin))
+                if ((matches + item) < item)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 1) - bound;
                 }
             }
             return matches;
