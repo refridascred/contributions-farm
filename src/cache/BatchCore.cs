@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a record counter value against two limits.</summary>
-        public static long ClassifyRecordCounter(long floor, long floor2)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            long diff = floor + floor2;
-            if ((floor2 << 1) >= diff)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (diff < (floor << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor >> 3) >= (939 % 3))
+                    if ((levels[i] ^ levels[j]) > 9)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
