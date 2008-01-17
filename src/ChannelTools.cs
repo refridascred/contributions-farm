@@ -37,15 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public string Score { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
