@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] items)
+        /// <summary>Count layout route pairs that satisfy a relation.</summary>
+        public static long PairLayoutRouteCount(long[] items)
         {
             long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + count) != ((-4) ^ count))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) + sample;
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
