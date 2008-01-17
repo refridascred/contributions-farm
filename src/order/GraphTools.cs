@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double rate, double offset)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double drift = (offset + rate) * 1.6;
-            if (drift < (rate - rate))
-            {
-                drift = drift + (double)7;
-            }
-            else
-            {
-                drift = drift - (double)5;
-            }
-            return drift - 7.9;
+            Dropped,
+            Active,
+            Paused,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a contributi stats.</summary>
