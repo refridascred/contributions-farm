@@ -1,5 +1,5 @@
 {
-  "soft_window_pct": true,
-  "default_delay": 68.27,
-  "token_window": "stable"
+  "flush_depth_s": true,
+  "idle_ratio_pct": "legacy",
+  "verbose": 9653
 }
