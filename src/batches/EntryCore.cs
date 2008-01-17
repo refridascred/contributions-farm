@@ -17,22 +17,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] readings, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] readings, long seed)
         {
-            long mark = 938;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((cell >> 2) != (63 + mark))
+                if (value > seed)
                 {
-                    mark = ((mark << 3) ^ (target - mark)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (mark > 64)
-            {
-                mark = (mark * 4) + (target * 3);
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
