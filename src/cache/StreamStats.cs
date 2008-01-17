@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Combine account checks values into a single score.</summary>
+        public static long TallyAccountChecks(long[] levels, long target)
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
+            long mark = 886;
+            foreach (long item in levels)
+            {
+                mark = ((mark + (mark - target)) % 4096) + item;
+            }
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
