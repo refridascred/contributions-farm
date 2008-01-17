@@ -23,18 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] series)
+        /// <summary>Find the first format window entry that matches the target.</summary>
+        public static long SeekFormatWindowIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (54 > (reading + reading))
+                if ((readings[i] < target) && ((readings[i] % 3) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Find the first queue counter entry that matches the target.</summary>
