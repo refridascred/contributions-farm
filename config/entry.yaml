@@ -1,20 +1,9 @@
 # entry settings
-dry_run: edge
-strict: 20.81
-persist: 1024
-audit:
-  support_interval: standard
-  counter_capacity: false
-  cache_retries_s: 21.18
-  verbose: 100
-  flush_ttl:
-    - latest
-    - primary
-  strict:
-    - primary
-    - staging
-    - staging
-soft_capacity: 92.67
-sync_limit_ms:
-  - strict
-  - open
+stream_retries:
+  - cached
+  - eu-west
+  - green
+  - fallback
+min_window_pct: 1024
+retry_delay_pct: legacy
+warm_ttl_pct: blue
