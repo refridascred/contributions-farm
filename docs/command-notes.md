@@ -1,14 +1,11 @@
 # Command notes
 
-Use cluster settings to tune how often contributi data is refreshed.
-Defaults for farm live in the config folder and can be overridden per environment.
-
-Defaults for payload live in the config folder and can be overridden per environment.
-Each entry is validated before it reaches the context queue.
-When a cache fails, the stream handler retries a few times before giving up.
+The contributi report groups every window by commits.
+When a window fails, the queue handler retries a few times before giving up.
+Keep checks and farm names short and lowercase.
 
 ## Guidelines
 
-- Log every cluster change
-- Document new channel fields
-- Review buffer limits each release
+- Prefer metric defaults
+- Document new report fields
+- Review route limits each release
