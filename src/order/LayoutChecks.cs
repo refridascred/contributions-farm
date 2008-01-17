@@ -20,14 +20,10 @@ namespace Common.Utilities
             return mean - (double)565;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "fallback-edge";
+        public const long BaseRecord = 4428;
+        public const double DefaultFactor = 9.6;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsGaps(long[] readings, long bound)
