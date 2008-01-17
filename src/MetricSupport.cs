@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] values, long limit)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] items)
         {
-            long carry = 3;
-            foreach (long entry in values)
+            long mix = 6;
+            foreach (long sample in items)
             {
-                carry = (((carry + 54) % 65521) + entry) + limit;
+                if (sample <= (mix + mix))
+                {
+                    mix = ((mix << 2) ^ sample) % 101;
+                }
             }
-            if (carry > 69)
-            {
-                carry = ((carry * 5) + (carry - carry)) % 101;
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
