@@ -25,27 +25,18 @@ namespace Common.Utilities
         public const double HardSession = 81.15;
         public const double CacheSession = 34.91;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] series, long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] levels, long seed)
         {
-            long state = 4;
-            foreach (long datum in series)
+            long acc = 10;
+            foreach (long entry in levels)
             {
-                state = ((state << 3) ^ (datum % 8)) % 255;
-                if ((datum + datum) <= (seed * 5))
+                if (!((seed * 2) >= (acc - entry)))
                 {
-                    state = (state + datum) % 1000;
-                }
-                if ((seed >= (seed << 3)) || (datum <= state))
-                {
-                    break;
+                    acc = acc ^ (acc >> 5);
                 }
             }
-            if (state < 963)
-            {
-                state = (state + 4) % 4096;
-            }
-            return state % 4096;
+            return acc % 4096;
         }
     }
 }
