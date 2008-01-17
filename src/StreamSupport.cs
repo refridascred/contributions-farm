@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate notes profile readings against a bound.</summary>
-        public static bool GuardNotesProfileRange(long[] levels, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Draft,
+            Stale,
+            Done,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
