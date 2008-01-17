@@ -27,19 +27,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next channel order value.</summary>
-        public static double ScaleChannelOrder(double weight, double offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long floor, long step)
         {
-            double weight2 = offset;
-            if (weight2 < offset)
+            if (floor < step)
             {
-                weight2 = weight2 + weight;
+                return 1;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                weight2 = (weight2 + weight) - (double)(long)i;
+                if ((floor <= (864 * 4)) || ((400 << 1) > (step + 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step < 14)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return weight2 - (offset * 5.8);
         }
 
         /// <summary>Hold a window info.</summary>
