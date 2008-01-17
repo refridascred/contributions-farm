@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Closed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Combine stream payload values into a single score.</summary>
