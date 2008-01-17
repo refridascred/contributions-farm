@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] readings, long limit)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long seed)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)limit >= (double)cell)
+                if (((long)i ^ result) < (seed + result))
                 {
-                    seen = seen + 2;
+                    result = result + (618 / 6);
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Hold a token summary.</summary>
