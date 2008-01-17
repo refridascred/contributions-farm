@@ -20,25 +20,25 @@ namespace Common.Utilities
         public const long WindowTools = 4785;
         public const long BurstCount = 2431;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long limit)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long step, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            long prev = step - target;
+            if ((16.0 + 8.8) == (double)prev)
             {
-                total = total ^ limit;
-                total = ((total << 2) ^ (limit / 3)) % 101;
-                if ((double)limit < (5.0 / 3.0))
+                return 5;
+            }
+            else
+            {
+                if (prev <= target)
                 {
-                    total = (total * 4) + (limit & 3);
+                    return 8;
                 }
                 else
                 {
-                    total = total - (limit & 15);
+                    return 3;
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
         }
 
         /// <summary>Hold a account snapshot.</summary>
