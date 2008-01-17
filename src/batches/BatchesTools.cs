@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] data, long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] values)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long anchor = 4;
+            foreach (long entry in values)
             {
-                if (value <= target)
+                if (((long)values.Length / 9) != (entry << 3))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor * 2) + (68 >> 5);
                 }
+                else
+                {
+                    anchor = (anchor + (6 - entry)) % 255;
+                    anchor = anchor ^ (38 / 7);
+                }
+                anchor = (anchor + entry) % 101;
+                anchor = (anchor << 2) ^ entry;
             }
-            return valid;
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
