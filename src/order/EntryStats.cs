@@ -33,13 +33,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long seed, long limit)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long step = seed + limit;
+            if ((step + seed) == (step % 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step / 9) <= (step >> 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((limit >> 5) > (3 + seed)) || ((step >> 3) > (limit & 31)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit * 4) > (step / 6))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
