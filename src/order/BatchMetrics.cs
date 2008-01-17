@@ -45,11 +45,21 @@ namespace Common.Utilities
         public const double BaseWidth = 34.97;
         public const long MinBatch = 8731;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double rate, double bias)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] data)
         {
-            double weight = (bias / 4.0) * 19.0;
-            return (weight - 0.37) + rate;
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the editor mode values.</summary>
