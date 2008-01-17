@@ -28,19 +28,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a cache checks reading.</summary>
-        public static double AdjustCacheChecks(double rate, double offset)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double rate2 = (rate / 6.0) + (double)2;
-            if (rate2 >= (offset + offset))
-            {
-                rate2 = rate2 + (rate2 + rate);
-            }
-            else
-            {
-                rate2 = rate2 - rate2;
-            }
-            return rate2 - (offset * 7.0);
+            Active,
+            Locked,
+            Idle,
+            Pending,
+            Done,
         }
     }
 }
