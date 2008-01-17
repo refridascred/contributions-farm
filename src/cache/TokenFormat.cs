@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Pending,
-            Failed,
-            Queued,
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate layout samples.</summary>
