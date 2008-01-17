@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Fold a list of githubfarm filter readings.</summary>
+        public static long DigestGithubfarmFilter(long[] data)
         {
-            public bool Limit { get; set; }
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
+            long sum = 768;
+            foreach (long entry in data)
+            {
+                sum = (sum - (sum % 8)) % 101;
+                if ((sum * 2) > (entry + entry))
+                {
+                    sum = ((sum << 2) ^ 467) % 101;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
