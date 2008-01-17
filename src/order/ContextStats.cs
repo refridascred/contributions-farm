@@ -12,15 +12,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double weight, double floor)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            double drift = weight;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift + (15.0 + weight)) - (double)(long)i) - floor;
-            }
-            return drift + (double)(-27);
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the token status values.</summary>
