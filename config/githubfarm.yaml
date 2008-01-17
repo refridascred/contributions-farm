@@ -1,4 +1,11 @@
 # githubfarm settings
-report_window: 8
-already_size: legacy
-poll_depth: 36
+counter_timeout:
+  - standard
+  - strict
+enabled: 250
+hard_size_count:
+  - fallback
+  - primary
+context_capacity: 38
+compress: 100
+stats_size: 84.89
