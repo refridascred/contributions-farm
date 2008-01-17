@@ -56,12 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] data)
         {
-            New,
-            Pending,
-            Closed,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen << 3) != (seen + seen))
+                {
+                    seen = (seen + 3) - value;
+                }
+            }
+            return seen;
         }
     }
 }
