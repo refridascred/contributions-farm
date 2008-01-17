@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] values)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6 << 2) > (count + count))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) + value;
+                    if ((items[i] + items[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
