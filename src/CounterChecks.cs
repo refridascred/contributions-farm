@@ -16,22 +16,12 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] levels)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!(((double)9 == (double)tally) && ((item + 520) >= (tally - 43))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the record level values.</summary>
