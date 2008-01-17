@@ -56,21 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metric batches readings.</summary>
-        public static long PairMetricBatchesCount(long[] series)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] + series[j]) > 16)
+                    if ((data[i] ^ data[j]) > 1)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
