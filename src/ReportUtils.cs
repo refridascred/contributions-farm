@@ -37,11 +37,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double gain, double floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double mean = (double)(730 >> 5);
-            return (mean + gain) + floor;
+            Idle,
+            Closed,
+            Queued,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
