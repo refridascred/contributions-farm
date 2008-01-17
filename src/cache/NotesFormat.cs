@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] items, long target)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Pending,
+            Queued,
         }
 
         /// <summary>Locate a order filter reading by value.</summary>
