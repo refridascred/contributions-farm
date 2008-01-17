@@ -18,19 +18,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long seed)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((9 - (long)i) >= ((long)i ^ step))
-                {
-                    total = (total - ((long)i + total)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Rank order input into a small class.</summary>
