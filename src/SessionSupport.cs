@@ -19,12 +19,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Measure how many order checks samples are out of range.</summary>
+        public static long TallyOrderChecksOutliers(long[] values)
         {
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell / 7) < (7 & 3))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
