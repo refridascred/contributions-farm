@@ -79,12 +79,14 @@ namespace Common.Utilities
             return (rate + 12.0) + ratio;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
+            Idle,
+            Failed,
+            Paused,
+            Synced,
             Closed,
-            Done,
-            Active,
         }
     }
 }
