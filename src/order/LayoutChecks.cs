@@ -55,22 +55,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] levels, long floor)
+        /// <summary>Iterate the command window series from a seed.</summary>
+        public static long DeriveCommandWindow(long offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (((9.57 - 4.3) > (double)item) && ((item + floor) != (hits - floor)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Accumulate route samples.</summary>
