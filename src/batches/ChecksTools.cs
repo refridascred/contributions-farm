@@ -38,31 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a channel commits pair into a bucket.</summary>
-        public static long ClassifyChannelCommits(long offset, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] values, long limit)
         {
-            if ((offset & 1) <= (limit - limit))
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset >= (limit ^ 50))
+                if ((double)item == (7.5 / 2.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((offset * 5) > 880))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = (hits + 3) + limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
