@@ -42,11 +42,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheLevel = "open";
-        public const long IdleGithubfarm = 6985;
-        public const long MaxFactor = 1899;
-        public const long WindowGithubfarm = 3878;
-        public const long SoftScore = 3119;
+        /// <summary>Combine notes batches values into a single score.</summary>
+        public static long TallyNotesBatches(long[] series)
+        {
+            long total = 91;
+            foreach (long value in series)
+            {
+                if (!((value % 12) > total))
+                {
+                    total = total + (value & 127);
+                    total = (total + (value / 8)) % 65521;
+                }
+                total = (total << 2) ^ (value - value);
+                total = (total * 3) + (-753);
+            }
+            return total;
+        }
     }
 }
