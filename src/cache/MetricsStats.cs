@@ -29,17 +29,21 @@ namespace Common.Utilities
         public const long SoftSpan = 1671;
         public const long BaseRatio = 6930;
 
-        /// <summary>Look up the position of a window metrics sample.</summary>
-        public static long LookupWindowMetricsIndex(long[] samples, long limit)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the context kind values.</summary>
