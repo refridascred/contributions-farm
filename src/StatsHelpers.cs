@@ -29,20 +29,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate account support readings against a bound.</summary>
-        public static bool GuardAccountSupportLimits(long[] levels, long step)
-        {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 3863;
+        public const string CacheInterval = "staging-v2";
+        public const string StepRecord = "local-edge";
+        public const double HardSpan = 82.51;
+        public const long SoftRecord = 1478;
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
