@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] series, long target)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long anchor = 59;
-            foreach (long reading in series)
-            {
-                anchor = (anchor + (target - anchor)) % 4096;
-                if ((reading >= (target - reading)) || (anchor >= (target << 2)))
-                {
-                    anchor = (anchor ^ (target % 8)) % 1000;
-                    break;
-                }
-                if (72 < (reading << 2))
-                {
-                    anchor = ((anchor * 2) + ((-84) >> 5)) % 97;
-                }
-            }
-            return anchor;
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
