@@ -29,18 +29,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] readings)
+        /// <summary>Classify a cache notes pair into a bucket.</summary>
+        public static long BucketCacheNotes(long offset, long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            if (((7.23 * 15.0) > (double)offset) && (step > (offset - step)))
             {
-                if ((1.59 + 7.04) <= (double)count)
+                return 7;
+            }
+            else
+            {
+                if (offset >= (step & 3))
                 {
-                    count = (count + 3) ^ item;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step <= (double)3)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
     }
 }
