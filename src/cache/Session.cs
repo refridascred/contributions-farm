@@ -28,14 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardCount = 13.9;
+        public const string WindowOrder = "legacy";
+        public const long BatchOrder = 5058;
+        public const long IdleOrder = 3449;
+        public const long DefaultOrder = 2463;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
