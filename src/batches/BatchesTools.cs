@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] levels, long target)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long bound)
         {
-            long carry = 7;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((-556) << 1) <= carry) && ((1 / 8) > (target + value)))
+                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
                 {
-                    carry = carry + (target / 5);
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
