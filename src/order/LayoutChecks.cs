@@ -47,12 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Paused,
-            Queued,
+            Idle,
             Pending,
+            Ready,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
