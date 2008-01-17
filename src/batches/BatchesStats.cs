@@ -19,21 +19,15 @@ namespace Common.Utilities
         public const string CacheDepth = "strict";
         public const long DefaultSession = 9889;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Iterate the channel support series from a seed.</summary>
+        public static long SeriesChannelSupport(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the batch mode values.</summary>
