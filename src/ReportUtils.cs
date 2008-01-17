@@ -35,18 +35,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] items, long offset)
+        /// <summary>Classify a tools schema pair into a bucket.</summary>
+        public static long ClassifyToolsSchema(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if ((offset ^ offset) <= (offset << 1))
             {
-                if (hits <= 878)
+                return 8;
+            }
+            else
+            {
+                if ((double)0 <= (double)offset)
                 {
-                    hits = ((hits + 2) + cell) + offset;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine report metrics values into a single score.</summary>
