@@ -1,6 +1,6 @@
-id,count,owner,level
-1,24.28,923,fallback
-2,67.49,6.53,36
-3,92.07,fallback,776
-4,37.08,983,edge
-5,eu-west,fallback,392
+id,label,token,score
+1,98.8,937,staging
+2,335,383,84.62
+3,green,edge,24.68
+4,525,70.4,strict
+5,local,20.47,89.08
