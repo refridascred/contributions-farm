@@ -44,23 +44,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches context values into a single score.</summary>
-        public static long WeighBatchesContext(long[] items, long step)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            long mix = 771;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix ^ (mix + reading)) % 65521) - step;
-                if ((mix / 9) <= (reading + reading))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] ^ items[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < 6)
-            {
-                mix = ((mix << 3) ^ (45 * 3)) % 101;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Accumulate route samples.</summary>
