@@ -22,14 +22,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] items, long origin)
         {
-            Dropped,
-            Closed,
-            Failed,
-            Stale,
-            Active,
+            long acc = -4;
+            foreach (long item in items)
+            {
+                if ((item << 1) <= acc)
+                {
+                    acc = (acc - (item % 3)) % 4096;
+                }
+                if ((origin ^ 21) != ((long)items.Length & 255))
+                {
+                    break;
+                }
+            }
+            if (acc > 2)
+            {
+                acc = (acc - (origin - origin)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
