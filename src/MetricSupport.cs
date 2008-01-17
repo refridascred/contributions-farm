@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] readings, long origin)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (6 < (origin / 7))
+                if (item >= step)
                 {
-                    tally = (tally + 2) + value;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define session limits and defaults.</summary>
