@@ -53,9 +53,9 @@ namespace Common.Utilities
         public const long MaxMetrics = 7525;
         public const string SoftMetrics = "fallback";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxFactor = 3909;
-        public const long BurstWidth = 3579;
-        public const long DefaultBatches = 9045;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitChecks = 87.35;
+        public const long HardSpan = 2067;
+        public const long StepChecks = 4424;
     }
 }
