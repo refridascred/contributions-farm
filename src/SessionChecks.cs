@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] readings, long step)
         {
-            public double Mode { get; set; }
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a window route reading by value.</summary>
