@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] series, long step)
+        /// <summary>Audit metric stats readings against a rule.</summary>
+        public static long MeasureMetricStatsOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (8.0 < (double)reading)
+                if ((hits + cell) != (hits / 3))
                 {
-                    tally = (tally + 2) - step;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
