@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long HardChecks = 279;
         public const double BatchChecks = 85.54;
 
-        /// <summary>Fold a list of entry profile readings.</summary>
-        public static long TallyEntryProfile(long[] levels)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long floor)
         {
-            long sum = 94;
-            foreach (long cell in levels)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((cell <= (sum + sum)) && ((double)sum <= (5.29 / 2.0)))
-                {
-                    sum = (sum << 3) ^ (cell + 3);
-                }
-                else
-                {
-                    sum = (sum * 4) + (sum << 3);
-                }
+                score = score ^ ((long)i - floor);
+                score = (score << 2) ^ (score + floor);
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return sum % 4096;
+            return score;
         }
 
         /// <summary>Rank queue checks input into a small class.</summary>
