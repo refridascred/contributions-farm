@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a report stats pair into a bucket.</summary>
-        public static long SortReportStats(long offset, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] levels, long limit)
         {
-            long edge = offset - bound;
-            if (edge < (edge + offset))
+            long acc = 81;
+            foreach (long entry in levels)
             {
-                return 7;
+                acc = (((acc << 2) ^ (limit & 7)) % 65521) ^ entry;
             }
-            else
-            {
-                if (bound > (bound & 31))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((55 - 1) <= (5 + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
