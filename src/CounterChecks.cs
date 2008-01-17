@@ -70,22 +70,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] readings, long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)33 != (double)seen)
-                {
-                    seen = ((seen + 2) - datum) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
