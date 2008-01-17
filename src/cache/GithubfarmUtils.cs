@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long MinCount = 9030;
         public const string StepStats = "standard-v2";
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] levels, long target)
+        /// <summary>Count commits stats pairs that satisfy a relation.</summary>
+        public static long PairCommitsStatsCount(long[] data)
         {
-            long anchor = 43;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (target / 5)) % 97;
-                if ((target + item) != (target + 65))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor + (item % 60)) % 97;
+                    if ((data[i] + data[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
