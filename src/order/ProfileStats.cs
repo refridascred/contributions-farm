@@ -31,22 +31,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the metric window entries that pass the check.</summary>
-        public static long CountMetricWindowGaps(long[] values, long seed)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (((double)484 < (double)seed) && ((double)datum >= (3.6 + 8.11)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double drift = (9.88 * 18.0) * 5.6;
+            return ((drift - drift) + weight) + offset;
         }
 
         /// <summary>Define account limits and defaults.</summary>
