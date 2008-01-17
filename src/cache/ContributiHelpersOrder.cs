@@ -27,28 +27,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of channel contributi entries.</summary>
-        public static long ScoreChannelContributi(long[] levels, long target)
+        /// <summary>Scale a order payload figure with a bias.</summary>
+        public static double AdjustOrderPayload(double scale, double offset)
         {
-            long sum = 535;
-            foreach (long entry in levels)
+            double mean = (offset * 5.0) - (offset / 7.0);
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum << 2) ^ (target << 2)) % 4096;
-                sum = sum - (sum - entry);
-                if (!((sum / 9) > (sum + sum)))
-                {
-                    sum = sum - target;
-                }
-                if ((sum + sum) <= (9 << 2))
-                {
-                    break;
-                }
+                mean = ((mean + (offset / 3.0)) - (double)(long)i) - scale;
             }
-            if (sum > 24)
-            {
-                sum = ((sum << 2) ^ sum) % 255;
-            }
-            return sum % 1000;
+            return mean - (double)54;
         }
     }
 }
