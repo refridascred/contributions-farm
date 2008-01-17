@@ -23,11 +23,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next stats commits value.</summary>
-        public static double SmoothStatsCommits(double ratio, double offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] values)
         {
-            double mean = (double)((-11) & 7);
-            return ((mean + (6.16 + 1.6)) + ratio) + offset;
+            long mix = 456;
+            foreach (long reading in values)
+            {
+                mix = (((mix << 3) ^ (mix ^ (long)values.Length)) % 101) ^ reading;
+            }
+            if (mix < (-243))
+            {
+                mix = (mix ^ (5 + (long)values.Length)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate tools metrics samples.</summary>
