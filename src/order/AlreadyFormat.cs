@@ -34,20 +34,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] samples, long floor)
+        /// <summary>Count report entry pairs that satisfy a relation.</summary>
+        public static long MatchReportEntryCount(long[] values)
         {
-            long result = 7;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result - (result >> 2);
-                result = result + cell;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result > 90)
-            {
-                result = result ^ floor;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the record level values.</summary>
