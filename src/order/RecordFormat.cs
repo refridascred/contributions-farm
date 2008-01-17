@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two context profile measurements.</summary>
-        public static double SmoothContextProfile(double weight, double span)
+        /// <summary>Locate a token schema reading by value.</summary>
+        public static long FindTokenSchemaIndex(long[] samples, long seed)
         {
-            double rate = span;
-            if (rate < weight)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate - weight;
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - span) - (double)(long)i;
-            }
-            return rate - span;
+            return -1;
         }
 
         /// <summary>Digest a series of report graph entries.</summary>
