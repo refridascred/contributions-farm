@@ -34,23 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double bias, double span)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double drift = (double)((-59) ^ (-50));
-            if (drift >= (1.85 * 1.41))
-            {
-                drift = (drift + (double)97) + bias;
-            }
-            else
-            {
-                drift = drift + (span - drift);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (double)145) - (double)(long)i;
-            }
-            return drift - (span * 1.0);
+            Active,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the route class values.</summary>
