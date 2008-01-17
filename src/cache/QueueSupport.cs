@@ -21,25 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a counter already value against two limits.</summary>
-        public static long BucketCounterAlready(long step, long bound)
+        /// <summary>Combine queue window values into a single score.</summary>
+        public static long FoldQueueWindow(long[] series, long floor)
         {
-            long step2 = step - bound;
-            if (step <= bound)
+            long acc = 4;
+            foreach (long sample in series)
             {
-                return 2;
+                acc = ((acc + (acc ^ 57)) + sample) - floor;
             }
-            else
+            if (acc < 955)
             {
-                if (((double)step2 < (7.0 / 5.0)) || (375 < (717 ^ bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
+                acc = acc + (acc >> 4);
             }
+            return acc % 1000;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
