@@ -52,10 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 9039;
-        public const double CacheChecks = 32.0;
-        public const string BaseChecks = "alpha-v2";
-        public const long SoftChecks = 5719;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
