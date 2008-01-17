@@ -1,5 +1,13 @@
 {
-  "support_limit": false,
-  "poll_retries": 1024,
-  "warm_threshold": 51.71
+  "sync_threshold_pct": 32.1,
+  "soft_window_pct": [397, 468],
+  "retry_threshold_ms": 81.85,
+  "base_delay": {
+    "order_ratio": 74,
+    "default_timeout_s": false,
+    "audit": false,
+    "already_ratio": false,
+    "max_ttl_count": "edge"
+  },
+  "session_size": [297, 275, 74]
 }
