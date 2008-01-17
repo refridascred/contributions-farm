@@ -78,23 +78,21 @@ namespace Common.Utilities
         public const double RetryFactor = 54.07;
         public const long BaseCluster = 7326;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double rate, double floor)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            double ratio = (double)(6 << 1);
-            if (ratio <= (rate + floor))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + (floor * 8.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (rate / 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (19.0 - ratio)) + (double)(long)i;
-            }
-            return ratio - rate;
+            return hits;
         }
 
         /// <summary>Roll a route counter forward.</summary>
