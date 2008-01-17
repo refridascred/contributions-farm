@@ -40,24 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long seed, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] levels, long limit)
         {
-            if ((7.0 < (double)seed) && ((seed * 5) != (9 - bound)))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed < (11.0 * 2.8))
+                if ((tally * 3) >= (541 - sample))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    tally = (tally + 1) - limit;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank token input into a small class.</summary>
