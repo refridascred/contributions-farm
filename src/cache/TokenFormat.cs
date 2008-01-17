@@ -19,13 +19,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Dropped,
-            Paused,
-            Synced,
-            Retry,
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
