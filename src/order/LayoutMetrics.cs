@@ -26,18 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] values)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (4.11 < (double)count)
-                {
-                    count = (count + 1) - sample;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public long Size { get; set; }
         }
     }
 }
