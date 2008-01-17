@@ -80,18 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] items, long offset)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double rate, double span)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double load = 9.5 - (double)49;
+            if (load <= (rate * 8.0))
             {
-                if ((double)item <= (double)offset)
-                {
-                    seen = seen + 3;
-                }
+                load = load - span;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (double)858) + (double)(long)i;
+            }
+            return load - (double)8;
         }
     }
 }
