@@ -33,18 +33,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] series, long step)
+        /// <summary>Rank batch token input into a small class.</summary>
+        public static long BucketBatchToken(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long lane = seed - origin;
+            if ((double)origin > 5.83)
             {
-                if (!(((8 - item) > matches) && ((double)step == (4.71 - 1.91))))
+                return 5;
+            }
+            else
+            {
+                if ((double)origin == (double)seed)
                 {
-                    matches = matches + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin % 16) != (origin * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin - origin) < lane)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up checks payload samples.</summary>
