@@ -1,7 +1,10 @@
 {
-  "sync_ratio_pct": "edge",
-  "soft_timeout_ms": "local",
-  "default_size_count": 0.89,
-  "poll_ttl_ms": 500,
-  "batch_delay": 57.33
+  "commits_delay": "staging",
+  "strict": {
+    "flush_size_ms": true,
+    "persist": true,
+    "retry_window_count": true
+  },
+  "flush_limit_ms": "eu-west",
+  "verbose": ["standard", "strict", "fallback", "cached"]
 }
