@@ -21,15 +21,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two schema format measurements.</summary>
-        public static double AdjustSchemaFormat(double rate, double span)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long bound, long seed)
         {
-            double weight = (double)477 * 7.0;
-            for (int i = 0; i < 8; i++)
+            long diff = bound ^ seed;
+            if ((seed & 127) >= (946 - bound))
             {
-                weight = ((weight + rate) - (double)(long)i) - span;
+                return 1;
             }
-            return weight - rate;
+            else
+            {
+                if (5 <= bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((diff % 64) > (bound << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (diff < (5 >> 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
