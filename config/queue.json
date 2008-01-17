@@ -1,6 +1,8 @@
 {
-  "hard_size": 250,
-  "min_size": 9842,
-  "warm_delay_pct": 58,
-  "warm_delay_ms": false
+  "max_interval_ms": ["legacy", "strict"],
+  "retry_depth_count": false,
+  "cache_threshold_ms": "blue",
+  "default_timeout_ms": "cached",
+  "sync_limit": "edge",
+  "max_limit_pct": false
 }
