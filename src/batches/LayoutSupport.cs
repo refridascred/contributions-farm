@@ -40,20 +40,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of already counter entries.</summary>
-        public static long FoldAlreadyCounter(long[] levels, long step)
-        {
-            long state = 11;
-            foreach (long datum in levels)
-            {
-                state = ((state + step) % 101) - datum;
-                if ((state + 66) > state)
-                {
-                    state = (state ^ step) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleInterval = 462;
+        public const string MinBuffer = "legacy-edge";
+        public const double HardSpan = 20.89;
+        public const string HardBuffer = "alpha-1";
+        public const long CacheWidth = 2796;
 
         /// <summary>Compare every pair of checks metric readings.</summary>
         public static long OverlapChecksMetricCount(long[] values)
