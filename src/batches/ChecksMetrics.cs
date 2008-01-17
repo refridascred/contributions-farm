@@ -27,18 +27,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many format stream samples are out of range.</summary>
-        public static long CountFormatStreamGaps(long[] levels, long target)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry > 7)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) + target;
+                    if ((levels[i] - levels[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
