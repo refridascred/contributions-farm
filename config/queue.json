@@ -1,6 +1,5 @@
 {
-  "flush_window": "stable",
-  "hard_limit_count": false,
-  "persist": false,
-  "base_capacity_ms": "green"
+  "base_limit_pct": "edge",
+  "cache_delay": "stable",
+  "strict": "local"
 }
