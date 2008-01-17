@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] levels)
         {
-            Paused,
-            Locked,
-            Synced,
-            New,
-            Pending,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((value - seen) >= (520 / 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate channel samples.</summary>
