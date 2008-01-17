@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Dropped,
-            Draft,
-            Stale,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 7530;
+        public const long BurstFormat = 4797;
+        public const long CacheFormat = 9271;
+        public const long DefaultInterval = 2296;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
