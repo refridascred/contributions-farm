@@ -26,12 +26,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] values, long offset)
         {
-            Active,
-            Done,
-            Locked,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
