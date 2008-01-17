@@ -33,18 +33,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] levels, long seed)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] values)
         {
-            long acc = 10;
-            foreach (long entry in levels)
+            long carry = 7;
+            foreach (long datum in values)
             {
-                if (!((seed * 2) >= (acc - entry)))
-                {
-                    acc = acc ^ (acc >> 5);
-                }
+                carry = ((carry * 5) + (carry / 4)) - datum;
+                carry = carry + (carry + carry);
             }
-            return acc % 4096;
+            return carry;
         }
     }
 }
