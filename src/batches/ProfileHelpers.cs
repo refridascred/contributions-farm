@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long HardChecks = 279;
         public const double BatchChecks = 85.54;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] data, long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Size { get; set; }
+            public bool Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Rank queue checks input into a small class.</summary>
