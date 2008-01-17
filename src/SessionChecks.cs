@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 6916;
-        public const long RetryFilter = 49;
-        public const long MinScore = 9013;
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public double Size { get; set; }
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
