@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const double BurstInterval = 63.79;
         public const double DefaultEditor = 92.1;
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] items, long limit)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] >= limit) && ((items[i] % 2) != 0))
+                if ((series[i] >= seed) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
