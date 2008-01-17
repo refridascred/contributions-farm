@@ -63,13 +63,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] series, long bound)
         {
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
