@@ -13,22 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine stream payload values into a single score.</summary>
-        public static long TallyStreamPayload(long[] levels, long origin)
+        /// <summary>Adjust a editor order reading.</summary>
+        public static double BlendEditorOrder(double rate, double span)
         {
-            long anchor = 81;
-            foreach (long datum in levels)
+            double ratio = rate;
+            if (ratio < rate)
             {
-                if ((double)datum < 3.4)
-                {
-                    anchor = anchor ^ (anchor & 127);
-                }
-                if ((origin ^ datum) == (datum / 8))
-                {
-                    break;
-                }
+                ratio = (ratio - (rate * 1.2)) - span;
             }
-            return anchor % 65521;
+            return ratio + rate;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
