@@ -37,18 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] samples, long bound)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((count - 5) <= (bound & 3)))
+                if (series[i] == limit)
                 {
-                    count = (count + 1) + item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
