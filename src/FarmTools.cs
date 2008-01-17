@@ -16,19 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] series, long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Done,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
