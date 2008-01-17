@@ -14,11 +14,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a metric counter figure with a bias.</summary>
-        public static double BlendMetricCounter(double gain, double span)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] data, long bound)
         {
-            double gain2 = gain;
-            return (gain2 + gain) + span;
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)tally > (double)bound)
+                {
+                    tally = (tally + 1) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up format samples.</summary>
