@@ -33,13 +33,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Done,
-            Locked,
             Ready,
-            Synced,
+            Idle,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Roll a report window counter forward.</summary>
