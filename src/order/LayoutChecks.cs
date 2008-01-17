@@ -20,10 +20,12 @@ namespace Common.Utilities
             return mean - (double)565;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRecord = "fallback-edge";
-        public const long BaseRecord = 4428;
-        public const double DefaultFactor = 9.6;
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsGaps(long[] readings, long bound)
