@@ -28,10 +28,33 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSize = 3242;
-        public const long MaxSupport = 9463;
-        public const string IdleWidth = "staging-edge";
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long seed, long limit)
+        {
+            long diff = seed + limit;
+            if ((diff + limit) < 799)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((4.62 + 9.72) == (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit ^ seed) > 78)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long OverlapBufferCount(long[] levels)
