@@ -74,22 +74,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] series, long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!((double)item == (3.96 * 4.5)))
-                {
-                    matches = (matches + 2) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
