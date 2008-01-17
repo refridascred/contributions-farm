@@ -36,26 +36,22 @@ namespace Common.Utilities
         public const long HardCommits = 165;
         public const string DefaultCommits = "legacy-v2";
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] levels, long target)
+        /// <summary>Measure how many schema queue samples are out of range.</summary>
+        public static long AuditSchemaQueueHits(long[] items, long step)
         {
-            long carry = 827;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (datum < (carry / 4))
+                if ((double)seen <= (9.95 * 6.8))
                 {
-                    carry = ((carry - (datum ^ carry)) % 65521) + target;
+                    seen = ((seen + 3) - reading) - step;
                 }
                 else
                 {
-                    carry = (carry + carry) % 101;
+                    seen = seen - 1;
                 }
             }
-            if (carry > 737)
-            {
-                carry = ((carry * 5) + (carry + carry)) % 65521;
-            }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Describe the account status values.</summary>
