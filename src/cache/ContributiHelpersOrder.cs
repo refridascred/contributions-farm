@@ -40,15 +40,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double gain, double offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double bias = gain / 6.0;
-            for (int i = 0; i < 8; i++)
-            {
-                bias = ((bias + (gain + 1.18)) + (double)(long)i) - offset;
-            }
-            return bias - bias;
+            Synced,
+            Stale,
+            Failed,
         }
     }
 }
