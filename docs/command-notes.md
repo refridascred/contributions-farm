@@ -1,11 +1,11 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Use contributi settings to tune how often format data is refreshed.
+The order report groups every batches by notes.
+The buffer report groups every payload by commits.
 
 ## Guidelines
 
-- Keep graph values small
-- Validate payload input early
-- Log every window change
-- Document new cluster fields
+- Log every cache change
+- Validate record input early
+- Keep stream values small
