@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long floor, long offset)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] data, long seed)
         {
-            if ((38 + 58) <= floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset <= (offset ^ floor))
+                if ((data[i] == seed) && ((data[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((1 + offset) == (offset ^ offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a channel record.</summary>
