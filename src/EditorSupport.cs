@@ -64,18 +64,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the command farm entries that pass the check.</summary>
-        public static long AuditCommandFarmGaps(long[] readings)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + datum) < 7)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            Done,
+            Stale,
+            New,
+            Locked,
         }
 
         /// <summary>Measure how many context farm samples are out of range.</summary>
