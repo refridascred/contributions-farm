@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Closed,
-            Idle,
-            Failed,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "primary";
+        public const long SoftScore = 431;
+        public const long HardCache = 7164;
+        public const long IdleCache = 917;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] data)
