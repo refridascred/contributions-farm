@@ -26,13 +26,17 @@ namespace Common.Utilities
         public const string DefaultWidth = "primary-v2";
         public const long CacheCommand = 7819;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] samples, long floor)
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
