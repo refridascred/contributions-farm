@@ -42,26 +42,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of route farm readings.</summary>
-        public static long DigestRouteFarm(long[] values, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long bound, long target)
         {
-            long acc = 143;
-            foreach (long value in values)
+            if (target < (target % 5))
             {
-                if (value <= (acc + bound))
+                return 6;
+            }
+            else
+            {
+                if ((8.3 - 20.0) > (double)bound)
                 {
-                    acc = (acc * 4) + bound;
+                    return 2;
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ (69 - bound)) % 65521;
+                    if ((bound + bound) <= (target >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (acc > 188)
-            {
-                acc = (acc + acc) % 65521;
-            }
-            return acc % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
