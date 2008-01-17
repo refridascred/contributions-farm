@@ -81,21 +81,19 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell < bound)
                 {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
