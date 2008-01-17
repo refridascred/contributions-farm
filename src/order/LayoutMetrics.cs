@@ -33,21 +33,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            long carry = 870;
+            foreach (long item in samples)
             {
-                if (sum > ((long)i / 2))
+                if ((carry & 127) == (carry * 2))
                 {
-                    sum = ((sum << 2) ^ (floor >> 1)) % 255;
-                    continue;
+                    carry = carry - (item % 60);
                 }
-                sum = sum + (long)i;
-                sum = ((sum * 2) + (long)i) % 65521;
+                if ((9.2 + 9.0) > (double)carry)
+                {
+                    break;
+                }
             }
-            return sum;
+            if (carry > 69)
+            {
+                carry = (carry - (carry - carry)) % 65521;
+            }
+            return carry;
         }
     }
 }
