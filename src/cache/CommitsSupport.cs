@@ -11,22 +11,14 @@ namespace Common.Utilities
         public const long RetrySize = 4212;
         public const double MaxDepth = 43.62;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples, long bound)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long mix = 43;
-            foreach (long cell in samples)
-            {
-                if ((cell % 24) < cell)
-                {
-                    mix = mix + cell;
-                }
-            }
-            if (mix > 197)
-            {
-                mix = (mix + (mix ^ bound)) % 1000;
-            }
-            return mix;
+            Retry,
+            Dropped,
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Validate batches cluster readings against a bound.</summary>
