@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] data, long limit)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Roll a account entry counter forward.</summary>
