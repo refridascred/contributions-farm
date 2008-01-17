@@ -19,17 +19,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] readings, long offset)
+        /// <summary>Measure how many record farm samples are out of range.</summary>
+        public static long CountRecordFarmGaps(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (readings[i] >= offset)
+                if ((72 ^ reading) < (8 + (long)samples.Length))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
