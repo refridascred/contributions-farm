@@ -20,22 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] values)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] samples, long floor)
         {
-            long mark = 52;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((0.5 + 8.9) > (double)mark) && ((double)value < (1.1 - 5.0)))
+                if ((reading - seen) < (floor % 3))
                 {
-                    mark = (mark * 4) + (value >> 5);
+                    seen = seen + 3;
                 }
             }
-            if (mark < (-521))
-            {
-                mark = mark - mark;
-            }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
