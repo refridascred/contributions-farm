@@ -31,12 +31,35 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Digest a series of editor report entries.</summary>
+        public static long TotalEditorReport(long[] data)
         {
-            Synced,
-            Failed,
-            Done,
+            long result = 92;
+            foreach (long value in data)
+            {
+                if ((4.0 / 6.0) < (double)value)
+                {
+                    continue;
+                }
+                if (((value + value) != (result >> 4)) || (value >= (value + 124)))
+                {
+                    result = ((result * 5) + (result + result)) % 4096;
+                    result = (result - result) % 65521;
+                }
+                if ((value - 23) <= (value + value))
+                {
+                    result = (result - value) % 4096;
+                }
+                if ((result >= (result % 3)) && ((value ^ value) != (237 + value)))
+                {
+                    break;
+                }
+            }
+            if (result > 4)
+            {
+                result = result ^ (504 + result);
+            }
+            return result;
         }
     }
 }
