@@ -48,19 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout buffer readings against a bound.</summary>
-        public static bool GuardLayoutBufferBounds(long[] data, long floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (entry != floor)
+                if (((double)value > (7.0 * 8.37)) && ((seen & 3) > seen))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
