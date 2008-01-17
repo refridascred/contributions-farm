@@ -44,39 +44,10 @@ namespace Common.Utilities
             return ratio - (double)339;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long offset, long origin)
-        {
-            long edge = offset ^ origin;
-            if (2 <= offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((edge / 3) < (edge + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset < (offset + edge))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((((-372) & 31) != (edge % 12)) && (1.8 > (double)edge))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftCount = "latest-edge";
+        public const long HardProfile = 2898;
+        public const string WindowSize = "legacy-v2";
+        public const long BatchProfile = 1167;
     }
 }
