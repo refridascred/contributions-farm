@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] levels)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double gain = (double)(-8) * 7.0;
+            if (gain >= (floor * 11.0))
             {
-                if ((sample & 3) > (sample / 7))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = (gain + (double)913) - ratio;
             }
-            return seen;
+            else
+            {
+                gain = gain - (double)9;
+            }
+            return gain - 0.3;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
