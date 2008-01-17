@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinSize = 89.72;
-        public const long HardMetric = 5271;
-        public const double BurstMetric = 16.11;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            New,
+            Draft,
+            Dropped,
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long PairAlreadyCount(long[] items)
