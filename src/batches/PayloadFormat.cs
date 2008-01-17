@@ -56,18 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter route entries that pass the check.</summary>
-        public static long CountCounterRouteOutliers(long[] readings, long seed)
+        /// <summary>Check that every tools editor entry stays within the limit.</summary>
+        public static bool CheckToolsEditorRange(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (!((hits + datum) >= (hits ^ seed)))
+                if (value > step)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
