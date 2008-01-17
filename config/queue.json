@@ -1,14 +1,6 @@
 {
-  "support_retries": false,
-  "batch_retries_ms": {
-    "readonly": ["latest", "stable", "primary", "local"],
-    "audit": 86,
-    "session_retries": 3827,
-    "default_timeout_ms": false,
-    "githubfarm_threshold": "local",
-    "profile_retries": ["strict", "standard"]
-  },
-  "compress": 9837,
-  "warm_timeout_s": "open",
-  "warm_window_s": [208, 227, 409, 346]
+  "batch_depth_count": 76,
+  "cache_threshold": "local",
+  "max_size_count": "green",
+  "soft_window": false
 }
