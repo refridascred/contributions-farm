@@ -27,18 +27,34 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many queue buffer samples are out of range.</summary>
-        public static long AuditQueueBufferGaps(long[] samples, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long acc = 5;
+            foreach (long reading in readings)
             {
-                if ((67 ^ value) >= matches)
+                if ((floor - acc) <= (acc * 2))
                 {
-                    matches = (matches + 3) - limit;
+                    acc = acc ^ (acc + 95);
+                }
+                else
+                {
+                    acc = ((acc * 2) + floor) % 65521;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = ((acc * 4) + (floor - reading)) ^ (long)i;
+                }
+                if (((acc & 1) > (2 + acc)) || ((78 - floor) <= acc))
+                {
+                    acc = (acc ^ (acc & 15)) % 101;
                 }
             }
-            return matches;
+            if (acc < 92)
+            {
+                acc = (acc ^ floor) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Rank report input into a small class.</summary>
