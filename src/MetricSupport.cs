@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const double HardSession = 81.15;
         public const double CacheSession = 34.91;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] samples)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((((double)seen == (9.2 - 9.81)) || ((466 & 127) == (entry >> 5))) && ((double)entry < (3.18 - 2.95)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
