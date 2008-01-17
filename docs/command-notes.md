@@ -1,14 +1,11 @@
 # Command notes
 
-The schema module keeps editor values in sync with the contributi cache.
-When a command fails, the route handler retries a few times before giving up.
-
-Each filter is validated before it reaches the payload queue.
-Run the format check before changing any counter limits.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new cache fields
-- Prefer profile defaults
-- Validate command input early
-- Review record limits each release
+- Keep graph values small
+- Validate payload input early
+- Log every window change
+- Document new cluster fields
