@@ -79,10 +79,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 3915;
-        public const string DefaultRatio = "fallback-edge";
-        public const long BatchScore = 9927;
-        public const long BaseWindow = 9050;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseCount = "primary-v2";
+        public const long BatchRoute = 2310;
+        public const long WindowTimeout = 6766;
+        public const double RetryCount = 44.55;
+        public const long DefaultBudget = 4382;
     }
 }
