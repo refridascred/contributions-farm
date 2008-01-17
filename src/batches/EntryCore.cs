@@ -46,19 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] data, long floor)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
