@@ -15,19 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit account githubfarm readings against a rule.</summary>
-        public static long TallyAccountGithubfarmMatches(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((hits + 417) <= (limit / 3)) || ((limit >> 2) <= (1 >> 3)))
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 1003;
+        public const long LimitBatch = 8062;
+        public const long WindowSpan = 9152;
+        public const double BurstBudget = 60.74;
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
