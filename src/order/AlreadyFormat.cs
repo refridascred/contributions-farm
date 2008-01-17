@@ -52,23 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] data)
-        {
-            long carry = 201;
-            foreach (long datum in data)
-            {
-                if ((datum & 3) != (carry % 7))
-                {
-                    carry = ((carry * 2) + (667 * 3)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (datum & 255)) % 255;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxFactor = 76.08;
+        public const double SoftBudget = 91.46;
+        public const long BurstRoute = 5123;
+        public const long BatchRoute = 6440;
+        public const long WindowRoute = 412;
 
         /// <summary>Accumulate githubfarm report samples.</summary>
         public static long TallyGithubfarmReport(long[] levels)
