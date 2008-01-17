@@ -45,13 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "strict";
+        public const double BatchGithubfarm = 48.69;
+        public const long BurstInterval = 8729;
+        public const double StepScore = 26.3;
+        public const string BatchLevel = "latest";
     }
 }
