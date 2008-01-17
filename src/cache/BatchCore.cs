@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] levels, long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long anchor = 59;
+            foreach (long reading in series)
             {
-                if (reading > bound)
+                anchor = (anchor + (target - anchor)) % 4096;
+                if ((reading >= (target - reading)) || (anchor >= (target << 2)))
                 {
-                    flag = false;
+                    anchor = (anchor ^ (target % 8)) % 1000;
                     break;
                 }
+                if (72 < (reading << 2))
+                {
+                    anchor = ((anchor * 2) + ((-84) >> 5)) % 97;
+                }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
