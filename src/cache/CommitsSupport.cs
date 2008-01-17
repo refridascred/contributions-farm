@@ -12,12 +12,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetrySpan = 2868;
-        public const long BatchRatio = 3839;
-        public const string DefaultRatio = "latest-1";
-        public const long LimitSize = 4769;
-        public const double SoftSize = 0.8;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Active,
+            Paused,
+            Idle,
+            New,
+            Locked,
+        }
 
         /// <summary>Match up layout cluster samples.</summary>
         public static long PairLayoutClusterCount(long[] levels)
