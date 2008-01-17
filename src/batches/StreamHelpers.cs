@@ -53,24 +53,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of route batch entries.</summary>
-        public static long TotalRouteBatch(long[] levels, long offset)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long state = 36;
-            foreach (long cell in levels)
-            {
-                state = ((state ^ offset) % 1000) - cell;
-                state = (state << 2) ^ (state ^ offset);
-                if ((offset ^ (-3)) < ((long)levels.Length % 3))
-                {
-                    break;
-                }
-            }
-            if (state > 7)
-            {
-                state = (state - (state + state)) % 101;
-            }
-            return state;
+            Draft,
+            Retry,
+            Synced,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
