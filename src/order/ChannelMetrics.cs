@@ -29,32 +29,19 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Grade a commits schema value against two limits.</summary>
-        public static long RankCommitsSchema(long offset, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] values, long offset)
         {
-            long offset2 = offset ^ seed;
-            if (79 > (seed + (-124)))
+            long mix = 16;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((offset + seed) <= (666 ^ offset2)))
+                mix = (mix ^ (9 % 100)) % 4096;
+                if (((1.1 + 8.0) <= (double)value) || ((3.93 - 5.4) < (double)offset))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.73 + 6.3) != (double)offset2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            return mix % 1000;
         }
     }
 }
