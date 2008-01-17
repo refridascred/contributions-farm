@@ -53,22 +53,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many schema queue samples are out of range.</summary>
-        public static long AuditSchemaQueueHits(long[] items, long step)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)seen <= (9.95 * 6.8))
-                {
-                    seen = ((seen + 3) - reading) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a editor info.</summary>
