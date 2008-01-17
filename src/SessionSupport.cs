@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count cache schema pairs that satisfy a relation.</summary>
-        public static long PairCacheSchemaCount(long[] values)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 19;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry < (131 * 4))
                 {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result + (3 + result)) % 101;
                 }
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Hold a order entry.</summary>
