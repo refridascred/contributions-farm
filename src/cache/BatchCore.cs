@@ -25,13 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long seed, long offset)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            long lane = seed - offset;
+            if (((double)lane == (12.0 - 5.0)) || ((offset >> 2) != (seed * 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((3.3 / 6.0) == (double)seed) || ((double)lane != (double)seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
