@@ -34,13 +34,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] items, long limit)
         {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
