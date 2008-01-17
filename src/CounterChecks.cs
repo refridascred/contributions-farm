@@ -39,13 +39,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] readings)
         {
-            Done,
-            Idle,
-            Failed,
-            Dropped,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((731 ^ tally) < tally)
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
