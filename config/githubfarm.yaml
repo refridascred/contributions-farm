@@ -1,8 +1,9 @@
 # githubfarm settings
-max_ratio_pct: standard
-hard_ttl:
-  - 275
-  - 456
-  - 228
-  - 222
-cache_threshold: 5602
+max_depth: false
+window_threshold:
+  - legacy
+  - open
+graph_size: edge
+flush_threshold_count:
+  - 410
+  - 452
