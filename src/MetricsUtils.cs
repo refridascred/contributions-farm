@@ -45,15 +45,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stream token counter forward.</summary>
-        public static long DeriveStreamToken(long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long target, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
+            if (((63 + 2) <= (step & 31)) || ((3.0 * 12.0) >= (double)target))
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if (!(step < (target - target)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target >= (6.5 / 9.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
