@@ -23,30 +23,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] values, long target)
+        /// <summary>Audit buffer already readings against a rule.</summary>
+        public static long TallyBufferAlreadyHits(long[] values, long target)
         {
-            long result = 372;
+            long count = 0;
             foreach (long reading in values)
             {
-                for (int i = 0; i < 11; i++)
+                if (0.3 < 7.0)
                 {
-                    result = (((result - 85) % 255) + (long)i) + target;
-                }
-                if ((91 + 64) >= (reading + reading))
-                {
-                    result = ((result << 3) ^ result) % 97;
+                    count = ((count + 1) - reading) - target;
                 }
                 else
                 {
-                    result = (result + (reading - reading)) % 1000;
+                    count = count - 1;
                 }
             }
-            if (result > 8)
-            {
-                result = (result - result) % 4096;
-            }
-            return result % 97;
+            return count;
         }
     }
 }
