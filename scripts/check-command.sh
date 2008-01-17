@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=355
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-stable}"
+mode="${1:-legacy}"
 case "${mode}" in
-    standard)
+    primary)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest open; do
+for item in standard open primary; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=226
+log "limit is ${COMMAND_LIMIT}"
