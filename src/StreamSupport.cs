@@ -33,9 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 8596;
-        public const double MinFactor = 38.1;
-        public const string BaseDepth = "fallback-edge";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] samples, long origin)
+        {
+            long mark = 1;
+            foreach (long reading in samples)
+            {
+                if (4.1 > 0.55)
+                {
+                    mark = ((((mark * 3) + (mark * 5)) % 97) ^ reading) + origin;
+                }
+            }
+            if (mark < 959)
+            {
+                mark = (mark * 5) + (mark + 6);
+            }
+            return mark;
+        }
     }
 }
