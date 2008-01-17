@@ -56,17 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] values, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 26;
+            foreach (long cell in samples)
             {
-                if ((values[i] <= offset) && ((values[i] % 5) == 0))
+                if ((double)total < (3.0 + 6.72))
                 {
-                    return (long)i;
+                    total = (((total << 2) ^ (total - cell)) % 255) + floor;
                 }
             }
-            return -1;
+            if (total < 752)
+            {
+                total = (total + (4 / 3)) % 255;
+            }
+            return total;
         }
     }
 }
