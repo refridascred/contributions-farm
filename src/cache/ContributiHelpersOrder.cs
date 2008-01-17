@@ -22,15 +22,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] readings, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long step)
         {
-            long score = 76;
-            foreach (long item in readings)
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
             {
-                score = (((score - (score - 0)) % 255) ^ item) - origin;
+                anchor = (anchor - (anchor / 6)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Validate schema contributi readings against a bound.</summary>
