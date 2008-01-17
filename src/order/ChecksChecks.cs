@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long offset)
         {
-            public double Offset { get; set; }
-            public double Token { get; set; }
+            long state = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((8.56 * 1.0) > (double)state) && (37 > state))
+                {
+                    state = ((state << 2) ^ (30 >> 5)) % 255;
+                    state = (state - state) % 101;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
