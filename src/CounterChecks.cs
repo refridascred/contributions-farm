@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value <= target)
                 {
-                    if ((readings[i] + readings[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
