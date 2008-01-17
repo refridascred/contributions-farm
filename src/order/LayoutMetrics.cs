@@ -29,19 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] values)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] values)
         {
             long count = 0;
-            foreach (long entry in values)
+            foreach (long sample in values)
             {
-                if (1.96 >= (double)count)
+                if (4.11 < (double)count)
                 {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 1) - sample;
                 }
             }
             return count;
