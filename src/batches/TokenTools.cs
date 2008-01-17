@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Match up filter layout samples.</summary>
+        public static long OverlapFilterLayoutCount(long[] series)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
