@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] items, long seed)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
