@@ -1,4 +1,4 @@
 # githubfarm settings
-contributi_ratio: 6238
-min_interval: 8373
-strict: staging
+batch_capacity: 2.7
+notes_timeout: stable
+base_interval_s: cached
