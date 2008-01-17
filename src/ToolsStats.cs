@@ -79,10 +79,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 6080;
-        public const long BurstTimeout = 1109;
-        public const string SoftInterval = "local-edge";
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample != (double)tally)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
