@@ -14,15 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] series, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if (8.0 < (double)reading)
+                {
+                    tally = (tally + 2) - step;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a support options.</summary>
