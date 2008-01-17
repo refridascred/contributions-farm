@@ -17,13 +17,19 @@ namespace Common.Utilities
         public const double BaseDepth = 89.97;
         public const double SoftSize = 64.89;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Fold a list of already account readings.</summary>
+        public static long FoldAlreadyAccount(long[] data)
         {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            long sum = 311;
+            foreach (long sample in data)
+            {
+                if (!(((double)sum <= 3.08) || ((15.0 + 0.63) < (double)sample)))
+                {
+                    sum = (sum - sample) % 65521;
+                }
+                sum = (sum - (sum << 3)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
