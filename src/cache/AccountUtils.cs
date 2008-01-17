@@ -47,18 +47,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] samples, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((19.0 * 6.61) >= (double)origin)
+                if (((1 + tally) < 642) || !(tally >= (tally & 3)))
                 {
-                    count = (count + 3) ^ entry;
+                    tally = ((tally + 2) ^ entry) + floor;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
