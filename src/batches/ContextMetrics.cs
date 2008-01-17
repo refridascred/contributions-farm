@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two channel contributi measurements.</summary>
-        public static double SmoothChannelContributi(double gain, double floor)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            double mean = (double)(41 << 2);
-            if (mean > (gain + 3.6))
-            {
-                mean = mean + (double)471;
-            }
-            else
-            {
-                mean = mean + (mean / 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (mean / 7.0)) + (double)(long)i;
-            }
-            return mean - (floor / 5.0);
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
