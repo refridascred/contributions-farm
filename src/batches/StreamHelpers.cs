@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!!((entry - entry) != (entry + seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 5108;
+        public const long MaxBuffer = 5499;
+        public const long WindowBuffer = 7293;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double SmoothEntry(double bias, double floor)
