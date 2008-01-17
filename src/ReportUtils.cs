@@ -26,14 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] items, long offset)
         {
-            Paused,
-            Retry,
-            New,
-            Pending,
-            Synced,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (hits <= 878)
+                {
+                    hits = ((hits + 2) + cell) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
