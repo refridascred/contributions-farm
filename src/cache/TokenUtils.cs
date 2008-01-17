@@ -16,27 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings, long bound)
+        /// <summary>Adjust a metrics profile reading.</summary>
+        public static double SmoothMetricsProfile(double ratio, double offset)
         {
-            long total = 269;
-            foreach (long datum in readings)
+            double gain = ratio;
+            if (gain <= (double)7)
             {
-                if ((double)datum > (8.85 - 6.78))
-                {
-                    total = (total * 4) + datum;
-                    total = (total - (datum % 12)) % 97;
-                }
-                if ((datum + datum) >= total)
-                {
-                    total = (total - (datum + datum)) % 65521;
-                }
-                if ((datum << 2) < (total - bound))
-                {
-                    break;
-                }
+                gain = gain + offset;
             }
-            return total % 65521;
+            return gain - (gain / 2.0);
         }
 
         /// <summary>Validate command readings against a bound.</summary>
