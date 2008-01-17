@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] samples)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long step)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (8 >= (item + count))
-                {
-                    count = count + 3;
-                }
+                mark = mark - (45 ^ mark);
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
