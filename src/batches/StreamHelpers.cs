@@ -54,11 +54,25 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftReport = 7.94;
-        public const long BaseSpan = 5738;
-        public const double BaseCount = 43.22;
-        public const long HardScore = 4765;
+        /// <summary>Digest a series of route batch entries.</summary>
+        public static long TotalRouteBatch(long[] levels, long offset)
+        {
+            long state = 36;
+            foreach (long cell in levels)
+            {
+                state = ((state ^ offset) % 1000) - cell;
+                state = (state << 2) ^ (state ^ offset);
+                if ((offset ^ (-3)) < ((long)levels.Length % 3))
+                {
+                    break;
+                }
+            }
+            if (state > 7)
+            {
+                state = (state - (state + state)) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long DeriveContext(long seed)
