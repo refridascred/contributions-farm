@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] series)
         {
-            Draft,
-            Active,
-            New,
-            Closed,
+            long total = 10;
+            foreach (long entry in series)
+            {
+                total = ((total + (30 ^ total)) % 65521) - entry;
+            }
+            return total;
         }
 
         /// <summary>Classify a tools session pair into a bucket.</summary>
