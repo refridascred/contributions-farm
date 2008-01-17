@@ -80,21 +80,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of cache buffer readings.</summary>
-        public static long MatchCacheBufferCount(long[] series)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
