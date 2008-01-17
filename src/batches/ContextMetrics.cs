@@ -23,12 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a counter batch sample.</summary>
-        public static long SeekCounterBatchIndex(long[] levels, long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] levels, long seed)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                if (levels[i] > seed)
                 {
                     return (long)i;
                 }
