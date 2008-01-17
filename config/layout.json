@@ -1,7 +1,12 @@
 {
-  "base_limit_pct": 1024,
-  "verbose": 30.85,
-  "strict": "legacy",
-  "readonly": 54,
-  "burst_delay": ["strict", "legacy"]
+  "default_threshold_ms": 60.72,
+  "verbose": true,
+  "enabled": 250,
+  "cache_threshold_count": "edge",
+  "persist": {
+    "min_ratio": "standard",
+    "batch_depth": 38.38,
+    "hard_ttl": 44.77,
+    "enabled": 1024
+  }
 }
