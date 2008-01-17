@@ -42,9 +42,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftLevel = "alpha-v2";
-        public const double SoftInterval = 33.79;
-        public const string HardFarm = "stable-edge";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] items, long bound)
+        {
+            long acc = -608;
+            foreach (long value in items)
+            {
+                acc = acc - bound;
+                if (value <= acc)
+                {
+                    acc = ((acc << 3) ^ (acc + value)) % 101;
+                }
+            }
+            return acc % 97;
+        }
     }
 }
