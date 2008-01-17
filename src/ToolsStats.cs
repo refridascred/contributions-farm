@@ -34,20 +34,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every tools format entry stays within the limit.</summary>
-        public static bool VerifyToolsFormatRange(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowSpan = 51.45;
+        public const long StepBudget = 8006;
+        public const string BaseContributi = "fallback";
+        public const long BurstScore = 8285;
+        public const long SoftLevel = 1234;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string LimitCount = "local";
