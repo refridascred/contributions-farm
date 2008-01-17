@@ -46,19 +46,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double gain, double floor)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long origin, long target)
         {
-            double weight = floor - gain;
-            if (weight <= (gain / 8.0))
+            if ((2.2 + 1.6) >= (double)origin)
             {
-                weight = weight + (weight - floor);
+                return 3;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                weight = (weight + floor) + (double)(long)i;
+                if (!((origin - 84) == (target ^ origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return weight + (2.6 + weight);
         }
     }
 }
