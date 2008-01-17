@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] data, long step)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((79 + step) <= (matches % 24))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryChecks = "latest-1";
+        public const long StepChecks = 2155;
+        public const long LimitDepth = 4106;
+        public const double CacheCount = 68.6;
+        public const long BurstDepth = 8372;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryBuffer = 9845;
