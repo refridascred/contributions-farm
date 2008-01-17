@@ -33,21 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Accumulate batches cluster samples.</summary>
+        public static long FoldBatchesCluster(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 4;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (anchor <= (449 % 3))
                 {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                anchor = ((anchor + floor) % 101) - sample;
             }
-            return tally;
+            return anchor % 1000;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
