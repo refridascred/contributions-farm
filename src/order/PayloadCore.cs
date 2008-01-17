@@ -51,18 +51,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the batches format entries that pass the check.</summary>
-        public static long MeasureBatchesFormatOutliers(long[] readings, long origin)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (((origin <= cell) && (183 > (tally & 127))) && (origin < cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinScore = 5145;
+        public const double StepSize = 89.24;
+        public const double StepSpan = 45.04;
+        public const double LimitOrder = 14.88;
     }
 }
