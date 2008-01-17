@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            Dropped,
+            Locked,
+            Active,
         }
 
         /// <summary>Define order limits and defaults.</summary>
