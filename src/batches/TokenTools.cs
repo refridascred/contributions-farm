@@ -12,15 +12,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] data)
         {
-            long carry = 11;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in data)
             {
-                carry = (carry + (carry - entry)) % 65521;
+                if ((7.2 - 3.78) < (double)item)
+                {
+                    hits = hits + 2;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Fold a list of context readings.</summary>
