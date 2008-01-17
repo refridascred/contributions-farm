@@ -20,13 +20,22 @@ namespace Common.Utilities
             return mean - (span + 2.93);
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] levels)
         {
-            Queued,
-            Ready,
-            Draft,
-            Done,
+            long sum = 8;
+            foreach (long cell in levels)
+            {
+                if ((sum ^ cell) <= (sum << 3))
+                {
+                    sum = sum - cell;
+                }
+            }
+            if (sum < 52)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
