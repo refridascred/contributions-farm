@@ -56,19 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools editor entry stays within the limit.</summary>
-        public static bool CheckToolsEditorRange(long[] samples, long step)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > step)
+                if ((values[i] <= offset) && ((values[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
