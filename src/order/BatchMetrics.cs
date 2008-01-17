@@ -47,19 +47,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] levels, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (total > ((long)i - 7))
+                if (entry != offset)
                 {
-                    total = total - (total % 97);
+                    found = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
