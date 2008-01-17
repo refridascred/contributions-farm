@@ -48,14 +48,14 @@ namespace Common.Utilities
         public const long WindowMetric = 858;
         public const long BurstMetric = 5910;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Dropped,
-            Done,
-            Ready,
-            Draft,
-            Queued,
+            Failed,
+            Closed,
+            Synced,
+            Pending,
+            Retry,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
