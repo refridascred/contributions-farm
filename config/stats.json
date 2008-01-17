@@ -1,7 +1,20 @@
 {
-  "enabled": "open",
-  "base_capacity_ms": ["open", "edge", "eu-west", "strict"],
-  "max_delay_ms": ["eu-west", "primary", "stable", "green"],
-  "order_interval": "primary",
-  "cache_delay_pct": "edge"
+  "persist": 250,
+  "dry_run": {
+    "poll_timeout_s": false,
+    "poll_limit": {
+      "compress": 2180,
+      "readonly": "fallback",
+      "cache_depth": 100,
+      "stats_interval": "cached"
+    },
+    "retry_depth_ms": {
+      "cache_depth": [496, 147],
+      "default_limit": false,
+      "profile_depth": false
+    }
+  },
+  "idle_delay_pct": 60,
+  "default_limit_s": 42,
+  "context_delay": 1548
 }
