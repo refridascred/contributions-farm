@@ -33,10 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 7469;
-        public const long SoftDepth = 4072;
-        public const long DefaultEditor = 2284;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum > 6.1)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long DefaultFormat = 9867;
