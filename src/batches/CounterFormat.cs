@@ -41,11 +41,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public string Total { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 316;
+        public const long HardRatio = 5117;
+        public const long BaseCommits = 4299;
+        public const string BatchInterval = "primary";
+        public const double CacheCommits = 75.62;
     }
 }
