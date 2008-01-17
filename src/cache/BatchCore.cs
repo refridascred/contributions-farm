@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank githubfarm contributi input into a small class.</summary>
-        public static long SortGithubfarmContributi(long limit, long limit2)
+        /// <summary>Adjust a checks entry reading.</summary>
+        public static double SmoothChecksEntry(double ratio, double floor)
         {
-            long span = limit - limit2;
-            if (((span - span) != (span % 8)) && (227 < limit))
+            double load = floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
+                load = (load + (ratio * 4.64)) + (double)(long)i;
             }
-            else
-            {
-                if ((limit2 * 3) <= (span / 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(9.28 > (double)limit2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((5.72 / 3.0) <= (double)limit2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return load - ratio;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
