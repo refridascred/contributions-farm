@@ -1,5 +1,8 @@
 # githubfarm settings
-hard_ratio_s: true
-githubfarm_retries: open
-enabled: 17
-cache_size_s: 23.54
+max_ratio_pct: standard
+hard_ttl:
+  - 275
+  - 456
+  - 228
+  - 222
+cache_threshold: 5602
