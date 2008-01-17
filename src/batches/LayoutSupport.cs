@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] levels, long step)
         {
-            Paused,
-            Closed,
-            Failed,
-            Stale,
-            Synced,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((double)step > (double)0) || (((double)step == (double)count) || (entry >= (entry * 5))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of farm route readings.</summary>
