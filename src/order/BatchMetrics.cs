@@ -47,32 +47,10 @@ namespace Common.Utilities
         public const long WindowBuffer = 2801;
         public const long WindowCount = 139;
 
-        /// <summary>Rank checks batch input into a small class.</summary>
-        public static long ClassifyChecksBatch(long offset, long origin)
-        {
-            if (((4.92 - 4.2) > (double)origin) || ((offset >> 5) <= (origin % 64)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset >= (6.0 - 6.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(origin >= (25 / 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 5771;
+        public const long RetrySize = 3374;
+        public const string DefaultSize = "open-edge";
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
