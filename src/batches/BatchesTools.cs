@@ -27,12 +27,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            Active,
-            Failed,
-            Synced,
+            long total = 9;
+            foreach (long sample in samples)
+            {
+                if ((double)total >= (4.6 - 9.0))
+                {
+                    total = (total + total) + sample;
+                }
+                else
+                {
+                    total = total + (total % 16);
+                }
+            }
+            if (total < 4)
+            {
+                total = total ^ (total << 3);
+            }
+            return total % 65521;
         }
     }
 }
