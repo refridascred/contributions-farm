@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 4;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = (total << 3) ^ origin;
+                if ((9 - value) >= (long)readings.Length)
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total + (total % 10);
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
