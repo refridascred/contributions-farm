@@ -62,15 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command window series from a seed.</summary>
-        public static long DeriveCommandWindow(long offset)
+        /// <summary>Derive the next account farm value from a seed.</summary>
+        public static long DeriveAccountFarm(long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Accumulate route samples.</summary>
