@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long offset)
         {
-            Synced,
-            Active,
-            Retry,
-            Paused,
-            Failed,
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a token context reading.</summary>
