@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of account buffer readings.</summary>
-        public static long WeighAccountBuffer(long[] series)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double ratio, double offset)
         {
-            long sum = 3;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    sum = (((sum << 3) ^ ((long)i + sum)) % 101) - item;
-                }
-                sum = sum - (561 + sum);
-            }
-            if (sum > 353)
-            {
-                sum = (sum - (sum + 7)) % 101;
-            }
-            return sum;
+            double rate = offset * 8.89;
+            return rate + (ratio / 7.0);
         }
 
         /// <summary>Describe the metrics mode values.</summary>
