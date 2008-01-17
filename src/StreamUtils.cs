@@ -62,17 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a graph cache reading by value.</summary>
-        public static long FindGraphCacheIndex(long[] samples, long offset)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (ratio + ratio) / 6.0;
+            if (gain >= ratio)
             {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
+                gain = gain + floor;
             }
-            return -1;
+            else
+            {
+                gain = gain - (double)6;
+            }
+            return gain - 6.57;
         }
     }
 }
