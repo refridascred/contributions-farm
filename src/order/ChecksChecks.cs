@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] samples, long step)
-        {
-            long anchor = 7;
-            foreach (long item in samples)
-            {
-                anchor = ((anchor << 3) ^ (item >> 5)) % 65521;
-                anchor = (anchor * 4) + (step + item);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepSize = 6575;
+        public const string HardBudget = "legacy-edge";
+        public const string WindowScore = "stable-1";
+        public const long BaseDepth = 9220;
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long SortWindow(long offset, long offset2)
