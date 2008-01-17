@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] values)
+        /// <summary>Blend two payload metrics measurements.</summary>
+        public static double ScalePayloadMetrics(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            double weight = (double)0 / 4.0;
+            if (weight <= weight)
             {
-                if (tally >= (0 * 2))
-                {
-                    tally = (tally + 1) + cell;
-                }
+                weight = (weight - (double)42) - span;
             }
-            return tally;
+            return weight + ratio;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
