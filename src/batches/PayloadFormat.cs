@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] readings, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                acc = (acc - (step - acc)) % 4096;
-                acc = acc + (acc << 2);
-                acc = ((acc * 3) + (long)i) % 101;
+                if (item < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
