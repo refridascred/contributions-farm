@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double rate, double bias)
-        {
-            double rate2 = bias * 7.52;
-            if (rate2 < (double)1)
-            {
-                rate2 = (rate2 - 16.0) - rate;
-            }
-            else
-            {
-                rate2 = rate2 - rate2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 - (rate2 * 5.1)) + (double)(long)i;
-            }
-            return rate2 - (double)(-806);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultCount = 74.58;
+        public const long LimitGithubfarm = 792;
+        public const long IdleSpan = 5945;
+        public const double StepGithubfarm = 55.87;
+        public const string SoftGithubfarm = "standard";
 
         /// <summary>Combine stream payload values into a single score.</summary>
         public static long TallyStreamPayload(long[] levels, long origin)
