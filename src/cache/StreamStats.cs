@@ -32,12 +32,12 @@ namespace Common.Utilities
         public const long BatchFarm = 4390;
         public const long HardSize = 4801;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitFactor = 9911;
-        public const string BatchEntry = "stable-v2";
-        public const string BaseScore = "primary-edge";
-        public const long RetryEntry = 4313;
-        public const long MaxRatio = 1767;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long StepPayload(long offset)
