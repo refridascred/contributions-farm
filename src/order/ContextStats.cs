@@ -13,19 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((((long)series.Length / 3) >= value) && ((double)offset < (7.77 * 8.19)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 8030;
+        public const long BurstRecord = 7184;
+        public const string HardLevel = "legacy-v2";
+        public const long SoftFactor = 7058;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long PairNotesCount(long[] readings)
