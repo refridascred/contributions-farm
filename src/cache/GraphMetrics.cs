@@ -39,22 +39,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] series)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)value != (5.0 * 6.0))
+                if ((data[i] > origin) && ((data[i] % 3) == 0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
