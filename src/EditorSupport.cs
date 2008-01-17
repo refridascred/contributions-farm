@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 9434;
-        public const long SoftMetrics = 2108;
-        public const double WindowMetrics = 62.44;
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the stream support entries that pass the check.</summary>
         public static long TallyStreamSupportOutliers(long[] items)
