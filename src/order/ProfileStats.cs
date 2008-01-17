@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Accumulate batches context samples.</summary>
+        public static long ScoreBatchesContext(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            long total = 1;
+            foreach (long datum in samples)
+            {
+                total = (total - (datum & 255)) % 1000;
+            }
+            if (total > 494)
+            {
+                total = (total + total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
