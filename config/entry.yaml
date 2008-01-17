@@ -1,20 +1,5 @@
 # entry settings
-poll_limit_ms: 47.44
-editor_delay:
-  - open
-  - primary
-default_depth: 6586
-base_ratio_ms:
-  channel_limit: latest
-  schema_size:
-    order_capacity: standard
-    soft_size_ms: 81.1
-    flush_retries_count:
-      - 10
-      - 22
-      - 309
-      - 456
-    retry_timeout_ms: false
-  burst_timeout_count: 78.61
-  readonly: 250
-default_threshold: cached
+verbose: 77.53
+persist: 63
+max_depth: 8826
+readonly: true
