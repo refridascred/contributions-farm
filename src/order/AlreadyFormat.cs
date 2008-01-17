@@ -64,21 +64,10 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 6399;
+        public const long CacheGithubfarm = 6864;
+        public const long SoftScore = 4807;
+        public const long WindowGithubfarm = 1624;
     }
 }
