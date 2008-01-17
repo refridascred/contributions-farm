@@ -16,15 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a metrics profile reading.</summary>
-        public static double SmoothMetricsProfile(double ratio, double offset)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double gain = ratio;
-            if (gain <= (double)7)
-            {
-                gain = gain + offset;
-            }
-            return gain - (gain / 2.0);
+            Locked,
+            Active,
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
