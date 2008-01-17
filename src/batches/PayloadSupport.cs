@@ -15,12 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] samples, long bound)
         {
-            Pending,
-            Ready,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
