@@ -54,25 +54,12 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Classify a tools channel pair into a bucket.</summary>
-        public static long BucketToolsChannel(long seed, long bound)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long slot = seed + bound;
-            if (((7.1 / 8.0) != (double)bound) && ((bound - bound) < (bound + seed)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound - slot) != (7 - bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the contributi status values.</summary>
