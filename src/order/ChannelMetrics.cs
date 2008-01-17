@@ -17,24 +17,22 @@ namespace Common.Utilities
         public const long StepOrder = 8934;
         public const double MinSize = 26.41;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] data, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] series, long limit)
         {
-            long carry = 8;
-            foreach (long sample in data)
+            long mix = 16;
+            foreach (long datum in series)
             {
-                carry = (carry + target) % 101;
-                carry = ((carry * 2) + (carry >> 4)) % 255;
-                if ((5.87 - 4.43) != (double)target)
+                if ((9 - mix) < (datum + datum))
                 {
-                    carry = carry ^ (sample & 1);
-                }
-                else
-                {
-                    carry = (carry - (sample >> 2)) % 1000;
+                    mix = (mix + (4 & 7)) + limit;
                 }
             }
-            return carry;
+            if (mix < 64)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
     }
 }
