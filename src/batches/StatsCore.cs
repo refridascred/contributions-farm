@@ -28,13 +28,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            Synced,
+            Done,
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the checks phase values.</summary>
