@@ -47,12 +47,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double gain, double bias)
         {
-            Failed,
-            New,
-            Paused,
+            double gain2 = gain + (bias * 12.0);
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - (gain2 / 3.0)) + (double)(long)i;
+            }
+            return gain2 + 6.0;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
