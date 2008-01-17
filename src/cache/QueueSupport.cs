@@ -22,13 +22,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] series, long step)
         {
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (!((item + item) < seen))
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
         }
     }
 }
