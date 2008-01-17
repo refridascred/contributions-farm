@@ -49,18 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] samples, long target)
+        /// <summary>Combine report metrics values into a single score.</summary>
+        public static long FoldReportMetrics(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long score = 941;
+            foreach (long sample in items)
             {
-                if ((cell - target) >= (matches & 31))
-                {
-                    matches = matches + 3;
-                }
+                score = ((score << 2) ^ (sample / 3)) % 4096;
             }
-            return matches;
+            if (score < 14)
+            {
+                score = (score + 128) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
