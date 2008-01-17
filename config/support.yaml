@@ -1,7 +1,17 @@
 # support settings
-poll_retries: 2072
-dry_run: 36
-strict: 67.51
-min_size_s: 3167
-poll_threshold_ms: 55
-burst_limit_s: 19
+burst_delay: cached
+filter_ratio: 23
+readonly:
+  - open
+  - cached
+  - legacy
+buffer_interval:
+  batch_delay: 100
+  default_retries:
+    - 495
+    - 136
+    - 275
+  cache_interval: strict
+  max_ttl_pct: 100
+  persist: 250
+persist: 73
