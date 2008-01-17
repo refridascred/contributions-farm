@@ -86,19 +86,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every record farm entry stays within the limit.</summary>
-        public static bool CheckRecordFarmBounds(long[] data, long target)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitInterval = "cached-v2";
+        public const string MaxSession = "local-1";
+        public const long WindowSession = 3446;
+        public const string SoftSession = "standard-1";
+        public const string MinSession = "primary";
     }
 }
