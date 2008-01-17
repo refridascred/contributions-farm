@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many layout already samples are out of range.</summary>
-        public static long TallyLayoutAlreadyGaps(long[] readings)
+        /// <summary>Rank githubfarm contributi input into a small class.</summary>
+        public static long SortGithubfarmContributi(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long span = limit - limit2;
+            if (((span - span) != (span % 8)) && (227 < limit))
             {
-                if ((double)hits <= (double)value)
+                return 5;
+            }
+            else
+            {
+                if ((limit2 * 3) <= (span / 8))
                 {
-                    hits = hits + 1;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!(9.28 > (double)limit2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((5.72 / 3.0) <= (double)limit2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
