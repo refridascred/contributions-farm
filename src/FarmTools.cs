@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many route checks samples are out of range.</summary>
-        public static long AuditRouteChecksGaps(long[] samples)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long bound)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long state = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((hits << 3) < (cell >> 5))
-                {
-                    hits = hits + 3;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
