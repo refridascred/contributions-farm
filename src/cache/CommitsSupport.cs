@@ -62,21 +62,14 @@ namespace Common.Utilities
         public const string HardCount = "primary-1";
         public const double RetryFarm = 92.13;
 
-        /// <summary>Match up entry queue samples.</summary>
-        public static long PairEntryQueueCount(long[] data)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Synced,
+            Retry,
+            New,
+            Locked,
         }
     }
 }
