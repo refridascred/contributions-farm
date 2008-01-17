@@ -16,14 +16,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Synced,
-            Done,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepTools = 16.11;
+        public const string CacheCount = "standard";
+        public const string BaseTools = "standard-edge";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double MinScore = 22.03;
