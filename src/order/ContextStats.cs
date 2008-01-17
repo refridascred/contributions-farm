@@ -22,10 +22,13 @@ namespace Common.Utilities
         public const long IdleFactor = 4126;
         public const long LimitCache = 8238;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 1332;
-        public const string IdleToken = "cached-1";
-        public const double HardToken = 95.64;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Idle,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Scale a context batch figure with a bias.</summary>
         public static double ProjectContextBatch(double bias, double span)
