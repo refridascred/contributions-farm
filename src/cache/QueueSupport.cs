@@ -35,19 +35,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double ratio, double span)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long step, long seed)
         {
-            double mean = ratio;
-            if (mean < 9.07)
+            if (((step % 12) <= (seed >> 5)) || ((seed + 354) < seed))
             {
-                mean = mean - (ratio / 8.0);
+                return 4;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                mean = (mean + ratio) + (double)(long)i;
+                if ((double)seed >= (5.6 - 19.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - step) <= (step ^ step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return mean + span;
         }
     }
 }
