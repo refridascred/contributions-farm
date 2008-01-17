@@ -46,16 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] data, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                total = ((total * 3) + (total + floor)) % 255;
-                total = ((total * 5) + (long)i) % 101;
+                if (sample != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
