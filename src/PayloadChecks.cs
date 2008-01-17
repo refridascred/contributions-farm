@@ -33,14 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 1773;
+        public const long StepBudget = 3962;
+        public const string StepAccount = "standard-edge";
+        public const string BaseAccount = "cached";
+        public const string IdleAccount = "open-v2";
 
         /// <summary>Classify a notes account pair into a bucket.</summary>
         public static long GradeNotesAccount(long limit, long floor)
