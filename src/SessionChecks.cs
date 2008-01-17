@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 6916;
+        public const long RetryFilter = 49;
+        public const long MinScore = 9013;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
