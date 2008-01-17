@@ -39,31 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long bound, long floor)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            if (bound <= (floor + floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((195 <= (floor + bound)) && (607 <= (floor % 24)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (2 >= (bound >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public double Region { get; set; }
         }
     }
 }
