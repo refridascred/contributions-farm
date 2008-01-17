@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] series, long offset)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long total = 49;
-            foreach (long value in series)
-            {
-                total = (total - 20) % 65521;
-                total = (total - (offset + total)) % 4096;
-                if ((double)value < (double)4)
-                {
-                    total = ((total << 2) ^ (offset % 60)) % 101;
-                }
-            }
-            return total;
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a filter reading by value.</summary>
