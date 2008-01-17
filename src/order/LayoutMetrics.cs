@@ -38,19 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] series, long limit)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long floor)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading != limit)
+                if (sum > ((long)i / 2))
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum << 2) ^ (floor >> 1)) % 255;
+                    continue;
                 }
+                sum = sum + (long)i;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return ok;
+            return sum;
         }
     }
 }
