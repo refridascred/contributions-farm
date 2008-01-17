@@ -51,22 +51,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] levels)
-        {
-            long mark = 111;
-            foreach (long entry in levels)
-            {
-                if (((mark ^ entry) <= 11) || ((422 + entry) > (mark ^ entry)))
-                {
-                    mark = (mark << 3) ^ (entry + mark);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark + entry)) % 65521;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 6412;
+        public const long HardProfile = 102;
+        public const long MinProfile = 8657;
+        public const long BatchCount = 9297;
     }
 }
