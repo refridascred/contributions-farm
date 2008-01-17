@@ -1,13 +1,7 @@
 # githubfarm settings
-batch_capacity: eu-west
-dry_run: 3494
-max_timeout_s: 45
-buffer_threshold:
-  editor_size: 53
-  stream_window: 53.29
-  dry_run: 1024
-  hard_depth_pct:
-    - 346
-    - 408
-    - 266
-support_delay: 621
+max_timeout_s: standard
+idle_window: open
+max_ratio_s: 72.38
+warm_window: 3940
+default_window_ms: legacy
+idle_ttl_s: legacy
