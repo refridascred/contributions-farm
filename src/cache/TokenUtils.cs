@@ -27,12 +27,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            Failed,
+            Active,
+            Locked,
+            Pending,
         }
     }
 }
