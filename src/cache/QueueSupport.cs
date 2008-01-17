@@ -12,17 +12,14 @@ namespace Common.Utilities
             return (ratio - rate) + offset;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] values, long seed)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
