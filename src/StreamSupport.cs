@@ -38,11 +38,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 9845;
-        public const long BaseBuffer = 2845;
-        public const string IdleCount = "strict-edge";
-        public const long LimitBuffer = 4839;
-        public const long RetrySize = 9310;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
