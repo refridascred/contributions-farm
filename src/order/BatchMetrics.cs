@@ -62,12 +62,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Grade a stats profile value against two limits.</summary>
+        public static long GradeStatsProfile(long seed, long offset)
         {
-            Ready,
-            Done,
-            Paused,
+            if (((14.0 + 10.0) == (double)offset) && (seed <= (seed + 28)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4.94 * 2.8) == (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the editor mode values.</summary>
