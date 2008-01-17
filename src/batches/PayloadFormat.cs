@@ -20,14 +20,25 @@ namespace Common.Utilities
         public const long WindowTools = 4785;
         public const long BurstCount = 2431;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long limit)
         {
-            Stale,
-            Queued,
-            Done,
-            Locked,
-            Idle,
+            long total = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                total = total ^ limit;
+                total = ((total << 2) ^ (limit / 3)) % 101;
+                if ((double)limit < (5.0 / 3.0))
+                {
+                    total = (total * 4) + (limit & 3);
+                }
+                else
+                {
+                    total = total - (limit & 15);
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a account snapshot.</summary>
