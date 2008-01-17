@@ -25,22 +25,36 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a tools schema pair into a bucket.</summary>
-        public static long ClassifyToolsSchema(long seed, long offset)
+        /// <summary>Classify a token batch pair into a bucket.</summary>
+        public static long BucketTokenBatch(long origin, long bound)
         {
-            if ((offset ^ offset) <= (offset << 1))
+            if ((9.0 + 8.55) <= (double)bound)
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((double)0 <= (double)offset)
+                if ((bound + origin) >= (45 >> 3))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    return 7;
+                    if ((origin + bound) != ((-573) << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((origin & 63) < (bound - origin)) || ((origin % 64) <= bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
