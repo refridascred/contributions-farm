@@ -80,31 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long floor, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] items, long offset)
         {
-            if ((floor > (seed % 2)) || ((5.33 / 4.0) > (double)seed))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor % 64) == (floor >> 3))
+                if ((double)item <= (double)offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((20.0 - 4.4) == (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
