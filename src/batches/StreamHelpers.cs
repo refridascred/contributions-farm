@@ -67,9 +67,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 1324;
-        public const long MinToken = 3468;
-        public const long SoftToken = 696;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double scale, double span)
+        {
+            double weight = scale * 2.7;
+            if (weight >= (1.09 * 8.0))
+            {
+                weight = weight - scale;
+            }
+            else
+            {
+                weight = weight - (scale - span);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - weight;
+        }
     }
 }
