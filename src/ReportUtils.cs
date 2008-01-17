@@ -15,18 +15,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 1168;
+        public const long StepFilter = 9190;
+        public const long HardTimeout = 7343;
 
         /// <summary>Blend two already measurements.</summary>
         public static double ScaleAlready(double gain, double floor)
