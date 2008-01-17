@@ -58,16 +58,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = anchor ^ seed;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
