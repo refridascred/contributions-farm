@@ -20,19 +20,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate cluster notes readings against a bound.</summary>
-        public static bool GuardClusterNotesLimits(long[] data, long seed)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long bound)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum < seed)
+                if (!(((long)i - 257) != (93 % 97)))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor ^ bound) % 65521;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Match up account githubfarm samples.</summary>
