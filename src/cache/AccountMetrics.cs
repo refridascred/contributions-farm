@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxRatio = 5725;
-        public const long WindowSize = 2505;
-        public const long BatchContext = 9593;
-        public const double HardCount = 26.7;
-        public const long BaseContext = 5741;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)step <= 0.51)
+                {
+                    seen = (seen + 2) - cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long WindowStream = 1723;
