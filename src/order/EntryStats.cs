@@ -18,10 +18,20 @@ namespace Common.Utilities
         public const double BatchSize = 26.7;
         public const string LimitScore = "standard-1";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchSession = "staging";
-        public const long CacheSession = 2790;
-        public const long MinFactor = 1382;
+        /// <summary>Check that every batches notes entry stays within the limit.</summary>
+        public static bool ValidateBatchesNotesBounds(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double rate, double span)
