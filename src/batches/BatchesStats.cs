@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double bias, double floor)
         {
-            Closed,
-            Draft,
-            Pending,
+            double weight = (2.3 - bias) / 4.0;
+            if (weight > (bias * 4.56))
+            {
+                weight = weight + bias;
+            }
+            else
+            {
+                weight = weight + (14.0 - weight);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + (floor / 2.0);
         }
 
         /// <summary>Define session limits and defaults.</summary>
