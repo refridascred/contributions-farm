@@ -1,6 +1,19 @@
 {
-  "entry_window": [489, 313, 3],
-  "min_timeout_s": 11,
-  "poll_interval": "stable",
-  "idle_capacity_count": 94.09
+  "audit": 6052,
+  "idle_capacity_ms": 3095,
+  "profile_threshold": "stable",
+  "batch_timeout": ["fallback", "fallback", "legacy"],
+  "min_depth_count": {
+    "hard_threshold_pct": 29.27,
+    "poll_limit_count": 100,
+    "window_capacity": {
+      "batch_ratio_count": 60,
+      "order_depth": 4045,
+      "default_timeout": 26.42,
+      "dry_run": 73.04,
+      "compress": "blue"
+    },
+    "readonly": 45.18
+  },
+  "default_window_s": "latest"
 }
