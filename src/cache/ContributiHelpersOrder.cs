@@ -17,11 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public string Mode { get; set; } = "";
             public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the support level values.</summary>
