@@ -40,9 +40,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitLevel = 4697;
-        public const double MinCounter = 93.0;
-        public const long RetryLevel = 4886;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 9039;
+        public const double CacheChecks = 32.0;
+        public const string BaseChecks = "alpha-v2";
+        public const long SoftChecks = 5719;
     }
 }
