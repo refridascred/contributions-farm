@@ -78,13 +78,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            New,
             Failed,
-            Idle,
-            Draft,
+            Queued,
+            Pending,
         }
     }
 }
