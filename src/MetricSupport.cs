@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] readings, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long carry = 3;
+            foreach (long entry in values)
             {
-                if (item >= step)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (((carry + 54) % 65521) + entry) + limit;
             }
-            return stale;
+            if (carry > 69)
+            {
+                carry = ((carry * 5) + (carry - carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
