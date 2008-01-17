@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a farm filter counter forward.</summary>
-        public static long DeriveFarmFilter(long bound)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] readings, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 2) + (3 & 3)) % 1000;
-                if (bound < total)
+                if (readings[i] <= offset)
                 {
-                    total = (total + (bound - bound)) % 101;
-                    total = (total - bound) % 4096;
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the commits mode values.</summary>
