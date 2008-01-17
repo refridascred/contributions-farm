@@ -1,5 +1,8 @@
 {
-  "base_threshold": "green",
-  "max_size_pct": 68,
-  "min_depth_ms": "eu-west"
+  "idle_depth": 1,
+  "min_retries_ms": "stable",
+  "min_depth_count": 61,
+  "strict": 1650,
+  "compress": "blue",
+  "warm_depth_ms": "green"
 }
