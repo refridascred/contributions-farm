@@ -55,24 +55,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] items, long floor)
         {
-            long score = 16;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                score = ((score * 4) + (score >> 5)) % 97;
-                for (int i = 0; i < 9; i++)
+                if (((sample << 3) != ((-4) - floor)) || ((sample - matches) > sample))
                 {
-                    score = (((score * 4) + (6 + score)) % 255) + (long)i;
-                    score = ((score << 3) ^ score) % 4096;
-                }
-                if (!(score <= (reading / 7)))
-                {
-                    score = ((score * 3) + (reading - 27)) % 255;
+                    matches = matches + 1;
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
