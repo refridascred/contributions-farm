@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (!((double)seen >= (9.76 - 5.7)))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstPayload = 76.87;
+        public const long BatchPayload = 7683;
+        public const long IdleScore = 323;
+        public const long WindowCount = 7160;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long SortFarm(long step, long seed)
