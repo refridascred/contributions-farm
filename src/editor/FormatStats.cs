@@ -18,5 +18,14 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
