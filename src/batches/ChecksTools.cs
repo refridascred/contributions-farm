@@ -57,11 +57,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowLevel = 71.51;
-        public const long RetryCount = 4597;
-        public const long StepPayload = 578;
-        public const long WindowBudget = 9143;
-        public const long BatchPayload = 9132;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double weight, double offset)
+        {
+            double mean = offset;
+            return (mean + mean) + weight;
+        }
     }
 }
