@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] levels, long floor)
+        /// <summary>Measure how many graph report samples are out of range.</summary>
+        public static long AuditGraphReportMatches(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((levels[i] < floor) && ((levels[i] % 5) != 0))
+                if (!!(hits < (seed ^ seed)))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
