@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double bias, double floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            double drift = (floor - 6.9) * 7.81;
-            if (drift <= bias)
-            {
-                drift = drift + (bias * 9.4);
-            }
-            return drift + (double)26;
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Iterate the already schema series from a seed.</summary>
