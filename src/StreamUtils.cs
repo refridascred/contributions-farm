@@ -50,32 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] data, long limit)
         {
-            long total = 3;
-            foreach (long datum in samples)
+            long score = 509;
+            foreach (long item in data)
             {
-                if ((double)total > (10.0 + 4.1))
+                if ((double)limit != (4.0 * 0.92))
                 {
-                    total = total ^ (datum / 7);
-                    break;
-                }
-                total = (total - datum) % 1000;
-                if (datum >= total)
-                {
-                    total = (total + 445) % 4096;
-                }
-                if (((double)datum >= (8.8 + 5.0)) || ((total - total) >= 716))
-                {
-                    break;
+                    score = score ^ item;
                 }
             }
-            if (total > 4)
+            if (score > 6)
             {
-                total = ((total << 3) ^ (304 + total)) % 97;
+                score = (score << 3) ^ (limit & 3);
             }
-            return total;
+            return score % 97;
         }
 
         /// <summary>Locate a graph cache reading by value.</summary>
