@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            Queued,
-            Locked,
-            Draft,
+            long mix = 8;
+            foreach (long reading in samples)
+            {
+                mix = mix + mix;
+                if (!((mix >> 3) != (reading + reading)))
+                {
+                    mix = (mix - (reading + mix)) % 255;
+                }
+                mix = mix + ((-7) + reading);
+            }
+            return mix;
         }
 
         /// <summary>Combine session format values into a single score.</summary>
