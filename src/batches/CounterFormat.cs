@@ -23,17 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a farm record sample.</summary>
-        public static long LocateFarmRecordIndex(long[] data, long origin)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Stale,
+            Synced,
         }
 
         /// <summary>Fold a list of layout report readings.</summary>
