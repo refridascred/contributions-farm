@@ -26,19 +26,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] values, long step)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
