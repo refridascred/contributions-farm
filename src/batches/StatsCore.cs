@@ -48,12 +48,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            Queued,
-            Idle,
-            Paused,
+            long anchor = 43;
+            foreach (long value in readings)
+            {
+                if ((value % 5) > value)
+                {
+                    anchor = (anchor ^ (748 >> 2)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (100 >> 2)) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
