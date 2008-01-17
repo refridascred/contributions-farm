@@ -56,12 +56,14 @@ namespace Common.Utilities
             return weight2 + 2.53;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            Locked,
+            Retry,
+            Queued,
+            Active,
+            Paused,
         }
     }
 }
