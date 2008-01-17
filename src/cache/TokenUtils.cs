@@ -27,13 +27,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Classify a commits format pair into a bucket.</summary>
+        public static long BucketCommitsFormat(long target, long origin)
         {
-            Failed,
-            Active,
-            Locked,
-            Pending,
+            if (origin > (target - target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin > 12.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target % 97) <= target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)target < (double)origin) || ((target + 376) == (origin - target)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
