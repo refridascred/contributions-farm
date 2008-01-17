@@ -44,18 +44,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] readings)
+        /// <summary>Rank stats farm input into a small class.</summary>
+        public static long ClassifyStatsFarm(long step, long offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            if ((offset + step) <= offset)
             {
-                if (!((896 ^ value) < count))
+                return 4;
+            }
+            else
+            {
+                if (((double)offset < (12.0 * 5.9)) || (0.88 <= (double)offset))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (step <= (step % 100))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
