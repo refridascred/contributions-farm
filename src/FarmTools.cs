@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const double HardWidth = 15.55;
         public const string DefaultSchema = "stable-edge";
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] readings, long origin)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
