@@ -1,7 +1,13 @@
 {
-  "soft_capacity_ms": 1629,
-  "persist": "blue",
-  "cluster_capacity": 100,
-  "hard_depth": 100,
-  "strict": 71
+  "readonly": [240, 138, 399],
+  "graph_capacity": 250,
+  "burst_interval": {
+    "min_retries_pct": [58, 189, 315, 498],
+    "schema_interval": 30,
+    "sync_retries_count": true,
+    "hard_interval": "cached",
+    "entry_ttl": 31.41,
+    "command_ttl": 1827
+  },
+  "verbose": false
 }
