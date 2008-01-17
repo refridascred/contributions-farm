@@ -29,23 +29,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine counter payload values into a single score.</summary>
-        public static long CombineCounterPayload(long[] levels)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long step)
         {
-            long state = 419;
-            foreach (long cell in levels)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state - (cell % 7)) % 1000;
-                if ((cell >= (long)levels.Length) || (state < (cell % 10)))
-                {
-                    state = ((state * 4) + (cell + cell)) % 255;
-                }
+                acc = (acc ^ 3) % 97;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            if (state < 82)
-            {
-                state = state - (state - state);
-            }
-            return state;
+            return acc;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
