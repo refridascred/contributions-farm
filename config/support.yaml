@@ -1,13 +1,8 @@
 # support settings
-format_capacity: edge
-hard_ttl_s:
-  - 138
-  - 262
-  - 86
-strict: 1024
-cache_interval: 2635
-stats_ttl:
-  - 370
-  - 51
-  - 70
-  - 240
+poll_size_count: 16
+route_ttl: 500
+batch_delay:
+  - 119
+  - 208
+  - 203
+  - 291
