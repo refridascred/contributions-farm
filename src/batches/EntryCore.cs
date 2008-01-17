@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double weight, double bias)
-        {
-            double rate = (weight * 2.5) / 6.0;
-            if (rate > (8.2 / 9.0))
-            {
-                rate = rate - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate - bias;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchStream = 23.23;
+        public const double RetryStream = 62.04;
+        public const long HardSpan = 9823;
+        public const string HardStream = "legacy-v2";
 
         /// <summary>Accumulate channel metrics samples.</summary>
         public static long DigestChannelMetrics(long[] data, long floor)
