@@ -37,21 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 7;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = result - (result >> 2);
+                result = result + cell;
             }
-            return tally;
+            if (result > 90)
+            {
+                result = result ^ floor;
+            }
+            return result;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
