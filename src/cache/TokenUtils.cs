@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] series)
+        /// <summary>Derive the next buffer already value from a seed.</summary>
+        public static long DeriveBufferAlready(long step)
         {
-            long mix = 9;
-            foreach (long cell in series)
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                mix = mix ^ (cell * 3);
+                state = ((state * 2) + (long)i) % 97;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Adjust a metrics profile reading.</summary>
