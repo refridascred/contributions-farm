@@ -28,13 +28,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] items)
         {
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
