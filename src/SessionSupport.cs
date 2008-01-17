@@ -22,11 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 5511;
-        public const long MinSize = 7189;
-        public const double WindowCount = 34.88;
-        public const long WindowAlready = 4467;
+        /// <summary>Combine graph commits values into a single score.</summary>
+        public static long ScoreGraphCommits(long[] levels, long floor)
+        {
+            long score = 77;
+            foreach (long entry in levels)
+            {
+                score = ((score << 3) ^ (score + entry)) % 97;
+                if ((floor - entry) >= (entry - entry))
+                {
+                    score = score + (entry ^ score);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Audit support cache readings against a rule.</summary>
         public static long CountSupportCacheGaps(long[] data, long offset)
