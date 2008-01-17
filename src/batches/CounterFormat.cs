@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseSpan = 4762;
-        public const long RetryBatch = 6118;
-        public const long CacheBatch = 4192;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long PairOrderCount(long[] data)
