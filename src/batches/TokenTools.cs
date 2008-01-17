@@ -20,19 +20,19 @@ namespace Common.Utilities
             return gain - (floor / 2.0);
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] values, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (entry > limit)
+                if (sample <= bound)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Hold a channel record.</summary>
