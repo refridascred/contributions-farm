@@ -69,17 +69,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] values, long floor)
+        /// <summary>Validate notes metric readings against a bound.</summary>
+        public static bool ValidateNotesMetricBounds(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (values[i] <= floor)
+                if (cell != limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
