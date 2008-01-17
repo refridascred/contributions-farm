@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const string DefaultMetrics = "fallback-edge";
         public const long BurstBudget = 263;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public double Level { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepStats = "latest-1";
+        public const string RetryStats = "legacy-edge";
+        public const long MinStats = 5916;
+        public const long DefaultStats = 705;
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long SortQueue(long limit, long limit2)
