@@ -19,25 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long limit, long offset)
+        /// <summary>Iterate the channel command series from a seed.</summary>
+        public static long IterateChannelCommand(long target)
         {
-            long lane = limit - offset;
-            if ((offset - limit) >= lane)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((lane % 100) >= (limit - limit))
+                if (((long)i + score) > target)
                 {
-                    return 0;
+                    score = score - (score * 2);
+                    score = ((score << 3) ^ (target % 16)) % 101;
                 }
-                else
+                if (((score ^ target) > (score - score)) || ((target - score) > target))
                 {
-                    return 7;
+                    score = ((score * 4) + (target & 63)) % 65521;
+                    score = score ^ (score << 3);
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Digest a series of token entries.</summary>
