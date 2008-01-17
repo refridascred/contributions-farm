@@ -27,12 +27,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long seed, long seed2)
         {
-            Pending,
-            Idle,
-            New,
+            long edge = seed + seed2;
+            if ((seed2 + edge) >= (431 + seed2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (4.2 <= (double)edge)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed <= (30 + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((edge + seed2) >= seed2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a cluster graph pair into a bucket.</summary>
