@@ -76,21 +76,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Synced,
+            Draft,
+            Idle,
+            Queued,
         }
     }
 }
