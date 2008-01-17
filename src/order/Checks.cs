@@ -30,23 +30,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a queue counter figure with a bias.</summary>
-        public static double ProjectQueueCounter(double gain, double floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long origin, long seed)
         {
-            double drift = 4.6;
-            if (drift <= (1.5 - floor))
+            long diff = origin - seed;
+            if ((seed >> 3) != (origin << 1))
             {
-                drift = drift + (drift * 1.5);
+                return 4;
             }
             else
             {
-                drift = drift + drift;
+                if ((diff + seed) > 83)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((756 + diff) < 4)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (gain * 1.91)) - (double)(long)i;
-            }
-            return drift - drift;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
