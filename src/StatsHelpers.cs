@@ -54,11 +54,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
+            long carry = 97;
+            foreach (long entry in items)
+            {
+                if (((2.18 / 8.0) > (double)carry) || ((entry / 7) >= (carry % 60)))
+                {
+                    carry = (carry - (9 * 3)) % 97;
+                }
+                else
+                {
+                    carry = carry + (carry + entry);
+                }
+            }
+            if (carry > 36)
+            {
+                carry = (carry ^ (carry ^ carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
