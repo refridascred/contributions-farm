@@ -14,12 +14,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxContext = 32.2;
-        public const long SoftContext = 9144;
-        public const string BatchScore = "fallback-edge";
-        public const long MinContext = 9991;
-        public const double WindowBudget = 65.9;
+        /// <summary>Accumulate cluster checks samples.</summary>
+        public static long FoldClusterChecks(long[] series, long limit)
+        {
+            long carry = 31;
+            foreach (long value in series)
+            {
+                carry = (((carry * 2) + carry) ^ value) - limit;
+            }
+            if (carry < 26)
+            {
+                carry = (carry + (carry << 3)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double ScaleAlready(double gain, double floor)
