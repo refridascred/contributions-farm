@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
+            Closed,
+            Failed,
+            Stale,
             Dropped,
-            Active,
-            Paused,
-            Queued,
-            Pending,
+            Locked,
         }
 
         /// <summary>Hold a contributi stats.</summary>
