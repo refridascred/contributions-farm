@@ -1,6 +1,6 @@
 # entry settings
-soft_threshold_count:
-  - 374
-  - 221
-payload_retries: 61.45
-batch_threshold: true
+enabled: 74.16
+report_timeout: cached
+retry_capacity_ms: 89.98
+base_depth_pct: 67
+audit: 49.85
