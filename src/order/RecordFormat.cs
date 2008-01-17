@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftScore = 8440;
-        public const string RetryChecks = "staging";
-        public const long BatchChecks = 5327;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long seed, long offset)
+        {
+            if ((offset + offset) != (seed ^ 51))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset >= (seed - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed & 255) > offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset / 3) != (seed & 63)) && ((offset & 7) > (52 + seed)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] samples, long origin)
