@@ -87,13 +87,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double rate, double floor)
         {
-            Done,
-            Dropped,
-            Closed,
-            Pending,
+            double ratio = (double)(6 << 1);
+            if (ratio <= (rate + floor))
+            {
+                ratio = ratio + (floor * 8.0);
+            }
+            else
+            {
+                ratio = ratio - (rate / 2.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (19.0 - ratio)) + (double)(long)i;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Roll a route counter forward.</summary>
