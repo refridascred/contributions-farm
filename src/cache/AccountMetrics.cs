@@ -30,18 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseBudget = 8442;
+        public const double BurstTimeout = 88.04;
+        public const string BatchContributi = "cached-1";
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double ScaleReport(double scale, double offset)
