@@ -37,12 +37,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] values, long limit)
         {
-            Idle,
-            Closed,
-            Queued,
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
