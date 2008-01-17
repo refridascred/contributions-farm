@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open edge; do
+for item in primary legacy latest local; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-CHANNEL_LIMIT=405
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-fallback}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
