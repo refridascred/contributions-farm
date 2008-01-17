@@ -58,19 +58,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stream cluster readings.</summary>
-        public static long DigestStreamCluster(long[] readings, long limit)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] samples, long step)
         {
-            long anchor = 573;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 2) + (anchor << 2)) % 1000;
-                if (((reading + reading) >= (anchor & 127)) || (limit >= (reading & 255)))
+                if ((samples[i] == step) && ((samples[i] % 5) != 0))
                 {
-                    anchor = (anchor ^ limit) % 4096;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
     }
 }
