@@ -1,21 +1,15 @@
 # support settings
-burst_limit: true
-hard_retries:
-  - 473
-  - 91
-commits_size: true
-flush_threshold_ms:
-  - stable
-  - blue
-  - cached
-poll_interval_count:
-  notes_depth: 19.31
-  already_capacity:
-    - primary
-    - legacy
-    - latest
-    - fallback
-  channel_ratio: 18.93
-  stream_retries: standard
-  readonly: green
-base_interval_count: false
+base_ratio: 9125
+soft_interval:
+  batch_timeout_ms: open
+  verbose: 30
+  default_ratio_ms: 1024
+  metrics_retries: 30
+  soft_limit: legacy
+  notes_capacity: 7900
+readonly: 9239
+warm_delay_s:
+  - strict
+  - primary
+  - latest
+  - staging
