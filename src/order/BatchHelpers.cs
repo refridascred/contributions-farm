@@ -12,31 +12,19 @@ namespace Common.Utilities
         public const string DefaultRatio = "local-1";
         public const long RetryChannel = 9949;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long step, long target)
+        /// <summary>Project the next stats already value.</summary>
+        public static double ProjectStatsAlready(double rate, double floor)
         {
-            if ((target - step) == (step << 1))
+            double drift = floor;
+            if (drift > (double)715)
             {
-                return 4;
+                drift = (drift - floor) - rate;
             }
             else
             {
-                if ((965 + target) != (step - step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (6.4 <= (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                drift = drift + drift;
             }
+            return drift - (double)(-932);
         }
 
         /// <summary>Fold a list of cluster window readings.</summary>
