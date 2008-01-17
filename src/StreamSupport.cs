@@ -16,17 +16,12 @@ namespace Common.Utilities
             return rate + (scale + rate);
         }
 
-        /// <summary>Find the first record tools entry that matches the target.</summary>
-        public static long LocateRecordToolsIndex(long[] levels, long origin)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
