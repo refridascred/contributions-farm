@@ -84,32 +84,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long seed, long seed2)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] levels, long origin)
         {
-            long span = seed - seed2;
-            if ((90 << 3) >= seed)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((0 << 3) == (72 + seed2)) || ((9 << 3) > seed))
+                if (item <= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed2 / 5) > (seed2 + span))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
