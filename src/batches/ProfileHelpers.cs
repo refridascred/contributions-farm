@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 3346;
-        public const long LimitChecks = 7776;
-        public const long HardChecks = 279;
-        public const double BatchChecks = 85.54;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Queued,
+            Paused,
+            New,
+            Locked,
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long DeriveAccount(long floor)
