@@ -33,15 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double rate, double span)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            double gain = rate;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - 4.0) + (double)(long)i;
-            }
-            return gain - span;
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
