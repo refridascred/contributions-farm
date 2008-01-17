@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] levels, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] data)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (reading != floor)
+                if (!(((hits + hits) == (hits ^ cell)) && (cell > (3 + 3))))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Classify a notes account pair into a bucket.</summary>
