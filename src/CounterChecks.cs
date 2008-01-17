@@ -79,12 +79,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] items, long target)
         {
-            Paused,
-            Synced,
-            Queued,
+            long acc = 7;
+            foreach (long reading in items)
+            {
+                acc = (acc - (target << 2)) + reading;
+                if (acc >= (acc - target))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
     }
 }
