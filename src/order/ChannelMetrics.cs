@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Blend two schema format measurements.</summary>
