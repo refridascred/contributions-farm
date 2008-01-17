@@ -22,15 +22,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long origin)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Synced,
+            Queued,
+            Stale,
+            Draft,
+            Done,
         }
     }
 }
