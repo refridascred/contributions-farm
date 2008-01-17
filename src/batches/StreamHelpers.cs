@@ -59,11 +59,33 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 2101;
-        public const long BatchReport = 7646;
-        public const double DefaultReport = 66.69;
-        public const long BaseRatio = 8545;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long limit, long origin)
+        {
+            long prev = limit + origin;
+            if (((double)limit == (6.91 * 3.7)) && ((double)prev != (2.89 - 16.0)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((prev << 3) > (origin / 6)) && (limit < (2 >> 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((((-5) + origin) <= limit) && ((double)limit == (8.8 / 3.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long CompareEntryCount(long[] values)
