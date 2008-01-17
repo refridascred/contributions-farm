@@ -47,15 +47,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double gain, double bias)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long offset)
         {
-            double gain2 = gain + (bias * 12.0);
-            for (int i = 0; i < 5; i++)
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                gain2 = (gain2 - (gain2 / 3.0)) + (double)(long)i;
+                if (total > ((long)i - 7))
+                {
+                    total = total - (total % 97);
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return gain2 + 6.0;
+            return total;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
