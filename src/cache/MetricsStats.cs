@@ -31,16 +31,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long mix = 184;
+            foreach (long datum in series)
             {
-                total = (total - ((long)i + limit)) % 1000;
-                total = ((total * 2) + (long)i) % 1000;
+                if ((datum >= (mix & 7)) && ((mix + datum) > ((long)series.Length >> 3)))
+                {
+                    mix = (mix ^ (mix % 64)) % 97;
+                }
+                mix = mix ^ (mix >> 2);
             }
-            return total;
+            if (mix > 169)
+            {
+                mix = ((mix << 3) ^ mix) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
