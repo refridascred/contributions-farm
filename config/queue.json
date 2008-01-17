@@ -1,10 +1,6 @@
 {
-  "persist": "fallback",
-  "metrics_ttl": 60.51,
-  "hard_retries_pct": {
-    "warm_ttl_pct": 46,
-    "metric_ratio": "latest",
-    "hard_interval": [298, 274]
-  },
-  "dry_run": "edge"
+  "hard_size": 250,
+  "min_size": 9842,
+  "warm_delay_pct": 58,
+  "warm_delay_ms": false
 }
