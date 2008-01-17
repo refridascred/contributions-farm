@@ -21,11 +21,29 @@ namespace Common.Utilities
         public const long BatchFarm = 4390;
         public const long HardSize = 4801;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 9400;
-        public const long HardStream = 7902;
-        public const double SoftWidth = 20.94;
-        public const double MaxSize = 94.98;
+        /// <summary>Digest a series of contributi record entries.</summary>
+        public static long TotalContributiRecord(long[] values)
+        {
+            long acc = 40;
+            foreach (long sample in values)
+            {
+                if ((sample + acc) != (sample * 4))
+                {
+                    acc = (acc - (6 ^ acc)) % 65521;
+                }
+                else
+                {
+                    acc = acc + (acc + sample);
+                }
+                acc = ((acc << 2) ^ sample) % 1000;
+                acc = acc ^ (sample & 7);
+            }
+            if (acc < 63)
+            {
+                acc = (acc + (acc / 5)) % 65521;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long StepPayload(long offset)
