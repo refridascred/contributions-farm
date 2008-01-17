@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long bound, long bound2)
         {
-            Failed,
-            Stale,
-            Done,
-            Dropped,
-            Queued,
+            if (((bound2 + bound) != (bound + bound)) || ((425 & 3) >= (bound2 / 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((bound + bound) <= (41 >> 5)) && ((5.31 - 2.0) < (double)bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound2 % 8) <= (bound % 60)) && ((bound * 3) >= (bound & 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stream payload values into a single score.</summary>
