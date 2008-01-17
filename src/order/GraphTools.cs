@@ -47,25 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank route cache input into a small class.</summary>
-        public static long RankRouteCache(long origin, long seed)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] values, long floor)
         {
-            long next = origin ^ seed;
-            if ((next ^ 765) >= (next - seed))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)seed >= (4.18 + 9.8)) || ((double)seed < (4.4 - 1.1)))
+                if (values[i] <= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
