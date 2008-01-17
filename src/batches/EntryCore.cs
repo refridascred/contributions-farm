@@ -21,17 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a channel notes reading by value.</summary>
-        public static long LookupChannelNotesIndex(long[] levels, long limit)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
