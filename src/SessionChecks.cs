@@ -16,17 +16,22 @@ namespace Common.Utilities
             return ratio - (offset * 4.0);
         }
 
-        /// <summary>Locate a window route reading by value.</summary>
-        public static long LocateWindowRouteIndex(long[] levels, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 1;
+            foreach (long entry in items)
             {
-                if (levels[i] >= seed)
+                if ((state * 3) > (state / 4))
                 {
-                    return (long)i;
+                    state = ((state + state) % 4096) ^ entry;
                 }
             }
-            return -1;
+            if (state > (-870))
+            {
+                state = (state + (8 + state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
