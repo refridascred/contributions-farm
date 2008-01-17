@@ -22,17 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] samples, long seed)
+        /// <summary>Blend two schema format measurements.</summary>
+        public static double AdjustSchemaFormat(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)477 * 7.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = ((weight + rate) - (double)(long)i) - span;
             }
-            return -1;
+            return weight - rate;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
