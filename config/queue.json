@@ -1,5 +1,23 @@
 {
-  "base_capacity": 34.42,
-  "soft_size_s": 3297,
-  "retry_window_s": "local"
+  "retry_delay": 23,
+  "flush_delay_pct": 12.38,
+  "strict": {
+    "compress": 73.73,
+    "cache_ttl": 67,
+    "metrics_retries": 53.85,
+    "stats_threshold": 59.83,
+    "soft_depth": 42,
+    "hard_retries_s": false
+  },
+  "hard_threshold_s": {
+    "default_window_pct": 36.6,
+    "poll_threshold": true,
+    "warm_interval_pct": 20,
+    "compress": false
+  },
+  "default_timeout_ms": {
+    "enabled": 39.51,
+    "warm_depth": [37, 267, 432, 109],
+    "cache_depth_ms": [224, 178, 121]
+  }
 }
