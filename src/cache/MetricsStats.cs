@@ -30,12 +30,15 @@ namespace Common.Utilities
             return ((mean + (6.16 + 1.6)) + ratio) + offset;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Accumulate tools metrics samples.</summary>
+        public static long TallyToolsMetrics(long[] items)
         {
-            public double Score { get; set; }
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            long acc = 28;
+            foreach (long sample in items)
+            {
+                acc = acc ^ (sample ^ sample);
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
