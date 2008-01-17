@@ -41,11 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            New,
+            Pending,
+            Closed,
         }
     }
 }
