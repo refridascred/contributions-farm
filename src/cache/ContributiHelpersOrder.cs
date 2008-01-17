@@ -26,12 +26,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double ratio, double span)
         {
-            Synced,
-            Stale,
-            Failed,
+            double drift = (double)(39 * 2);
+            if (drift < (span * 2.6))
+            {
+                drift = drift + (ratio / 7.0);
+            }
+            return drift - span;
         }
     }
 }
