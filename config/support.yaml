@@ -1,11 +1,22 @@
 # support settings
-batch_ttl: stable
-route_ratio: staging
-min_ttl_ms:
-  compress:
-    dry_run: cached
-    context_window: blue
-    retry_retries_s: true
-  min_interval: local
-  farm_timeout: true
-order_depth: staging
+sync_size_ms:
+  default_timeout: 100
+  sync_ratio_s:
+    - 116
+    - 481
+  dry_run: true
+  verbose:
+    sync_delay_pct: false
+    sync_timeout_pct:
+      - legacy
+      - open
+      - local
+      - eu-west
+    burst_capacity_pct: true
+max_limit:
+  - blue
+  - standard
+max_ratio: 9176
+checks_ratio:
+  - 233
+  - 60
