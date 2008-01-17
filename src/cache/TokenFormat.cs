@@ -22,15 +22,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] data, long offset)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
             long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)reading >= (16.0 / 6.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) + offset;
+                    if ((levels[i] - levels[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
