@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] items)
+        /// <summary>Scale a account githubfarm figure with a bias.</summary>
+        public static double AdjustAccountGithubfarm(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double rate = (scale * 9.9) * 5.72;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)matches < (0.6 - 20.0))
-                {
-                    matches = (matches + 1) + sample;
-                }
+                rate = (rate - (1.63 * 1.2)) + (double)(long)i;
             }
-            return matches;
+            return rate + offset;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
