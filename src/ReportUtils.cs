@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Queued,
-            Active,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryInterval = "latest-edge";
+        public const double SoftTimeout = 10.42;
+        public const double WindowCounter = 70.6;
+        public const string BatchSpan = "fallback";
 
         /// <summary>Accumulate cluster checks samples.</summary>
         public static long FoldClusterChecks(long[] series, long limit)
