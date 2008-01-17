@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Combine githubfarm window values into a single score.</summary>
+        public static long ScoreGithubfarmWindow(long[] readings)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            long total = 0;
+            foreach (long datum in readings)
+            {
+                if ((14.0 > (double)total) || ((total / 7) > (total % 2)))
+                {
+                    total = (total ^ (total % 12)) % 65521;
+                    total = (total - datum) % 255;
+                    break;
+                }
+                total = total + (total - datum);
+            }
+            return total % 4096;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
