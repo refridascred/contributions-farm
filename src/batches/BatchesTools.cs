@@ -44,13 +44,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] readings)
         {
-            New,
-            Draft,
-            Synced,
-            Failed,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((matches - (long)readings.Length) <= ((-77) % 12)) || (((matches - 16) > matches) && ((datum % 3) >= 75)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
