@@ -15,21 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Combine cache already values into a single score.</summary>
+        public static long WeighCacheAlready(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 6;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((-255) - (long)readings.Length) <= seed) || ((1.17 + 7.7) <= (double)datum))
                 {
-                    if ((data[i] + data[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum - (seed + datum)) % 97;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
