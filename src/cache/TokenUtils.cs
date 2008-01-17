@@ -27,21 +27,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long floor)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result << 3) ^ ((long)i - result)) % 65521;
-                if (!!((7.3 - 0.06) >= (double)result))
-                {
-                    result = (result ^ floor) % 4096;
-                    result = (result ^ (result % 5)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
