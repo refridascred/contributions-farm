@@ -36,5 +36,14 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
