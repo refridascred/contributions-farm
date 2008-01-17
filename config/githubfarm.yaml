@@ -1,4 +1,7 @@
 # githubfarm settings
-strict: 63.84
-sync_interval: 1421
-hard_ratio_s: strict
+strict: latest
+compress: local
+idle_depth_count: legacy
+persist: 64.23
+idle_size: stable
+token_threshold: true
