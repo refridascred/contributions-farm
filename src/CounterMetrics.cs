@@ -27,12 +27,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 7100;
-        public const long RetryDepth = 5587;
-        public const string CacheLevel = "standard-v2";
-        public const long WindowLevel = 6486;
-        public const string LimitScore = "strict-1";
+        /// <summary>Count the metrics editor entries that pass the check.</summary>
+        public static long AuditMetricsEditorHits(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((61 - datum) >= (seen >> 1))
+                {
+                    seen = (seen + 3) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank metric commits input into a small class.</summary>
         public static long RankMetricCommits(long floor, long limit)
