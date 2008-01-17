@@ -50,9 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitSize = 5165;
-        public const string BatchAccount = "staging";
-        public const long BaseRatio = 2592;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
