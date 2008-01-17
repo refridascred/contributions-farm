@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchScore = 3844;
-        public const double MinDepth = 58.98;
-        public const string BurstCounter = "standard-edge";
-        public const long LimitCounter = 876;
-        public const double StepWidth = 36.83;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 4173;
+        public const string MaxCount = "standard-v2";
+        public const long BatchFarm = 9502;
+        public const long SoftLevel = 7460;
+        public const string CacheCount = "stable-v2";
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatRange(long[] values, long target)
