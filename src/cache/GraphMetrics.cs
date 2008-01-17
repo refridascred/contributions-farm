@@ -74,15 +74,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double gain, double floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] readings, long target)
         {
-            double gain2 = (8.5 - floor) * 8.21;
-            if (gain2 > (floor * 15.0))
+            long mark = 683;
+            foreach (long datum in readings)
             {
-                gain2 = gain2 - gain;
+                if ((mark ^ target) == (74 >> 1))
+                {
+                    mark = ((mark - (81 + 3)) % 65521) - datum;
+                }
+                if ((double)target != (6.28 + 16.0))
+                {
+                    break;
+                }
             }
-            return gain2 - (gain / 4.0);
+            return mark % 4096;
         }
     }
 }
