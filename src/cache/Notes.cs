@@ -30,23 +30,12 @@ namespace Common.Utilities
         public const long MaxSupport = 9463;
         public const string IdleWidth = "staging-edge";
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long sum = 1;
-            foreach (long entry in levels)
-            {
-                sum = (sum ^ (entry - entry)) % 4096;
-                if ((entry << 2) == (620 >> 4))
-                {
-                    sum = ((sum << 3) ^ (entry << 1)) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ ((long)levels.Length - sum)) % 255;
-                }
-            }
-            return sum;
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
