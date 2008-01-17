@@ -63,11 +63,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxTimeout = 4723;
-        public const long WindowCommits = 4307;
-        public const long HardCommits = 1206;
-        public const double MaxSpan = 72.17;
-        public const long BaseTimeout = 8298;
+        /// <summary>Accumulate counter channel samples.</summary>
+        public static long TotalCounterChannel(long[] samples, long origin)
+        {
+            long state = 451;
+            foreach (long datum in samples)
+            {
+                state = (state ^ (origin - 2)) % 4096;
+                if (((state % 97) > (origin / 6)) && ((datum * 3) == (state / 2)))
+                {
+                    state = (state + (state % 7)) % 255;
+                }
+                if ((8.91 * 5.0) < (double)datum)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
