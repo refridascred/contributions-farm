@@ -1,9 +1,8 @@
-id,ratio,score
-1,45.57,474
-2,19.5,375
-3,72.49,25
-4,blue,82.33
-5,284,369
-6,440,402
-7,973,legacy
-8,849,cached
+id,token,label,active
+1,5.13,edge,625
+2,eu-west,cached,50.83
+3,272,576,956
+4,blue,206,878
+5,fallback,1,standard
+6,46.4,local,644
+7,340,22.31,25.76
