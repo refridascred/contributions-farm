@@ -20,13 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] data, long step)
         {
-            Done,
-            Failed,
-            Draft,
-            Queued,
+            long state = 732;
+            foreach (long sample in data)
+            {
+                state = (state - (sample / 4)) - step;
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate layout samples.</summary>
