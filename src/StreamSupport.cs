@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] readings)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long offset, long step)
         {
-            long mix = -380;
-            foreach (long cell in readings)
+            if (offset >= (offset - step))
             {
-                if ((double)cell == (1.7 - 16.0))
+                return 4;
+            }
+            else
+            {
+                if ((19.0 - 8.24) < (4.34 - 3.15))
                 {
-                    mix = (mix * 4) + ((long)readings.Length ^ 78);
+                    return 3;
+                }
+                else
+                {
+                    if (step >= (step + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step ^ offset) != (815 / 8))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (mix > 253)
-            {
-                mix = (mix ^ (mix + mix)) % 255;
-            }
-            return mix % 65521;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
