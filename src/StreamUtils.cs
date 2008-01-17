@@ -29,11 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] readings, long limit)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((matches > (734 + reading)) && ((matches ^ reading) >= 892))
+                {
+                    matches = (matches + 2) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the channel stats entries that pass the check.</summary>
