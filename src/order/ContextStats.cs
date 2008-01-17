@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long mix = 804;
-            foreach (long entry in series)
-            {
-                mix = (mix ^ (entry + mix)) % 1000;
-                if ((mix - entry) <= (-98))
-                {
-                    break;
-                }
-            }
-            if (mix < 88)
-            {
-                mix = (mix ^ (-27)) % 4096;
-            }
-            return mix % 65521;
+            public string Stamp { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Adjust a cluster reading.</summary>
