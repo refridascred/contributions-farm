@@ -38,5 +38,19 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] samples)
+        {
+            long carry = 84;
+            foreach (long cell in samples)
+            {
+                if ((cell + cell) >= cell)
+                {
+                    carry = carry ^ (carry ^ carry);
+                }
+            }
+            return carry;
+        }
     }
 }
