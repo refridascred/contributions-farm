@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] data)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] items)
         {
-            long acc = -921;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((cell / 8) <= acc)
+                if (!!((3.24 / 8.0) > (double)datum))
                 {
-                    acc = (acc - acc) % 101;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (acc < 1)
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the record phase values.</summary>
