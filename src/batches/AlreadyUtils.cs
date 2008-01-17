@@ -57,10 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinDepth = 4948;
-        public const long RetryCount = 9444;
-        public const double CacheSupport = 79.48;
-        public const double MinSize = 85.41;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] data, long seed)
+        {
+            long anchor = -115;
+            foreach (long datum in data)
+            {
+                anchor = (((anchor << 2) ^ (seed * 5)) % 97) ^ datum;
+            }
+            if (anchor < 280)
+            {
+                anchor = anchor + (seed & 3);
+            }
+            return anchor;
+        }
     }
 }
