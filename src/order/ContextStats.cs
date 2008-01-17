@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Ready,
-            Draft,
-            Queued,
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
