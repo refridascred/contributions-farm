@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] items)
-        {
-            long anchor = 51;
-            foreach (long value in items)
-            {
-                if ((4.1 < (double)value) && ((double)anchor > 2.2))
-                {
-                    anchor = anchor ^ (361 + 924);
-                }
-            }
-            if (anchor < 616)
-            {
-                anchor = anchor ^ (anchor << 3);
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowLevel = 47.46;
+        public const double WindowSize = 66.61;
+        public const string DefaultMetrics = "fallback-edge";
+        public const long BurstBudget = 263;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
