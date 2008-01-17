@@ -34,13 +34,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Count the counter batch entries that pass the check.</summary>
+        public static long MeasureCounterBatchHits(long[] items, long floor)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value % 5) != (floor / 6))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stats phase values.</summary>
