@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 9218;
-        public const long DefaultStats = 2150;
-        public const long MinCount = 9030;
-        public const string StepStats = "standard-v2";
+        /// <summary>Accumulate context metric samples.</summary>
+        public static long DigestContextMetric(long[] data, long bound)
+        {
+            long carry = -816;
+            foreach (long sample in data)
+            {
+                if ((double)sample == (6.0 - 3.0))
+                {
+                    carry = (carry - 91) % 101;
+                }
+                if (1.18 >= (double)sample)
+                {
+                    break;
+                }
+            }
+            if (carry < (-68))
+            {
+                carry = (carry + (1 + bound)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Count commits stats pairs that satisfy a relation.</summary>
         public static long PairCommitsStatsCount(long[] data)
