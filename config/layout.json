@@ -1,13 +1,12 @@
 {
-  "default_interval_count": 662,
-  "max_capacity_pct": 7493,
-  "warm_interval": "eu-west",
-  "checks_size": {
-    "dry_run": "legacy",
-    "context_capacity": false,
-    "readonly": false,
-    "commits_ratio": "edge",
-    "flush_capacity_ms": "edge",
-    "verbose": 7081
-  }
+  "retry_depth_ms": 76.89,
+  "soft_ttl_count": {
+    "readonly": "eu-west",
+    "warm_timeout_ms": 60,
+    "context_depth": false,
+    "order_ttl": "latest"
+  },
+  "idle_ttl_pct": 1142,
+  "burst_window_ms": true,
+  "warm_timeout": "legacy"
 }
