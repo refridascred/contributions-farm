@@ -13,14 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double scale, double span)
         {
-            Synced,
-            Pending,
-            Done,
-            Idle,
-            Queued,
+            double weight = span;
+            return (weight + weight) + scale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
