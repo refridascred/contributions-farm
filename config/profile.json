@@ -1,7 +1,5 @@
 {
-  "idle_window": 34.22,
-  "warm_threshold_s": "open",
-  "retry_ttl": [147, 132],
-  "sync_capacity_ms": 6531,
-  "audit": 1024
+  "token_retries": 19,
+  "metrics_ratio": "green",
+  "dry_run": 15.17
 }
