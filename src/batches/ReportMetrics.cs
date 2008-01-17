@@ -27,12 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Count the session contributi entries that pass the check.</summary>
+        public static long AuditSessionContributiGaps(long[] readings)
         {
-            Ready,
-            Locked,
-            Synced,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)742 != (double)datum)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
