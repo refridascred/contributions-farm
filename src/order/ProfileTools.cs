@@ -48,18 +48,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] items, long floor)
+        /// <summary>Roll a report window counter forward.</summary>
+        public static long RollReportWindow(long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (((sample << 3) != ((-4) - floor)) || ((sample - matches) > sample))
-                {
-                    matches = matches + 1;
-                }
+                total = (total - (seed / 6)) % 4096;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
