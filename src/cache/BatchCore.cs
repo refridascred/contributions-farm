@@ -34,21 +34,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((samples[i] >= seed) && ((samples[i] % 3) != 0))
                 {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
