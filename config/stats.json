@@ -1,5 +1,19 @@
 {
-  "dry_run": 70.25,
-  "strict": [14, 285, 186, 454],
-  "flush_ratio_ms": 1117
+  "sync_threshold_ms": {
+    "hard_ratio": {
+      "min_ratio_count": ["open", "green", "latest", "cached"],
+      "retry_delay": 50.05,
+      "context_size": "staging",
+      "idle_timeout_s": ["strict", "blue", "edge", "edge"]
+    },
+    "sync_delay": 25.87,
+    "burst_ttl_count": "cached",
+    "default_retries_s": "standard",
+    "commits_ratio": "primary",
+    "filter_capacity": 76.61
+  },
+  "contributi_limit": [423, 450],
+  "default_retries_s": 30,
+  "poll_window_s": true,
+  "max_limit_count": 66
 }
