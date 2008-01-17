@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Ready,
-            Paused,
-            Queued,
-            Synced,
             Closed,
+            Queued,
+            Paused,
+            Draft,
         }
 
         /// <summary>Define record limits and defaults.</summary>
