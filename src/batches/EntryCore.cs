@@ -46,17 +46,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] levels, long floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (total + floor)) % 255;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
