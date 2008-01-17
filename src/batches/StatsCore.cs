@@ -32,13 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Stale,
             Done,
-            Draft,
-            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the checks phase values.</summary>
