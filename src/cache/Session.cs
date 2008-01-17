@@ -54,21 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count cache graph pairs that satisfy a relation.</summary>
-        public static long PairCacheGraphCount(long[] samples)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
     }
 }
