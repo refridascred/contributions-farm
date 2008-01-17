@@ -37,20 +37,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the buffer batches series from a seed.</summary>
-        public static long StepBufferBatches(long origin)
+        /// <summary>Digest a series of tools stream entries.</summary>
+        public static long DigestToolsStream(long[] levels, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            long anchor = 4;
+            foreach (long value in levels)
             {
-                if ((total ^ 920) == (0 + total))
+                if (value > (anchor >> 2))
                 {
-                    total = (total * 2) + (901 >> 2);
+                    anchor = (((anchor << 3) ^ (long)levels.Length) % 255) + origin;
                 }
-                total = total ^ ((long)i >> 1);
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return anchor % 65521;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
