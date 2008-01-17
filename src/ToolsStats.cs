@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support cache value.</summary>
-        public static double BlendSupportCache(double weight, double bias)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] readings, long limit)
         {
-            double mean = weight;
-            return (mean + 9.24) + bias;
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)limit >= (double)cell)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the payload class values.</summary>
