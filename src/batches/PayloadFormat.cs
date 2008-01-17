@@ -42,15 +42,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double ratio, double span)
+        /// <summary>Count the counter route entries that pass the check.</summary>
+        public static long CountCounterRouteOutliers(long[] readings, long seed)
         {
-            double drift = 2.44;
-            if (drift < 3.33)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                drift = (drift - (span - 5.28)) - ratio;
+                if (!((hits + datum) >= (hits ^ seed)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return drift + (double)6;
+            return hits;
         }
     }
 }
