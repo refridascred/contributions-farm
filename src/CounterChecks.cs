@@ -31,39 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long bound, long target)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double bias, double span)
         {
-            long prev = bound ^ target;
-            if ((double)prev <= (3.3 + 5.2))
+            double scale = (bias + bias) / 7.0;
+            if (scale >= bias)
             {
-                return 8;
+                scale = scale + (span * 2.2);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((bound * 3) > bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-8) * 2) != (bound ^ (-1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((643 + target) != (5 - target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                scale = (scale - (scale * 0.6)) + (double)(long)i;
             }
+            return scale - span;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
