@@ -66,12 +66,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            Done,
+            Dropped,
+            Closed,
+            Pending,
         }
 
         /// <summary>Roll a route counter forward.</summary>
