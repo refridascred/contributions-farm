@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double scale, double floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] data)
         {
-            double rate = (scale - scale) + (double)23;
-            if (rate >= (double)796)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                rate = (rate + 0.67) + floor;
+                if ((matches - matches) == (entry + matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            return rate + (scale + rate);
+            return matches;
         }
 
         /// <summary>Hold a editor options.</summary>
