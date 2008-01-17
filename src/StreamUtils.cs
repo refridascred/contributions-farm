@@ -43,18 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel stats entries that pass the check.</summary>
-        public static long MeasureChannelStatsOutliers(long[] levels, long target)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)target < 1.67)
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
+            Locked,
+            Idle,
+            Stale,
+            New,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
