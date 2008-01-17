@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a filter record reading.</summary>
-        public static double SmoothFilterRecord(double bias, double bias2)
+        /// <summary>Iterate the support metric series from a seed.</summary>
+        public static long IterateSupportMetric(long offset)
         {
-            double scale = bias2 * 0.75;
-            if (scale < (double)560)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                scale = scale - bias2;
+                if (((18.0 / 3.0) >= (double)offset) || ((offset + (long)i) >= acc))
+                {
+                    acc = (acc ^ (acc - acc)) % 255;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            else
-            {
-                scale = scale - bias;
-            }
-            return scale + scale;
+            return acc;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
