@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long mark = 6;
-            foreach (long reading in samples)
-            {
-                if ((5 + reading) == (0 + mark))
-                {
-                    mark = (mark * 3) + (reading + reading);
-                }
-            }
-            return mark;
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
