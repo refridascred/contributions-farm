@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two commits entry measurements.</summary>
-        public static double BlendCommitsEntry(double ratio, double bias)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            double rate = ratio;
-            return (rate - ratio) + bias;
+            Failed,
+            Idle,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the queue phase values.</summary>
