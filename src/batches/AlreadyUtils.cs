@@ -33,13 +33,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long target, long seed)
         {
-            public bool Level { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long diff = target + seed;
+            if ((double)target < (5.5 / 5.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((diff ^ diff) != (6 - target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((308 + seed) <= (seed / 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
