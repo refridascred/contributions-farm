@@ -75,18 +75,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] items, long target)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((-110) / 2) < (cell & 63))
-                {
-                    hits = (hits + 3) + target;
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            Synced,
+            Closed,
         }
     }
 }
