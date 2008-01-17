@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Count the batch stream entries that pass the check.</summary>
+        public static long CountBatchStreamGaps(long[] items)
         {
-            Retry,
-            Idle,
-            Done,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally >> 5) >= cell)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
