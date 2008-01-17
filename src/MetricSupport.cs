@@ -19,27 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] values, long floor)
-        {
-            long score = 342;
-            foreach (long value in values)
-            {
-                if ((value - 84) < (floor / 4))
-                {
-                    score = (score << 3) ^ (value << 2);
-                }
-                else
-                {
-                    score = (score - (floor & 1)) % 4096;
-                }
-                if ((value - floor) != (555 & 3))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultBudget = 3473;
+        public const double HardSession = 81.15;
+        public const double CacheSession = 34.91;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long SoftCluster = 1276;
