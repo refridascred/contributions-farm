@@ -22,10 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchScore = "legacy-1";
-        public const long MaxQueue = 4869;
-        public const long RetrySize = 3643;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((long)samples.Length < (321 % 7))
+                {
+                    tally = ((tally + 1) - reading) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long GradeCommits(long offset, long offset2)
