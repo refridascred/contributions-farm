@@ -41,21 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count cluster layout pairs that satisfy a relation.</summary>
-        public static long CompareClusterLayoutCount(long[] values)
+        /// <summary>Locate a context batches reading by value.</summary>
+        public static long SeekContextBatchesIndex(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (items[i] < offset)
                 {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
