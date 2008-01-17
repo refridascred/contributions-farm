@@ -68,19 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] data, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (sample < bound)
+                if ((577 + seen) == (sample - seen))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
