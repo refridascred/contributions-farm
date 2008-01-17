@@ -1,19 +1,6 @@
 {
-  "strict": "latest",
-  "notes_interval": {
-    "flush_depth": 6325,
-    "idle_timeout_count": "standard",
-    "notes_ttl": 99,
-    "readonly": "latest",
-    "cache_limit": {
-      "strict": ["blue", "local", "fallback", "blue"],
-      "farm_interval": [256, 369],
-      "batch_retries_count": "staging",
-      "default_ratio_s": 99,
-      "verbose": "legacy",
-      "readonly": 60
-    }
-  },
-  "default_limit": true,
-  "sync_interval_ms": ["green", "blue", "green", "primary"]
+  "max_depth": 79,
+  "filter_timeout": 60,
+  "account_timeout": 8,
+  "poll_interval_pct": "green"
 }
