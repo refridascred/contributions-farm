@@ -1,21 +1,8 @@
 {
-  "checks_ttl": false,
-  "enabled": true,
-  "idle_ttl_count": "stable",
-  "batch_delay_count": {
-    "batch_capacity_ms": [198, 313, 252, 209],
-    "batch_delay_ms": 74.27,
-    "metric_retries": 32,
-    "retry_retries_ms": "edge",
-    "flush_size": 1024,
-    "enabled": false
-  },
-  "max_timeout_s": {
-    "readonly": 83.59,
-    "enabled": 250,
-    "editor_depth": 30,
-    "idle_limit_pct": 25,
-    "burst_ttl_s": 78.69
-  },
-  "format_size": "cached"
+  "sync_ratio_ms": true,
+  "dry_run": 30,
+  "command_window": 30,
+  "compress": "open",
+  "sync_ratio": [315, 496, 163],
+  "stats_interval": 34.02
 }
