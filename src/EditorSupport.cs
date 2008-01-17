@@ -79,19 +79,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] levels, long step)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Token { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
