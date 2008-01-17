@@ -33,21 +33,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long step, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((step + floor) > (792 + floor))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((1.07 / 2.0) >= (double)step)
                 {
-                    if ((items[i] + items[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two counter measurements.</summary>
