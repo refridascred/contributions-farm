@@ -31,16 +31,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long target)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = (carry * 3) + 8;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Failed,
+            Dropped,
+            Stale,
+            Pending,
         }
     }
 }
