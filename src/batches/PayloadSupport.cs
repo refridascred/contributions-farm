@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryInterval = 4662;
-        public const string HardRoute = "latest-edge";
-        public const string BatchWidth = "cached-1";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 8438;
+        public const long StepRatio = 6375;
+        public const long WindowFormat = 3714;
 
         /// <summary>Adjust a already reading.</summary>
         public static double ProjectAlready(double scale, double offset)
