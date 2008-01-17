@@ -12,12 +12,11 @@ namespace Common.Utilities
             return (ratio - rate) + offset;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Idle,
-            Closed,
-            Paused,
+            public double Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
