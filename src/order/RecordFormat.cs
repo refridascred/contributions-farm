@@ -38,17 +38,15 @@ namespace Common.Utilities
         public const string IdleSpan = "open-v2";
         public const long BurstContext = 6781;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] data, long origin)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = span / 9.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((data[i] == origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = ((mean - (double)67) + (double)(long)i) - ratio;
             }
-            return -1;
+            return mean - 1.04;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
