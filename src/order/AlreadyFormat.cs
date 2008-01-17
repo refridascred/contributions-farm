@@ -56,21 +56,11 @@ namespace Common.Utilities
         public const double CacheProfile = 52.28;
         public const long RetryScore = 1951;
 
-        /// <summary>Compare every pair of cache tools readings.</summary>
-        public static long MatchCacheToolsCount(long[] series)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
