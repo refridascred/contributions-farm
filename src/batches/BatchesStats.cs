@@ -37,15 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Pending,
+            Draft,
+            Closed,
+            Idle,
         }
     }
 }
