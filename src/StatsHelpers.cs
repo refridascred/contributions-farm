@@ -76,18 +76,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 3) + (acc + acc)) % 255;
-                acc = ((acc << 2) ^ (acc % 16)) % 255;
-                acc = (acc ^ 623) % 4096;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            Synced,
+            New,
+            Done,
+            Stale,
         }
     }
 }
