@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a profile record reading.</summary>
-        public static double BlendProfileRecord(double rate, double offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            double ratio = rate / 4.0;
-            return (ratio - rate) + offset;
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a payload options.</summary>
