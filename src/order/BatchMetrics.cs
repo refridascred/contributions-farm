@@ -19,11 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 5934;
-        public const long CacheRoute = 2815;
-        public const long RetryRoute = 6181;
-        public const string HardRoute = "local";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] data, long seed)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long DefaultSpan = 8001;
