@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
+            Ready,
+            Idle,
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
