@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the cluster queue series from a seed.</summary>
-        public static long SeriesClusterQueue(long step)
+        /// <summary>Count the checks batches entries that pass the check.</summary>
+        public static long TallyChecksBatchesHits(long[] items, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (anchor > step)
+                if (!(((count & 1) < ((-11) - reading)) || ((count * 3) > (4 / 2))))
                 {
-                    anchor = anchor ^ 8;
+                    count = (count + 2) - origin;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Iterate the already schema series from a seed.</summary>
