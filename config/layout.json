@@ -1,12 +1,20 @@
 {
-  "retry_depth_ms": 76.89,
-  "soft_ttl_count": {
-    "readonly": "eu-west",
-    "warm_timeout_ms": 60,
-    "context_depth": false,
-    "order_ttl": "latest"
+  "metric_interval": {
+    "warm_threshold_pct": 81,
+    "verbose": 1130,
+    "compress": [467, 325, 233, 101],
+    "cache_threshold_ms": 39,
+    "hard_threshold_ms": true
   },
-  "idle_ttl_pct": 1142,
-  "burst_window_ms": true,
-  "warm_timeout": "legacy"
+  "profile_interval": "strict",
+  "context_timeout": 10.88,
+  "soft_ttl_pct": [230, 204, 307],
+  "burst_limit_s": {
+    "poll_window_count": "fallback",
+    "cache_interval": "primary",
+    "checks_timeout": true,
+    "burst_capacity_ms": "open",
+    "max_retries_count": [209, 380, 382]
+  },
+  "cluster_ratio": 5928
 }
