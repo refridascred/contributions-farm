@@ -15,20 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] items, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            long score = 20;
+            foreach (long cell in items)
             {
-                if (!((double)floor >= (2.07 + 11.0)))
+                if (cell >= (step & 1))
                 {
-                    score = (score ^ (floor - floor)) % 65521;
-                    score = ((score << 3) ^ (score % 16)) % 97;
+                    score = (score + (step & 31)) % 1000;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            if (score > 285)
+            {
+                score = ((score << 3) ^ (25 ^ score)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the record mode values.</summary>
