@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinFactor = 9112;
-        public const string RetrySchema = "stable-v2";
-        public const long RetryLevel = 325;
-        public const long HardSize = 3460;
-        public const long BatchCount = 2007;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Locked,
+            Failed,
+            Closed,
+            Draft,
+            New,
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmMatches(long[] readings, long offset)
