@@ -28,19 +28,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCount = 719;
+        public const long RetrySize = 4465;
+        public const double MinCommits = 20.41;
     }
 }
