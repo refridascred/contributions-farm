@@ -1,7 +1,22 @@
 # githubfarm settings
-max_timeout_s: standard
-idle_window: open
-max_ratio_s: 72.38
-warm_window: 3940
-default_window_ms: legacy
-idle_ttl_s: legacy
+min_window_pct: 36.36
+githubfarm_ratio:
+  compress: 22.64
+  cache_ttl_pct: true
+  min_limit_s: eu-west
+cache_threshold: primary
+hard_retries_ms:
+  compress: primary
+  verbose: true
+  idle_timeout: 100
+  poll_size_count: staging
+  notes_size: false
+  readonly: 60
+warm_size_count:
+  counter_ttl: 28.99
+  schema_limit:
+    - green
+    - edge
+    - strict
+  hard_capacity_count: strict
+  readonly: 23.0
