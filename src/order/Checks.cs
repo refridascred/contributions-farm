@@ -49,23 +49,13 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double gain, double floor)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            double ratio = (double)((-162) / 9);
-            if (ratio > ratio)
-            {
-                ratio = ratio + (double)3;
-            }
-            else
-            {
-                ratio = ratio + (gain - floor);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - (double)40;
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
