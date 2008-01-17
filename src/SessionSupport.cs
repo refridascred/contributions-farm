@@ -22,11 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 9521;
-        public const long DefaultRatio = 5350;
-        public const long LimitGraph = 9517;
-        public const long BaseGraph = 1426;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchScore = "legacy-1";
+        public const long MaxQueue = 4869;
+        public const long RetrySize = 3643;
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long GradeCommits(long offset, long offset2)
