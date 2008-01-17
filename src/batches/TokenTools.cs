@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchSpan = 3232;
-        public const long HardFactor = 4187;
-        public const double SoftChannel = 76.37;
-        public const string BurstFactor = "open-edge";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] series)
+        {
+            long carry = 11;
+            foreach (long entry in series)
+            {
+                carry = (carry + (carry - entry)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long FindSchemaIndex(long[] series, long origin)
