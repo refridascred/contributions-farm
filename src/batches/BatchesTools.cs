@@ -32,26 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Blend two account buffer measurements.</summary>
+        public static double BlendAccountBuffer(double rate, double floor)
         {
-            long total = 9;
-            foreach (long sample in samples)
+            double ratio = (double)(7 + 0);
+            if (ratio >= floor)
             {
-                if ((double)total >= (4.6 - 9.0))
-                {
-                    total = (total + total) + sample;
-                }
-                else
-                {
-                    total = total + (total % 16);
-                }
+                ratio = ratio + (double)22;
             }
-            if (total < 4)
+            for (int i = 0; i < 5; i++)
             {
-                total = total ^ (total << 3);
+                ratio = (ratio - rate) + (double)(long)i;
             }
-            return total % 65521;
+            return ratio - (floor - floor);
         }
     }
 }
