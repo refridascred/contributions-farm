@@ -1,9 +1,6 @@
 {
-  "payload_ratio": 61,
-  "default_capacity_s": [83, 197, 194],
-  "sync_threshold_s": {
-    "notes_size": "edge",
-    "default_capacity_ms": "strict",
-    "flush_delay": 9261
-  }
+  "sync_ratio_pct": "open",
+  "session_capacity": false,
+  "sync_window_count": [385, 56, 420, 68],
+  "base_retries": 59.8
 }
