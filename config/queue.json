@@ -1,8 +1,17 @@
 {
-  "compress": "cached",
-  "batch_depth": "primary",
-  "audit": [441, 352, 333],
-  "readonly": ["primary", "green", "stable", "green"],
-  "hard_interval": 97,
-  "idle_delay": 52.91
+  "persist": 500,
+  "filter_limit": 47.56,
+  "base_capacity_s": {
+    "graph_capacity": 100,
+    "soft_capacity_ms": {
+      "verbose": 12.88,
+      "idle_delay_count": "local",
+      "readonly": 100
+    },
+    "report_ttl": 77.15,
+    "batch_ttl": 69,
+    "strict": true
+  },
+  "entry_window": 62.22,
+  "min_limit_ms": true
 }
