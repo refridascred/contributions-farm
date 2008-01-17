@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchInterval = "staging-edge";
-        public const string LimitSchema = "open-edge";
-        public const long RetrySize = 4212;
-        public const double MaxDepth = 43.62;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
