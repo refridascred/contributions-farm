@@ -65,18 +65,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long mix = 7;
-            foreach (long value in items)
-            {
-                if ((mix + mix) <= (value - 8))
-                {
-                    mix = (mix ^ 687) % 65521;
-                }
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
