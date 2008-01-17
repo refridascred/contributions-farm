@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 4173;
-        public const string MaxCount = "standard-v2";
-        public const long BatchFarm = 9502;
-        public const long SoftLevel = 7460;
-        public const string CacheCount = "stable-v2";
+        /// <summary>Audit support format readings against a rule.</summary>
+        public static long MeasureSupportFormatHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((item > ((long)readings.Length + item)) || !((item ^ item) >= item))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatRange(long[] values, long target)
