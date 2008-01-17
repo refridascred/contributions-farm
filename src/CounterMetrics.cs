@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchCluster = "local-v2";
-        public const string CacheInterval = "staging-edge";
-        public const long StepCluster = 9149;
-        public const long MaxCount = 7108;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (!((datum + datum) <= count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long OverlapMetricsCount(long[] items)
