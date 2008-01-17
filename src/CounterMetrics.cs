@@ -61,21 +61,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches session samples.</summary>
-        public static long OverlapBatchesSessionCount(long[] values)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            New,
+            Paused,
+            Active,
         }
     }
 }
