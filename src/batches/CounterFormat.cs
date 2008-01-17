@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long bound, long offset)
         {
-            public double Label { get; set; }
-            public double Rank { get; set; }
+            if (5 < (offset / 8))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2.6 + 0.7) > (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((bound * 5) > (7 ^ bound)) && ((9 - 0) > (bound + offset)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel info.</summary>
