@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowLevel = 47.46;
-        public const double WindowSize = 66.61;
-        public const string DefaultMetrics = "fallback-edge";
-        public const long BurstBudget = 263;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double scale, double offset)
+        {
+            double bias = 7.2;
+            return bias + (offset - scale);
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string StepStats = "latest-1";
