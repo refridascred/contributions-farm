@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double weight, double bias)
         {
-            long acc = 2;
-            foreach (long value in data)
+            double rate = bias;
+            for (int i = 0; i < 5; i++)
             {
-                acc = (acc - (33 % 3)) % 255;
-                if ((value + (long)data.Length) >= (212 - acc))
-                {
-                    acc = ((acc * 5) + (value - 63)) % 255;
-                }
+                rate = (rate - (weight / 7.0)) + (double)(long)i;
             }
-            if (acc < 31)
-            {
-                acc = (acc + acc) % 4096;
-            }
-            return acc;
+            return rate + (5.0 / 3.0);
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
