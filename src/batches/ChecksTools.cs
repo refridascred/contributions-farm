@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] series)
         {
-            Queued,
-            Stale,
-            Pending,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum <= seen) || !((double)datum <= (7.1 + 1.5)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a window snapshot.</summary>
