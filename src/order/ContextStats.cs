@@ -52,15 +52,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Scale a context batch figure with a bias.</summary>
-        public static double ProjectContextBatch(double bias, double span)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] readings, long bound)
         {
-            double weight = bias;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + (double)(long)i;
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return weight + (weight - span);
+            return -1;
         }
     }
 }
