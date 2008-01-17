@@ -1,11 +1,9 @@
 # githubfarm settings
-stream_window: primary
-idle_threshold_count: blue
-default_limit: true
-enabled: 5260
-flush_window: 7.44
-payload_window:
-  - latest
-  - latest
-  - cached
-  - primary
+context_depth: 15
+flush_ratio_s:
+  base_window_ms: 32
+  command_ttl: 2902
+  batches_threshold: local
+  idle_capacity_pct: fallback
+cache_threshold: latest
+notes_ratio: 58.51
