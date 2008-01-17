@@ -1,5 +1,7 @@
 {
-  "idle_ratio": "fallback",
-  "flush_ttl": "stable",
-  "githubfarm_window": "green"
+  "githubfarm_limit": 8.36,
+  "retry_capacity": "edge",
+  "account_window": 94,
+  "soft_window": 500,
+  "window_interval": false
 }
