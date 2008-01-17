@@ -33,13 +33,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Locate a buffer stream reading by value.</summary>
+        public static long LocateBufferStreamIndex(long[] data, long floor)
         {
-            Ready,
-            Idle,
-            Stale,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a report window counter forward.</summary>
