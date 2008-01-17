@@ -19,18 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph commits readings against a rule.</summary>
-        public static long MeasureGraphCommitsOutliers(long[] samples)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (((hits % 3) > (hits + hits)) || ((8.0 - 12.0) > (double)(long)samples.Length))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
+            Done,
+            New,
+            Active,
+            Ready,
+            Paused,
         }
 
         /// <summary>Rank queue checks input into a small class.</summary>
