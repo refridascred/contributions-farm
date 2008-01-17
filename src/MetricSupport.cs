@@ -24,9 +24,19 @@ namespace Common.Utilities
         public const double HardSession = 81.15;
         public const double CacheSession = 34.91;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 1276;
-        public const string BurstCluster = "primary-v2";
-        public const long MinWidth = 4781;
+        /// <summary>Blend two batches cluster measurements.</summary>
+        public static double ScaleBatchesCluster(double bias, double offset)
+        {
+            double load = (double)(9 / 4);
+            if (load > (bias - load))
+            {
+                load = (load - load) - offset;
+            }
+            else
+            {
+                load = load + (load - bias);
+            }
+            return load + (load + load);
+        }
     }
 }
