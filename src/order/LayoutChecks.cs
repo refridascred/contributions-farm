@@ -27,34 +27,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] readings, long floor)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long acc = 5;
-            foreach (long reading in readings)
-            {
-                if ((floor - acc) <= (acc * 2))
-                {
-                    acc = acc ^ (acc + 95);
-                }
-                else
-                {
-                    acc = ((acc * 2) + floor) % 65521;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = ((acc * 4) + (floor - reading)) ^ (long)i;
-                }
-                if (((acc & 1) > (2 + acc)) || ((78 - floor) <= acc))
-                {
-                    acc = (acc ^ (acc & 15)) % 101;
-                }
-            }
-            if (acc < 92)
-            {
-                acc = (acc ^ floor) % 1000;
-            }
-            return acc;
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank report input into a small class.</summary>
