@@ -67,17 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metric counter sample.</summary>
-        public static long LookupMetricCounterIndex(long[] samples, long limit)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (samples[i] > limit)
+                if (datum != floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
