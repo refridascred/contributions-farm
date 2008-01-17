@@ -33,19 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] samples, long bound)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > bound)
+                if (data[i] <= floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
