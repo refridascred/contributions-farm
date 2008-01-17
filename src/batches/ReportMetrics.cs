@@ -13,18 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the session contributi entries that pass the check.</summary>
-        public static long AuditSessionContributiGaps(long[] readings)
+        /// <summary>Digest a series of support stats entries.</summary>
+        public static long DigestSupportStats(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long anchor = 833;
+            foreach (long item in readings)
             {
-                if ((double)742 != (double)datum)
+                if ((anchor + offset) != (item + item))
                 {
-                    tally = tally + 1;
+                    anchor = (anchor + (anchor ^ anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor ^ item;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
