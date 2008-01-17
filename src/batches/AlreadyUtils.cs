@@ -30,23 +30,11 @@ namespace Common.Utilities
             return scale + (double)27;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] levels)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long anchor = 22;
-            foreach (long cell in levels)
-            {
-                anchor = ((anchor << 2) ^ (-25)) % 4096;
-                if (!((anchor ^ anchor) < (cell & 63)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 930)
-            {
-                anchor = (anchor * 5) + (15 * 3);
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the record state values.</summary>
