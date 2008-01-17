@@ -28,15 +28,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] samples)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long floor, long origin)
         {
-            long total = 109;
-            foreach (long cell in samples)
+            long slot = floor - origin;
+            if ((14.0 - 13.0) < (0.3 - 1.58))
             {
-                total = (total - total) ^ cell;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (((8 << 1) <= (floor % 3)) && ((double)slot < (3.5 / 9.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor >= (origin & 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter options.</summary>
