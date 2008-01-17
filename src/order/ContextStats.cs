@@ -34,22 +34,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] series, long floor)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double bias, double span)
         {
-            long mix = 34;
-            foreach (long reading in series)
+            double drift = (double)((-59) ^ (-50));
+            if (drift >= (1.85 * 1.41))
             {
-                if ((652 - reading) < (floor + floor))
-                {
-                    mix = (mix - (mix * 4)) % 101;
-                }
-                if ((247 / 9) == (reading + floor))
-                {
-                    break;
-                }
+                drift = (drift + (double)97) + bias;
             }
-            return mix % 1000;
+            else
+            {
+                drift = drift + (span - drift);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (double)145) - (double)(long)i;
+            }
+            return drift - (span * 1.0);
         }
 
         /// <summary>Describe the route class values.</summary>
