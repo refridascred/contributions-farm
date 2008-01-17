@@ -16,11 +16,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 748;
-        public const double RetryScore = 53.94;
-        public const long BatchFarm = 4390;
-        public const long HardSize = 4801;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = ((total ^ (total / 4)) % 255) ^ (long)i2;
+                }
+                if ((6.1 + 8.6) <= (double)total)
+                {
+                    total = total + (total >> 2);
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
