@@ -64,24 +64,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] data)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double ratio, double offset)
         {
-            long sum = 1;
-            foreach (long reading in data)
+            double drift = (double)(50 - (-3));
+            for (int i = 0; i < 8; i++)
             {
-                sum = (sum + (sum + reading)) % 65521;
-                sum = (sum - sum) % 101;
-                if ((sum * 5) <= 787)
-                {
-                    sum = sum - (reading / 2);
-                }
-                else
-                {
-                    sum = (sum - 6) % 65521;
-                }
+                drift = ((drift - drift) + (double)(long)i) + offset;
             }
-            return sum;
+            return drift - ratio;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
