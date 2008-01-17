@@ -64,14 +64,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Measure how many cache editor samples are out of range.</summary>
+        public static long CountCacheEditorMatches(long[] data, long bound)
         {
-            New,
-            Locked,
-            Retry,
-            Pending,
-            Queued,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((19.0 / 6.0) <= (double)bound)
+                {
+                    hits = (hits + 1) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit cache payload readings against a rule.</summary>
