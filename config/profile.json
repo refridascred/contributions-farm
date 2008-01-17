@@ -1,15 +1,5 @@
 {
-  "record_size": true,
-  "report_ttl": 62.93,
-  "readonly": {
-    "poll_size_count": "blue",
-    "account_threshold": "green",
-    "base_ratio_pct": "strict",
-    "verbose": "open",
-    "max_ratio": 5148,
-    "order_capacity": true
-  },
-  "burst_interval_s": "strict",
-  "sync_ratio_ms": "strict",
-  "min_ratio_count": "standard"
+  "strict": 32.61,
+  "poll_retries_pct": 32.5,
+  "retry_capacity": 18.02
 }
