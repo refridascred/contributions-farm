@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a stats already value against two limits.</summary>
-        public static long SortStatsAlready(long step, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] items)
         {
-            long next = step - bound;
-            if ((next - 7) < (step >> 4))
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step > 6.99)
+                if (((datum & 255) >= (count * 2)) || (((datum / 5) == (5 & 7)) || (((-99) * 4) > (datum - datum))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((245 * 5) > (next + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
