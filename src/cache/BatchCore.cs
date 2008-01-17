@@ -46,14 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleSize = 2.65;
+        public const long IdleCount = 9225;
+        public const string WindowWidth = "open-1";
+        public const long MaxMetrics = 7525;
+        public const string SoftMetrics = "fallback";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MaxFactor = 3909;
