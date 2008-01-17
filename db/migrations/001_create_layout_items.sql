@@ -2,9 +2,10 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    label TEXT,
     state TEXT NOT NULL DEFAULT 'new',
-    owner TEXT NOT NULL
+    level INTEGER,
+    score REAL NOT NULL DEFAULT 0,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_state ON layout_items (state);
+CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
