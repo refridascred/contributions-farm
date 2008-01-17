@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double bias, double floor)
-        {
-            double bias2 = (floor - bias) + (floor * 13.0);
-            if (bias2 <= (bias * 8.01))
-            {
-                bias2 = bias2 + floor;
-            }
-            else
-            {
-                bias2 = bias2 - 1.7;
-            }
-            return bias2 + 5.6;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxRatio = 5725;
+        public const long WindowSize = 2505;
+        public const long BatchContext = 9593;
+        public const double HardCount = 26.7;
+        public const long BaseContext = 5741;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double SmoothCommits(double gain, double offset)
