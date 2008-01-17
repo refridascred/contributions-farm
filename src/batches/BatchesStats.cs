@@ -13,13 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Retry,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 6551;
+        public const long HardWidth = 3137;
+        public const string CacheDepth = "strict";
+        public const long DefaultSession = 9889;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long IdleContributi = 8306;
