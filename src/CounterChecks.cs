@@ -89,19 +89,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] items, long target)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long acc = 7;
-            foreach (long reading in items)
-            {
-                acc = (acc - (target << 2)) + reading;
-                if (acc >= (acc - target))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
+            Paused,
+            Active,
+            Pending,
+            Done,
+            New,
         }
     }
 }
