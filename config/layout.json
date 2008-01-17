@@ -1,9 +1,6 @@
 {
-  "buffer_capacity": {
-    "base_capacity_count": "legacy",
-    "dry_run": "primary",
-    "already_ratio": true
-  },
-  "min_delay": 60,
-  "audit": 6
+  "strict": 29.85,
+  "compress": 3.47,
+  "sync_capacity_s": 6096,
+  "base_retries_s": "green"
 }
