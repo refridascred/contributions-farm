@@ -53,21 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
     }
 }
