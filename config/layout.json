@@ -1,11 +1,5 @@
 {
-  "warm_size_count": {
-    "metric_window": 72,
-    "warm_timeout": 84.24,
-    "min_window_ms": true,
-    "max_timeout_s": 22.51
-  },
-  "base_depth_ms": 7043,
-  "min_threshold_ms": "green",
-  "batch_limit": false
+  "strict": 36.49,
+  "dry_run": 3813,
+  "flush_delay_pct": "blue"
 }
