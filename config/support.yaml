@@ -1,22 +1,15 @@
 # support settings
-sync_size_ms:
-  default_timeout: 100
-  sync_ratio_s:
-    - 116
-    - 481
-  dry_run: true
-  verbose:
-    sync_delay_pct: false
-    sync_timeout_pct:
-      - legacy
-      - open
-      - local
-      - eu-west
-    burst_capacity_pct: true
-max_limit:
-  - blue
-  - standard
-max_ratio: 9176
-checks_ratio:
-  - 233
-  - 60
+cache_limit_ms: 82.79
+session_retries: 22
+enabled: 82.89
+flush_capacity:
+  tools_retries: staging
+  queue_retries:
+    - fallback
+    - primary
+  retry_interval_ms: 65
+  audit:
+    - latest
+    - eu-west
+    - eu-west
+base_interval_ms: blue
