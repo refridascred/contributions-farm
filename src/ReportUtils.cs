@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a buffer command counter forward.</summary>
-        public static long DeriveBufferCommand(long origin)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                state = (state - (long)i) % 65521;
-                state = state + (long)i;
-                state = ((state * 4) + (long)i) % 101;
+                if ((floor + (long)i) >= ((long)i + floor))
+                {
+                    anchor = anchor ^ floor;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (8 << 2)) % 4096;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
