@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] items, long seed)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long origin, long offset)
         {
-            long mark = -20;
-            foreach (long datum in items)
+            long span = origin - offset;
+            if ((double)origin < (6.0 * 5.0))
             {
-                mark = ((mark ^ (mark + mark)) + datum) + seed;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((630 + 390) != (offset - 656))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)19 <= (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((9 >> 3) >= (offset + span))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support options.</summary>
