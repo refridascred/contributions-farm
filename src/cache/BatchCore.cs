@@ -46,28 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] levels)
-        {
-            long anchor = 456;
-            foreach (long cell in levels)
-            {
-                anchor = (anchor * 2) + cell;
-                if (((double)377 == (double)cell) && ((anchor - anchor) == (cell + anchor)))
-                {
-                    anchor = anchor - cell;
-                }
-                if ((anchor + (long)levels.Length) >= (cell << 2))
-                {
-                    break;
-                }
-            }
-            if (anchor > 4)
-            {
-                anchor = (anchor - (anchor % 16)) % 4096;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "standard-v2";
+        public const long BaseMetric = 9298;
+        public const long StepMetric = 4502;
+        public const long CacheRatio = 8137;
+        public const double MaxBudget = 55.72;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double LimitChecks = 87.35;
