@@ -13,19 +13,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Scale a schema queue figure with a bias.</summary>
-        public static double BlendSchemaQueue(double rate, double offset)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] levels, long seed)
         {
-            double scale = (double)((-7) * 5);
-            if (scale > offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale - scale) + rate;
+                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (double)(-6);
-            }
-            return scale - (double)964;
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
