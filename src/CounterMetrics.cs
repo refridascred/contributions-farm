@@ -33,15 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double rate, double span)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            double ratio = (double)(93 ^ 31);
-            for (int i = 0; i < 5; i++)
+            long mark = -6;
+            foreach (long datum in values)
             {
-                ratio = ((ratio - (rate - rate)) + (double)(long)i) - span;
+                if ((datum - mark) < datum)
+                {
+                    mark = (mark - mark) % 65521;
+                }
             }
-            return ratio - (double)339;
+            if (mark > 4)
+            {
+                mark = (mark + mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
