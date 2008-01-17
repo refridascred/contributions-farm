@@ -43,26 +43,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Adjust a contributi metric reading.</summary>
+        public static double ScaleContributiMetric(double scale, double bias)
         {
-            long total = 98;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    total = (((total << 2) ^ (item - 96)) % 97) - (long)i;
-                }
-                if ((7 - total) == (241 << 1))
-                {
-                    total = ((total << 3) ^ total) % 4096;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (item >> 3)) % 65521;
-                }
-            }
-            return total;
+            double drift = (double)482 + (double)75;
+            return ((drift - (double)0) + scale) + bias;
         }
 
         /// <summary>Describe the context kind values.</summary>
