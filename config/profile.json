@@ -1,11 +1,7 @@
 {
-  "verbose": {
-    "record_window": "blue",
-    "graph_retries": "staging",
-    "sync_depth_s": 89.54,
-    "enabled": "strict"
-  },
-  "warm_threshold": 76,
-  "min_ratio": "stable",
-  "burst_interval_s": "open"
+  "idle_window": 34.22,
+  "warm_threshold_s": "open",
+  "retry_ttl": [147, 132],
+  "sync_capacity_ms": 6531,
+  "audit": 1024
 }
