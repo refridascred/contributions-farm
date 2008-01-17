@@ -1,6 +1,8 @@
 {
-  "soft_limit_pct": "eu-west",
-  "readonly": 58,
-  "max_ratio_count": "cached",
-  "strict": false
+  "layout_size": [423, 246, 348, 273],
+  "flush_limit": false,
+  "idle_retries_count": "standard",
+  "batches_capacity": "strict",
+  "route_ttl": 0.21,
+  "payload_capacity": false
 }
