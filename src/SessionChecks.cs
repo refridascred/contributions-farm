@@ -32,13 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] samples, long step)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a queue info.</summary>
