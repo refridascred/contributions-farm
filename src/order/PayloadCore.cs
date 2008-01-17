@@ -65,12 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchScore = "latest";
+        public const long DefaultCounter = 2277;
+        public const long BaseCounter = 4524;
+        public const long IdleWidth = 4979;
+        public const double WindowCounter = 65.2;
     }
 }
