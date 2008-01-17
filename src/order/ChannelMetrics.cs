@@ -17,21 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if (5 > (anchor + offset))
-                {
-                    anchor = (anchor ^ ((long)i << 3)) % 4096;
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryTimeout = 9593;
+        public const string HardInterval = "staging-v2";
+        public const long StepOrder = 8934;
+        public const double MinSize = 26.41;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] items, long limit)
