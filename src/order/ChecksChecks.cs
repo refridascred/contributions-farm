@@ -11,32 +11,11 @@ namespace Common.Utilities
         public const string WindowScore = "stable-1";
         public const long BaseDepth = 9220;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long limit, long offset)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long slot = limit - offset;
-            if (((limit << 2) == (limit + limit)) && (slot > limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset + limit) <= (limit + 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((slot + slot) <= (slot - 38))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
