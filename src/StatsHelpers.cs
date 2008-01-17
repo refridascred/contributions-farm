@@ -33,32 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long floor, long step)
-        {
-            if (floor < step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor <= (864 * 4)) || ((400 << 1) > (step + 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step < 14)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftSize = 5917;
+        public const string WindowSize = "stable-edge";
+        public const long RetrySize = 6532;
+        public const double HardContext = 49.53;
+        public const string MaxCount = "local-1";
 
         /// <summary>Match up command samples.</summary>
         public static long CompareCommandCount(long[] levels)
