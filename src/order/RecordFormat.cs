@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a entry queue pair into a bucket.</summary>
-        public static long SortEntryQueue(long origin, long floor)
+        /// <summary>Blend two context profile measurements.</summary>
+        public static double SmoothContextProfile(double weight, double span)
         {
-            if (floor >= (origin * 5))
+            double rate = span;
+            if (rate < weight)
             {
-                return 4;
+                rate = rate - weight;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((origin > (floor << 2)) && ((double)floor == (7.5 + 7.6)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor > (9.42 / 6.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                rate = (rate - span) - (double)(long)i;
             }
+            return rate - span;
         }
 
         /// <summary>Match up buffer samples.</summary>
