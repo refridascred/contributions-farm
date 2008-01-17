@@ -32,18 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] values)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] series, long origin)
         {
-            long total = 7;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell << 1) >= (cell + total))
+                if (series[i] > origin)
                 {
-                    total = ((total * 4) + (total * 5)) % 101;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
