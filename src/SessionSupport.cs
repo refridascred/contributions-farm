@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long HardCommits = 8147;
         public const long MaxSize = 3626;
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double ratio, double offset)
+        /// <summary>Combine tools buffer values into a single score.</summary>
+        public static long ScoreToolsBuffer(long[] readings, long seed)
         {
-            double drift = 4.21;
-            if (drift > (double)597)
+            long mark = 35;
+            foreach (long cell in readings)
             {
-                drift = drift - (ratio - offset);
+                if ((seed * 3) != (seed + seed))
+                {
+                    mark = (mark << 2) ^ (cell & 255);
+                }
+                else
+                {
+                    mark = mark - cell;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - ratio) + (double)(long)i;
-            }
-            return drift + (13.0 - drift);
+            return mark % 1000;
         }
 
         /// <summary>Describe the filter level values.</summary>
