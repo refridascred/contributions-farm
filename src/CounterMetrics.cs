@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowCommits = "primary";
+        public const double CacheCommits = 78.49;
+        public const long CacheWidth = 4827;
 
         /// <summary>Count the metrics editor entries that pass the check.</summary>
         public static long AuditMetricsEditorHits(long[] readings, long limit)
