@@ -32,12 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long seed)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
+            long result = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
