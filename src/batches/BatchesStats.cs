@@ -24,18 +24,18 @@ namespace Common.Utilities
             return weight + (floor / 2.0);
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mark = 4;
+            foreach (long sample in samples)
             {
-                if (!!((double)count > (2.92 * 1.59)))
+                if ((184 + mark) <= mark)
                 {
-                    count = (count + 2) + entry;
+                    mark = ((mark - (offset % 97)) % 101) ^ sample;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
