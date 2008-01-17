@@ -1,17 +1,7 @@
 # githubfarm settings
-flush_size_s:
-  max_depth: local
-  burst_interval_ms: true
-  buffer_depth: fallback
-  idle_size: 6746
-  base_threshold:
-    - legacy
-    - edge
-checks_window:
-  - 87
-  - 405
-  - 465
-filter_ratio: 22.93
-persist:
-  - standard
-  - stable
+farm_delay: local
+enabled: 83.84
+context_delay: 7199
+retry_ttl: fallback
+sync_limit_s: 5169
+poll_size: staging
