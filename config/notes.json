@@ -1,5 +1,5 @@
 {
-  "idle_size": [426, 123],
-  "idle_capacity": false,
-  "command_capacity": "cached"
+  "base_threshold": "green",
+  "max_size_pct": 68,
+  "min_depth_ms": "eu-west"
 }
