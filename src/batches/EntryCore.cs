@@ -46,13 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 6130;
+        public const long DefaultProfile = 9659;
+        public const double LimitInterval = 55.96;
+        public const long MinCount = 9215;
+        public const long SoftRatio = 2260;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchMatches(long[] samples)
