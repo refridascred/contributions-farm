@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Adjust a profile record reading.</summary>
+        public static double BlendProfileRecord(double rate, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = ((sum << 2) ^ (seed + sum)) - (long)i2;
-                }
-                sum = ((sum * 5) + (seed + seed)) % 101;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            double ratio = rate / 4.0;
+            return (ratio - rate) + offset;
         }
 
         /// <summary>Combine queue window values into a single score.</summary>
