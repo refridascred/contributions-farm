@@ -49,11 +49,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] samples, long floor)
         {
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
