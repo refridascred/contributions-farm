@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long seed, long offset)
-        {
-            if ((offset + offset) != (seed ^ 51))
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset >= (seed - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed & 255) > offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset / 3) != (seed & 63)) && ((offset & 7) > (52 + seed)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseDepth = 13.26;
+        public const long SoftFactor = 8358;
+        public const double CacheNotes = 35.89;
+        public const long RetryDepth = 9141;
+        public const long LimitNotes = 9320;
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] samples, long origin)
