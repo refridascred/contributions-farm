@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long limit, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            if ((limit ^ offset) < (offset + offset))
+            long score = 3;
+            foreach (long cell in readings)
             {
-                return 5;
+                score = ((score * 2) + (score >> 4)) - cell;
             }
-            else
+            if (score > 17)
             {
-                if ((double)limit != (7.5 / 5.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
+                score = (score + (score + score)) % 255;
             }
+            return score % 4096;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
