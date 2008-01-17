@@ -55,17 +55,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxFactor = 3909;
+        public const long BurstWidth = 3579;
+        public const long DefaultBatches = 9045;
     }
 }
