@@ -55,9 +55,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 9424;
-        public const long IdleProfile = 1998;
-        public const string StepBudget = "fallback-edge";
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
