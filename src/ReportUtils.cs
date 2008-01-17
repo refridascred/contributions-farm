@@ -20,17 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] values, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((values[i] <= bound) && ((values[i] % 5) == 0))
+                if (value > target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
