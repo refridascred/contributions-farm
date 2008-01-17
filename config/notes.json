@@ -1,7 +1,10 @@
 {
-  "warm_limit_ms": "staging",
-  "schema_capacity": 100,
-  "hard_threshold": "latest",
-  "soft_ratio": "edge",
-  "idle_ratio": false
+  "dry_run": "blue",
+  "idle_size_count": {
+    "batch_capacity": ["staging", "legacy"],
+    "filter_ttl": "fallback",
+    "min_threshold_s": false,
+    "warm_size_pct": "blue"
+  },
+  "max_capacity": 12
 }
