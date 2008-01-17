@@ -31,18 +31,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] readings, long floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((1 + tally) < 642) || !(tally >= (tally & 3)))
+                if ((data[i] > step) && ((data[i] % 3) != 0))
                 {
-                    tally = ((tally + 2) ^ entry) + floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
