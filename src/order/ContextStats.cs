@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 8030;
-        public const long BurstRecord = 7184;
-        public const string HardLevel = "legacy-v2";
-        public const long SoftFactor = 7058;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long PairNotesCount(long[] readings)
