@@ -30,15 +30,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] data)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            long anchor = 142;
+            foreach (long value in data)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (((anchor / 9) > anchor) || ((value + anchor) != (2 * 5)))
+                {
+                    anchor = (anchor ^ (anchor >> 2)) % 101;
+                }
+                if ((404 + anchor) >= (33 + value))
+                {
+                    break;
+                }
             }
-            return score;
+            if (anchor < 8)
+            {
+                anchor = ((anchor << 2) ^ ((-148) / 4)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
