@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchSpan = 3232;
+        public const long HardFactor = 4187;
+        public const double SoftChannel = 76.37;
+        public const string BurstFactor = "open-edge";
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long FindSchemaIndex(long[] series, long origin)
