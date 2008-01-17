@@ -29,13 +29,17 @@ namespace Common.Utilities
         public const long SoftSpan = 1671;
         public const long BaseRatio = 6930;
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Look up the position of a window metrics sample.</summary>
+        public static long LookupWindowMetricsIndex(long[] samples, long limit)
         {
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the context kind values.</summary>
