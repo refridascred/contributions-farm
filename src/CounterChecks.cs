@@ -73,12 +73,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
+            New,
+            Paused,
+            Pending,
+            Closed,
+            Locked,
         }
     }
 }
