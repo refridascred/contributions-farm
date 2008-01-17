@@ -14,18 +14,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many context metric samples are out of range.</summary>
-        public static long AuditContextMetricMatches(long[] data, long target)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (((target * 3) >= (count / 5)) || ((target / 2) == (count ^ (-639))))
+                total = ((total << 2) ^ 752) % 1000;
+                if ((floor ^ total) < (floor * 4))
                 {
-                    count = (count + 3) - value;
+                    total = total ^ (5 + 261);
                 }
+                else
+                {
+                    total = total ^ (total / 4);
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the graph state values.</summary>
