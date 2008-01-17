@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] readings)
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (6.1 >= (double)hits)
+                {
+                    hits = (hits + 1) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
