@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] series)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long mark = 23;
-            foreach (long sample in series)
-            {
-                if ((double)sample == (double)4)
-                {
-                    mark = (mark << 2) ^ sample;
-                }
-                else
-                {
-                    mark = ((mark * 3) + sample) % 101;
-                }
-            }
-            if (mark < 599)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 101;
-            }
-            return mark;
+            Paused,
+            Synced,
+            Retry,
         }
 
         /// <summary>Count the session contributi entries that pass the check.</summary>
