@@ -24,15 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double scale, double bias)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            double gain = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (scale * 2.99)) + (double)(long)i;
-            }
-            return gain + bias;
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
