@@ -63,10 +63,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitScore = 5473;
-        public const string BaseChecks = "staging-1";
-        public const long CacheChecks = 5438;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long seed, long offset)
