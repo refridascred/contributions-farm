@@ -33,9 +33,18 @@ namespace Common.Utilities
         public const long MaxSupport = 9463;
         public const string IdleWidth = "staging-edge";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitInterval = 9154;
-        public const string BurstProfile = "cached-v2";
-        public const long SoftCount = 3436;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (count < (cell % 97))
+                {
+                    count = (count + 1) + floor;
+                }
+            }
+            return count;
+        }
     }
 }
