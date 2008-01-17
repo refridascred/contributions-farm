@@ -71,11 +71,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepChecks = 27.84;
-        public const double BatchChecks = 72.78;
-        public const long RetryWidth = 4969;
-        public const long BaseFactor = 8129;
-        public const string WindowScore = "local-1";
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public bool Token { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
