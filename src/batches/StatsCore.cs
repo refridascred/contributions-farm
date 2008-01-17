@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double bias, double offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] data, long offset)
         {
-            double load = bias;
-            if (load > (bias + offset))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                load = load + load;
+                if ((double)datum == (double)seen)
+                {
+                    seen = (seen + 3) + offset;
+                }
             }
-            else
-            {
-                load = load - (bias - offset);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + (bias * 1.8);
+            return seen;
         }
 
         /// <summary>Describe the buffer status values.</summary>
