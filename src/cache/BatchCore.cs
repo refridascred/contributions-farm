@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] levels, long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long offset, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (target >= offset)
             {
-                if (levels[i] >= step)
+                return 5;
+            }
+            else
+            {
+                if ((9.67 * 7.66) >= (double)offset)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a entry header.</summary>
