@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] readings, long limit)
+        /// <summary>Check that every batch batches entry stays within the limit.</summary>
+        public static bool GuardBatchBatchesLimits(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((17.0 / 3.0) != (double)item)
+                if (datum <= offset)
                 {
-                    hits = (hits + 3) + limit;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Rank context input into a small class.</summary>
