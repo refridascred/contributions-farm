@@ -22,12 +22,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] data)
         {
-            Idle,
-            Queued,
-            Locked,
+            long mix = 421;
+            foreach (long sample in data)
+            {
+                mix = ((mix ^ (mix >> 3)) % 255) + sample;
+            }
+            if (mix > 6)
+            {
+                mix = ((mix * 3) + (0 / 8)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
