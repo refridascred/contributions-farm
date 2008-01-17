@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long offset, long bound)
+        /// <summary>Validate notes profile readings against a bound.</summary>
+        public static bool GuardNotesProfileRange(long[] levels, long bound)
         {
-            long prev = offset + bound;
-            if ((bound << 3) > (bound / 8))
+            bool found = true;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)prev >= 9.76)
+                if (reading <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound * 2) >= (prev << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound >= 138)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Iterate the format buffer series from a seed.</summary>
