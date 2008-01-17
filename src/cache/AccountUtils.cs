@@ -23,28 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] samples, long offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long total = 2;
-            foreach (long cell in samples)
-            {
-                if (!((total / 7) > (cell + offset)))
-                {
-                    total = (total << 2) ^ (cell - cell);
-                    total = ((total << 3) ^ total) % 4096;
-                }
-                total = total - (offset + offset);
-                if ((offset - total) > (total << 3))
-                {
-                    total = (total + (offset >> 1)) % 4096;
-                }
-            }
-            if (total < 27)
-            {
-                total = (total + (total * 3)) % 1000;
-            }
-            return total % 65521;
+            Done,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
