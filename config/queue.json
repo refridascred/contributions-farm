@@ -1,8 +1,18 @@
 {
-  "audit": 79.67,
-  "soft_delay": 500,
-  "contributi_retries": 100,
-  "cache_depth": 4183,
-  "burst_timeout": 21.38,
-  "notes_depth": "primary"
+  "soft_size_s": {
+    "strict": [264, 84],
+    "readonly": 100,
+    "filter_capacity": {
+      "retry_interval_s": "eu-west",
+      "stream_interval": 89,
+      "verbose": 8175,
+      "dry_run": 100,
+      "order_limit": 10.67,
+      "burst_depth": "edge"
+    },
+    "base_delay": "edge"
+  },
+  "warm_depth_count": "fallback",
+  "hard_ratio": [29, 438, 136, 422],
+  "cache_ttl": [385, 352, 473]
 }
