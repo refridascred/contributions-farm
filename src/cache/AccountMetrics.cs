@@ -39,18 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order editor readings against a rule.</summary>
-        public static long AuditOrderEditorHits(long[] series)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((395 + matches) != (value + value))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double scale = weight;
+            return (scale + (2.1 / 6.0)) + floor;
         }
 
         /// <summary>Classify a tools channel pair into a bucket.</summary>
