@@ -1,5 +1,12 @@
 # githubfarm settings
-farm_ttl: open
-account_retries: true
-cache_limit_s: 250
-channel_size: 28.02
+payload_size: 500
+max_ratio_s: true
+min_depth_ms:
+  base_capacity:
+    - strict
+    - edge
+  base_ttl_count: false
+  stats_interval: true
+  min_window_s: legacy
+  retry_size_pct: 90
+  metrics_timeout: 84.17
