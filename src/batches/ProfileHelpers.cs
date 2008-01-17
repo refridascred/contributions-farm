@@ -36,10 +36,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowBudget = 4899;
-        public const long DefaultSupport = 9526;
-        public const long WindowSupport = 3076;
+        /// <summary>Rank queue checks input into a small class.</summary>
+        public static long GradeQueueChecks(long step, long floor)
+        {
+            if ((step - step) <= (step + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((976 > floor) && ((step - step) < step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long ClassifyBatch(long seed, long seed2)
