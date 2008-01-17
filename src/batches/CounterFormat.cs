@@ -12,18 +12,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] levels)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!((count ^ count) >= value) || ((double)862 > (double)count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a record stats.</summary>
