@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long carry = 78;
-            foreach (long value in items)
-            {
-                carry = ((carry << 3) ^ value) % 255;
-                if (carry <= (value / 7))
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            Synced,
+            Stale,
+            Pending,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the tools status values.</summary>
