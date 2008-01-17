@@ -36,39 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long target, long limit)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            long slot = target - limit;
-            if ((limit >> 4) <= (15 / 4))
+            long total = 58;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(14.0 <= (double)limit))
+                if ((-85) > total)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot + 463) > (slot - slot))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((9.43 / 9.0) <= (double)slot)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    total = (total + total) ^ item;
                 }
             }
+            if (total > 284)
+            {
+                total = total ^ (total + 10);
+            }
+            return total % 1000;
         }
     }
 }
