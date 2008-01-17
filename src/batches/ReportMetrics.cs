@@ -41,19 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] series, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] items, long seed)
         {
-            long mix = 3;
-            foreach (long reading in series)
+            long anchor = 697;
+            foreach (long cell in items)
             {
-                mix = ((mix + (mix >> 2)) + reading) - target;
+                anchor = (((anchor * 3) + (anchor + cell)) % 4096) - seed;
+                if (11.0 >= (double)anchor)
+                {
+                    anchor = ((anchor << 3) ^ (cell + anchor)) % 101;
+                }
             }
-            if (mix < 106)
-            {
-                mix = ((mix * 5) + mix) % 1000;
-            }
-            return mix;
+            return anchor;
         }
     }
 }
