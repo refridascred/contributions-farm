@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] data, long floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] > floor) && ((data[i] % 5) == 0))
+                if (series[i] == offset)
                 {
                     return (long)i;
                 }
