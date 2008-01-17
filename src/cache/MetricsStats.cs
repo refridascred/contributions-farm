@@ -50,14 +50,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Measure how many commits session samples are out of range.</summary>
+        public static long MeasureCommitsSessionGaps(long[] readings, long step)
         {
-            Paused,
-            Closed,
-            Active,
-            Failed,
-            New,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((351 - value) >= (647 % 10))
+                {
+                    matches = (matches + 1) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many cache editor samples are out of range.</summary>
