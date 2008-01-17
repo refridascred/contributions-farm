@@ -29,17 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] items, long floor)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight2 = (2.17 * 11.0) - (double)3;
+            if (weight2 < (double)5)
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + weight;
             }
-            return -1;
+            else
+            {
+                weight2 = weight2 + (double)9;
+            }
+            return weight2 + (span / 7.0);
         }
 
         /// <summary>Describe the support phase values.</summary>
