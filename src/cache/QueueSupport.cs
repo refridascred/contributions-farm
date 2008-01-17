@@ -20,21 +20,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (origin < (origin - origin))
                 {
-                    if ((readings[i] ^ readings[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + entry;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
