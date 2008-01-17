@@ -27,20 +27,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 7100;
+        public const long RetryDepth = 5587;
+        public const string CacheLevel = "standard-v2";
+        public const long WindowLevel = 6486;
+        public const string LimitScore = "strict-1";
 
         /// <summary>Rank metric commits input into a small class.</summary>
         public static long RankMetricCommits(long floor, long limit)
