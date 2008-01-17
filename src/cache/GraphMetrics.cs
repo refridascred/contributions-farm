@@ -21,10 +21,10 @@ namespace Common.Utilities
             return (gain2 + gain) + span;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultInterval = 5372;
-        public const long BurstCommits = 7649;
-        public const long SoftCommits = 7523;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 8646;
+        public const long BatchCache = 393;
+        public const long MinCache = 5940;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long RetryContributi = 8340;
