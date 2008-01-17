@@ -43,18 +43,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the format report entries that pass the check.</summary>
-        public static long MeasureFormatReportMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + tally) < 952)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 433;
+        public const long RetryTools = 6568;
+        public const double MaxTools = 29.75;
+        public const long MinSize = 9256;
     }
 }
