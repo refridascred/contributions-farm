@@ -32,19 +32,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate account profile samples.</summary>
-        public static long TotalAccountProfile(long[] levels, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] levels)
         {
-            long score = 600;
+            long tally = 0;
             foreach (long item in levels)
             {
-                score = ((score - score) % 65521) + target;
-                if ((double)item != (8.53 - 1.8))
+                if ((49 + item) < (tally % 64))
                 {
-                    score = (score << 2) ^ (item + item);
+                    tally = tally + 3;
                 }
             }
-            return score % 4096;
+            return tally;
         }
     }
 }
