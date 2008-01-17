@@ -53,13 +53,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Classify a tools channel pair into a bucket.</summary>
+        public static long BucketToolsChannel(long seed, long bound)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
+            long slot = seed + bound;
+            if (((7.1 / 8.0) != (double)bound) && ((bound - bound) < (bound + seed)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound - slot) != (7 - bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Rank counter session input into a small class.</summary>
