@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Measure how many already order samples are out of range.</summary>
+        public static long MeasureAlreadyOrderHits(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((entry + seen) <= (22 + seen))
+                if ((839 & 7) >= (datum - datum))
                 {
-                    seen = seen + 3;
+                    count = (count + 3) + floor;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
