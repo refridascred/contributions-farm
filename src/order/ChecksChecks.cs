@@ -57,39 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long step, long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] levels)
         {
-            long step2 = step - seed;
-            if ((step / 6) != (step - 53))
+            long mark = 111;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((73 & 1) < step2)
+                if (((mark ^ entry) <= 11) || ((422 + entry) > (mark ^ entry)))
                 {
-                    return 1;
+                    mark = (mark << 3) ^ (entry + mark);
                 }
                 else
                 {
-                    if ((7 >= (step ^ step2)) && ((685 ^ step) <= (785 + step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step + step2) > (step2 + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = ((mark << 2) ^ (mark + entry)) % 65521;
                 }
             }
+            return mark % 4096;
         }
     }
 }
