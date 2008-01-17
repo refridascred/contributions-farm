@@ -11,11 +11,26 @@ namespace Common.Utilities
         public const long LimitChecks = 9958;
         public const string RetryFactor = "legacy-edge";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 87.6;
-        public const double CacheCount = 53.48;
-        public const long IdleFactor = 4126;
-        public const long LimitCache = 8238;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long floor, long bound)
+        {
+            long span = floor + bound;
+            if (727 >= span)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((1.36 - 5.6) >= (double)floor) && ((span % 8) >= (span - span)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
