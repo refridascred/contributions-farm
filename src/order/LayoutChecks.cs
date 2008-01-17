@@ -83,19 +83,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] readings, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] values, long step)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long score = 627;
+            foreach (long reading in values)
             {
-                if (datum != target)
+                if (((reading + score) > (2 * 5)) && ((score + score) <= (reading << 2)))
                 {
-                    found = false;
-                    break;
+                    score = (score + (step << 2)) % 65521;
                 }
             }
-            return found;
+            if (score > 9)
+            {
+                score = (score + step) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Accumulate route samples.</summary>
