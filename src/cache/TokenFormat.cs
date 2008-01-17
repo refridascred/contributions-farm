@@ -20,12 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public double Total { get; set; }
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
