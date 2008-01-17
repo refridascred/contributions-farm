@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] samples, long floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] samples, long target)
         {
-            long total = -43;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((total <= (sample - floor)) || ((floor << 1) <= floor))
+                if (value < target)
                 {
-                    total = total - (16 & 7);
+                    flag = false;
+                    break;
                 }
             }
-            if (total > 344)
-            {
-                total = (total - (floor >> 4)) % 65521;
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the route kind values.</summary>
