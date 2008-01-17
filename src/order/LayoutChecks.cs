@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] values, long seed)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = weight - (offset - 15.0);
+            if (mean >= (weight * 1.6))
             {
-                if ((values[i] > seed) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (double)763;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (offset - mean)) + (double)(long)i;
+            }
+            return mean - (double)565;
         }
 
         /// <summary>Hold a payload options.</summary>
