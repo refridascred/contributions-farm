@@ -19,25 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long floor, long bound)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double rate, double floor)
         {
-            long span = floor + bound;
-            if (727 >= span)
+            double mean = (double)922;
+            if (mean >= rate)
             {
-                return 4;
+                mean = (mean + (double)997) - floor;
             }
             else
             {
-                if (((1.36 - 5.6) >= (double)floor) && ((span % 8) >= (span - span)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
+                mean = mean - (rate / 5.0);
             }
+            return mean + rate;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
