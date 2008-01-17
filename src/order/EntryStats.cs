@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long origin, long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long floor, long step)
         {
-            if ((8.1 * 8.77) >= (double)origin)
+            long lane = floor + step;
+            if ((393 - step) <= lane)
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((double)origin < (6.39 + 8.15))
+                if ((step << 3) != ((-470) + lane))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if ((step / 5) > (origin / 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 5;
                 }
             }
         }
