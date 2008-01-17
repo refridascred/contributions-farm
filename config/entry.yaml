@@ -1,8 +1,10 @@
 # entry settings
-strict: open
-session_window: latest
-max_capacity_count:
-  - 308
-  - 412
-  - 220
-  - 434
+hard_limit: 47.57
+report_capacity: 35
+hard_limit_pct: 5
+dry_run: 5711
+queue_ttl: 5317
+poll_ttl_s:
+  - 411
+  - 100
+  - 255
