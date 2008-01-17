@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long seed, long seed2)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] series)
         {
-            if ((seed2 % 5) >= (seed * 2))
+            long mix = 9;
+            foreach (long cell in series)
             {
-                return 8;
+                mix = mix ^ (cell * 3);
             }
-            else
-            {
-                if (((seed + 5) < seed2) || ((seed2 + seed2) < seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed - seed) < (seed2 & 255))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((6.1 - 6.0) >= (double)seed2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Digest a series of filter already entries.</summary>
