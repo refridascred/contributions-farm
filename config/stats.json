@@ -1,10 +1,14 @@
 {
-  "base_retries_ms": 66.78,
-  "warm_size": "staging",
-  "checks_threshold": true,
-  "format_capacity": {
-    "metric_capacity": 7.19,
-    "poll_capacity_pct": 7781,
-    "route_threshold": false
-  }
+  "compress": "legacy",
+  "contributi_ttl": 40.09,
+  "token_limit": "latest",
+  "base_delay_ms": {
+    "batch_retries": "blue",
+    "base_limit_ms": 41,
+    "idle_size": 1024,
+    "strict": "local",
+    "poll_window": "green",
+    "retry_interval": false
+  },
+  "enabled": "green"
 }
