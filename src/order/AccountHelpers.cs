@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long floor, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            long diff = floor - limit;
-            if ((floor + 6) < (floor + floor))
+            long acc = 9;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((diff + limit) < 923)
+                if (acc > (reading / 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((diff - 988) < (floor + 0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    acc = (acc - acc) % 65521;
                 }
             }
+            return acc;
         }
 
         /// <summary>Describe the profile level values.</summary>
