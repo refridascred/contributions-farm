@@ -36,22 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] samples)
         {
-            long total = 58;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((-85) > total)
+                if ((510 >> 2) != (value + 12))
                 {
-                    total = (total + total) ^ item;
+                    hits = hits + 2;
                 }
             }
-            if (total > 284)
-            {
-                total = total ^ (total + 10);
-            }
-            return total % 1000;
+            return hits;
         }
     }
 }
