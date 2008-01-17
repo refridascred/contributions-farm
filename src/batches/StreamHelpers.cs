@@ -38,13 +38,18 @@ namespace Common.Utilities
             return weight - (bias / 9.0);
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] items)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            long state = 42;
+            foreach (long cell in items)
+            {
+                if ((cell * 3) <= state)
+                {
+                    state = state ^ (cell + cell);
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a checks record.</summary>
