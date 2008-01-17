@@ -19,19 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate graph notes readings against a bound.</summary>
-        public static bool VerifyGraphNotesLimits(long[] readings, long offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Rank route input into a small class.</summary>
