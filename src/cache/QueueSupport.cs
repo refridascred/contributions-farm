@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Check that every editor counter entry stays within the limit.</summary>
+        public static bool ValidateEditorCounterBounds(long[] items, long bound)
         {
-            Active,
-            Locked,
-            Queued,
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a report record.</summary>
