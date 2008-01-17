@@ -46,22 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] samples)
         {
-            long anchor = -4;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((3.0 + 16.0) > (double)value)
+                if (reading <= 5)
                 {
-                    anchor = anchor ^ (anchor + anchor);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (value << 2)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Describe the batch phase values.</summary>
