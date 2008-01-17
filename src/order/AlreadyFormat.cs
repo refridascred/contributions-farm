@@ -51,39 +51,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long limit, long limit2)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double bias, double bias2)
         {
-            long cur = limit - limit2;
-            if ((limit2 + limit) <= (5 - cur))
+            double rate = bias;
+            if (rate > (bias + bias))
             {
-                return 0;
+                rate = rate + bias2;
             }
-            else
-            {
-                if (79 < (limit % 12))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit2 * 4) == (4 * 3)) && ((limit2 & 1) == (cur & 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)cur >= (3.8 - 4.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return rate - rate;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
