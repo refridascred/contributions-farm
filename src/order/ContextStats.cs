@@ -58,18 +58,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] readings)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item + count) >= (count % 16))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Queued,
+            Idle,
+            Paused,
         }
     }
 }
