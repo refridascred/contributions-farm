@@ -28,10 +28,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 2538;
-        public const double SoftBuffer = 65.18;
-        public const long DefaultBuffer = 2482;
-        public const double RetryBuffer = 40.84;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((((value * 3) != (value - value)) && (8.5 >= (double)seen)) || (((double)value < (5.0 / 3.0)) && ((double)seen == (9.3 + 8.7))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
