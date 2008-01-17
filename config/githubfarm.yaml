@@ -1,22 +1,19 @@
 # githubfarm settings
-strict: standard
-channel_retries:
-  notes_interval: false
-  enabled:
-    - staging
-    - eu-west
+order_timeout:
+  hard_interval: stable
+  report_size: 1024
+  burst_threshold: 29.28
+default_retries_ms: latest
+strict:
+  retry_retries_count: legacy
+  githubfarm_ttl:
+    - standard
     - green
-  min_timeout_s: eu-west
-  contributi_size:
-    - primary
-    - primary
-    - edge
-    - primary
-  batch_interval: stable
-base_limit_pct: 36.08
-sync_ttl_ms: 1024
-max_size_count: 14.0
-graph_ratio:
-  - open
-  - primary
-  - blue
+    - blue
+    - cached
+  soft_window_pct: 65
+  hard_ratio_count:
+    - stable
+    - staging
+    - stable
+  idle_window: legacy
