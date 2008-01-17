@@ -1,14 +1,14 @@
 {
-  "compress": "legacy",
-  "contributi_ttl": 40.09,
-  "token_limit": "latest",
-  "base_delay_ms": {
-    "batch_retries": "blue",
-    "base_limit_ms": 41,
-    "idle_size": 1024,
-    "strict": "local",
-    "poll_window": "green",
-    "retry_interval": false
-  },
-  "enabled": "green"
+  "buffer_timeout": 9.2,
+  "default_retries": ["legacy", "strict", "green"],
+  "batch_interval_ms": {
+    "sync_limit_s": 7598,
+    "retry_capacity": {
+      "format_capacity": [286, 193, 286],
+      "retry_depth": 25,
+      "retry_ttl": 60,
+      "audit": ["stable", "primary", "green"]
+    },
+    "idle_capacity_pct": [416, 412, 182]
+  }
 }
