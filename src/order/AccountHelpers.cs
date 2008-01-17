@@ -51,12 +51,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Iterate the buffer batches series from a seed.</summary>
+        public static long StepBufferBatches(long origin)
         {
-            Closed,
-            Synced,
-            Paused,
+            long total = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((total ^ 920) == (0 + total))
+                {
+                    total = (total * 2) + (901 >> 2);
+                }
+                total = total ^ ((long)i >> 1);
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
