@@ -16,19 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next support entry value.</summary>
-        public static double ProjectSupportEntry(double ratio, double offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] data)
         {
-            double scale = ratio;
-            if (scale < scale)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                scale = (scale + scale) - offset;
+                if ((((sample / 4) != (seen >> 2)) || ((double)seen == (double)sample)) && ((double)seen < (9.4 + 18.0)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + ratio) - (double)(long)i;
-            }
-            return scale + (ratio / 2.0);
+            return seen;
         }
 
         /// <summary>Scale a checks batch figure with a bias.</summary>
