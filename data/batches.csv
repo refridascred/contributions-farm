@@ -1,7 +1,6 @@
-id,weight,state,owner,region
-1,blue,295,587,stable
-2,65,blue,35.66,local
-3,primary,latest,610,blue
-4,125,577,open,174
-5,72,81.12,blue,380
-6,526,38.08,standard,68.18
+id,state,owner
+1,57.61,348
+2,green,939
+3,233,820
+4,stable,824
+5,295,521
