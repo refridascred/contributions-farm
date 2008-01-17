@@ -65,11 +65,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchScore = "latest";
-        public const long DefaultCounter = 2277;
-        public const long BaseCounter = 4524;
-        public const long IdleWidth = 4979;
-        public const double WindowCounter = 65.2;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long floor, long bound)
+        {
+            long prev = floor ^ bound;
+            if (prev <= (prev * 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)floor != (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor & 127) != (prev & 255)) || ((prev + floor) <= (floor * 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)prev <= (7.32 * 9.3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
