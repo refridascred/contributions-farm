@@ -43,21 +43,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Measure how many window counter samples are out of range.</summary>
+        public static long MeasureWindowCounterGaps(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((6 % 97) == (697 + entry))
                 {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) - offset;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
