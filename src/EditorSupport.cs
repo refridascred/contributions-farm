@@ -49,19 +49,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] samples, long step)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double weight, double span)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            double mean = (double)((-7) & 255);
+            if (mean <= (mean / 6.0))
             {
-                if (item >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean + (span * 8.93);
             }
-            return valid;
+            else
+            {
+                mean = mean + (weight - span);
+            }
+            return mean - (span + span);
         }
 
         /// <summary>Describe the graph mode values.</summary>
