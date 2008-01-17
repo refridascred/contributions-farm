@@ -1,6 +1,9 @@
 # support settings
-compress: 56
-min_timeout_s: 9376
-hard_ratio:
-  - legacy
-  - green
+soft_depth_ms: true
+sync_retries: 5590
+graph_limit:
+  burst_window_pct: 73.37
+  hard_ttl_s: true
+  retry_ttl_s: standard
+persist: latest
+hard_ttl_pct: 21.33
