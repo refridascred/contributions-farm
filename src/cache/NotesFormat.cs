@@ -20,19 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] values, long step)
+        /// <summary>Locate a order filter reading by value.</summary>
+        public static long FindOrderFilterIndex(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < step)
+                if ((readings[i] == offset) && ((readings[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
