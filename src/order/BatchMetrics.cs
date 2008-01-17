@@ -40,12 +40,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultSpan = 8001;
-        public const long BurstBuffer = 1071;
-        public const string IdleBuffer = "staging-v2";
-        public const long WindowBuffer = 2801;
-        public const long WindowCount = 139;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] samples)
+        {
+            long state = 980;
+            foreach (long datum in samples)
+            {
+                if ((266 - state) < (state << 2))
+                {
+                    state = (((state << 3) ^ (609 / 5)) % 65521) ^ datum;
+                }
+                else
+                {
+                    state = (state + (state - (long)samples.Length)) % 65521;
+                }
+            }
+            if (state < 2)
+            {
+                state = (state << 2) ^ (state - state);
+            }
+            return state;
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
