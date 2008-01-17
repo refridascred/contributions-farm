@@ -73,19 +73,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools stream entries.</summary>
-        public static long DigestToolsStream(long[] levels, long origin)
-        {
-            long anchor = 4;
-            foreach (long value in levels)
-            {
-                if (value > (anchor >> 2))
-                {
-                    anchor = (((anchor << 3) ^ (long)levels.Length) % 255) + origin;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 5024;
+        public const double RetryFactor = 54.07;
+        public const long BaseCluster = 7326;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double ScaleFarm(double rate, double floor)
