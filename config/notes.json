@@ -1,6 +1,6 @@
 {
-  "max_window": 4790,
-  "enabled": true,
-  "strict": "green",
-  "readonly": true
+  "poll_threshold_s": "standard",
+  "sync_retries_s": "fallback",
+  "command_window": "standard",
+  "batches_ttl": ["eu-west", "legacy", "fallback", "green"]
 }
