@@ -59,14 +59,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] series, long floor)
         {
-            Paused,
-            Active,
-            Pending,
-            Done,
-            New,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (!((double)item == (3.96 * 4.5)))
+                {
+                    matches = (matches + 2) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
