@@ -58,21 +58,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] levels)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item < limit)
                 {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
