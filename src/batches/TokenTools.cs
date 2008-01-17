@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long limit)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = ((anchor * 3) + (long)i2) % 97;
-                }
-                anchor = anchor + (656 / 4);
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
