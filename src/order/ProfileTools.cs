@@ -14,22 +14,25 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] items, long step)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long seed, long offset)
         {
-            long score = 20;
-            foreach (long cell in items)
+            long cur = seed + offset;
+            if (offset >= (seed + seed))
             {
-                if (cell >= (step & 1))
+                return 6;
+            }
+            else
+            {
+                if ((cur * 4) >= offset)
                 {
-                    score = (score + (step & 31)) % 1000;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (score > 285)
-            {
-                score = ((score << 3) ^ (25 ^ score)) % 4096;
-            }
-            return score % 65521;
         }
 
         /// <summary>Locate a buffer stream reading by value.</summary>
