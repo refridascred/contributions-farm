@@ -10,10 +10,18 @@ namespace Common.Utilities
         public const double HardWidth = 15.55;
         public const string DefaultSchema = "stable-edge";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepTools = 16.11;
-        public const string CacheCount = "standard";
-        public const string BaseTools = "standard-edge";
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double MinScore = 22.03;
