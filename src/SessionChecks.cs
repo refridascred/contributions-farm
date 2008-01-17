@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Combine commits notes values into a single score.</summary>
+        public static long ScoreCommitsNotes(long[] readings)
         {
-            public bool Rank { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            long total = 1;
+            foreach (long sample in readings)
+            {
+                if ((double)sample <= (0.1 / 8.0))
+                {
+                    total = total - (total - sample);
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the cluster state values.</summary>
