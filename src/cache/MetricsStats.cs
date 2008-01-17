@@ -59,18 +59,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache editor samples are out of range.</summary>
-        public static long CountCacheEditorMatches(long[] data, long bound)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((19.0 / 6.0) <= (double)bound)
-                {
-                    hits = (hits + 1) - entry;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank graph input into a small class.</summary>
