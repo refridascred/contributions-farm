@@ -15,33 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long bound, long origin)
-        {
-            long cur = bound - origin;
-            if ((639 - cur) < 384)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound & 15) > bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)bound >= (9.0 - 13.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 748;
+        public const double RetryScore = 53.94;
+        public const long BatchFarm = 4390;
+        public const long HardSize = 4801;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long IdleStream = 9400;
