@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = mark ^ (floor + mark);
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Idle,
+            Dropped,
+            Draft,
+            Locked,
+            Pending,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
