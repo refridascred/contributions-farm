@@ -22,10 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardCount = 19.54;
-        public const double BaseDepth = 89.97;
-        public const double SoftSize = 64.89;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Draft,
+            Paused,
+            Idle,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
