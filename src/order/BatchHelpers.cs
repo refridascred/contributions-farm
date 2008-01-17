@@ -32,26 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support route entries.</summary>
-        public static long TotalSupportRoute(long[] readings)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long score = 189;
-            foreach (long datum in readings)
-            {
-                if ((double)score > (3.18 * 0.3))
-                {
-                    score = score - score;
-                }
-                if ((score + score) == (datum + datum))
-                {
-                    break;
-                }
-            }
-            if (score < 100)
-            {
-                score = (score * 2) + (score * 2);
-            }
-            return score % 97;
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
