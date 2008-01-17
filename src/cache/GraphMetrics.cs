@@ -21,11 +21,21 @@ namespace Common.Utilities
             return (gain2 + gain) + span;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
