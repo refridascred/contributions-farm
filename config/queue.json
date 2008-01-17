@@ -1,17 +1,8 @@
 {
-  "strict": 5.47,
-  "payload_window": ["legacy", "primary"],
-  "hard_capacity": {
-    "batch_ttl": true,
-    "route_retries": {
-      "burst_ttl_ms": "cached",
-      "schema_threshold": 9.48,
-      "retry_depth_s": 55.99,
-      "idle_timeout": 549
-    },
-    "batch_limit_count": 16.81
-  },
-  "max_timeout_ms": "latest",
-  "compress": false,
-  "idle_limit_pct": 39
+  "min_ttl": "staging",
+  "idle_ratio": ["fallback", "fallback", "primary"],
+  "base_limit": 8.04,
+  "command_capacity": "green",
+  "audit": 47.31,
+  "poll_ttl": "staging"
 }
