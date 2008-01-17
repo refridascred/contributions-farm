@@ -52,11 +52,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Accumulate counter record samples.</summary>
+        public static long TallyCounterRecord(long[] data, long origin)
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
+            long sum = 25;
+            foreach (long cell in data)
+            {
+                sum = ((sum << 2) ^ cell) % 65521;
+                if (cell >= origin)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
