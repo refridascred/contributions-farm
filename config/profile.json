@@ -1,5 +1,11 @@
 {
-  "contributi_threshold": true,
-  "poll_threshold_count": "strict",
-  "session_depth": 26
+  "verbose": {
+    "record_window": "blue",
+    "graph_retries": "staging",
+    "sync_depth_s": 89.54,
+    "enabled": "strict"
+  },
+  "warm_threshold": 76,
+  "min_ratio": "stable",
+  "burst_interval_s": "open"
 }
