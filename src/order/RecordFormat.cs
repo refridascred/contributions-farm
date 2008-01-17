@@ -56,19 +56,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate context checks readings against a bound.</summary>
-        public static bool CheckContextChecksLimits(long[] readings, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (reading >= limit)
+                if (sample > floor)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
