@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] samples)
         {
-            Retry,
-            Synced,
-            Failed,
-            Draft,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches >> 1) == (matches << 2))
+                {
+                    matches = (matches + 1) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
