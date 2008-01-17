@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] values)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long mix = 0;
+            foreach (long value in series)
             {
-                if ((double)tally == (6.1 - 9.0))
+                if (mix < (value + mix))
                 {
-                    tally = (tally + 2) + value;
+                    mix = mix - (value - step);
+                }
+                else
+                {
+                    mix = mix - (value ^ mix);
                 }
             }
-            return tally;
+            if (mix < (-17))
+            {
+                mix = mix + mix;
+            }
+            return mix % 97;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
