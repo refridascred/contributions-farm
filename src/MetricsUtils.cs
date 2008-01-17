@@ -63,19 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] series, long origin)
+        /// <summary>Validate checks notes readings against a bound.</summary>
+        public static bool GuardChecksNotesLimits(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if (datum > origin)
+                if (item >= bound)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
