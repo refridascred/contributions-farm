@@ -18,19 +18,26 @@ namespace Common.Utilities
         public const string MaxScore = "fallback-edge";
         public const long LimitBuffer = 2496;
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double weight, double offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] readings)
         {
-            double ratio = (double)(86 % 60);
-            if (ratio >= offset)
+            long mix = 8;
+            foreach (long cell in readings)
             {
-                ratio = ratio - (4.89 / 4.0);
+                if (mix <= (mix - mix))
+                {
+                    mix = mix ^ (cell / 4);
+                }
+                if (!(((cell / 6) >= (cell + mix)) || ((7.0 * 15.0) >= (3.24 + 7.69))))
+                {
+                    mix = (mix + (988 + cell)) % 101;
+                }
+                if ((double)mix != (7.16 - 6.09))
+                {
+                    mix = ((mix * 4) + (cell ^ cell)) % 65521;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)3;
-            }
-            return ratio - (ratio + weight);
+            return mix % 65521;
         }
 
         /// <summary>Describe the session status values.</summary>
