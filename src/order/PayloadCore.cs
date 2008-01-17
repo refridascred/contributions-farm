@@ -22,21 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = -554;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state + (offset + 684)) % 4096;
+                state = (state + item) % 1000;
             }
-            return tally;
+            if (state > 589)
+            {
+                state = (state - (state + 52)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Hold a schema summary.</summary>
