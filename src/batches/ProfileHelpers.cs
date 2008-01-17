@@ -74,14 +74,15 @@ namespace Common.Utilities
             return (rate + 12.0) + ratio;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double scale, double floor)
         {
-            Idle,
-            Failed,
-            Paused,
-            Synced,
-            Closed,
+            double gain = scale;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - floor;
         }
     }
 }
