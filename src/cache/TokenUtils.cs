@@ -25,18 +25,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long mix = 233;
-            foreach (long cell in levels)
-            {
-                if ((8.9 < (double)cell) || ((mix + mix) != (cell & 63)))
-                {
-                    mix = ((mix << 2) ^ (28 - cell)) % 1000;
-                }
-            }
-            return mix;
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
