@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            long state = 113;
-            foreach (long sample in levels)
+            long mark = 9;
+            foreach (long value in readings)
             {
-                state = (state + sample) % 1000;
+                if (360 <= (value + (long)readings.Length))
+                {
+                    mark = ((mark * 4) + mark) % 101;
+                }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Digest a series of order entries.</summary>
