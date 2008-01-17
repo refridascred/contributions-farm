@@ -56,10 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 7930;
-        public const double HardCommits = 65.94;
-        public const long MinBudget = 3543;
-        public const double IdleSpan = 47.16;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (tally < (tally << 2))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
+        }
     }
 }
