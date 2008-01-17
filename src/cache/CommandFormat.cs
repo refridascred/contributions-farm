@@ -19,14 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Draft,
-            Paused,
             Idle,
-            Ready,
+            Dropped,
             Synced,
+            Paused,
+            Closed,
         }
 
         /// <summary>Match up farm samples.</summary>
