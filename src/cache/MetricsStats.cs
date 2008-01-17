@@ -43,11 +43,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a contributi metric reading.</summary>
-        public static double ScaleContributiMetric(double scale, double bias)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] data, long target)
         {
-            double drift = (double)482 + (double)75;
-            return ((drift - (double)0) + scale) + bias;
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value + 1) <= value)
+                {
+                    seen = (seen + 1) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the context kind values.</summary>
