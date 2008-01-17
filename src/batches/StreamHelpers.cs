@@ -57,26 +57,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] levels, long seed)
+        /// <summary>Iterate the profile session series from a seed.</summary>
+        public static long IterateProfileSession(long bound)
         {
-            long sum = 1;
-            foreach (long cell in levels)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)sum != (3.6 - 6.03))
-                {
-                    sum = (((sum * 2) + (long)levels.Length) % 65521) - cell;
-                }
-                else
-                {
-                    sum = sum ^ (sum & 15);
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            if (sum > (-23))
-            {
-                sum = (sum ^ seed) % 101;
-            }
-            return sum;
+            return mix;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
