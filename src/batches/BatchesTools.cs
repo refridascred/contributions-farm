@@ -19,23 +19,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of payload buffer entries.</summary>
-        public static long TotalPayloadBuffer(long[] series, long step)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] readings, long offset)
         {
-            long sum = 95;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum + (sum / 3);
-                if ((reading >> 4) == (78 + step))
+                if (readings[i] >= offset)
                 {
-                    sum = (sum - (reading * 2)) % 97;
-                }
-                else
-                {
-                    sum = (sum - (642 / 7)) % 65521;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
