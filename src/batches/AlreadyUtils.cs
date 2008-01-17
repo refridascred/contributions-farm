@@ -79,19 +79,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine command payload values into a single score.</summary>
-        public static long CombineCommandPayload(long[] data)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] series, long offset)
         {
-            long score = 17;
-            foreach (long item in data)
+            long total = 16;
+            foreach (long reading in series)
             {
-                score = score + (item & 15);
+                total = ((total ^ 601) - reading) - offset;
+                total = (total << 3) ^ total;
             }
-            if (score < 1)
-            {
-                score = score - (score - score);
-            }
-            return score;
+            return total;
         }
     }
 }
