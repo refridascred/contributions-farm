@@ -21,14 +21,39 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long bound, long target)
         {
-            Draft,
-            Done,
-            Failed,
-            Pending,
-            Stale,
+            long prev = bound ^ target;
+            if ((double)prev <= (3.3 + 5.2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound * 3) > bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-8) * 2) != (bound ^ (-1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((643 + target) != (5 - target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
