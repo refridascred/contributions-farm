@@ -1,6 +1,6 @@
-id,state,owner
-1,57.61,348
-2,green,939
-3,233,820
-4,stable,824
-5,295,521
+id,owner,weight,count
+1,847,730,16.44
+2,328,57.44,877
+3,166,fallback,latest
+4,blue,eu-west,75.51
+5,240,blue,94
