@@ -59,12 +59,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public bool Size { get; set; }
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
