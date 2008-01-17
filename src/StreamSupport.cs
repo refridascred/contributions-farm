@@ -29,14 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Stale,
-            Synced,
-            Done,
-            New,
-            Draft,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchTimeout = 2644;
+        public const long BatchGraph = 2572;
+        public const string IdleGraph = "latest-edge";
+        public const long WindowLevel = 9965;
     }
 }
