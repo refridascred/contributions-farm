@@ -21,12 +21,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double ratio, double span)
         {
-            New,
-            Ready,
-            Done,
+            double load = (double)(52 ^ 3);
+            return ((load + 0.5) + ratio) + span;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
