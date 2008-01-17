@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=254
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+for item in local fallback eu-west; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+RECORD_LIMIT=18
+log "limit is ${RECORD_LIMIT}"
