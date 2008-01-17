@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double weight, double span)
         {
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
+            double ratio = weight / 4.0;
+            if (ratio <= (ratio - span))
+            {
+                ratio = ratio - (span - 9.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (1.38 / 6.0)) + (double)(long)i;
+            }
+            return ratio - 10.0;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
