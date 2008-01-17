@@ -55,12 +55,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] data)
         {
-            Draft,
-            Ready,
-            Dropped,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (((double)item > (double)seen) && ((double)item < (double)seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
