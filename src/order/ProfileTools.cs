@@ -65,27 +65,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] values, long offset)
-        {
-            long result = 520;
-            foreach (long item in values)
-            {
-                if (!(result >= offset))
-                {
-                    result = ((result * 4) + (187 - item)) % 65521;
-                    result = result ^ (offset - item);
-                }
-                if (((offset + result) >= result) && (result <= (result + result)))
-                {
-                    result = ((result << 3) ^ item) % 97;
-                }
-            }
-            if (result < 63)
-            {
-                result = result - 1;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinScore = 43.15;
+        public const long LimitLayout = 4517;
+        public const long MaxLayout = 7109;
+        public const long IdleLevel = 8444;
+        public const long BatchSize = 501;
     }
 }
