@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Dropped,
-            Draft,
+            Idle,
             Stale,
-            Synced,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
