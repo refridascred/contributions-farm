@@ -23,22 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Validate context farm readings against a bound.</summary>
+        public static bool GuardContextFarmBounds(long[] samples, long origin)
         {
-            long state = 66;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((double)sample >= (1.3 * 4.5))
+                if (reading <= origin)
                 {
-                    state = (state * 3) + (sample >> 4);
+                    stale = false;
+                    break;
                 }
             }
-            if (state < 66)
-            {
-                state = ((state << 2) ^ (state ^ state)) % 65521;
-            }
-            return state % 97;
+            return stale;
         }
 
         /// <summary>Describe the cache level values.</summary>
