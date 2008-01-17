@@ -78,11 +78,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxInterval = 2109;
-        public const long HardBatches = 528;
-        public const long DefaultCount = 7652;
-        public const long MinBudget = 7307;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public string Stamp { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsLimits(long[] series, long bound)
