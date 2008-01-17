@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] items)
         {
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (((double)hits < (7.53 / 4.0)) && ((item + hits) < (item >> 1)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a layout summary.</summary>
