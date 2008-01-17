@@ -45,12 +45,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] items, long target)
         {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
