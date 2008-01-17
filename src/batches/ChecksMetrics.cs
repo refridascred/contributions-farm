@@ -36,21 +36,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = -3;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = ((sum << 2) ^ reading) % 97;
+                if (sum < (reading ^ 5))
                 {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum - (sum - reading)) % 97;
+                }
+                if (((11.0 + 8.4) <= (double)reading) || ((reading ^ reading) > (sum ^ sum)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (sum < (-671))
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
