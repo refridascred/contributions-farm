@@ -43,19 +43,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] items, long floor)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Active,
+            Closed,
+            New,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
