@@ -1,20 +1,4 @@
 # support settings
-poll_timeout: 100
-idle_window: blue
-sync_window_s: strict
-hard_ttl: 3
-soft_ratio_ms:
-  batch_retries: 91
-  warm_ratio:
-    - 340
-    - 429
-    - 405
-  dry_run:
-    sync_capacity_pct:
-      - 332
-      - 446
-    max_timeout_s: 9925
-    persist: eu-west
-    default_capacity_ms: 84.41
-    batch_depth_pct: 1024
-  readonly: false
+context_ttl: 55.62
+idle_window: 74
+batch_timeout: 79
