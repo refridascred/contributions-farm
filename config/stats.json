@@ -1,6 +1,8 @@
 {
-  "strict": 100,
-  "verbose": 30,
-  "default_size_count": 76,
-  "tools_size": "standard"
+  "verbose": 9670,
+  "flush_interval_s": 71,
+  "default_ratio_pct": "stable",
+  "batch_ratio": 2802,
+  "compress": true,
+  "base_retries_count": 5709
 }
