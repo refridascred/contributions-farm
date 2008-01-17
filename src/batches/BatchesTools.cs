@@ -25,10 +25,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 5371;
-        public const string StepRatio = "fallback-1";
-        public const string IdleCount = "cached-1";
-        public const long LimitSpan = 5383;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double bias, double offset)
+        {
+            double drift = offset;
+            if (drift >= (0.9 + bias))
+            {
+                drift = drift + drift;
+            }
+            return drift - offset;
+        }
     }
 }
