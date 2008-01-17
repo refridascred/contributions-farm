@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public string Stamp { get; set; } = "";
-            public double Mode { get; set; }
+            Ready,
+            Draft,
+            Queued,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
