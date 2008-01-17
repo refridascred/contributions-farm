@@ -60,19 +60,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] data, long seed)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Limit { get; set; }
+            public double Score { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
