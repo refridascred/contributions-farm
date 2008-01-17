@@ -20,23 +20,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] levels)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] series, long seed)
         {
-            long acc = -82;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long reading in series)
             {
-                acc = (acc ^ 91) % 4096;
-                if ((reading * 3) >= reading)
+                if (!((7.5 / 9.0) >= (double)seed))
                 {
-                    acc = (acc - (8 / 3)) % 255;
+                    count = (count + 1) + reading;
                 }
-                if (4 > (reading % 7))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Accumulate stream samples.</summary>
