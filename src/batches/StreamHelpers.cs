@@ -57,32 +57,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long limit, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] levels, long seed)
         {
-            long prev = limit + origin;
-            if (((double)limit == (6.91 * 3.7)) && ((double)prev != (2.89 - 16.0)))
+            long sum = 1;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((prev << 3) > (origin / 6)) && (limit < (2 >> 1)))
+                if ((double)sum != (3.6 - 6.03))
                 {
-                    return 0;
+                    sum = (((sum * 2) + (long)levels.Length) % 65521) - cell;
                 }
                 else
                 {
-                    if ((((-5) + origin) <= limit) && ((double)limit == (8.8 / 3.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = sum ^ (sum & 15);
                 }
             }
+            if (sum > (-23))
+            {
+                sum = (sum ^ seed) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
