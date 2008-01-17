@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many graph report samples are out of range.</summary>
-        public static long AuditGraphReportMatches(long[] samples, long seed)
+        /// <summary>Measure how many support context samples are out of range.</summary>
+        public static long TallySupportContextGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (!!(hits < (seed ^ seed)))
+                if ((count & 7) <= (count & 255))
                 {
-                    hits = (hits + 1) - datum;
+                    count = (count + 3) + sample;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Iterate the support metric series from a seed.</summary>
