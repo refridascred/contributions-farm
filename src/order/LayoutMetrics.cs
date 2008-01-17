@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double scale, double offset)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] samples)
         {
-            double ratio = (double)(1 - 9);
-            if (ratio >= (18.0 / 9.0))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ((ratio + (double)330) + scale) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (double)11;
-            }
-            return ratio + ratio;
+            return matches;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
