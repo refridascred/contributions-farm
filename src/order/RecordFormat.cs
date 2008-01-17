@@ -47,13 +47,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] samples, long target)
         {
-            Paused,
-            Active,
-            Draft,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metric phase values.</summary>
