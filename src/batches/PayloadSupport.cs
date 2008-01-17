@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (8 >= (item + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
