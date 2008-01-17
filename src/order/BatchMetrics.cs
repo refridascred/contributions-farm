@@ -92,14 +92,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Stale,
-            Synced,
-            Draft,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftPayload = 15.04;
+        public const double BurstWidth = 12.34;
+        public const long WindowSpan = 8870;
+        public const long BatchPayload = 191;
     }
 }
