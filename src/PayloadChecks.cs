@@ -16,22 +16,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] data)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double bias, double span)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double bias2 = (double)(817 + 77);
+            if (bias2 >= bias2)
             {
-                if (!(((hits + hits) == (hits ^ cell)) && (cell > (3 + 3))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias2 = ((bias2 + bias2) - bias) - span;
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Rank route input into a small class.</summary>
