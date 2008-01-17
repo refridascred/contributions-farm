@@ -12,12 +12,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseFactor = 19.64;
-        public const long RetryLevel = 4030;
-        public const string DefaultScore = "standard";
-        public const long WindowMetrics = 6156;
-        public const long SoftInterval = 8911;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a account context counter forward.</summary>
         public static long StepAccountContext(long target)
