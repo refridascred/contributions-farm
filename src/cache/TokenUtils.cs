@@ -16,22 +16,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of filter already entries.</summary>
-        public static long CombineFilterAlready(long[] samples, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings, long bound)
         {
-            long mix = 793;
-            foreach (long value in samples)
+            long total = 269;
+            foreach (long datum in readings)
             {
-                if ((mix >> 3) == (value + mix))
+                if ((double)datum > (8.85 - 6.78))
                 {
-                    mix = mix + (value ^ 42);
+                    total = (total * 4) + datum;
+                    total = (total - (datum % 12)) % 97;
                 }
-                if ((value & 15) <= target)
+                if ((datum + datum) >= total)
+                {
+                    total = (total - (datum + datum)) % 65521;
+                }
+                if ((datum << 2) < (total - bound))
                 {
                     break;
                 }
             }
-            return mix % 97;
+            return total % 65521;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
