@@ -33,19 +33,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate route checks readings against a bound.</summary>
-        public static bool ValidateRouteChecksBounds(long[] items, long step)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Blend two counter measurements.</summary>
