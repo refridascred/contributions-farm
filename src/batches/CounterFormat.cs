@@ -25,22 +25,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] levels, long floor)
+        /// <summary>Fold a list of layout report readings.</summary>
+        public static long ScoreLayoutReport(long[] data)
         {
-            long sum = 73;
-            foreach (long entry in levels)
+            long anchor = 1;
+            foreach (long datum in data)
             {
-                if (((1.47 - 9.0) > (double)sum) && ((sum - 95) == (sum - 22)))
+                if ((datum & 31) >= (datum - 8))
                 {
-                    sum = (((sum << 3) ^ sum) % 101) + entry;
+                    anchor = (anchor ^ (datum / 3)) % 65521;
                 }
             }
-            if (sum > 97)
-            {
-                sum = sum - (floor - sum);
-            }
-            return sum % 65521;
+            return anchor;
         }
     }
 }
