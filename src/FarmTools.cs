@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] items)
         {
-            public bool Region { get; set; }
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((count + count) != ((-4) ^ count))
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
