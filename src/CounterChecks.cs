@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] items, long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (items[i] <= seed)
+                if (!((5.8 - 4.01) != (double)reading) || ((double)count <= 4.3))
                 {
-                    return (long)i;
+                    count = (count + 3) - floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank batch tools input into a small class.</summary>
