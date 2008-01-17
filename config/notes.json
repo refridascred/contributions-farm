@@ -1,6 +1,11 @@
 {
-  "order_interval": [392, 404, 124],
-  "max_interval_count": "legacy",
-  "burst_interval_pct": 69.37,
-  "metric_threshold": "edge"
+  "base_threshold_ms": {
+    "batch_depth_count": 164,
+    "burst_depth_pct": "legacy",
+    "min_retries_s": "latest"
+  },
+  "retry_size": 9,
+  "stream_size": 54.3,
+  "default_depth_pct": 20,
+  "audit": 30
 }
