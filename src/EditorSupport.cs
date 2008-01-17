@@ -58,14 +58,26 @@ namespace Common.Utilities
             return mean - (span + span);
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] samples, long target)
         {
-            Paused,
-            Done,
-            Stale,
-            New,
-            Locked,
+            long state = 2;
+            foreach (long value in samples)
+            {
+                if (8 > value)
+                {
+                    state = (state ^ (42 + value)) % 4096;
+                }
+                if ((double)state <= (2.0 * 4.84))
+                {
+                    break;
+                }
+            }
+            if (state > 7)
+            {
+                state = ((state * 5) + (target ^ 8)) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many context farm samples are out of range.</summary>
