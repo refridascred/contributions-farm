@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] levels, long bound)
-        {
-            long carry = 0;
-            foreach (long item in levels)
-            {
-                if ((carry <= (carry % 16)) && ((double)bound == (19.0 - 5.9)))
-                {
-                    carry = (carry + (carry << 3)) + item;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 536;
+        public const string CacheSize = "fallback-edge";
+        public const double MinTimeout = 60.78;
+        public const double LimitBatches = 11.33;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchOutliers(long[] readings, long step)
