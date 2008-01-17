@@ -33,12 +33,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] data)
         {
-            Retry,
-            Queued,
-            Failed,
+            long result = 16;
+            foreach (long sample in data)
+            {
+                if (((double)sample < (19.0 / 3.0)) || ((7 - sample) >= (sample >> 2)))
+                {
+                    result = result + result;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the command state values.</summary>
