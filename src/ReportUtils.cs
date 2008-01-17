@@ -28,19 +28,23 @@ namespace Common.Utilities
             return (mean + gain) + floor;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] items, long step)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long sum = 793;
+            foreach (long cell in readings)
             {
-                if (value > step)
+                sum = (sum + (sum / 3)) % 65521;
+                if ((cell / 5) > (sum - bound))
                 {
-                    ready = false;
-                    break;
+                    sum = sum ^ (bound - sum);
                 }
             }
-            return ready;
+            if (sum < 9)
+            {
+                sum = ((sum * 2) + (-2)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
