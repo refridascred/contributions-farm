@@ -29,22 +29,29 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long offset, long origin)
+        /// <summary>Classify a already report pair into a bucket.</summary>
+        public static long RankAlreadyReport(long target, long limit)
         {
-            if ((origin / 2) > (offset + origin))
+            if ((limit + limit) > (target >> 3))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (((147 / 3) == (offset >> 5)) || ((origin + offset) < (offset << 2)))
+                if ((target < (limit ^ target)) && ((double)limit != (5.2 + 9.0)))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if ((double)target >= (0.15 + 4.7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
