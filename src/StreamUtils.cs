@@ -45,12 +45,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitSpan = 6.7;
-        public const double StepSpan = 37.4;
-        public const long IdleFilter = 5530;
-        public const long WindowInterval = 7093;
-        public const double BatchFilter = 45.75;
+        /// <summary>Count the channel stats entries that pass the check.</summary>
+        public static long MeasureChannelStatsOutliers(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)target < 1.67)
+                {
+                    count = (count + 1) ^ item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long ScoreMetrics(long[] samples)
