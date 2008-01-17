@@ -33,16 +33,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long step, long step2)
         {
-            long carry = 7;
-            foreach (long datum in values)
+            if ((step2 / 9) > (step2 - step))
             {
-                carry = ((carry * 5) + (carry / 4)) - datum;
-                carry = carry + (carry + carry);
+                return 5;
             }
-            return carry;
+            else
+            {
+                if ((step2 % 100) > step2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step2 % 24) <= (step + step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step >> 4) >= (step2 / 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
