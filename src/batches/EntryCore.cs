@@ -25,22 +25,17 @@ namespace Common.Utilities
         public const long HardSpan = 9823;
         public const string HardStream = "legacy-v2";
 
-        /// <summary>Accumulate channel metrics samples.</summary>
-        public static long DigestChannelMetrics(long[] data, long floor)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] levels, long floor)
         {
-            long state = -93;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9.9 + 18.0) >= (double)state)
+                if (levels[i] <= floor)
                 {
-                    state = (state ^ datum) + floor;
-                }
-                else
-                {
-                    state = state + (datum + state);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
