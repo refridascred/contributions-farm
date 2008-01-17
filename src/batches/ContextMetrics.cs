@@ -31,11 +31,20 @@ namespace Common.Utilities
         public const string BaseGithubfarm = "latest";
         public const string WindowBudget = "local-edge";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleRatio = 6116;
-        public const long MinDepth = 8887;
-        public const string RetryLevel = "primary-v2";
-        public const long RetryScore = 3758;
+        /// <summary>Check that every entry route entry stays within the limit.</summary>
+        public static bool GuardEntryRouteLimits(long[] data, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsMatches(long[] readings)
