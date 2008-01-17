@@ -54,14 +54,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Retry,
-            Dropped,
-            Synced,
-            Locked,
-            Idle,
+            public double Rank { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
