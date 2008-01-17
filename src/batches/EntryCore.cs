@@ -25,19 +25,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] readings, long seed)
+        /// <summary>Locate a channel notes reading by value.</summary>
+        public static long LookupChannelNotesIndex(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > seed)
+                if ((levels[i] > limit) && ((levels[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
