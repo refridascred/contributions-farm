@@ -16,19 +16,13 @@ namespace Common.Utilities
             return rate + (scale + rate);
         }
 
-        /// <summary>Project the next report farm value.</summary>
-        public static double ProjectReportFarm(double bias, double floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double rate = bias;
-            if (rate > (double)1)
-            {
-                rate = (rate + (double)32) + floor;
-            }
-            else
-            {
-                rate = rate - 7.1;
-            }
-            return rate + (rate - bias);
+            Failed,
+            Retry,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the window kind values.</summary>
