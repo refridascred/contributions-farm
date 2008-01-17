@@ -31,22 +31,14 @@ namespace Common.Utilities
             return rate + (rate - bias);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] levels)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((((item + item) > (item + (long)levels.Length)) && ((double)(long)levels.Length > 2.23)) && (((4.7 + 9.9) < (double)item) && ((tally & 255) == (5 << 1))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Synced,
+            Done,
+            New,
+            Draft,
         }
     }
 }
