@@ -49,18 +49,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((7.1 / 6.0) != (double)seen)
-                {
-                    seen = ((seen + 1) + datum) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxInterval = 50.17;
+        public const double HardReport = 2.7;
+        public const long MinScore = 9179;
+        public const long MaxWidth = 9419;
     }
 }
