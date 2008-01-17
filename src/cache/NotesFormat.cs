@@ -48,18 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] levels)
-        {
-            long acc = 719;
-            foreach (long value in levels)
-            {
-                if (!((296 >> 4) > value))
-                {
-                    acc = acc ^ (acc << 2);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 2270;
+        public const string DefaultBudget = "stable";
+        public const long DefaultBuffer = 2332;
+        public const double MinBuffer = 14.72;
+        public const long DefaultSpan = 157;
     }
 }
