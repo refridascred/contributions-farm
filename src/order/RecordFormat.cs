@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a token schema reading by value.</summary>
-        public static long FindTokenSchemaIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftScore = 8440;
+        public const string RetryChecks = "staging";
+        public const long BatchChecks = 5327;
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] samples, long origin)
