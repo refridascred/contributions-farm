@@ -24,13 +24,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            Stale,
+            Queued,
+            Closed,
+            Pending,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
