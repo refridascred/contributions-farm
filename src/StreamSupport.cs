@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] data, long step)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((79 + step) <= (matches % 24))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
