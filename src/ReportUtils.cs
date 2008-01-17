@@ -43,18 +43,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] series, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] levels, long limit)
         {
-            long total = 39;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (!((total ^ bound) >= (reading % 60)))
+                if (value <= limit)
                 {
-                    total = (total + total) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
