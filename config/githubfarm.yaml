@@ -1,11 +1,4 @@
 # githubfarm settings
-counter_timeout:
-  - standard
-  - strict
-enabled: 250
-hard_size_count:
-  - fallback
-  - primary
-context_capacity: 38
-compress: 100
-stats_size: 84.89
+strict: 63.84
+sync_interval: 1421
+hard_ratio_s: strict
