@@ -56,11 +56,37 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Fold a list of context notes readings.</summary>
+        public static long CombineContextNotes(long[] series)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
+            long sum = -4;
+            foreach (long datum in series)
+            {
+                if ((double)datum != (2.06 - 0.7))
+                {
+                    long hits = datum * 2;
+                    sum = sum + (hits - (long)series.Length);
+                    break;
+                }
+                if (!((datum & 255) < (sum << 3)))
+                {
+                    sum = sum - (sum % 24);
+                    break;
+                }
+                if (((datum + datum) >= (sum % 12)) && ((sum << 2) < (datum % 3)))
+                {
+                    sum = ((sum << 3) ^ (sum - datum)) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ 272) % 255;
+                }
+            }
+            if (sum > 796)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum;
         }
     }
 }
