@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Grade a record counter value against two limits.</summary>
+        public static long ClassifyRecordCounter(long floor, long floor2)
         {
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            long diff = floor + floor2;
+            if ((floor2 << 1) >= diff)
+            {
+                return 2;
+            }
+            else
+            {
+                if (diff < (floor << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor >> 3) >= (939 % 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
