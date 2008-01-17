@@ -20,17 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = mix - (long)i;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepInterval = 3428;
+        public const long LimitAccount = 4902;
+        public const long StepAccount = 687;
+        public const double BurstWidth = 65.59;
+        public const long MinTimeout = 7406;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryBuffer = 9845;
