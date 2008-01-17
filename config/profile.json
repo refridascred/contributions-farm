@@ -1,12 +1,5 @@
 {
-  "readonly": [155, 303, 97, 137],
-  "idle_ratio_s": 73.48,
-  "graph_size": [159, 232, 61],
-  "hard_window": "local",
-  "hard_delay": {
-    "min_retries_count": true,
-    "cache_delay_s": "cached",
-    "batch_limit_count": 36.11,
-    "hard_ttl_ms": 49.63
-  }
+  "audit": 47.43,
+  "order_threshold": [32, 111, 398],
+  "cache_limit_pct": false
 }
