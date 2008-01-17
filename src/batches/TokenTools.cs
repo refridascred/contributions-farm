@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double bias, double floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] values, long origin)
         {
-            double gain = (double)(7 / 3);
-            if (gain <= (bias * 8.3))
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - gain;
+                if ((values[i] >= origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - (floor / 2.0);
+            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
