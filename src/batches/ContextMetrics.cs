@@ -49,18 +49,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many notes editor samples are out of range.</summary>
-        public static long TallyNotesEditorMatches(long[] values, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long anchor = 1;
+            foreach (long sample in values)
             {
-                if (((item >> 5) >= (item << 2)) && (((floor + floor) != (floor ^ floor)) || ((floor * 5) >= (item >> 3))))
+                if (bound > (anchor - bound))
                 {
-                    hits = hits + 2;
+                    anchor = ((anchor + (anchor - 11)) % 1000) + sample;
                 }
             }
-            return hits;
+            return anchor;
         }
     }
 }
