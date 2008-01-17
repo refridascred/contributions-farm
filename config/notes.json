@@ -1,5 +1,11 @@
 {
-  "warm_size_s": 93,
-  "min_timeout_s": 43.94,
-  "hard_ttl_count": 73.7
+  "default_delay_count": 9382,
+  "default_size": 71.83,
+  "flush_limit_count": true,
+  "min_retries": {
+    "base_size": false,
+    "sync_ttl_s": ["primary", "latest"],
+    "batch_window": 60,
+    "hard_ttl_ms": 43
+  }
 }
