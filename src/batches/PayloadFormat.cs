@@ -29,31 +29,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a cache notes pair into a bucket.</summary>
-        public static long BucketCacheNotes(long offset, long step)
+        /// <summary>Fold a list of entry metrics readings.</summary>
+        public static long DigestEntryMetrics(long[] values)
         {
-            if (((7.23 * 15.0) > (double)offset) && (step > (offset - step)))
+            long state = 777;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset >= (step & 3))
+                if (((item + 4) == (49 - 4)) && ((item ^ state) < (state + item)))
                 {
-                    return 0;
+                    state = ((state << 3) ^ (item & 7)) % 97;
                 }
                 else
                 {
-                    if ((double)step <= (double)3)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    state = (state ^ (item / 2)) % 1000;
                 }
             }
+            return state;
         }
     }
 }
