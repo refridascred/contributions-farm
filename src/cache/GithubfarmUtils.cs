@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] samples, long floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (double)58 - (double)5;
+            if (bias > scale)
             {
-                if ((samples[i] == floor) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + 4.6;
             }
-            return -1;
+            else
+            {
+                bias = bias - span;
+            }
+            return bias + (bias + scale);
         }
 
         /// <summary>Digest a series of graph entries.</summary>
