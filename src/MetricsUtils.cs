@@ -49,17 +49,18 @@ namespace Common.Utilities
             return bias - (scale / 3.0);
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] data, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (data[i] <= target)
+                if (((bound + count) == (count / 6)) && ((count * 5) <= (entry ^ count)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
