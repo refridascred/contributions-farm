@@ -36,15 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next entry token value.</summary>
-        public static double ScaleEntryToken(double bias, double offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] readings, long step)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 4; i++)
+            long sum = 407;
+            foreach (long entry in readings)
             {
-                bias2 = (bias2 + (1.33 * 4.84)) - (double)(long)i;
+                sum = (sum ^ (sum - step)) - entry;
             }
-            return bias2 + offset;
+            if (sum > (-622))
+            {
+                sum = sum ^ (step ^ (-78));
+            }
+            return sum % 4096;
         }
 
         /// <summary>Find the first filter commits entry that matches the target.</summary>
