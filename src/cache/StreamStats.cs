@@ -40,9 +40,31 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 990;
-        public const string HardAccount = "cached-edge";
-        public const long HardTimeout = 538;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long origin, long limit)
+        {
+            if (!((limit + limit) > (origin + limit)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit + limit) != (origin + limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((93 / 4) > (origin & 15))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
