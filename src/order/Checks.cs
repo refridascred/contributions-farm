@@ -46,13 +46,23 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double gain, double floor)
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            double ratio = (double)((-162) / 9);
+            if (ratio > ratio)
+            {
+                ratio = ratio + (double)3;
+            }
+            else
+            {
+                ratio = ratio + (gain - floor);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - (double)40;
         }
 
         /// <summary>Describe the checks status values.</summary>
