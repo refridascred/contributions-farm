@@ -15,11 +15,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long limit, long offset)
         {
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
+            if (((limit << 2) < (limit ^ limit)) && ((limit + limit) >= (limit % 8)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((2.1 - 6.0) <= (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((14.0 - 6.0) < 17.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit - offset) == (limit + offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
