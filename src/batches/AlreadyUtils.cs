@@ -79,19 +79,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] data, long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] data)
         {
-            long anchor = -115;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long item in data)
             {
-                anchor = (((anchor << 2) ^ (seed * 5)) % 97) ^ datum;
+                if ((matches < (item * 3)) || ((item % 64) < (662 >> 3)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (anchor < 280)
-            {
-                anchor = anchor + (seed & 3);
-            }
-            return anchor;
+            return matches;
         }
     }
 }
