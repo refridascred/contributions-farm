@@ -5,29 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long offset)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] series, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((series[i] > seed) && ((series[i] % 3) == 0))
                 {
-                    sum = ((sum - (sum << 3)) % 255) ^ (long)i2;
+                    return (long)i;
                 }
-                if (((sum / 7) > offset) && ((offset - offset) >= offset))
-                {
-                    sum = sum + 9;
-                    continue;
-                }
-                else
-                {
-                    sum = ((sum * 5) + sum) % 4096;
-                    sum = (sum * 2) + offset;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
