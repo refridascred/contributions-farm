@@ -57,22 +57,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] values, long step)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)value <= (6.3 * 1.2))
+                if ((((long)i / 2) == (bound + (long)i)) && (sum >= (bound - sum)))
                 {
-                    hits = (hits + 1) - step;
+                    break;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
     }
 }
