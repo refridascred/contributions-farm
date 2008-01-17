@@ -33,12 +33,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] series, long limit)
         {
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (hits < (-13))
+                {
+                    hits = ((hits + 1) + datum) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the tools phase values.</summary>
