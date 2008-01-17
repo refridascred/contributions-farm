@@ -38,15 +38,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batches commits counter forward.</summary>
-        public static long RollBatchesCommits(long floor)
+        /// <summary>Compare every pair of notes window readings.</summary>
+        public static long CompareNotesWindowCount(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
