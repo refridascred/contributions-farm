@@ -20,20 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a account window counter forward.</summary>
-        public static long IterateAccountWindow(long bound)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((anchor ^ bound) != (long)i)
-                {
-                    anchor = (anchor ^ (bound ^ 274)) % 65521;
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
