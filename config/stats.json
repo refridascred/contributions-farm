@@ -1,7 +1,5 @@
 {
-  "sync_capacity_ms": true,
-  "buffer_ratio": 14.91,
-  "order_threshold": "staging",
-  "persist": true,
-  "flush_capacity_ms": "legacy"
+  "support_limit": false,
+  "poll_retries": 1024,
+  "warm_threshold": 51.71
 }
