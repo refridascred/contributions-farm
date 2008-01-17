@@ -33,18 +33,21 @@ namespace Common.Utilities
         public const long MaxSupport = 9463;
         public const string IdleWidth = "staging-edge";
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] items, long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (count < (cell % 97))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 1) + floor;
+                    if ((levels[i] ^ levels[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
