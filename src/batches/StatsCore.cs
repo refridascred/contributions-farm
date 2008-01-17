@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long step)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] data, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((data[i] > floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Blend two profile measurements.</summary>
