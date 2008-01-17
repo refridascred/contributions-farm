@@ -1,10 +1,24 @@
 # entry settings
-hard_limit: 47.57
-report_capacity: 35
-hard_limit_pct: 5
-dry_run: 5711
-queue_ttl: 5317
-poll_ttl_s:
-  - 411
-  - 100
-  - 255
+max_limit_ms: 66.53
+burst_size_count: standard
+dry_run:
+  - strict
+  - open
+format_depth: 48.15
+readonly: standard
+idle_limit:
+  hard_capacity_pct: 30
+  base_timeout: 23
+  default_size_s: eu-west
+  contributi_delay:
+    warm_retries_ms: strict
+    verbose: standard
+    flush_limit: blue
+    profile_size: true
+    compress: true
+    sync_threshold:
+      - edge
+      - green
+      - stable
+      - green
+  record_capacity: cached
