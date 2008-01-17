@@ -1,6 +1,6 @@
 {
-  "poll_ttl_s": 31,
-  "default_interval_pct": [418, 266],
-  "retry_threshold_ms": ["fallback", "standard", "fallback", "edge"],
-  "compress": "green"
+  "soft_limit_pct": "eu-west",
+  "readonly": 58,
+  "max_ratio_count": "cached",
+  "strict": false
 }
