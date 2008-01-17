@@ -45,21 +45,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Iterate the cluster already series from a seed.</summary>
+        public static long StepClusterAlready(long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((anchor + origin) > origin))
-                {
-                    anchor = anchor + (origin ^ (long)i);
-                    anchor = anchor ^ (anchor + anchor);
-                }
-                anchor = anchor + 46;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                result = result + result;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
     }
 }
