@@ -14,22 +14,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] readings, long seed)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long origin, long bound)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            if (!((double)origin == (double)977))
             {
-                if ((seed >= (seed & 63)) && (((double)count >= (7.0 + 3.63)) && ((double)seed <= (0.86 * 6.0))))
+                return 6;
+            }
+            else
+            {
+                if ((77 % 16) <= (bound ^ bound))
                 {
-                    count = (count + 1) ^ cell;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((7.1 / 2.0) <= (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound > (11.0 * 0.3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
