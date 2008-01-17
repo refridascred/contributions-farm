@@ -66,19 +66,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample % 100) >= sample)
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCluster = "latest-v2";
+        public const long IdleDepth = 243;
+        public const long CacheFactor = 1872;
+        public const long HardWidth = 8194;
+        public const double SoftCluster = 92.33;
 
         /// <summary>Compare every pair of cache buffer readings.</summary>
         public static long MatchCacheBufferCount(long[] series)
