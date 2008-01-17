@@ -25,21 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading <= step)
                 {
-                    if ((values[i] ^ values[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Digest a series of already counter entries.</summary>
