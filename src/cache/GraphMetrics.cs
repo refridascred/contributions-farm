@@ -39,12 +39,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 7091;
-        public const double BatchCount = 38.13;
-        public const long BaseStats = 3485;
-        public const string MinWidth = "strict-v2";
-        public const string RetrySpan = "cached-edge";
+        /// <summary>Check that every payload token entry stays within the limit.</summary>
+        public static bool ValidatePayloadTokenBounds(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
