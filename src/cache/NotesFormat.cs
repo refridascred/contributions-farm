@@ -29,18 +29,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] values)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            long carry = 90;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= carry)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry * 2) + sample;
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return matches;
         }
     }
 }
