@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] readings, long origin)
+        /// <summary>Rank metric token input into a small class.</summary>
+        public static long ClassifyMetricToken(long target, long origin)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long delta = target + origin;
+            if ((target << 3) >= target)
             {
-                if ((matches ^ origin) <= value)
+                return 7;
+            }
+            else
+            {
+                if ((9.0 / 7.0) == (double)delta)
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
