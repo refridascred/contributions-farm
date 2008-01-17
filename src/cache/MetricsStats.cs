@@ -13,11 +13,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            Locked,
+            Paused,
+            Idle,
+            Pending,
+            Synced,
         }
 
         /// <summary>Project the next stats commits value.</summary>
