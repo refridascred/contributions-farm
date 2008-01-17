@@ -1,11 +1,10 @@
 # route settings
-strict: false
-order_depth: 25.72
-cache_delay:
-  base_depth_count: 1016
-  sync_threshold: 54.25
-  metric_window: 52.57
-  flush_ttl: false
-verbose: 2855
-hard_ratio_ms: cached
-burst_retries_pct: true
+entry_limit: false
+soft_threshold: 1024
+warm_ttl_count: local
+default_ratio:
+  - fallback
+  - legacy
+  - cached
+default_size_count: true
+default_delay_count: false
