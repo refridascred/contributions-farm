@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "primary";
-        public const long SoftScore = 431;
-        public const long HardCache = 7164;
-        public const long IdleCache = 917;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Ready,
+            Active,
+            Stale,
+            Retry,
+            Done,
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] data)
