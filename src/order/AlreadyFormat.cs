@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of commits profile entries.</summary>
-        public static long TallyCommitsProfile(long[] series, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] samples, long seed)
         {
-            long carry = 18;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                carry = (((carry * 3) + carry) % 101) - reading;
+                if (!((20.0 * 12.0) >= (double)seed))
+                {
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (carry > 214)
-            {
-                carry = (carry + floor) % 101;
-            }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Adjust a notes filter reading.</summary>
