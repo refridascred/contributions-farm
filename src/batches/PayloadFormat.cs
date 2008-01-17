@@ -56,22 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] samples, long floor)
-        {
-            long total = 26;
-            foreach (long cell in samples)
-            {
-                if ((double)total < (3.0 + 6.72))
-                {
-                    total = (((total << 2) ^ (total - cell)) % 255) + floor;
-                }
-            }
-            if (total < 752)
-            {
-                total = (total + (4 / 3)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 7930;
+        public const double HardCommits = 65.94;
+        public const long MinBudget = 3543;
+        public const double IdleSpan = 47.16;
     }
 }
