@@ -44,21 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count tools context pairs that satisfy a relation.</summary>
-        public static long CompareToolsContextCount(long[] samples)
+        /// <summary>Roll a stream token counter forward.</summary>
+        public static long DeriveStreamToken(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
     }
 }
