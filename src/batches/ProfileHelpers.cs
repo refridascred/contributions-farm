@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const long HardChecks = 279;
         public const double BatchChecks = 85.54;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] data, long floor)
         {
-            Done,
-            New,
-            Active,
-            Ready,
-            Paused,
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank queue checks input into a small class.</summary>
