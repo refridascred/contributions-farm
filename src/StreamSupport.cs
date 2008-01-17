@@ -14,17 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = (acc * 4) + (seed << 3);
-                acc = (acc << 3) ^ (acc + (long)i);
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Draft,
+            Paused,
+            Stale,
+            Synced,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
