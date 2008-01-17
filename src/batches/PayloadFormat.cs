@@ -15,22 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the cache cluster entries that pass the check.</summary>
-        public static long MeasureCacheClusterGaps(long[] samples, long seed)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (6.2 <= (double)matches)
-                {
-                    matches = ((matches + 2) ^ reading) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Rank layout input into a small class.</summary>
