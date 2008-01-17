@@ -55,21 +55,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] levels)
+        /// <summary>Classify a farm githubfarm pair into a bucket.</summary>
+        public static long SortFarmGithubfarm(long offset, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long slot = offset ^ limit;
+            if (0 >= (offset * 4))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (offset > (slot + limit))
                 {
-                    if ((levels[i] ^ levels[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
