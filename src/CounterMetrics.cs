@@ -27,18 +27,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] levels)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] series, long target)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (!((datum + datum) <= count))
+                if (value <= target)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Rank metric commits input into a small class.</summary>
