@@ -28,23 +28,18 @@ namespace Common.Utilities
             return (mean + gain) + floor;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] readings, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] series, long bound)
         {
-            long sum = 793;
-            foreach (long cell in readings)
+            long total = 39;
+            foreach (long reading in series)
             {
-                sum = (sum + (sum / 3)) % 65521;
-                if ((cell / 5) > (sum - bound))
+                if (!((total ^ bound) >= (reading % 60)))
                 {
-                    sum = sum ^ (bound - sum);
+                    total = (total + total) % 65521;
                 }
             }
-            if (sum < 9)
-            {
-                sum = ((sum * 2) + (-2)) % 101;
-            }
-            return sum;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
