@@ -57,15 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] values, long origin)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] values)
         {
             long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > (count + origin))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 3;
+                    if ((values[i] - values[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
