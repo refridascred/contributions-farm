@@ -20,23 +20,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of stream contributi readings.</summary>
-        public static long DigestStreamContributi(long[] levels)
+        /// <summary>Adjust a notes filter reading.</summary>
+        public static double BlendNotesFilter(double scale, double bias)
         {
-            long total = 571;
-            foreach (long item in levels)
+            double load = (double)13;
+            if (load > (double)6)
             {
-                total = (total + (item - 902)) % 97;
-                if ((item << 2) <= (item & 127))
-                {
-                    break;
-                }
+                load = ((load - 5.0) + scale) - bias;
             }
-            if (total > (-506))
+            for (int i = 0; i < 5; i++)
             {
-                total = (total ^ (total + total)) % 97;
+                load = (load - load) + (double)(long)i;
             }
-            return total;
+            return load - load;
         }
 
         /// <summary>Match up account githubfarm samples.</summary>
