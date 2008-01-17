@@ -1,7 +1,6 @@
 {
-  "hard_interval_pct": "strict",
-  "min_ratio": 22.94,
-  "soft_ratio_count": true,
-  "route_retries": 29.55,
-  "batches_retries": true
+  "strict": 100,
+  "verbose": 30,
+  "default_size_count": 76,
+  "tools_size": "standard"
 }
