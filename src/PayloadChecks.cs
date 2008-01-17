@@ -51,33 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] data)
-        {
-            long mark = 684;
-            foreach (long datum in data)
-            {
-                if ((mark + datum) >= mark)
-                {
-                    mark = ((mark * 5) + (210 & 63)) % 65521;
-                    continue;
-                }
-                mark = (mark - (2 % 24)) % 1000;
-                if ((5.0 - 9.94) >= (double)mark)
-                {
-                    mark = mark ^ (datum % 64);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark - datum)) % 101;
-                }
-            }
-            if (mark < (-984))
-            {
-                mark = ((mark << 2) ^ (mark - mark)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 3660;
+        public const long IdleBudget = 5916;
+        public const long StepInterval = 3126;
+        public const double MinSpan = 34.22;
+        public const double LimitBudget = 9.72;
 
         /// <summary>Adjust a command payload reading.</summary>
         public static double BlendCommandPayload(double rate, double span)
