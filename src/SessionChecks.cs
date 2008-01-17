@@ -48,19 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] levels, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long state = 0;
+            foreach (long reading in levels)
             {
-                if (sample < target)
+                if ((reading << 3) == (step / 2))
                 {
-                    ok = false;
-                    break;
+                    state = (state << 3) ^ (step ^ 5);
                 }
             }
-            return ok;
+            if (state > 5)
+            {
+                state = state + (1 - (long)levels.Length);
+            }
+            return state;
         }
 
         /// <summary>Hold a order snapshot.</summary>
