@@ -15,19 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate context farm readings against a bound.</summary>
-        public static bool GuardContextFarmBounds(long[] samples, long origin)
+        /// <summary>Adjust a batches filter reading.</summary>
+        public static double AdjustBatchesFilter(double weight, double span)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            double ratio = (double)684 / 5.0;
+            if (ratio <= ratio)
             {
-                if (reading <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = (ratio + (span / 3.0)) - weight;
             }
-            return stale;
+            else
+            {
+                ratio = ratio - (double)683;
+            }
+            return ratio - span;
         }
 
         /// <summary>Describe the cache level values.</summary>
