@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long seed, long limit)
         {
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
+            if (((1.0 / 9.0) <= (double)seed) || (6.6 < (double)limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((limit ^ limit) > (limit ^ seed)) && ((double)seed <= (12.0 - 11.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
