@@ -46,12 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Idle,
-            Active,
-            Draft,
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
