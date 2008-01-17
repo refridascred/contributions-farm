@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepFactor = 6708;
-        public const long IdleScore = 675;
-        public const long LimitBuffer = 774;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] samples, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
