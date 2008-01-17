@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] series, long offset)
         {
-            long mix = 28;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)value <= (3.5 * 9.2)) && ((double)value == (double)mix))
+                if ((series[i] <= offset) && ((series[i] % 3) != 0))
                 {
-                    mix = mix ^ (value + (long)data.Length);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
