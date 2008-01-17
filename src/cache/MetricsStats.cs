@@ -45,39 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long floor, long origin)
+        /// <summary>Count the cluster githubfarm entries that pass the check.</summary>
+        public static long MeasureClusterGithubfarmHits(long[] series, long step)
         {
-            long gap = floor + origin;
-            if ((double)floor == (3.67 / 6.0))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin <= (origin ^ floor))
+                if ((double)item != (1.84 - 1.6))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin < (floor << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((floor + gap) <= (origin & 1)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = (seen + 3) - step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many cache editor samples are out of range.</summary>
