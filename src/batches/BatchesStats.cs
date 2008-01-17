@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank githubfarm layout input into a small class.</summary>
-        public static long GradeGithubfarmLayout(long limit, long step)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double rate, double bias)
         {
-            if ((double)step != (double)limit)
+            double rate2 = bias * 7.52;
+            if (rate2 < (double)1)
             {
-                return 0;
+                rate2 = (rate2 - 16.0) - rate;
             }
             else
             {
-                if ((5.3 * 13.0) < (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
+                rate2 = rate2 - rate2;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 - (rate2 * 5.1)) + (double)(long)i;
+            }
+            return rate2 - (double)(-806);
         }
 
         /// <summary>Combine stream payload values into a single score.</summary>
