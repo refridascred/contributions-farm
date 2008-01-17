@@ -1,14 +1,15 @@
 # Command notes
 
-Each filter is validated before it reaches the account queue.
-A support that stays idle for too long is moved to the report list.
+The session report groups every stats by session.
+Run the editor check before changing any notes limits.
+The payload report groups every route by context.
 
-Defaults for metric live in the config folder and can be overridden per environment.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+Defaults for editor live in the config folder and can be overridden per environment.
+The profile module keeps metrics values in sync with the batch cache.
 
 ## Guidelines
 
-- Validate report input early
-- Keep entry values small
-- Log every graph change
-- Document new report fields
+- Keep route values small
+- Log every layout change
+- Validate farm input early
+- Document new channel fields
