@@ -64,10 +64,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 5024;
-        public const double RetryFactor = 54.07;
-        public const long BaseCluster = 7326;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long offset, long seed)
+        {
+            if ((((-748) * 3) < (offset % 7)) || ((3.0 * 0.2) > (double)seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed - offset) < (seed ^ 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long MatchFormatCount(long[] items)
