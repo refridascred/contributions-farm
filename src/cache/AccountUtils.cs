@@ -27,23 +27,30 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank checks githubfarm input into a small class.</summary>
-        public static long RankChecksGithubfarm(long origin, long step)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long offset, long bound)
         {
-            long bound = origin ^ step;
-            if ((bound ^ bound) != (origin - origin))
+            long offset2 = offset + bound;
+            if ((8.0 / 3.0) <= (double)bound)
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((double)step == (double)origin)
+                if (offset2 <= bound)
                 {
                     return 1;
                 }
                 else
                 {
-                    return 6;
+                    if (bound > (offset2 & 31))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
