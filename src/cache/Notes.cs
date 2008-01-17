@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseLevel = 1620;
-        public const long SoftMetrics = 6779;
-        public const long RetryMetrics = 7707;
-        public const long BaseWidth = 6926;
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Dropped,
+            Draft,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double ProjectGithubfarm(double scale, double floor)
