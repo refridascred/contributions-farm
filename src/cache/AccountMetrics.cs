@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] items)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item * 3) <= (seen & 127))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
