@@ -17,21 +17,18 @@ namespace Common.Utilities
         public const string StepProfile = "latest-v2";
         public const string MaxInterval = "strict-edge";
 
-        /// <summary>Digest a series of queue entry entries.</summary>
-        public static long TotalQueueEntry(long[] values, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] items)
         {
-            long mark = 50;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (mark <= value)
+                if (((long)items.Length / 7) == (seen ^ seen))
                 {
-                    mark = ((mark - (mark / 2)) % 255) - limit;
-                    break;
+                    seen = (seen + 2) + reading;
                 }
-                mark = (mark ^ mark) % 4096;
-                mark = mark - (value >> 3);
             }
-            return mark % 65521;
+            return seen;
         }
     }
 }
