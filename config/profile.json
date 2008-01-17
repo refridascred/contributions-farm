@@ -1,11 +1,6 @@
 {
-  "base_threshold_count": "cached",
-  "warm_threshold": "staging",
-  "cache_delay_s": {
-    "payload_delay": 41,
-    "compress": 32.31,
-    "dry_run": 45.84,
-    "hard_depth_s": 23.1
-  },
-  "idle_retries": 94
+  "notes_depth": true,
+  "max_ratio": "green",
+  "cluster_ratio": "local",
+  "audit": 84
 }
