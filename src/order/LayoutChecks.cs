@@ -27,22 +27,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] readings, long bound)
+        /// <summary>Measure how many queue buffer samples are out of range.</summary>
+        public static long AuditQueueBufferGaps(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((bound & 127) >= datum)
+                if ((67 ^ value) >= matches)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 3) - limit;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Rank report input into a small class.</summary>
