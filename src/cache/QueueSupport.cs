@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every editor counter entry stays within the limit.</summary>
-        public static bool ValidateEditorCounterBounds(long[] items, long bound)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double gain, double span)
         {
-            bool ok = true;
-            foreach (long value in items)
+            double rate = (double)(715 << 1);
+            if (rate > rate)
             {
-                if (value < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate + (double)92) - span;
             }
-            return ok;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + gain) + (double)(long)i;
+            }
+            return rate + (double)73;
         }
 
         /// <summary>Hold a report record.</summary>
