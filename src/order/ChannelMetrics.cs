@@ -21,21 +21,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (5 > (anchor + offset))
                 {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor ^ ((long)i << 3)) % 4096;
+                    continue;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
