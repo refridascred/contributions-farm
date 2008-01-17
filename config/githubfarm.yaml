@@ -1,6 +1,5 @@
 # githubfarm settings
-strict: blue
-retry_window_s: false
-verbose: local
-batches_interval: 59.72
-default_delay: strict
+hard_ratio_s: true
+githubfarm_retries: open
+enabled: 17
+cache_size_s: 23.54
