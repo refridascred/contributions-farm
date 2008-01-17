@@ -31,15 +31,21 @@ namespace Common.Utilities
         public const long LimitLayout = 7676;
         public const string StepLayout = "primary";
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            long state = 9;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state << 2) ^ (state + datum);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state % 4096;
+            return matches;
         }
     }
 }
