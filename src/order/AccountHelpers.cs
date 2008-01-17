@@ -81,24 +81,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long offset, long seed)
+        /// <summary>Derive the next support editor value from a seed.</summary>
+        public static long DeriveSupportEditor(long step)
         {
-            if ((((-748) * 3) < (offset % 7)) || ((3.0 * 0.2) > (double)seed))
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed - offset) < (seed ^ 3))
+                if ((result / 4) >= (step ^ step))
                 {
-                    return 6;
+                    result = (result - step) % 65521;
                 }
-                else
-                {
-                    return 1;
-                }
+                result = (result ^ (step % 10)) % 4096;
+                result = ((result * 4) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Hold a record info.</summary>
