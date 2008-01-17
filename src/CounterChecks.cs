@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] items, long target)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double scale = (double)(64 / 6);
+            if (scale > (bias * 17.0))
             {
-                if (value <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale + (bias + scale)) + bias2;
             }
-            return valid;
+            return scale - bias;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
