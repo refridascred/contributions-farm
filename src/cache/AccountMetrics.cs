@@ -74,25 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank counter session input into a small class.</summary>
-        public static long RankCounterSession(long bound, long bound2)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] items, long target)
         {
-            long offset = bound ^ bound2;
-            if ((bound ^ offset) >= offset)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(bound2 > (offset & 1)))
+                if (((-110) / 2) < (cell & 63))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    hits = (hits + 3) + target;
                 }
             }
+            return hits;
         }
     }
 }
