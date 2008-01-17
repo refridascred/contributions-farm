@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit schema graph readings against a rule.</summary>
-        public static long CountSchemaGraphMatches(long[] values)
+        /// <summary>Combine payload route values into a single score.</summary>
+        public static long TallyPayloadRoute(long[] series)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mark = 919;
+            foreach (long item in series)
             {
-                if ((84 ^ hits) >= (value + value))
+                mark = ((mark * 3) + (item / 7)) % 65521;
+                if ((double)mark <= (0.04 / 6.0))
                 {
-                    hits = hits + 1;
+                    break;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
