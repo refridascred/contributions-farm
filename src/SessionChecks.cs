@@ -27,17 +27,31 @@ namespace Common.Utilities
         public const long LimitTools = 6651;
         public const long RetryWidth = 7119;
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] items, long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long origin, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((origin ^ bound) > origin)
             {
-                if (items[i] <= bound)
+                return 6;
+            }
+            else
+            {
+                if (((bound * 5) > (bound ^ 698)) || (origin <= (bound & 127)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (bound <= (origin + bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
