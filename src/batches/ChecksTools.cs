@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const string DefaultWidth = "primary-v2";
         public const long CacheCommand = 7819;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] samples, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] samples, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (samples[i] < floor)
+                if ((origin & 127) > (hits >> 1))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
