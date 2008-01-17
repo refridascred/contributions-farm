@@ -72,12 +72,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 7497;
-        public const long BurstFactor = 2811;
-        public const string WindowWidth = "open-1";
-        public const string BaseDepth = "latest-v2";
-        public const double DefaultToken = 57.17;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double ratio, double offset)
+        {
+            double bias = 4.83;
+            if (bias <= (offset + 8.93))
+            {
+                bias = (bias + bias) - ratio;
+            }
+            else
+            {
+                bias = bias + offset;
+            }
+            return bias + (double)51;
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
