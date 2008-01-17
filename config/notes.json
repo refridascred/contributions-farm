@@ -1,8 +1,18 @@
 {
-  "soft_limit": true,
-  "min_limit_count": ["legacy", "fallback", "legacy"],
-  "retry_ttl_count": "open",
-  "idle_retries_count": 8713,
-  "warm_threshold_ms": 24.15,
-  "retry_ratio_count": 250
+  "min_timeout_s": 64.69,
+  "strict": 32,
+  "support_depth": 4,
+  "cache_limit": [400, 281],
+  "retry_ratio_pct": {
+    "persist": false,
+    "idle_depth": "blue",
+    "cache_retries": "fallback"
+  },
+  "cache_delay_pct": {
+    "strict": ["stable", "staging", "strict", "latest"],
+    "cache_retries": 67,
+    "compress": "staging",
+    "entry_threshold": 75,
+    "buffer_timeout": false
+  }
 }
