@@ -22,16 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the buffer profile series from a seed.</summary>
-        public static long DeriveBufferProfile(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstDepth = 8711;
+        public const string SoftRatio = "primary-1";
+        public const long RetryOrder = 803;
+        public const long SoftSpan = 1671;
+        public const long BaseRatio = 6930;
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
