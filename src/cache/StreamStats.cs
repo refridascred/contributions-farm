@@ -47,15 +47,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double ratio, double span)
+        /// <summary>Find the first filter commits entry that matches the target.</summary>
+        public static long LocateFilterCommitsIndex(long[] readings, long target)
         {
-            double load = ratio * 6.07;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - (ratio - load)) + (double)(long)i;
+                if ((readings[i] == target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + span;
+            return -1;
         }
     }
 }
