@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] series, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                score = score ^ ((long)i - floor);
-                score = (score << 2) ^ (score + floor);
-                score = ((score * 5) + (long)i) % 1000;
+                if (!!((long)series.Length != (seed + datum)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
