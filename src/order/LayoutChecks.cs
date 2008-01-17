@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] values, long seed)
         {
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a support snapshot.</summary>
