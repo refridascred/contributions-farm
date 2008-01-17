@@ -43,17 +43,9 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Find the first filter commits entry that matches the target.</summary>
-        public static long LocateFilterCommitsIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == target) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftLevel = "alpha-v2";
+        public const double SoftInterval = 33.79;
+        public const string HardFarm = "stable-edge";
     }
 }
