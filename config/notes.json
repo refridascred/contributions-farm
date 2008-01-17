@@ -1,5 +1,7 @@
 {
-  "githubfarm_interval": 500,
-  "soft_delay_pct": ["primary", "eu-west", "cached", "edge"],
-  "githubfarm_limit": "fallback"
+  "warm_limit_ms": "staging",
+  "schema_capacity": 100,
+  "hard_threshold": "latest",
+  "soft_ratio": "edge",
+  "idle_ratio": false
 }
