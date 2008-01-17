@@ -44,19 +44,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a batches order figure with a bias.</summary>
-        public static double SmoothBatchesOrder(double gain, double offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long floor)
         {
-            double bias = (double)(15 + 48);
-            if (bias < (bias * 9.0))
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                bias = ((bias + (double)38) - gain) + offset;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - 3.6) - (double)(long)i;
-            }
-            return bias + (double)48;
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
