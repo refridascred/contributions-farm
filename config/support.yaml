@@ -1,8 +1,7 @@
 # support settings
-graph_threshold:
-  profile_size: 19
-  compress: 100
-  batch_capacity: 250
-  poll_capacity_pct: stable
-warm_depth_count: 4949
-checks_capacity: 37
+record_limit:
+  - edge
+  - strict
+enabled: 70
+min_retries: edge
+idle_capacity: local
