@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] data)
         {
-            long carry = 175;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                carry = (((carry << 3) ^ (carry * 5)) % 1000) + sample;
+                if (((-4) / 3) != (seen ^ seen))
+                {
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
