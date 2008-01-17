@@ -1,16 +1,14 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-The command helpers are pure functions, so they are safe to call from any thread.
-Run the payload check before changing any graph limits.
+The schema module keeps editor values in sync with the contributi cache.
+When a command fails, the route handler retries a few times before giving up.
 
-Each format is validated before it reaches the tools queue.
-The commits report groups every format by token.
-Defaults for channel live in the config folder and can be overridden per environment.
+Each filter is validated before it reaches the payload queue.
+Run the format check before changing any counter limits.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Log every notes change
-- Prefer counter defaults
-- Keep checks values small
+- Document new cache fields
+- Prefer profile defaults
+- Validate command input early
+- Review record limits each release
