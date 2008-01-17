@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double scale, double floor)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] readings, long target)
         {
-            double gain = 1.69 / 6.0;
-            if (gain <= (gain + scale))
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - (scale + 2.1);
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (double)(-3);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + floor) + (double)(long)i;
-            }
-            return gain + (gain / 7.0);
+            return -1;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
