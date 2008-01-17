@@ -52,21 +52,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Look up the position of a metric counter sample.</summary>
+        public static long LookupMetricCounterIndex(long[] samples, long limit)
         {
-            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] > limit)
                 {
-                    if ((samples[i] - samples[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
