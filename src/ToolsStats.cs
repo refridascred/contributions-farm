@@ -57,11 +57,32 @@ namespace Common.Utilities
         public const long BurstTimeout = 1109;
         public const string SoftInterval = "local-edge";
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Accumulate layout schema samples.</summary>
+        public static long WeighLayoutSchema(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long state = 11;
+            foreach (long reading in readings)
+            {
+                state = state ^ (reading * 4);
+                if (reading > (state >> 3))
+                {
+                    state = (state - (state ^ 20)) % 255;
+                    state = ((state * 4) + 79) % 255;
+                }
+                else
+                {
+                    state = state - state;
+                }
+                if ((double)state >= 7.75)
+                {
+                    state = (state - (reading << 3)) % 4096;
+                }
+            }
+            if (state > 47)
+            {
+                state = ((state * 4) + (6 & 255)) % 101;
+            }
+            return state;
         }
     }
 }
