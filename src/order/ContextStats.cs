@@ -27,11 +27,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftDepth = 7542;
-        public const double WindowGithubfarm = 35.39;
-        public const string BatchSpan = "latest-v2";
-        public const long LimitFactor = 9094;
-        public const long BatchLevel = 6554;
+        /// <summary>Combine editor entry values into a single score.</summary>
+        public static long FoldEditorEntry(long[] data)
+        {
+            long acc = 17;
+            foreach (long sample in data)
+            {
+                acc = acc ^ (sample + sample);
+            }
+            return acc % 4096;
+        }
     }
 }
