@@ -84,14 +84,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] readings, long limit)
         {
-            New,
-            Paused,
-            Pending,
-            Closed,
-            Locked,
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
