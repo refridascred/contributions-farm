@@ -39,22 +39,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] series, long limit)
+        /// <summary>Find the first queue counter entry that matches the target.</summary>
+        public static long FindQueueCounterIndex(long[] readings, long offset)
         {
-            long mix = 16;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9 - mix) < (datum + datum))
+                if (readings[i] >= offset)
                 {
-                    mix = (mix + (4 & 7)) + limit;
+                    return (long)i;
                 }
             }
-            if (mix < 64)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return -1;
         }
     }
 }
