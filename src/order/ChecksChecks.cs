@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Derive the next channel entry value from a seed.</summary>
+        public static long RollChannelEntry(long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                carry = ((carry * 4) + (5 * 4)) % 101;
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((double)floor != (6.0 + 9.0))
+                {
+                    carry = (carry + (carry << 1)) % 97;
+                    carry = (carry ^ (carry * 4)) % 97;
+                }
+                carry = (carry << 2) ^ (floor ^ carry);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
             return carry;
         }
