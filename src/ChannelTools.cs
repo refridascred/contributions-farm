@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many support context samples are out of range.</summary>
-        public static long TallySupportContextGaps(long[] levels)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((count & 7) <= (count & 255))
+                if (datum < offset)
                 {
-                    count = (count + 3) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Iterate the support metric series from a seed.</summary>
