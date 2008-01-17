@@ -55,11 +55,19 @@ namespace Common.Utilities
         public const long BaseAccount = 3590;
         public const double IdleTimeout = 30.38;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 83.0;
-        public const long WindowFormat = 1644;
-        public const double DefaultDepth = 6.35;
-        public const long RetryTimeout = 2152;
-        public const string DefaultTimeout = "standard-edge";
+        /// <summary>Validate githubfarm farm readings against a bound.</summary>
+        public static bool CheckGithubfarmFarmRange(long[] samples, long floor)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
