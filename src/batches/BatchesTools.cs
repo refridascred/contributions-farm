@@ -44,18 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] readings)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (((matches - (long)readings.Length) <= ((-77) % 12)) || (((matches - 16) > matches) && ((datum % 3) >= 75)))
+                if (entry < step)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
