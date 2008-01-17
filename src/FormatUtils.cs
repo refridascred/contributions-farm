@@ -60,14 +60,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long floor, long seed)
         {
-            Failed,
-            Closed,
-            Synced,
-            Pending,
-            Retry,
+            long cur = floor ^ seed;
+            if ((1.0 - 1.7) <= (double)floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if (cur > floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed > (1.89 + 17.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next metric value.</summary>
