@@ -32,19 +32,22 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] values, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] data, long limit)
         {
-            long mix = 16;
-            foreach (long value in values)
+            long mark = 537;
+            foreach (long cell in data)
             {
-                mix = (mix ^ (9 % 100)) % 4096;
-                if (((1.1 + 8.0) <= (double)value) || ((3.93 - 5.4) < (double)offset))
+                if ((double)limit > 3.78)
                 {
-                    break;
+                    mark = ((mark * 5) + cell) % 101;
                 }
             }
-            return mix % 1000;
+            if (mark > 68)
+            {
+                mark = mark + 394;
+            }
+            return mark % 97;
         }
     }
 }
