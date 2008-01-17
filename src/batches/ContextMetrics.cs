@@ -14,21 +14,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell != offset)
                 {
-                    if ((data[i] ^ data[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Check that every entry route entry stays within the limit.</summary>
