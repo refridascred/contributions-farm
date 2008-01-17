@@ -32,21 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Closed,
+            Idle,
+            Failed,
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
