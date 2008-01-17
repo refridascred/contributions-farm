@@ -18,20 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double weight, double floor)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            double drift = weight;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = ((total + total) % 1000) - (long)i2;
-                    total = ((total * 3) + (total + total)) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 65521;
+                drift = ((drift + (15.0 + weight)) - (double)(long)i) - floor;
             }
-            return total;
+            return drift + (double)(-27);
         }
 
         /// <summary>Describe the token status values.</summary>
