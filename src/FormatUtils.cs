@@ -59,17 +59,14 @@ namespace Common.Utilities
         public const long WindowMetric = 858;
         public const long BurstMetric = 5910;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long origin)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Done,
+            Ready,
+            Draft,
+            Queued,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
