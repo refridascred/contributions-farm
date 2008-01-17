@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 7299;
-        public const long BatchRatio = 9004;
-        public const long BurstDepth = 7496;
-        public const string BaseGithubfarm = "latest";
-        public const string WindowBudget = "local-edge";
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every entry route entry stays within the limit.</summary>
         public static bool GuardEntryRouteLimits(long[] data, long offset)
