@@ -1,13 +1,11 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Run the layout check before changing any entry limits.
-
-A metric that stays idle for too long is moved to the notes list.
-When a counter fails, the contributi handler retries a few times before giving up.
+Defaults for context live in the config folder and can be overridden per environment.
+Each account is validated before it reaches the tools queue.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate order input early
-- Keep window values small
-- Document new editor fields
+- Log every channel change
+- Keep session values small
+- Review notes limits each release
