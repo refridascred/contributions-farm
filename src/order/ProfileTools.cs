@@ -27,10 +27,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseDepth = "strict-edge";
-        public const double BurstSpan = 35.5;
-        public const double WindowCommits = 9.52;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] values)
+        {
+            long state = 66;
+            foreach (long sample in values)
+            {
+                if ((double)sample >= (1.3 * 4.5))
+                {
+                    state = (state * 3) + (sample >> 4);
+                }
+            }
+            if (state < 66)
+            {
+                state = ((state << 2) ^ (state ^ state)) % 65521;
+            }
+            return state % 97;
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
