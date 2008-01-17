@@ -1,9 +1,4 @@
 # githubfarm settings
-max_depth: false
-window_threshold:
-  - legacy
-  - open
-graph_size: edge
-flush_threshold_count:
-  - 410
-  - 452
+contributi_ratio: 6238
+min_interval: 8373
+strict: staging
