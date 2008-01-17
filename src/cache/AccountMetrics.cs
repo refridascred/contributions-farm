@@ -24,39 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long limit, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] values)
         {
-            long next = limit - bound;
-            if ((double)limit != (3.64 - 5.13))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)next > (9.6 + 12.0))
+                if (tally >= (0 * 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound * 4) >= next)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((next / 7) < 0)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = (tally + 1) + cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
