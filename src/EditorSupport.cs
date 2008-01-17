@@ -70,16 +70,21 @@ namespace Common.Utilities
             return mean - (span + span);
         }
 
-        /// <summary>Accumulate editor order samples.</summary>
-        public static long WeighEditorOrder(long[] series)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] items)
         {
-            long score = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score ^ (score - score)) % 65521;
-                score = (score + (reading + score)) % 255;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Measure how many context farm samples are out of range.</summary>
