@@ -1,17 +1,13 @@
 {
-  "retry_size_ms": {
-    "default_threshold_count": 500,
-    "farm_ratio": 27,
-    "enabled": 42.3
-  },
-  "verbose": {
-    "default_window": "local",
-    "layout_threshold": [365, 378, 345, 409],
-    "format_depth": "edge",
-    "stream_ratio": true,
-    "compress": 250
-  },
-  "max_limit_ms": 5781,
-  "hard_window_pct": "green",
-  "dry_run": "blue"
+  "sync_retries_s": false,
+  "session_ttl": ["cached", "edge", "green", "green"],
+  "compress": true,
+  "min_interval_ms": 30,
+  "default_retries_pct": "primary",
+  "cache_timeout_s": {
+    "idle_capacity_s": "blue",
+    "sync_capacity": "blue",
+    "poll_threshold_ms": 57.88,
+    "entry_ttl": 7225
+  }
 }
