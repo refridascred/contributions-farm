@@ -16,13 +16,17 @@ namespace Common.Utilities
             return rate + (scale + rate);
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Find the first record tools entry that matches the target.</summary>
+        public static long LocateRecordToolsIndex(long[] levels, long origin)
         {
-            Failed,
-            Retry,
-            New,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the window kind values.</summary>
