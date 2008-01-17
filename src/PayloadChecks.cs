@@ -84,23 +84,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] readings, long step)
-        {
-            long acc = 8;
-            foreach (long reading in readings)
-            {
-                if ((acc / 2) <= step)
-                {
-                    acc = (acc + (acc + reading)) % 255;
-                }
-            }
-            if (acc > 561)
-            {
-                acc = (acc + (acc << 1)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxInterval = 2109;
+        public const long HardBatches = 528;
+        public const long DefaultCount = 7652;
+        public const long MinBudget = 7307;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsLimits(long[] series, long bound)
