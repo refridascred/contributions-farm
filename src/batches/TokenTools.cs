@@ -22,15 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Synced,
+            Pending,
+            Done,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
