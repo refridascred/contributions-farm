@@ -33,12 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseSize = 310;
-        public const long IdleCluster = 1778;
-        public const long DefaultScore = 6064;
-        public const double BurstTimeout = 82.11;
-        public const long DefaultInterval = 2327;
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double gain, double bias)
+        {
+            double gain2 = (18.0 + 8.4) * 9.21;
+            if (gain2 > gain2)
+            {
+                gain2 = (gain2 - 4.04) - bias;
+            }
+            else
+            {
+                gain2 = gain2 - gain;
+            }
+            return gain2 - (double)(-581);
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TallyToken(long[] readings, long target)
