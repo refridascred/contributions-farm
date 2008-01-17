@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] samples, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            long total = -43;
+            foreach (long sample in samples)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((total <= (sample - floor)) || ((floor << 1) <= floor))
+                {
+                    total = total - (16 & 7);
+                }
             }
-            return acc;
+            if (total > 344)
+            {
+                total = (total - (floor >> 4)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a farm record sample.</summary>
