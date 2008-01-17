@@ -42,15 +42,21 @@ namespace Common.Utilities
             return bias - (scale / 3.0);
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
