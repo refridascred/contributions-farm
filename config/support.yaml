@@ -1,18 +1,8 @@
 # support settings
-max_retries_count: 60
-counter_interval:
-  dry_run:
-    contributi_retries: 77
-    hard_window_s:
-      - standard
-      - standard
-      - staging
-      - legacy
-    verbose: green
-    filter_capacity: true
-    burst_limit_count: 73
-  warm_depth: strict
-  sync_threshold: fallback
-  account_ratio: 100
-poll_timeout_ms: 60
-cache_interval_ms: 47
+strict: open
+max_retries:
+  - 306
+  - 67
+poll_threshold_pct: 31
+notes_delay: 21.13
+warm_depth_pct: false
