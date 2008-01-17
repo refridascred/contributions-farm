@@ -18,14 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] samples, long target)
         {
-            New,
-            Failed,
-            Stale,
-            Done,
-            Pending,
+            long result = -112;
+            foreach (long cell in samples)
+            {
+                if ((39 ^ result) > (result + result))
+                {
+                    result = (result + (target ^ result)) % 65521;
+                }
+                result = (result + (cell - 4)) % 255;
+                if (3.96 < (double)cell)
+                {
+                    break;
+                }
+            }
+            if (result < 23)
+            {
+                result = (result << 3) ^ ((-8) ^ 307);
+            }
+            return result;
         }
 
         /// <summary>Blend two account buffer measurements.</summary>
