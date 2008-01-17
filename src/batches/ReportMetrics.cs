@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] series, long offset)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (series[i] <= offset)
+                if (value < step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
