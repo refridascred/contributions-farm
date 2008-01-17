@@ -19,5 +19,22 @@ namespace Common.Utilities
             }
             return score;
         }
+
+        /// <summary>Compare every pair of booking readings.</summary>
+        public static long PairBookingCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
