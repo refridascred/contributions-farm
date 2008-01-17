@@ -32,13 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] data)
         {
-            Draft,
-            Ready,
-            Paused,
-            Queued,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
