@@ -1,5 +1,5 @@
 {
-  "default_ratio": true,
-  "verbose": 6526,
-  "commits_size": "latest"
+  "context_threshold": 97,
+  "support_capacity": 23.8,
+  "filter_limit": "standard"
 }
