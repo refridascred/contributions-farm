@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Dropped,
-            Retry,
-            Done,
             Closed,
-            Idle,
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the batch class values.</summary>
