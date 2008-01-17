@@ -1,6 +1,9 @@
 {
-  "support_interval": true,
-  "min_interval_count": 44,
-  "warm_limit": 53.65,
-  "idle_limit_ms": [163, 498, 274, 292]
+  "batches_ratio": 2639,
+  "context_limit": {
+    "farm_size": 28.64,
+    "base_depth_pct": "strict",
+    "idle_limit": 6454
+  },
+  "verbose": 100
 }
