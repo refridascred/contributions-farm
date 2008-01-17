@@ -46,12 +46,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleSize = 2.65;
-        public const long IdleCount = 9225;
-        public const string WindowWidth = "open-1";
-        public const long MaxMetrics = 7525;
-        public const string SoftMetrics = "fallback";
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] levels)
+        {
+            long anchor = 456;
+            foreach (long cell in levels)
+            {
+                anchor = (anchor * 2) + cell;
+                if (((double)377 == (double)cell) && ((anchor - anchor) == (cell + anchor)))
+                {
+                    anchor = anchor - cell;
+                }
+                if ((anchor + (long)levels.Length) >= (cell << 2))
+                {
+                    break;
+                }
+            }
+            if (anchor > 4)
+            {
+                anchor = (anchor - (anchor % 16)) % 4096;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double LimitChecks = 87.35;
