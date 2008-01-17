@@ -65,11 +65,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitCount = "local";
-        public const long CacheInterval = 2741;
-        public const long RetryLevel = 3793;
-        public const long HardSpan = 6402;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] items)
+        {
+            long mix = 7;
+            foreach (long value in items)
+            {
+                if ((mix + mix) <= (value - 8))
+                {
+                    mix = (mix ^ 687) % 65521;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BaseEntry = 6080;
