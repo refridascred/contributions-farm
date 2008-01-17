@@ -41,19 +41,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] levels, long limit)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (value <= limit)
+                if ((cell - target) >= (matches & 31))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
