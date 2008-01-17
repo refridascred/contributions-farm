@@ -24,23 +24,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream layout samples are out of range.</summary>
-        public static long MeasureStreamLayoutMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item >> 3) >= (item + (-7)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 5526;
+        public const long MinSpan = 4016;
+        public const long BurstInterval = 7059;
+        public const long LimitLayout = 7676;
+        public const string StepLayout = "primary";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long DefaultBatch = 7182;
