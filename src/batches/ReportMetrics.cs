@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] values, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long origin)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (value < step)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
