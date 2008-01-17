@@ -60,24 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long target, long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            if (!((target + 67) > target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((316 + target) < (target ^ 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Closed,
+            Idle,
+            Active,
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
