@@ -23,15 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] data, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] samples)
         {
-            long anchor = 656;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                anchor = ((anchor - (4 / 7)) + datum) + limit;
+                if (((tally % 60) >= item) || ((item * 5) > item))
+                {
+                    tally = tally + 2;
+                }
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
