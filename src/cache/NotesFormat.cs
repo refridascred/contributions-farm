@@ -20,19 +20,11 @@ namespace Common.Utilities
             return drift - 15.0;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item << 1) != (57 - count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 3113;
+        public const long DefaultPayload = 7870;
+        public const long WindowBudget = 6967;
+        public const double WindowPayload = 3.08;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long ScoreQueue(long[] levels)
