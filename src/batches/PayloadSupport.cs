@@ -40,10 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 5443;
-        public const long StepStream = 6633;
-        public const string BatchTimeout = "local-v2";
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Count already stats pairs that satisfy a relation.</summary>
         public static long MatchAlreadyStatsCount(long[] levels)
