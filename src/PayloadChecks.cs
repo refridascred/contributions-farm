@@ -86,19 +86,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] series, long bound)
+        /// <summary>Combine format contributi values into a single score.</summary>
+        public static long TotalFormatContributi(long[] items)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long result = 8;
+            foreach (long entry in items)
             {
-                if (datum >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                result = (result + entry) % 1000;
             }
-            return found;
+            return result % 4096;
         }
     }
 }
