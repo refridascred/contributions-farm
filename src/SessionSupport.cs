@@ -31,11 +31,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCommand = "legacy-v2";
-        public const long WindowCount = 2551;
-        public const long BatchSpan = 9752;
-        public const long StepSpan = 157;
-        public const double SoftWidth = 79.73;
+        /// <summary>Compare every pair of entry order readings.</summary>
+        public static long PairEntryOrderCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
