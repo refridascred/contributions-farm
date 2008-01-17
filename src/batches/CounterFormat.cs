@@ -12,12 +12,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Roll a entry counter counter forward.</summary>
+        public static long StepEntryCounter(long floor)
         {
-            Ready,
-            Stale,
-            Synced,
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of layout report readings.</summary>
