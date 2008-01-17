@@ -22,21 +22,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] items)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long mark = 0;
-            foreach (long cell in items)
-            {
-                mark = ((mark << 3) ^ (-53)) % 4096;
-                mark = ((mark * 3) + (cell & 7)) % 4096;
-                mark = mark ^ (cell >> 3);
-            }
-            if (mark < 40)
-            {
-                mark = (mark * 5) + (mark + mark);
-            }
-            return mark;
+            Idle,
+            Queued,
+            Locked,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
