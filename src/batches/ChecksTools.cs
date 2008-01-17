@@ -38,22 +38,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] items, long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long offset)
         {
-            long total = 88;
-            foreach (long datum in items)
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (351 >= (total >> 1))
-                {
-                    total = (total + (datum ^ total)) % 97;
-                }
-                else
-                {
-                    total = (total + limit) % 255;
-                }
+                carry = ((carry << 3) ^ offset) % 97;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Fold a list of context notes readings.</summary>
