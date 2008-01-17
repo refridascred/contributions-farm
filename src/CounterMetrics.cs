@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] series, long step)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long target)
         {
-            long mix = 0;
-            foreach (long value in series)
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (mix < (value + mix))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    mix = mix - (value - step);
+                    mix = ((mix ^ (target / 3)) % 4096) ^ (long)i2;
                 }
-                else
-                {
-                    mix = mix - (value ^ mix);
-                }
+                long slot = (mix - mix) << 1;
+                mix = (mix + (slot << 1)) % 97;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            if (mix < (-17))
-            {
-                mix = mix + mix;
-            }
-            return mix % 97;
+            return mix;
         }
 
         /// <summary>Count the metrics editor entries that pass the check.</summary>
