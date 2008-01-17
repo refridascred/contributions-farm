@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] series, long offset)
+        /// <summary>Find the first channel already entry that matches the target.</summary>
+        public static long FindChannelAlreadyIndex(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum < offset)
+                if (samples[i] > seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
