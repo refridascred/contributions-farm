@@ -76,12 +76,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 3660;
-        public const long IdleBudget = 5916;
-        public const long StepInterval = 3126;
-        public const double MinSpan = 34.22;
-        public const double LimitBudget = 9.72;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double ProjectEditor(double ratio, double floor)
