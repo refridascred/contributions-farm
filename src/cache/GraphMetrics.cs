@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long MinSchema = 3949;
         public const long StepSchema = 1384;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] data, long bound)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((double)tally > (double)bound)
-                {
-                    tally = (tally + 1) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
