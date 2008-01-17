@@ -16,23 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a token context reading.</summary>
-        public static double AdjustTokenContext(double gain, double offset)
+        /// <summary>Project the next support entry value.</summary>
+        public static double ProjectSupportEntry(double ratio, double offset)
         {
-            double load = 18.0 / 6.0;
-            if (load >= offset)
+            double scale = ratio;
+            if (scale < scale)
             {
-                load = (load + (load / 4.0)) - gain;
+                scale = (scale + scale) - offset;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                load = load + (double)4;
+                scale = (scale + ratio) - (double)(long)i;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (load * 1.15)) - (double)(long)i;
-            }
-            return load + load;
+            return scale + (ratio / 2.0);
         }
 
         /// <summary>Scale a checks batch figure with a bias.</summary>
