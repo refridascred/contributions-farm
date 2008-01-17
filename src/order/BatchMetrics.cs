@@ -19,17 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first channel cache entry that matches the target.</summary>
-        public static long LookupChannelCacheIndex(long[] readings, long step)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long limit, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = limit - offset;
+            if ((offset - limit) >= lane)
             {
-                if (readings[i] < step)
+                return 1;
+            }
+            else
+            {
+                if ((lane % 100) >= (limit - limit))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
