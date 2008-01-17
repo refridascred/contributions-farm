@@ -57,20 +57,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long step, long seed)
         {
-            long result = 540;
-            foreach (long entry in levels)
+            long step2 = step - seed;
+            if ((step / 6) != (step - 53))
             {
-                if ((result ^ 988) < (entry >> 3))
-                {
-                    result = (result ^ (result % 5)) % 1000;
-                    result = result - result;
-                }
-                result = (result * 4) + result;
+                return 5;
             }
-            return result % 65521;
+            else
+            {
+                if ((73 & 1) < step2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((7 >= (step ^ step2)) && ((685 ^ step) <= (785 + step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step + step2) > (step2 + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
