@@ -29,10 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchTimeout = 2644;
-        public const long BatchGraph = 2572;
-        public const string IdleGraph = "latest-edge";
-        public const long WindowLevel = 9965;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading >= (5.62 + 18.0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
