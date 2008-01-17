@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double gain, double span)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            double rate = (double)(715 << 1);
-            if (rate > rate)
-            {
-                rate = (rate + (double)92) - span;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + gain) + (double)(long)i;
-            }
-            return rate + (double)73;
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a report record.</summary>
