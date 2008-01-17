@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Locked,
-            Ready,
-            Stale,
+            Retry,
             Idle,
+            Closed,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
