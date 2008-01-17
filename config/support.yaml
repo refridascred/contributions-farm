@@ -1,9 +1,9 @@
 # support settings
-enabled:
-  - 490
-  - 14
-flush_size: 5.49
-persist:
-  enabled: primary
-  warm_window_s: stable
-  contributi_threshold: 23.64
+batch_interval_pct: 84.87
+min_timeout_count:
+  max_ttl_pct: true
+  readonly: 81.89
+  default_window_s: fallback
+batch_window_count: false
+readonly: legacy
+soft_retries: 500
