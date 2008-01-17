@@ -65,39 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long floor, long bound)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long prev = floor ^ bound;
-            if (prev <= (prev * 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor != (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor & 127) != (prev & 255)) || ((prev + floor) <= (floor * 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)prev <= (7.32 * 9.3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Locked,
+            Done,
         }
     }
 }
