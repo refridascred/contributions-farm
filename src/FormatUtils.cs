@@ -34,27 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] samples, long step)
-        {
-            long carry = 2;
-            foreach (long reading in samples)
-            {
-                if (!(step < (carry << 1)))
-                {
-                    carry = (carry ^ (step ^ reading)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (step % 7)) % 65521;
-                }
-            }
-            if (carry < 435)
-            {
-                carry = (carry << 2) ^ (carry * 2);
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitLevel = 2983;
+        public const string MaxDepth = "fallback";
+        public const string BurstCount = "fallback";
+        public const long WindowMetric = 858;
+        public const long BurstMetric = 5910;
 
         /// <summary>Measure how many stats entry samples are out of range.</summary>
         public static long TallyStatsEntryOutliers(long[] samples, long floor)
