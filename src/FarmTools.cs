@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftInterval = 1240;
-        public const double HardWidth = 15.55;
-        public const string DefaultSchema = "stable-edge";
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public bool Region { get; set; }
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long SeriesQueue(long origin)
