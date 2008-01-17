@@ -1,10 +1,15 @@
 # entry settings
-verbose: 250
-support_size: 4512
-sync_ttl_s:
-  - 439
-  - 99
-  - 246
-  - 476
-flush_size_ms: 96
-warm_capacity_ms: primary
+warm_threshold_s: 91
+metrics_window:
+  - eu-west
+  - strict
+  - staging
+  - cached
+readonly: false
+token_timeout:
+  - 311
+  - 56
+  - 492
+burst_retries:
+  - 111
+  - 471
