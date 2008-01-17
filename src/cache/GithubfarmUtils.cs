@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache contributi samples are out of range.</summary>
-        public static long AuditCacheContributiGaps(long[] readings)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - datum) <= (0 - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the batch kind values.</summary>
