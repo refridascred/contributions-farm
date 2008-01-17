@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long seed, long bound)
         {
-            public double Count { get; set; }
-            public double Limit { get; set; }
+            if ((8 << 3) < bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9.1 * 0.1) >= (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
