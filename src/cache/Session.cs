@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the checks batches entries that pass the check.</summary>
-        public static long TallyChecksBatchesHits(long[] items, long origin)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!(((count & 1) < ((-11) - reading)) || ((count * 3) > (4 / 2))))
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Iterate the already schema series from a seed.</summary>
