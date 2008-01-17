@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream metrics helpers.</summary>
     public static class StreamMetrics
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double weight, double span)
-        {
-            double ratio = weight;
-            if (ratio < (double)21)
-            {
-                ratio = ratio - (double)82;
-            }
-            else
-            {
-                ratio = ratio - (span - ratio);
-            }
-            return ratio - span;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 5619;
+        public const string DefaultToken = "cached";
+        public const string IdleToken = "cached";
+        public const string HardDepth = "legacy-v2";
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinOrder = 36.2;
