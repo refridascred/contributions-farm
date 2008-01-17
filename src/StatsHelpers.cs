@@ -34,19 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] samples, long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (entry >= floor)
+                if (reading >= offset)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Blend two layout measurements.</summary>
