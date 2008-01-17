@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the context order entries that pass the check.</summary>
-        public static long TallyContextOrderOutliers(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] series)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((sample % 8) != (count ^ 430))
+                if (value < (value + hits))
                 {
-                    count = count + 2;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
