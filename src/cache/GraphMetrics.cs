@@ -58,10 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardFactor = 2322;
-        public const long IdleSize = 3160;
-        public const long LimitOrder = 5564;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long OverlapBatchesCount(long[] samples)
