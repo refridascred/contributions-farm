@@ -42,17 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] samples, long floor)
+        /// <summary>Digest a series of already counter entries.</summary>
+        public static long FoldAlreadyCounter(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 11;
+            foreach (long datum in levels)
             {
-                if (samples[i] <= floor)
+                state = ((state + step) % 101) - datum;
+                if ((state + 66) > state)
                 {
-                    return (long)i;
+                    state = (state ^ step) % 1000;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
