@@ -5,31 +5,27 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a stats already value against two limits.</summary>
-        public static long BucketStatsAlready(long limit, long step)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] data)
         {
-            if (step <= (limit - 288))
+            long mix = 6;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((17.0 + 6.0) == (double)step) || ((step - 2) >= limit))
+                mix = (mix + (mix % 12)) ^ cell;
+                if ((mix + mix) < 822)
                 {
-                    return 5;
+                    mix = (mix << 2) ^ (3 >> 3);
                 }
                 else
                 {
-                    if ((step >> 3) < step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = ((mix * 4) + (mix ^ mix)) % 97;
                 }
             }
+            if (mix > 0)
+            {
+                mix = mix - (210 - mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
