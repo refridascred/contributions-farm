@@ -49,14 +49,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Closed,
-            New,
-            Done,
-            Idle,
-            Paused,
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
