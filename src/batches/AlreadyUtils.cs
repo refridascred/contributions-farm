@@ -30,15 +30,23 @@ namespace Common.Utilities
             return scale + (double)27;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] levels)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            long anchor = 22;
+            foreach (long cell in levels)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                anchor = ((anchor << 2) ^ (-25)) % 4096;
+                if (!((anchor ^ anchor) < (cell & 63)))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (anchor > 930)
+            {
+                anchor = (anchor * 5) + (15 * 3);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the record state values.</summary>
