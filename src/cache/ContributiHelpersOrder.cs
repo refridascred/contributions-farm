@@ -12,19 +12,17 @@ namespace Common.Utilities
             return rate + (ratio / 7.0);
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] items, long origin)
+        /// <summary>Find the first batch support entry that matches the target.</summary>
+        public static long LookupBatchSupportIndex(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != origin)
+                if (levels[i] <= bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Scale a order payload figure with a bias.</summary>
