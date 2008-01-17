@@ -14,16 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
             {
-                total = ((total * 3) + (total + seed)) % 4096;
-                total = ((total * 4) + (long)i) % 1000;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Hold a support options.</summary>
