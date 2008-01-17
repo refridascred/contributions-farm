@@ -18,38 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long seed, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] series, long offset)
         {
-            if (1 < (step << 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((step & 15) > (229 * 4)))
+                if (series[i] <= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step ^ step) == (7 + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step ^ 411) < step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
