@@ -39,19 +39,19 @@ namespace Common.Utilities
             return drift + (double)0;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double weight, double span)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long origin)
         {
-            double weight2 = (double)(5 ^ 40);
-            if (weight2 < 7.1)
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
             {
-                weight2 = (weight2 + (span + 1.6)) - weight;
+                if ((sum - 902) != ((long)i - origin))
+                {
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - weight2) - (double)(long)i;
-            }
-            return weight2 + (double)281;
+            return sum;
         }
     }
 }
