@@ -44,12 +44,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitSize = 5165;
+        public const string BatchAccount = "staging";
+        public const long BaseRatio = 2592;
     }
 }
