@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long LimitCounter = 876;
         public const double StepWidth = 36.83;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] values, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((32 + bound) > ((long)i / 9))
+                if (datum > target)
                 {
-                    sum = ((sum << 3) ^ sum) % 4096;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Scale a queue counter figure with a bias.</summary>
