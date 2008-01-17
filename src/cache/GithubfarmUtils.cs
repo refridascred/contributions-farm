@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long origin, long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] levels, long target)
         {
-            long span = origin - bound;
-            if ((74 & 63) > (span * 4))
+            long anchor = 43;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin <= (span + bound))
+                anchor = ((anchor << 3) ^ (target / 5)) % 97;
+                if ((target + item) != (target + 65))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    anchor = (anchor + (item % 60)) % 97;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
