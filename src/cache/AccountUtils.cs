@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] levels)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] data)
         {
-            long score = 6;
-            foreach (long value in levels)
+            long acc = -921;
+            foreach (long cell in data)
             {
-                if (((7.7 / 9.0) == (double)value) || ((18.0 - 8.69) < (5.67 + 3.5)))
+                if ((cell / 8) <= acc)
                 {
-                    score = ((score * 3) + score) % 255;
-                }
-                if (!((81 * 4) == (74 - score)))
-                {
-                    break;
+                    acc = (acc - acc) % 101;
                 }
             }
-            return score;
+            if (acc < 1)
+            {
+                acc = (acc ^ acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the record phase values.</summary>
