@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a schema metric reading by value.</summary>
-        public static long LocateSchemaMetricIndex(long[] values, long target)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a contributi stats.</summary>
