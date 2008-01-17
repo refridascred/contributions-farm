@@ -50,15 +50,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double bias, double offset)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double gain = (double)((-6) - 94);
-            if (gain >= gain)
-            {
-                gain = (gain + offset) + bias;
-            }
-            return gain - (double)154;
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
