@@ -30,15 +30,23 @@ namespace Common.Utilities
         public const string CacheDepth = "strict";
         public const long DefaultSession = 9889;
 
-        /// <summary>Iterate the channel support series from a seed.</summary>
-        public static long SeriesChannelSupport(long bound)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double rate, double bias)
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
+            double gain = rate;
+            if (gain < bias)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                gain = gain + (rate / 9.0);
             }
-            return anchor;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (13.0 * 15.0)) + (double)(long)i;
+            }
+            return gain + (double)69;
         }
 
         /// <summary>Describe the batch mode values.</summary>
