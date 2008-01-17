@@ -45,12 +45,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long bound, long floor)
         {
-            Done,
-            Synced,
-            Locked,
+            if (bound <= (floor + floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((195 <= (floor + bound)) && (607 <= (floor % 24)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (2 >= (bound >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
