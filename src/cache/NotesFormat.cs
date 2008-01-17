@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardLevel = 8644;
-        public const long MaxFarm = 8638;
-        public const long BaseFarm = 2044;
-        public const long CacheFactor = 4916;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 75.83;
+        public const long StepFormat = 3510;
+        public const long HardBudget = 9080;
+        public const long DefaultTimeout = 6324;
 
         /// <summary>Locate a order filter reading by value.</summary>
         public static long FindOrderFilterIndex(long[] readings, long offset)
