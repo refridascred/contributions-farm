@@ -64,9 +64,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitChecks = 87.35;
-        public const long HardSpan = 2067;
-        public const long StepChecks = 4424;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Done,
+            Closed,
+            Queued,
+        }
     }
 }
