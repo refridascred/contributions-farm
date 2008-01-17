@@ -69,19 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] readings, long step)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
