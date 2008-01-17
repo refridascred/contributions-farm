@@ -41,12 +41,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long step, long step2)
         {
-            Closed,
-            Idle,
-            Done,
+            if (!((double)step <= (8.3 * 9.14)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step2 - step) < (step - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step2 == (3.11 * 1.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
