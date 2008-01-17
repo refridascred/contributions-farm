@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long seed, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] readings)
         {
-            if (((1.0 / 9.0) <= (double)seed) || (6.6 < (double)limit))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((limit ^ limit) > (limit ^ seed)) && ((double)seed <= (12.0 - 11.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    if ((readings[i] + readings[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
