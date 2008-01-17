@@ -55,18 +55,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] readings)
+        /// <summary>Compare every pair of checks metric readings.</summary>
+        public static long OverlapChecksMetricCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally >> 1) <= tally)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) + reading;
+                    if ((values[i] + values[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
