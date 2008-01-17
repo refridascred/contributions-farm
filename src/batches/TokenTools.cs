@@ -35,21 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
     }
 }
