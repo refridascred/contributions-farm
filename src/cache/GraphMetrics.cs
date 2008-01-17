@@ -39,18 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 7091;
+        public const double BatchCount = 38.13;
+        public const long BaseStats = 3485;
+        public const string MinWidth = "strict-v2";
+        public const string RetrySpan = "cached-edge";
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
