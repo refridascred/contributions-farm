@@ -38,16 +38,11 @@ namespace Common.Utilities
         public const double BurstTimeout = 88.04;
         public const string BatchContributi = "cached-1";
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double scale, double offset)
-        {
-            double drift = (offset / 5.0) * 9.6;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (offset - scale)) + (double)(long)i;
-            }
-            return drift + offset;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitWidth = 69.59;
+        public const long MaxEditor = 8698;
+        public const long MaxRatio = 2894;
+        public const long SoftTimeout = 9446;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
