@@ -16,24 +16,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine graph githubfarm values into a single score.</summary>
-        public static long DigestGraphGithubfarm(long[] samples)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double bias, double offset)
         {
-            long state = 470;
-            foreach (long datum in samples)
+            double load = bias;
+            if (load > (bias + offset))
             {
-                state = state ^ datum;
-                state = state + state;
-                if ((state ^ datum) <= (26 >> 3))
-                {
-                    break;
-                }
+                load = load + load;
             }
-            if (state < 973)
+            else
             {
-                state = (state * 5) + state;
+                load = load - (bias - offset);
             }
-            return state % 97;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + (bias * 1.8);
         }
 
         /// <summary>Describe the buffer status values.</summary>
