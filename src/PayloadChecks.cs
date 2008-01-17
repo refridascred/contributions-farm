@@ -91,19 +91,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double ratio, double floor)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] samples, long origin)
         {
-            double load = ratio;
-            if (load < (floor * 20.0))
+            bool found = true;
+            foreach (long reading in samples)
             {
-                load = load + (floor - ratio);
+                if (reading <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (double)90;
+            return found;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
