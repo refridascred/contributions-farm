@@ -32,11 +32,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardGithubfarm = "strict";
-        public const double BatchGithubfarm = 48.69;
-        public const long BurstInterval = 8729;
-        public const double StepScore = 26.3;
-        public const string BatchLevel = "latest";
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (!(((6.67 + 2.9) > (double)tally) && ((double)tally == (double)650)))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
+        }
     }
 }
