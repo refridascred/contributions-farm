@@ -30,15 +30,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double ratio, double span)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            double drift = (double)(39 * 2);
-            if (drift < (span * 2.6))
-            {
-                drift = drift + (ratio / 7.0);
-            }
-            return drift - span;
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
