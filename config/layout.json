@@ -1,6 +1,18 @@
 {
-  "max_depth": 79,
-  "filter_timeout": 60,
-  "account_timeout": 8,
-  "poll_interval_pct": "green"
+  "enabled": "latest",
+  "soft_size_pct": {
+    "hard_limit": ["primary", "blue"],
+    "metrics_ttl": "green",
+    "batch_window": 9456,
+    "token_timeout": false,
+    "batch_capacity": ["fallback", "stable", "staging", "cached"],
+    "max_ratio": 6826
+  },
+  "flush_size": "edge",
+  "report_delay": true,
+  "hard_ratio_ms": {
+    "persist": 100,
+    "min_capacity_s": 37.65,
+    "poll_limit_count": false
+  }
 }
