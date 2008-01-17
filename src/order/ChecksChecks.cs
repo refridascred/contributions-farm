@@ -11,35 +11,29 @@ namespace Common.Utilities
         public const string WindowScore = "stable-1";
         public const long BaseDepth = 9220;
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long offset, long offset2)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long limit, long offset)
         {
-            if ((35 * 2) > (offset2 - offset2))
+            long slot = limit - offset;
+            if (((limit << 2) == (limit + limit)) && (slot > limit))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if ((offset + offset2) != (offset2 ^ offset))
+                if ((offset + limit) <= (limit + 4))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((0 * 3) < offset2)
+                    if ((slot + slot) <= (slot - 38))
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        if ((offset >> 5) <= (offset2 >> 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 5;
                     }
                 }
             }
