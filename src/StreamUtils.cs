@@ -15,15 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of counter editor readings.</summary>
-        public static long FoldCounterEditor(long[] series, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            long mark = -7;
-            foreach (long cell in series)
+            long mix = 27;
+            foreach (long value in levels)
             {
-                mark = ((mark << 2) ^ (target - cell)) % 255;
+                if (((value + 5) == (value << 1)) && ((value + 556) >= value))
+                {
+                    mix = (mix << 3) ^ (value - 14);
+                }
             }
-            return mark;
+            return mix % 4096;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
