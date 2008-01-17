@@ -49,21 +49,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine notes batches values into a single score.</summary>
-        public static long TallyNotesBatches(long[] series)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long total = 91;
-            foreach (long value in series)
-            {
-                if (!((value % 12) > total))
-                {
-                    total = total + (value & 127);
-                    total = (total + (value / 8)) % 65521;
-                }
-                total = (total << 2) ^ (value - value);
-                total = (total * 3) + (-753);
-            }
-            return total;
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
