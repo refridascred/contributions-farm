@@ -1,11 +1,13 @@
 {
-  "default_delay_count": 9382,
-  "default_size": 71.83,
-  "flush_limit_count": true,
-  "min_retries": {
-    "base_size": false,
-    "sync_ttl_s": ["primary", "latest"],
-    "batch_window": 60,
-    "hard_ttl_ms": 43
-  }
+  "hard_capacity_ms": {
+    "soft_delay": 1024,
+    "poll_window": 500,
+    "cache_capacity_pct": "strict",
+    "batch_timeout_pct": 37.41
+  },
+  "batch_window": true,
+  "base_limit": ["local", "local", "edge"],
+  "warm_limit_s": false,
+  "format_delay": 100,
+  "batches_depth": 500
 }
