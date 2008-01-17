@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Iterate the route cache series from a seed.</summary>
+        public static long RollRouteCache(long seed)
         {
-            Idle,
-            Dropped,
-            Draft,
-            Locked,
-            Pending,
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((seed < (36 + mix)) || ((9.7 + 2.03) == (double)(long)i))
+                {
+                    mix = ((mix * 5) + (seed * 4)) % 97;
+                }
+                mix = mix ^ mix;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
