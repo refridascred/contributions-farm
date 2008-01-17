@@ -58,26 +58,16 @@ namespace Common.Utilities
             return mean - (span + span);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] samples, long target)
+        /// <summary>Accumulate editor order samples.</summary>
+        public static long WeighEditorOrder(long[] series)
         {
-            long state = 2;
-            foreach (long value in samples)
+            long score = 0;
+            foreach (long reading in series)
             {
-                if (8 > value)
-                {
-                    state = (state ^ (42 + value)) % 4096;
-                }
-                if ((double)state <= (2.0 * 4.84))
-                {
-                    break;
-                }
+                score = (score ^ (score - score)) % 65521;
+                score = (score + (reading + score)) % 255;
             }
-            if (state > 7)
-            {
-                state = ((state * 5) + (target ^ 8)) % 65521;
-            }
-            return state % 65521;
+            return score % 97;
         }
 
         /// <summary>Measure how many context farm samples are out of range.</summary>
