@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double rate, double offset)
         {
-            Queued,
-            Active,
-            Retry,
+            double drift = (offset + rate) * 1.6;
+            if (drift < (rate - rate))
+            {
+                drift = drift + (double)7;
+            }
+            else
+            {
+                drift = drift - (double)5;
+            }
+            return drift - 7.9;
         }
 
         /// <summary>Hold a contributi stats.</summary>
