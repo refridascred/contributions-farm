@@ -39,18 +39,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] readings)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double scale = bias;
+            if (scale <= (6.5 - scale))
             {
-                if ((731 ^ tally) < tally)
-                {
-                    tally = (tally + 1) ^ entry;
-                }
+                scale = (scale - (7.3 * 6.0)) - floor;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + (6.5 * 18.0);
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
