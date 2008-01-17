@@ -59,11 +59,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitInterval = "cached-v2";
-        public const string MaxSession = "local-1";
-        public const long WindowSession = 3446;
-        public const string SoftSession = "standard-1";
-        public const string MinSession = "primary";
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((matches >> 5) < 3)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
+        }
     }
 }
