@@ -16,12 +16,27 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Fold a list of cache checks readings.</summary>
+        public static long ScoreCacheChecks(long[] values, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
+            long state = 5;
+            foreach (long sample in values)
+            {
+                double ratio = 13.0 / 3.0;
+                if ((6.3 + ratio) >= (ratio * 15.0))
+                {
+                    ratio = ratio + ratio;
+                }
+                else
+                {
+                    state = state ^ (state >> 2);
+                }
+                if (((24 - 834) == (floor & 63)) || ((sample >> 5) != (floor - state)))
+                {
+                    state = ((state * 5) + (439 << 2)) % 1000;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the record level values.</summary>
