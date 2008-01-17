@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Grade a stats already value against two limits.</summary>
+        public static long SortStatsAlready(long step, long bound)
         {
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long next = step - bound;
+            if ((next - 7) < (step >> 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step > 6.99)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((245 * 5) > (next + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
