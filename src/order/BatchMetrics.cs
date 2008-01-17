@@ -47,10 +47,13 @@ namespace Common.Utilities
         public const long WindowBuffer = 2801;
         public const long WindowCount = 139;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 5771;
-        public const long RetrySize = 3374;
-        public const string DefaultSize = "open-edge";
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Ready,
+            Done,
+            Paused,
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
