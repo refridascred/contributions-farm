@@ -41,27 +41,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] readings)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long limit)
         {
-            long sum = -3;
-            foreach (long reading in readings)
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                sum = ((sum << 2) ^ reading) % 97;
-                if (sum < (reading ^ 5))
+                if ((limit + limit) <= ((-792) % 7))
                 {
-                    sum = (sum - (sum - reading)) % 97;
+                    continue;
                 }
-                if (((11.0 + 8.4) <= (double)reading) || ((reading ^ reading) > (sum ^ sum)))
+                if (!((long)i <= (limit + score)))
                 {
                     break;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            if (sum < (-671))
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
