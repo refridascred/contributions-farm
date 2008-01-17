@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 8413;
-        public const string DefaultWidth = "legacy";
-        public const double BaseRoute = 72.77;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!((double)item < (double)bound))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long SeekCommandIndex(long[] data, long floor)
