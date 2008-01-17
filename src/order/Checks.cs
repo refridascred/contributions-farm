@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit support format readings against a rule.</summary>
-        public static long MeasureSupportFormatHits(long[] readings)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((item > ((long)readings.Length + item)) || !((item ^ item) >= item))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Draft,
+            Synced,
+            New,
+            Active,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
