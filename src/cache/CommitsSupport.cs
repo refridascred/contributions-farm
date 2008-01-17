@@ -29,16 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Validate batches cluster readings against a bound.</summary>
+        public static bool VerifyBatchesClusterLimits(long[] data, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                acc = (acc ^ 3) % 97;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (datum < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
