@@ -36,22 +36,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the payload schema entries that pass the check.</summary>
-        public static long TallyPayloadSchemaGaps(long[] series, long limit)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (datum < (seen >> 5))
-                {
-                    seen = (seen + 3) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Done,
+            Draft,
+            Retry,
         }
 
         /// <summary>Describe the checks phase values.</summary>
