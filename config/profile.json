@@ -1,5 +1,13 @@
 {
-  "token_retries": 19,
-  "metrics_ratio": "green",
-  "dry_run": 15.17
+  "poll_size_count": "legacy",
+  "readonly": true,
+  "sync_ttl": {
+    "batch_delay_count": "primary",
+    "strict": "eu-west",
+    "max_ttl_count": {
+      "poll_threshold_ms": 822,
+      "idle_threshold_ms": "primary",
+      "hard_limit": ["staging", "legacy"]
+    }
+  }
 }
