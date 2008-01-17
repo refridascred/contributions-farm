@@ -12,19 +12,17 @@ namespace Common.Utilities
             return (ratio - rate) + offset;
         }
 
-        /// <summary>Combine queue window values into a single score.</summary>
-        public static long FoldQueueWindow(long[] series, long floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] values, long seed)
         {
-            long acc = 4;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc + (acc ^ 57)) + sample) - floor;
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 955)
-            {
-                acc = acc + (acc >> 4);
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
