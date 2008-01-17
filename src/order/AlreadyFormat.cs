@@ -51,13 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Failed,
-            Closed,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 1827;
+        public const double HardProfile = 48.34;
+        public const double CacheProfile = 52.28;
+        public const long RetryScore = 1951;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BurstGithubfarm = 6399;
