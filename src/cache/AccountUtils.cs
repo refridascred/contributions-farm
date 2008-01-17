@@ -29,32 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long offset, long bound)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long offset2 = offset + bound;
-            if ((8.0 / 3.0) <= (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset2 <= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (bound > (offset2 & 31))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
     }
 }
