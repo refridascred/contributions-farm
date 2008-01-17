@@ -28,19 +28,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] readings, long step)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] readings, long origin)
         {
-            long sum = 407;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum ^ (sum - step)) - entry;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > (-622))
-            {
-                sum = sum ^ (step ^ (-78));
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
