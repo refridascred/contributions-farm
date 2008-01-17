@@ -1,20 +1,11 @@
 # support settings
-farm_retries: 80.62
-min_ttl_count:
-  min_capacity_pct: 8826
-  hard_interval_ms:
-    - 351
-    - 206
-    - 208
-    - 328
-  schema_timeout:
-    - blue
-    - stable
-  warm_depth_count: latest
-  audit: 9030
-filter_threshold:
-  - 273
-  - 297
-base_threshold: stable
-support_depth: latest
-hard_window_s: green
+batch_ttl: stable
+route_ratio: staging
+min_ttl_ms:
+  compress:
+    dry_run: cached
+    context_window: blue
+    retry_retries_s: true
+  min_interval: local
+  farm_timeout: true
+order_depth: staging
