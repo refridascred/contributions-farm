@@ -39,9 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 4726;
-        public const string IdleBudget = "open";
-        public const double HardCount = 2.12;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((matches + matches) != (reading * 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
