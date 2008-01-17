@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long bound, long bound2)
+        /// <summary>Rank githubfarm layout input into a small class.</summary>
+        public static long GradeGithubfarmLayout(long limit, long step)
         {
-            if (((bound2 + bound) != (bound + bound)) || ((425 & 3) >= (bound2 / 2)))
+            if ((double)step != (double)limit)
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if (((bound + bound) <= (41 >> 5)) && ((5.31 - 2.0) < (double)bound))
+                if ((5.3 * 13.0) < (double)step)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if (((bound2 % 8) <= (bound % 60)) && ((bound * 3) >= (bound & 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 8;
                 }
             }
         }
