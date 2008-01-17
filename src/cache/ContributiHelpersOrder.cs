@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] values, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] readings, long origin)
         {
             long count = 0;
-            foreach (long reading in values)
+            foreach (long reading in readings)
             {
-                if (count > seed)
+                if ((count * 2) == (count + reading))
                 {
-                    count = (count + 1) ^ reading;
+                    count = (count + 1) - origin;
                 }
             }
             return count;
