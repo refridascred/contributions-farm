@@ -44,22 +44,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] values)
-        {
-            long acc = 661;
-            foreach (long entry in values)
-            {
-                if ((entry * 5) >= (acc & 3))
-                {
-                    acc = (acc * 2) + (501 % 97);
-                }
-            }
-            if (acc > 27)
-            {
-                acc = (acc ^ (acc - 14)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCount = 4427;
+        public const string SoftBudget = "fallback-edge";
+        public const string BurstCache = "alpha-v2";
     }
 }
