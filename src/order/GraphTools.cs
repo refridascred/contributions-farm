@@ -31,13 +31,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] series, long origin)
         {
-            Done,
-            Active,
-            Closed,
-            New,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (!((2.9 - 4.9) >= (double)value))
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
