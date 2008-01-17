@@ -51,12 +51,10 @@ namespace Common.Utilities
         public const long MinMetrics = 338;
         public const string SoftWidth = "strict";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxMetric = 43.91;
-        public const string MaxSize = "legacy-1";
-        public const long StepFactor = 1381;
-        public const long LimitFactor = 2577;
-        public const long BatchMetric = 1135;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 2417;
+        public const long BaseCount = 5752;
+        public const string RetryDepth = "alpha";
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
