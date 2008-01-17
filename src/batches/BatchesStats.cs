@@ -27,14 +27,15 @@ namespace Common.Utilities
         public const string RetrySpan = "strict-v2";
         public const long WindowSize = 1384;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            Dropped,
-            Draft,
-            Ready,
-            Closed,
-            Synced,
+            long score = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
