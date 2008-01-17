@@ -43,20 +43,24 @@ namespace Common.Utilities
         public const long WindowTimeout = 2563;
         public const long MaxCommits = 2847;
 
-        /// <summary>Iterate the token counter series from a seed.</summary>
-        public static long RollTokenCounter(long offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long seed, long seed2)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            if (((seed - seed2) >= seed2) || (7.68 <= (double)seed))
             {
-                carry = ((carry * 5) + (offset - 89)) % 1000;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = ((carry << 2) ^ ((long)i2 << 3)) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (seed <= (75 & 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
