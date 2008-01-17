@@ -45,18 +45,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stats token readings against a rule.</summary>
-        public static long TallyStatsTokenMatches(long[] items)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long prev = bound + limit;
+            if ((1.83 * 12.0) == (double)bound)
             {
-                if ((double)value <= 14.0)
+                return 0;
+            }
+            else
+            {
+                if (((8 ^ prev) != (22 - limit)) || (68 < (prev - 966)))
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the command window series from a seed.</summary>
