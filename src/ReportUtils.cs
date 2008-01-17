@@ -26,19 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] values, long limit)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long offset)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (total * 4) + offset;
+                total = ((total << 2) ^ ((long)i + offset)) % 1000;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
