@@ -47,16 +47,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] values, long seed)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double ratio, double span)
         {
-            long sum = 6;
-            foreach (long cell in values)
+            double load = ratio * 6.07;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum + (39 + seed)) % 65521) + cell;
-                sum = (sum * 2) + (sum ^ sum);
+                load = (load - (ratio - load)) + (double)(long)i;
             }
-            return sum;
+            return load + span;
         }
     }
 }
