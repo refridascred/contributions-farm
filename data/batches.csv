@@ -1,10 +1,6 @@
-id,state
-1,47.96
-2,586
-3,fallback
-4,eu-west
-5,672
-6,72.58
-7,fallback
-8,latest
-9,strict
+id,state,active,level
+1,49,366,357
+2,80.37,826,963
+3,668,green,70.27
+4,63.52,staging,947
+5,716,edge,789
