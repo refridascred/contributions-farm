@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] values, long step)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((long)values.Length < step)
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
