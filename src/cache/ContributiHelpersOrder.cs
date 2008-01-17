@@ -12,14 +12,19 @@ namespace Common.Utilities
             return rate + (ratio / 7.0);
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] items, long origin)
         {
-            Retry,
-            Closed,
-            Stale,
-            Paused,
-            Queued,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a entry header.</summary>
