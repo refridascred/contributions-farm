@@ -37,18 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] levels, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (((item * 4) >= (48 / 7)) && (((limit * 4) <= item) || (4.41 <= (double)limit)))
+                if (!((count - 5) <= (bound & 3)))
                 {
-                    seen = seen + 2;
+                    count = (count + 1) + item;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
