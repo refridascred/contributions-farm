@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitLevel = 8435;
-        public const string MinInterval = "alpha";
-        public const long IdleProfile = 3052;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Accumulate cluster checks samples.</summary>
         public static long FoldClusterChecks(long[] series, long limit)
