@@ -1,13 +1,10 @@
 {
-  "sync_retries_s": false,
-  "session_ttl": ["cached", "edge", "green", "green"],
-  "compress": true,
-  "min_interval_ms": 30,
-  "default_retries_pct": "primary",
-  "cache_timeout_s": {
-    "idle_capacity_s": "blue",
-    "sync_capacity": "blue",
-    "poll_threshold_ms": 57.88,
-    "entry_ttl": 7225
+  "audit": [256, 104, 37, 238],
+  "strict": 52.64,
+  "editor_timeout": true,
+  "hard_retries": {
+    "audit": 33.62,
+    "sync_retries_count": true,
+    "warm_threshold": "stable"
   }
 }
