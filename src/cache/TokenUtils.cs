@@ -12,20 +12,11 @@ namespace Common.Utilities
             return bias + (offset - scale);
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepWidth = 2139;
+        public const double RetryFilter = 23.76;
+        public const long BurstCount = 4647;
+        public const long BatchTimeout = 2056;
 
         /// <summary>Classify a commits format pair into a bucket.</summary>
         public static long BucketCommitsFormat(long target, long origin)
