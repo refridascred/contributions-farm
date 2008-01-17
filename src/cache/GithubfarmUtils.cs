@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double scale, double span)
-        {
-            double bias = (double)58 - (double)5;
-            if (bias > scale)
-            {
-                bias = bias + 4.6;
-            }
-            else
-            {
-                bias = bias - span;
-            }
-            return bias + (bias + scale);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 9218;
+        public const long DefaultStats = 2150;
+        public const long MinCount = 9030;
+        public const string StepStats = "standard-v2";
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long FoldGraph(long[] levels, long target)
