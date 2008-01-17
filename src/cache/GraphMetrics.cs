@@ -57,23 +57,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter channel samples.</summary>
-        public static long TotalCounterChannel(long[] samples, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] samples, long floor)
         {
-            long state = 451;
+            long hits = 0;
             foreach (long datum in samples)
             {
-                state = (state ^ (origin - 2)) % 4096;
-                if (((state % 97) > (origin / 6)) && ((datum * 3) == (state / 2)))
+                if (datum >= (floor % 8))
                 {
-                    state = (state + (state % 7)) % 255;
-                }
-                if ((8.91 * 5.0) < (double)datum)
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
