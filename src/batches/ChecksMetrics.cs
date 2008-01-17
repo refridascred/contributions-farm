@@ -27,18 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value * 2) <= (value % 3))
                 {
-                    if ((levels[i] - levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
