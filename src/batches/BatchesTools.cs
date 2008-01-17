@@ -27,15 +27,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double bias, double offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double drift = offset;
-            if (drift >= (0.9 + bias))
-            {
-                drift = drift + drift;
-            }
-            return drift - offset;
+            Active,
+            Failed,
+            Synced,
         }
     }
 }
