@@ -56,9 +56,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 409;
-        public const double MaxNotes = 42.94;
-        public const long MaxFactor = 3051;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 9214;
+        public const long BatchInterval = 5682;
+        public const long MaxStream = 1756;
+        public const long CacheStream = 7425;
     }
 }
