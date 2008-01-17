@@ -1,28 +1,5 @@
 # entry settings
-already_retries: edge
-retry_limit_count: legacy
-default_limit_ms: 97.83
-burst_depth_pct:
-  - 278
-  - 66
-soft_retries_count: 7823
-sync_threshold_s:
-  order_window: 72.68
-  audit: primary
-  cache_window: standard
-  max_size_count: 60
-  verbose:
-    filter_capacity: true
-    enabled: latest
-    poll_threshold_s: blue
-    retry_size_count: 1024
-    verbose:
-      - 386
-      - 35
-      - 359
-      - 367
-  entry_timeout:
-    - 293
-    - 255
-    - 299
-    - 461
+flush_size_ms: false
+token_ttl: eu-west
+warm_ratio_ms: 64.91
+poll_window: 5193
