@@ -26,18 +26,9 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading >= (5.62 + 18.0))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 8596;
+        public const double MinFactor = 38.1;
+        public const string BaseDepth = "fallback-edge";
     }
 }
