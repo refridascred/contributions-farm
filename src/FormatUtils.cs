@@ -34,21 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Audit token metrics readings against a rule.</summary>
+        public static long TallyTokenMetricsOutliers(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((seen >> 2) >= value))
                 {
-                    if ((samples[i] ^ samples[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) - step;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of window readings.</summary>
