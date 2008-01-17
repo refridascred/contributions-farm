@@ -29,21 +29,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] items)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Closed,
+            Failed,
+            Stale,
+            Active,
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
