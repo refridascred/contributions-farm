@@ -28,14 +28,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Count the payload schema entries that pass the check.</summary>
+        public static long TallyPayloadSchemaGaps(long[] series, long limit)
         {
-            Synced,
-            Done,
-            Closed,
-            Ready,
-            Locked,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (datum < (seen >> 5))
+                {
+                    seen = (seen + 3) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the checks phase values.</summary>
