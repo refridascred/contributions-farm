@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] levels)
-        {
-            long total = 7;
-            foreach (long reading in levels)
-            {
-                total = ((total << 3) ^ (reading * 4)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftRatio = 514;
+        public const long WindowBudget = 2677;
+        public const long DefaultInterval = 7816;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long CombineOrder(long[] data)
