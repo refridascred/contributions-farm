@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] readings, long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] levels, long bound)
         {
-            long score = 272;
-            foreach (long item in readings)
+            long carry = 0;
+            foreach (long item in levels)
             {
-                score = ((((score * 5) + (score >> 4)) % 101) + item) + limit;
+                if ((carry <= (carry % 16)) && ((double)bound == (19.0 - 5.9)))
+                {
+                    carry = (carry + (carry << 3)) + item;
+                }
             }
-            return score % 4096;
+            return carry;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
