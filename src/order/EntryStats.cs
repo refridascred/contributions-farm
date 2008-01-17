@@ -18,14 +18,12 @@ namespace Common.Utilities
         public const double BatchSize = 26.7;
         public const string LimitScore = "standard-1";
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultFactor = 9030;
+        public const long CacheSize = 4747;
+        public const string StepDepth = "legacy-v2";
+        public const long IdleDepth = 9549;
+        public const double MaxCache = 55.73;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long DefaultCount = 2877;
