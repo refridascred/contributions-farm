@@ -1,5 +1,8 @@
 {
-  "base_limit_pct": "edge",
-  "cache_delay": "stable",
-  "strict": "local"
+  "min_capacity": true,
+  "tools_interval": "cached",
+  "sync_timeout_pct": 60,
+  "verbose": [144, 247, 24, 1],
+  "min_size_count": "edge",
+  "poll_interval": ["blue", "open", "blue"]
 }
