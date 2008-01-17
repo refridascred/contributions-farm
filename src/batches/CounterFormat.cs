@@ -12,13 +12,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public string Token { get; set; } = "";
+            long result = 3;
+            foreach (long item in series)
+            {
+                if ((double)item <= (3.21 + 1.53))
+                {
+                    result = (result - (item << 2)) % 1000;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the channel kind values.</summary>
