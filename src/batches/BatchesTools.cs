@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double gain, double offset)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public double Label { get; set; }
+            double scale = gain + (double)642;
+            if (scale < (8.0 - gain))
+            {
+                scale = scale - (gain + gain);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (4.9 / 2.0)) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Describe the channel kind values.</summary>
