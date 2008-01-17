@@ -72,13 +72,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Closed,
-            Failed,
-            Paused,
-            New,
+            Ready,
+            Retry,
+            Locked,
+            Done,
+            Idle,
         }
     }
 }
