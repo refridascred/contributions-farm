@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] readings)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] levels)
         {
-            long mark = 9;
-            foreach (long value in readings)
+            long total = 7;
+            foreach (long reading in levels)
             {
-                if (360 <= (value + (long)readings.Length))
-                {
-                    mark = ((mark * 4) + mark) % 101;
-                }
+                total = ((total << 3) ^ (reading * 4)) % 1000;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Digest a series of order entries.</summary>
