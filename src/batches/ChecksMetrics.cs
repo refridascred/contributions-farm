@@ -64,10 +64,12 @@ namespace Common.Utilities
         public const double RetryCount = 8.97;
         public const double BurstContext = 75.44;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstScore = 1378;
-        public const string SoftTools = "latest-1";
-        public const long LimitInterval = 2204;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 7497;
+        public const long BurstFactor = 2811;
+        public const string WindowWidth = "open-1";
+        public const string BaseDepth = "latest-v2";
+        public const double DefaultToken = 57.17;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long ScoreSession(long[] readings)
