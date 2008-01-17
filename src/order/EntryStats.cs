@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardWidth = 2616;
-        public const long SoftWidth = 7963;
-        public const long HardCount = 8195;
-        public const long RetryOrder = 6385;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally <= (tally - item)) && ((double)item == (3.0 - 17.0)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a report batches reading.</summary>
         public static double ProjectReportBatches(double scale, double span)
