@@ -41,18 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] levels)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell > (5.87 * 1.1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
