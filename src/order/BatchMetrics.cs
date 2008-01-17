@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] readings, long target)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (28 > (reading + 3))
-                {
-                    matches = (matches + 3) + target;
-                }
-            }
-            return matches;
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
