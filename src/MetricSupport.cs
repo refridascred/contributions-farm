@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] readings, long origin)
         {
-            Dropped,
-            Paused,
-            Active,
-            Synced,
-            Pending,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (6 < (origin / 7))
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
