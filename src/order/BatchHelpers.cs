@@ -19,18 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metric entry readings against a rule.</summary>
-        public static long CountMetricEntryGaps(long[] series, long bound)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((double)bound <= (double)47)
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
