@@ -30,18 +30,39 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit counter queue readings against a rule.</summary>
-        public static long AuditCounterQueueOutliers(long[] samples, long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long edge = limit + limit2;
+            if ((edge % 100) == (647 % 12))
             {
-                if (!((double)cell < (7.54 + 19.0)) || !(seed <= (cell / 4)))
+                return 6;
+            }
+            else
+            {
+                if ((double)edge != (double)limit2)
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (!(limit >= (-31)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((4.8 - 6.0) == (double)limit2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
