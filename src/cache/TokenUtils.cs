@@ -26,19 +26,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] levels, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] series)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (entry >= target)
+                if ((2 & 127) == (item + 86))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
