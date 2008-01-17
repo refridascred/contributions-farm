@@ -1,17 +1,17 @@
 # githubfarm settings
-batch_delay:
-  soft_window_ms: false
-  base_limit_s: 50.78
-  strict:
-    profile_limit: 74.08
-    channel_ttl:
-      - latest
-      - stable
-      - standard
-    already_ratio: blue
-    batch_timeout: true
-strict: 4526
-hard_depth_pct: strict
-commits_threshold: 32.22
-stats_threshold: latest
-max_interval_s: blue
+flush_size_s:
+  max_depth: local
+  burst_interval_ms: true
+  buffer_depth: fallback
+  idle_size: 6746
+  base_threshold:
+    - legacy
+    - edge
+checks_window:
+  - 87
+  - 405
+  - 465
+filter_ratio: 22.93
+persist:
+  - standard
+  - stable
