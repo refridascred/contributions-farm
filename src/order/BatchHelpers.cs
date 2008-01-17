@@ -15,21 +15,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long step, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((target - step) == (step << 1))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((965 + target) != (step - step))
                 {
-                    if ((items[i] - items[j]) > 5)
+                    return 0;
+                }
+                else
+                {
+                    if (6.4 <= (double)target)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a stats entry.</summary>
