@@ -58,11 +58,24 @@ namespace Common.Utilities
         public const double CacheProfile = 52.28;
         public const long RetryScore = 1951;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long target, long offset)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
+            if (!((double)target > 6.1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target + 7) >= (5 ^ target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
