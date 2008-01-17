@@ -23,16 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 3516;
+        public const long BatchBudget = 3162;
+        public const long IdleDepth = 32;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long PairGithubfarmCount(long[] samples)
