@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Synced,
-            Active,
-            Pending,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowInterval = 6730;
+        public const long CacheScore = 4133;
+        public const long WindowChannel = 7855;
+        public const string DefaultRatio = "local-1";
+        public const long RetryChannel = 9949;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long BucketChannel(long step, long target)
