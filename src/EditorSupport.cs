@@ -22,22 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream support entries that pass the check.</summary>
-        public static long TallyStreamSupportOutliers(long[] items)
+        /// <summary>Find the first schema cluster entry that matches the target.</summary>
+        public static long LookupSchemaClusterIndex(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item >> 1) > (item * 2))
+                if ((series[i] > floor) && ((series[i] % 2) == 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
