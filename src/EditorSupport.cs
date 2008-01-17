@@ -93,11 +93,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] series)
         {
-            public double Token { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((sample <= (sample + hits)) && ((2 - hits) < hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
