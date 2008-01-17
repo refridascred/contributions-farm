@@ -45,35 +45,29 @@ namespace Common.Utilities
         public const long BurstCount = 4647;
         public const long BatchTimeout = 2056;
 
-        /// <summary>Classify a commits format pair into a bucket.</summary>
-        public static long BucketCommitsFormat(long target, long origin)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long origin, long limit)
         {
-            if (origin > (target - target))
+            long edge = origin + limit;
+            if (limit <= (origin % 64))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((double)origin > 12.0)
+                if (((origin + edge) != (origin >> 2)) || ((7 + origin) <= (edge ^ origin)))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if ((target % 97) <= target)
+                    if ((7.9 + 5.8) > (double)edge)
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        if (((double)target < (double)origin) || ((target + 376) == (origin - target)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 1;
                     }
                 }
             }
