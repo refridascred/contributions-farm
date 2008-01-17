@@ -72,18 +72,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] levels)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)count >= (9.0 + 19.0)) && ((sample / 3) > (count - count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Closed,
+            Failed,
+            Paused,
+            New,
         }
     }
 }
