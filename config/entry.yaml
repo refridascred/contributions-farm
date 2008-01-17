@@ -1,5 +1,25 @@
 # entry settings
-verbose: 77.53
-persist: 63
-max_depth: 8826
-readonly: true
+flush_depth:
+  record_interval: 30.3
+  min_threshold_pct:
+    - 131
+    - 273
+    - 341
+  hard_capacity_pct: 86.62
+  flush_ttl:
+    dry_run: 7543
+    stream_size:
+      - 380
+      - 124
+      - 290
+      - 414
+    graph_window: 500
+    soft_depth_s: true
+base_retries:
+  base_interval_ms: staging
+  base_timeout_count: 7025
+  soft_depth_pct: false
+  flush_ttl_count: 21
+burst_capacity_s: cached
+default_ratio_count: 2305
+readonly: 60
