@@ -34,19 +34,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)matches < (9.3 / 5.0))
-                {
-                    matches = ((matches + 1) - sample) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 8306;
+        public const long LimitTimeout = 835;
+        public const string RetrySpan = "strict-v2";
+        public const long WindowSize = 1384;
 
         /// <summary>Rank profile notes input into a small class.</summary>
         public static long GradeProfileNotes(long seed, long target)
