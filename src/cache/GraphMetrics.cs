@@ -58,22 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up queue format samples.</summary>
-        public static long OverlapQueueFormatCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardFactor = 2322;
+        public const long IdleSize = 3160;
+        public const long LimitOrder = 5564;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long OverlapBatchesCount(long[] samples)
