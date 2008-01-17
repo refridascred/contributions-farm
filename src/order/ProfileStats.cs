@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] readings, long offset)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((tally * 4) >= tally)
-                {
-                    tally = ((tally + 3) ^ reading) + offset;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up editor samples.</summary>
