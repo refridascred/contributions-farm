@@ -19,11 +19,23 @@ namespace Common.Utilities
         public const string CacheDepth = "strict";
         public const long DefaultSession = 9889;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 8306;
-        public const long LimitTimeout = 835;
-        public const string RetrySpan = "strict-v2";
-        public const long WindowSize = 1384;
+        /// <summary>Audit batch stream readings against a rule.</summary>
+        public static long MeasureBatchStreamGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample - tally) < sample)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long DeriveGithubfarm(long offset)
