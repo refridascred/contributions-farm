@@ -36,12 +36,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long target, long limit)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long slot = target - limit;
+            if ((limit >> 4) <= (15 / 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(14.0 <= (double)limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((slot + 463) > (slot - slot))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((9.43 / 9.0) <= (double)slot)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
