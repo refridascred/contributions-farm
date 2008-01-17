@@ -36,11 +36,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Project the next entry token value.</summary>
+        public static double ScaleEntryToken(double bias, double offset)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            double bias2 = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + (1.33 * 4.84)) - (double)(long)i;
+            }
+            return bias2 + offset;
         }
 
         /// <summary>Find the first filter commits entry that matches the target.</summary>
