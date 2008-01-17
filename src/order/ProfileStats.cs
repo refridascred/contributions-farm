@@ -23,16 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long target)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = (acc << 2) ^ (long)i;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the session class values.</summary>
