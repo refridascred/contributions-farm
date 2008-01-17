@@ -39,11 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double weight, double floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double scale, double offset)
         {
-            double scale = weight;
-            return (scale + (2.1 / 6.0)) + floor;
+            double drift = (offset / 5.0) * 9.6;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (offset - scale)) + (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Classify a tools channel pair into a bucket.</summary>
