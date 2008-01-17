@@ -1,13 +1,8 @@
 {
-  "poll_size_count": "legacy",
-  "readonly": true,
-  "sync_ttl": {
-    "batch_delay_count": "primary",
-    "strict": "eu-west",
-    "max_ttl_count": {
-      "poll_threshold_ms": 822,
-      "idle_threshold_ms": "primary",
-      "hard_limit": ["staging", "legacy"]
-    }
-  }
+  "min_ttl_count": ["standard", "open", "stable", "latest"],
+  "max_ttl_ms": [464, 317],
+  "strict": 82.11,
+  "payload_ratio": "open",
+  "cluster_timeout": 7655,
+  "batches_ratio": false
 }
