@@ -1,12 +1,7 @@
 # githubfarm settings
-payload_size: 500
-max_ratio_s: true
-min_depth_ms:
-  base_capacity:
-    - strict
-    - edge
-  base_ttl_count: false
-  stats_interval: true
-  min_window_s: legacy
-  retry_size_pct: 90
-  metrics_timeout: 84.17
+poll_interval_pct: 6813
+persist: eu-west
+batch_size_s:
+  - 152
+  - 434
+  - 436
