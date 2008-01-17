@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long RetrySize = 4212;
         public const double MaxDepth = 43.62;
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples, long bound)
         {
-            public bool Weight { get; set; }
-            public double Label { get; set; }
+            long mix = 43;
+            foreach (long cell in samples)
+            {
+                if ((cell % 24) < cell)
+                {
+                    mix = mix + cell;
+                }
+            }
+            if (mix > 197)
+            {
+                mix = (mix + (mix ^ bound)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Combine counter payload values into a single score.</summary>
