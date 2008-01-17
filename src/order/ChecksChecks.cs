@@ -29,11 +29,11 @@ namespace Common.Utilities
         public const long MinScore = 6846;
         public const string RetrySession = "open";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultBatches = 46.25;
-        public const long CacheTimeout = 1260;
-        public const long MaxInterval = 462;
-        public const long DefaultLevel = 8903;
-        public const long BatchRatio = 9218;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
