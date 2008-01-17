@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] series, long step)
+        /// <summary>Measure how many window notes samples are out of range.</summary>
+        public static long TallyWindowNotesOutliers(long[] readings, long offset)
         {
-            long anchor = 670;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((20.0 / 9.0) >= (double)anchor)
+                if (!((offset & 127) == (item >> 1)))
                 {
-                    anchor = (((anchor << 3) ^ (anchor * 2)) ^ entry) - step;
+                    count = count + 1;
                 }
                 else
                 {
-                    anchor = anchor + (anchor << 3);
+                    count = count - 1;
                 }
             }
-            if (anchor < 9)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
