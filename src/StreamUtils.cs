@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
-            public long Region { get; set; }
+            Paused,
+            Locked,
+            Synced,
+            New,
+            Pending,
         }
 
         /// <summary>Fold a list of counter editor readings.</summary>
