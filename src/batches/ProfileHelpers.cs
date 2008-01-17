@@ -61,18 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] values, long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double rate, double span)
         {
-            long result = 28;
-            foreach (long entry in values)
-            {
-                if (!(target >= entry))
-                {
-                    result = (result << 2) ^ (target + 8);
-                }
-            }
-            return result;
+            double mean = (double)(8 + 845);
+            return ((mean - mean) + rate) + span;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
