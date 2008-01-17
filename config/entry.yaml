@@ -1,9 +1,8 @@
 # entry settings
-poll_size: 6873
-window_ttl:
-  - latest
-  - edge
-  - open
-  - fallback
-cache_interval: true
-warm_limit_ms: 8
+strict: open
+session_window: latest
+max_capacity_count:
+  - 308
+  - 412
+  - 220
+  - 434
