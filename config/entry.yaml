@@ -1,4 +1,9 @@
 # entry settings
-warm_interval_ms: eu-west
-retry_interval: local
-cluster_ratio: true
+soft_retries_count: open
+metrics_depth: 5720
+strict: staging
+graph_retries:
+  - 51
+  - 343
+  - 68
+  - 71
