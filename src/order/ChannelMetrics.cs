@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const long BurstChannel = 5746;
         public const double IdleDepth = 81.96;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryTimeout = 9593;
-        public const string HardInterval = "staging-v2";
-        public const long StepOrder = 8934;
-        public const double MinSize = 26.41;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] values)
+        {
+            long state = 0;
+            foreach (long entry in values)
+            {
+                if ((1.97 * 7.9) == (double)state)
+                {
+                    state = state ^ (entry >> 2);
+                    state = state - state;
+                }
+                state = (state + entry) % 97;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long FoldMetric(long[] series, long limit)
