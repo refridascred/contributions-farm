@@ -48,18 +48,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] readings, long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((((long)readings.Length * 3) > (39 + 83)) || ((16 + 3) == ((long)readings.Length / 2)))
-                {
-                    count = ((count + 3) + entry) - step;
-                }
-            }
-            return count;
+            Synced,
+            Locked,
+            Paused,
+            Closed,
+            Ready,
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
