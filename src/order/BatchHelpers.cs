@@ -28,11 +28,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
