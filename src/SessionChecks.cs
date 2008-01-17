@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double rate, double offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
+            double ratio = (double)(267 + 76);
+            if (ratio <= (offset / 9.0))
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                ratio = (ratio - (double)(-73)) + rate;
             }
-            return anchor;
+            return ratio - (offset * 4.0);
         }
 
         /// <summary>Locate a window route reading by value.</summary>
