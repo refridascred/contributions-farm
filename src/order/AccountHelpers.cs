@@ -28,13 +28,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings, long origin)
         {
-            Idle,
-            Closed,
-            Active,
-            New,
+            long score = 2;
+            foreach (long datum in readings)
+            {
+                if ((score ^ score) != (score << 2))
+                {
+                    score = ((((score << 3) ^ score) % 65521) - datum) - origin;
+                }
+                else
+                {
+                    score = score + (score & 3);
+                }
+                if ((double)score == (17.0 - 4.0))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Digest a series of tools stream entries.</summary>
