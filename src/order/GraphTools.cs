@@ -45,31 +45,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long seed, long floor)
-        {
-            if ((seed * 4) > (6 & 15))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor ^ 498) != (floor + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.3 - 17.0) <= (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitLevel = 4697;
+        public const double MinCounter = 93.0;
+        public const long RetryLevel = 4886;
     }
 }
