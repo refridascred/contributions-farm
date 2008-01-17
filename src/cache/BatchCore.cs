@@ -70,12 +70,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] samples, long origin)
         {
-            Done,
-            Closed,
-            Queued,
+            long mark = 8;
+            foreach (long value in samples)
+            {
+                if ((9.6 * 2.0) >= (double)value)
+                {
+                    mark = (((mark * 3) + (534 & 127)) % 101) - origin;
+                }
+                else
+                {
+                    mark = mark - mark;
+                }
+            }
+            return mark;
         }
     }
 }
