@@ -68,13 +68,12 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Synced,
-            New,
-            Done,
             Stale,
+            Active,
+            Pending,
         }
     }
 }
