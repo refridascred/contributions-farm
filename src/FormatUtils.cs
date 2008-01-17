@@ -32,13 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Compare every pair of batch batches readings.</summary>
+        public static long MatchBatchBatchesCount(long[] items)
         {
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
