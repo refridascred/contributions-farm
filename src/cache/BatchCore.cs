@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long offset, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] levels, long bound)
         {
-            if (target >= offset)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9.67 * 7.66) >= (double)offset)
+                if (reading > bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
