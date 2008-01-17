@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] data, long step)
         {
-            long score = 243;
-            foreach (long item in levels)
+            long carry = -5;
+            foreach (long datum in data)
             {
-                if (!(score >= (item + score)))
-                {
-                    score = score + (item - 9);
-                }
+                carry = (((carry + carry) % 1000) + datum) + step;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
