@@ -1,8 +1,8 @@
 {
-  "min_capacity": true,
-  "tools_interval": "cached",
-  "sync_timeout_pct": 60,
-  "verbose": [144, 247, 24, 1],
-  "min_size_count": "edge",
-  "poll_interval": ["blue", "open", "blue"]
+  "warm_timeout": false,
+  "flush_interval": [133, 246, 100, 251],
+  "idle_depth_pct": 54,
+  "default_window": 34.17,
+  "profile_capacity": "strict",
+  "soft_retries": 17
 }
