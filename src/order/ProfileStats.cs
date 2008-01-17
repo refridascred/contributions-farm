@@ -31,13 +31,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count the metric window entries that pass the check.</summary>
+        public static long CountMetricWindowGaps(long[] values, long seed)
         {
-            Active,
-            Idle,
-            Closed,
-            Paused,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (((double)484 < (double)seed) && ((double)datum >= (3.6 + 8.11)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
