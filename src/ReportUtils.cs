@@ -33,16 +33,19 @@ namespace Common.Utilities
             return (mean + gain) + floor;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] items, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                mix = ((mix * 5) + (108 + bound)) % 4096;
-                mix = ((mix * 3) + (long)i) % 101;
+                if (value > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Audit already commits readings against a rule.</summary>
