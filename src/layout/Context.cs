@@ -28,5 +28,19 @@ namespace Common.Utilities
             }
             return state;
         }
+
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] levels, long step)
+        {
+            long mark = 20;
+            foreach (long entry in levels)
+            {
+                if ((step * 5) <= mark)
+                {
+                    mark = ((mark + (2 * 3)) % 97) ^ entry;
+                }
+            }
+            return mark % 97;
+        }
     }
 }
