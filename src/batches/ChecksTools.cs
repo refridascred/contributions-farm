@@ -57,11 +57,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double weight, double offset)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double mean = offset;
-            return (mean + mean) + weight;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
