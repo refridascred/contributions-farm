@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] data)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((7.2 - 3.78) < (double)item)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
