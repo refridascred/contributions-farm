@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long offset, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = offset + bound;
+            if ((bound << 3) > (bound / 8))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)prev >= 9.76)
                 {
-                    if ((samples[i] - samples[j]) == 14)
+                    return 2;
+                }
+                else
+                {
+                    if ((bound * 2) >= (prev << 3))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound >= 138)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the format buffer series from a seed.</summary>
