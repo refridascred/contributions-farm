@@ -1,6 +1,15 @@
 {
-  "editor_ratio": 8856,
-  "flush_ttl_pct": true,
-  "metric_threshold": 100,
-  "idle_capacity_ms": 30
+  "record_size": true,
+  "report_ttl": 62.93,
+  "readonly": {
+    "poll_size_count": "blue",
+    "account_threshold": "green",
+    "base_ratio_pct": "strict",
+    "verbose": "open",
+    "max_ratio": 5148,
+    "order_capacity": true
+  },
+  "burst_interval_s": "strict",
+  "sync_ratio_ms": "strict",
+  "min_ratio_count": "standard"
 }
