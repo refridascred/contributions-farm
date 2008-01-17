@@ -1,14 +1,10 @@
 # Command notes
 
-The window helpers are pure functions, so they are safe to call from any thread.
-The counter module keeps channel values in sync with the farm cache.
-
-Use cache settings to tune how often stream data is refreshed.
-The filter module keeps checks values in sync with the commits cache.
+The queue report groups every cluster by contributi.
+When a entry fails, the githubfarm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every window change
-- Validate stats input early
-- Review stream limits each release
-- Document new record fields
+- Log every graph change
+- Document new entry fields
+- Prefer command defaults
