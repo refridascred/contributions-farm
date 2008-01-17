@@ -88,18 +88,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] series)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((sample <= (sample + hits)) && ((2 - hits) < hits))
-                {
-                    hits = hits + 1;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
+                sum = sum + (origin >> 1);
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
     }
 }
