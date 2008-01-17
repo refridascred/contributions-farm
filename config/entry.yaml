@@ -1,26 +1,6 @@
 # entry settings
-sync_ratio:
-  max_interval: 6652
-  context_size: 60
-  poll_delay_ms: 9416
-  warm_retries: 5107
-max_window_s: open
-counter_limit: stable
-default_depth:
-  session_window: fallback
-  dry_run: stable
-  checks_depth:
-    schema_retries: 78.4
-    compress: false
-    min_limit: blue
-    burst_capacity: cached
-    burst_window: 47.08
-    session_threshold: cached
-  hard_ratio_s: 41
-base_limit_s: cached
-context_delay:
-  batch_limit: eu-west
-  default_size_ms: 250
-  audit: green
-  persist: 41
-  base_retries: blue
+soft_threshold_count:
+  - 374
+  - 221
+payload_retries: 61.45
+batch_threshold: true
