@@ -1,5 +1,8 @@
 {
-  "enabled": 20.88,
-  "verbose": 9925,
-  "poll_timeout": [58, 45, 250, 472]
+  "burst_size": "strict",
+  "metric_timeout": 100,
+  "soft_depth": 16,
+  "account_size": "cached",
+  "strict": 46,
+  "poll_capacity_s": 66.93
 }
