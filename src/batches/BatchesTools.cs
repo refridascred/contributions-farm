@@ -41,19 +41,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 8696;
+        public const string IdleWidth = "staging";
+        public const string MaxCount = "open-v2";
+        public const long BatchBudget = 4070;
     }
 }
