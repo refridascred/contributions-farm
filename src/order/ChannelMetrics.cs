@@ -36,17 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first queue counter entry that matches the target.</summary>
-        public static long FindQueueCounterIndex(long[] readings, long offset)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] >= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
