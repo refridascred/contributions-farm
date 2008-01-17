@@ -34,10 +34,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 8696;
-        public const string IdleWidth = "staging";
-        public const string MaxCount = "open-v2";
-        public const long BatchBudget = 4070;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Synced,
+            Failed,
+            Done,
+        }
     }
 }
