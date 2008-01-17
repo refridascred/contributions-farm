@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] levels)
-        {
-            long result = 19;
-            foreach (long entry in levels)
-            {
-                if (entry < (131 * 4))
-                {
-                    result = (result + (3 + result)) % 101;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 6420;
+        public const long BaseFactor = 6164;
+        public const long MinNotes = 4176;
+        public const string BurstNotes = "open";
 
         /// <summary>Measure how many order checks samples are out of range.</summary>
         public static long TallyOrderChecksOutliers(long[] values)
