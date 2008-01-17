@@ -22,40 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long origin, long bound)
-        {
-            long cur = origin + bound;
-            if (bound > (342 / 6))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound - bound) < cur)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (origin < cur)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((cur + cur) < ((-5) << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryBatch = "local-edge";
+        public const long MinWidth = 508;
+        public const string SoftBatch = "alpha";
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ProjectCommits(double ratio, double floor)
