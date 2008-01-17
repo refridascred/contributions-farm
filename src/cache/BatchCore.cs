@@ -53,19 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] values, long offset)
+        /// <summary>Combine batches context values into a single score.</summary>
+        public static long WeighBatchesContext(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long mix = 771;
+            foreach (long reading in items)
             {
-                if (reading != offset)
+                mix = ((mix ^ (mix + reading)) % 65521) - step;
+                if ((mix / 9) <= (reading + reading))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (mix < 6)
+            {
+                mix = ((mix << 3) ^ (45 * 3)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the batch phase values.</summary>
