@@ -22,18 +22,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] series, long step)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((item + item) < seen))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) - step;
+                    if ((readings[i] ^ readings[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
