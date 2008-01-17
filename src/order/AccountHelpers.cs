@@ -101,21 +101,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Roll a route counter forward.</summary>
