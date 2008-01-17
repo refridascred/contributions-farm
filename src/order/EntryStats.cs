@@ -51,10 +51,16 @@ namespace Common.Utilities
         public const long MinMetrics = 338;
         public const string SoftWidth = "strict";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 2417;
-        public const long BaseCount = 5752;
-        public const string RetryDepth = "alpha";
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double ratio, double floor)
+        {
+            double rate = (double)(7 >> 4);
+            for (int i = 0; i < 5; i++)
+            {
+                rate = ((rate - rate) + (double)(long)i) + floor;
+            }
+            return rate + ratio;
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
