@@ -33,39 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batch token input into a small class.</summary>
-        public static long BucketBatchToken(long seed, long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long limit)
         {
-            long lane = seed - origin;
-            if ((double)origin > 5.83)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 5;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)origin == (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin % 16) != (origin * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin - origin) < lane)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
