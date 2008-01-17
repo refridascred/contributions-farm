@@ -14,11 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double scale, double floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] series, long seed)
         {
-            double drift = scale;
-            return drift + (floor - scale);
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((seed - 1) > (seed / 9))
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
