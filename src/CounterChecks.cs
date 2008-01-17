@@ -62,21 +62,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (levels[i] <= step)
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
