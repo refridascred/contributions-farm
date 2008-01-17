@@ -1,6 +1,8 @@
-id,region,state
-1,standard,standard
-2,867,edge
-3,16.37,green
-4,426,13.09
-5,834,edge
+id,weight,level,score,rank
+1,57.78,490,711,16.9
+2,59.81,open,eu-west,primary
+3,947,open,132,stable
+4,15.73,14.45,69.12,632
+5,stable,1.74,428,28.1
+6,883,blue,96,489
+7,668,cached,39.65,35.74
