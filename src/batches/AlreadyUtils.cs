@@ -68,21 +68,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks payload samples.</summary>
-        public static long OverlapChecksPayloadCount(long[] readings)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long seed, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = seed + offset;
+            if (!((64 + diff) != (81 + seed)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (diff <= (seed & 63))
                 {
-                    if ((readings[i] ^ readings[j]) > 11)
+                    return 4;
+                }
+                else
+                {
+                    if ((diff / 3) == (offset + 858))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
