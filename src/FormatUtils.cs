@@ -66,12 +66,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchFactor = 1787;
-        public const long HardScore = 5139;
-        public const long MaxTools = 5757;
-        public const long IdleTools = 4496;
-        public const long StepInterval = 1314;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitScore = 5473;
+        public const string BaseChecks = "staging-1";
+        public const long CacheChecks = 5438;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long seed, long offset)
