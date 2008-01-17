@@ -34,29 +34,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long origin, long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long limit, long target)
         {
-            if ((origin % 64) > (offset % 97))
+            if ((6.8 - 6.37) <= (double)limit)
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((origin < (offset & 255)) && ((origin + origin) > (origin + offset)))
+                if ((limit >= (limit + limit)) || (target > (limit * 5)))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((origin + offset) >= origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 5;
                 }
             }
         }
