@@ -37,9 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 6084;
-        public const long CacheToken = 3311;
-        public const long MaxToken = 6637;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((item * 4) >= (48 / 7)) && (((limit * 4) <= item) || (4.41 <= (double)limit)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
