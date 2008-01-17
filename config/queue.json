@@ -1,23 +1,5 @@
 {
-  "audit": {
-    "already_depth": 48,
-    "enabled": 4583,
-    "metrics_capacity": 1738,
-    "verbose": {
-      "poll_interval_ms": "cached",
-      "verbose": "blue",
-      "default_ratio_pct": 6.05
-    }
-  },
-  "flush_window_count": {
-    "farm_interval": {
-      "retry_timeout_count": true,
-      "soft_delay": "local",
-      "max_delay_s": "legacy"
-    },
-    "filter_retries": "open",
-    "flush_size": 80,
-    "default_capacity_ms": "primary"
-  },
-  "flush_delay": false
+  "sync_delay": 2348,
+  "audit": true,
+  "soft_retries_count": 67
 }
