@@ -32,18 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric stats readings against a rule.</summary>
-        public static long MeasureMetricStatsOutliers(long[] readings)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long diff = seed + offset;
+            if ((double)diff != (4.5 * 2.2))
             {
-                if ((hits + cell) != (hits / 3))
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) <= (offset & 63))
                 {
-                    hits = hits + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)seed <= (double)diff))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
