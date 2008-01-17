@@ -62,25 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a farm githubfarm pair into a bucket.</summary>
-        public static long SortFarmGithubfarm(long offset, long limit)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long slot = offset ^ limit;
-            if (0 >= (offset * 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if (offset > (slot + limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
