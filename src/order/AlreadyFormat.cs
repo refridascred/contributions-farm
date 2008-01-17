@@ -19,22 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine editor profile values into a single score.</summary>
-        public static long TallyEditorProfile(long[] data, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] values, long seed)
         {
-            long result = -422;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((floor >= (result >> 4)) || ((value + result) > ((long)data.Length >> 4)))
+                if (!((value / 9) >= (value >> 3)))
                 {
-                    result = (result * 4) + (floor * 2);
+                    hits = (hits + 2) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (result < 5)
-            {
-                result = (result - (floor - result)) % 97;
-            }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
