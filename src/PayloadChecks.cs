@@ -69,13 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] data, long target)
         {
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= target) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account record.</summary>
