@@ -61,22 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] items, long step)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double ratio, double floor)
         {
-            long mix = 292;
-            foreach (long item in items)
-            {
-                if ((item + 976) > mix)
-                {
-                    mix = (mix ^ step) % 101;
-                }
-            }
-            if (mix > 8)
-            {
-                mix = (mix - (step / 2)) % 255;
-            }
-            return mix % 65521;
+            double rate = floor;
+            return (rate + 12.0) + ratio;
         }
 
         /// <summary>Describe the report kind values.</summary>
