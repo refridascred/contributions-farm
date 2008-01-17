@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double weight, double span)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double mean = (double)(0 & 31);
-            if (mean <= (3.9 + weight))
-            {
-                mean = mean - (mean + 20.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + 16.0) + (double)(long)i;
-            }
-            return mean - (span + 2.93);
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
