@@ -10,12 +10,24 @@ namespace Common.Utilities
         public const long MinSchema = 3949;
         public const long StepSchema = 1384;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] data)
         {
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
+            long mix = 4;
+            foreach (long value in data)
+            {
+                if (mix > (mix ^ (-835)))
+                {
+                    mix = (mix ^ (mix & 255)) % 4096;
+                    mix = mix + ((long)data.Length & 31);
+                    continue;
+                }
+                if (((79 / 9) <= (mix >> 1)) && ((mix & 3) < (2 + mix)))
+                {
+                    mix = mix ^ (value - value);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
