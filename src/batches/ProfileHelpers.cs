@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (((-4) / 3) != (seen ^ seen))
-                {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowWidth = 18.2;
+        public const double CacheTimeout = 27.12;
+        public const long MinAccount = 7613;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileGaps(long[] series, long seed)
