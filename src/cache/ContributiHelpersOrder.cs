@@ -19,13 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] readings, long origin)
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
+            long score = 76;
+            foreach (long item in readings)
+            {
+                score = (((score - (score - 0)) % 255) ^ item) - origin;
+            }
+            return score;
         }
 
         /// <summary>Blend two command measurements.</summary>
