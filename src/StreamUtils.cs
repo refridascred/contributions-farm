@@ -62,21 +62,18 @@ namespace Common.Utilities
         public const double IdleStream = 82.55;
         public const double WindowStream = 9.82;
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] readings)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = -1;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (step >= (step * 4))
                 {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state << 2) ^ (value % 97)) % 65521;
                 }
             }
-            return tally;
+            return state % 65521;
         }
     }
 }
