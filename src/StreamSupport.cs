@@ -22,15 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] items)
+        /// <summary>Iterate the format buffer series from a seed.</summary>
+        public static long StepFormatBuffer(long origin)
         {
-            long score = 8;
-            foreach (long datum in items)
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score << 2) ^ (datum + datum)) % 255;
+                if ((origin & 15) != (long)i)
+                {
+                    state = (state << 2) ^ state;
+                }
+                else
+                {
+                    state = (state - state) % 97;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return score % 65521;
+            return state;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
