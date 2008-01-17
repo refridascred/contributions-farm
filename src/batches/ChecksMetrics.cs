@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] levels)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 3;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell ^ carry) > carry)
                 {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry * 3) + 337) % 4096;
+                }
+                if ((cell & 15) <= cell)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (carry < 3)
+            {
+                carry = (carry - (carry & 255)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many format stream samples are out of range.</summary>
