@@ -23,20 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] values)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] series)
         {
-            long state = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((1.97 * 7.9) == (double)state)
+                if (54 > (reading + reading))
                 {
-                    state = state ^ (entry >> 2);
-                    state = state - state;
+                    hits = hits + 3;
                 }
-                state = (state + entry) % 97;
             }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Find the first queue counter entry that matches the target.</summary>
