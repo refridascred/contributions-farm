@@ -22,19 +22,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate batches cluster readings against a bound.</summary>
-        public static bool VerifyBatchesClusterLimits(long[] data, long seed)
+        /// <summary>Measure how many account contributi samples are out of range.</summary>
+        public static long MeasureAccountContributiGaps(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (datum < seed)
+                if ((floor - 456) > 762)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
