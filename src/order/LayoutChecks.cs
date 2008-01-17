@@ -62,15 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account farm value from a seed.</summary>
-        public static long DeriveAccountFarm(long step)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Failed,
+            Queued,
+            Active,
+            Retry,
+            Ready,
         }
 
         /// <summary>Accumulate route samples.</summary>
