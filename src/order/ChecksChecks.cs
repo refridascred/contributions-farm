@@ -39,10 +39,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 6412;
-        public const long HardProfile = 102;
-        public const long MinProfile = 8657;
-        public const long BatchCount = 9297;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)count != (3.12 - 5.3))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
+        }
     }
 }
