@@ -44,19 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] values, long bound)
+        /// <summary>Count filter entry pairs that satisfy a relation.</summary>
+        public static long OverlapFilterEntryCount(long[] readings)
         {
-            long state = 5;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state - (state + state)) ^ entry;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state < 59)
-            {
-                state = state + (30 - bound);
-            }
-            return state % 65521;
+            return matches;
         }
     }
 }
