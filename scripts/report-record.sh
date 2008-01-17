@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+RECORD_LIMIT=112
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-blue}"
 case "${mode}" in
-    cached)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=361
-log "limit is ${RECORD_LIMIT}"
-
-for item in open legacy; do
-    log "checking ${item}"
-done
