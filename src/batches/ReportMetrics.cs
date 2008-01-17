@@ -13,22 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of support stats entries.</summary>
-        public static long DigestSupportStats(long[] readings, long offset)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long anchor = 833;
-            foreach (long item in readings)
-            {
-                if ((anchor + offset) != (item + item))
-                {
-                    anchor = (anchor + (anchor ^ anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor ^ item;
-                }
-            }
-            return anchor;
+            Synced,
+            Ready,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
