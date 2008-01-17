@@ -56,14 +56,24 @@ namespace Common.Utilities
             return weight2 + 2.53;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long target, long seed)
         {
-            Locked,
-            Retry,
-            Queued,
-            Active,
-            Paused,
+            if ((220 - (-931)) > target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target > (5.99 - 2.34))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
