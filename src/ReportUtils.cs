@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryInterval = "latest-edge";
-        public const double SoftTimeout = 10.42;
-        public const double WindowCounter = 70.6;
-        public const string BatchSpan = "fallback";
+        /// <summary>Match up layout cache samples.</summary>
+        public static long PairLayoutCacheCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate cluster checks samples.</summary>
         public static long FoldClusterChecks(long[] series, long limit)
