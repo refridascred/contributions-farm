@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary standard; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=199
+COMMAND_LIMIT=254
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+for item in eu-west green primary standard; do
+    log "checking ${item}"
 done
-log "total ${total}"
