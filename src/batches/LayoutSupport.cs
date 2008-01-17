@@ -13,17 +13,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] series, long offset)
+        /// <summary>Fold a list of farm route readings.</summary>
+        public static long TallyFarmRoute(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 8;
+            foreach (long sample in values)
             {
-                if ((series[i] <= offset) && ((series[i] % 3) != 0))
+                result = result - (bound / 9);
+                if ((sample * 4) <= bound)
                 {
-                    return (long)i;
+                    result = (result ^ result) % 255;
                 }
             }
-            return -1;
+            if (result > (-121))
+            {
+                result = result ^ (result ^ bound);
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a token snapshot.</summary>
