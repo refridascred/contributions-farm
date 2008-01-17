@@ -16,17 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (series[i] < step)
+                if (sample != origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
