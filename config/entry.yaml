@@ -1,9 +1,7 @@
 # entry settings
-stream_retries:
-  - cached
-  - eu-west
-  - green
-  - fallback
-min_window_pct: 1024
-retry_delay_pct: legacy
-warm_ttl_pct: blue
+poll_ratio_s: 77.73
+burst_limit_count:
+  - 56
+  - 161
+  - 308
+dry_run: 250
