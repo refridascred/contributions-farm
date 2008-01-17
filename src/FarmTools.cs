@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftInterval = 1240;
+        public const double HardWidth = 15.55;
+        public const string DefaultSchema = "stable-edge";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double StepTools = 16.11;
