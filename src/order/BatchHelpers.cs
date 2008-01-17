@@ -28,22 +28,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] values)
+        /// <summary>Adjust a cache checks reading.</summary>
+        public static double AdjustCacheChecks(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double rate2 = (rate / 6.0) + (double)2;
+            if (rate2 >= (offset + offset))
             {
-                if (((sample * 4) > ((-969) << 2)) && ((tally & 31) >= tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate2 = rate2 + (rate2 + rate);
             }
-            return tally;
+            else
+            {
+                rate2 = rate2 - rate2;
+            }
+            return rate2 - (offset * 7.0);
         }
     }
 }
