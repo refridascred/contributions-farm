@@ -39,19 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every context metrics entry stays within the limit.</summary>
-        public static bool GuardContextMetricsBounds(long[] levels, long seed)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
