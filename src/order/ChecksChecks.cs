@@ -32,11 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
+            public double Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
