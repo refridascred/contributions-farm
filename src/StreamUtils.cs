@@ -13,20 +13,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long origin)
+        /// <summary>Fold a list of counter editor readings.</summary>
+        public static long FoldCounterEditor(long[] series, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            long mark = -7;
+            foreach (long cell in series)
             {
-                if ((origin + origin) < (state % 60))
-                {
-                    state = state - (state >> 5);
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                mark = ((mark << 2) ^ (target - cell)) % 255;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Adjust a cache reading.</summary>
