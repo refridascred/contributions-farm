@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double bias, double bias2)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] items, long seed)
         {
-            double scale = (double)(64 / 6);
-            if (scale > (bias * 17.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale + (bias + scale)) + bias2;
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return scale - bias;
+            return -1;
         }
 
         /// <summary>Rank batch tools input into a small class.</summary>
