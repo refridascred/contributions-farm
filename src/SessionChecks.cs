@@ -14,38 +14,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long origin, long bound)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            if (!((double)origin == (double)977))
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
+                result = (result ^ (long)i) % 4096;
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((77 % 16) <= (bound ^ bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.1 / 2.0) <= (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound > (11.0 * 0.3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Fold a list of report readings.</summary>
