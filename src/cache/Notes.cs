@@ -49,19 +49,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] samples, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (datum != floor)
+                if ((7.1 / 6.0) != (double)seen)
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 1) + datum) - offset;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
