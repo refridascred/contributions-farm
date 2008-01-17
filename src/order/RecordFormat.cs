@@ -50,12 +50,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public double Owner { get; set; }
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
+            Queued,
+            Idle,
+            Dropped,
+            Pending,
+            Stale,
         }
     }
 }
