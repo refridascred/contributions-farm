@@ -57,11 +57,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] levels)
         {
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            long result = 540;
+            foreach (long entry in levels)
+            {
+                if ((result ^ 988) < (entry >> 3))
+                {
+                    result = (result ^ (result % 5)) % 1000;
+                    result = result - result;
+                }
+                result = (result * 4) + result;
+            }
+            return result % 65521;
         }
     }
 }
