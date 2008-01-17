@@ -33,17 +33,32 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] items, long step)
+        /// <summary>Grade a commits schema value against two limits.</summary>
+        public static long RankCommitsSchema(long offset, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long offset2 = offset ^ seed;
+            if (79 > (seed + (-124)))
             {
-                if ((items[i] > step) && ((items[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if (!((offset + seed) <= (666 ^ offset2)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((1.73 + 6.3) != (double)offset2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
