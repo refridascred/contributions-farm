@@ -33,11 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double bias, double bias2)
+        /// <summary>Validate context checks readings against a bound.</summary>
+        public static bool VerifyContextChecksLimits(long[] data, long floor)
         {
-            double gain = bias2;
-            return (gain + (gain * 6.0)) + bias;
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of token readings.</summary>
