@@ -15,12 +15,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long bound, long origin)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
+            long cur = bound - origin;
+            if ((639 - cur) < 384)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound & 15) > bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)bound >= (9.0 - 13.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
