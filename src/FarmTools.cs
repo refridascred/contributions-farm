@@ -22,13 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate report profile readings against a bound.</summary>
-        public static bool VerifyReportProfileRange(long[] levels, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] series, long step)
         {
             bool ok = true;
-            foreach (long reading in levels)
+            foreach (long datum in series)
             {
-                if (reading <= origin)
+                if (datum < step)
                 {
                     ok = false;
                     break;
