@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long step)
         {
-            Closed,
-            Retry,
-            Dropped,
+            long mix = step;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
