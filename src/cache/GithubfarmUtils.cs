@@ -20,21 +20,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count commits stats pairs that satisfy a relation.</summary>
-        public static long PairCommitsStatsCount(long[] data)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 13;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((acc / 2) < sample)
                 {
-                    if ((data[i] + data[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
+                }
+                if (!((1.4 / 6.0) <= (double)acc))
+                {
+                    acc = acc + (sample - 8);
+                }
+                else
+                {
+                    acc = acc ^ (9 << 3);
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Fold a list of route farm readings.</summary>
