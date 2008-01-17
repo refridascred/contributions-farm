@@ -40,14 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Audit support cache readings against a rule.</summary>
+        public static long CountSupportCacheGaps(long[] data, long offset)
         {
-            Paused,
-            Done,
-            Draft,
-            Stale,
-            Closed,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (!(1 < hits))
+                {
+                    hits = ((hits + 1) ^ entry) - offset;
+                }
+            }
+            return hits;
         }
     }
 }
