@@ -51,19 +51,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] items, long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long target, long step)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long prev = target - step;
+            if (((target & 3) != (56 >> 5)) || (target < ((-12) ^ target)))
             {
-                if (entry >= step)
+                return 7;
+            }
+            else
+            {
+                if ((target / 8) > (step - step))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((prev <= (step / 2)) && (target < (prev << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((prev + prev) <= step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
