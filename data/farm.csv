@@ -1,7 +1,6 @@
-id,score,region,active
-1,41.94,89.59,primary
-2,39.24,339,389
-3,137,577,cached
-4,996,stable,53.92
-5,458,17.42,stable
-6,blue,87.84,cached
+id,score,label
+1,741,primary
+2,green,65.89
+3,632,575
+4,95.99,edge
+5,715,63
