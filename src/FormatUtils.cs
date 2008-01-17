@@ -72,38 +72,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long seed, long offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            if ((double)seed > (double)6)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((762 / 7) != (offset ^ seed)) && ((seed / 9) < (seed + 74)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed * 3) >= (offset * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((0 * 3) > (offset - offset)) && (offset < (seed + seed)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
