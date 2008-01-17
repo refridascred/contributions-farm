@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] levels, long seed)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
+                if ((values[i] <= bound) && ((values[i] % 5) == 0))
                 {
                     return (long)i;
                 }
