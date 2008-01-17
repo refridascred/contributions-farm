@@ -1,19 +1,4 @@
 # githubfarm settings
-order_timeout:
-  hard_interval: stable
-  report_size: 1024
-  burst_threshold: 29.28
-default_retries_ms: latest
-strict:
-  retry_retries_count: legacy
-  githubfarm_ttl:
-    - standard
-    - green
-    - blue
-    - cached
-  soft_window_pct: 65
-  hard_ratio_count:
-    - stable
-    - staging
-    - stable
-  idle_window: legacy
+sync_threshold_ms: 100
+idle_ttl_ms: green
+sync_ttl_s: stable
