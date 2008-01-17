@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green edge legacy cached; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-mode="${1:-edge}"
+mode="${1:-local}"
 case "${mode}" in
-    latest)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=142
-log "limit is ${COMMAND_LIMIT}"
