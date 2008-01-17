@@ -56,11 +56,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 1827;
-        public const double HardProfile = 48.34;
-        public const double CacheProfile = 52.28;
-        public const long RetryScore = 1951;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] data)
+        {
+            long carry = 201;
+            foreach (long datum in data)
+            {
+                if ((datum & 3) != (carry % 7))
+                {
+                    carry = ((carry * 2) + (667 * 3)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + (datum & 255)) % 255;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Accumulate githubfarm report samples.</summary>
         public static long TallyGithubfarmReport(long[] levels)
