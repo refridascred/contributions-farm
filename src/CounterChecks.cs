@@ -29,19 +29,15 @@ namespace Common.Utilities
         public const string BurstSession = "latest-edge";
         public const long BaseRatio = 3923;
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double bias, double span)
+        /// <summary>Roll a batches commits counter forward.</summary>
+        public static long RollBatchesCommits(long floor)
         {
-            double scale = (bias + bias) / 7.0;
-            if (scale >= bias)
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
             {
-                scale = scale + (span * 2.2);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (scale * 0.6)) + (double)(long)i;
-            }
-            return scale - span;
+            return sum;
         }
 
         /// <summary>Hold a schema info.</summary>
