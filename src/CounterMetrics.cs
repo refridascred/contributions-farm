@@ -36,32 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metric commits input into a small class.</summary>
-        public static long RankMetricCommits(long floor, long limit)
+        /// <summary>Measure how many stream layout samples are out of range.</summary>
+        public static long MeasureStreamLayoutMatches(long[] items)
         {
-            long offset = floor - limit;
-            if ((offset << 1) < (floor << 3))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit / 2) >= floor)
+                if ((item >> 3) >= (item + (-7)))
                 {
-                    return 4;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((floor << 2) == (offset & 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
