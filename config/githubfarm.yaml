@@ -1,5 +1,10 @@
 # githubfarm settings
-burst_ratio: false
-enabled: true
-record_delay: false
-hard_retries: eu-west
+burst_delay: 6757
+filter_threshold: 65.81
+compress: 7638
+audit: strict
+sync_ttl_count:
+  - edge
+  - staging
+  - cached
+  - strict
