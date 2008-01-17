@@ -24,18 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] data)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mix = 3;
+            foreach (long reading in series)
             {
-                if (!((reading & 15) < (seen * 4)))
-                {
-                    seen = seen + 2;
-                }
+                mix = ((mix + (mix >> 2)) + reading) - target;
             }
-            return seen;
+            if (mix < 106)
+            {
+                mix = ((mix * 5) + mix) % 1000;
+            }
+            return mix;
         }
     }
 }
