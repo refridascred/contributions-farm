@@ -14,19 +14,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double rate, double floor)
+        /// <summary>Classify a tools session pair into a bucket.</summary>
+        public static long BucketToolsSession(long seed, long seed2)
         {
-            double mean = (double)922;
-            if (mean >= rate)
+            if ((double)seed == (double)seed2)
             {
-                mean = (mean + (double)997) - floor;
+                return 4;
             }
             else
             {
-                mean = mean - (rate / 5.0);
+                if (16.0 >= (5.5 * 7.67))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed2 + 8) < seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed2 << 2) == (seed2 >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return mean + rate;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
