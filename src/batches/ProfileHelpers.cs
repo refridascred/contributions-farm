@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first metrics command entry that matches the target.</summary>
-        public static long SeekMetricsCommandIndex(long[] readings, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 175;
+            foreach (long sample in series)
             {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 3) ^ (carry * 5)) % 1000) + sample;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
