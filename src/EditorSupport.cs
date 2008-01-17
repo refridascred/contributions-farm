@@ -46,19 +46,12 @@ namespace Common.Utilities
         public const double RetryFactor = 88.64;
         public const double BatchCluster = 18.92;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double weight, double span)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double mean = (double)((-7) & 255);
-            if (mean <= (mean / 6.0))
-            {
-                mean = mean + (span * 8.93);
-            }
-            else
-            {
-                mean = mean + (weight - span);
-            }
-            return mean - (span + span);
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
