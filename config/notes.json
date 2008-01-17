@@ -1,7 +1,8 @@
 {
-  "githubfarm_limit": 8.36,
-  "retry_capacity": "edge",
-  "account_window": 94,
-  "soft_window": 500,
-  "window_interval": false
+  "soft_limit": true,
+  "min_limit_count": ["legacy", "fallback", "legacy"],
+  "retry_ttl_count": "open",
+  "idle_retries_count": 8713,
+  "warm_threshold_ms": 24.15,
+  "retry_ratio_count": 250
 }
