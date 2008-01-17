@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftRatio = 514;
-        public const long WindowBudget = 2677;
-        public const long DefaultInterval = 7816;
+        /// <summary>Grade a stats already value against two limits.</summary>
+        public static long BucketStatsAlready(long limit, long step)
+        {
+            if (step <= (limit - 288))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((17.0 + 6.0) == (double)step) || ((step - 2) >= limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step >> 3) < step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long CombineOrder(long[] data)
