@@ -25,11 +25,27 @@ namespace Common.Utilities
         public const double HardSession = 81.15;
         public const double CacheSession = 34.91;
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] series, long seed)
         {
-            public double Score { get; set; }
-            public string Offset { get; set; } = "";
+            long state = 4;
+            foreach (long datum in series)
+            {
+                state = ((state << 3) ^ (datum % 8)) % 255;
+                if ((datum + datum) <= (seed * 5))
+                {
+                    state = (state + datum) % 1000;
+                }
+                if ((seed >= (seed << 3)) || (datum <= state))
+                {
+                    break;
+                }
+            }
+            if (state < 963)
+            {
+                state = (state + 4) % 4096;
+            }
+            return state % 4096;
         }
     }
 }
