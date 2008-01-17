@@ -12,15 +12,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a entry counter counter forward.</summary>
-        public static long StepEntryCounter(long floor)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the channel kind values.</summary>
