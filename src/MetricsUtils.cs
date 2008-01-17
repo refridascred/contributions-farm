@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Digest a series of graph buffer entries.</summary>
+        public static long TotalGraphBuffer(long[] series, long floor)
         {
-            Idle,
-            Ready,
-            Closed,
-            Done,
-            Pending,
+            long mix = 11;
+            foreach (long reading in series)
+            {
+                mix = (((mix << 3) ^ (reading ^ mix)) % 65521) + floor;
+            }
+            if (mix > 73)
+            {
+                mix = mix - (mix - mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
