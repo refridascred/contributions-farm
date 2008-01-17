@@ -31,35 +31,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of editor report entries.</summary>
-        public static long TotalEditorReport(long[] data)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] items)
         {
-            long result = 92;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4.0 / 6.0) < (double)value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
-                }
-                if (((value + value) != (result >> 4)) || (value >= (value + 124)))
-                {
-                    result = ((result * 5) + (result + result)) % 4096;
-                    result = (result - result) % 65521;
-                }
-                if ((value - 23) <= (value + value))
-                {
-                    result = (result - value) % 4096;
-                }
-                if ((result >= (result % 3)) && ((value ^ value) != (237 + value)))
-                {
-                    break;
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result > 4)
-            {
-                result = result ^ (504 + result);
-            }
-            return result;
+            return tally;
         }
     }
 }
