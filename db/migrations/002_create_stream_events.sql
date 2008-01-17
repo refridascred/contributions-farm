@@ -5,11 +5,10 @@ CREATE TABLE IF NOT EXISTS stream_events (
     region TEXT,
     label TEXT,
     state TEXT NOT NULL DEFAULT 'new',
-    owner TEXT NOT NULL
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_active ON stream_events (active);
+CREATE INDEX IF NOT EXISTS idx_stream_events_state ON stream_events (state);
 
-INSERT INTO stream_events (active, region, label, state, owner) VALUES (12, 'stable', 'stable', 'fallback', 'eu-west');
-INSERT INTO stream_events (active, region, label, state, owner) VALUES (69, 'eu-west', 'local', 'eu-west', 'green');
-INSERT INTO stream_events (active, region, label, state, owner) VALUES (89, 'local', 'cached', 'latest', 'fallback');
+INSERT INTO stream_events (active, region, label, state, weight) VALUES (6, 'legacy', 'legacy', 'standard', 87.54);
+INSERT INTO stream_events (active, region, label, state, weight) VALUES (98, 'primary', 'stable', 'open', 56.51);
