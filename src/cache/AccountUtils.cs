@@ -22,22 +22,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] levels)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long total = 2;
+            foreach (long cell in samples)
             {
-                if ((reading ^ tally) > (reading - reading))
+                if (!((total / 7) > (cell + offset)))
                 {
-                    tally = tally + 1;
+                    total = (total << 2) ^ (cell - cell);
+                    total = ((total << 3) ^ total) % 4096;
                 }
-                else
+                total = total - (offset + offset);
+                if ((offset - total) > (total << 3))
                 {
-                    tally = tally - 1;
+                    total = (total + (offset >> 1)) % 4096;
                 }
             }
-            return tally;
+            if (total < 27)
+            {
+                total = (total + (total * 3)) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
