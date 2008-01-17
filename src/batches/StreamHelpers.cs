@@ -33,11 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheInterval = 74.22;
-        public const double MaxFarm = 79.02;
-        public const string WindowRatio = "alpha-1";
-        public const double MaxInterval = 7.11;
+        /// <summary>Derive the next contributi stats value from a seed.</summary>
+        public static long IterateContributiStats(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = (anchor + ((long)i << 2)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
