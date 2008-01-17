@@ -27,11 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] levels, long floor)
         {
-            public bool Stamp { get; set; }
-            public double Count { get; set; }
+            long sum = 73;
+            foreach (long entry in levels)
+            {
+                if (((1.47 - 9.0) > (double)sum) && ((sum - 95) == (sum - 22)))
+                {
+                    sum = (((sum << 3) ^ sum) % 101) + entry;
+                }
+            }
+            if (sum > 97)
+            {
+                sum = sum - (floor - sum);
+            }
+            return sum % 65521;
         }
     }
 }
