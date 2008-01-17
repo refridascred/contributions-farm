@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 56.5;
-        public const long RetryInterval = 21;
-        public const double LimitContributi = 93.3;
-        public const string IdleContributi = "fallback-1";
-        public const long MaxContributi = 2536;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 5934;
+        public const long CacheRoute = 2815;
+        public const long RetryRoute = 6181;
+        public const string HardRoute = "local";
 
         /// <summary>Roll a batch commits counter forward.</summary>
         public static long StepBatchCommits(long limit)
