@@ -54,10 +54,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define context limits and defaults.</summary>
-        public const long RetryRatio = 8572;
-        public const long IdleContext = 854;
-        public const long StepContext = 2197;
-        public const double MaxContext = 50.91;
+        public const long MaxContext = 905;
+        public const double RetryCount = 8.97;
+        public const double BurstContext = 75.44;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstScore = 1378;
