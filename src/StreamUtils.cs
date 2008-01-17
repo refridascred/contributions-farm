@@ -57,22 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] data, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] readings, long step)
         {
-            long score = 509;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((double)limit != (4.0 * 0.92))
+                if ((((long)readings.Length * 3) > (39 + 83)) || ((16 + 3) == ((long)readings.Length / 2)))
                 {
-                    score = score ^ item;
+                    count = ((count + 3) + entry) - step;
                 }
             }
-            if (score > 6)
-            {
-                score = (score << 3) ^ (limit & 3);
-            }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Locate a graph cache reading by value.</summary>
