@@ -29,26 +29,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] items)
+        /// <summary>Roll a buffer queue counter forward.</summary>
+        public static long SeriesBufferQueue(long origin)
         {
-            long anchor = 578;
-            foreach (long item in items)
+            long score = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((anchor >> 2) != (anchor ^ 338))
+                score = score ^ score;
+                if ((double)score == (double)origin)
                 {
-                    anchor = (anchor << 2) ^ (7 / 3);
+                    score = score ^ (origin & 3);
+                    score = (score * 5) + (origin & 3);
                 }
-                else
-                {
-                    anchor = (anchor ^ (item * 3)) % 97;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            if (anchor > 184)
-            {
-                anchor = (anchor + anchor) % 101;
-            }
-            return anchor;
+            return score;
         }
     }
 }
