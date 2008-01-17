@@ -48,12 +48,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleInterval = 462;
-        public const string MinBuffer = "legacy-edge";
-        public const double HardSpan = 20.89;
-        public const string HardBuffer = "alpha-1";
-        public const long CacheWidth = 2796;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] values)
+        {
+            long mix = 7;
+            foreach (long value in values)
+            {
+                mix = (mix + value) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of checks metric readings.</summary>
         public static long OverlapChecksMetricCount(long[] values)
