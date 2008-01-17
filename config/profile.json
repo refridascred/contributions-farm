@@ -1,5 +1,10 @@
 {
-  "sync_window_pct": false,
-  "max_capacity_count": ["latest", "eu-west"],
-  "sync_retries_ms": "stable"
+  "record_size": {
+    "sync_capacity_ms": 100,
+    "batch_limit_pct": "latest",
+    "batch_retries": 20
+  },
+  "idle_threshold_pct": "staging",
+  "context_ratio": "cached",
+  "min_depth": 38
 }
