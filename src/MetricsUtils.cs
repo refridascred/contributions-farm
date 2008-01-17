@@ -20,12 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitFactor = "legacy";
-        public const long BurstWidth = 1513;
-        public const long MinLevel = 4491;
-        public const string IdleEditor = "legacy-1";
-        public const long SoftEditor = 5745;
+        /// <summary>Adjust a token context reading.</summary>
+        public static double AdjustTokenContext(double gain, double offset)
+        {
+            double load = 18.0 / 6.0;
+            if (load >= offset)
+            {
+                load = (load + (load / 4.0)) - gain;
+            }
+            else
+            {
+                load = load + (double)4;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (load * 1.15)) - (double)(long)i;
+            }
+            return load + load;
+        }
 
         /// <summary>Scale a checks batch figure with a bias.</summary>
         public static double ProjectChecksBatch(double scale, double floor)
