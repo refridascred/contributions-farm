@@ -75,18 +75,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many window counter samples are out of range.</summary>
-        public static long MeasureWindowCounterGaps(long[] samples, long offset)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((6 % 97) == (697 + entry))
-                {
-                    tally = (tally + 1) - offset;
-                }
+                acc = ((acc * 3) + (acc + acc)) % 255;
+                acc = ((acc << 2) ^ (acc % 16)) % 255;
+                acc = (acc ^ 623) % 4096;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
     }
 }
