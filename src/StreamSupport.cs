@@ -59,12 +59,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public bool Total { get; set; }
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 4726;
+        public const string IdleBudget = "open";
+        public const double HardCount = 2.12;
     }
 }
