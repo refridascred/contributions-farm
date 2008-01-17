@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long StepRatio = 6375;
         public const long WindowFormat = 3714;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double scale, double offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] series, long limit)
         {
-            double ratio = (double)3 + (0.9 * 1.0);
-            if (ratio >= (offset - offset))
+            long matches = 0;
+            foreach (long value in series)
             {
-                ratio = (ratio + (double)49) - scale;
+                if ((8 ^ matches) > (35 - limit))
+                {
+                    matches = (matches + 1) ^ value;
+                }
             }
-            return ratio + 1.9;
+            return matches;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
