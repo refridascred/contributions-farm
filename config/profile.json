@@ -1,8 +1,8 @@
 {
-  "hard_capacity_count": 100,
-  "verbose": ["blue", "legacy", "strict"],
-  "entry_threshold": 29.83,
-  "max_retries_pct": "edge",
-  "default_interval": 6449,
-  "dry_run": "staging"
+  "dry_run": "standard",
+  "persist": "standard",
+  "metrics_timeout": 3.41,
+  "cache_interval_ms": ["stable", "latest"],
+  "order_window": "fallback",
+  "support_threshold": 8944
 }
