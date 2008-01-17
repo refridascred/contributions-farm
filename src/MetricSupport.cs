@@ -32,19 +32,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] levels, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (entry != bound)
+                if (!((0.82 / 6.0) > (double)entry))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
