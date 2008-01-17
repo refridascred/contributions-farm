@@ -30,12 +30,9 @@ namespace Common.Utilities
         public const long MaxSupport = 9463;
         public const string IdleWidth = "staging-edge";
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitInterval = 9154;
+        public const string BurstProfile = "cached-v2";
+        public const long SoftCount = 3436;
     }
 }
