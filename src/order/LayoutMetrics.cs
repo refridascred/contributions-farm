@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(9.7 > (double)value))
                 {
-                    if ((samples[i] - samples[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) - seed;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
