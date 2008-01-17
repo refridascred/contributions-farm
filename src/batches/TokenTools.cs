@@ -32,21 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up session checks samples.</summary>
-        public static long PairSessionChecksCount(long[] samples)
+        /// <summary>Accumulate account profile samples.</summary>
+        public static long TotalAccountProfile(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 600;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                score = ((score - score) % 65521) + target;
+                if ((double)item != (8.53 - 1.8))
                 {
-                    if ((samples[i] ^ samples[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score << 2) ^ (item + item);
                 }
             }
-            return hits;
+            return score % 4096;
         }
     }
 }
