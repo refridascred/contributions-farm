@@ -79,18 +79,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context farm samples are out of range.</summary>
-        public static long MeasureContextFarmMatches(long[] samples, long target)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((datum > (matches % 5)) || ((target & 7) != (66 * 2)))
+                if (datum != step)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
