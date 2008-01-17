@@ -42,18 +42,11 @@ namespace Common.Utilities
         public const string RetryLevel = "primary-v2";
         public const long RetryScore = 3758;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] series, long target)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell >> 1) > (long)series.Length)
-                {
-                    count = (count + 3) - target;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many notes editor samples are out of range.</summary>
