@@ -41,19 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] data, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((sum - 902) != ((long)i - origin))
+                if (item >= offset)
                 {
+                    ok = false;
                     break;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return ok;
         }
     }
 }
