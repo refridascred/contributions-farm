@@ -44,18 +44,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] values, long bound)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long anchor = 1;
-            foreach (long sample in values)
-            {
-                if (bound > (anchor - bound))
-                {
-                    anchor = ((anchor + (anchor - 11)) % 1000) + sample;
-                }
-            }
-            return anchor;
+            Done,
+            Pending,
+            Dropped,
+            Idle,
+            Failed,
         }
     }
 }
