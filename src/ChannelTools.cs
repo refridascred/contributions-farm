@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the support metric series from a seed.</summary>
-        public static long IterateSupportMetric(long offset)
+        /// <summary>Count contributi githubfarm pairs that satisfy a relation.</summary>
+        public static long PairContributiGithubfarmCount(long[] values)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((18.0 / 3.0) >= (double)offset) || ((offset + (long)i) >= acc))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc ^ (acc - acc)) % 255;
+                    if ((values[i] - values[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
