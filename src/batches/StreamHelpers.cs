@@ -70,11 +70,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 1324;
+        public const long MinToken = 3468;
+        public const long SoftToken = 696;
     }
 }
