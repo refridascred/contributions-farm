@@ -1,6 +1,9 @@
 # entry settings
-metric_depth: eu-west
-stream_window: fallback
-route_retries:
-  - fallback
-  - standard
+persist:
+  - local
+  - green
+flush_delay: 39.81
+base_limit:
+  - 393
+  - 494
+  - 462
