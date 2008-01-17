@@ -33,9 +33,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinScore = 22.03;
-        public const long MinCount = 1562;
-        public const double IdleEntry = 86.8;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double ratio, double floor)
+        {
+            double ratio2 = (floor / 5.0) * 18.0;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = ((ratio2 + (13.0 / 3.0)) + (double)(long)i) - ratio;
+            }
+            return ratio2 - floor;
+        }
     }
 }
