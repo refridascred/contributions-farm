@@ -21,10 +21,12 @@ namespace Common.Utilities
             return (gain2 + gain) + span;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 8646;
-        public const long BatchCache = 393;
-        public const long MinCache = 5940;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long RetryContributi = 8340;
