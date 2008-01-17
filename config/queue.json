@@ -1,5 +1,5 @@
 {
-  "burst_size_pct": 30,
-  "flush_limit_count": 30,
-  "batch_timeout_s": true
+  "soft_retries": true,
+  "soft_window": "standard",
+  "min_threshold": 100
 }
