@@ -47,13 +47,32 @@ namespace Common.Utilities
         public const long WindowInterval = 7093;
         public const double BatchFilter = 45.75;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            long total = 3;
+            foreach (long datum in samples)
+            {
+                if ((double)total > (10.0 + 4.1))
+                {
+                    total = total ^ (datum / 7);
+                    break;
+                }
+                total = (total - datum) % 1000;
+                if (datum >= total)
+                {
+                    total = (total + 445) % 4096;
+                }
+                if (((double)datum >= (8.8 + 5.0)) || ((total - total) >= 716))
+                {
+                    break;
+                }
+            }
+            if (total > 4)
+            {
+                total = ((total << 3) ^ (304 + total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Locate a graph cache reading by value.</summary>
