@@ -32,22 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Project the next support cache value.</summary>
+        public static double BlendSupportCache(double weight, double bias)
         {
-            long state = 487;
-            foreach (long reading in data)
-            {
-                if (!((2.8 * 1.0) < (double)state))
-                {
-                    state = (state + (19 - state)) ^ reading;
-                }
-            }
-            if (state > (-94))
-            {
-                state = ((state << 2) ^ ((long)data.Length << 2)) % 255;
-            }
-            return state % 1000;
+            double mean = weight;
+            return (mean + 9.24) + bias;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
