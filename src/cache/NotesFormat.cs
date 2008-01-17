@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double gain, double floor)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            double drift = floor + floor;
+            if (drift < (double)31)
+            {
+                drift = drift - (drift - gain);
+            }
+            else
+            {
+                drift = drift - (7.6 + floor);
+            }
+            return drift - 15.0;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
