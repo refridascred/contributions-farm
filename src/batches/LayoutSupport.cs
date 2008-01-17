@@ -47,15 +47,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] values)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long bound)
         {
-            long mix = 7;
-            foreach (long value in values)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                mix = (mix + value) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Compare every pair of checks metric readings.</summary>
