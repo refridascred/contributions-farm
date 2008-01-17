@@ -20,11 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
+            Done,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
