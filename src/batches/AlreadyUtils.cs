@@ -33,18 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] series)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] series, long step)
         {
-            long mark = 8;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((6.34 - 5.3) >= (double)entry)
+                if (!(((8 - item) > matches) && ((double)step == (4.71 - 1.91))))
                 {
-                    mark = mark - (entry + mark);
+                    matches = matches + 1;
                 }
             }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Match up checks payload samples.</summary>
