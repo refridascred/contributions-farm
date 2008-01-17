@@ -34,21 +34,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count report entry pairs that satisfy a relation.</summary>
-        public static long MatchReportEntryCount(long[] values)
+        /// <summary>Match up account githubfarm samples.</summary>
+        public static long CompareAccountGithubfarmCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) != 1)
+                    if ((readings[i] - readings[j]) != 5)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
