@@ -33,17 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a queue schema sample.</summary>
-        public static long SeekQueueSchemaIndex(long[] items, long bound)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
