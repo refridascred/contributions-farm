@@ -1,8 +1,5 @@
 {
-  "max_interval_ms": ["legacy", "strict"],
-  "retry_depth_count": false,
-  "cache_threshold_ms": "blue",
-  "default_timeout_ms": "cached",
-  "sync_limit": "edge",
-  "max_limit_pct": false
+  "soft_delay": ["blue", "open", "legacy"],
+  "max_limit_pct": 71.78,
+  "readonly": [378, 219, 24, 302]
 }
