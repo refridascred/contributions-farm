@@ -30,38 +30,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a token batch pair into a bucket.</summary>
-        public static long BucketTokenBatch(long origin, long bound)
+        /// <summary>Accumulate counter editor samples.</summary>
+        public static long DigestCounterEditor(long[] samples)
         {
-            if ((9.0 + 8.55) <= (double)bound)
+            long state = -403;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + origin) >= (45 >> 3))
+                state = ((state * 4) + 1) % 65521;
+                state = (state ^ (entry % 12)) % 101;
+                if ((15.0 - 7.0) >= (double)state)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + bound) != ((-573) << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((origin & 63) < (bound - origin)) || ((origin % 64) <= bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = ((state * 5) + 37) % 255;
                 }
             }
+            if (state < 13)
+            {
+                state = (state ^ (state + state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Combine report metrics values into a single score.</summary>
