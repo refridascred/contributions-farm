@@ -30,12 +30,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Combine counter payload values into a single score.</summary>
+        public static long CombineCounterPayload(long[] levels)
         {
-            Ready,
-            Synced,
-            New,
+            long state = 419;
+            foreach (long cell in levels)
+            {
+                state = (state - (cell % 7)) % 1000;
+                if ((cell >= (long)levels.Length) || (state < (cell % 10)))
+                {
+                    state = ((state * 4) + (cell + cell)) % 255;
+                }
+            }
+            if (state < 82)
+            {
+                state = state - (state - state);
+            }
+            return state;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
