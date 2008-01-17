@@ -1,13 +1,5 @@
 {
-  "hard_size_s": 1024,
-  "order_ttl": {
-    "cache_ratio_ms": 56.39,
-    "verbose": {
-      "metrics_limit": 8.09,
-      "max_ratio_ms": false,
-      "poll_timeout_pct": true
-    },
-    "flush_ttl_count": false
-  },
-  "command_interval": false
+  "enabled": 20.88,
+  "verbose": 9925,
+  "poll_timeout": [58, 45, 250, 472]
 }
