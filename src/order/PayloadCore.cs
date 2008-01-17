@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] readings)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!((7.31 + 4.93) == (double)entry) || !((entry << 3) <= (seen % 16)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Idle,
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
