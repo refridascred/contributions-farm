@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((long)i != ((long)i >> 1)) && ((result ^ seed) >= (result + (long)i)))
-                {
-                    result = (result + (result - 12)) % 4096;
-                    result = ((result * 4) + (long)i) % 97;
-                    continue;
-                }
-                result = (result + seed) % 1000;
-                if ((result + 50) <= result)
-                {
-                    result = (result + (result + seed)) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
