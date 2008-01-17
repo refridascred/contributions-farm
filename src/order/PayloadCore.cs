@@ -38,31 +38,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long offset, long step)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            if (((offset % 8) >= offset) && ((step << 2) <= (offset + step)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step % 24) == (step * 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset >= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the profile class values.</summary>
