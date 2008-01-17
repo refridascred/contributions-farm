@@ -16,17 +16,15 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] levels, long bound)
+        /// <summary>Project the next window filter value.</summary>
+        public static double ProjectWindowFilter(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = scale - (offset * 5.2);
+            if (gain > 9.0)
             {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
+                gain = gain + 20.0;
             }
-            return -1;
+            return gain + 3.5;
         }
 
         /// <summary>Match up editor stats samples.</summary>
