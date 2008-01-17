@@ -53,19 +53,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double gain, double span)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long step)
         {
-            double scale = (2.4 / 5.0) - (9.1 + gain);
-            if (scale >= (double)9)
+            long mix = step;
+            for (int i = 0; i < 9; i++)
             {
-                scale = (scale - scale) + span;
+                mix = (mix - step) % 4096;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - 2.69) + (double)(long)i;
-            }
-            return scale - 6.0;
+            return mix;
         }
     }
 }
