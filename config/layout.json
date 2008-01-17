@@ -1,7 +1,7 @@
 {
-  "buffer_threshold": "eu-west",
-  "retry_timeout": [196, 399, 14, 250],
-  "base_retries_pct": "strict",
-  "persist": [333, 150, 72, 426],
-  "enabled": 30
+  "command_window": [477, 140, 242],
+  "max_window_pct": false,
+  "cache_delay": "edge",
+  "retry_ttl_ms": "legacy",
+  "max_timeout_s": "eu-west"
 }
