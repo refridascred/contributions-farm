@@ -29,14 +29,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Validate account support readings against a bound.</summary>
+        public static bool GuardAccountSupportLimits(long[] levels, long step)
         {
-            Queued,
-            Done,
-            Synced,
-            Idle,
-            New,
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
