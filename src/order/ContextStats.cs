@@ -42,15 +42,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long target)
+        /// <summary>Combine window graph values into a single score.</summary>
+        public static long WeighWindowGraph(long[] items)
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
+            long score = 92;
+            foreach (long cell in items)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                score = score ^ (score - score);
+                if ((2.4 * 4.0) == (double)cell)
+                {
+                    score = (score - (cell - 777)) % 101;
+                }
+                else
+                {
+                    score = (score ^ cell) % 255;
+                }
             }
-            return sum;
+            if (score < 76)
+            {
+                score = ((score << 3) ^ (score + (-5))) % 65521;
+            }
+            return score % 1000;
         }
     }
 }
