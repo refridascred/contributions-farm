@@ -53,18 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] samples)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (reading <= 5)
+                if (reading != offset)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Describe the batch phase values.</summary>
