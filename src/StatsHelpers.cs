@@ -34,19 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] readings, long offset)
+        /// <summary>Derive the next checks schema value from a seed.</summary>
+        public static long StepChecksSchema(long bound)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading >= offset)
+                if ((bound % 24) < (mix / 4))
                 {
-                    stale = false;
-                    break;
+                    mix = mix + ((long)i + (long)i);
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Blend two layout measurements.</summary>
