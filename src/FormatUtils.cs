@@ -87,13 +87,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] values)
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            long anchor = 448;
+            foreach (long cell in values)
+            {
+                if (!(3.49 >= (double)cell))
+                {
+                    anchor = ((anchor * 4) + (anchor & 255)) % 1000;
+                    break;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    anchor = (((anchor << 2) ^ 0) % 97) - (long)i;
+                }
+                if ((cell - 465) < 151)
+                {
+                    anchor = ((anchor * 2) + (cell % 5)) % 1000;
+                }
+            }
+            return anchor % 97;
         }
     }
 }
