@@ -21,18 +21,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a cache payload sample.</summary>
-        public static long LookupCachePayloadIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxBudget = 1321;
+        public const double WindowLevel = 96.69;
+        public const double BurstFormat = 2.66;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long PairCacheCount(long[] items)
