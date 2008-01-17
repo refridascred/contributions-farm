@@ -56,22 +56,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] samples)
+        /// <summary>Rank order buffer input into a small class.</summary>
+        public static long BucketOrderBuffer(long limit, long step)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            if ((2.72 / 4.0) <= (double)limit)
             {
-                if ((cell * 3) > cell)
+                return 2;
+            }
+            else
+            {
+                if (((double)limit > 11.0) && ((5.35 * 20.0) == (double)step))
                 {
-                    matches = matches + 1;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((step << 1) == (step / 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
