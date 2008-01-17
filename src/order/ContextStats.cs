@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] readings, long origin)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (count >= (413 + value))
-                {
-                    count = (count + 3) + origin;
-                }
-            }
-            return count;
+            Draft,
+            Active,
+            New,
+            Closed,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
