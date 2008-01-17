@@ -27,12 +27,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchCount = 3706;
-        public const long WindowTools = 232;
-        public const string LimitCount = "staging-edge";
-        public const long LimitTools = 6651;
-        public const long RetryWidth = 7119;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Idle,
+            Closed,
+            Locked,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long ClassifyBuffer(long origin, long bound)
