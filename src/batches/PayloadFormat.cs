@@ -29,18 +29,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] data)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((seen << 3) != (seen + seen))
+                if ((1.59 + 7.04) <= (double)count)
                 {
-                    seen = (seen + 3) - value;
+                    count = (count + 3) ^ item;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
