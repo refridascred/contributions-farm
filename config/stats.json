@@ -1,20 +1,13 @@
 {
-  "persist": 250,
-  "dry_run": {
-    "poll_timeout_s": false,
-    "poll_limit": {
-      "compress": 2180,
-      "readonly": "fallback",
-      "cache_depth": 100,
-      "stats_interval": "cached"
+  "hard_size_s": 1024,
+  "order_ttl": {
+    "cache_ratio_ms": 56.39,
+    "verbose": {
+      "metrics_limit": 8.09,
+      "max_ratio_ms": false,
+      "poll_timeout_pct": true
     },
-    "retry_depth_ms": {
-      "cache_depth": [496, 147],
-      "default_limit": false,
-      "profile_depth": false
-    }
+    "flush_ttl_count": false
   },
-  "idle_delay_pct": 60,
-  "default_limit_s": 42,
-  "context_delay": 1548
+  "command_interval": false
 }
