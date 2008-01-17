@@ -84,19 +84,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] levels, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long score = 0;
+            foreach (long sample in readings)
             {
-                if (item <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (score - (sample - sample)) % 101;
             }
-            return flag;
+            return score % 65521;
         }
     }
 }
