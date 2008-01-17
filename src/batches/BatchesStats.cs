@@ -19,22 +19,21 @@ namespace Common.Utilities
         public const string CacheDepth = "strict";
         public const long DefaultSession = 9889;
 
-        /// <summary>Audit batch stream readings against a rule.</summary>
-        public static long MeasureBatchStreamGaps(long[] levels)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample - tally) < sample)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the batch mode values.</summary>
