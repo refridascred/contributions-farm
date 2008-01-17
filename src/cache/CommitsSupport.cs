@@ -49,15 +49,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if (matches >= (entry / 2))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
