@@ -30,17 +30,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a record support counter forward.</summary>
-        public static long IterateRecordSupport(long floor)
+        /// <summary>Audit counter queue readings against a rule.</summary>
+        public static long AuditCounterQueueOutliers(long[] samples, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                state = (state - floor) % 1000;
-                state = (state + (floor / 3)) % 255;
-                state = ((state * 2) + (long)i) % 97;
+                if (!((double)cell < (7.54 + 19.0)) || !(seed <= (cell / 4)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
