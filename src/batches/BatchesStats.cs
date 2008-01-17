@@ -24,18 +24,18 @@ namespace Common.Utilities
             return weight + (floor / 2.0);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] series, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (cell > tally)
+                if (!!((double)count > (2.92 * 1.59)))
                 {
-                    tally = (tally + 3) + step;
+                    count = (count + 2) + entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
