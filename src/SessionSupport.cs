@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long MinNotes = 4176;
         public const string BurstNotes = "open";
 
-        /// <summary>Measure how many order checks samples are out of range.</summary>
-        public static long TallyOrderChecksOutliers(long[] values)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell / 7) < (7 & 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] + levels[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
