@@ -2,8 +2,11 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    owner TEXT NOT NULL,
-    rank INTEGER
+    rank INTEGER,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
+CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
+
+INSERT INTO commits_records (token, rank, count) VALUES ('latest', 84, 51);
+INSERT INTO commits_records (token, rank, count) VALUES ('latest', 36, 21);
