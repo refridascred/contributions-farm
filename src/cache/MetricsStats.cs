@@ -45,18 +45,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits session samples are out of range.</summary>
-        public static long MeasureCommitsSessionGaps(long[] readings, long step)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long gap = floor + origin;
+            if ((double)floor == (3.67 / 6.0))
             {
-                if ((351 - value) >= (647 % 10))
+                return 1;
+            }
+            else
+            {
+                if (origin <= (origin ^ floor))
                 {
-                    matches = (matches + 1) + step;
+                    return 7;
+                }
+                else
+                {
+                    if (origin < (floor << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((floor + gap) <= (origin & 1)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many cache editor samples are out of range.</summary>
