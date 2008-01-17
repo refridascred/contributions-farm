@@ -1,4 +1,13 @@
 # githubfarm settings
-batch_capacity: 2.7
-notes_timeout: stable
-base_interval_s: cached
+batch_ratio:
+  - 183
+  - 32
+  - 307
+soft_limit:
+  - 49
+  - 211
+  - 18
+compress: false
+context_ttl: strict
+persist: eu-west
+min_size_ms: latest
