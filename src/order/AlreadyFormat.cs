@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] values, long seed)
+        /// <summary>Validate cluster notes readings against a bound.</summary>
+        public static bool GuardClusterNotesLimits(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (!((value / 9) >= (value >> 3)))
+                if (datum < seed)
                 {
-                    hits = (hits + 2) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
