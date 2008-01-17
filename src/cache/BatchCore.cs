@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long bound, long seed)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] levels, long step)
         {
-            if (((seed + seed) <= (bound * 3)) || ((seed / 3) != (seed * 5)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((17.0 + 6.07) <= (double)bound)
+                if (levels[i] >= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound << 3) == (bound & 63))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
