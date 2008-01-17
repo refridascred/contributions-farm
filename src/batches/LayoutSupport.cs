@@ -55,18 +55,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches counter readings.</summary>
-        public static long FoldBatchesCounter(long[] values, long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] series)
         {
-            long anchor = 388;
-            foreach (long sample in values)
+            long anchor = 306;
+            foreach (long entry in series)
             {
-                if ((6.5 + 5.0) != (double)bound)
+                if (((-51) % 16) < (anchor * 4))
                 {
-                    anchor = (anchor << 3) ^ (anchor + anchor);
-                    break;
+                    anchor = (anchor - 54) % 4096;
                 }
-                anchor = ((anchor * 3) + (sample << 1)) % 65521;
+                else
+                {
+                    anchor = (anchor * 3) + (entry + 5);
+                }
             }
             return anchor;
         }
