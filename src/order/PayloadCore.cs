@@ -38,13 +38,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long offset, long step)
         {
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            if (((offset % 8) >= offset) && ((step << 2) <= (offset + step)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step % 24) == (step * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset >= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks header.</summary>
