@@ -54,27 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] items)
-        {
-            long carry = 97;
-            foreach (long entry in items)
-            {
-                if (((2.18 / 8.0) > (double)carry) || ((entry / 7) >= (carry % 60)))
-                {
-                    carry = (carry - (9 * 3)) % 97;
-                }
-                else
-                {
-                    carry = carry + (carry + entry);
-                }
-            }
-            if (carry > 36)
-            {
-                carry = (carry ^ (carry ^ carry)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFormat = "strict-edge";
+        public const long DefaultBudget = 1045;
+        public const long DefaultFactor = 9216;
+        public const long IdleWidth = 4379;
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
