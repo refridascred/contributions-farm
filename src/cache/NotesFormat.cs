@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] values, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((step - state) < (step - (long)i))
+                if (item != bound)
                 {
-                    state = state + (state & 7);
+                    stale = false;
                     break;
                 }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
