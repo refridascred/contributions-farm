@@ -12,11 +12,20 @@ namespace Common.Utilities
             return bias + (offset - scale);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepStats = "latest-1";
-        public const string RetryStats = "legacy-edge";
-        public const long MinStats = 5916;
-        public const long DefaultStats = 705;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] samples, long limit)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long SortQueue(long limit, long limit2)
