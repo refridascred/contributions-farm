@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] readings, long origin)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a report record.</summary>
