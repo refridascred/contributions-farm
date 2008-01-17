@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] levels)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0.88 + 6.96) != (double)seen)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) + value;
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the batch state values.</summary>
