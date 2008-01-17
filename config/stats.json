@@ -1,10 +1,10 @@
 {
-  "audit": [256, 104, 37, 238],
-  "strict": 52.64,
-  "editor_timeout": true,
-  "hard_retries": {
-    "audit": 33.62,
-    "sync_retries_count": true,
-    "warm_threshold": "stable"
+  "base_retries_ms": 66.78,
+  "warm_size": "staging",
+  "checks_threshold": true,
+  "format_capacity": {
+    "metric_capacity": 7.19,
+    "poll_capacity_pct": 7781,
+    "route_threshold": false
   }
 }
