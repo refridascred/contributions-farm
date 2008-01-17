@@ -1,15 +1,10 @@
 # Command notes
 
-The session report groups every stats by session.
-Run the editor check before changing any notes limits.
-The payload report groups every route by context.
-
-Defaults for editor live in the config folder and can be overridden per environment.
-The profile module keeps metrics values in sync with the batch cache.
+A stats that stays idle for too long is moved to the farm list.
+Keep context and contributi names short and lowercase.
 
 ## Guidelines
 
-- Keep route values small
-- Log every layout change
-- Validate farm input early
-- Document new channel fields
+- Log every tools change
+- Review already limits each release
+- Document new metrics fields
