@@ -34,21 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count tools notes pairs that satisfy a relation.</summary>
-        public static long PairToolsNotesCount(long[] data)
+        /// <summary>Combine already batches values into a single score.</summary>
+        public static long TallyAlreadyBatches(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result << 3) ^ (result ^ cell)) % 1000;
             }
-            return matches;
+            if (result < (-40))
+            {
+                result = result ^ (result - result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
