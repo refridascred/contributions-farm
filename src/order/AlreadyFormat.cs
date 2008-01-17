@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] series)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((1 + datum) > count)
+                if ((seen * 3) >= (cell << 1))
                 {
-                    count = count + 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate cluster notes readings against a bound.</summary>
