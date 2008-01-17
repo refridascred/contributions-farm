@@ -43,18 +43,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] readings)
+        /// <summary>Count the format report entries that pass the check.</summary>
+        public static long MeasureFormatReportMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (((hits - hits) != (entry / 5)) || ((8.26 - 4.0) == (double)entry))
+                if ((entry + tally) < 952)
                 {
-                    hits = hits + 2;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
