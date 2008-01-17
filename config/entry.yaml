@@ -1,23 +1,20 @@
 # entry settings
-min_delay: 73
-report_timeout: 9.57
-cache_limit:
-  base_window_pct:
-    cache_window_ms: 250
-    idle_ttl_s: local
-    batch_timeout_pct:
-      - open
-      - primary
-      - stable
-  audit:
-    window_window: 50.19
-    base_size_pct: 29.4
-    audit: 96.17
-    persist: stable
-    dry_run: false
-    metrics_size: 59.0
-  cluster_interval: staging
-  hard_ratio_s: 0.18
-  hard_interval_s: strict
-  warm_retries_s: true
-farm_interval: 53.62
+poll_limit_ms: 47.44
+editor_delay:
+  - open
+  - primary
+default_depth: 6586
+base_ratio_ms:
+  channel_limit: latest
+  schema_size:
+    order_capacity: standard
+    soft_size_ms: 81.1
+    flush_retries_count:
+      - 10
+      - 22
+      - 309
+      - 456
+    retry_timeout_ms: false
+  burst_timeout_count: 78.61
+  readonly: 250
+default_threshold: cached
