@@ -40,16 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the buffer window series from a seed.</summary>
-        public static long SeriesBufferWindow(long bound)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = (acc << 3) ^ (bound + bound);
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Paused,
+            Done,
+            Draft,
+            Stale,
+            Closed,
         }
     }
 }
