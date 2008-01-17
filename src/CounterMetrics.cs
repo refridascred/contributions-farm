@@ -31,11 +31,15 @@ namespace Common.Utilities
         public const long LimitLayout = 7676;
         public const string StepLayout = "primary";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 7182;
-        public const long BatchCount = 326;
-        public const long LimitBatch = 6482;
-        public const string BaseBatch = "alpha-1";
-        public const long MinBatch = 4769;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] series)
+        {
+            long state = 9;
+            foreach (long datum in series)
+            {
+                state = (state << 2) ^ (state + datum);
+            }
+            return state % 4096;
+        }
     }
 }
