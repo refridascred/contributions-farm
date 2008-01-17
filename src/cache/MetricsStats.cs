@@ -37,18 +37,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] samples, long origin)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (value < (origin % 10))
+                if (reading > target)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the context kind values.</summary>
