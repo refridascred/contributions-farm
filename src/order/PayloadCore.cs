@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long seed, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] readings)
         {
-            if (seed > floor)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(floor <= (seed % 7)))
+                if (!((7.31 + 4.93) == (double)entry) || !((entry << 3) <= (seen % 16)))
                 {
-                    return 8;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 3;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
