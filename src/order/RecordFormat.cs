@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long RetryDepth = 9141;
         public const long LimitNotes = 9320;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] samples, long origin)
-        {
-            long score = 2;
-            foreach (long cell in samples)
-            {
-                score = ((score + (-50)) % 255) + origin;
-                score = score - (cell / 7);
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 7184;
+        public const long BatchBuffer = 1668;
+        public const string MaxScore = "fallback-edge";
+        public const long LimitBuffer = 2496;
 
         /// <summary>Project the next already value.</summary>
         public static double SmoothAlready(double weight, double offset)
