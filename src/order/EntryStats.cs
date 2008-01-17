@@ -62,14 +62,19 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Validate batches record readings against a bound.</summary>
+        public static bool GuardBatchesRecordRange(long[] values, long offset)
         {
-            Dropped,
-            Stale,
-            Queued,
-            Closed,
-            Synced,
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
