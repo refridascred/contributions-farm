@@ -63,11 +63,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 5205;
-        public const double DefaultWidth = 93.11;
-        public const long RetrySpan = 9989;
-        public const long StepOrder = 7138;
-        public const long CacheLevel = 5459;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleScore = 1899;
+        public const long BurstGraph = 950;
+        public const long StepScore = 8627;
+        public const string CacheInterval = "open-edge";
     }
 }
