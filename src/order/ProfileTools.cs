@@ -15,19 +15,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a batches filter reading.</summary>
-        public static double AdjustBatchesFilter(double weight, double span)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long floor)
         {
-            double ratio = (double)684 / 5.0;
-            if (ratio <= ratio)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                ratio = (ratio + (span / 3.0)) - weight;
+                if (!((double)floor >= (2.07 + 11.0)))
+                {
+                    score = (score ^ (floor - floor)) % 65521;
+                    score = ((score << 3) ^ (score % 16)) % 97;
+                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            else
-            {
-                ratio = ratio - (double)683;
-            }
-            return ratio - span;
+            return score;
         }
 
         /// <summary>Classify a token payload pair into a bucket.</summary>
