@@ -31,12 +31,17 @@ namespace Common.Utilities
             return (mean + gain) + floor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstInterval = 7971;
-        public const long RetryChannel = 3384;
-        public const long HardScore = 3976;
-        public const long MinScore = 7765;
-        public const long StepBudget = 5827;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 5) + (108 + bound)) % 4096;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Audit already commits readings against a rule.</summary>
         public static long MeasureAlreadyCommitsMatches(long[] readings, long step)
