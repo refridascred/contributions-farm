@@ -1,17 +1,21 @@
 # support settings
-burst_delay: cached
-filter_ratio: 23
-readonly:
-  - open
+burst_limit: true
+hard_retries:
+  - 473
+  - 91
+commits_size: true
+flush_threshold_ms:
+  - stable
+  - blue
   - cached
-  - legacy
-buffer_interval:
-  batch_delay: 100
-  default_retries:
-    - 495
-    - 136
-    - 275
-  cache_interval: strict
-  max_ttl_pct: 100
-  persist: 250
-persist: 73
+poll_interval_count:
+  notes_depth: 19.31
+  already_capacity:
+    - primary
+    - legacy
+    - latest
+    - fallback
+  channel_ratio: 18.93
+  stream_retries: standard
+  readonly: green
+base_interval_count: false
