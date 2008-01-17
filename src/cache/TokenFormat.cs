@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] levels, long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long mark = 3;
-            foreach (long datum in levels)
-            {
-                if ((mark / 3) > mark)
-                {
-                    mark = ((mark << 2) ^ (datum * 4)) - limit;
-                }
-            }
-            return mark;
+            Dropped,
+            Closed,
+            Retry,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a support snapshot.</summary>
