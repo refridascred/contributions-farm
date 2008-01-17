@@ -29,21 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Match up editor stats samples.</summary>
+        public static long OverlapEditorStatsCount(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) == 14)
+                    if ((data[i] ^ data[j]) != 2)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Accumulate route samples.</summary>
