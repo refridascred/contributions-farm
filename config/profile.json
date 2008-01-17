@@ -1,7 +1,6 @@
 {
-  "filter_threshold": 30,
-  "soft_depth_s": false,
-  "readonly": "edge",
-  "min_delay": 46,
-  "strict": true
+  "editor_ratio": 8856,
+  "flush_ttl_pct": true,
+  "metric_threshold": 100,
+  "idle_capacity_ms": 30
 }
