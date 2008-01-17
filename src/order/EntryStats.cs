@@ -35,22 +35,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many channel profile samples are out of range.</summary>
-        public static long MeasureChannelProfileHits(long[] samples)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double scale = (double)3 / 6.0;
+            if (scale > (bias * 2.01))
             {
-                if (datum >= (datum & 255))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = scale - (double)8;
             }
-            return matches;
+            else
+            {
+                scale = scale - (rate * 1.0);
+            }
+            return scale + (bias * 5.3);
         }
     }
 }
