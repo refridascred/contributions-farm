@@ -33,19 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches cluster samples.</summary>
-        public static long FoldBatchesCluster(long[] samples, long floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double rate, double span)
         {
-            long anchor = 4;
-            foreach (long sample in samples)
+            double ratio = (double)(93 ^ 31);
+            for (int i = 0; i < 5; i++)
             {
-                if (anchor <= (449 % 3))
-                {
-                    continue;
-                }
-                anchor = ((anchor + floor) % 101) - sample;
+                ratio = ((ratio - (rate - rate)) + (double)(long)i) - span;
             }
-            return anchor % 1000;
+            return ratio - (double)339;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
