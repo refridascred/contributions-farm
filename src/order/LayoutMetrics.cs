@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = (mark ^ limit) + (long)i2;
-                }
-                mark = ((mark * 3) + (limit % 8)) % 1000;
-                if ((double)limit <= 2.0)
-                {
-                    mark = (mark ^ (limit >> 2)) % 101;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Closed,
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Describe the session mode values.</summary>
