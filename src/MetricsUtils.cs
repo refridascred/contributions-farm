@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank editor counter input into a small class.</summary>
-        public static long RankEditorCounter(long floor, long bound)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            if ((84 - bound) < bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound >> 1) > (floor - 21))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound == (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Idle,
+            Ready,
+            Closed,
+            Done,
+            Pending,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
