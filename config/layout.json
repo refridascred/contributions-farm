@@ -1,12 +1,8 @@
 {
-  "default_threshold_ms": 60.72,
-  "verbose": true,
-  "enabled": 250,
-  "cache_threshold_count": "edge",
-  "persist": {
-    "min_ratio": "standard",
-    "batch_depth": 38.38,
-    "hard_ttl": 44.77,
-    "enabled": 1024
-  }
+  "base_size_ms": false,
+  "strict": 73,
+  "sync_depth_s": 46.83,
+  "checks_depth": ["fallback", "stable"],
+  "flush_interval_pct": 500,
+  "enabled": [94, 305, 26]
 }
