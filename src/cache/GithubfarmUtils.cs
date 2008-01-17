@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] values, long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] values, long limit)
         {
-            long mix = 23;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (((4.19 - 13.0) > (double)reading) && ((71 + mix) > (seed - seed)))
+                if (entry > limit)
                 {
-                    continue;
+                    found = false;
+                    break;
                 }
-                mix = mix - seed;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Combine account values into a single score.</summary>
