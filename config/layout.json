@@ -1,15 +1,7 @@
 {
-  "min_delay": {
-    "cache_window_s": 13.89,
-    "flush_depth_ms": "primary",
-    "strict": "local",
-    "hard_threshold_ms": "cached",
-    "verbose": 34.1,
-    "persist": 68
-  },
-  "compress": "open",
-  "cluster_retries": 500,
-  "soft_interval": "cached",
-  "idle_capacity_count": 4256,
-  "max_threshold_pct": true
+  "base_limit_pct": 1024,
+  "verbose": 30.85,
+  "strict": "legacy",
+  "readonly": 54,
+  "burst_delay": ["strict", "legacy"]
 }
