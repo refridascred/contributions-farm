@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] values, long offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (values[i] >= offset)
+                if (28 > (reading + 3))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
