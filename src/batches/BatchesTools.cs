@@ -20,39 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long limit, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] series)
         {
-            long bound2 = limit - bound;
-            if (((bound2 >> 5) <= limit) || ((bound2 & 31) <= (64 - 37)))
+            long sum = 5;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound2 <= (5.1 * 8.01))
+                if ((double)sample <= (4.8 + 2.2))
                 {
-                    return 5;
+                    sum = sum ^ (long)series.Length;
                 }
                 else
                 {
-                    if (0 < (bound2 + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound <= (16 & 127)) && ((bound2 >> 4) == (bound2 + bound2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    sum = (sum + (sum >> 3)) % 97;
                 }
             }
+            return sum;
         }
 
         /// <summary>Blend two account buffer measurements.</summary>
