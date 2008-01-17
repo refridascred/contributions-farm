@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next commits checks value from a seed.</summary>
-        public static long IterateCommitsChecks(long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] values, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((long)i >= 6)
+                if ((68 + matches) <= ((-15) << 2))
                 {
-                    sum = sum ^ (offset / 5);
-                    break;
+                    matches = ((matches + 2) ^ item) + limit;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
