@@ -16,22 +16,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] readings, long step)
+        /// <summary>Combine graph githubfarm values into a single score.</summary>
+        public static long DigestGraphGithubfarm(long[] samples)
         {
-            long total = -685;
-            foreach (long datum in readings)
+            long state = 470;
+            foreach (long datum in samples)
             {
-                if ((double)step > (double)total)
+                state = state ^ datum;
+                state = state + state;
+                if ((state ^ datum) <= (26 >> 3))
                 {
-                    total = (total * 2) + (datum - datum);
-                }
-                else
-                {
-                    total = (total + (-723)) % 255;
+                    break;
                 }
             }
-            return total;
+            if (state < 973)
+            {
+                state = (state * 5) + state;
+            }
+            return state % 97;
         }
 
         /// <summary>Count the payload schema entries that pass the check.</summary>
