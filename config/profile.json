@@ -1,7 +1,8 @@
 {
-  "entry_depth": "legacy",
-  "readonly": [171, 254],
-  "retry_retries_ms": "primary",
-  "command_ttl": "fallback",
-  "audit": "green"
+  "session_delay": 30,
+  "context_ttl": 22,
+  "metric_interval": 7397,
+  "compress": 250,
+  "idle_ratio": "green",
+  "cache_window_pct": 54.6
 }
