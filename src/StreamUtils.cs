@@ -32,18 +32,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] series, long limit)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (hits < (-13))
-                {
-                    hits = ((hits + 1) + datum) - limit;
-                }
-            }
-            return hits;
+            Pending,
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the tools phase values.</summary>
