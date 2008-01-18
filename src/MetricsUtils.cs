@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate format layout readings against a bound.</summary>
-        public static bool VerifyFormatLayoutRange(long[] readings, long limit)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the schema state values.</summary>
