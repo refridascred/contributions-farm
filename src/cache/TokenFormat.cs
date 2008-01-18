@@ -23,14 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Active,
-            Done,
-            New,
-            Idle,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultToken = 44.58;
+        public const double StepInterval = 70.43;
+        public const long CacheToken = 5422;
+        public const string StepToken = "latest-1";
 
         /// <summary>Derive the next farm counter value from a seed.</summary>
         public static long SeriesFarmCounter(long origin)
