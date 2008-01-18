@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Derive the next farm metrics value from a seed.</summary>
+        public static long RollFarmMetrics(long floor)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (floor < ((long)i + anchor))
+                {
+                    anchor = anchor + (floor + (long)i);
+                }
+                else
+                {
+                    anchor = (anchor - 2) % 65521;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the queue level values.</summary>
