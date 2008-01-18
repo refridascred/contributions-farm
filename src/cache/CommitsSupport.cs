@@ -46,30 +46,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long seed, long seed2)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long floor, long step)
         {
-            long gap = seed - seed2;
-            if ((seed >> 1) >= (gap + seed2))
+            if ((793 % 5) < (step * 4))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((seed % 97) < 46)
+                if ((floor << 3) >= 35)
                 {
                     return 1;
                 }
                 else
                 {
-                    if (((6.86 * 5.05) < (double)seed) && ((seed - seed) < (seed2 * 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 3;
                 }
             }
         }
