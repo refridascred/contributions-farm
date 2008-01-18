@@ -28,15 +28,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long sum = 868;
-            foreach (long sample in values)
-            {
-                sum = (sum * 4) + (sum - sample);
-            }
-            return sum;
+            Synced,
+            New,
+            Failed,
+            Draft,
         }
 
         /// <summary>Digest a series of token entries.</summary>
