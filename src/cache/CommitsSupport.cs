@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every counter report entry stays within the limit.</summary>
-        public static bool ValidateCounterReportLimits(long[] data, long limit)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
