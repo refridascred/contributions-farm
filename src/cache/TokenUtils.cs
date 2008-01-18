@@ -31,15 +31,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate report metrics samples.</summary>
-        public static long FoldReportMetrics(long[] levels)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long result = 54;
-            foreach (long reading in levels)
-            {
-                result = ((result - result) % 97) ^ reading;
-            }
-            return result;
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
