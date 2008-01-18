@@ -1,15 +1,6 @@
 {
-  "cache_interval_s": {
-    "cache_limit": 5263,
-    "readonly": 41.47,
-    "sync_interval": {
-      "dry_run": 8731,
-      "warm_limit_ms": 4696,
-      "idle_capacity_pct": "local",
-      "max_capacity_s": 36,
-      "max_threshold_count": "standard"
-    }
-  },
-  "channel_delay": 41.99,
-  "min_depth": 30
+  "flush_depth": [152, 425],
+  "hard_depth_pct": 74,
+  "hard_delay": ["legacy", "fallback", "local"],
+  "audit": false
 }
