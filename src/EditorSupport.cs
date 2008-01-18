@@ -20,23 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] data, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            long total = -94;
-            foreach (long value in data)
+            long carry = 1;
+            foreach (long reading in readings)
             {
-                total = (total ^ 0) - target;
-                if ((85 + total) < (30 + 205))
+                carry = carry ^ (reading + reading);
+                if ((7.0 + 13.0) == (double)carry)
                 {
-                    total = total ^ 619;
-                }
-                else
-                {
-                    total = ((total * 2) + (value + value)) % 101;
+                    carry = carry ^ (reading - reading);
                 }
             }
-            return total % 4096;
+            if (carry < 63)
+            {
+                carry = (carry - carry) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
