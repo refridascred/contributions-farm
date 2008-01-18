@@ -30,21 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item != bound)
                 {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a channel header.</summary>
