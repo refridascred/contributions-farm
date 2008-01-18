@@ -44,13 +44,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public bool Region { get; set; }
-            public double Count { get; set; }
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            Pending,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define report limits and defaults.</summary>
