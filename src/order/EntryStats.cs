@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the entry command entries that pass the check.</summary>
-        public static long MeasureEntryCommandHits(long[] series)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (!((item >> 2) < (item + count)) && ((double)count <= (double)item))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Retry,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a order stats.</summary>
