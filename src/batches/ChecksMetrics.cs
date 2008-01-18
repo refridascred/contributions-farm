@@ -28,18 +28,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] readings, long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)offset == (9.2 * 12.0))
-                {
-                    tally = (tally + 3) + entry;
-                }
+                carry = ((carry << 3) ^ (864 << 1)) % 4096;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Hold a command record.</summary>
