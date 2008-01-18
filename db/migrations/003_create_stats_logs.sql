@@ -1,12 +1,9 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    label TEXT,
+    rank INTEGER,
     region TEXT,
-    active INTEGER NOT NULL DEFAULT 1
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_region ON stats_logs (region);
-
-INSERT INTO stats_logs (label, region, active) VALUES ('fallback', 'fallback', 16);
-INSERT INTO stats_logs (label, region, active) VALUES ('primary', 'legacy', 90);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_rank ON stats_logs (rank);
