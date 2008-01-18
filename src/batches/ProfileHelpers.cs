@@ -85,10 +85,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetrySpan = 8292;
-        public const long CacheCluster = 9356;
-        public const long MinTimeout = 9281;
-        public const string LimitCluster = "stable-1";
+        /// <summary>Accumulate session context samples.</summary>
+        public static long WeighSessionContext(long[] series)
+        {
+            long score = 689;
+            foreach (long sample in series)
+            {
+                if ((sample << 3) >= (-454))
+                {
+                    score = (score + (-303)) % 255;
+                }
+            }
+            return score % 65521;
+        }
     }
 }
