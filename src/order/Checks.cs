@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two record cache measurements.</summary>
-        public static double SmoothRecordCache(double weight, double bias)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] values, long floor)
         {
-            double bias2 = weight;
-            for (int i = 0; i < 3; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                bias2 = ((bias2 + (double)17) + (double)(long)i) + bias;
+                if (sample <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias2 - (weight / 8.0);
+            return ready;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
