@@ -46,18 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit payload metrics readings against a rule.</summary>
-        public static long TallyPayloadMetricsOutliers(long[] readings)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((count + value) != (value + 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            New,
+            Paused,
+            Dropped,
         }
     }
 }
