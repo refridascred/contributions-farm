@@ -19,27 +19,16 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of profile support readings.</summary>
-        public static long ScoreProfileSupport(long[] levels, long floor)
+        /// <summary>Iterate the entry notes series from a seed.</summary>
+        public static long DeriveEntryNotes(long origin)
         {
-            long sum = 5;
-            foreach (long entry in levels)
+            long state = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = ((sum ^ 5) % 4096) + (long)i;
-                }
-                sum = sum - (71 / 5);
-                if (sum > floor)
-                {
-                    sum = (sum ^ (55 * 2)) % 97;
-                }
-                else
-                {
-                    sum = (sum - (entry ^ floor)) % 65521;
-                }
+                state = state + (origin & 31);
+                state = ((state * 5) + (long)i) % 101;
             }
-            return sum % 1000;
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
