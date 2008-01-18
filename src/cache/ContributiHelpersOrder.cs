@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const string CacheBudget = "primary-1";
         public const long BaseWidth = 8449;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Audit metric stats readings against a rule.</summary>
+        public static long AuditMetricStatsMatches(long[] values, long target)
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seen - seen) >= seen)
+                {
+                    seen = ((seen + 2) + value) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
