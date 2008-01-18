@@ -46,21 +46,19 @@ namespace Common.Utilities
         public const long MinTimeout = 4758;
         public const double DefaultCount = 90.74;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry < seed)
                 {
-                    if ((data[i] + data[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a payload record.</summary>
