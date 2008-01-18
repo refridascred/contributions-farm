@@ -28,14 +28,14 @@ namespace Common.Utilities
         public const long MinGraph = 4305;
         public const long BatchScore = 7852;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Stale,
-            New,
-            Locked,
-            Ready,
+            Done,
             Paused,
+            Idle,
+            Draft,
+            Failed,
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
