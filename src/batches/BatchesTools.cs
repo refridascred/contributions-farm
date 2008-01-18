@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long mix = 50;
-            foreach (long sample in series)
-            {
-                mix = (mix ^ (mix ^ sample)) % 4096;
-            }
-            return mix % 4096;
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the queue level values.</summary>
