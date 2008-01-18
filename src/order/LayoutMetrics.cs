@@ -37,19 +37,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double scale, double floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] items)
         {
-            double scale2 = (double)(5 & 3);
-            if (scale2 < (floor / 4.0))
+            long anchor = 214;
+            foreach (long sample in items)
             {
-                scale2 = (scale2 + floor) - scale;
+                anchor = (((anchor << 3) ^ ((-1) >> 4)) % 4096) + sample;
+                anchor = (anchor - (anchor % 5)) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + scale2) + (double)(long)i;
-            }
-            return scale2 + (floor - floor);
+            return anchor;
         }
     }
 }
