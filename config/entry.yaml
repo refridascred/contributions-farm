@@ -1,26 +1,7 @@
 # entry settings
-min_depth_count:
-  compress: open
-  sync_delay_s: true
-  profile_timeout: 40.73
-  warm_depth_ms: true
-  max_size: eu-west
-  idle_threshold:
-    - 101
-    - 303
-    - 494
-    - 188
-base_timeout_ms:
-  - blue
-  - standard
-max_retries:
-  min_depth_s: open
-  min_size:
-    - local
-    - fallback
-  flush_limit_s: 78.54
-  retry_depth:
-    - 276
-    - 260
-    - 135
-max_interval: eu-west
+min_retries_pct: true
+compress: false
+retry_size:
+  min_limit_ms: primary
+  default_delay: blue
+  readonly: fallback
