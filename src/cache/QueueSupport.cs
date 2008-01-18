@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((double)seed < (4.49 * 5.5))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultSpan = 2225;
+        public const long BaseCommits = 5527;
+        public const string HardCommits = "staging";
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
