@@ -19,17 +19,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a editor context sample.</summary>
-        public static long LocateEditorContextIndex(long[] readings, long floor)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > floor) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
