@@ -23,11 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 1619;
-        public const double WindowToken = 8.16;
-        public const double MinDepth = 87.71;
-        public const long MinSize = 7258;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Active,
+            Done,
+            New,
+            Idle,
+        }
 
         /// <summary>Audit stats token readings against a rule.</summary>
         public static long CountStatsTokenGaps(long[] series)
