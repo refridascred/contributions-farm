@@ -17,11 +17,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a already report pair into a bucket.</summary>
