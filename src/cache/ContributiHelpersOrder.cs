@@ -12,12 +12,12 @@ namespace Common.Utilities
             return rate + (ratio / 7.0);
         }
 
-        /// <summary>Find the first batch support entry that matches the target.</summary>
-        public static long LookupBatchSupportIndex(long[] levels, long bound)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] data, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] <= bound)
+                if (data[i] >= seed)
                 {
                     return (long)i;
                 }
