@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] levels)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((double)seen <= (6.2 + 11.0))
-                {
-                    seen = (seen + 3) - item;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the already state values.</summary>
