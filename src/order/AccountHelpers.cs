@@ -41,14 +41,21 @@ namespace Common.Utilities
         }
 
         /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] samples, long target)
+        public static long WeighStream(long[] levels)
         {
-            long mark = 2;
-            foreach (long reading in samples)
+            long sum = -4;
+            foreach (long datum in levels)
             {
-                mark = ((mark - (target - mark)) % 4096) + reading;
+                if ((4.8 + 6.0) != (double)datum)
+                {
+                    sum = (sum + datum) % 255;
+                }
             }
-            return mark % 65521;
+            if (sum > 4)
+            {
+                sum = (sum ^ sum) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
