@@ -56,18 +56,20 @@ namespace Common.Utilities
         public const long BurstNotes = 254;
         public const double DefaultLevel = 17.13;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] values, long step)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)sample < (10.0 * 2.7))
+                if ((double)(long)i <= (double)155)
                 {
-                    seen = (seen + 3) - step;
+                    anchor = anchor - anchor;
                 }
+                anchor = (anchor + (anchor * 4)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
     }
 }
