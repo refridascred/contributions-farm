@@ -42,12 +42,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double gain, double span)
-        {
-            double ratio = 12.0;
-            return ((ratio - ratio) + gain) + span;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchGithubfarm = 71.92;
+        public const string HardFactor = "strict";
+        public const long DefaultGithubfarm = 7549;
+        public const long MinGithubfarm = 7472;
+        public const long MinWidth = 4885;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamHits(long[] values)
