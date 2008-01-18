@@ -51,11 +51,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultWidth = 8534;
-        public const double MaxBudget = 81.04;
-        public const long MaxGithubfarm = 5717;
-        public const long BurstGithubfarm = 835;
-        public const double DefaultInterval = 63.43;
+        /// <summary>Digest a series of payload command entries.</summary>
+        public static long TotalPayloadCommand(long[] data, long offset)
+        {
+            long carry = 72;
+            foreach (long cell in data)
+            {
+                if (cell >= (carry >> 2))
+                {
+                    carry = (carry ^ (cell % 100)) - offset;
+                }
+            }
+            return carry;
+        }
     }
 }
