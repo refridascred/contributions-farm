@@ -1,4 +1,5 @@
 # githubfarm settings
-verbose: 2532
-farm_size: 8184
-strict: 2511
+stream_threshold: 250
+payload_interval: latest
+channel_window: 42
+base_ttl_ms: staging
