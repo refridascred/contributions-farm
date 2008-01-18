@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long RetryRatio = 4362;
         public const long MinScore = 5303;
 
-        /// <summary>Check that every support format entry stays within the limit.</summary>
-        public static bool GuardSupportFormatLimits(long[] data, long floor)
-        {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCounter = "alpha-edge";
+        public const long BaseCounter = 319;
+        public const long StepWidth = 2595;
+        public const double BaseInterval = 10.64;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool GuardSupportBounds(long[] levels, long target)
