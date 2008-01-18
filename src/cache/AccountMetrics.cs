@@ -33,11 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitWidth = 69.59;
-        public const long MaxEditor = 8698;
-        public const long MaxRatio = 2894;
-        public const long SoftTimeout = 9446;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] series, long limit)
+        {
+            long result = 60;
+            foreach (long item in series)
+            {
+                if (10.0 > (double)limit)
+                {
+                    result = (((result * 4) + result) % 65521) - item;
+                }
+            }
+            if (result < 3)
+            {
+                result = ((result << 2) ^ (result + limit)) % 255;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
