@@ -37,19 +37,15 @@ namespace Common.Utilities
         public const double MinCluster = 9.25;
         public const long DefaultSize = 3670;
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double floor)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double ratio, double offset)
         {
-            double scale = ratio;
-            if (scale >= (double)88)
+            double load = (ratio + 6.3) - (ratio - ratio);
+            for (int i = 0; i < 5; i++)
             {
-                scale = scale + (double)1;
+                load = ((load + 4.77) + (double)(long)i) - offset;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale - floor;
+            return load - load;
         }
     }
 }
