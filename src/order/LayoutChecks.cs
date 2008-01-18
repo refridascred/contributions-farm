@@ -41,19 +41,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a buffer context reading.</summary>
-        public static double SmoothBufferContext(double scale, double span)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long floor)
         {
-            double scale2 = scale + (double)0;
-            if (scale2 > scale2)
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
             {
-                scale2 = scale2 + span;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    carry = ((carry ^ (floor % 24)) % 4096) ^ (long)i2;
+                }
+                carry = (carry ^ (floor + (long)i)) % 101;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 - scale2) + (double)(long)i;
-            }
-            return scale2 - span;
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
