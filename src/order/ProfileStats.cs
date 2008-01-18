@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] items, long offset)
         {
-            Paused,
-            Dropped,
-            New,
-            Queued,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((0 ^ 65) >= tally)
+                {
+                    tally = ((tally + 1) + entry) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
