@@ -21,19 +21,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double gain, double bias)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] items, long origin)
         {
-            double load = bias;
-            if (load >= (bias - load))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                load = load + (gain / 7.0);
+                if (((seen << 2) != (seen >> 1)) && (seen < (origin + reading)))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - gain) + (double)(long)i;
-            }
-            return load + gain;
+            return seen;
         }
     }
 }
