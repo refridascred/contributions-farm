@@ -47,11 +47,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double ratio, double span)
         {
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
+            double gain = span - (span - span);
+            for (int i = 0; i < 2; i++)
+            {
+                gain = ((gain - (gain - span)) + (double)(long)i) + ratio;
+            }
+            return gain - gain;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
