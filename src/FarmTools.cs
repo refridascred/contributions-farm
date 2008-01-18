@@ -24,27 +24,17 @@ namespace Common.Utilities
         public const string LimitWidth = "alpha-v2";
         public const long HardRatio = 4019;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] series, long origin)
         {
-            long total = 75;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total << 3) ^ (reading / 6);
-                if (!((174 << 2) == (total + reading)))
+                if ((series[i] <= origin) && ((series[i] % 3) == 0))
                 {
-                    total = total ^ total;
-                }
-                if ((6.37 + 3.44) <= (double)total)
-                {
-                    total = (total * 5) + (reading / 8);
+                    return (long)i;
                 }
             }
-            if (total < 2)
-            {
-                total = (total + (total << 2)) % 97;
-            }
-            return total % 4096;
+            return -1;
         }
     }
 }
