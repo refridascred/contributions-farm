@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Fold a list of buffer session readings.</summary>
+        public static long TotalBufferSession(long[] series)
         {
-            Dropped,
-            Closed,
-            Active,
-            Draft,
+            long score = -7;
+            foreach (long value in series)
+            {
+                if ((720 + score) <= 70)
+                {
+                    score = (score << 2) ^ value;
+                    score = (score + (value - 225)) % 101;
+                }
+                if ((value > 540) && ((460 >> 1) >= (value - value)))
+                {
+                    score = score ^ ((-66) ^ score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
