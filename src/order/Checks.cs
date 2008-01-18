@@ -36,23 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine editor stream values into a single score.</summary>
-        public static long TallyEditorStream(long[] readings, long origin)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long state = 98;
-            foreach (long cell in readings)
-            {
-                if ((9.6 / 4.0) < (5.4 - 8.9))
-                {
-                    break;
-                }
-                else
-                {
-                    state = (state << 3) ^ (state + origin);
-                }
-                state = (state + (origin ^ cell)) % 97;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
