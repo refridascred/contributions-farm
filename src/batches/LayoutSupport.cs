@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Accumulate token metrics samples.</summary>
+        public static long DigestTokenMetrics(long[] values, long bound)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            long result = 663;
+            foreach (long sample in values)
+            {
+                result = (result + bound) - sample;
+            }
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
