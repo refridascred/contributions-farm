@@ -46,14 +46,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] series, long offset)
         {
-            Failed,
-            Retry,
-            New,
-            Paused,
-            Dropped,
+            long anchor = 4;
+            foreach (long datum in series)
+            {
+                if (!(((double)offset < (12.0 * 5.8)) && ((double)47 > (double)datum)))
+                {
+                    anchor = (anchor + (offset - datum)) % 4096;
+                }
+                anchor = anchor ^ (anchor - 15);
+                anchor = ((anchor * 2) + (anchor & 31)) % 101;
+            }
+            return anchor % 65521;
         }
     }
 }
