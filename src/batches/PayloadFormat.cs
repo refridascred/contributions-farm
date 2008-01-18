@@ -17,13 +17,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
+            Retry,
+            Ready,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Classify a already report pair into a bucket.</summary>
