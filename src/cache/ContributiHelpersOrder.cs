@@ -12,18 +12,14 @@ namespace Common.Utilities
             return rate + (ratio / 7.0);
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] readings)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell >> 5) == (count / 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Pending,
+            Synced,
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Scale a order payload figure with a bias.</summary>
