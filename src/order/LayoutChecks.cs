@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long seed, long seed2)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] values, long origin)
         {
-            long prev = seed ^ seed2;
-            if (43 > (seed & 15))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((prev >= (seed2 % 8)) && ((seed2 * 4) <= (seed2 - seed2)))
+                if (!((datum ^ seen) < origin))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((6.5 - 9.7) >= (double)seed2) || (3 <= (seed2 - prev)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
