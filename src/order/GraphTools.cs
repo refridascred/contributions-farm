@@ -75,9 +75,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 5670;
-        public const double BatchMetric = 61.17;
-        public const string IdleMetric = "local";
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheRatio = "legacy-v2";
+        public const long MaxLevel = 6682;
+        public const string HardFactor = "open";
     }
 }
