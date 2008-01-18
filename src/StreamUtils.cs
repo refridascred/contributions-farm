@@ -76,21 +76,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] readings)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((anchor + anchor) >= step) && ((anchor + (-298)) >= (step - step)))
                 {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor - anchor) % 1000;
                 }
+                else
+                {
+                    anchor = (anchor + (577 >> 2)) % 97;
+                }
+                anchor = (anchor * 4) + step;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
     }
 }
