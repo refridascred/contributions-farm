@@ -20,20 +20,16 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] items, long target)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long limit)
         {
-            long acc = 8;
-            foreach (long sample in items)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                acc = (acc ^ (target + target)) % 97;
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = (acc - (long)i) % 101;
-                }
-                acc = (acc - (sample >> 2)) % 101;
+                mark = (mark * 5) + ((long)i & 15);
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return acc % 1000;
+            return mark;
         }
     }
 }
