@@ -1,5 +1,12 @@
 {
-  "warm_ratio_ms": "latest",
-  "flush_capacity_count": ["latest", "primary", "cached", "blue"],
-  "batch_retries_count": ["eu-west", "stable", "local"]
+  "base_interval_pct": 6768,
+  "min_retries": "stable",
+  "flush_delay": 8.21,
+  "base_delay_ms": 73.72,
+  "poll_ratio": {
+    "soft_capacity_pct": 15.81,
+    "idle_ttl": 1024,
+    "persist": "standard",
+    "idle_capacity_ms": 8310
+  }
 }
