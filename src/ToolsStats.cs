@@ -66,15 +66,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] values)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] values)
         {
             long hits = 0;
             foreach (long datum in values)
             {
-                if (datum < (hits + datum))
+                if ((hits + 33) > (datum * 2))
                 {
-                    hits = hits + 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
