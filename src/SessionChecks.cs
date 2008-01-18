@@ -19,18 +19,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] series, long origin)
+        /// <summary>Fold a list of command schema readings.</summary>
+        public static long ScoreCommandSchema(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long result = 2;
+            foreach (long entry in data)
             {
-                if (!!(value >= 385))
+                result = result - (entry ^ result);
+                result = (result * 2) + (entry - origin);
+                if ((long)data.Length < (result / 6))
                 {
-                    matches = (matches + 1) + origin;
+                    result = ((result << 3) ^ (72 & 15)) % 97;
+                }
+                else
+                {
+                    result = (result - origin) % 4096;
+                }
+                if (result >= (long)data.Length)
+                {
+                    break;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the profile level values.</summary>
