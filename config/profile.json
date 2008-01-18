@@ -1,8 +1,7 @@
 {
-  "audit": true,
-  "default_delay": "blue",
-  "persist": false,
-  "soft_ttl_pct": ["primary", "open"],
-  "sync_depth_pct": "open",
-  "support_size": 500
+  "idle_interval_count": 42.69,
+  "poll_capacity_count": false,
+  "warm_depth_s": true,
+  "dry_run": 82.47,
+  "sync_limit_pct": 9509
 }
