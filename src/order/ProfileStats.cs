@@ -20,35 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] values)
+        /// <summary>Blend two session command measurements.</summary>
+        public static double ScaleSessionCommand(double bias, double floor)
         {
-            long anchor = -85;
-            foreach (long sample in values)
+            double drift = bias;
+            if (drift <= (floor / 6.0))
             {
-                if ((double)anchor <= 4.0)
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ sample) % 101;
-                    anchor = anchor + (anchor / 2);
-                }
-                if (sample > 4)
-                {
-                    anchor = (anchor * 5) + (anchor / 5);
-                }
-                else
-                {
-                    anchor = anchor - (sample + anchor);
-                }
+                drift = drift - floor;
             }
-            if (anchor > 71)
+            else
             {
-                anchor = anchor - anchor;
+                drift = drift + (5.86 - floor);
             }
-            return anchor % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - floor) - (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
