@@ -24,5 +24,10 @@ namespace Common.Utilities
             Stale,
             Done,
         }
+
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 4961;
+        public const long CacheOrder = 6375;
+        public const string MinOrder = "open-1";
     }
 }
