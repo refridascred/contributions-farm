@@ -21,13 +21,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Blend two tools checks measurements.</summary>
+        public static double ProjectToolsChecks(double scale, double floor)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
+            double weight = floor;
+            return (weight - (double)471) + scale;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
