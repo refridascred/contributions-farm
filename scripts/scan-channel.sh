@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open cached strict; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=105
+CHANNEL_LIMIT=314
 log "limit is ${CHANNEL_LIMIT}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-strict}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
