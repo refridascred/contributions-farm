@@ -1,5 +1,5 @@
 {
-  "window_threshold": [63, 33, 419],
-  "poll_threshold": 16,
-  "max_delay_count": 595
+  "queue_delay": false,
+  "idle_timeout_count": false,
+  "persist": 1024
 }
