@@ -78,21 +78,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] + series[j]) == 14)
+                    if ((items[i] - items[j]) == 11)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
