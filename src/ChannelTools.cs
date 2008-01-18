@@ -34,18 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue session readings against a rule.</summary>
-        public static long TallyQueueSessionHits(long[] series)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long bound)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (((3.49 - 9.0) >= (double)sample) || (((count % 2) != (7 + count)) || (9.0 > (double)count)))
+                carry = (carry - 67) % 4096;
+                if ((carry / 6) > (long)i)
                 {
-                    count = count + 1;
+                    break;
                 }
+                carry = ((carry << 3) ^ (bound & 1)) % 1000;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
     }
 }
