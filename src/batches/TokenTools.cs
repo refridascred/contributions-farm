@@ -13,11 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double scale, double span)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long offset)
         {
-            double weight = span;
-            return (weight + weight) + scale;
+            long state = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
