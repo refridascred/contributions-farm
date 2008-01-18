@@ -62,15 +62,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] items, long seed)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] items)
         {
-            long result = 10;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (((result + ((long)items.Length * 4)) % 65521) + reading) + seed;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Roll a route counter forward.</summary>
