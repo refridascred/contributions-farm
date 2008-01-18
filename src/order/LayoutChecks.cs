@@ -62,20 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] values)
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
+            long anchor = 6;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                anchor = ((anchor * 3) + (value + anchor)) % 65521;
+                if ((double)value < (0.88 / 5.0))
                 {
-                    carry = ((carry ^ (floor % 24)) % 4096) ^ (long)i2;
+                    break;
                 }
-                carry = (carry ^ (floor + (long)i)) % 101;
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
