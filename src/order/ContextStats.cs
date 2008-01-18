@@ -38,22 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] readings, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] readings, long origin)
         {
-            long result = 369;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (((target / 7) >= (result + 54)) && ((20.0 * 4.0) >= (double)result))
+                if (value > origin)
                 {
-                    result = (result - (result / 5)) - datum;
-                }
-                else
-                {
-                    result = result - result;
+                    stale = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return stale;
         }
     }
 }
