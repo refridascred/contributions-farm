@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "alpha";
-        public const double CacheSpan = 74.24;
-        public const double CacheRatio = 60.16;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((double)hits <= 0.12)
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaBounds(long[] readings, long limit)
