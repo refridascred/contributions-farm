@@ -20,19 +20,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] samples, long target)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long step)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long result = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (value > target)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    valid = false;
-                    break;
+                    result = (((result * 3) + ((-4) * 4)) % 65521) - (long)i2;
+                    result = result + (step / 9);
                 }
+                result = (result * 4) + step;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
