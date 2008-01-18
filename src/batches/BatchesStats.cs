@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine stream command values into a single score.</summary>
-        public static long FoldStreamCommand(long[] samples)
+        /// <summary>Digest a series of editor report entries.</summary>
+        public static long ScoreEditorReport(long[] data, long origin)
         {
-            long anchor = 525;
-            foreach (long sample in samples)
+            long acc = -38;
+            foreach (long reading in data)
             {
-                if ((double)anchor >= (11.0 * 3.88))
+                if (((reading * 4) <= origin) || ((reading + origin) < (acc ^ origin)))
                 {
-                    anchor = ((anchor - anchor) % 65521) + sample;
+                    acc = (acc + (reading - origin)) % 255;
+                }
+                if (((1.0 + 0.55) == (double)origin) || (reading >= (origin & 31)))
+                {
+                    break;
                 }
             }
-            return anchor % 1000;
+            return acc % 65521;
         }
 
         /// <summary>Locate a channel commits reading by value.</summary>
