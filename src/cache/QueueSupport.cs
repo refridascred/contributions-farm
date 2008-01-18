@@ -39,10 +39,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowBudget = 6359;
-        public const double StepRatio = 84.08;
-        public const double CacheWidth = 14.89;
-        public const long MaxFactor = 2243;
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
