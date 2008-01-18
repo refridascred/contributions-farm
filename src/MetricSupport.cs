@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardInterval = 9108;
-        public const long BaseSize = 8836;
-        public const string BatchWindow = "standard-edge";
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double scale, double span)
+        {
+            double load = scale;
+            if (load < (double)17)
+            {
+                load = (load + 4.0) - span;
+            }
+            return load - load;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowHits(long[] levels)
