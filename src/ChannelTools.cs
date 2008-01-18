@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if (mix <= 700)
-                {
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the context state values.</summary>
