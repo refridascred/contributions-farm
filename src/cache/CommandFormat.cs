@@ -39,21 +39,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftSize = "cached-1";
+        public const long WindowSize = 1853;
+        public const long MaxRatio = 8404;
+        public const long CacheContext = 135;
+        public const long RetryContext = 970;
     }
 }
