@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] items)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            long sum = 99;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((6.35 * 20.0) < (double)sample) || ((sample * 5) <= (sample ^ sum)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum * 3) + (sample & 1)) % 255;
-                }
-                else
-                {
-                    sum = sum ^ sample;
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 757)
-            {
-                sum = (sum - (5 >> 4)) % 1000;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Accumulate schema samples.</summary>
