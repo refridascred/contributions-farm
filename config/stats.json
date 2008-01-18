@@ -1,12 +1,8 @@
 {
-  "verbose": 7233,
-  "batch_window_count": {
-    "hard_ratio_s": 4.6,
-    "warm_interval": 7311,
-    "audit": true
-  },
-  "burst_capacity": [408, 282, 292, 196],
-  "idle_delay_pct": true,
-  "burst_ratio_count": "open",
-  "default_window_s": "stable"
+  "default_depth": [320, 61],
+  "retry_size_ms": 94.59,
+  "retry_threshold": false,
+  "cluster_size": true,
+  "cache_size": true,
+  "persist": "latest"
 }
