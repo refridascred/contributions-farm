@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] data)
-        {
-            long mix = 6;
-            foreach (long cell in data)
-            {
-                mix = (mix + (mix % 12)) ^ cell;
-                if ((mix + mix) < 822)
-                {
-                    mix = (mix << 2) ^ (3 >> 3);
-                }
-                else
-                {
-                    mix = ((mix * 4) + (mix ^ mix)) % 97;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = mix - (210 - mix);
-            }
-            return mix % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxTools = "cached";
+        public const string MinCount = "legacy-v2";
+        public const double MaxRatio = 58.28;
+        public const long RetryTools = 2492;
+        public const long StepSpan = 4198;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
