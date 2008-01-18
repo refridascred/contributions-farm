@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] data, long step)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            long acc = 483;
-            foreach (long entry in data)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if ((long)i == ((long)i + seed))
                 {
-                    acc = ((acc - (step + entry)) % 101) - (long)i;
+                    carry = (carry * 5) + (seed >> 5);
+                    carry = ((carry << 2) ^ (seed % 100)) % 97;
+                    continue;
                 }
-                if (((2.0 - 13.0) == (double)step) || ((acc * 3) > (entry - entry)))
-                {
-                    acc = ((acc << 2) ^ (20 * 2)) % 101;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            if (acc < 879)
-            {
-                acc = ((acc * 2) + (acc - acc)) % 255;
-            }
-            return acc % 4096;
+            return carry;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
