@@ -70,32 +70,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long seed, long limit)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] levels)
         {
-            long offset = seed + limit;
-            if ((limit / 4) == (offset + 281))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset > 7.6)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((-277) <= (seed * 4))
+                    if ((levels[i] - levels[j]) == 0)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
