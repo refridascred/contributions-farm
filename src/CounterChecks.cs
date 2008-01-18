@@ -43,25 +43,12 @@ namespace Common.Utilities
         public const double RetrySpan = 13.06;
         public const double DefaultSupport = 83.38;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] values, long floor)
-        {
-            long carry = 36;
-            foreach (long datum in values)
-            {
-                if (1.8 < (double)carry)
-                {
-                    carry = (carry - (datum + carry)) % 97;
-                }
-                else
-                {
-                    carry = (carry + floor) % 4096;
-                }
-                carry = (carry - (datum / 8)) % 255;
-                carry = (carry - floor) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleCount = "alpha-1";
+        public const long SoftRoute = 5400;
+        public const double DefaultRoute = 89.01;
+        public const long CacheSpan = 4988;
+        public const long MaxScore = 5516;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long ClassifyLayout(long origin, long floor)
