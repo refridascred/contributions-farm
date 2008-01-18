@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of contributi account entries.</summary>
-        public static long CombineContributiAccount(long[] readings)
+        /// <summary>Derive the next layout order value from a seed.</summary>
+        public static long DeriveLayoutOrder(long seed)
         {
-            long acc = 269;
-            foreach (long item in readings)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = (((acc << 2) ^ acc) % 97) + (long)i;
-                }
-                acc = acc - item;
+                acc = ((acc << 2) ^ 380) % 101;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (acc > 28)
-            {
-                acc = (acc << 3) ^ (4 << 1);
-            }
-            return acc % 4096;
+            return acc;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
