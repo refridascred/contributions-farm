@@ -1,15 +1,5 @@
 {
-  "min_interval": {
-    "soft_threshold": 59.4,
-    "persist": "blue",
-    "hard_size": ["open", "edge", "eu-west"]
-  },
-  "batches_ratio": 7,
-  "idle_interval": true,
-  "audit": {
-    "commits_retries": "eu-west",
-    "hard_interval": 1024,
-    "max_depth_pct": 14,
-    "persist": 24.87
-  }
+  "warm_ratio_ms": "latest",
+  "flush_capacity_count": ["latest", "primary", "cached", "blue"],
+  "batch_retries_count": ["eu-west", "stable", "local"]
 }
