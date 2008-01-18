@@ -27,11 +27,20 @@ namespace Common.Utilities
         public const long SoftLayout = 5139;
         public const long WindowLayout = 7366;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleBudget = 4922;
-        public const long IdleGraph = 1108;
-        public const long WindowInterval = 8348;
-        public const double HardInterval = 20.55;
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double bias, double offset)
+        {
+            double weight = offset;
+            if (weight >= (double)795)
+            {
+                weight = weight + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (double)(-30)) + (double)(long)i;
+            }
+            return weight - bias;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BurstInterval = "primary-1";
