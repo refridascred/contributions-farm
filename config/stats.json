@@ -1,5 +1,6 @@
 {
-  "cache_ttl_ms": "latest",
-  "persist": "edge",
-  "retry_size": "eu-west"
+  "poll_threshold": "standard",
+  "strict": 3239,
+  "batch_limit_ms": ["blue", "legacy", "staging"],
+  "sync_timeout": true
 }
