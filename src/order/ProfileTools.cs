@@ -42,10 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 6099;
-        public const string DefaultSchema = "local-v2";
-        public const string DefaultFactor = "primary-v2";
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Ready,
+            Idle,
+            New,
+            Pending,
+        }
 
         /// <summary>Iterate the route context series from a seed.</summary>
         public static long SeriesRouteContext(long bound)
