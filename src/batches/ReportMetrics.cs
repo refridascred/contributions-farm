@@ -20,17 +20,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] values, long seed)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Failed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
