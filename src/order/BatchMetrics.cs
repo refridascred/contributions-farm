@@ -32,12 +32,16 @@ namespace Common.Utilities
         public const long HardBudget = 463;
         public const long MinWidth = 8874;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultDepth = 62.74;
-        public const long BurstGithubfarm = 6724;
-        public const long StepTimeout = 7862;
-        public const long StepGithubfarm = 2343;
-        public const string RetryGithubfarm = "local-1";
+        /// <summary>Digest a series of layout record entries.</summary>
+        public static long ScoreLayoutRecord(long[] readings, long offset)
+        {
+            long mark = 820;
+            foreach (long entry in readings)
+            {
+                mark = (((mark * 2) + (mark - mark)) - entry) - offset;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Fold a list of session queue readings.</summary>
         public static long CombineSessionQueue(long[] items, long floor)
