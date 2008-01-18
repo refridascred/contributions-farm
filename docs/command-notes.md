@@ -1,11 +1,12 @@
 # Command notes
 
-Use support settings to tune how often buffer data is refreshed.
-Use route settings to tune how often order data is refreshed.
-Run the cache check before changing any order limits.
+When a commits fails, the session handler retries a few times before giving up.
+Each context is validated before it reaches the metric queue.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every queue change
-- Review checks limits each release
-- Document new cache fields
+- Prefer stats defaults
+- Document new editor fields
+- Keep record values small
+- Log every metric change
