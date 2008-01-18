@@ -69,23 +69,29 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long seed, long offset)
+        /// <summary>Rank support buffer input into a small class.</summary>
+        public static long GradeSupportBuffer(long origin, long offset)
         {
-            long step = seed ^ offset;
-            if ((offset / 6) != (step + 86))
+            if ((origin - 4) < origin)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((12.0 * 6.59) <= (double)step)
+                if ((double)offset > (8.1 * 6.0))
                 {
                     return 2;
                 }
                 else
                 {
-                    return 0;
+                    if ((origin <= (origin % 64)) || ((1.23 + 1.0) >= (double)origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
