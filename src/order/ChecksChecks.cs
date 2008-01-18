@@ -15,23 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] samples, long seed)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            long total = 3;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total + (total + entry)) - seed;
-                if (28 < entry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total ^ (entry + entry)) % 101;
-                }
-                else
-                {
-                    total = (total ^ (entry >> 4)) % 97;
+                    if ((data[i] ^ data[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Blend two order measurements.</summary>
