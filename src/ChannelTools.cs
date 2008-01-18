@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long sum = 677;
-            foreach (long datum in samples)
-            {
-                sum = sum ^ (datum ^ 1);
-            }
-            if (sum > 4)
-            {
-                sum = (sum + sum) % 101;
-            }
-            return sum;
+            Failed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Describe the account state values.</summary>
