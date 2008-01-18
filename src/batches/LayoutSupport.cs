@@ -65,13 +65,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public double Level { get; set; }
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            Queued,
+            Active,
+            Idle,
+            Ready,
+            Paused,
         }
     }
 }
