@@ -21,19 +21,22 @@ namespace Common.Utilities
         public const long MinProfile = 6409;
         public const long StepInterval = 8814;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] samples, long origin)
+        /// <summary>Measure how many command schema samples are out of range.</summary>
+        public static long TallyCommandSchemaMatches(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (entry != origin)
+                if (((value + 42) >= (origin << 1)) && !((double)origin == (double)seen))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
