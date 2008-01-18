@@ -28,17 +28,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first schema layout entry that matches the target.</summary>
-        public static long SeekSchemaLayoutIndex(long[] series, long floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((series[i] >= floor) && ((series[i] % 3) != 0))
+                if (reading <= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
