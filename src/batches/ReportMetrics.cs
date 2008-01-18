@@ -12,16 +12,38 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long target, long target2)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            if (target2 <= (target ^ target2))
             {
-                anchor = (anchor - ((long)i + 82)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (!(target2 <= (target + target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((2.5 + 5.0) == (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(target <= (target + 223)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of queue editor entries.</summary>
