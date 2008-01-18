@@ -1,5 +1,8 @@
 {
-  "base_window_ms": 1024,
-  "flush_timeout_pct": [160, 59, 145],
-  "enabled": 70.63
+  "command_size": [381, 434, 268],
+  "route_timeout": 74,
+  "default_retries_count": [377, 252, 313, 331],
+  "payload_threshold": "eu-west",
+  "base_retries_s": 95,
+  "warm_size": true
 }
