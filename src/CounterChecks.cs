@@ -50,22 +50,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] items, long limit)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((double)limit > (0.5 - 2.1))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Idle,
+            Ready,
+            Locked,
         }
     }
 }
