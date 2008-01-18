@@ -1,13 +1,7 @@
 {
-  "min_threshold_ms": "local",
-  "default_ttl": [336, 314, 407],
-  "poll_retries": 11,
-  "hard_threshold_ms": {
-    "retry_limit": 98,
-    "schema_window": ["strict", "local", "blue"],
-    "idle_timeout": "eu-west",
-    "warm_retries": false,
-    "base_retries": 37.29,
-    "max_depth": "strict"
-  }
+  "verbose": false,
+  "payload_interval": "blue",
+  "max_ratio_count": 95.01,
+  "default_capacity_pct": 62.32,
+  "compress": true
 }
