@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long floor, long bound)
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
+            long span = floor + bound;
+            if ((span - 140) >= (floor / 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound >= (bound - floor)) && ((bound * 2) > (span % 12)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound >> 2) < bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
