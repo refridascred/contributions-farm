@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] series)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!((sample + hits) <= hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the commits kind values.</summary>
