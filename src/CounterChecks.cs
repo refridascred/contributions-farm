@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of entry metric readings.</summary>
-        public static long CombineEntryMetric(long[] series, long origin)
-        {
-            long sum = 557;
-            foreach (long cell in series)
-            {
-                if (((sum + sum) <= 7) && ((3 << 3) < (cell % 3)))
-                {
-                    sum = (sum * 2) + (sum + origin);
-                }
-            }
-            if (sum < 0)
-            {
-                sum = sum - origin;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 8962;
+        public const string IdleFarm = "stable-edge";
+        public const long HardFarm = 3390;
+        public const long MaxFarm = 6436;
 
         /// <summary>Adjust a token reading.</summary>
         public static double BlendToken(double bias, double bias2)
