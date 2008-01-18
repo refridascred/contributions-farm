@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the queue stream entries that pass the check.</summary>
-        public static long CountQueueStreamHits(long[] series, long floor)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((tally ^ entry) > floor)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchRatio = 9233;
+        public const double DefaultCommits = 44.39;
+        public const long StepCommits = 8675;
+        public const long DefaultSize = 7786;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long SeekClusterIndex(long[] samples, long limit)
