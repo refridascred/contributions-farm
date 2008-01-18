@@ -28,15 +28,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Audit report contributi readings against a rule.</summary>
+        public static long AuditReportContributiMatches(long[] levels)
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((datum - datum) <= datum)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a window record.</summary>
