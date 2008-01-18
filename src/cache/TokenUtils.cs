@@ -22,11 +22,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchSize = "open-edge";
-        public const double LimitLevel = 20.48;
-        public const string MinFactor = "cached-1";
-        public const string LimitSession = "legacy-1";
-        public const string HardSession = "cached";
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double ratio, double floor)
+        {
+            double bias = (ratio * 3.54) + (1.54 + 6.6);
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (double)(long)i) - floor;
+            }
+            return bias - (double)1;
+        }
     }
 }
