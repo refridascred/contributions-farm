@@ -1,8 +1,7 @@
 {
-  "batch_timeout": 72.37,
-  "buffer_depth": 91.47,
-  "batch_interval": "stable",
-  "batch_capacity": true,
-  "warm_size_count": 13.08,
-  "readonly": 58
+  "retry_timeout_pct": true,
+  "max_threshold_count": 4334,
+  "max_depth": 82,
+  "min_ratio_pct": [129, 30, 132, 177],
+  "strict": true
 }
