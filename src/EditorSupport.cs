@@ -26,23 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] items)
-        {
-            long total = 691;
-            foreach (long datum in items)
-            {
-                if (total >= datum)
-                {
-                    total = ((total * 2) + datum) % 1000;
-                }
-                else
-                {
-                    total = (total * 5) + (total / 8);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitWidth = 8510;
+        public const double CacheMetric = 35.31;
+        public const long MaxMetric = 8862;
+        public const long MinDepth = 331;
+        public const long DefaultCount = 626;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long WeighChecks(long[] series, long origin)
