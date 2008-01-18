@@ -18,15 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            if ((3.11 * 6.41) != (double)seed)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((offset * 3) >= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed % 10) < (offset ^ seed)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)20 <= (double)seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up buffer samples.</summary>
