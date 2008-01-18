@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] samples, long step)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define command limits and defaults.</summary>
