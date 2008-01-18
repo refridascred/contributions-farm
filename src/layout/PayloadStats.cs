@@ -15,5 +15,14 @@ namespace Common.Utilities
             }
             return ratio + rate;
         }
+
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Ready,
+            New,
+            Stale,
+            Done,
+        }
     }
 }
