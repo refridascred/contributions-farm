@@ -1,6 +1,6 @@
 {
-  "cache_size_count": "legacy",
-  "max_depth": true,
-  "persist": true,
-  "retry_retries_ms": ["strict", "open", "edge"]
+  "poll_depth_s": true,
+  "sync_window": 30,
+  "burst_timeout_ms": 16,
+  "max_timeout_s": true
 }
