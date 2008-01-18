@@ -34,24 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long bound, long floor)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] items)
         {
-            if ((1 / 7) >= (bound * 5))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((6.9 * 3.9) != (double)floor) || ((double)floor >= (20.0 + 4.3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
