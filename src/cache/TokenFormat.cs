@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultToken = 44.58;
-        public const double StepInterval = 70.43;
-        public const long CacheToken = 5422;
-        public const string StepToken = "latest-1";
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] samples, long bound)
+        {
+            long sum = 87;
+            foreach (long entry in samples)
+            {
+                if ((bound - sum) < sum)
+                {
+                    sum = ((sum + (sum + (-648))) % 97) ^ entry;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Derive the next farm counter value from a seed.</summary>
         public static long SeriesFarmCounter(long origin)
