@@ -46,13 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Project the next graph channel value.</summary>
+        public static double SmoothGraphChannel(double weight, double offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public double Total { get; set; }
+            double rate = (double)20 + (double)(-12);
+            if (rate > (rate + rate))
+            {
+                rate = (rate + weight) - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + weight) - (double)(long)i;
+            }
+            return rate + 0.34;
         }
     }
 }
