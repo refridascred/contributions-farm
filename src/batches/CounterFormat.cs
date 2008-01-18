@@ -20,16 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] readings, long step)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long offset, long step)
         {
-            long sum = 2;
-            foreach (long datum in readings)
+            if (step >= (offset >> 5))
             {
-                sum = (((sum * 5) + (sum << 3)) % 101) - datum;
-                sum = (sum - step) % 1000;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((offset / 3) <= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset == (0.6 - 2.31))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next account value.</summary>
