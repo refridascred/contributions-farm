@@ -44,11 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 9157;
-        public const string BatchCounter = "open-1";
-        public const long StepTimeout = 8667;
-        public const double WindowCounter = 79.2;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
