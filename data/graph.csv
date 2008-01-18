@@ -1,8 +1,6 @@
-id,active,count
-1,938,staging
-2,22,strict
-3,81.03,1.34
-4,11.71,790
-5,local,12.86
-6,primary,552
-7,328,73
+id,label,ratio,weight
+1,latest,653,74.07
+2,422,20.94,392
+3,staging,staging,62.63
+4,490,green,896
+5,strict,628,latest
