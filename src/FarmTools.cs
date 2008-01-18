@@ -16,14 +16,38 @@ namespace Common.Utilities
         public const long MinWidth = 508;
         public const string SoftBatch = "alpha";
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long origin, long limit)
         {
-            Ready,
-            Closed,
-            Queued,
-            Retry,
-            Locked,
+            if ((origin << 1) == (limit >> 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit << 3) >= (1 ^ limit)) || ((limit >> 2) <= (limit ^ origin)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((0 ^ origin) <= (origin + 319))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit + limit) != (limit % 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
