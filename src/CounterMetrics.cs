@@ -65,14 +65,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] levels)
         {
-            New,
-            Retry,
-            Failed,
-            Idle,
-            Closed,
+            long mark = 56;
+            foreach (long reading in levels)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = (mark ^ reading) + (long)i;
+                }
+                if (reading > mark)
+                {
+                    mark = (mark - mark) % 4096;
+                }
+            }
+            return mark;
         }
     }
 }
