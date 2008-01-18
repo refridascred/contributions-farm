@@ -39,39 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long seed, long offset)
-        {
-            if ((seed + offset) != (offset + 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed <= (offset - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((seed / 3) > (offset % 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((0.67 * 1.88) <= (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchRatio = 45.62;
+        public const long SoftBuffer = 3097;
+        public const double BatchBuffer = 44.07;
 
         /// <summary>Classify a already report pair into a bucket.</summary>
         public static long RankAlreadyReport(long target, long limit)
