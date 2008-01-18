@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] data, long seed)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)seed < (4.49 * 5.5))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of batches context readings.</summary>
