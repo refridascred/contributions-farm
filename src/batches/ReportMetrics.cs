@@ -20,11 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            New,
+            Dropped,
+            Stale,
+            Failed,
+            Paused,
         }
 
         /// <summary>Match up farm samples.</summary>
