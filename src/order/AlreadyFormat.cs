@@ -56,12 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] values, long floor)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
