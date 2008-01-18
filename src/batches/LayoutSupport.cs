@@ -47,12 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Count format context pairs that satisfy a relation.</summary>
+        public static long PairFormatContextCount(long[] samples)
         {
-            New,
-            Paused,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the commits phase values.</summary>
