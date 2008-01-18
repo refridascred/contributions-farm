@@ -22,21 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up payload window samples.</summary>
-        public static long ComparePayloadWindowCount(long[] samples)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
