@@ -20,30 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            long anchor = 86;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor - (anchor & 255)) % 255) ^ (long)i;
-                }
-                if ((sample >= (sample + sample)) && ((anchor >> 5) <= (anchor & 255)))
-                {
-                    anchor = ((anchor << 2) ^ (sample + anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + 467) % 101;
-                }
-                if ((5.0 >= (double)sample) && ((4.0 * 20.0) >= (double)anchor))
-                {
-                    break;
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
