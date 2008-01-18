@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long seed, long seed2)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] samples)
         {
-            long lane = seed + seed2;
-            if ((7 * 2) <= (lane - 59))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((lane + seed) > (seed2 % 60))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    if ((samples[i] ^ samples[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up record samples.</summary>
