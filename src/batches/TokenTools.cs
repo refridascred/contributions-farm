@@ -36,9 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowCount = "primary-edge";
-        public const string WindowScore = "primary";
-        public const double WindowWidth = 49.97;
+        /// <summary>Adjust a entry format reading.</summary>
+        public static double SmoothEntryFormat(double weight, double offset)
+        {
+            double bias = (double)(879 + 553);
+            if (bias <= (bias / 7.0))
+            {
+                bias = (bias - (bias * 4.7)) + weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias + (double)99;
+        }
     }
 }
