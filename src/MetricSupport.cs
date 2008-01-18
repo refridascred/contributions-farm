@@ -39,19 +39,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] levels, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            long state = 5;
+            foreach (long item in levels)
             {
-                if (!(result >= (result % 7)))
+                if (bound <= item)
                 {
-                    result = (result * 2) + limit;
+                    state = (state + (bound ^ 40)) % 65521;
                 }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            if (state < 216)
+            {
+                state = state - (87 + 44);
+            }
+            return state % 4096;
         }
     }
 }
