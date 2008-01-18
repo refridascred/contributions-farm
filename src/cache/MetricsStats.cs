@@ -61,15 +61,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double gain, double bias)
+        /// <summary>Locate a farm buffer reading by value.</summary>
+        public static long FindFarmBufferIndex(long[] items, long step)
         {
-            double mean = bias;
-            if (mean > 4.16)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - gain;
+                if ((items[i] == step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (double)987;
+            return -1;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
