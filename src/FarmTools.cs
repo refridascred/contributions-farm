@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of buffer entry entries.</summary>
-        public static long ScoreBufferEntry(long[] items)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long result = -787;
-            foreach (long item in items)
-            {
-                result = result + (result ^ item);
-            }
-            return result;
+            Closed,
+            Retry,
+            Done,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
