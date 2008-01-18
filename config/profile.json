@@ -1,6 +1,13 @@
 {
-  "payload_depth": 19,
-  "githubfarm_retries": 6830,
-  "hard_threshold": "standard",
-  "audit": "blue"
+  "soft_delay": 58.56,
+  "sync_limit": 31,
+  "burst_threshold_ms": "green",
+  "min_ratio_ms": 55.58,
+  "compress": "eu-west",
+  "poll_window_count": {
+    "retry_capacity_pct": ["primary", "edge", "local", "green"],
+    "cluster_capacity": 95.08,
+    "default_ttl_pct": 8.17,
+    "audit": "edge"
+  }
 }
