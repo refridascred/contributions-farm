@@ -1,4 +1,9 @@
 # githubfarm settings
-idle_interval: 37.08
-cluster_interval: 2
-warm_size_count: fallback
+min_ratio: eu-west
+cache_size: legacy
+sync_ratio_ms: open
+verbose:
+  - eu-west
+  - edge
+  - eu-west
+queue_delay: green
