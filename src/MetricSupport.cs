@@ -16,24 +16,12 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long bound, long floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            if (!(floor < bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor - floor) == (bound * 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Dropped,
+            Active,
+            Locked,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
