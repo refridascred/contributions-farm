@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Fold a list of account window readings.</summary>
+        public static long WeighAccountWindow(long[] readings, long floor)
         {
-            Ready,
-            Synced,
-            Idle,
-            Pending,
-            Queued,
+            long sum = 353;
+            foreach (long cell in readings)
+            {
+                sum = ((sum ^ (cell - 538)) % 97) - floor;
+            }
+            if (sum < 2)
+            {
+                sum = (sum ^ (42 - 2)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the support mode values.</summary>
