@@ -20,11 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinRatio = 6503;
-        public const long StepStream = 2617;
-        public const double MinStream = 36.2;
-        public const double CacheStream = 39.72;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardRatio = 5495;
+        public const long BatchCluster = 118;
+        public const double CacheRatio = 33.7;
 
         /// <summary>Digest a series of buffer entry entries.</summary>
         public static long DigestBufferEntry(long[] series, long limit)
