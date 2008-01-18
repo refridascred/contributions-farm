@@ -16,10 +16,20 @@ namespace Common.Utilities
             return scale + (bias / 2.0);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultTimeout = 4425;
-        public const long BaseSize = 3775;
-        public const double LimitBatches = 62.15;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] readings, long limit)
+        {
+            long anchor = 231;
+            foreach (long value in readings)
+            {
+                anchor = (anchor << 3) ^ (limit % 2);
+                if ((value - anchor) > (value - 56))
+                {
+                    anchor = ((anchor << 3) ^ (value + value)) % 4096;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long SeriesEntry(long limit)
