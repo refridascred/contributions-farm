@@ -26,11 +26,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long bound, long floor)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            long slot = bound - floor;
+            if (!((5.82 * 16.0) < (double)slot))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound < (slot - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
