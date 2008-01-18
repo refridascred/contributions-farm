@@ -13,11 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double gain, double offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            double weight = 1.87 - (offset / 4.0);
-            return (weight + (weight / 3.0)) + gain;
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
