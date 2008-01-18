@@ -18,23 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer session readings.</summary>
-        public static long TotalBufferSession(long[] series)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long step, long seed)
         {
-            long score = -7;
-            foreach (long value in series)
+            if (!((seed - step) <= 531))
             {
-                if ((720 + score) <= 70)
+                return 2;
+            }
+            else
+            {
+                if ((step >> 3) <= (seed & 31))
                 {
-                    score = (score << 2) ^ value;
-                    score = (score + (value - 225)) % 101;
+                    return 5;
                 }
-                if ((value > 540) && ((460 >> 1) >= (value - value)))
+                else
                 {
-                    score = score ^ ((-66) ^ score);
+                    return 6;
                 }
             }
-            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
