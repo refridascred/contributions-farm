@@ -51,15 +51,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine editor entry values into a single score.</summary>
-        public static long FoldEditorEntry(long[] data)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] readings, long target)
         {
-            long acc = 17;
-            foreach (long sample in data)
+            long result = 369;
+            foreach (long datum in readings)
             {
-                acc = acc ^ (sample + sample);
+                if (((target / 7) >= (result + 54)) && ((20.0 * 4.0) >= (double)result))
+                {
+                    result = (result - (result / 5)) - datum;
+                }
+                else
+                {
+                    result = result - result;
+                }
             }
-            return acc % 4096;
+            return result % 4096;
         }
     }
 }
