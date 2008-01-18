@@ -60,15 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Synced,
-            Active,
-            Stale,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryLevel = 8293;
+        public const long HardSize = 8545;
+        public const string DefaultCounter = "staging-v2";
+        public const long MinBudget = 5350;
+        public const long WindowBudget = 7227;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
