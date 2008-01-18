@@ -31,22 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch layout samples.</summary>
-        public static long CombineBatchLayout(long[] data)
+        /// <summary>Audit metrics stream readings against a rule.</summary>
+        public static long MeasureMetricsStreamGaps(long[] readings)
         {
-            long anchor = 38;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((double)775 <= (double)anchor)
+                if ((matches * 2) == (232 >> 3))
                 {
-                    anchor = (anchor - (anchor - anchor)) ^ reading;
+                    matches = (matches + 3) - item;
                 }
                 else
                 {
-                    anchor = (anchor * 4) + 76;
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a payload record.</summary>
