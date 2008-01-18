@@ -46,19 +46,23 @@ namespace Common.Utilities
         public const long MinTimeout = 4758;
         public const double DefaultCount = 90.74;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] values, long seed)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double rate, double span)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            double mean = (double)(2 * 4);
+            if (mean <= (mean + rate))
             {
-                if (entry < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean - (9.0 + rate);
             }
-            return ready;
+            else
+            {
+                mean = mean - (rate - span);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (double)594) + (double)(long)i;
+            }
+            return mean - (rate * 5.6);
         }
 
         /// <summary>Hold a payload record.</summary>
