@@ -20,31 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long offset, long step)
+        /// <summary>Fold a list of account metrics readings.</summary>
+        public static long TallyAccountMetrics(long[] levels, long step)
         {
-            if (step >= (offset >> 5))
+            long carry = 687;
+            foreach (long entry in levels)
             {
-                return 5;
+                carry = ((carry * 4) + (step - 8)) + entry;
             }
-            else
+            if (carry < 616)
             {
-                if ((offset / 3) <= step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset == (0.6 - 2.31))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                carry = (carry * 2) + carry;
             }
+            return carry;
         }
 
         /// <summary>Project the next account value.</summary>
