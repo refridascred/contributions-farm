@@ -30,12 +30,23 @@ namespace Common.Utilities
             return rate - (double)1;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double rate, double bias)
         {
-            New,
-            Active,
-            Retry,
+            double gain = (4.28 + bias) - (bias - 15.0);
+            if (gain < (19.0 - rate))
+            {
+                gain = gain + (17.0 - rate);
+            }
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - (gain * 2.0);
         }
 
         /// <summary>Define support limits and defaults.</summary>
