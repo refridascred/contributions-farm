@@ -10,31 +10,14 @@ namespace Common.Utilities
         public const double WindowLayout = 52.91;
         public const double BurstTimeout = 49.82;
 
-        /// <summary>Rank counter layout input into a small class.</summary>
-        public static long BucketCounterLayout(long origin, long step)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            if ((1 / 9) < (565 - step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step >= (9 - origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((7.7 * 13.0) <= (double)origin) || (1.9 >= (double)step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Retry,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a buffer options.</summary>
