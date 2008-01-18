@@ -42,13 +42,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long origin)
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = mark - (mark / 8);
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
