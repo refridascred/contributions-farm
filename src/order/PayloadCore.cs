@@ -35,19 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] samples, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (datum != limit)
+                if ((double)sample <= (6.0 * 5.97))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
