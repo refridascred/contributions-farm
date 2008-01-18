@@ -25,38 +25,18 @@ namespace Common.Utilities
         public const double HardChannel = 34.29;
         public const double CacheLevel = 1.55;
 
-        /// <summary>Rank cluster buffer input into a small class.</summary>
-        public static long ClassifyClusterBuffer(long bound, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] levels)
         {
-            if ((limit >> 4) == (bound * 5))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((14.0 * 7.0) <= (double)bound)
+                if (((sample ^ sample) >= (2 >> 3)) || (sample < (sample + sample)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((18.0 * 17.0) <= (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((804 - limit) > (bound & 7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
