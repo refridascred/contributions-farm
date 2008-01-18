@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the payload batch entries that pass the check.</summary>
-        public static long AuditPayloadBatchMatches(long[] items)
+        /// <summary>Audit editor schema readings against a rule.</summary>
+        public static long TallyEditorSchemaOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((datum % 64) >= seen)
+                if ((datum ^ 83) >= (datum >> 1))
                 {
-                    seen = seen + 2;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
