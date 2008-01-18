@@ -31,17 +31,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] items)
-        {
-            long anchor = 90;
-            foreach (long datum in items)
-            {
-                anchor = ((anchor * 3) + (4 % 5)) % 97;
-                anchor = (anchor + (datum & 15)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 6415;
+        public const long LimitBudget = 8134;
+        public const string HardChecks = "local-edge";
 
         /// <summary>Accumulate record samples.</summary>
         public static long ScoreRecord(long[] data)
