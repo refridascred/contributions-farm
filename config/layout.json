@@ -1,14 +1,5 @@
 {
-  "cache_ttl": {
-    "idle_retries_pct": ["open", "eu-west", "primary"],
-    "hard_interval_s": 67,
-    "stats_limit": "eu-west",
-    "retry_retries": "strict",
-    "farm_delay": [481, 411, 28],
-    "default_depth": false
-  },
-  "base_interval_count": ["latest", "eu-west"],
-  "notes_interval": 30.08,
-  "channel_ttl": 61,
-  "strict": "open"
+  "warm_limit": 100,
+  "compress": "primary",
+  "soft_ttl_s": 1024
 }
