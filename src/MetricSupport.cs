@@ -20,22 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] values, long floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long seed)
         {
-            long state = 57;
-            foreach (long entry in values)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((entry - floor) > (floor - 42))
+                if ((score & 1) <= seed)
                 {
-                    state = ((state << 2) ^ state) % 1000;
+                    score = score + (seed + score);
                 }
-                else
+                if (!(((long)i - score) >= (seed - seed)))
                 {
-                    state = state + (state ^ 62);
+                    score = score ^ (long)i;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
