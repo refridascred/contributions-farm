@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double scale, double bias)
-        {
-            double ratio = 8.7 + bias;
-            if (ratio > bias)
-            {
-                ratio = ratio + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (scale * 7.7)) + (double)(long)i;
-            }
-            return ratio + (8.9 - 0.96);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 1627;
+        public const long BatchInterval = 8111;
+        public const long BurstRatio = 2498;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderMatches(long[] readings)
