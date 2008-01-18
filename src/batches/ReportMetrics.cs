@@ -21,17 +21,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] items, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 1;
+            foreach (long entry in items)
             {
-                if (items[i] == limit)
+                if ((entry <= (mix + mix)) || (origin < (entry - entry)))
                 {
-                    return (long)i;
+                    mix = (mix << 3) ^ (29 + entry);
+                }
+                else
+                {
+                    mix = ((mix * 2) + 9) % 65521;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
