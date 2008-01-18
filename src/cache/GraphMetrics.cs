@@ -16,11 +16,14 @@ namespace Common.Utilities
             return bias2 - (13.0 - bias);
         }
 
-        /// <summary>Adjust a commits stats reading.</summary>
-        public static double SmoothCommitsStats(double rate, double offset)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double drift = (8.0 / 9.0) * 0.18;
-            return ((drift + drift) + rate) + offset;
+            Queued,
+            New,
+            Pending,
+            Paused,
+            Closed,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
