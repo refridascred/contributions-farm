@@ -1,10 +1,16 @@
 # support settings
-verbose: 1851
-compress:
-  max_ratio: 94.38
-  dry_run: legacy
-  editor_depth: true
-account_depth: 20
-base_ratio_count: 6721
-hard_ttl_count: cached
-checks_timeout: false
+warm_timeout_count: staging
+hard_retries_s: true
+verbose:
+  batch_delay_ms: 100
+  flush_delay_count: strict
+  strict: blue
+  max_threshold_count: local
+  readonly: 67.48
+strict:
+  hard_window: 22.76
+  base_delay_count: primary
+  strict: standard
+  batch_delay_count: legacy
+base_threshold_count: 7395
+idle_timeout_count: false
