@@ -40,18 +40,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] series, long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (((double)reading != (6.95 + 3.6)) || ((204 << 3) >= (count + 9)))
+                if ((step >> 1) > step)
                 {
-                    count = (count + 2) + bound;
+                    mark = ((mark << 2) ^ step) % 101;
                 }
+                if (!(((long)i - 16) > (mark + mark)))
+                {
+                    mark = (mark << 2) ^ 17;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
     }
 }
