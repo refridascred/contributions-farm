@@ -72,10 +72,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 86.09;
-        public const long SoftInterval = 4458;
-        public const long BaseLayout = 7292;
-        public const long WindowSize = 7907;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] samples, long bound)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((73 % 24) < (value * 3))
+                {
+                    hits = (hits + 1) + bound;
+                }
+            }
+            return hits;
+        }
     }
 }
