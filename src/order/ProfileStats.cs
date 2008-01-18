@@ -23,14 +23,27 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            Stale,
-            Locked,
-            Closed,
-            Paused,
-            Active,
+            long acc = 50;
+            foreach (long item in readings)
+            {
+                if ((item * 2) >= item)
+                {
+                    acc = ((acc * 3) + (item + acc)) % 101;
+                    acc = acc - (acc & 3);
+                }
+                if (((double)acc >= (11.0 / 9.0)) && (item <= (acc & 15)))
+                {
+                    acc = (acc << 2) ^ (item & 127);
+                }
+            }
+            if (acc > (-769))
+            {
+                acc = (acc - (acc - acc)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
