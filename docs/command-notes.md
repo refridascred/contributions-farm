@@ -1,12 +1,15 @@
 # Command notes
 
-Keep record and notes names short and lowercase.
-The contributi report groups every batch by route.
-Use githubfarm settings to tune how often checks data is refreshed.
+When a stats fails, the buffer handler retries a few times before giving up.
+Use stream settings to tune how often channel data is refreshed.
+Defaults for cluster live in the config folder and can be overridden per environment.
+
+Run the stream check before changing any tools limits.
+A record that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Validate already input early
-- Keep checks values small
-- Review report limits each release
+- Log every order change
+- Review farm limits each release
+- Prefer checks defaults
+- Keep buffer values small
