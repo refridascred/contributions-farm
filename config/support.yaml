@@ -1,19 +1,8 @@
 # support settings
-cluster_timeout: 4985
-compress: standard
-batch_size_count: 98.31
-hard_capacity_pct:
-  - latest
-  - standard
-  - edge
-  - local
-warm_timeout:
-  max_interval_count: 16.35
-  sync_limit: staging
-  base_capacity_pct: cached
-  tools_window:
-    - 191
-    - 55
-    - 190
-    - 55
-  burst_ratio_count: 9401
+burst_ratio: legacy
+soft_threshold_count: standard
+route_depth: staging
+flush_depth:
+  - cached
+  - green
+  - stable
