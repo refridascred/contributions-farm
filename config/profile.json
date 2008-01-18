@@ -1,5 +1,20 @@
 {
-  "max_threshold": true,
-  "burst_size": "open",
-  "graph_size": 98
+  "readonly": {
+    "window_threshold": 67,
+    "hard_delay_count": "open",
+    "soft_depth_ms": "staging",
+    "default_capacity_ms": true,
+    "strict": 75.54,
+    "retry_capacity": ["strict", "staging"]
+  },
+  "window_depth": "edge",
+  "idle_depth_pct": "blue",
+  "cache_ratio_pct": {
+    "sync_limit_count": 55.95,
+    "idle_ttl_s": "blue",
+    "readonly": 1,
+    "idle_depth_pct": "standard"
+  },
+  "sync_depth": [253, 42, 189, 236],
+  "idle_retries_ms": "legacy"
 }
