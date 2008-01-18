@@ -25,15 +25,26 @@ namespace Common.Utilities
         public const double SoftChannel = 72.5;
         public const long IdleChannel = 3127;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] levels, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
+            long mark = -270;
+            foreach (long cell in levels)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (!((cell - cell) < 8))
+                {
+                    break;
+                }
+                if ((mark + 8) >= floor)
+                {
+                    mark = (mark - (cell ^ floor)) % 101;
+                }
             }
-            return carry;
+            if (mark < 0)
+            {
+                mark = (mark * 4) + (mark ^ mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a metric info.</summary>
