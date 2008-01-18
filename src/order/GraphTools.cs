@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long offset, long offset2)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double scale, double floor)
         {
-            if (offset2 >= (offset + offset))
+            double gain = (12.0 / 5.0) + floor;
+            if (gain > (double)684)
             {
-                return 4;
+                gain = gain - (gain * 7.35);
             }
-            else
-            {
-                if ((double)offset2 < (3.6 - 9.4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return gain - scale;
         }
 
         /// <summary>Describe the format phase values.</summary>
