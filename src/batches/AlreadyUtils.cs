@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] levels, long origin)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(3.07 > (double)origin))
+                if (3.6 >= (double)sum)
                 {
-                    tally = (tally + 2) + sample;
+                    sum = ((sum << 3) ^ (sum % 8)) % 97;
                 }
+                sum = (sum + (487 - (long)i)) % 4096;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
