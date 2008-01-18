@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] values)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long step, long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if (65 <= (floor << 2))
             {
-                if ((((seen >> 3) < (1 & 7)) && ((seen + seen) <= seen)) || ((722 >> 5) < seen))
+                return 7;
+            }
+            else
+            {
+                if (floor <= 44)
                 {
-                    seen = (seen + 3) ^ entry;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
