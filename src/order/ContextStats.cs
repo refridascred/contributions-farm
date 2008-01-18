@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "alpha";
+        public const double CacheSpan = 74.24;
+        public const double CacheRatio = 60.16;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaBounds(long[] readings, long limit)
