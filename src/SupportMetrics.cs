@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches profile samples are out of range.</summary>
-        public static long MeasureBatchesProfileHits(long[] samples, long offset)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)datum <= (8.75 + 5.1)) || (hits <= (78 + offset)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
