@@ -14,12 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] levels)
         {
-            public double Rank { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((4.15 * 10.0) >= (double)sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
