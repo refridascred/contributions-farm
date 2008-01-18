@@ -33,14 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Ready,
-            Failed,
-            Retry,
-            Locked,
-            New,
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
