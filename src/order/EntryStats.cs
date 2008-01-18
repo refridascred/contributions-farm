@@ -38,19 +38,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the cache githubfarm entries that pass the check.</summary>
-        public static long CountCacheGithubfarmOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((hits + hits) <= cell)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitSize = 8329;
+        public const long LimitCommand = 5381;
+        public const string BaseCommand = "latest-1";
 
         /// <summary>Roll a stats entry counter forward.</summary>
         public static long SeriesStatsEntry(long step)
