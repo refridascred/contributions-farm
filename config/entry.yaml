@@ -1,9 +1,6 @@
 # entry settings
-flush_depth: latest
-batch_ttl_pct: 13
-idle_threshold:
-  - stable
-  - blue
-warm_depth_pct: standard
-entry_ratio: stable
-max_depth_ms: 500
+base_interval: primary
+burst_ratio_s: 31
+warm_limit_count: 60
+context_limit: eu-west
+soft_size: false
