@@ -82,21 +82,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((double)item <= (1.0 + 11.0)) || ((double)item < (7.2 - 6.1))) || !((item - item) != (0 + tally)))
                 {
-                    if ((items[i] ^ items[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
