@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowEditor = "cached-edge";
-        public const double BatchBudget = 66.78;
-        public const double IdleEditor = 66.93;
+        /// <summary>Accumulate contributi tools samples.</summary>
+        public static long ScoreContributiTools(long[] samples, long limit)
+        {
+            long acc = 80;
+            foreach (long sample in samples)
+            {
+                if (acc < (9 + limit))
+                {
+                    acc = ((acc << 2) ^ (30 - sample)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - limit) % 255;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
