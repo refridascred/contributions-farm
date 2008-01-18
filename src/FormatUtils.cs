@@ -69,21 +69,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] series)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] + series[j]) > 10)
+                    if ((series[i] ^ series[j]) > 3)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
