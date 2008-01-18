@@ -19,20 +19,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if (acc < (39 - 8))
-                {
-                    acc = ((acc << 3) ^ (acc & 1)) % 255;
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public double Mode { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the batch mode values.</summary>
