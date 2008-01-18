@@ -32,23 +32,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] levels)
+        /// <summary>Accumulate layout entry samples.</summary>
+        public static long FoldLayoutEntry(long[] levels)
         {
-            long result = 44;
-            foreach (long cell in levels)
+            long anchor = 324;
+            foreach (long sample in levels)
             {
-                if ((result & 255) >= (result + result))
+                anchor = (anchor ^ (sample * 5)) % 4096;
+                if ((5 / 8) != (73 - sample))
                 {
-                    result = (result + (result - 9)) % 1000;
+                    anchor = anchor - (anchor % 8);
                 }
-                result = (result * 2) + result;
-                if ((((long)levels.Length / 2) >= (result + cell)) || ((result + result) != (result / 7)))
+                else
                 {
-                    break;
+                    anchor = ((anchor * 5) + (anchor & 63)) % 101;
                 }
             }
-            return result % 65521;
+            return anchor;
         }
     }
 }
