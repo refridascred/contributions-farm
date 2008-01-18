@@ -42,12 +42,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double scale, double offset)
         {
-            Done,
-            Paused,
-            Synced,
+            double rate = (offset * 1.9) / 3.0;
+            if (rate > offset)
+            {
+                rate = rate - (scale * 1.28);
+            }
+            return rate + (scale + scale);
         }
     }
 }
