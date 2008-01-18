@@ -56,23 +56,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] levels)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] data)
         {
-            long mix = 17;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                mix = mix + (datum + datum);
-                if ((7.9 * 20.0) != (double)mix)
+                if ((sample << 3) > sample)
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (mix < 5)
-            {
-                mix = (mix << 2) ^ (mix ^ mix);
-            }
-            return mix;
+            return count;
         }
     }
 }
