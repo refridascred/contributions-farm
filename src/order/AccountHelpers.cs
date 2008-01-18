@@ -62,19 +62,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] series, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long result = 10;
+            foreach (long reading in items)
             {
-                if (cell != step)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (((result + ((long)items.Length * 4)) % 65521) + reading) + seed;
             }
-            return ready;
+            return result % 1000;
         }
 
         /// <summary>Roll a route counter forward.</summary>
