@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            Draft,
+            Done,
+            New,
+            Closed,
+            Pending,
         }
 
         /// <summary>Describe the format status values.</summary>
