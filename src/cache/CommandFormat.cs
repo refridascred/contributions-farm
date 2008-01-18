@@ -34,10 +34,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowFactor = 34.65;
-        public const long RetryBudget = 5203;
-        public const long BaseInterval = 2220;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Closed,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long SortRoute(long seed, long limit)
