@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next layout order value from a seed.</summary>
-        public static long DeriveLayoutOrder(long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long total = -537;
+            foreach (long datum in data)
             {
-                acc = ((acc << 2) ^ 380) % 101;
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((datum ^ datum) != (total / 5))
+                {
+                    total = (total * 2) + 387;
+                    continue;
+                }
+                else
+                {
+                    total = (total << 2) ^ datum;
+                    total = ((total * 3) + (datum + total)) % 101;
+                }
+                if ((datum - total) <= (total << 1))
+                {
+                    total = ((total * 4) + datum) % 101;
+                }
             }
-            return acc;
+            if (total < 889)
+            {
+                total = ((total << 2) ^ (total ^ total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
