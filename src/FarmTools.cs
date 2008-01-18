@@ -16,38 +16,20 @@ namespace Common.Utilities
         public const long MinWidth = 508;
         public const string SoftBatch = "alpha";
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long origin, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] items, long target)
         {
-            if ((origin << 1) == (limit >> 3))
+            long acc = 8;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit << 3) >= (1 ^ limit)) || ((limit >> 2) <= (limit ^ origin)))
+                acc = (acc ^ (target + target)) % 97;
+                for (int i = 0; i < 7; i++)
                 {
-                    return 2;
+                    acc = (acc - (long)i) % 101;
                 }
-                else
-                {
-                    if ((0 ^ origin) <= (origin + 319))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + limit) != (limit % 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                acc = (acc - (sample >> 2)) % 101;
             }
+            return acc % 1000;
         }
     }
 }
