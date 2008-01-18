@@ -32,21 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the farm entry series from a seed.</summary>
-        public static long IterateFarmEntry(long floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] series, long step)
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                bool valid = ((floor - 5) <= (floor & 63)) || ((result ^ result) != (floor << 1));
-                if (!valid)
+                if (sample > step)
                 {
-                    valid = (double)floor != (1.88 - 13.0);
-                    valid = (9 ^ floor) != (floor & 7);
+                    ok = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
