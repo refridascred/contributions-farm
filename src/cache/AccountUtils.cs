@@ -25,18 +25,31 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] levels)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long seed, long target)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if (seed <= (seed * 3))
             {
-                if (!(((cell >> 5) >= cell) || ((matches + matches) < matches)))
+                return 8;
+            }
+            else
+            {
+                if ((seed - seed) > (seed * 3))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (!(seed >= (seed - seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
