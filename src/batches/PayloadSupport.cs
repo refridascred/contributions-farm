@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Active,
-            Idle,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 9765;
+        public const long DefaultEntry = 6153;
+        public const string WindowDepth = "primary-1";
 
         /// <summary>Digest a series of queue stats entries.</summary>
         public static long TotalQueueStats(long[] items, long bound)
