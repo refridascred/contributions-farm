@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long offset, long seed)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long bound, long target)
         {
-            if (((seed % 5) > (2 % 7)) && (2 >= (offset >> 4)))
+            long gap = bound ^ target;
+            if ((4.86 + 17.0) < (double)bound)
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((double)offset == (1.34 * 10.0))
+                if (((bound - (-8)) < gap) || ((gap + target) < gap))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if (seed < (1 / 8))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed + seed) < (offset % 10))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
