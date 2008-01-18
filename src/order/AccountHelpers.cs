@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank graph githubfarm input into a small class.</summary>
-        public static long GradeGraphGithubfarm(long floor, long bound)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] data)
         {
-            long step = floor ^ bound;
-            if ((double)bound != (double)step)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step <= (3.8 - 9.4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor << 1) != (80 >> 1))
+                    if ((data[i] + data[j]) == 0)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((bound ^ step) <= (floor ^ 91)) && (bound >= step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
