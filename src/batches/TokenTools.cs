@@ -36,19 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a entry format reading.</summary>
-        public static double SmoothEntryFormat(double weight, double offset)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double bias, double floor)
         {
-            double bias = (double)(879 + 553);
-            if (bias <= (bias / 7.0))
+            double gain = 8.88 - floor;
+            if (gain >= bias)
             {
-                bias = (bias - (bias * 4.7)) + weight;
+                gain = gain - (floor / 2.0);
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 2; i++)
             {
-                bias = (bias - offset) + (double)(long)i;
+                gain = (gain + (bias + floor)) - (double)(long)i;
             }
-            return bias + (double)99;
+            return gain + bias;
         }
     }
 }
