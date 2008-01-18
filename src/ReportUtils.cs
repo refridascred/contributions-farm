@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Pending,
-            Closed,
-            Paused,
-            Queued,
-            Synced,
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the batches class values.</summary>
