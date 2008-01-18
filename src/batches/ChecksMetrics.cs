@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Check that every githubfarm entry entry stays within the limit.</summary>
+        public static bool GuardGithubfarmEntryRange(long[] samples, long limit)
         {
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
