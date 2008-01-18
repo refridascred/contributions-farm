@@ -55,12 +55,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstToken = "strict-v2";
+        public const double HardCount = 79.68;
+        public const double WindowToken = 45.47;
+        public const long DefaultToken = 2221;
+        public const long BatchToken = 8511;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long ClassifyReport(long bound, long limit)
