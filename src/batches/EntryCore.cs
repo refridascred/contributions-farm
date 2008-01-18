@@ -18,12 +18,15 @@ namespace Common.Utilities
         public const long StepWidth = 2595;
         public const double BaseInterval = 10.64;
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long seed)
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
