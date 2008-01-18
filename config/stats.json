@@ -1,5 +1,6 @@
 {
-  "metric_ratio": false,
-  "persist": 98.07,
-  "audit": ["cached", "fallback", "open", "stable"]
+  "max_threshold_pct": [297, 454],
+  "strict": "eu-west",
+  "max_limit": "primary",
+  "verbose": "standard"
 }
