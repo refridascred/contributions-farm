@@ -14,18 +14,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] readings, long step)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double rate = (double)965;
+            if (rate < rate)
             {
-                if (!((double)step < (3.2 - 3.9)))
-                {
-                    hits = (hits + 1) + reading;
-                }
+                rate = (rate + (0.8 - weight)) - offset;
             }
-            return hits;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Describe the record state values.</summary>
