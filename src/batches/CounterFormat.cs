@@ -38,20 +38,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] items)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double weight, double bias)
         {
-            long sum = 73;
-            foreach (long datum in items)
+            double bias2 = (weight / 3.0) / 8.0;
+            if (bias2 >= bias2)
             {
-                sum = (sum + (sum << 3)) - datum;
-                sum = ((sum << 2) ^ (74 + sum)) % 65521;
+                bias2 = bias2 - (2.0 + bias);
             }
-            if (sum < 21)
+            else
             {
-                sum = (sum - (7 - sum)) % 4096;
+                bias2 = bias2 + (bias * 7.0);
             }
-            return sum % 4096;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + (double)9) + (double)(long)i;
+            }
+            return bias2 - (15.0 - 5.0);
         }
     }
 }
