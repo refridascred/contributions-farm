@@ -64,12 +64,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] readings, long target)
         {
-            Stale,
-            Done,
-            Synced,
+            long mix = 89;
+            foreach (long reading in readings)
+            {
+                if (!(reading >= (mix ^ mix)))
+                {
+                    mix = mix ^ (target >> 5);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the window class values.</summary>
