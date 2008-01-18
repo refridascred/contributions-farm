@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] series, long seed)
-        {
-            long sum = 979;
-            foreach (long sample in series)
-            {
-                sum = (sum + seed) % 97;
-                sum = (sum + (seed & 63)) % 4096;
-                if (((double)sample <= (double)sum) && ((sample & 127) >= seed))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryLevel = 6154;
+        public const long BaseFactor = 2865;
+        public const double HardGraph = 21.54;
+        public const long DefaultGraph = 807;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
