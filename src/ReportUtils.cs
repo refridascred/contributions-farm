@@ -48,11 +48,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Iterate the farm entry series from a seed.</summary>
+        public static long IterateFarmEntry(long floor)
         {
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                bool valid = ((floor - 5) <= (floor & 63)) || ((result ^ result) != (floor << 1));
+                if (!valid)
+                {
+                    valid = (double)floor != (1.88 - 13.0);
+                    valid = (9 ^ floor) != (floor & 7);
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
