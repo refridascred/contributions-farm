@@ -13,19 +13,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double weight, double bias)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] readings, long limit)
         {
-            double rate = (double)1;
-            if (rate >= (double)96)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate + rate) + bias;
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - weight;
+            return -1;
         }
 
         /// <summary>Hold a buffer options.</summary>
