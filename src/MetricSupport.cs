@@ -16,18 +16,24 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] levels)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long bound, long floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            if (!(floor < bound))
             {
-                if ((count / 2) >= (count ^ count))
+                return 6;
+            }
+            else
+            {
+                if ((floor - floor) == (bound * 5))
                 {
-                    count = (count + 3) ^ entry;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two account measurements.</summary>
