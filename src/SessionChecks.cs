@@ -44,12 +44,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Stale,
-            New,
-            Idle,
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
