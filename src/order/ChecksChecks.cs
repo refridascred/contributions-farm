@@ -57,31 +57,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long origin, long floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            if ((1 - origin) <= floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((20.0 / 2.0) <= (double)floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin < (258 ^ floor)) && ((floor - floor) <= floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Ready,
+            New,
+            Idle,
+            Retry,
+            Draft,
         }
     }
 }
