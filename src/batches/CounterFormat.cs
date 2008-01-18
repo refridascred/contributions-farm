@@ -35,23 +35,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double weight, double bias)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            double bias2 = (weight / 3.0) / 8.0;
-            if (bias2 >= bias2)
-            {
-                bias2 = bias2 - (2.0 + bias);
-            }
-            else
-            {
-                bias2 = bias2 + (bias * 7.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + (double)9) + (double)(long)i;
-            }
-            return bias2 - (15.0 - 5.0);
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
