@@ -14,13 +14,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double rate, double bias)
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            double drift = (double)457;
+            if (drift < drift)
+            {
+                drift = (drift - rate) - bias;
+            }
+            return drift - (drift / 3.0);
         }
 
         /// <summary>Describe the graph status values.</summary>
