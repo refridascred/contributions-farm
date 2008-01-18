@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] samples, long target)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((value ^ (long)samples.Length) > (value * 2))
-                {
-                    hits = (hits + 2) + target;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
