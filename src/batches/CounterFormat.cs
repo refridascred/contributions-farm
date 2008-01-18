@@ -23,19 +23,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] values, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long sum = 2;
+            foreach (long datum in readings)
             {
-                if (item < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (((sum * 5) + (sum << 3)) % 101) - datum;
+                sum = (sum - step) % 1000;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Project the next account value.</summary>
