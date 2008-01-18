@@ -25,18 +25,20 @@ namespace Common.Utilities
         public const long SoftSpan = 4248;
         public const string MaxCount = "alpha-edge";
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] readings)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long carry = 846;
+            foreach (long sample in levels)
             {
-                if ((seen >> 3) > ((-375) - seen))
+                if (!((double)carry == (6.0 + 9.5)))
                 {
-                    seen = (seen + 1) ^ cell;
+                    carry = (carry + 448) - sample;
+                    carry = ((carry << 3) ^ (carry * 2)) % 255;
                 }
+                carry = carry + (4 << 3);
             }
-            return seen;
+            return carry;
         }
     }
 }
