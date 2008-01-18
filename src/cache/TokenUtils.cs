@@ -34,15 +34,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double ratio, double floor)
+        /// <summary>Accumulate report metrics samples.</summary>
+        public static long FoldReportMetrics(long[] levels)
         {
-            double bias = (ratio * 3.54) + (1.54 + 6.6);
-            for (int i = 0; i < 4; i++)
+            long result = 54;
+            foreach (long reading in levels)
             {
-                bias = (bias + (double)(long)i) - floor;
+                result = ((result - result) % 97) ^ reading;
             }
-            return bias - (double)1;
+            return result;
         }
     }
 }
