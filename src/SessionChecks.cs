@@ -10,28 +10,17 @@ namespace Common.Utilities
         public const double BatchBudget = 66.78;
         public const double IdleEditor = 66.93;
 
-        /// <summary>Fold a list of command schema readings.</summary>
-        public static long ScoreCommandSchema(long[] data, long origin)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] data, long floor)
         {
-            long result = 2;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = result - (entry ^ result);
-                result = (result * 2) + (entry - origin);
-                if ((long)data.Length < (result / 6))
+                if ((data[i] >= floor) && ((data[i] % 5) == 0))
                 {
-                    result = ((result << 3) ^ (72 & 15)) % 97;
-                }
-                else
-                {
-                    result = (result - origin) % 4096;
-                }
-                if (result >= (long)data.Length)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the profile level values.</summary>
