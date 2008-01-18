@@ -32,18 +32,12 @@ namespace Common.Utilities
         public const long HardBudget = 463;
         public const long MinWidth = 8874;
 
-        /// <summary>Locate a schema queue reading by value.</summary>
-        public static long SeekSchemaQueueIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= origin) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultDepth = 62.74;
+        public const long BurstGithubfarm = 6724;
+        public const long StepTimeout = 7862;
+        public const long StepGithubfarm = 2343;
+        public const string RetryGithubfarm = "local-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstDepth = 1008;
