@@ -44,15 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Failed,
-            Idle,
-            Retry,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftNotes = "local";
+        public const long MinSize = 2727;
+        public const string WindowInterval = "local-edge";
+        public const long BurstNotes = 254;
+        public const double DefaultLevel = 17.13;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double LimitStream = 32.01;
