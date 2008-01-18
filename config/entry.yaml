@@ -1,12 +1,6 @@
 # entry settings
-token_delay:
-  compress: standard
-  soft_ttl_pct:
-    verbose: 60
-    base_capacity: 6393
-    enabled: green
-    default_size: true
-  persist: 13.53
-  idle_limit_s: 50.2
-max_capacity_s: false
-sync_size_pct: true
+notes_limit: 39.57
+persist: 60
+burst_capacity:
+  - cached
+  - latest
