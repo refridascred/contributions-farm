@@ -43,14 +43,14 @@ namespace Common.Utilities
             return gain - (gain * 2.0);
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Stale,
-            Queued,
-            Active,
-            Failed,
             Synced,
+            Active,
+            Stale,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a format summary.</summary>
