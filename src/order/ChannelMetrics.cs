@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] levels)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double bias, double span)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            double bias2 = (double)6 / 9.0;
+            if (bias2 >= bias2)
             {
-                if (hits > ((long)levels.Length - sample))
-                {
-                    hits = hits + 2;
-                }
+                bias2 = (bias2 - (span / 5.0)) - bias;
             }
-            return hits;
+            return bias2 - (bias2 / 7.0);
         }
 
         /// <summary>Match up entry samples.</summary>
