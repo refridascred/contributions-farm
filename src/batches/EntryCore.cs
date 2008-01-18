@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const string HardBuffer = "local";
         public const double WindowScore = 79.48;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] items, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] readings, long origin)
         {
-            long result = 16;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                result = (result ^ (seed << 3)) - value;
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Blend two tools checks measurements.</summary>
