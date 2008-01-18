@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] items)
+        /// <summary>Validate format layout readings against a bound.</summary>
+        public static bool VerifyFormatLayoutRange(long[] readings, long limit)
         {
-            long mark = 20;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                mark = ((mark * 3) + (mark / 4)) % 101;
-                if (item <= (long)items.Length)
+                if (cell <= limit)
                 {
-                    mark = ((mark * 3) + ((long)items.Length + mark)) % 1000;
-                }
-                if ((mark >> 1) > 8)
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (mark < 9)
-            {
-                mark = mark + (mark + mark);
-            }
-            return mark;
+            return flag;
         }
 
         /// <summary>Describe the schema state values.</summary>
