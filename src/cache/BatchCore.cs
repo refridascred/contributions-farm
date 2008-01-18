@@ -27,21 +27,19 @@ namespace Common.Utilities
             return gain + 3.5;
         }
 
-        /// <summary>Match up editor stats samples.</summary>
-        public static long OverlapEditorStatsCount(long[] data)
+        /// <summary>Blend two order channel measurements.</summary>
+        public static double AdjustOrderChannel(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = bias;
+            if (load < (scale / 8.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load + load;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - scale) - (double)(long)i;
+            }
+            return load + (double)(-2);
         }
 
         /// <summary>Accumulate route samples.</summary>
