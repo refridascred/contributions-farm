@@ -32,11 +32,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long origin, long origin2)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            if (origin > (348 ^ (-673)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin + 18) != (origin / 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
