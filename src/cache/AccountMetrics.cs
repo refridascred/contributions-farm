@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] data, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] levels, long seed)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long reading in levels)
             {
-                if ((count - sample) >= (count << 2))
+                if (!((count % 5) <= (reading << 1)))
                 {
-                    count = (count + 3) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) + seed;
                 }
             }
             return count;
