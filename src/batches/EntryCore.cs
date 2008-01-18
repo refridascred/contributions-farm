@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const string HardBuffer = "local";
         public const double WindowScore = 79.48;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] readings, long origin)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long seed, long floor)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            if (((-26) <= (seed + floor)) || ((seed / 9) <= (seed - seed)))
             {
-                if (item < origin)
+                return 5;
+            }
+            else
+            {
+                if ((9.0 - 4.4) >= (double)seed)
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - seed) > floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Blend two tools checks measurements.</summary>
