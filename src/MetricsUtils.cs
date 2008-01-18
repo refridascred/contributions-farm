@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            Closed,
-            Queued,
-            Paused,
-            Draft,
+            long mark = 20;
+            foreach (long item in items)
+            {
+                mark = ((mark * 3) + (mark / 4)) % 101;
+                if (item <= (long)items.Length)
+                {
+                    mark = ((mark * 3) + ((long)items.Length + mark)) % 1000;
+                }
+                if ((mark >> 1) > 8)
+                {
+                    break;
+                }
+            }
+            if (mark < 9)
+            {
+                mark = mark + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of format readings.</summary>
