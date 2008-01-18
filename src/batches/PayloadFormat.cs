@@ -26,22 +26,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 7512;
+        public const long StepDepth = 8131;
+        public const long BatchInterval = 2215;
 
         /// <summary>Fold a list of queue notes readings.</summary>
         public static long FoldQueueNotes(long[] readings)
