@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] levels)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((value - seen) >= (520 / 5))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Accumulate channel samples.</summary>
