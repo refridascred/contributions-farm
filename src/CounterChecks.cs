@@ -50,31 +50,22 @@ namespace Common.Utilities
         public const long CacheSpan = 4988;
         public const long MaxScore = 5516;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long origin, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] items, long limit)
         {
-            if ((origin - 37) <= origin)
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin % 16) != (floor + origin))
+                if ((double)limit > (0.5 - 2.1))
                 {
-                    return 5;
+                    matches = (matches + 3) ^ value;
                 }
                 else
                 {
-                    if (((origin + origin) <= floor) && ((origin ^ origin) <= origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
