@@ -30,26 +30,12 @@ namespace Common.Utilities
         public const long StepTimeout = 8667;
         public const double WindowCounter = 79.2;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] data, long floor)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long result = -4;
-            foreach (long item in data)
-            {
-                if ((0.78 / 2.0) < (double)floor)
-                {
-                    result = (result ^ ((-504) / 8)) ^ item;
-                }
-                else
-                {
-                    result = result + (result * 5);
-                }
-                if (!((result / 5) < 8))
-                {
-                    result = ((result << 3) ^ floor) % 65521;
-                }
-            }
-            return result;
+            Pending,
+            Locked,
+            Paused,
         }
     }
 }
