@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west legacy latest; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
+
+CHANNEL_LIMIT=235
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in open stable; do
+    log "checking ${item}"
+done
