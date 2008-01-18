@@ -58,21 +58,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count already stats pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyStatsCount(long[] levels)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) > 14)
+                    if ((values[i] + values[j]) < 13)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
