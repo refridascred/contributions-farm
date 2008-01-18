@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long seed, long bound)
+        /// <summary>Validate report buffer readings against a bound.</summary>
+        public static bool VerifyReportBufferBounds(long[] series, long floor)
         {
-            long next = seed ^ bound;
-            if ((bound + 7) == (seed - seed))
+            bool found = true;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - seed) >= (313 + next))
+                if (item != floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
