@@ -1,7 +1,18 @@
 {
-  "strict": 8571,
-  "tools_interval": 61.95,
-  "base_retries": "strict",
-  "compress": 4.64,
-  "min_size_count": 233
+  "batch_threshold_pct": 33,
+  "burst_size": 2982,
+  "enabled": {
+    "compress": [189, 260, 417],
+    "contributi_retries": {
+      "checks_capacity": [92, 70, 88],
+      "batches_depth": "eu-west",
+      "cluster_ratio": "legacy",
+      "schema_ttl": "standard"
+    },
+    "poll_size": 24.36,
+    "cache_ttl_count": 92.61
+  },
+  "dry_run": "open",
+  "tools_depth": "edge",
+  "editor_ttl": "fallback"
 }
