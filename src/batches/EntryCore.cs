@@ -45,18 +45,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] items)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] items, long offset)
         {
-            long seen = 0;
+            long sum = 586;
             foreach (long value in items)
             {
-                if (((double)value > (7.0 * 8.37)) && ((seen & 3) > seen))
-                {
-                    seen = seen + 2;
-                }
+                sum = sum - sum;
+                sum = (sum - (value << 3)) % 255;
             }
-            return seen;
+            if (sum < 17)
+            {
+                sum = (sum + (offset >> 3)) % 4096;
+            }
+            return sum % 4096;
         }
     }
 }
