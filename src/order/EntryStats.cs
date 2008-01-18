@@ -58,15 +58,26 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] items, long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] items, long step)
         {
-            long result = 841;
-            foreach (long sample in items)
+            long mix = -919;
+            foreach (long entry in items)
             {
-                result = ((result + sample) % 255) - origin;
+                if ((entry > (641 + entry)) || (16.0 > (double)step))
+                {
+                    mix = (mix ^ (entry % 24)) % 97;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (entry << 1)) % 1000;
+                }
             }
-            return result % 4096;
+            if (mix < 761)
+            {
+                mix = (mix - mix) % 255;
+            }
+            return mix % 1000;
         }
     }
 }
