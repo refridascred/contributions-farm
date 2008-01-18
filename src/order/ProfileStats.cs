@@ -43,11 +43,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxToken = "primary-edge";
-        public const long StepSize = 6120;
-        public const string DefaultScore = "primary-v2";
-        public const double MaxSize = 30.07;
-        public const string LimitCount = "alpha-edge";
+        /// <summary>Count metrics graph pairs that satisfy a relation.</summary>
+        public static long PairMetricsGraphCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
