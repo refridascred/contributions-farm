@@ -16,13 +16,11 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Draft,
-            Done,
-            Closed,
-            Stale,
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine tools command values into a single score.</summary>
