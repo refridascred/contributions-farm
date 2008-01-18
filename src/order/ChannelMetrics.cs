@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double bias, double span)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] data, long origin)
         {
-            double bias2 = (double)6 / 9.0;
-            if (bias2 >= bias2)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                bias2 = (bias2 - (span / 5.0)) - bias;
+                if (datum > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias2 - (bias2 / 7.0);
+            return valid;
         }
 
         /// <summary>Match up entry samples.</summary>
