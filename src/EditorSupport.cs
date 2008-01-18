@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Classify a format schema pair into a bucket.</summary>
+        public static long RankFormatSchema(long limit, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = limit ^ offset;
+            if ((prev - prev) > (prev % 24))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((limit & 1) >= (offset * 3)) && ((4.0 + 1.0) >= (double)offset))
                 {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
