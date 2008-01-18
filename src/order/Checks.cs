@@ -41,19 +41,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of account contributi entries.</summary>
-        public static long DigestAccountContributi(long[] data, long origin)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long acc = -47;
-            foreach (long entry in data)
-            {
-                acc = (acc + (acc + entry)) + origin;
-            }
-            if (acc < 372)
-            {
-                acc = ((acc * 2) + (18 * 4)) % 1000;
-            }
-            return acc % 1000;
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
