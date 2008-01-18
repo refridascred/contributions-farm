@@ -27,13 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinAccount = 77.18;
+        public const long HardBudget = 463;
+        public const long MinWidth = 8874;
 
         /// <summary>Find the first stats stream entry that matches the target.</summary>
         public static long FindStatsStreamIndex(long[] readings, long floor)
