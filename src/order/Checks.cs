@@ -34,12 +34,11 @@ namespace Common.Utilities
         public const long SoftScore = 9231;
         public const string CacheInterval = "fallback-1";
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseDepth = 70.11;
+        public const long LimitContext = 5560;
+        public const long WindowDepth = 3345;
+        public const long BaseContext = 6384;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double HardReport = 33.08;
