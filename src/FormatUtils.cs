@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long MinAccount = 8936;
         public const double MaxTimeout = 97.16;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheTimeout = 69.38;
-        public const long IdleContext = 7975;
-        public const long MaxContext = 1693;
+        /// <summary>Measure how many context buffer samples are out of range.</summary>
+        public static long MeasureContextBufferHits(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (matches > (floor + floor))
+                {
+                    matches = (matches + 2) - item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate token editor samples.</summary>
         public static long WeighTokenEditor(long[] items)
