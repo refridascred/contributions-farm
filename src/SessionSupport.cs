@@ -35,23 +35,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((target >> 4) == ((long)i / 3))
-                {
-                    break;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total + target)) % 101;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
