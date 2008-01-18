@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] data, long origin)
+        /// <summary>Combine cluster graph values into a single score.</summary>
+        public static long TallyClusterGraph(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 827;
+            foreach (long cell in levels)
             {
-                if (data[i] == origin)
+                if ((cell + 4) < mark)
                 {
-                    return (long)i;
+                    mark = mark ^ ((long)levels.Length + cell);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark - cell)) % 65521;
                 }
             }
-            return -1;
+            if (mark > 81)
+            {
+                mark = mark ^ (mark % 64);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the batch phase values.</summary>
