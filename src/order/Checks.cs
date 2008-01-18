@@ -62,16 +62,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cluster already series from a seed.</summary>
-        public static long StepClusterAlready(long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                result = result + result;
-                result = ((result * 5) + (long)i) % 4093;
+                if ((seen % 12) >= entry)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
