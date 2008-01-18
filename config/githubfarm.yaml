@@ -1,9 +1,27 @@
 # githubfarm settings
-record_window: 500
-warm_depth_pct: 50
-flush_size: 11.45
-hard_timeout_s: 0.44
-hard_limit_pct:
-  - fallback
-  - primary
-retry_timeout: false
+session_window: eu-west
+readonly:
+  burst_capacity_pct: 48
+  max_ratio_pct: stable
+  flush_threshold_s:
+    default_size: 94.54
+    enabled: true
+    command_threshold: true
+    retry_size: false
+    sync_size_ms: 60
+    verbose: 59
+  flush_ratio_pct: 49.8
+  already_retries:
+    retry_retries:
+      - 182
+      - 247
+      - 209
+    warm_interval: local
+    cache_depth_ms: strict
+    command_ttl: 9066
+    verbose:
+      - 158
+      - 461
+  sync_ttl: strict
+contributi_size: green
+poll_depth: staging
