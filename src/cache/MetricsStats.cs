@@ -69,22 +69,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate schema farm samples.</summary>
-        public static long TotalSchemaFarm(long[] levels)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double ratio, double span)
         {
-            long state = 32;
-            foreach (long reading in levels)
+            double bias = span;
+            if (bias <= (4.0 / 7.0))
             {
-                if ((double)state <= (0.2 * 1.0))
-                {
-                    state = ((state * 5) + reading) % 4096;
-                }
-                if (!((state - reading) <= (state - state)))
-                {
-                    break;
-                }
+                bias = (bias - span) - ratio;
             }
-            return state;
+            return bias + (span * 3.79);
         }
     }
 }
