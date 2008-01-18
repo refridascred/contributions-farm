@@ -82,17 +82,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] samples, long bound)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
