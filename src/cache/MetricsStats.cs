@@ -62,19 +62,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] data, long floor)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Stale,
+            New,
+            Idle,
+            Paused,
         }
     }
 }
