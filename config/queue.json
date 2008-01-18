@@ -1,6 +1,16 @@
 {
-  "soft_timeout_pct": "blue",
-  "default_retries_count": "cached",
-  "retry_window_pct": 35.4,
-  "checks_depth": 3239
+  "metrics_ratio": false,
+  "dry_run": {
+    "sync_delay_s": 60,
+    "filter_limit": "blue",
+    "retry_capacity": {
+      "format_limit": 250,
+      "retry_interval_pct": "blue",
+      "cache_limit_ms": false,
+      "sync_delay": [351, 54, 213],
+      "poll_delay": 66.01,
+      "flush_ratio": 53
+    }
+  },
+  "token_threshold": 45.7
 }
