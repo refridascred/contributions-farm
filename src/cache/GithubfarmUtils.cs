@@ -39,20 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 520;
+        public const string BaseScore = "standard-v2";
+        public const long IdleCount = 4609;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long AuditEditorHits(long[] samples)
