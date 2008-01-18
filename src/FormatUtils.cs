@@ -62,15 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up support samples.</summary>
