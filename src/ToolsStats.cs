@@ -67,19 +67,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] values, long floor)
+        /// <summary>Digest a series of stream buffer entries.</summary>
+        public static long ScoreStreamBuffer(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long anchor = 6;
+            foreach (long entry in values)
             {
-                if (sample >= floor)
+                anchor = (anchor ^ (-2)) % 4096;
+                if (((entry + entry) <= entry) || ((5.6 / 9.0) != (double)entry))
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (anchor ^ entry)) % 4096;
                 }
             }
-            return ready;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the entry level values.</summary>
