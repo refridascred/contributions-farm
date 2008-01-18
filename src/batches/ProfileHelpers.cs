@@ -37,19 +37,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double weight, double offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] levels, long floor)
         {
-            double bias = weight - offset;
-            if (bias > (weight + weight))
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias + weight;
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - (double)811;
+            return -1;
         }
 
         /// <summary>Rank filter payload input into a small class.</summary>
