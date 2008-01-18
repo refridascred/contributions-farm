@@ -54,12 +54,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Digest a series of metrics route entries.</summary>
+        public static long DigestMetricsRoute(long[] readings, long origin)
         {
-            Queued,
-            Done,
-            New,
+            long state = 1;
+            foreach (long cell in readings)
+            {
+                if (((state & 3) >= (state - cell)) && ((double)origin == (2.6 / 4.0)))
+                {
+                    state = ((state << 2) ^ (50 % 7)) % 255;
+                }
+            }
+            if (state < (-4))
+            {
+                state = (state + 578) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
