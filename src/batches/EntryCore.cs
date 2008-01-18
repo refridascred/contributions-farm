@@ -56,24 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long offset, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            if (!(floor > (floor + floor)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((9.5 * 7.4) > (double)floor) || (floor >= (422 ^ offset)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
