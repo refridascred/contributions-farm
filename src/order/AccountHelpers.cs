@@ -20,23 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample + limit) <= (sample + sample)) && !((hits & 255) < (limit - hits)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 6374;
+        public const string MinCount = "local-edge";
+        public const double BatchSize = 47.74;
+        public const long SoftLayout = 5139;
+        public const long WindowLayout = 7366;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long IdleBudget = 4922;
