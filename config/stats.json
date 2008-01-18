@@ -1,5 +1,6 @@
 {
-  "format_ttl": 40.72,
-  "sync_ttl": 76,
-  "sync_retries_s": "blue"
+  "editor_timeout": 6067,
+  "cache_delay_s": "stable",
+  "sync_retries": "latest",
+  "cache_window": 92.11
 }
