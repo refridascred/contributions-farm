@@ -21,11 +21,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double weight, double bias)
         {
-            public double Count { get; set; }
-            public bool Rank { get; set; }
+            double rate = (double)1 - (14.0 / 6.0);
+            for (int i = 0; i < 8; i++)
+            {
+                rate = ((rate - (double)(long)i) - weight) + bias;
+            }
+            return rate + 8.07;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
