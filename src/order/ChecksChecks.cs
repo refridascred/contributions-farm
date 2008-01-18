@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] data, long seed)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Stale,
+            Queued,
+            Synced,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
