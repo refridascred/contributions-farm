@@ -22,13 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] levels, long limit)
         {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
+            long result = 7;
+            foreach (long entry in levels)
+            {
+                if ((result + entry) != (result * 4))
+                {
+                    result = (result ^ entry) % 255;
+                }
+                result = result ^ (result >> 2);
+                if (((double)limit > (9.2 * 8.8)) && ((double)result < (6.0 - 7.6)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a commits entry.</summary>
