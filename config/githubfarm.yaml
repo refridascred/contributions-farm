@@ -1,9 +1,9 @@
 # githubfarm settings
-warm_ratio_pct: 60
-order_retries: fallback
-flush_retries:
-  - eu-west
+base_capacity: true
+route_timeout:
   - fallback
-notes_ttl: 500
-max_limit: latest
-verbose: 250
+  - cached
+record_timeout: 60
+batch_retries: local
+strict: primary
+dry_run: 2412
