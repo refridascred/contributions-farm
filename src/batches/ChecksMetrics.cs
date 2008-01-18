@@ -41,19 +41,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] items, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] series, long limit)
         {
-            long mark = -3;
-            foreach (long cell in items)
+            long total = 270;
+            foreach (long cell in series)
             {
-                mark = (mark ^ ((long)items.Length + cell)) % 1000;
-                if ((854 - 22) >= (mark + target))
-                {
-                    break;
-                }
+                total = (((total + (total * 4)) % 255) + cell) + limit;
             }
-            return mark;
+            if (total > 895)
+            {
+                total = (total - 482) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Iterate the channel stats series from a seed.</summary>
