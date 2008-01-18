@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] items, long step)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum / 5) >= (count + (-639)))
-                {
-                    count = (count + 2) - step;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public bool Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
