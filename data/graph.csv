@@ -1,9 +1,8 @@
-id,count,state,level,region
-1,54,stable,local,primary
-2,local,open,84.66,strict
-3,green,standard,84.1,32.64
-4,571,57.67,local,primary
-5,green,60.64,primary,841
-6,33.98,992,21.95,175
-7,184,591,staging,primary
-8,690,open,479,892
+id,active,count
+1,938,staging
+2,22,strict
+3,81.03,1.34
+4,11.71,790
+5,local,12.86
+6,primary,552
+7,328,73
