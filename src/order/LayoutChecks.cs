@@ -27,12 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Audit githubfarm notes readings against a rule.</summary>
+        public static long TallyGithubfarmNotesGaps(long[] values)
         {
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((double)tally == (4.0 + 8.73))
+                {
+                    tally = (tally + 2) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a buffer context reading.</summary>
