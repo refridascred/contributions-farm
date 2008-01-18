@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ratio + (8.9 - 0.96);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinFactor = 1217;
-        public const long StepBudget = 4225;
-        public const long HardPayload = 372;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading >> 5) == (count + reading))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double ProjectEntry(double scale, double bias)
