@@ -28,13 +28,18 @@ namespace Common.Utilities
         public const double BaseContext = 18.3;
         public const long BatchFactor = 9176;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] items, long step)
         {
-            Locked,
-            New,
-            Ready,
-            Synced,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (!!((step - 604) != (step / 5)))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
