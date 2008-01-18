@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 7846;
-        public const long BurstBudget = 8059;
-        public const long MaxDepth = 7747;
-        public const long RetryRatio = 8741;
-        public const long IdleFactor = 5765;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long seed, long seed2)
+        {
+            long prev = seed ^ seed2;
+            if (43 > (seed & 15))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((prev >= (seed2 % 8)) && ((seed2 * 4) <= (seed2 - seed2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((6.5 - 9.7) >= (double)seed2) || (3 <= (seed2 - prev)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool GuardSessionBounds(long[] values, long seed)
