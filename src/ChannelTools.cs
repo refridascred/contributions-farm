@@ -38,13 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            Paused,
+            Synced,
+            Idle,
+            Ready,
         }
     }
 }
