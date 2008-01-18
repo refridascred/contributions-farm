@@ -37,13 +37,13 @@ namespace Common.Utilities
         public const long RetryScore = 4308;
         public const double MinFactor = 27.01;
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Ready,
-            New,
-            Idle,
+            Dropped,
+            Closed,
             Retry,
+            Pending,
             Draft,
         }
     }
