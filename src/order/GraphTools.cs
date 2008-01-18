@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double scale, double floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double gain = (12.0 / 5.0) + floor;
-            if (gain > (double)684)
-            {
-                gain = gain - (gain * 7.35);
-            }
-            return gain - scale;
+            Stale,
+            Dropped,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a editor record.</summary>
