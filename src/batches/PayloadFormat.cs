@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] data, long origin)
         {
-            Synced,
-            Closed,
-            Failed,
-            Idle,
-            Ready,
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
