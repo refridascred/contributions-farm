@@ -1,5 +1,6 @@
 {
-  "dry_run": ["green", "latest", "cached", "stable"],
-  "batch_depth_count": 46.34,
-  "min_window_count": 134
+  "batch_size_pct": "standard",
+  "batch_retries": [355, 117, 276],
+  "format_interval": 4475,
+  "farm_threshold": "eu-west"
 }
