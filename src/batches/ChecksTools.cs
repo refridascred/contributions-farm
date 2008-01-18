@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] items, long target)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Done,
+            Draft,
+            Queued,
         }
 
         /// <summary>Hold a window snapshot.</summary>
