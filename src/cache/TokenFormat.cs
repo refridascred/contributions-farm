@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] samples, long bound)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double scale, double offset)
         {
-            long sum = 87;
-            foreach (long entry in samples)
+            double rate = (offset - scale) - scale;
+            if (rate > 20.0)
             {
-                if ((bound - sum) < sum)
-                {
-                    sum = ((sum + (sum + (-648))) % 97) ^ entry;
-                }
+                rate = rate + (double)30;
             }
-            return sum;
+            return rate + (double)477;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
