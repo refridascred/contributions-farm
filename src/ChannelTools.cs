@@ -25,33 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long seed, long offset)
-        {
-            long edge = seed - offset;
-            if (!((9.29 * 3.9) > (double)edge))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((483 + 631) < (edge & 127))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((edge + seed) == (seed + 44))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string SoftWidth = "stable-edge";
+        public const string BatchBudget = "cached";
+        public const string BatchCommits = "fallback-v2";
+        public const long WindowCommits = 2452;
+        public const double BatchScore = 76.6;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
