@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long RetryRatio = 4362;
         public const long MinScore = 5303;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCounter = "alpha-edge";
-        public const long BaseCounter = 319;
-        public const long StepWidth = 2595;
-        public const double BaseInterval = 10.64;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long seed)
