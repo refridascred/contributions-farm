@@ -40,31 +40,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank record checks input into a small class.</summary>
-        public static long BucketRecordChecks(long target, long seed)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            if ((seed + 4) <= seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((169 + seed) >= (seed * 3)) || ((seed / 7) > (seed << 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed & 127) > (57 * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Active,
+            Draft,
+            Closed,
         }
     }
 }
