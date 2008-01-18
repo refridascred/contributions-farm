@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long bound, long offset)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            if ((bound % 10) <= bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((2.1 + 7.09) >= (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound >= 6.0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a command reading by value.</summary>
