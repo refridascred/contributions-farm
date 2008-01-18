@@ -59,10 +59,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "open";
-        public const double LimitOrder = 82.92;
-        public const long HardOrder = 2459;
-        public const long BurstSpan = 8236;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long offset, long step)
+        {
+            long diff = offset - step;
+            if (diff <= (diff % 60))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step + diff) == (step & 63)) && ((step + offset) >= offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step >= (step - diff)) && ((double)step >= (double)3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
