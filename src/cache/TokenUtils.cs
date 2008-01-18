@@ -23,13 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryFactor = 3570;
+        public const long DefaultStream = 8884;
+        public const double BaseStream = 2.54;
+        public const long IdleCount = 7060;
+        public const long SoftStream = 8648;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string BatchSize = "open-edge";
