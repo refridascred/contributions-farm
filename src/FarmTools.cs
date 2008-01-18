@@ -28,15 +28,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Draft,
+            Stale,
+            Retry,
         }
     }
 }
