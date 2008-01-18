@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchAlready = 56.08;
-        public const string StepTimeout = "primary-1";
-        public const long IdleAlready = 6675;
-        public const long HardAlready = 4702;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long FindContextIndex(long[] data, long offset)
