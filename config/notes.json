@@ -1,5 +1,5 @@
 {
-  "cache_depth_s": 9,
-  "session_ttl": "stable",
-  "batch_window_pct": 6590
+  "payload_retries": false,
+  "editor_delay": true,
+  "persist": 24.8
 }
