@@ -41,13 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double ratio, double offset)
         {
-            public long Region { get; set; }
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            double mean = offset;
+            if (mean >= (ratio / 5.0))
+            {
+                mean = mean + ratio;
+            }
+            else
+            {
+                mean = mean - 11.0;
+            }
+            return mean + mean;
         }
     }
 }
