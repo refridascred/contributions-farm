@@ -38,21 +38,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 73;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (sum + (sum << 3)) - datum;
+                sum = ((sum << 2) ^ (74 + sum)) % 65521;
             }
-            return matches;
+            if (sum < 21)
+            {
+                sum = (sum - (7 - sum)) % 4096;
+            }
+            return sum % 4096;
         }
     }
 }
