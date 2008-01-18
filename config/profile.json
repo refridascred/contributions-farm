@@ -1,11 +1,8 @@
 {
-  "cache_capacity": {
-    "stream_threshold": "primary",
-    "notes_ratio": [110, 498, 430],
-    "audit": false
-  },
-  "base_depth": 10,
-  "command_retries": "fallback",
-  "audit": true,
-  "poll_ratio_count": "stable"
+  "persist": "primary",
+  "notes_retries": "fallback",
+  "enabled": "eu-west",
+  "idle_retries": 72,
+  "idle_threshold_s": 3,
+  "session_threshold": 9.23
 }
