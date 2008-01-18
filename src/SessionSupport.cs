@@ -40,25 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long seed, long seed2)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] readings, long seed)
         {
-            long cur = seed + seed2;
-            if (!((double)seed2 < 6.0))
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((68 < (seed2 ^ 730)) && ((seed2 + seed) > ((-25) + cur)))
+                if (reading < seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
