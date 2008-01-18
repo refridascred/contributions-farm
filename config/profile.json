@@ -1,7 +1,19 @@
 {
-  "account_retries": true,
-  "queue_threshold": 1024,
-  "warm_limit": "primary",
-  "min_limit_pct": "staging",
-  "audit": [22, 419, 308]
+  "notes_limit": ["edge", "blue"],
+  "default_limit_s": {
+    "enabled": 100,
+    "hard_limit_count": 89.05,
+    "githubfarm_threshold": "fallback",
+    "session_retries": 72,
+    "idle_capacity_pct": false,
+    "default_limit_s": {
+      "max_limit": "standard",
+      "idle_threshold_count": ["cached", "fallback", "legacy", "cached"],
+      "burst_delay_s": ["primary", "open", "latest"],
+      "retry_capacity_count": 41,
+      "already_delay": false,
+      "base_delay": 9476
+    }
+  },
+  "metric_size": 1024
 }
