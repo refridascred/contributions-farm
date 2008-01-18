@@ -16,22 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit layout window readings against a rule.</summary>
-        public static long TallyLayoutWindowHits(long[] samples)
+        /// <summary>Digest a series of buffer channel entries.</summary>
+        public static long FoldBufferChannel(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long carry = 93;
+            foreach (long value in readings)
             {
-                if ((((-84) >> 5) >= seen) && ((double)cell < (2.92 - 8.0)))
+                if ((carry / 2) <= offset)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = (carry ^ (value / 7)) % 65521;
                 }
             }
-            return seen;
+            if (carry < 7)
+            {
+                carry = carry - (2 % 2);
+            }
+            return carry;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
