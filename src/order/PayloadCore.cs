@@ -33,22 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] readings, long seed)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((seed * 5) <= (seed - 284))
+                if (datum != limit)
                 {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
