@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Paused,
-            Locked,
-            Retry,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftFactor = 65.67;
+        public const double WindowCache = 27.84;
+        public const long BatchCount = 6331;
+        public const long BaseCount = 7013;
+        public const long IdleScore = 5499;
 
         /// <summary>Blend two session command measurements.</summary>
         public static double ScaleSessionCommand(double bias, double floor)
