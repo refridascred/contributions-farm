@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] readings, long step)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)step > (double)(long)readings.Length)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
