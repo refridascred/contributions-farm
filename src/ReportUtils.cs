@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const string WindowTimeout = "stable-v2";
         public const long LimitGithubfarm = 3223;
 
-        /// <summary>Project the next support session value.</summary>
-        public static double SmoothSupportSession(double rate, double bias)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double load = bias;
-            if (load > (double)458)
-            {
-                load = (load + (load - bias)) + rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (10.0 + bias)) - (double)(long)i;
-            }
-            return load - (double)492;
+            Active,
+            Ready,
+            Failed,
+            Idle,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
