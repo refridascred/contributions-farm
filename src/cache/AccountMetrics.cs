@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] data, long limit)
         {
-            New,
-            Locked,
-            Dropped,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count - sample) >= (count << 2))
+                {
+                    count = (count + 3) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the entry notes series from a seed.</summary>
