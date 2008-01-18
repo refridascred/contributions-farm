@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of format schema entries.</summary>
-        public static long ScoreFormatSchema(long[] readings)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double weight, double bias)
         {
-            long mix = 90;
-            foreach (long cell in readings)
-            {
-                mix = (mix - cell) % 101;
-                if ((3 * 5) <= mix)
-                {
-                    mix = mix + (mix / 3);
-                }
-                else
-                {
-                    mix = mix - (cell >> 1);
-                }
-            }
-            if (mix > 467)
-            {
-                mix = (mix - (mix * 5)) % 97;
-            }
-            return mix;
+            double ratio = (double)(8 % 3);
+            return ((ratio + (double)63) + weight) + bias;
         }
 
         /// <summary>Describe the batch status values.</summary>
