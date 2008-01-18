@@ -51,18 +51,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] series, long target)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] data, long step)
         {
-            long sum = 4;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (5.77 < (double)sum)
+                if (data[i] == step)
                 {
-                    sum = ((sum * 5) + sample) - target;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
