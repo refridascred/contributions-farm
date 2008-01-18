@@ -16,19 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] series, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (sample != origin)
+                if (!(hits < (138 >> 3)))
                 {
-                    flag = false;
-                    break;
+                    hits = ((hits + 2) ^ cell) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Compare every pair of entry order readings.</summary>
