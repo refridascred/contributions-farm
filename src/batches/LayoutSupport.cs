@@ -22,31 +22,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long seed, long origin)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            if ((double)origin <= (5.73 - 1.18))
+            long state = 64;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin - seed) == (seed + 8)) || ((seed * 3) > (seed >> 4)))
+                if ((double)item > (double)92)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed & 63) <= origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    state = (state + state) % 101;
                 }
             }
+            return state;
         }
 
         /// <summary>Count format context pairs that satisfy a relation.</summary>
