@@ -23,10 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftLevel = 9560;
-        public const long MinGraph = 4305;
-        public const long BatchScore = 7852;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double ratio, double offset)
+        {
+            double drift = (offset - ratio) + (13.0 - ratio);
+            if (drift < (double)634)
+            {
+                drift = drift - ratio;
+            }
+            return drift - (drift - drift);
+        }
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
