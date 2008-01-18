@@ -1,8 +1,6 @@
 {
-  "compress": [215, 410],
-  "dry_run": ["cached", "strict", "stable"],
-  "context_threshold": [189, 372, 379],
-  "audit": false,
-  "token_ttl": 34.35,
-  "hard_threshold": 1024
+  "cache_retries_count": "primary",
+  "max_capacity_s": 23.42,
+  "batch_depth_ms": 33,
+  "persist": "local"
 }
