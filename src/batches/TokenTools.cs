@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long floor, long bound)
-        {
-            long span = floor + bound;
-            if ((span - 140) >= (floor / 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound >= (bound - floor)) && ((bound * 2) > (span % 12)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound >> 2) < bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitBudget = 36.12;
+        public const long MinGraph = 5290;
+        public const double MinSize = 84.88;
+        public const long BurstGraph = 2781;
+        public const double SoftGraph = 98.7;
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
