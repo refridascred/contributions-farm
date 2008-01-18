@@ -36,22 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools command samples are out of range.</summary>
-        public static long AuditToolsCommandHits(long[] data)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double mean = scale;
+            if (mean <= (double)342)
             {
-                if ((double)tally < (double)reading)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean - scale;
             }
-            return tally;
+            else
+            {
+                mean = mean + (16.0 - offset);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean + (double)5;
         }
 
         /// <summary>Roll a account counter forward.</summary>
