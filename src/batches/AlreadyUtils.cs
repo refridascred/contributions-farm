@@ -36,19 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] values, long bound)
+        /// <summary>Count metric checks pairs that satisfy a relation.</summary>
+        public static long PairMetricChecksCount(long[] readings)
         {
-            bool found = true;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a channel header.</summary>
