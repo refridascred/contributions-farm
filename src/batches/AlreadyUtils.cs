@@ -37,19 +37,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] readings, long limit)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the record state values.</summary>
