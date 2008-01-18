@@ -1,10 +1,7 @@
 # entry settings
-cache_threshold:
-  poll_ratio: 83
-  poll_depth_s: primary
-  min_depth: false
-sync_depth: 22.94
-counter_ttl: green
-cache_interval: open
-strict: 1024
-layout_timeout: false
+graph_interval: staging
+hard_ttl_pct: 0.5
+tools_window: true
+soft_depth_count: 32
+compress: 100
+persist: 18.37
