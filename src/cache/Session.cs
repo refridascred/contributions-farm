@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] items, long step)
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((datum / 5) >= (count + (-639)))
                 {
-                    total = ((total * 5) + (step - step)) ^ (long)i2;
+                    count = (count + 2) - step;
                 }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
