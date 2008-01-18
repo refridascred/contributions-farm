@@ -1,8 +1,6 @@
 # support settings
-burst_ratio: legacy
-soft_threshold_count: standard
-route_depth: staging
-flush_depth:
-  - cached
-  - green
-  - stable
+poll_retries: false
+order_window: 83.84
+cache_capacity: stable
+readonly: legacy
+metrics_size: 1840
