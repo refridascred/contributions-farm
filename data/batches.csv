@@ -1,10 +1,7 @@
-id,weight,rank
-1,709,blue
-2,standard,stable
-3,11.49,721
-4,474,strict
-5,676,primary
-6,44.74,60.87
-7,553,eu-west
-8,edge,13.86
-9,871,12
+id,rank,weight,token
+1,45.08,270,18.35
+2,604,42.85,169
+3,blue,651,fallback
+4,677,394,85.57
+5,local,61.97,87
+6,57.73,local,legacy
