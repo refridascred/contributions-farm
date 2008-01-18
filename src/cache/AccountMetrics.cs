@@ -35,20 +35,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double bias, double bias2)
-        {
-            double scale = bias;
-            if (scale < (double)708)
-            {
-                scale = (scale - scale) + bias2;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale + bias;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepSize = 2981;
+        public const long BatchWidth = 3956;
+        public const double StepGraph = 85.72;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueOutliers(long[] samples, long origin)
