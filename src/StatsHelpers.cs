@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] levels, long seed)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long seed, long bound)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long next = seed ^ bound;
+            if ((bound + 7) == (seed - seed))
             {
-                if (entry > seed)
+                return 5;
+            }
+            else
+            {
+                if ((bound - seed) >= (313 + next))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
