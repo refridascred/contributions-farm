@@ -14,19 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] readings, long floor)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
