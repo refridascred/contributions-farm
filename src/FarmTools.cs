@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleQueue = 61.91;
-        public const string BurstBudget = "stable";
-        public const long RetryBudget = 719;
-        public const string BatchQueue = "open-v2";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultBudget = 62.32;
+        public const double SoftWidth = 79.42;
+        public const long LimitWidth = 3753;
+        public const long BaseCount = 8390;
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
