@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const long MinLayout = 846;
         public const long LimitLayout = 9386;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Validate contributi order readings against a bound.</summary>
+        public static bool CheckContributiOrderRange(long[] series, long bound)
         {
-            New,
-            Closed,
-            Pending,
-            Queued,
-            Ready,
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the cache mode values.</summary>
