@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const string IdleTimeout = "stable";
         public const long BurstTools = 8147;
 
-        /// <summary>Blend two payload metrics measurements.</summary>
-        public static double ScalePayloadMetrics(double ratio, double span)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double weight = (double)0 / 4.0;
-            if (weight <= weight)
-            {
-                weight = (weight - (double)42) - span;
-            }
-            return weight + ratio;
+            Done,
+            Synced,
+            Idle,
+            Queued,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
