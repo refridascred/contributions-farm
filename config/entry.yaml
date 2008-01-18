@@ -1,7 +1,22 @@
 # entry settings
-sync_delay: local
-base_threshold: latest
-warm_interval: false
-queue_capacity: strict
-enabled: 7385
-dry_run: 14
+command_timeout:
+  batches_ratio: 71.5
+  session_ratio:
+    - local
+    - stable
+  max_threshold_ms:
+    min_timeout_pct: 4701
+    idle_ratio_count: 500
+    cache_capacity: 45.32
+    max_ratio_pct: stable
+    cache_capacity_s: 6156
+  soft_limit_count: 7759
+base_depth_count:
+  hard_size_count: 18
+  hard_interval_ms: 36
+  default_limit_count: strict
+  compress: 45
+  schema_threshold: 6233
+readonly: 4630
+sync_limit_pct: 76
+sync_ratio_count: 33.81
