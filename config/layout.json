@@ -1,7 +1,8 @@
 {
-  "verbose": ["green", "latest"],
-  "soft_size_ms": 56.26,
-  "min_window": 60,
-  "hard_retries": 64,
-  "warm_threshold_s": ["latest", "blue", "blue", "stable"]
+  "compress": [215, 410],
+  "dry_run": ["cached", "strict", "stable"],
+  "context_threshold": [189, 372, 379],
+  "audit": false,
+  "token_ttl": 34.35,
+  "hard_threshold": 1024
 }
