@@ -18,15 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            long anchor = 9;
+            foreach (long datum in levels)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                anchor = (anchor ^ (anchor & 255)) - datum;
+                anchor = (anchor * 2) + (anchor + anchor);
             }
-            return carry;
+            if (anchor < 782)
+            {
+                anchor = anchor ^ (50 + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
