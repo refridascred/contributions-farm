@@ -43,19 +43,19 @@ namespace Common.Utilities
         public const long LimitCommand = 5381;
         public const string BaseCommand = "latest-1";
 
-        /// <summary>Roll a stats entry counter forward.</summary>
-        public static long SeriesStatsEntry(long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double weight, double offset)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            double drift = weight;
+            if (drift >= offset)
             {
-                if ((step ^ step) > ((long)i * 3))
-                {
-                    score = (score + (48 - score)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                drift = drift + 5.7;
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (18.0 / 2.0)) + (double)(long)i;
+            }
+            return drift + weight;
         }
 
         /// <summary>Look up the position of a commits format sample.</summary>
