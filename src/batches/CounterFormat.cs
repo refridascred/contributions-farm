@@ -15,19 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of account metrics readings.</summary>
-        public static long TallyAccountMetrics(long[] levels, long step)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long carry = 687;
-            foreach (long entry in levels)
-            {
-                carry = ((carry * 4) + (step - 8)) + entry;
-            }
-            if (carry < 616)
-            {
-                carry = (carry * 2) + carry;
-            }
-            return carry;
+            Queued,
+            Done,
+            New,
+            Draft,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
