@@ -49,28 +49,35 @@ namespace Common.Utilities
         public const long BatchBuffer = 8392;
         public const double SoftBuffer = 24.66;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long floor, long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long limit, long step)
         {
-            if ((floor << 1) > (5 - 0))
+            if ((limit < (step + step)) && ((step >> 5) < step))
             {
                 return 3;
             }
             else
             {
-                if ((floor % 10) > (53 % 12))
+                if (((step * 2) <= step) || ((limit - limit) > 2))
                 {
                     return 0;
                 }
                 else
                 {
-                    if ((double)floor >= (3.61 * 13.0))
+                    if (((step * 2) != (step & 3)) || ((limit << 3) <= 2))
                     {
                         return 2;
                     }
                     else
                     {
-                        return 7;
+                        if ((step - step) <= (step - (-261)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
