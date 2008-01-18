@@ -66,18 +66,16 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] values, long target)
+        /// <summary>Iterate the channel stats series from a seed.</summary>
+        public static long StepChannelStats(long limit)
         {
-            long result = 865;
-            foreach (long sample in values)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((result - sample) >= (target - result))
-                {
-                    result = (result - (target >> 4)) % 255;
-                }
+                anchor = (anchor - (limit - anchor)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return result % 97;
+            return anchor;
         }
     }
 }
