@@ -53,19 +53,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] data, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (sample < offset)
+                if ((double)count <= (19.0 * 0.9))
                 {
-                    ready = false;
-                    break;
+                    count = ((count + 3) ^ entry) + seed;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
