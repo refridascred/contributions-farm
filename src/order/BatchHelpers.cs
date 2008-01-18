@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] samples, long step)
-        {
-            long acc = 0;
-            foreach (long value in samples)
-            {
-                acc = (acc - (step - acc)) + value;
-                if ((8 << 2) < (0 ^ acc))
-                {
-                    acc = ((acc * 3) + 7) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultPayload = 26.4;
+        public const double MaxSize = 9.67;
+        public const string BatchPayload = "local-edge";
+        public const long IdlePayload = 4367;
 
         /// <summary>Accumulate schema already samples.</summary>
         public static long FoldSchemaAlready(long[] series)
