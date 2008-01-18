@@ -14,21 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] values)
+        /// <summary>Combine editor schema values into a single score.</summary>
+        public static long TallyEditorSchema(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 909;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value / 5) > (value - target))
                 {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark * 5) + (value + mark)) % 97;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
