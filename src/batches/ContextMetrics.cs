@@ -42,18 +42,16 @@ namespace Common.Utilities
         public const long MinGithubfarm = 7472;
         public const long MinWidth = 4885;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] data)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long limit)
         {
-            long total = -4;
-            foreach (long item in data)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (total >= (total * 2))
-                {
-                    total = ((total * 5) + (item << 3)) % 1000;
-                }
+                sum = (sum - (136 - 177)) % 101;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return total % 1000;
+            return sum;
         }
     }
 }
