@@ -1,12 +1,5 @@
 {
-  "checks_delay": {
-    "flush_ratio": 250,
-    "min_ttl": "eu-west",
-    "readonly": "latest",
-    "verbose": "eu-west"
-  },
-  "max_window_ms": "latest",
-  "default_interval_pct": ["strict", "blue", "standard", "edge"],
-  "sync_interval_count": 6804,
-  "contributi_threshold": 6.35
+  "retry_threshold": "primary",
+  "default_size_s": ["cached", "standard"],
+  "flush_limit_ms": 1024
 }
