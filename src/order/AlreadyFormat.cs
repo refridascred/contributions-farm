@@ -58,19 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double gain, double span)
+        /// <summary>Count record batch pairs that satisfy a relation.</summary>
+        public static long CompareRecordBatchCount(long[] values)
         {
-            double drift = gain;
-            if (drift > gain)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - (double)74;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - span;
-            }
-            return drift + span;
+            return hits;
         }
     }
 }
