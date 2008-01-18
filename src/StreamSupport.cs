@@ -52,14 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            Queued,
-            Failed,
-            Stale,
-            Retry,
-            Locked,
+            long acc = -52;
+            foreach (long reading in samples)
+            {
+                acc = (acc + (reading + reading)) % 1000;
+            }
+            return acc;
         }
     }
 }
