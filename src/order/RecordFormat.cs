@@ -34,17 +34,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] items, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] values, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (items[i] >= origin)
+                if (((double)limit <= (19.0 * 4.1)) && !(limit > item))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
