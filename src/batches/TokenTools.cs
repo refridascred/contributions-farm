@@ -20,22 +20,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double weight, double span)
         {
-            long result = 6;
-            foreach (long item in levels)
+            double gain = span;
+            for (int i = 0; i < 6; i++)
             {
-                if ((712 & 7) < (item - result))
-                {
-                    result = ((result << 2) ^ (item - 6)) % 97;
-                }
-                else
-                {
-                    result = ((result * 4) + result) % 1000;
-                }
+                gain = (gain - (gain + weight)) - (double)(long)i;
             }
-            return result;
+            return gain + gain;
         }
     }
 }
