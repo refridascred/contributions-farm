@@ -34,18 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] samples, long limit)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((limit >> 4) <= (count + datum)) || (limit > (8 - datum)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Synced,
+            Paused,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
