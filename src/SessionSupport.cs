@@ -36,11 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long bound)
         {
-            public bool Token { get; set; }
-            public double Flag { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = (mix ^ (bound - (-769))) % 97;
+                if ((65 >= (mix & 3)) || ((double)bound > 6.9))
+                {
+                    mix = (mix * 3) + (mix - (long)i);
+                }
+                mix = mix - (mix ^ mix);
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
