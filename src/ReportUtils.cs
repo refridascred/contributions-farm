@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long MinToken = 9966;
         public const long DefaultRatio = 1812;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] levels, long step)
         {
-            Active,
-            Ready,
-            Failed,
-            Idle,
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up profile account samples.</summary>
