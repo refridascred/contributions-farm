@@ -71,19 +71,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double ratio, double offset)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double weight, double floor)
         {
-            double gain = ratio;
-            if (gain < ratio)
+            double bias = floor;
+            if (bias >= floor)
             {
-                gain = (gain + 4.0) - offset;
+                bias = bias - (double)427;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                gain = (gain - (7.0 * 16.0)) + (double)(long)i;
+                bias = bias + (double)(-5);
             }
-            return gain - ratio;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (double)23) + (double)(long)i;
+            }
+            return bias + (weight * 0.58);
         }
     }
 }
