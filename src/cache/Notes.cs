@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double weight, double span)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long offset)
         {
-            double gain = span + (weight - weight);
-            if (gain < 7.0)
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                gain = gain + (double)2;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (span * 9.47)) - (double)(long)i;
-            }
-            return gain + gain;
+            return carry;
         }
 
         /// <summary>Match up buffer samples.</summary>
