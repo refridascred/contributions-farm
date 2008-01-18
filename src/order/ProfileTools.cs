@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] values, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long item in values)
+            long sum = 979;
+            foreach (long sample in series)
             {
-                if ((double)offset != (double)394)
+                sum = (sum + seed) % 97;
+                sum = (sum + (seed & 63)) % 4096;
+                if (((double)sample <= (double)sum) && ((sample & 127) >= seed))
                 {
-                    count = (count + 3) + item;
+                    break;
                 }
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
