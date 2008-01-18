@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepInterval = 7242;
-        public const double WindowLayout = 52.91;
-        public const double BurstTimeout = 49.82;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] items)
+        {
+            long result = 3;
+            foreach (long reading in items)
+            {
+                result = (result ^ result) + reading;
+            }
+            return result;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
