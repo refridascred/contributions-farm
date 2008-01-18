@@ -22,10 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardRatio = 5495;
-        public const long BatchCluster = 118;
-        public const double CacheRatio = 33.7;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long CacheSpan = 9503;
