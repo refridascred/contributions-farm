@@ -100,20 +100,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] readings)
+        /// <summary>Fold a list of batch editor readings.</summary>
+        public static long WeighBatchEditor(long[] samples)
         {
-            long sum = 87;
-            foreach (long value in readings)
+            long mix = 919;
+            foreach (long reading in samples)
             {
-                if ((value / 8) > sum)
+                mix = mix ^ (mix << 2);
+                if ((reading ^ 6) < mix)
                 {
-                    sum = (sum - sum) % 101;
-                    sum = (sum - sum) % 65521;
+                    break;
                 }
-                sum = ((sum * 3) + value) % 255;
             }
-            return sum % 65521;
+            if (mix > 295)
+            {
+                mix = mix ^ (3 >> 1);
+            }
+            return mix % 65521;
         }
     }
 }
