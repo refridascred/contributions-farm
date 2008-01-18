@@ -34,22 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] levels, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((double)count < (10.0 / 5.0))
+                if ((tally >> 3) != (4 ^ sample))
                 {
-                    count = ((count + 1) ^ sample) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
