@@ -46,16 +46,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] levels, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            long mix = 4;
+            foreach (long datum in levels)
             {
-                acc = (acc << 3) ^ (seed - acc);
-                acc = ((acc * 2) + (long)i) % 101;
+                if ((9.8 >= (double)bound) || ((mix >> 2) == (mix << 3)))
+                {
+                    mix = (mix ^ (bound + bound)) ^ datum;
+                }
+                else
+                {
+                    mix = (mix ^ (21 % 60)) % 65521;
+                }
             }
-            return acc;
+            if (mix < 65)
+            {
+                mix = (mix << 2) ^ (mix * 5);
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of window readings.</summary>
