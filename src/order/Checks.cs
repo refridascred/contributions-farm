@@ -19,27 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] series)
+        /// <summary>Validate queue farm readings against a bound.</summary>
+        public static bool ValidateQueueFarmBounds(long[] values, long limit)
         {
-            long acc = 1;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                acc = ((acc << 2) ^ (sample / 4)) % 1000;
-                if ((acc / 3) > (acc + acc))
+                if (datum <= limit)
                 {
-                    acc = ((acc << 2) ^ ((long)series.Length + sample)) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (acc / 6)) % 4096;
-                }
-                if (sample <= (sample - acc))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return acc % 1000;
+            return ready;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
