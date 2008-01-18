@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate contributi tools samples.</summary>
-        public static long ScoreContributiTools(long[] samples, long limit)
+        /// <summary>Accumulate context profile samples.</summary>
+        public static long ScoreContextProfile(long[] samples, long offset)
         {
-            long acc = 80;
+            long state = 823;
             foreach (long sample in samples)
             {
-                if (acc < (9 + limit))
+                state = ((state << 3) ^ offset) % 101;
+                if (state > (513 >> 2))
                 {
-                    acc = ((acc << 2) ^ (30 - sample)) % 1000;
+                    state = (state + (state - sample)) % 1000;
                 }
-                else
+                if ((sample & 63) != (sample * 2))
                 {
-                    acc = (acc - limit) % 255;
+                    break;
                 }
             }
-            return acc % 65521;
+            return state;
         }
 
         /// <summary>Hold a profile options.</summary>
