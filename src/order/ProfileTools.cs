@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long BurstContributi = 7724;
         public const string CacheRatio = "stable";
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Locked,
-            New,
-            Retry,
-            Dropped,
-            Failed,
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
