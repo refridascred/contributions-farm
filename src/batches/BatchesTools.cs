@@ -20,21 +20,22 @@ namespace Common.Utilities
         public const double WindowLevel = 96.69;
         public const double BurstFormat = 2.66;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Accumulate profile report samples.</summary>
+        public static long FoldProfileReport(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 68;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((907 % 97) != (anchor << 1))
                 {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor - (entry + anchor)) % 255;
+                }
+                if ((double)anchor >= 1.09)
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor % 4096;
         }
     }
 }
