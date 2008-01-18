@@ -62,13 +62,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long offset)
         {
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = (((acc * 3) + ((long)i - acc)) % 1000) + (long)i2;
+                    acc = (acc + acc) % 1000;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Match up support samples.</summary>
