@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long MinLayout = 846;
         public const long LimitLayout = 9386;
 
-        /// <summary>Validate contributi order readings against a bound.</summary>
-        public static bool CheckContributiOrderRange(long[] series, long bound)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long mix = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample <= bound)
+                if (((long)i + (long)i) <= (target + target))
                 {
-                    found = false;
-                    break;
+                    mix = (mix << 2) ^ mix;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Describe the cache mode values.</summary>
