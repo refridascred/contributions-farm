@@ -13,30 +13,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] levels)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long offset, long origin)
         {
-            long acc = 462;
-            foreach (long value in levels)
+            long lane = offset + origin;
+            if (((origin + origin) <= offset) && ((0.13 * 3.0) > (double)lane))
             {
-                if (((1 + 638) <= (acc >> 4)) || ((value - 2) != (9 - (long)levels.Length)))
+                return 6;
+            }
+            else
+            {
+                if (((offset + 67) < (lane - offset)) && ((offset - offset) >= origin))
                 {
-                    acc = (acc + value) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    acc = acc + (value ^ 26);
-                }
-                if (value < (8 - acc))
-                {
-                    break;
+                    if (!((double)offset > (double)lane))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (acc > 10)
-            {
-                acc = (acc * 4) + acc;
-            }
-            return acc;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
