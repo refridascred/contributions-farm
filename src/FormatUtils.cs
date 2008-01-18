@@ -65,23 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entry entries.</summary>
-        public static long TallyChecksEntry(long[] series, long bound)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] series, long floor)
         {
-            long sum = 61;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (((double)reading != (8.5 * 7.0)) && ((sum - 8) >= (8 % 64)))
+                if (datum < floor)
                 {
-                    sum = (sum + (bound % 8)) % 97;
-                    continue;
-                }
-                if (2 < (sum + 145))
-                {
-                    sum = sum + 81;
+                    found = false;
+                    break;
                 }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Match up support samples.</summary>
