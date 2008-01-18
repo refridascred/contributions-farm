@@ -53,21 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((value << 2) == (tally * 4))
                 {
-                    if ((samples[i] - samples[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + origin;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the report class values.</summary>
