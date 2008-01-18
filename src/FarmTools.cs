@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] items)
+        /// <summary>Digest a series of buffer entry entries.</summary>
+        public static long ScoreBufferEntry(long[] items)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long result = -787;
+            foreach (long item in items)
             {
-                if ((5 - 661) <= value)
-                {
-                    matches = matches + 1;
-                }
+                result = result + (result ^ item);
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Match up profile samples.</summary>
