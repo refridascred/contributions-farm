@@ -20,32 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long limit)
+        /// <summary>Audit profile contributi readings against a rule.</summary>
+        public static long TallyProfileContributiOutliers(long[] series)
         {
-            long cur = bound + limit;
-            if ((cur - cur) >= (bound + bound))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (cur > limit)
+                if ((seen ^ reading) >= (reading % 3))
                 {
-                    return 5;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((cur << 1) < (cur ^ bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
