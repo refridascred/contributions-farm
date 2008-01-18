@@ -1,7 +1,5 @@
 {
-  "sync_size": 5903,
-  "batches_limit": false,
-  "min_delay_ms": true,
-  "hard_limit": [163, 364, 96],
-  "audit": 60
+  "format_ttl": 40.72,
+  "sync_ttl": 76,
+  "sync_retries_s": "blue"
 }
