@@ -32,15 +32,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next farm counter value from a seed.</summary>
-        public static long SeriesFarmCounter(long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] readings, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (value != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
     }
 }
