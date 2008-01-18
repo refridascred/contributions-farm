@@ -1,8 +1,11 @@
 {
-  "channel_timeout": ["strict", "edge", "primary"],
-  "cache_ttl": "strict",
-  "burst_threshold": 250,
-  "compress": 52,
-  "strict": "open",
-  "githubfarm_window": 10.96
+  "cache_limit": ["legacy", "standard", "stable"],
+  "burst_delay_ms": "stable",
+  "warm_size": "stable",
+  "audit": {
+    "base_interval": false,
+    "min_capacity_ms": false,
+    "soft_size": 77,
+    "poll_ratio_pct": true
+  }
 }
