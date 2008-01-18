@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string SoftWidth = "stable-edge";
-        public const string BatchBudget = "cached";
-        public const string BatchCommits = "fallback-v2";
-        public const long WindowCommits = 2452;
-        public const double BatchScore = 76.6;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if (mix <= 700)
+                {
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
