@@ -43,16 +43,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Fold a list of queue notes readings.</summary>
+        public static long FoldQueueNotes(long[] readings)
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
+            long result = 911;
+            foreach (long sample in readings)
             {
-                mix = (mix << 2) ^ (mix + (long)i);
-                mix = ((mix * 5) + (long)i) % 101;
+                result = ((result ^ 24) % 65521) ^ sample;
+                result = result - (188 ^ 4);
             }
-            return mix;
+            if (result > 0)
+            {
+                result = result - (result << 3);
+            }
+            return result % 4096;
         }
     }
 }
