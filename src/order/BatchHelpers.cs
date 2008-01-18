@@ -13,21 +13,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] items)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = span;
+            if (weight < (span * 6.5))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight + span;
             }
-            return matches;
+            else
+            {
+                weight = weight - (scale - span);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - (3.9 * 5.69);
         }
 
         /// <summary>Accumulate commits samples.</summary>
