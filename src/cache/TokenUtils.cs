@@ -31,15 +31,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double scale, double bias)
-        {
-            double load = scale;
-            for (int i = 0; i < 4; i++)
-            {
-                load = ((load - (scale + load)) + (double)(long)i) - bias;
-            }
-            return load - (scale * 3.14);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchSize = "open-edge";
+        public const double LimitLevel = 20.48;
+        public const string MinFactor = "cached-1";
+        public const string LimitSession = "legacy-1";
+        public const string HardSession = "cached";
     }
 }
