@@ -29,21 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine entry queue values into a single score.</summary>
-        public static long CombineEntryQueue(long[] levels, long floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double gain, double floor)
         {
-            long state = 39;
-            foreach (long value in levels)
+            double gain2 = (double)(24 + (-55));
+            if (gain2 <= floor)
             {
-                state = (state ^ (value / 5)) % 65521;
-                state = ((state * 2) + (60 ^ 50)) % 255;
-                state = ((state * 3) + (floor & 255)) % 97;
+                gain2 = gain2 + (double)81;
             }
-            if (state < 23)
+            for (int i = 0; i < 6; i++)
             {
-                state = state - (floor - state);
+                gain2 = (gain2 + floor) + (double)(long)i;
             }
-            return state;
+            return gain2 + (gain / 7.0);
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
