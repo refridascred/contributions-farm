@@ -29,22 +29,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] items, long origin)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] items)
         {
-            long mix = 1;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry <= (mix + mix)) || (origin < (entry - entry)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix << 3) ^ (29 + entry);
-                }
-                else
-                {
-                    mix = ((mix * 2) + 9) % 65521;
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
