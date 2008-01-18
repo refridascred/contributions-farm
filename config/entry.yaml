@@ -1,28 +1,5 @@
 # entry settings
-retry_size_count: blue
-cache_delay: 73.43
-strict:
-  - 344
-  - 273
-  - 206
-compress:
-  cache_capacity_s: cached
-  burst_interval:
-    batch_interval: open
-    tools_ratio: 76.43
-    notes_threshold: true
-    default_size_pct: 39
-    warm_depth_s: 2.46
-    order_depth: 87.13
-  metric_depth: 56.47
-  hard_ratio: 8804
-  support_capacity: 30
-  default_ttl: 60
-warm_threshold:
-  base_ttl_pct: strict
-  hard_retries: edge
-  poll_retries_ms: strict
-  profile_interval: false
-  flush_window_ms: 17
-  burst_limit: 34
-cache_ratio_pct: edge
+cache_interval: standard
+strict: 51
+max_interval_s: 96.45
+min_limit_ms: 1024
