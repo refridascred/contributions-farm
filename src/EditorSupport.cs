@@ -33,12 +33,19 @@ namespace Common.Utilities
         public const double RetrySchema = 87.42;
         public const double StepCount = 36.4;
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] series, long origin)
         {
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
+            long acc = 8;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = ((((acc * 2) + acc) % 97) ^ (long)i) - origin;
+                }
+                acc = acc + (reading >> 4);
+            }
+            return acc;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
