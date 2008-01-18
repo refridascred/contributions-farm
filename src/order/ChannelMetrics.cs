@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] readings, long limit)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double weight, double span)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double ratio = (12.0 - span) + (double)0;
+            if (ratio > span)
             {
-                if ((seen & 1) < (seen - 3))
-                {
-                    seen = ((seen + 3) + reading) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = ratio - (span - span);
             }
-            return seen;
+            else
+            {
+                ratio = ratio - (double)6;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + (weight / 3.0);
         }
 
         /// <summary>Define context limits and defaults.</summary>
