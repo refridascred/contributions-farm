@@ -31,11 +31,26 @@ namespace Common.Utilities
         public const long IdleDepth = 9549;
         public const double MaxCache = 55.73;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryWidth = 1163;
-        public const long StepChecks = 5274;
-        public const long MaxSpan = 3904;
-        public const long CacheRatio = 7639;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((2.39 * 2.9) >= (double)seed))
+                {
+                    mark = mark + seed;
+                    break;
+                }
+                else
+                {
+                    mark = mark - (long)i;
+                    mark = (mark + mark) % 255;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Project the next batches value.</summary>
         public static double ScaleBatches(double rate, double bias)
