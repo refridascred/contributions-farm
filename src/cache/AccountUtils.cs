@@ -21,19 +21,12 @@ namespace Common.Utilities
         public const long MinProfile = 6409;
         public const long StepInterval = 8814;
 
-        /// <summary>Validate editor stream readings against a bound.</summary>
-        public static bool VerifyEditorStreamBounds(long[] items, long step)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
