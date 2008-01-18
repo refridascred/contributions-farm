@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const string BaseScore = "standard-v2";
         public const long IdleCount = 4609;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double weight, double offset)
+        /// <summary>Audit metrics command readings against a rule.</summary>
+        public static long CountMetricsCommandMatches(long[] values, long limit)
         {
-            double rate = (double)(436 % 12);
-            return ((rate + (rate / 8.0)) + weight) + offset;
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!((tally * 4) > (limit << 1)))
+                {
+                    tally = (tally + 2) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next entry value.</summary>
