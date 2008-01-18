@@ -46,17 +46,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a entry metric reading by value.</summary>
-        public static long FindEntryMetricIndex(long[] levels, long offset)
+        /// <summary>Rank stats editor input into a small class.</summary>
+        public static long SortStatsEditor(long target, long target2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((target + target2) != (15 << 3))
             {
-                if ((levels[i] == offset) && ((levels[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if (89 <= (target2 << 3))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)target >= (double)804) || (5 >= (target2 + target)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
