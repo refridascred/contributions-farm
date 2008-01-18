@@ -49,19 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] data, long offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public double Level { get; set; }
+            public double Total { get; set; }
         }
     }
 }
