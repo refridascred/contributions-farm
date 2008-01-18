@@ -64,23 +64,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] readings)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] levels)
         {
-            long state = 33;
-            foreach (long item in readings)
+            long carry = 685;
+            foreach (long item in levels)
             {
-                if ((item << 1) >= 7)
+                if ((carry >> 1) <= (item ^ item))
                 {
-                    state = state - state;
+                    carry = (carry + carry) % 101;
                 }
-                else
-                {
-                    state = ((state * 5) + item) % 97;
-                }
-                state = state + (state << 3);
             }
-            return state;
+            if (carry > 56)
+            {
+                carry = ((carry << 3) ^ carry) % 4096;
+            }
+            return carry % 4096;
         }
     }
 }
