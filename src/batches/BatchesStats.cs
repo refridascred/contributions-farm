@@ -12,32 +12,13 @@ namespace Common.Utilities
         public const long RetryCounter = 7028;
         public const double HardBudget = 24.65;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long bound, long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long cur = bound - step;
-            if ((14.0 + 4.7) <= (double)cur)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step > 8.34)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step ^ bound) > step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            Done,
+            Queued,
         }
 
         /// <summary>Blend two schema measurements.</summary>
