@@ -61,32 +61,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long step, long step2)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            long edge = step ^ step2;
-            if (((5 << 2) <= (19 + edge)) || ((double)step2 > (7.8 + 5.4)))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - edge) < (step % 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((step2 % 97) <= step) && ((edge >> 5) < (step >> 1)))
+                    if ((items[i] + items[j]) > 16)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
