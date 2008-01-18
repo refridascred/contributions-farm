@@ -38,14 +38,32 @@ namespace Common.Utilities
         public const long IdleCount = 5920;
         public const long CacheFactor = 6765;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Rank context support input into a small class.</summary>
+        public static long BucketContextSupport(long step, long floor)
         {
-            Paused,
-            Stale,
-            Idle,
-            Ready,
-            New,
+            long delta = step ^ floor;
+            if (((-889) * 5) == (step & 63))
+            {
+                return 8;
+            }
+            else
+            {
+                if (delta > (floor >> 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((delta >> 3) != (floor ^ 12)) && (delta >= (step * 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cluster level values.</summary>
