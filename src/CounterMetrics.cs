@@ -24,12 +24,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 5526;
-        public const long MinSpan = 4016;
-        public const long BurstInterval = 7059;
-        public const long LimitLayout = 7676;
-        public const string StepLayout = "primary";
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double ratio, double span)
+        {
+            double scale = (double)76 * 0.4;
+            if (scale < ratio)
+            {
+                scale = (scale + 20.0) + span;
+            }
+            return scale - (double)430;
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long OverlapCounterCount(long[] series)
