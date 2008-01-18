@@ -1,11 +1,14 @@
 # Commits notes
 
-A cache that stays idle for too long is moved to the counter list.
-Run the window check before changing any order limits.
-Each already is validated before it reaches the channel queue.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Defaults for commits live in the config folder and can be overridden per environment.
+
+Keep counter and githubfarm names short and lowercase.
+Each githubfarm is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Keep buffer values small
-- Prefer metrics defaults
-- Validate graph input early
+- Review stats limits each release
+- Keep command values small
+- Validate format input early
+- Prefer commits defaults
