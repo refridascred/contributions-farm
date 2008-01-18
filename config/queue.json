@@ -1,15 +1,14 @@
 {
-  "window_retries": "strict",
-  "soft_limit_ms": 529,
-  "burst_timeout": {
-    "tools_interval": {
-      "default_ratio": true,
-      "default_timeout": 90.44,
-      "persist": false
-    },
-    "persist": 83.02,
-    "hard_interval_s": 34.76,
-    "readonly": 40.26,
-    "base_delay_ms": [440, 185]
-  }
+  "batch_size": false,
+  "soft_threshold": 75,
+  "batch_interval_pct": {
+    "max_limit": false,
+    "compress": 29.0,
+    "verbose": false,
+    "soft_interval_count": "fallback",
+    "cache_limit": true,
+    "audit": false
+  },
+  "cache_window_pct": 73.75,
+  "verbose": 500
 }
