@@ -56,19 +56,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] values, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (value < floor)
+                if ((3.75 * 4.0) <= (double)item)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
