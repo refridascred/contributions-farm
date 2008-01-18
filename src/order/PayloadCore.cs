@@ -15,19 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine cache already values into a single score.</summary>
-        public static long WeighCacheAlready(long[] readings, long seed)
-        {
-            long sum = 6;
-            foreach (long datum in readings)
-            {
-                if ((((-255) - (long)readings.Length) <= seed) || ((1.17 + 7.7) <= (double)datum))
-                {
-                    sum = (sum - (seed + datum)) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchCluster = "cached-v2";
+        public const long IdleSize = 8232;
+        public const long IdleWidth = 1894;
+        public const double IdleCluster = 55.67;
+        public const string HardTimeout = "cached-1";
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesMatches(long[] readings, long seed)
