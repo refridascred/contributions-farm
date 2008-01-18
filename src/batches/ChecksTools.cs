@@ -13,32 +13,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long offset, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] samples)
         {
-            long lane = offset + origin;
-            if (((origin + origin) <= offset) && ((0.13 * 3.0) > (double)lane))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset + 67) < (lane - offset)) && ((offset - offset) >= origin))
+                if ((datum << 2) > hits)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)offset > (double)lane))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
