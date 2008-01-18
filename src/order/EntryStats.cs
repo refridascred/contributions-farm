@@ -29,20 +29,12 @@ namespace Common.Utilities
         public const long IdleDepth = 9549;
         public const double MaxCache = 55.73;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] values)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long score = 6;
-            foreach (long sample in values)
-            {
-                if ((double)score >= (9.0 - 5.54))
-                {
-                    score = (score + sample) % 255;
-                }
-                score = ((score << 2) ^ (81 - 11)) % 101;
-                score = (score ^ score) % 4096;
-            }
-            return score;
+            public double Total { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
