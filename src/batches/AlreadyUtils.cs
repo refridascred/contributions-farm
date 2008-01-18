@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 43;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark + 247) + (long)i;
+                }
+                if ((mark > (23 << 2)) && ((double)cell >= (double)target))
+                {
+                    mark = mark ^ (target ^ target);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (cell % 64)) % 255;
                 }
             }
-            return tally;
+            if (mark > 0)
+            {
+                mark = (mark - (target % 3)) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Compare every pair of schema contributi readings.</summary>
