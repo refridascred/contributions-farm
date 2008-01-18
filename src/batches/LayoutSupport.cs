@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] samples)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long acc = 8;
-            foreach (long datum in samples)
-            {
-                acc = acc ^ (912 + datum);
-                if (!((acc * 2) <= acc))
-                {
-                    acc = acc - (acc % 24);
-                }
-                if ((datum - datum) >= (datum - acc))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit account readings against a rule.</summary>
