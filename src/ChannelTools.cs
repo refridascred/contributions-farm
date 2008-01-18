@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double scale, double bias)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] items)
         {
-            double ratio = (double)(492 / 2);
-            if (ratio < 3.8)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (scale + ratio);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (ratio + bias)) + (double)(long)i;
-            }
-            return ratio - (ratio * 2.5);
+            return tally;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
