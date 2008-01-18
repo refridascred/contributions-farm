@@ -48,21 +48,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] levels)
+        /// <summary>Count order farm pairs that satisfy a relation.</summary>
+        public static long PairOrderFarmCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) == 16)
+                    if ((samples[i] ^ samples[j]) == 2)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
