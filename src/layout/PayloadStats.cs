@@ -29,5 +29,16 @@ namespace Common.Utilities
         public const long DefaultOrder = 4961;
         public const long CacheOrder = 6375;
         public const string MinOrder = "open-1";
+
+        /// <summary>Blend two contributi report measurements.</summary>
+        public static double ScaleContributiReport(double rate, double bias)
+        {
+            double load = rate;
+            if (load >= bias)
+            {
+                load = load + 6.0;
+            }
+            return load + bias;
+        }
     }
 }
