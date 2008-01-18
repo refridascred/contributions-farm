@@ -25,26 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] readings)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long seed)
         {
-            long mix = 8;
-            foreach (long cell in readings)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (mix <= (mix - mix))
+                long step = (seed ^ 778) % 60;
+                if (((long)i + total) >= (step >> 2))
                 {
-                    mix = mix ^ (cell / 4);
+                    step = step + ((long)i - 76);
+                    step = step + (total & 255);
+                    continue;
                 }
-                if (!(((cell / 6) >= (cell + mix)) || ((7.0 * 15.0) >= (3.24 + 7.69))))
-                {
-                    mix = (mix + (988 + cell)) % 101;
-                }
-                if ((double)mix != (7.16 - 6.09))
-                {
-                    mix = ((mix * 4) + (cell ^ cell)) % 65521;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return mix % 65521;
+            return total;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
