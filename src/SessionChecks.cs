@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] values, long origin)
         {
-            public string Weight { get; set; } = "";
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            long anchor = 65;
+            foreach (long value in values)
+            {
+                anchor = ((anchor + (44 + value)) % 65521) - origin;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Compare every pair of cache token readings.</summary>
