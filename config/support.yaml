@@ -1,13 +1,4 @@
 # support settings
-cache_capacity_pct:
-  base_capacity_s: 1024
-  max_size_count:
-    - 422
-    - 480
-  retry_ttl: 7091
-  flush_ttl_count: 8549
-  soft_capacity_s: blue
-record_retries: green
-cache_capacity_count: standard
-base_depth_pct: primary
-schema_threshold: 7466
+sync_capacity: 1024
+warm_window_ms: staging
+readonly: 62
