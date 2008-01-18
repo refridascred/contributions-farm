@@ -1,6 +1,10 @@
-id,label,ratio,weight
-1,latest,653,74.07
-2,422,20.94,392
-3,staging,staging,62.63
-4,490,green,896
-5,strict,628,latest
+id,state,active,rank,level
+1,legacy,35.65,735,11.81
+2,54.08,green,111,edge
+3,155,fallback,blue,957
+4,33.89,421,888,primary
+5,961,60.91,stable,70.32
+6,345,strict,135,green
+7,845,551,270,35.36
+8,35.18,420,164,62.22
+9,94.78,edge,497,23
