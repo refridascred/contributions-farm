@@ -1,19 +1,8 @@
 {
-  "githubfarm_capacity": {
-    "compress": 97,
-    "session_limit": false,
-    "retry_window_count": "strict",
-    "verbose": {
-      "report_ratio": 1,
-      "idle_interval": "cached",
-      "cache_capacity_ms": false,
-      "hard_window_pct": [245, 35, 141, 56]
-    }
-  },
-  "strict": 250,
-  "verbose": {
-    "warm_ttl_ms": 27,
-    "audit": "standard",
-    "warm_depth_pct": 40.52
-  }
+  "burst_limit_pct": "staging",
+  "contributi_retries": "stable",
+  "default_delay": 5342,
+  "max_capacity": 38,
+  "hard_capacity_pct": 2582,
+  "poll_threshold": false
 }
