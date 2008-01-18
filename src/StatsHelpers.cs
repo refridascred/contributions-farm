@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (value < (value + hits))
+                if ((608 + tally) >= (entry ^ entry))
                 {
-                    hits = hits + 3;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next checks schema value from a seed.</summary>
