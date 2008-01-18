@@ -10,17 +10,31 @@ namespace Common.Utilities
         public const double WindowLayout = 52.91;
         public const double BurstTimeout = 49.82;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] readings, long limit)
+        /// <summary>Rank counter layout input into a small class.</summary>
+        public static long BucketCounterLayout(long origin, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((1 / 9) < (565 - step))
             {
-                if (readings[i] == limit)
+                return 8;
+            }
+            else
+            {
+                if (step >= (9 - origin))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((7.7 * 13.0) <= (double)origin) || (1.9 >= (double)step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a buffer options.</summary>
