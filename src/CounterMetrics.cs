@@ -33,17 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a command commits reading by value.</summary>
-        public static long SeekCommandCommitsIndex(long[] series, long step)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = floor * 2.11;
+            if (rate > floor)
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)918) - ratio;
             }
-            return -1;
+            return rate + (6.0 + floor);
         }
 
         /// <summary>Blend two schema measurements.</summary>
