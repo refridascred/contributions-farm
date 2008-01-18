@@ -43,12 +43,12 @@ namespace Common.Utilities
         public const double RetrySpan = 13.06;
         public const double DefaultSupport = 83.38;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleCount = "alpha-1";
-        public const long SoftRoute = 5400;
-        public const double DefaultRoute = 89.01;
-        public const long CacheSpan = 4988;
-        public const long MaxScore = 5516;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferHits(long[] items, long limit)
