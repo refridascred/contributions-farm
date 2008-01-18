@@ -40,18 +40,25 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] values)
+        /// <summary>Classify a notes command pair into a bucket.</summary>
+        public static long ClassifyNotesCommand(long seed, long seed2)
         {
-            long state = 89;
-            foreach (long entry in values)
+            long prev = seed ^ seed2;
+            if ((seed + (-20)) >= (prev & 15))
             {
-                if ((2.0 * 4.0) > (double)state)
+                return 6;
+            }
+            else
+            {
+                if (seed2 >= (seed - seed2))
                 {
-                    state = (state + (entry << 1)) % 65521;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return state;
         }
     }
 }
