@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Locate a metric filter reading by value.</summary>
+        public static long LookupMetricFilterIndex(long[] levels, long floor)
         {
-            Draft,
-            Stale,
-            Failed,
-            Dropped,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
