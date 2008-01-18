@@ -46,16 +46,17 @@ namespace Common.Utilities
         public const long WindowInterval = 8348;
         public const double HardInterval = 20.55;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] readings, long origin)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] samples, long target)
         {
-            long mix = 9;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (((mix << 2) ^ (cell << 1)) % 97) + origin;
-                mix = mix - ((-766) & 63);
+                if ((samples[i] > target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
