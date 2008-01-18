@@ -62,17 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] data, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (data[i] == step)
+                if ((((double)reading <= (1.8 * 0.8)) || ((count - reading) >= (reading & 127))) && ((9 <= (count >> 2)) && ((count - reading) > (count % 64))))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
