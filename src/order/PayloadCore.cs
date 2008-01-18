@@ -20,12 +20,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] items, long bound)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] == bound)
+                if ((series[i] <= floor) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
