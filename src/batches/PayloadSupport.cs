@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] readings, long bound)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long floor, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long next = floor ^ bound;
+            if ((double)next > (8.4 - 0.52))
             {
-                if ((readings[i] <= bound) && ((readings[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if (((bound * 2) >= (bound + floor)) || ((double)bound < 2.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((next / 3) != (0 - 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor >> 3) <= (next / 4)) || ((floor % 97) >= bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
