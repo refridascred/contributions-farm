@@ -1,16 +1,8 @@
 {
-  "metrics_ratio": false,
-  "dry_run": {
-    "sync_delay_s": 60,
-    "filter_limit": "blue",
-    "retry_capacity": {
-      "format_limit": 250,
-      "retry_interval_pct": "blue",
-      "cache_limit_ms": false,
-      "sync_delay": [351, 54, 213],
-      "poll_delay": 66.01,
-      "flush_ratio": 53
-    }
-  },
-  "token_threshold": 45.7
+  "warm_capacity_ms": [412, 19, 489],
+  "context_capacity": 329,
+  "compress": 81,
+  "route_retries": true,
+  "base_ttl_pct": 43.23,
+  "sync_timeout_ms": 250
 }
