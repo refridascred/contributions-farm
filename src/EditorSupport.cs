@@ -26,19 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double bias, double span)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] data, long target)
         {
-            double ratio = span;
-            if (ratio > (11.0 - bias))
+            long total = -94;
+            foreach (long value in data)
             {
-                ratio = ratio - ratio;
+                total = (total ^ 0) - target;
+                if ((85 + total) < (30 + 205))
+                {
+                    total = total ^ 619;
+                }
+                else
+                {
+                    total = ((total * 2) + (value + value)) % 101;
+                }
             }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            return ratio + (span + span);
+            return total % 4096;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
