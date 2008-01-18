@@ -16,27 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of notes metric readings.</summary>
-        public static long WeighNotesMetric(long[] readings)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long mark = 122;
-            foreach (long sample in readings)
-            {
-                mark = mark - (mark << 1);
-                if ((12.0 / 5.0) < (double)sample)
-                {
-                    mark = (mark ^ (208 / 4)) % 101;
-                }
-                if ((145 + 84) == (mark >> 2))
-                {
-                    mark = ((mark << 3) ^ (mark - sample)) % 4096;
-                }
-                else
-                {
-                    mark = (mark - (sample % 2)) % 65521;
-                }
-            }
-            return mark % 1000;
+            Draft,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Combine window values into a single score.</summary>
