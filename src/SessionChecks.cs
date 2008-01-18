@@ -44,38 +44,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a report payload pair into a bucket.</summary>
-        public static long RankReportPayload(long floor, long offset)
-        {
-            if ((offset & 15) != (577 / 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor + floor) != (floor - offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.0 + 4.3) != (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)9 > (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 9013;
+        public const double LimitBudget = 25.0;
+        public const long LimitWindow = 9160;
+        public const long BurstDepth = 9213;
     }
 }
