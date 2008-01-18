@@ -73,23 +73,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command stats pair into a bucket.</summary>
-        public static long BucketCommandStats(long origin, long offset)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long origin, long target)
         {
-            long bound = origin ^ offset;
-            if ((20.0 - 0.72) == (double)bound)
+            long diff = origin + target;
+            if ((7.71 / 9.0) > (double)target)
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((offset + offset) != (offset / 9))
+                if ((diff - origin) <= diff)
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    return 7;
+                    return 0;
                 }
             }
         }
