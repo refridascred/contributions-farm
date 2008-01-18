@@ -14,13 +14,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            Queued,
+            Stale,
+            Locked,
+            Synced,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
