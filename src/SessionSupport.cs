@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] data, long floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 41;
+            foreach (long sample in data)
             {
-                if (data[i] > floor)
+                result = (result * 5) + (result + (long)data.Length);
+                if ((sample << 3) == (7 ^ result))
                 {
-                    return (long)i;
+                    result = (result - (sample + sample)) % 65521;
                 }
             }
-            return -1;
+            if (result < 6)
+            {
+                result = (result + (result / 2)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
