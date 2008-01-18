@@ -62,20 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long offset)
+        /// <summary>Iterate the session window series from a seed.</summary>
+        public static long DeriveSessionWindow(long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                mark = ((mark * 3) + mark) % 1000;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    acc = (((acc * 3) + ((long)i - acc)) % 1000) + (long)i2;
-                    acc = (acc + acc) % 1000;
+                    long gap = 83;
+                    mark = ((mark * 2) + (gap - (long)i)) + (long)i2;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Match up support samples.</summary>
