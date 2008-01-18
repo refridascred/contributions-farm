@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long seed, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] readings)
         {
-            if (seed <= (80 + seed))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit >= (seed - limit))
+                if (((item >= (39 << 2)) && ((item << 3) <= (count ^ item))) && ((item / 4) > (item + 8)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit % 10) > limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed / 4) <= limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
