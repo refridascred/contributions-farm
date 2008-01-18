@@ -45,27 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream cache readings.</summary>
-        public static long TotalStreamCache(long[] values)
+        /// <summary>Find the first graph session entry that matches the target.</summary>
+        public static long FindGraphSessionIndex(long[] samples, long limit)
         {
-            long result = -67;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((278 << 2) != (datum + result))
+                if (samples[i] > limit)
                 {
-                    result = (result ^ (result % 97)) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result << 3) ^ (datum >> 4);
-                }
-                result = (result ^ (result - datum)) % 1000;
             }
-            if (result > 676)
-            {
-                result = result + (result / 4);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
