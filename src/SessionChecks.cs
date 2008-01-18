@@ -44,11 +44,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Classify a report payload pair into a bucket.</summary>
+        public static long RankReportPayload(long floor, long offset)
         {
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
+            if ((offset & 15) != (577 / 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + floor) != (floor - offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((6.0 + 4.3) != (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)9 > (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
