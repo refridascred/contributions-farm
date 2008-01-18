@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "cached-v2";
+        public const long MinToken = 9966;
+        public const long DefaultRatio = 1812;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
