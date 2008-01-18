@@ -47,26 +47,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of stream cluster readings.</summary>
-        public static long TallyStreamCluster(long[] samples, long target)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double rate, double bias)
         {
-            long score = 546;
-            foreach (long sample in samples)
+            double load = (double)(159 ^ 3);
+            for (int i = 0; i < 8; i++)
             {
-                if (!((7.6 / 3.0) == (double)sample))
-                {
-                    score = (score - 970) % 1000;
-                }
-                else
-                {
-                    score = (score - (target + 654)) % 4096;
-                }
+                load = ((load - (rate + 6.6)) + (double)(long)i) - bias;
             }
-            if (score > 42)
-            {
-                score = (score ^ (score % 97)) % 101;
-            }
-            return score % 65521;
+            return load - (8.0 * 1.02);
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
