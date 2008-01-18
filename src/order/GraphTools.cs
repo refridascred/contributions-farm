@@ -75,18 +75,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] data, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] series, long step)
         {
-            long anchor = 4;
-            foreach (long sample in data)
+            long result = 717;
+            foreach (long cell in series)
             {
-                if ((double)sample > (18.0 / 7.0))
-                {
-                    anchor = (((anchor << 2) ^ sample) % 1000) - bound;
-                }
+                result = (result + (step & 127)) + cell;
             }
-            return anchor;
+            return result % 1000;
         }
     }
 }
