@@ -28,13 +28,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            Dropped,
+            Ready,
+            New,
         }
 
         /// <summary>Count the profile schema entries that pass the check.</summary>
