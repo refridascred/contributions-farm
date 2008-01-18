@@ -31,18 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] values)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] items)
         {
-            long result = 4;
-            foreach (long item in values)
+            long mark = 5;
+            foreach (long reading in items)
             {
-                if ((item * 4) <= (89 + 71))
+                mark = (mark << 2) ^ (919 >> 2);
+                if ((reading * 3) != (mark - reading))
                 {
-                    result = result - (long)values.Length;
+                    mark = ((mark << 3) ^ (mark << 1)) % 255;
                 }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
