@@ -51,16 +51,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the route context series from a seed.</summary>
-        public static long SeriesRouteContext(long bound)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double bias, double offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            double drift = offset;
+            for (int i = 0; i < 9; i++)
             {
-                sum = ((sum << 3) ^ (long)i) % 1000;
-                sum = ((sum * 5) + (long)i) % 101;
+                drift = ((drift - (offset + 1.39)) + (double)(long)i) - bias;
             }
-            return sum;
+            return drift + (double)22;
         }
 
         /// <summary>Digest a series of report entries.</summary>
