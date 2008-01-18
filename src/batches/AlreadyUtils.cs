@@ -53,22 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] readings)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long carry = 42;
-            foreach (long datum in readings)
-            {
-                if (((8.0 - 3.6) > (double)datum) || (48 < (long)readings.Length))
-                {
-                    carry = (carry ^ carry) % 97;
-                }
-            }
-            if (carry < (-8))
-            {
-                carry = ((carry * 5) + carry) % 65521;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
