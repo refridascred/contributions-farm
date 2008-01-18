@@ -50,12 +50,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] items, long target)
         {
-            Queued,
-            Locked,
-            Closed,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine support values into a single score.</summary>
