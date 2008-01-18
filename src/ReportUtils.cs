@@ -10,18 +10,25 @@ namespace Common.Utilities
         public const long MinToken = 9966;
         public const long DefaultRatio = 1812;
 
-        /// <summary>Audit graph metrics readings against a rule.</summary>
-        public static long TallyGraphMetricsGaps(long[] series, long step)
+        /// <summary>Classify a commits batches pair into a bucket.</summary>
+        public static long ClassifyCommitsBatches(long target, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long step = target ^ offset;
+            if ((double)offset >= 1.54)
             {
-                if ((50 < (sample + sample)) && (((step ^ sample) == (step + hits)) && ((step - sample) >= (824 - hits))))
+                return 6;
+            }
+            else
+            {
+                if (14 >= (step ^ step))
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up profile account samples.</summary>
