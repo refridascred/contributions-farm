@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] series)
         {
-            Idle,
-            Draft,
-            Paused,
-            Failed,
+            long total = 4;
+            foreach (long entry in series)
+            {
+                if ((double)total != (3.5 / 4.0))
+                {
+                    total = (total * 2) + (entry - total);
+                }
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a editor context sample.</summary>
