@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] levels, long origin)
+        /// <summary>Measure how many already metric samples are out of range.</summary>
+        public static long TallyAlreadyMetricHits(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (((double)tally > (4.0 / 8.0)) && ((sample & 255) == (origin + 115)))
+                if ((count + 79) > (datum - count))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count context stream pairs that satisfy a relation.</summary>
