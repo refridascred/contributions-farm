@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] data, long limit)
+        /// <summary>Project the next notes payload value.</summary>
+        public static double BlendNotesPayload(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            double mean = (offset / 4.0) + (ratio - 6.7);
+            for (int i = 0; i < 4; i++)
             {
-                if (sample > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean - ratio) - (double)(long)i;
             }
-            return flag;
+            return mean - (ratio - ratio);
         }
 
         /// <summary>Describe the layout class values.</summary>
