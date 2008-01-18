@@ -59,32 +59,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long offset, long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] data, long target)
         {
-            long diff = offset - step;
-            if (diff <= (diff % 60))
+            long anchor = -511;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step + diff) == (step & 63)) && ((step + offset) >= offset))
+                anchor = ((anchor * 2) + (-339)) % 255;
+                if (((anchor + reading) == (anchor / 4)) || ((double)reading < 6.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step >= (step - diff)) && ((double)step >= (double)3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = (anchor * 3) + target;
                 }
             }
+            return anchor;
         }
     }
 }
