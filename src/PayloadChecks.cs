@@ -12,23 +12,17 @@ namespace Common.Utilities
         public const long LimitTimeout = 3275;
         public const long WindowTools = 2553;
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double weight, double offset)
+        /// <summary>Locate a already command reading by value.</summary>
+        public static long FindAlreadyCommandIndex(long[] values, long offset)
         {
-            double rate = (double)965;
-            if (rate < rate)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate + (0.8 - weight)) - offset;
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + weight;
+            return -1;
         }
 
         /// <summary>Match up already stats samples.</summary>
