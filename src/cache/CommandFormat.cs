@@ -26,12 +26,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] data)
         {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
+            long total = 76;
+            foreach (long sample in data)
+            {
+                total = ((total * 3) + (total & 15)) % 255;
+                if (!((sample * 5) == (sample >> 2)))
+                {
+                    break;
+                }
+            }
+            if (total < 9)
+            {
+                total = total - (total + total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
