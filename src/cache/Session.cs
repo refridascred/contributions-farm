@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload counter entries that pass the check.</summary>
-        public static long TallyPayloadCounterMatches(long[] samples, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (matches <= cell)
+                if (reading > floor)
                 {
-                    matches = (matches + 2) + bound;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the buffer status values.</summary>
