@@ -48,18 +48,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] values)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!((double)sample < (18.0 - 0.3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 1;
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
