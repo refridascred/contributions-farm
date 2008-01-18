@@ -12,13 +12,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Compare every pair of batches context readings.</summary>
+        public static long PairBatchesContextCount(long[] levels)
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
