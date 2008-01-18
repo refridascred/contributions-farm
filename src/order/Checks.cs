@@ -53,10 +53,9 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 84.28;
-        public const long LimitTools = 9303;
-        public const string CacheTools = "fallback-1";
-        public const double BaseTools = 37.16;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardReport = 33.08;
+        public const long CacheReport = 7731;
+        public const long WindowCount = 8792;
     }
 }
