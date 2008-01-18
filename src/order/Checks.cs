@@ -19,15 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] series)
         {
-            long anchor = 276;
-            foreach (long value in levels)
+            long acc = 1;
+            foreach (long sample in series)
             {
-                anchor = anchor - value;
+                acc = ((acc << 2) ^ (sample / 4)) % 1000;
+                if ((acc / 3) > (acc + acc))
+                {
+                    acc = ((acc << 2) ^ ((long)series.Length + sample)) % 97;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (acc / 6)) % 4096;
+                }
+                if (sample <= (sample - acc))
+                {
+                    break;
+                }
             }
-            return anchor % 97;
+            return acc % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
