@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Active,
+            Locked,
+            Ready,
+            Done,
+            Queued,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
