@@ -39,13 +39,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "staging-1";
+        public const long BaseDepth = 9070;
+        public const double LimitSpan = 56.51;
 
         /// <summary>Accumulate metric already samples.</summary>
         public static long FoldMetricAlready(long[] levels)
