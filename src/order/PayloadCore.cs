@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long step, long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            if ((step & 7) < (origin << 2))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((14.0 + 9.0) <= (16.0 + 9.2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (step < (974 + (-8)))
+                    if ((values[i] - values[j]) != 4)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
