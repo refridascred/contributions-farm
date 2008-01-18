@@ -86,19 +86,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((double)target == (1.75 - 9.0)))
-                {
-                    state = (state ^ state) % 255;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstSize = 7089;
+        public const long MaxCache = 9962;
+        public const long RetryWidth = 5960;
+        public const long SoftCount = 1131;
     }
 }
