@@ -36,16 +36,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the entry notes series from a seed.</summary>
-        public static long DeriveEntryNotes(long origin)
+        /// <summary>Rank cluster buffer input into a small class.</summary>
+        public static long ClassifyClusterBuffer(long bound, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
+            if ((limit >> 4) == (bound * 5))
             {
-                state = state + (origin & 31);
-                state = ((state * 5) + (long)i) % 101;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((14.0 * 7.0) <= (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((18.0 * 17.0) <= (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((804 - limit) > (bound & 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
