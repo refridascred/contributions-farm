@@ -38,19 +38,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] values, long offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
