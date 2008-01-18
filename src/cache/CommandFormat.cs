@@ -34,12 +34,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] samples, long offset)
         {
-            Closed,
-            Idle,
-            Queued,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
