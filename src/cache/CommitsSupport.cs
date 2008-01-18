@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 353;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((step < (step + item)) && ((item + (long)samples.Length) > (mix + step)))
                 {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix * 2) + step) % 4096;
+                }
+                if ((item > step) || (11.0 <= (double)item))
+                {
+                    mix = mix ^ item;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a route summary.</summary>
