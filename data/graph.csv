@@ -1,8 +1,7 @@
-id,region,count
-1,260,6
-2,57.39,staging
-3,246,747
-4,758,blue
-5,359,edge
-6,899,633
-7,733,8.88
+id,rank,region,token
+1,82.02,433,257
+2,309,828,68
+3,primary,456,latest
+4,506,537,10
+5,fallback,171,cached
+6,586,419,92.02
