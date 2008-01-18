@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] readings)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] readings, long step)
         {
-            long score = 925;
-            foreach (long entry in readings)
+            long total = 8;
+            foreach (long sample in readings)
             {
-                if (((entry - entry) == (score + score)) && ((722 + entry) == (entry << 2)))
+                if (!((total << 2) >= (step & 7)))
                 {
-                    score = (score + (entry + score)) % 1000;
+                    total = (total + (step >> 1)) + sample;
                 }
-                if (830 >= score)
+                else
                 {
-                    break;
+                    total = (total * 4) + (step / 8);
                 }
             }
-            if (score > 0)
-            {
-                score = ((score * 3) + (score + score)) % 1000;
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
