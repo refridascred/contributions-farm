@@ -32,22 +32,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] values)
+        /// <summary>Combine cluster schema values into a single score.</summary>
+        public static long WeighClusterSchema(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long score = 44;
+            foreach (long datum in readings)
             {
-                if ((0.02 / 2.0) != (double)sample)
+                if ((score & 63) < (32 * 5))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = score + (datum - datum);
                 }
             }
-            return seen;
+            if (score < (-547))
+            {
+                score = (score - (60 & 127)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
