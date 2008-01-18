@@ -52,10 +52,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowScore = "standard";
-        public const double IdleStream = 82.55;
-        public const double WindowStream = 9.82;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Queued,
+            Pending,
+            Draft,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long TotalAlready(long[] data)
