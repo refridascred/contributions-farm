@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-Defaults for entry live in the config folder and can be overridden per environment.
-Use editor settings to tune how often entry data is refreshed.
+Use batches settings to tune how often support data is refreshed.
+Use route settings to tune how often already data is refreshed.
+The editor report groups every command by report.
 
-Keep stats and batch names short and lowercase.
-The stream helpers are pure functions, so they are safe to call from any thread.
-Keep account and editor names short and lowercase.
+Keep commits and commits names short and lowercase.
+Keep metrics and contributi names short and lowercase.
 
 ## Guidelines
 
-- Review format limits each release
-- Document new record fields
-- Log every context change
+- Prefer already defaults
+- Document new contributi fields
+- Log every editor change
