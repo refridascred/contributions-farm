@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] levels, long step)
         {
-            long sum = 820;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum * 5) + (sample * 3);
-                sum = (sum << 2) ^ (sum + sum);
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Hold a metrics header.</summary>
