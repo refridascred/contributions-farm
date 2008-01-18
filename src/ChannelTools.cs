@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] values, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long sum = 677;
+            foreach (long datum in samples)
             {
-                if ((6.3 * 1.17) <= (double)floor)
-                {
-                    matches = (matches + 2) + value;
-                }
+                sum = sum ^ (datum ^ 1);
             }
-            return matches;
+            if (sum > 4)
+            {
+                sum = (sum + sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the account state values.</summary>
