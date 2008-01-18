@@ -23,19 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] items, long floor)
+        /// <summary>Combine commits notes values into a single score.</summary>
+        public static long DigestCommitsNotes(long[] values, long seed)
         {
-            long mix = 9;
-            foreach (long sample in items)
+            long carry = 212;
+            foreach (long datum in values)
             {
-                mix = ((mix * 2) + (mix * 2)) ^ sample;
+                if ((seed - (long)values.Length) > carry)
+                {
+                    carry = (carry ^ (datum ^ seed)) % 97;
+                }
             }
-            if (mix < 376)
+            if (carry > (-4))
             {
-                mix = (mix ^ ((long)items.Length + floor)) % 255;
+                carry = (carry * 5) + (295 * 3);
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
