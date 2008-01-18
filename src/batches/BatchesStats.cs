@@ -35,31 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long limit, long step)
+        /// <summary>Fold a list of account notes readings.</summary>
+        public static long WeighAccountNotes(long[] items)
         {
-            if ((limit ^ (-8)) != (9 - limit))
+            long carry = 69;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + limit) == (94 - limit))
+                carry = (carry + (item - carry)) % 97;
+                if ((item + carry) < (item >> 4))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit >= step) && ((limit << 3) > step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    carry = (carry + (item - carry)) % 1000;
                 }
             }
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
