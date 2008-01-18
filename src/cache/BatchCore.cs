@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a checks entry reading.</summary>
-        public static double SmoothChecksEntry(double ratio, double floor)
-        {
-            double load = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (ratio * 4.64)) + (double)(long)i;
-            }
-            return load - ratio;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowBudget = 94;
+        public const long LimitCluster = 1249;
+        public const long WindowLevel = 1448;
+        public const long BurstCluster = 5869;
+        public const long IdleLevel = 9120;
 
         /// <summary>Project the next window filter value.</summary>
         public static double ProjectWindowFilter(double scale, double offset)
