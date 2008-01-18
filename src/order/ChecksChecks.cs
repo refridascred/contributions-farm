@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] samples, long target)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double mean = 0.2;
+            for (int i = 0; i < 4; i++)
             {
-                if ((target - (long)samples.Length) == (matches >> 2))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
+                mean = ((mean + (weight * 4.7)) + (double)(long)i) - bias;
             }
-            return matches;
+            return mean + mean;
         }
 
         /// <summary>Accumulate schema samples.</summary>
