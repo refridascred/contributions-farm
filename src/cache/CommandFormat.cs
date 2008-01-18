@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "standard-edge";
+        public const long CacheQueue = 6539;
+        public const long BurstQueue = 2250;
+        public const string DefaultQueue = "local";
+        public const long LimitQueue = 9281;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long WeighToken(long[] levels, long bound)
