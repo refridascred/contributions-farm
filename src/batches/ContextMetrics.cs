@@ -49,18 +49,18 @@ namespace Common.Utilities
         public const long MinGithubfarm = 7472;
         public const long MinWidth = 4885;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] values)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long total = -4;
+            foreach (long item in data)
             {
-                if (datum >= (hits - hits))
+                if (total >= (total * 2))
                 {
-                    hits = hits + 2;
+                    total = ((total * 5) + (item << 3)) % 1000;
                 }
             }
-            return hits;
+            return total % 1000;
         }
     }
 }
