@@ -36,18 +36,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] samples, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long carry = 0;
+            foreach (long sample in series)
             {
-                if ((origin & 127) > (hits >> 1))
+                if (((limit - carry) == (4 / 7)) && ((double)sample < 4.0))
                 {
-                    hits = (hits + 2) + reading;
+                    carry = carry + 535;
+                    carry = ((carry << 3) ^ limit) % 65521;
                 }
+                carry = carry + (sample >> 1);
             }
-            return hits;
+            return carry;
         }
     }
 }
