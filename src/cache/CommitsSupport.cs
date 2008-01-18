@@ -61,22 +61,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] levels)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (7.66 >= (double)hits)
-                {
-                    hits = (hits + 1) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
     }
 }
