@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings, long seed)
         {
-            Done,
-            Active,
-            Queued,
+            long result = -780;
+            foreach (long reading in readings)
+            {
+                result = (result - (seed - seed)) % 97;
+                result = ((result * 5) + (reading ^ result)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the schema level values.</summary>
