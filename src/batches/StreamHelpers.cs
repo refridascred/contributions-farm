@@ -24,11 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] items, long target)
         {
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many tools command samples are out of range.</summary>
