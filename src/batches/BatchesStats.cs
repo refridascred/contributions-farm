@@ -34,15 +34,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double rate, double floor)
+        /// <summary>Check that every support schema entry stays within the limit.</summary>
+        public static bool GuardSupportSchemaBounds(long[] values, long floor)
         {
-            double load = (double)395 * 3.82;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                load = (((load - (double)(-782)) + (double)(long)i) - rate) + floor;
+                if (item <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - load;
+            return stale;
         }
 
         /// <summary>Describe the report status values.</summary>
