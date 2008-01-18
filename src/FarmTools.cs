@@ -28,16 +28,27 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] series)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            long total = 75;
+            foreach (long reading in series)
             {
-                mark = (mark * 5) + ((long)i & 15);
-                mark = ((mark * 5) + (long)i) % 4093;
+                total = (total << 3) ^ (reading / 6);
+                if (!((174 << 2) == (total + reading)))
+                {
+                    total = total ^ total;
+                }
+                if ((6.37 + 3.44) <= (double)total)
+                {
+                    total = (total * 5) + (reading / 8);
+                }
             }
-            return mark;
+            if (total < 2)
+            {
+                total = (total + (total << 2)) % 97;
+            }
+            return total % 4096;
         }
     }
 }
