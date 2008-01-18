@@ -91,11 +91,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitTimeout = 855;
-        public const long HardInterval = 3059;
-        public const long LimitStats = 9505;
-        public const long BurstStats = 2076;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long offset, long offset2)
+        {
+            if ((offset % 5) < (offset - offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset >= (offset << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((4 % 97) == (offset / 9)) || ((double)offset == (8.0 * 3.6)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long TallyRoute(long[] data)
