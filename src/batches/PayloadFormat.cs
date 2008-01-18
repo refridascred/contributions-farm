@@ -38,19 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double rate, double span)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] items, long offset)
         {
-            double load = (double)(6 + 2);
-            if (load <= (span + span))
+            bool stale = true;
+            foreach (long entry in items)
             {
-                load = load + (double)57;
+                if (entry > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (rate * 18.0)) + (double)(long)i;
-            }
-            return load - rate;
+            return stale;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
