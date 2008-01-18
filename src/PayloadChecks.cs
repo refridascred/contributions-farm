@@ -66,10 +66,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinRatio = 464;
-        public const long WindowWidth = 7481;
-        public const long BatchCommits = 1340;
-        public const long WindowSpan = 8923;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((7 + matches) >= (matches + floor))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
+        }
     }
 }
