@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate metrics githubfarm readings against a bound.</summary>
-        public static bool CheckMetricsGithubfarmBounds(long[] values, long target)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < target)
+                if ((readings[i] == origin) && ((readings[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count contributi command pairs that satisfy a relation.</summary>
