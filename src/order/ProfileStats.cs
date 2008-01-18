@@ -20,32 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long origin, long origin2)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long delta = origin ^ origin2;
-            if ((origin2 * 2) < delta)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)delta == (0.97 * 4.3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin >= delta)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the support level values.</summary>
