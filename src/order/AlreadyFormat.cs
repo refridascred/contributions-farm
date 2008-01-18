@@ -28,18 +28,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] samples, long floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long bound)
         {
-            long state = 169;
-            foreach (long reading in samples)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (state < (floor >> 3))
-                {
-                    state = (state ^ floor) ^ reading;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return state % 4096;
+            return mark;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
