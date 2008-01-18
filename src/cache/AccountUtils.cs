@@ -12,15 +12,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next order filter value.</summary>
-        public static double BlendOrderFilter(double ratio, double floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double bias = ratio * 2.2;
-            for (int i = 0; i < 2; i++)
-            {
-                bias = ((bias + (ratio + 8.0)) + (double)(long)i) + floor;
-            }
-            return bias - bias;
+            Done,
+            Idle,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
