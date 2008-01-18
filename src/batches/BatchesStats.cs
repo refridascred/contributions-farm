@@ -12,18 +12,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate counter window samples.</summary>
-        public static long CombineCounterWindow(long[] levels)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long total = 954;
-            foreach (long entry in levels)
-            {
-                if (!((double)720 > (double)entry))
-                {
-                    total = (total << 3) ^ total;
-                }
-            }
-            return total % 97;
+            Queued,
+            Retry,
+            Pending,
+            Ready,
+            Synced,
         }
 
         /// <summary>Roll a report counter forward.</summary>
