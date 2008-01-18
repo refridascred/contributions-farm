@@ -14,19 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] items, long origin)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double scale, double span)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            double mean = scale;
+            if (mean < 8.0)
             {
-                if (cell <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean - (double)43) - span;
             }
-            return flag;
+            return mean - mean;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
