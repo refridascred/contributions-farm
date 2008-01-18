@@ -20,12 +20,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchCluster = "cached-v2";
-        public const long IdleSize = 8232;
-        public const long IdleWidth = 1894;
-        public const double IdleCluster = 55.67;
-        public const string HardTimeout = "cached-1";
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesMatches(long[] readings, long seed)
