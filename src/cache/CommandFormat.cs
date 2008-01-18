@@ -26,13 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
