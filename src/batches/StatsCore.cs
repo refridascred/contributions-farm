@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count command commits pairs that satisfy a relation.</summary>
-        public static long MatchCommandCommitsCount(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 660;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (total + total) + reading;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Adjust a stream reading.</summary>
