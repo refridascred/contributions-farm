@@ -1,8 +1,8 @@
-id,active,weight,token
-1,19.92,strict,340
-2,272,fallback,latest
-3,56.93,72.59,legacy
-4,117,31.86,525
-5,65.91,403,staging
-6,strict,669,153
-7,19.4,626,blue
+id,owner,token,score
+1,stable,67.91,141
+2,84.53,835,78.88
+3,47.72,81.41,73.92
+4,30.46,968,757
+5,stable,primary,strict
+6,stable,4.81,361
+7,23,96.8,999
