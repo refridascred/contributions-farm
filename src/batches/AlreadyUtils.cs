@@ -51,11 +51,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseSize = 205;
-        public const string HardFilter = "local-1";
-        public const long RetryDepth = 465;
-        public const long BatchFilter = 1645;
-        public const long IdleWidth = 1852;
+        /// <summary>Combine format githubfarm values into a single score.</summary>
+        public static long DigestFormatGithubfarm(long[] levels, long limit)
+        {
+            long sum = 54;
+            foreach (long datum in levels)
+            {
+                if ((8 - 753) <= limit)
+                {
+                    sum = sum ^ (long)levels.Length;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (datum - datum)) % 255;
+                }
+            }
+            return sum;
+        }
     }
 }
