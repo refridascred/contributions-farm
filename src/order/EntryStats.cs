@@ -58,17 +58,12 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Look up the position of a commits format sample.</summary>
-        public static long SeekCommitsFormatIndex(long[] levels, long offset)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
