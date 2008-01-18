@@ -1,29 +1,4 @@
 # githubfarm settings
-strict:
-  - 185
-  - 341
-  - 421
-hard_capacity: 88
-record_limit: 500
-readonly:
-  compress: local
-  idle_window:
-    cluster_window: staging
-    verbose: blue
-    notes_delay: cached
-    warm_window: latest
-    order_window: 500
-    command_window: 30
-  max_capacity:
-    dry_run: edge
-    default_ttl_count:
-      - 139
-      - 246
-      - 384
-      - 189
-    warm_threshold_s:
-      - 327
-      - 330
-      - 344
-    readonly: true
-    compress: 39
+idle_interval: 37.08
+cluster_interval: 2
+warm_size_count: fallback
