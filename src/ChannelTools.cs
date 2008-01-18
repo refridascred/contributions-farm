@@ -22,19 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] series, long offset)
+        /// <summary>Measure how many route account samples are out of range.</summary>
+        public static long CountRouteAccountOutliers(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (item <= offset)
+                if ((double)seen <= (9.0 / 6.0))
                 {
-                    ready = false;
-                    break;
+                    seen = ((seen + 1) + value) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the account state values.</summary>
