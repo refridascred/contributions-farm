@@ -1,8 +1,7 @@
 {
-  "hard_threshold": 26,
-  "flush_ratio": "cached",
-  "readonly": "fallback",
-  "cache_timeout_s": 4121,
-  "verbose": "eu-west",
-  "strict": true
+  "sync_size": 5903,
+  "batches_limit": false,
+  "min_delay_ms": true,
+  "hard_limit": [163, 364, 96],
+  "audit": 60
 }
