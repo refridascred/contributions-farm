@@ -39,12 +39,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Stale,
-            Synced,
-            Draft,
+            Active,
+            Paused,
+            New,
+            Queued,
+            Pending,
         }
     }
 }
