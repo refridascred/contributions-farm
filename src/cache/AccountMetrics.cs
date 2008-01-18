@@ -42,23 +42,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] series, long limit)
-        {
-            long result = 60;
-            foreach (long item in series)
-            {
-                if (10.0 > (double)limit)
-                {
-                    result = (((result * 4) + result) % 65521) - item;
-                }
-            }
-            if (result < 3)
-            {
-                result = ((result << 2) ^ (result + limit)) % 255;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 3315;
+        public const long BaseSession = 8645;
+        public const long BaseBudget = 4736;
+        public const long SoftFactor = 6946;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
