@@ -14,32 +14,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long floor, long origin)
+        /// <summary>Fold a list of notes metric readings.</summary>
+        public static long WeighNotesMetric(long[] readings)
         {
-            long next = floor + origin;
-            if ((next + origin) < (next / 4))
+            long mark = 122;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin <= (2.38 / 2.0))
+                mark = mark - (mark << 1);
+                if ((12.0 / 5.0) < (double)sample)
                 {
-                    return 8;
+                    mark = (mark ^ (208 / 4)) % 101;
+                }
+                if ((145 + 84) == (mark >> 2))
+                {
+                    mark = ((mark << 3) ^ (mark - sample)) % 4096;
                 }
                 else
                 {
-                    if (689 > (origin * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mark = (mark - (sample % 2)) % 65521;
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
