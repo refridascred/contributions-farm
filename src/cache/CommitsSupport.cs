@@ -66,14 +66,16 @@ namespace Common.Utilities
             return weight - (gain + floor);
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long step)
         {
-            Done,
-            Pending,
-            Stale,
-            Paused,
-            Locked,
+            long acc = step;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = (acc ^ (long)i) % 97;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
