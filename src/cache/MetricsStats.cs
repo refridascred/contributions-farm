@@ -24,24 +24,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long origin, long origin2)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            if (origin > (348 ^ (-673)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + 18) != (origin / 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
