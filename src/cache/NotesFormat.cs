@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] samples, long bound)
+        /// <summary>Compare every pair of account farm readings.</summary>
+        public static long PairAccountFarmCount(long[] samples)
         {
-            long total = 770;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total << 3) ^ total) - reading) - bound;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Digest a series of buffer channel entries.</summary>
