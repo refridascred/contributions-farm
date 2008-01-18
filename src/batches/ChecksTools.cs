@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] series)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((datum <= seen) || !((double)datum <= (7.1 + 1.5)))
+                if (reading <= target)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a window snapshot.</summary>
