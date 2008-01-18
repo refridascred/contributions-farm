@@ -31,19 +31,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] data)
         {
-            long mark = 5;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark << 2) ^ (919 >> 2);
-                if ((reading * 3) != (mark - reading))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (mark << 1)) % 255;
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
