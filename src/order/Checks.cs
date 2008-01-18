@@ -19,24 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cache report value from a seed.</summary>
-        public static long DeriveCacheReport(long seed)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] levels)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((seed / 2) < seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor ^ anchor) % 255;
-                    break;
+                    if ((levels[i] + levels[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    anchor = (anchor + ((long)i + seed)) % 65521;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Combine editor stream values into a single score.</summary>
