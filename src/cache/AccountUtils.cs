@@ -14,20 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    anchor = ((anchor << 2) ^ (anchor / 4)) ^ (long)i2;
-                }
-                anchor = ((anchor * 5) + (anchor ^ anchor)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Hold a stream summary.</summary>
