@@ -32,5 +32,25 @@ namespace Common.Utilities
             }
             return drift + 5.7;
         }
+
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long step, long bound)
+        {
+            if (bound < (step + 0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound * 3) < bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
