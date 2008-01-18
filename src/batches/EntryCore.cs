@@ -22,31 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank commits editor input into a small class.</summary>
-        public static long BucketCommitsEditor(long offset, long bound)
+        /// <summary>Check that every support format entry stays within the limit.</summary>
+        public static bool GuardSupportFormatLimits(long[] data, long floor)
         {
-            if (((offset * 4) < (offset >> 3)) || ((3 * 2) <= (bound - offset)))
+            bool found = true;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset >> 1) < (bound * 3))
+                if (datum > floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + offset) != (offset & 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
