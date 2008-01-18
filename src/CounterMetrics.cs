@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double CacheCommits = 78.49;
         public const long CacheWidth = 4827;
 
-        /// <summary>Count the metrics editor entries that pass the check.</summary>
-        public static long AuditMetricsEditorHits(long[] readings, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((61 - datum) >= (seen >> 1))
+                if (reading < seed)
                 {
-                    seen = (seen + 3) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
