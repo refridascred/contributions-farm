@@ -47,10 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowWidth = 74.66;
-        public const long WindowInterval = 2252;
-        public const long MinStream = 1913;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            New,
+            Paused,
+            Active,
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
