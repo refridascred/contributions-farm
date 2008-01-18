@@ -13,18 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] values, long step)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((64 - matches) > 278)
-                {
-                    matches = ((matches + 1) + datum) + step;
-                }
-            }
-            return matches;
+            Stale,
+            Failed,
+            Done,
         }
 
         /// <summary>Define account limits and defaults.</summary>
