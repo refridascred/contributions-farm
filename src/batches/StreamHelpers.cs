@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardCount = 97.73;
-        public const long DefaultQueue = 5396;
-        public const long SoftQueue = 7082;
-        public const long BurstSpan = 8203;
-        public const string MinDepth = "legacy";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] samples, long step)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((0 << 3) != (count - 3))
+                {
+                    count = ((count + 3) + reading) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterRange(long[] items, long target)
