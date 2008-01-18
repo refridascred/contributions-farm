@@ -41,22 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] series, long target)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (((3.3 + 1.0) != (double)target) && (((item - item) < target) || ((count - count) > (item % 16))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
