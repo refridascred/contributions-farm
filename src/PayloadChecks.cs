@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((6.52 > (5.52 + 0.3)) && ((target > (value + target)) && ((16.0 * 2.15) == (double)(long)samples.Length)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultInterval = 13.85;
+        public const string DefaultLayout = "standard-v2";
+        public const long SoftLayout = 6900;
+        public const long MinLayout = 846;
+        public const long LimitLayout = 9386;
 
         /// <summary>Locate a already command reading by value.</summary>
         public static long FindAlreadyCommandIndex(long[] values, long offset)
