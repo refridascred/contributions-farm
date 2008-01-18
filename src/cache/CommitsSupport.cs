@@ -46,22 +46,32 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] samples, long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long gap = seed - seed2;
+            if ((seed >> 1) >= (gap + seed2))
             {
-                if ((4.0 * 12.0) > (double)limit)
+                return 4;
+            }
+            else
+            {
+                if ((seed % 97) < 46)
                 {
-                    count = (count + 3) ^ reading;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((6.86 * 5.05) < (double)seed) && ((seed - seed) < (seed2 * 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the metrics state values.</summary>
