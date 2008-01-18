@@ -39,32 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long step, long step2)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long bound = step ^ step2;
-            if (((bound * 5) >= (step2 << 3)) && ((double)step2 <= (0.8 * 10.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((1.5 - 6.23) == (double)bound) && (bound >= (bound + step2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step2 - bound) == (step + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
