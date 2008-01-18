@@ -12,22 +12,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 5668;
+        public const long LimitFormat = 1988;
+        public const long DefaultFormat = 6149;
 
         /// <summary>Validate schema window readings against a bound.</summary>
         public static bool VerifySchemaWindowBounds(long[] series, long target)
