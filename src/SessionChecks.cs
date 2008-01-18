@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate context profile samples.</summary>
-        public static long ScoreContextProfile(long[] samples, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] values)
         {
-            long state = 823;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                state = ((state << 3) ^ offset) % 101;
-                if (state > (513 >> 2))
+                if ((0 + (long)values.Length) == (sample * 3))
                 {
-                    state = (state + (state - sample)) % 1000;
-                }
-                if ((sample & 63) != (sample * 2))
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a profile options.</summary>
