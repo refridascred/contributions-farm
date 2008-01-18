@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] series, long target)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (cell < (count >> 2))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
