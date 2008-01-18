@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] series, long origin)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((33 + count) >= (origin << 2))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public bool Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
