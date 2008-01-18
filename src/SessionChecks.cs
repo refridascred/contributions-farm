@@ -47,31 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stats editor input into a small class.</summary>
-        public static long SortStatsEditor(long target, long target2)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] values, long offset)
         {
-            if ((target + target2) != (15 << 3))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (89 <= (target2 << 3))
+                if (values[i] <= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)target >= (double)804) || (5 >= (target2 + target)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
