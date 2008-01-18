@@ -33,16 +33,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] levels, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            long state = 444;
+            foreach (long sample in levels)
             {
-                mark = mark - (mark / 8);
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (((36 - sample) > (4 * 4)) || ((9.1 + 7.0) != (double)step))
+                {
+                    state = state - (state + step);
+                }
             }
-            return mark;
+            return state % 1000;
         }
 
         /// <summary>Hold a checks options.</summary>
