@@ -1,18 +1,23 @@
 # githubfarm settings
-cache_interval: 60
-strict: 82
-base_window:
-  min_threshold_s: 74.49
-  burst_retries_ms: blue
-  flush_capacity_ms: eu-west
-  enabled:
-    retry_timeout: open
-    flush_retries_pct: 500
-    strict:
-      - blue
-      - stable
-      - latest
-    support_depth: legacy
-commits_window: 1024
-poll_ratio: legacy
-token_limit: 35.3
+stream_ratio:
+  - edge
+  - blue
+  - local
+graph_ratio: 65
+graph_depth: 7.85
+base_interval:
+  verbose: eu-west
+  idle_threshold_ms: true
+  max_retries_s:
+    default_retries: local
+    tools_window: true
+    readonly: 100
+    order_ttl: staging
+    compress: 14.58
+  readonly:
+    - local
+    - stable
+    - standard
+    - local
+min_size_pct: local
+cache_delay_count: green
