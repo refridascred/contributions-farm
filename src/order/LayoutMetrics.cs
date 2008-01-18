@@ -14,13 +14,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Idle,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepDepth = 3804;
+        public const long CacheCommits = 2568;
+        public const string BatchCommits = "alpha";
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] samples)
