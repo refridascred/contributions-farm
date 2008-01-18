@@ -23,19 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] items, long target)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many tools command samples are out of range.</summary>
