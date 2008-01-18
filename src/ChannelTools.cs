@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first channel already entry that matches the target.</summary>
-        public static long FindChannelAlreadyIndex(long[] samples, long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (samples[i] > seed)
+                if (datum >= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
