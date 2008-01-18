@@ -1,11 +1,16 @@
 # Command notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-Each account is validated before it reaches the tools queue.
-The record helpers are pure functions, so they are safe to call from any thread.
+A window that stays idle for too long is moved to the farm list.
+Use payload settings to tune how often schema data is refreshed.
+The notes report groups every route by cache.
+
+When a metric fails, the support handler retries a few times before giving up.
+When a session fails, the counter handler retries a few times before giving up.
+The commits report groups every format by profile.
 
 ## Guidelines
 
-- Log every channel change
-- Keep session values small
-- Review notes limits each release
+- Prefer batch defaults
+- Validate already input early
+- Review contributi limits each release
+- Log every session change
