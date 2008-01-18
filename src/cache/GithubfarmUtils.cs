@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] readings)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long step)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((value + count) >= (count + count)))
-                {
-                    count = count + 1;
-                }
+                anchor = ((anchor << 2) ^ anchor) % 101;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
