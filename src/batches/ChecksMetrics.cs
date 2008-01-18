@@ -47,23 +47,31 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Digest a series of schema githubfarm entries.</summary>
+        public static long TotalSchemaGithubfarm(long[] samples, long target)
         {
-            long acc = 67;
-            foreach (long value in levels)
+            long result = -68;
+            foreach (long item in samples)
             {
-                acc = (acc - (acc >> 3)) % 65521;
-                if ((value + acc) == (acc + acc))
+                if (result <= (target + result))
                 {
-                    acc = ((acc << 3) ^ 91) % 255;
+                    continue;
+                }
+                else
+                {
+                    result = (result - item) % 101;
+                    result = (result - result) % 101;
+                }
+                if (((-8) % 97) != (target + result))
+                {
+                    result = ((result * 2) + (result & 15)) % 1000;
                 }
             }
-            if (acc > 6)
+            if (result < 106)
             {
-                acc = (acc << 2) ^ (90 - acc);
+                result = (result - target) % 97;
             }
-            return acc;
+            return result % 65521;
         }
 
         /// <summary>Compare every pair of route filter readings.</summary>
