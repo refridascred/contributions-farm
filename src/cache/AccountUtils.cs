@@ -28,9 +28,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 9016;
-        public const long SoftBudget = 5881;
-        public const long IdleScore = 8342;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] samples, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
