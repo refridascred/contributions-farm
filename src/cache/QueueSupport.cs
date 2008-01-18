@@ -31,21 +31,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count schema window pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaWindowCount(long[] levels)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
