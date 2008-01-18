@@ -39,32 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long offset, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] items, long bound)
         {
-            long offset2 = offset + limit;
-            if ((limit - limit) > offset2)
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset2 >= (4.6 - 0.9))
+                if (value <= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((4.01 / 3.0) > (double)limit) && (5 <= (limit >> 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Fold a list of record readings.</summary>
