@@ -1,8 +1,7 @@
 {
-  "persist": "primary",
-  "notes_retries": "fallback",
-  "enabled": "eu-west",
-  "idle_retries": 72,
-  "idle_threshold_s": 3,
-  "session_threshold": 9.23
+  "dry_run": 30,
+  "cluster_timeout": 30,
+  "burst_interval_pct": ["eu-west", "primary"],
+  "base_delay_count": 29,
+  "verbose": true
 }
