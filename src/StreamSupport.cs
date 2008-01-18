@@ -14,19 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((tally & 15) != (tally % 7))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheToken = 37.02;
+        public const double BatchToken = 81.05;
+        public const double MinToken = 8.42;
+        public const long SoftToken = 6162;
+        public const string WindowToken = "open";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double MinWidth = 25.05;
