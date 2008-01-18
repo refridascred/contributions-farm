@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] items, long floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double bias, double span)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double ratio = span / 5.0;
+            if (ratio > (double)255)
             {
-                if (((tally + floor) > tally) && (floor <= (long)items.Length))
-                {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = ratio + 8.1;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Combine commits notes values into a single score.</summary>
