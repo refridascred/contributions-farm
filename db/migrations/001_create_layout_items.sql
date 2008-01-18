@@ -2,9 +2,12 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     weight REAL,
+    level INTEGER,
+    rank INTEGER,
     created_at TIMESTAMP,
-    score REAL NOT NULL DEFAULT 0,
-    region TEXT
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
+CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
+
+INSERT INTO layout_items (weight, level, rank, label) VALUES (9.89, 78, 67, 'strict');
