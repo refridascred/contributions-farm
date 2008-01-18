@@ -43,11 +43,19 @@ namespace Common.Utilities
         public const double RetrySpan = 13.06;
         public const double DefaultSupport = 83.38;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Check that every graph githubfarm entry stays within the limit.</summary>
+        public static bool CheckGraphGithubfarmLimits(long[] levels, long origin)
         {
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the stream status values.</summary>
