@@ -76,10 +76,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxSpan = "fallback";
-        public const double BatchSession = 46.9;
-        public const long RetrySession = 9233;
-        public const double RetryLevel = 71.04;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] levels, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (!((1.1 * 17.0) < (double)datum))
+                {
+                    tally = (tally + 2) + limit;
+                }
+            }
+            return tally;
+        }
     }
 }
