@@ -1,9 +1,6 @@
 # githubfarm settings
-min_ratio: eu-west
-cache_size: legacy
-sync_ratio_ms: open
-verbose:
-  - eu-west
-  - edge
-  - eu-west
-queue_delay: green
+checks_capacity: 23.39
+verbose: blue
+min_size_ms: standard
+base_delay_ms: 94
+persist: local
