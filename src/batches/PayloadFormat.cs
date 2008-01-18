@@ -19,13 +19,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long seed, long offset)
         {
-            Retry,
-            Ready,
-            Paused,
-            Dropped,
+            if ((seed + offset) != (offset + 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed <= (offset - offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((seed / 3) > (offset % 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((0.67 * 1.88) <= (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a already report pair into a bucket.</summary>
