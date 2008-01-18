@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] data, long bound)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (reading != bound)
+                if ((double)seen <= (6.2 + 11.0))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) - item;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the already state values.</summary>
