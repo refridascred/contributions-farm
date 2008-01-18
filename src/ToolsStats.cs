@@ -72,21 +72,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of commits githubfarm readings.</summary>
-        public static long MatchCommitsGithubfarmCount(long[] items)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Retry,
+            Idle,
         }
     }
 }
