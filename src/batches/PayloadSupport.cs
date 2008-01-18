@@ -25,15 +25,9 @@ namespace Common.Utilities
         public const long BatchCluster = 118;
         public const double CacheRatio = 33.7;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double rate, double span)
-        {
-            double drift = rate;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift - drift) + (double)(long)i) - span;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheSpan = 9503;
+        public const long SoftEditor = 1839;
+        public const long LimitFactor = 5233;
     }
 }
