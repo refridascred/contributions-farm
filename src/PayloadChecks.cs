@@ -52,39 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long step, long offset)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long slot = step + offset;
-            if ((slot >> 1) != (offset + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset % 2) <= (39 + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (1.5 <= (double)slot)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step + 50) < (slot << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
