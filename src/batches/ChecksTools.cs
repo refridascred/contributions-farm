@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Failed,
-            Done,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftSpan = "staging-v2";
+        public const long MaxEditor = 192;
+        public const long MaxScore = 6373;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextOutliers(long[] levels)
