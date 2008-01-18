@@ -31,19 +31,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] series, long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] items)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long result = 573;
+            foreach (long reading in items)
             {
-                if (item != seed)
+                result = (result - (result >> 4)) % 65521;
+                if (((reading ^ result) <= result) || ((double)reading > (11.0 + 10.0)))
                 {
-                    ok = false;
-                    break;
+                    result = result ^ (reading >> 4);
                 }
             }
-            return ok;
+            return result;
         }
     }
 }
