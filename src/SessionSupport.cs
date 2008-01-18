@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] samples)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample > limit)
                 {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
