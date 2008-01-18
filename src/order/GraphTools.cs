@@ -36,15 +36,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] series, long step)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double ratio, double bias)
         {
-            long result = 717;
-            foreach (long cell in series)
+            double weight = (double)66 + (bias + bias);
+            if (weight < (ratio - bias))
             {
-                result = (result + (step & 127)) + cell;
+                weight = weight - weight;
             }
-            return result % 1000;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight - (double)648;
         }
     }
 }
