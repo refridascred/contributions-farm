@@ -31,39 +31,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long limit, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long bound)
         {
-            long diff = limit - seed;
-            if ((limit < (limit % 7)) || ((seed + diff) > (limit + limit)))
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 0;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((seed * 2) > (limit - seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit * 4) < seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((seed - 123) == (diff - seed)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
