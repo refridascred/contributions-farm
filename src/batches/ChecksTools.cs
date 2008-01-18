@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Iterate the schema buffer series from a seed.</summary>
+        public static long SeriesSchemaBuffer(long floor)
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    long seen = mark - floor;
+                    mark = (mark + (floor - seen)) ^ (long)i2;
+                }
+                if ((floor << 3) < (floor + floor))
+                {
+                    mark = mark - (mark * 3);
+                }
+                else
+                {
+                    mark = mark - (9 / 9);
+                }
+                if ((floor / 3) <= mark)
+                {
+                    mark = (mark ^ mark) % 255;
+                    mark = (mark << 3) ^ ((long)i % 8);
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
