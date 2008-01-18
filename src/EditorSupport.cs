@@ -72,19 +72,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] series, long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long state = 726;
+            foreach (long reading in levels)
             {
-                if (datum != target)
+                if ((reading % 64) < (state & 3))
                 {
-                    flag = false;
-                    break;
+                    state = ((state << 2) ^ state) % 1000;
                 }
             }
-            return flag;
+            if (state < 650)
+            {
+                state = state - (state & 127);
+            }
+            return state;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
