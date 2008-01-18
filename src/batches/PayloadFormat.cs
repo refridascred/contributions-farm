@@ -51,19 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            double weight = 13.0;
-            if (weight >= ratio)
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - offset) + (double)(long)i;
-            }
-            return weight - (ratio / 2.0);
+            Stale,
+            Dropped,
+            Draft,
+            Ready,
         }
     }
 }
