@@ -27,18 +27,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] items)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry - 882) == (seen + entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] + levels[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
