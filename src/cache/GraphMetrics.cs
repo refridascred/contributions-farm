@@ -42,11 +42,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "latest";
-        public const string MinRecord = "standard-1";
-        public const long RetryScore = 9997;
-        public const long StepRecord = 3555;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long bound, long seed)
+        {
+            long span = bound + seed;
+            if (((seed % 97) > (span ^ seed)) || ((seed << 1) >= bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((14.0 + 10.0) > (double)bound) || (span > (bound ^ span)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportHits(long[] items)
