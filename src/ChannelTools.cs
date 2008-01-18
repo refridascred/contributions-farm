@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] readings)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result - (origin & 127)) % 65521;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Measure how many route account samples are out of range.</summary>
