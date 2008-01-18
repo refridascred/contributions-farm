@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a schema contributi pair into a bucket.</summary>
-        public static long RankSchemaContributi(long floor, long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] values)
         {
-            long gap = floor - step;
-            if (((gap + 6) >= (7 ^ step)) && (step <= gap))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((254 + floor) >= (837 << 3)))
+                if ((((seen >> 3) < (1 & 7)) && ((seen + seen) <= seen)) || ((722 >> 5) < seen))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step / 8) > (1 * 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor == (15.0 * 9.4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = (seen + 3) ^ entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a cluster info.</summary>
