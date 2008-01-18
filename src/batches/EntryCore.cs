@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of metrics cluster readings.</summary>
-        public static long ScoreMetricsCluster(long[] levels, long offset)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] readings)
         {
-            long result = -44;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)result < (double)sample)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (((result * 2) + ((-503) << 1)) % 4096) + offset;
-                }
-                else
-                {
-                    result = (result << 2) ^ (4 & 255);
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 724)
-            {
-                result = result - (result ^ result);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
