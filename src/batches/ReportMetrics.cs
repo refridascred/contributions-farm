@@ -30,19 +30,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long step)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!(((step ^ 862) < (long)i) && ((double)step > (16.0 / 9.0))))
-                {
-                    mark = mark + 618;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Dropped,
+            Synced,
+            Paused,
+            Draft,
+            Idle,
         }
     }
 }
