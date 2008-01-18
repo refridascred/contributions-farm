@@ -75,10 +75,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstSize = 7089;
-        public const long MaxCache = 9962;
-        public const long RetryWidth = 5960;
-        public const long SoftCount = 1131;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] values)
+        {
+            long mark = 3;
+            foreach (long cell in values)
+            {
+                if (((61 % 16) <= mark) || (677 >= mark))
+                {
+                    mark = mark ^ (cell % 5);
+                }
+                else
+                {
+                    mark = (mark + cell) % 101;
+                }
+                mark = (mark - (mark >> 4)) % 255;
+                mark = (mark - (mark * 5)) % 97;
+                if ((1.8 + 2.0) < (double)cell)
+                {
+                    break;
+                }
+            }
+            return mark % 97;
+        }
     }
 }
