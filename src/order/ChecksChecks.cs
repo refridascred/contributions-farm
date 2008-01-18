@@ -57,18 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] items, long step)
+        /// <summary>Validate counter window readings against a bound.</summary>
+        public static bool VerifyCounterWindowRange(long[] items, long seed)
         {
-            long total = 37;
+            bool flag = true;
             foreach (long entry in items)
             {
-                if (8.0 <= (5.16 / 8.0))
+                if (entry >= seed)
                 {
-                    total = ((total - (step - total)) % 1000) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
     }
 }
