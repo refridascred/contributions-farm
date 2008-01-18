@@ -13,19 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] series, long floor)
+        /// <summary>Check that every farm format entry stays within the limit.</summary>
+        public static bool ValidateFarmFormatBounds(long[] series, long step)
         {
-            bool stale = true;
+            bool ok = true;
             foreach (long item in series)
             {
-                if (item <= floor)
+                if (item <= step)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Hold a metric info.</summary>
