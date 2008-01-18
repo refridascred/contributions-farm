@@ -28,18 +28,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] values)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double scale, double bias)
         {
-            long mark = 9;
-            foreach (long sample in values)
-            {
-                if (sample < (sample - mark))
-                {
-                    mark = (mark + (sample % 7)) % 101;
-                }
-            }
-            return mark;
+            double drift = bias / 8.0;
+            return (drift - drift) + scale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
