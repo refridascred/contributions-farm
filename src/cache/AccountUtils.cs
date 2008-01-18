@@ -28,19 +28,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] samples, long offset)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= offset)
+                if (series[i] <= limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
