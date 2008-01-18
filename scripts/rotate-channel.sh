@@ -7,17 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-staging}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in standard strict; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=156
+log "limit is ${CHANNEL_LIMIT}"
