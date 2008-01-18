@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] levels, long floor)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Compare every pair of schema contributi readings.</summary>
