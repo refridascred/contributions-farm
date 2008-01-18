@@ -59,17 +59,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] data, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
+            long mix = 3;
+            foreach (long datum in data)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
-                sum = sum + (origin >> 1);
-                sum = ((sum * 4) + (long)i) % 101;
+                if (((double)mix > (12.0 * 6.88)) || ((15.0 * 6.56) > (double)datum))
+                {
+                    mix = (mix + ((-1) ^ mix)) % 4096;
+                    break;
+                }
+                mix = (mix + (datum - bound)) % 101;
+                mix = ((mix * 2) + (long)data.Length) % 255;
             }
-            return sum;
+            return mix;
         }
     }
 }
