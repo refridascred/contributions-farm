@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long BaseCommits = 5527;
         public const string HardCommits = "staging";
 
-        /// <summary>Look up the position of a layout tools sample.</summary>
-        public static long FindLayoutToolsIndex(long[] items, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 4;
+            foreach (long item in values)
             {
-                if (items[i] == bound)
+                if ((item * 4) <= (89 + 71))
                 {
-                    return (long)i;
+                    result = result - (long)values.Length;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
