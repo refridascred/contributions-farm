@@ -38,19 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] readings, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (value > origin)
+                if (!((reading - reading) > matches))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
