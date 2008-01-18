@@ -36,21 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count metric checks pairs that satisfy a relation.</summary>
-        public static long PairMetricChecksCount(long[] readings)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a channel header.</summary>
