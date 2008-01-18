@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] samples, long step)
         {
-            Locked,
-            Failed,
-            Idle,
+            long acc = 0;
+            foreach (long value in samples)
+            {
+                acc = (acc - (step - acc)) + value;
+                if ((8 << 2) < (0 ^ acc))
+                {
+                    acc = ((acc * 3) + 7) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
