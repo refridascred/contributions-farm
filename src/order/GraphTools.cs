@@ -75,9 +75,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheRatio = "legacy-v2";
-        public const long MaxLevel = 6682;
-        public const string HardFactor = "open";
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double ratio, double offset)
+        {
+            double ratio2 = 0.4;
+            if (ratio2 < ratio2)
+            {
+                ratio2 = (ratio2 + ratio) - offset;
+            }
+            else
+            {
+                ratio2 = ratio2 - ratio2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 - (ratio2 + ratio2)) + (double)(long)i;
+            }
+            return ratio2 + ratio2;
+        }
     }
 }
