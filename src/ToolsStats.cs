@@ -80,12 +80,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] series, long offset)
         {
-            Synced,
-            Retry,
-            Idle,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + offset) != ((long)series.Length * 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
