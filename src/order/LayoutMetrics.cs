@@ -27,18 +27,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] items, long seed)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long gap = offset + bound;
+            if ((5.0 * 8.9) > (double)offset)
             {
-                if (seen <= (2 * 5))
+                return 8;
+            }
+            else
+            {
+                if (!(offset > (offset / 2)))
                 {
-                    seen = ((seen + 2) ^ cell) + seed;
+                    return 4;
+                }
+                else
+                {
+                    if (3.4 <= (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((gap << 1) >= bound) && ((47 / 8) <= (gap ^ 6)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
