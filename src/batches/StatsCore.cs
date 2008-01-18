@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] levels)
-        {
-            long total = 660;
-            foreach (long reading in levels)
-            {
-                total = (total + total) + reading;
-            }
-            return total;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchDepth = 9762;
+        public const double IdleTimeout = 76.16;
+        public const long DefaultTimeout = 2811;
+        public const double DefaultSize = 64.25;
+        public const string DefaultSchema = "local-1";
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ScaleStream(double bias, double bias2)
