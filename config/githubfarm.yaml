@@ -1,6 +1,47 @@
 # githubfarm settings
-strict: 17.07
-hard_window_pct: primary
-batch_depth_s: 100
-dry_run: local
-report_timeout: false
+command_delay: 2298
+max_window_count: blue
+persist:
+  min_window_pct:
+    idle_interval: strict
+    soft_delay_count: stable
+    persist: 49
+    channel_ratio: 24.52
+  default_limit: 60
+  strict:
+    default_limit_count: 5957
+    dry_run: 30
+    default_timeout: latest
+    format_interval:
+      - 61
+      - 455
+      - 331
+      - 217
+    strict: 8583
+  retry_ratio_count: false
+enabled:
+  flush_timeout_ms:
+    burst_retries: local
+    default_depth_pct: 74.53
+    max_retries: 100
+    entry_interval: 32.3
+    min_limit_count:
+      - 265
+      - 355
+    default_delay_count: 8.56
+  audit: cached
+  persist:
+    - blue
+    - standard
+    - stable
+    - blue
+  max_ttl: 1024
+  retry_limit_pct:
+    - 443
+    - 180
+    - 49
+    - 378
+  cache_size_pct:
+    - open
+    - fallback
+min_delay_ms: 71
