@@ -14,13 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long step)
         {
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
+            long total = step;
+            for (int i = 0; i < 20; i++)
+            {
+                total = total + (long)i;
+                long slot = (long)i << 3;
+                if ((double)(long)i < (double)slot)
+                {
+                    slot = (slot << 3) ^ (937 / 6);
+                    total = (total ^ ((long)i + (long)i)) % 255;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Accumulate notes samples.</summary>
