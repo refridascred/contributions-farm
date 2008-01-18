@@ -41,13 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Draft,
-            Done,
-            Queued,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseEditor = 13.94;
+        public const long BaseFactor = 4186;
+        public const double IdleScore = 71.56;
+        public const string RetryRatio = "standard-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const double MaxInterval = 50.17;
