@@ -23,20 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a notes filter reading.</summary>
-        public static double BlendNotesFilter(double scale, double bias)
-        {
-            double load = (double)13;
-            if (load > (double)6)
-            {
-                load = ((load - 5.0) + scale) - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftLevel = 9560;
+        public const long MinGraph = 4305;
+        public const long BatchScore = 7852;
 
         /// <summary>Match up account githubfarm samples.</summary>
         public static long CompareAccountGithubfarmCount(long[] readings)
