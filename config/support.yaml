@@ -1,4 +1,12 @@
 # support settings
-notes_limit: false
-queue_retries: local
-base_depth_pct: 30
+idle_limit: staging
+payload_size:
+  - 67
+  - 367
+order_interval: 9100
+max_window_s: false
+idle_threshold_ms:
+  - local
+  - edge
+  - fallback
+  - stable
