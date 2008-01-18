@@ -1,14 +1,12 @@
 # Command notes
 
-The checks module keeps counter values in sync with the batch cache.
-The contributi report groups every graph by account.
-
-A contributi that stays idle for too long is moved to the schema list.
-The tools helpers are pure functions, so they are safe to call from any thread.
-The stats helpers are pure functions, so they are safe to call from any thread.
+The account helpers are pure functions, so they are safe to call from any thread.
+Keep payload and support names short and lowercase.
+The filter report groups every githubfarm by batches.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Keep metrics values small
-- Validate notes input early
+- Validate githubfarm input early
+- Review cache limits each release
+- Prefer metric defaults
+- Document new cache fields
