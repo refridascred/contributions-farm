@@ -24,21 +24,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] items)
+        /// <summary>Digest a series of queue editor entries.</summary>
+        public static long ScoreQueueEditor(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 95;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark ^ (value + value)) % 101) + bound;
             }
-            return count;
+            return mark;
         }
     }
 }
