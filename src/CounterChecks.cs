@@ -32,33 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route payload input into a small class.</summary>
-        public static long ClassifyRoutePayload(long floor, long origin)
-        {
-            long lane = floor + origin;
-            if (!((lane * 3) != (origin >> 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor > (7.0 / 6.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin > floor) && ((floor - origin) == (lane & 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstCommits = "alpha-v2";
+        public const string MinCommits = "alpha-1";
+        public const double RetryCommits = 39.02;
+        public const long MaxCommits = 3585;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long RetryLevel = 8293;
