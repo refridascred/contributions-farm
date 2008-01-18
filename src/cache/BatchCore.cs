@@ -43,13 +43,38 @@ namespace Common.Utilities
         public const double MinSpan = 29.0;
         public const long RetryCommand = 267;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long step, long target)
         {
-            Ready,
-            Stale,
-            Idle,
-            New,
+            if ((6.2 + 2.5) > (double)target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((16 >> 2) >= (step >> 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target <= (2 & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step * 2) <= target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
