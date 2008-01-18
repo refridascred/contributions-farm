@@ -1,5 +1,5 @@
 {
-  "batch_ratio": "stable",
-  "soft_window_count": false,
-  "min_ratio_count": "legacy"
+  "idle_ttl_pct": 42,
+  "account_ratio": 89.16,
+  "poll_depth_s": "legacy"
 }
