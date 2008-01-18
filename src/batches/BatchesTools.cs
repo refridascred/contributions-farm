@@ -22,14 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            New,
-            Retry,
+            Dropped,
+            Ready,
             Closed,
-            Pending,
-            Active,
+            Failed,
         }
 
         /// <summary>Accumulate layout entry samples.</summary>
