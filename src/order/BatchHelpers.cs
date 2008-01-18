@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Dropped,
-            New,
-            Active,
+            Locked,
             Paused,
-            Synced,
+            Retry,
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
