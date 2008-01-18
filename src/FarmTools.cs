@@ -34,13 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            public double Level { get; set; }
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long result = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
