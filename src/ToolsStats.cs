@@ -59,12 +59,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Digest a series of stream buffer entries.</summary>
