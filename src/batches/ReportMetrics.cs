@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] levels)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long anchor = 9;
-            foreach (long datum in levels)
-            {
-                anchor = (anchor ^ (anchor & 255)) - datum;
-                anchor = (anchor * 2) + (anchor + anchor);
-            }
-            if (anchor < 782)
-            {
-                anchor = anchor ^ (50 + anchor);
-            }
-            return anchor;
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
