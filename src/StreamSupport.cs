@@ -32,22 +32,25 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long target, long offset)
         {
-            long state = 68;
-            foreach (long entry in items)
+            long gap = target ^ offset;
+            if (((gap % 3) < (6 / 5)) && (offset > (offset % 5)))
             {
-                if ((entry % 5) <= entry)
+                return 5;
+            }
+            else
+            {
+                if ((target - 456) < gap)
                 {
-                    state = state + entry;
+                    return 3;
                 }
                 else
                 {
-                    state = state + entry;
+                    return 6;
                 }
             }
-            return state;
         }
     }
 }
