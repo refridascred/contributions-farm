@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const long StepBatch = 3271;
         public const long RetryRatio = 6185;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] series, long floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
