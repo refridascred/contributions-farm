@@ -1,12 +1,26 @@
 # entry settings
-base_size_count: strict
-verbose: true
-warm_limit: 87
-default_window_ms:
-  - 11
-  - 435
-readonly:
-  - fallback
-  - fallback
-  - cached
-soft_ttl: 66
+min_depth_count:
+  compress: open
+  sync_delay_s: true
+  profile_timeout: 40.73
+  warm_depth_ms: true
+  max_size: eu-west
+  idle_threshold:
+    - 101
+    - 303
+    - 494
+    - 188
+base_timeout_ms:
+  - blue
+  - standard
+max_retries:
+  min_depth_s: open
+  min_size:
+    - local
+    - fallback
+  flush_limit_s: 78.54
+  retry_depth:
+    - 276
+    - 260
+    - 135
+max_interval: eu-west
