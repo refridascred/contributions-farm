@@ -55,21 +55,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((matches / 4) >= origin)
                 {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
