@@ -1,7 +1,14 @@
 {
-  "hard_limit": 54.99,
-  "contributi_delay": false,
-  "cache_ttl_count": "eu-west",
-  "soft_timeout_pct": true,
-  "default_window_ms": 87.54
+  "retry_limit_s": {
+    "metrics_depth": 100,
+    "min_capacity_s": 3942,
+    "dry_run": true,
+    "verbose": [73, 70],
+    "enabled": [108, 18, 153]
+  },
+  "base_ratio_pct": 73,
+  "soft_retries": "primary",
+  "audit": [235, 363, 198, 17],
+  "base_capacity": true,
+  "poll_threshold_pct": "stable"
 }
