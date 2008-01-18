@@ -1,21 +1,8 @@
 {
-  "batch_ratio_ms": {
-    "idle_capacity": 250,
-    "batch_delay_pct": {
-      "persist": 1024,
-      "enabled": [471, 261, 101],
-      "base_capacity_count": "strict"
-    },
-    "sync_depth": 44,
-    "burst_limit": "staging"
-  },
-  "min_ttl_pct": 52.04,
-  "commits_window": "green",
-  "record_delay": {
-    "cluster_depth": 67,
-    "retry_delay_count": "strict",
-    "dry_run": "staging",
-    "cluster_timeout": 9398
-  },
-  "strict": ["local", "strict", "staging"]
+  "channel_timeout": ["strict", "edge", "primary"],
+  "cache_ttl": "strict",
+  "burst_threshold": 250,
+  "compress": 52,
+  "strict": "open",
+  "githubfarm_window": 10.96
 }
