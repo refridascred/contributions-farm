@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 1781;
-        public const long CacheCounter = 2616;
-        public const long DefaultCounter = 6939;
-        public const double BurstCount = 89.93;
-        public const double BatchCounter = 36.83;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] values, long seed)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long SeekEditorIndex(long[] data, long target)
