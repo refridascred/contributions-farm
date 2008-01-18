@@ -1,7 +1,15 @@
 # entry settings
-queue_retries:
-  - standard
-  - strict
-route_depth: 39
-poll_depth_s: 500
-soft_ratio_ms: 66
+audit:
+  retry_limit_s: 8425
+  audit:
+    - 198
+    - 344
+    - 266
+    - 56
+  contributi_retries: primary
+  poll_timeout: 79.25
+  verbose: 500
+warm_delay_s:
+  - 399
+  - 490
+persist: false
