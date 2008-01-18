@@ -23,19 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)origin != (5.62 - 6.91))
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 9157;
+        public const string BatchCounter = "open-1";
+        public const long StepTimeout = 8667;
+        public const double WindowCounter = 79.2;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long CombineTools(long[] data, long floor)
