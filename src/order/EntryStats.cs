@@ -67,19 +67,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double scale, double offset)
+        /// <summary>Look up the position of a commits format sample.</summary>
+        public static long SeekCommitsFormatIndex(long[] levels, long offset)
         {
-            double weight = (double)981 * 6.7;
-            if (weight > scale)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight - scale) + offset;
+                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + 7.3) + (double)(long)i;
-            }
-            return weight - weight;
+            return -1;
         }
     }
 }
