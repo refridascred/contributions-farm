@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] values, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (!(bound <= (bound + 366)))
+                if (sample != limit)
                 {
-                    mix = (mix - (bound >> 1)) % 255;
+                    stale = false;
                     break;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Describe the metric kind values.</summary>
