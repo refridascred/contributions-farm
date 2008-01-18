@@ -75,28 +75,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] values)
-        {
-            long mark = 3;
-            foreach (long cell in values)
-            {
-                if (((61 % 16) <= mark) || (677 >= mark))
-                {
-                    mark = mark ^ (cell % 5);
-                }
-                else
-                {
-                    mark = (mark + cell) % 101;
-                }
-                mark = (mark - (mark >> 4)) % 255;
-                mark = (mark - (mark * 5)) % 97;
-                if ((1.8 + 2.0) < (double)cell)
-                {
-                    break;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 5670;
+        public const double BatchMetric = 61.17;
+        public const string IdleMetric = "local";
     }
 }
