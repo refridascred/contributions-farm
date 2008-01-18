@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long offset, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
+            if ((floor + floor) > floor)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((offset ^ floor) < (offset & 127))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor <= (floor >> 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream header.</summary>
