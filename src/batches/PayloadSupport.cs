@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double rate, double floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double bias = (double)(20 & 255);
-            if (bias <= (bias + floor))
-            {
-                bias = (bias - (0.7 / 7.0)) + rate;
-            }
-            else
-            {
-                bias = bias + (floor - floor);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - 0.2) + (double)(long)i;
-            }
-            return bias + (double)75;
+            New,
+            Failed,
+            Closed,
+            Active,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
