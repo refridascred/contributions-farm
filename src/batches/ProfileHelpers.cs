@@ -69,19 +69,12 @@ namespace Common.Utilities
             return (rate + 12.0) + ratio;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double gain, double floor)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            double drift = (double)(42 & 1);
-            if (drift <= (double)323)
-            {
-                drift = (drift - (floor * 5.0)) - gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (floor - floor)) + (double)(long)i;
-            }
-            return drift + drift;
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
