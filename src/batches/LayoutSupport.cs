@@ -14,23 +14,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of farm route readings.</summary>
-        public static long TallyFarmRoute(long[] values, long bound)
+        /// <summary>Measure how many checks stream samples are out of range.</summary>
+        public static long TallyChecksStreamGaps(long[] samples)
         {
-            long result = 8;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                result = result - (bound / 9);
-                if ((sample * 4) <= bound)
+                if ((double)2 != (double)(long)samples.Length)
                 {
-                    result = (result ^ result) % 255;
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (result > (-121))
-            {
-                result = result ^ (result ^ bound);
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
