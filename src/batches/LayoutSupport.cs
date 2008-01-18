@@ -15,18 +15,21 @@ namespace Common.Utilities
         public const long BatchTools = 4415;
         public const long DefaultTools = 61;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] data)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)count <= (double)entry) || ((count + count) != (3 ^ count)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 1;
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
