@@ -42,11 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 4543;
-        public const long IdleRatio = 3645;
-        public const long BurstRatio = 7109;
-        public const long MaxBudget = 8055;
-        public const long BurstCount = 8492;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((value + hits) > (value * 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
