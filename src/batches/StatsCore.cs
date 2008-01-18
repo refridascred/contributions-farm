@@ -69,19 +69,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every context command entry stays within the limit.</summary>
-        public static bool VerifyContextCommandBounds(long[] data, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (cell >= target)
+                if (seen < (0 - seen))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) ^ datum;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
