@@ -47,18 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] data)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((tally + 0) >= tally)
+                if (((count / 3) == (sample * 5)) || ((sample > (limit ^ count)) || (((long)levels.Length << 2) != (sample - (long)levels.Length))))
                 {
-                    tally = (tally + 3) ^ reading;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
