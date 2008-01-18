@@ -79,15 +79,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double ratio, double offset)
+        /// <summary>Compare every pair of queue channel readings.</summary>
+        public static long OverlapQueueChannelCount(long[] values)
         {
-            double drift = (double)(50 - (-3));
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = ((drift - drift) + (double)(long)i) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift - ratio;
+            return count;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
