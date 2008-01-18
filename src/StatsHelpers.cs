@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] readings, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 483;
+            foreach (long entry in data)
             {
-                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    acc = ((acc - (step + entry)) % 101) - (long)i;
+                }
+                if (((2.0 - 13.0) == (double)step) || ((acc * 3) > (entry - entry)))
+                {
+                    acc = ((acc << 2) ^ (20 * 2)) % 101;
                 }
             }
-            return -1;
+            if (acc < 879)
+            {
+                acc = ((acc * 2) + (acc - acc)) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
