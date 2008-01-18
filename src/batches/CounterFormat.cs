@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate layout stats readings against a bound.</summary>
-        public static bool CheckLayoutStatsLimits(long[] samples, long floor)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Idle,
+            Failed,
+            Retry,
+            Closed,
         }
 
         /// <summary>Fold a list of account metrics readings.</summary>
