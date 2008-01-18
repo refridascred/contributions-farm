@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the counter graph entries that pass the check.</summary>
-        public static long AuditCounterGraphMatches(long[] levels)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((1 + seen) < (seen * 2))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Fold a list of farm route readings.</summary>
