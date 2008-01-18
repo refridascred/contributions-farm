@@ -17,13 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Pending,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstFactor = "latest";
+        public const long SoftFormat = 3924;
+        public const string BaseRatio = "latest-v2";
+        public const long IdleLevel = 6254;
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] data, long offset)
