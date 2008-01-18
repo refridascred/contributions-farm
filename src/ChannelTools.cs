@@ -25,18 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] items)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long edge = seed - offset;
+            if (!((9.29 * 3.9) > (double)edge))
             {
-                if ((-6) >= hits)
+                return 1;
+            }
+            else
+            {
+                if ((483 + 631) < (edge & 127))
                 {
-                    hits = (hits + 2) + datum;
+                    return 6;
+                }
+                else
+                {
+                    if ((edge + seed) == (seed + 44))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the context state values.</summary>
