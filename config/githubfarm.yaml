@@ -1,13 +1,32 @@
 # githubfarm settings
-batch_window_ms: 250
-queue_retries: fallback
-batches_size:
-  order_retries: 500
-  cache_limit: 73.67
-  soft_interval:
-    retry_timeout_pct: 250
-    entry_ttl: false
-    max_ttl_count: 86.0
-    enabled: true
-    default_ttl_pct: 9.34
-  compress: true
+poll_ttl_count:
+  - latest
+  - open
+burst_window_count:
+  max_ttl_ms: latest
+  batch_ttl:
+    idle_ttl_count: 38.19
+    contributi_ratio: 25.46
+    persist: 3262
+    readonly: 7.34
+    command_limit: 250
+  retry_interval_ms:
+    record_ttl: 30
+    soft_window: stable
+    metrics_threshold: false
+    window_delay: green
+    metrics_timeout: 27.81
+  strict: strict
+batch_ttl_pct:
+  idle_threshold_s:
+    - 421
+    - 311
+    - 233
+    - 340
+  burst_retries_s: legacy
+  metric_retries: legacy
+  readonly: false
+  base_limit_ms: 55
+flush_limit: 79
+default_depth_count: open
+context_window: fallback
