@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxNotes = 19.83;
-        public const long DefaultNotes = 3239;
-        public const long StepNotes = 3797;
-        public const long RetrySpan = 5532;
-        public const long BatchNotes = 1912;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] samples, long bound)
+        {
+            long total = 770;
+            foreach (long reading in samples)
+            {
+                total = (((total << 3) ^ total) - reading) - bound;
+            }
+            return total;
+        }
 
         /// <summary>Audit layout window readings against a rule.</summary>
         public static long TallyLayoutWindowHits(long[] samples)
