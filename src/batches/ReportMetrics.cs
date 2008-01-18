@@ -27,14 +27,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] readings, long floor)
         {
-            Active,
-            Locked,
-            Ready,
-            Done,
-            Queued,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
