@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "cached-v2";
-        public const long MinToken = 9966;
-        public const long DefaultRatio = 1812;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public long Region { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double IdleEditor = 96.12;
