@@ -19,10 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 7407;
-        public const double StepBuffer = 56.6;
-        public const double WindowBuffer = 71.13;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultFactor = 9030;
