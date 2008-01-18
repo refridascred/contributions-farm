@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double scale, double bias)
         {
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
+            double ratio = (double)(492 / 2);
+            if (ratio < 3.8)
+            {
+                ratio = ratio + bias;
+            }
+            else
+            {
+                ratio = ratio - (scale + ratio);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (ratio + bias)) + (double)(long)i;
+            }
+            return ratio - (ratio * 2.5);
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
