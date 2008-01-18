@@ -25,20 +25,10 @@ namespace Common.Utilities
         public const long BatchCluster = 118;
         public const double CacheRatio = 33.7;
 
-        /// <summary>Digest a series of buffer entry entries.</summary>
-        public static long DigestBufferEntry(long[] series, long limit)
-        {
-            long state = -3;
-            foreach (long item in series)
-            {
-                state = (state ^ limit) % 97;
-                state = ((state * 4) + (limit + limit)) % 1000;
-                if ((6.51 - 9.7) >= (double)limit)
-                {
-                    state = ((state << 3) ^ (state + item)) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftContext = "standard-v2";
+        public const string CacheBudget = "staging-1";
+        public const double LimitCount = 65.64;
+        public const long IdleFactor = 8933;
     }
 }
