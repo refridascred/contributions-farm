@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((target - 1) >= (target & 31))
-                {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepBudget = 682;
+        public const long WindowOrder = 6821;
+        public const double IdleOrder = 93.71;
+        public const long MinOrder = 7250;
+        public const double DefaultOrder = 7.51;
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double ProjectMetrics(double scale, double bias)
