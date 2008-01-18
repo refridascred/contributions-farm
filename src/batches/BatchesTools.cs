@@ -39,17 +39,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a stats schema reading by value.</summary>
-        public static long LookupStatsSchemaIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 4378;
+        public const long MinDepth = 8628;
+        public const long RetrySize = 3805;
+        public const double IdleMetrics = 65.79;
+        public const double DefaultLevel = 61.39;
     }
 }
