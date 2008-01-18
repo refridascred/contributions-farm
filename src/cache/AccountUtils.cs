@@ -14,14 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Done,
-            Idle,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 9319;
+        public const long IdleLevel = 7716;
+        public const long SoftProfile = 2865;
+        public const long MinProfile = 6409;
+        public const long StepInterval = 8814;
 
         /// <summary>Validate editor stream readings against a bound.</summary>
         public static bool VerifyEditorStreamBounds(long[] items, long step)
