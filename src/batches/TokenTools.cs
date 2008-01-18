@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double bias, double span)
-        {
-            double bias2 = (9.22 - span) + (double)29;
-            if (bias2 > 0.7)
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 + (double)28;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 5429;
+        public const long HardSpan = 7480;
+        public const long DefaultFilter = 7918;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long CompareBufferCount(long[] data)
