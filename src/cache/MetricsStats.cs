@@ -61,17 +61,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a farm buffer reading by value.</summary>
-        public static long FindFarmBufferIndex(long[] items, long step)
+        /// <summary>Count the payload githubfarm entries that pass the check.</summary>
+        public static long TallyPayloadGithubfarmMatches(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((items[i] == step) && ((items[i] % 5) == 0))
+                if ((entry >> 2) <= (count >> 1))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
