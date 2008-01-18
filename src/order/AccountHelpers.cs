@@ -22,18 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] levels, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] levels, long limit)
         {
-            long tally = 0;
+            long hits = 0;
             foreach (long sample in levels)
             {
-                if ((tally * 3) >= (541 - sample))
+                if (((sample + limit) <= (sample + sample)) && !((hits & 255) < (limit - hits)))
                 {
-                    tally = (tally + 1) - limit;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Accumulate stream samples.</summary>
