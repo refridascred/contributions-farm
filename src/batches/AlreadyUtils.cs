@@ -22,14 +22,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Ready,
-            New,
-            Done,
             Queued,
-            Dropped,
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a format stats.</summary>
