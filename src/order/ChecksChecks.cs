@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] readings, long step)
         {
-            public bool Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)step > (double)(long)readings.Length)
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
