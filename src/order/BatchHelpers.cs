@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a metric filter reading by value.</summary>
-        public static long LookupMetricFilterIndex(long[] levels, long floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long bound, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((bound - 8) == (floor + floor))
             {
-                if (levels[i] >= floor)
+                return 0;
+            }
+            else
+            {
+                if ((double)floor <= (double)bound)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
