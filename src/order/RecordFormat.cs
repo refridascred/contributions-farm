@@ -21,11 +21,18 @@ namespace Common.Utilities
         public const long MaxBudget = 6005;
         public const long BurstRatio = 1131;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Combine channel farm values into a single score.</summary>
+        public static long TotalChannelFarm(long[] data)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long result = 3;
+            foreach (long entry in data)
+            {
+                if ((19 << 2) <= result)
+                {
+                    result = (result + (result + result)) + entry;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Audit report contributi readings against a rule.</summary>
