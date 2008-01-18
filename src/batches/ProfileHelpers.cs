@@ -72,12 +72,22 @@ namespace Common.Utilities
             return (rate + 12.0) + ratio;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] readings, long target)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (((target <= (21 >> 1)) && ((entry ^ 111) <= 34)) || (((tally / 7) > (tally - tally)) && ((5.0 * 2.6) >= (double)entry)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
