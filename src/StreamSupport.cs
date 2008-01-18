@@ -42,15 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long acc = -52;
-            foreach (long reading in samples)
-            {
-                acc = (acc + (reading + reading)) % 1000;
-            }
-            return acc;
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
