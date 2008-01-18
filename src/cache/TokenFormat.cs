@@ -32,22 +32,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit stats token readings against a rule.</summary>
-        public static long CountStatsTokenGaps(long[] series)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (!((sample - sample) >= (tally / 6)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Ready,
+            Done,
+            Failed,
+            Paused,
         }
     }
 }
