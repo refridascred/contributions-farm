@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Active,
-            Draft,
-            Stale,
-            Queued,
-            Synced,
+            public bool Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
