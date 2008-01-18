@@ -37,39 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long floor, long floor2)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long slot = floor ^ floor2;
-            if ((double)floor <= (7.28 * 11.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((slot + floor2) < floor2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((slot <= (floor2 + floor2)) && (floor <= (floor2 + floor2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((slot + floor) > floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Ready,
+            Paused,
+            Stale,
+            New,
         }
     }
 }
