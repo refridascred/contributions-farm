@@ -37,22 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of counter metric readings.</summary>
-        public static long OverlapCounterMetricCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseTimeout = 3.94;
+        public const long HardBudget = 424;
+        public const long WindowLayout = 1103;
+        public const long MaxDepth = 129;
+        public const long BaseLevel = 4591;
 
         /// <summary>Check that every session counter entry stays within the limit.</summary>
         public static bool ValidateSessionCounterLimits(long[] data, long step)
