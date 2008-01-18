@@ -47,18 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batch stats pairs that satisfy a relation.</summary>
-        public static long MatchBatchStatsCount(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((count & 3) >= count))
                 {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) ^ item;
                 }
             }
             return count;
