@@ -40,19 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next metric layout value.</summary>
-        public static double BlendMetricLayout(double bias, double floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] data)
         {
-            double mean = (double)1 * 0.45;
-            if (mean >= (mean / 5.0))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                mean = mean - floor;
+                if (1.0 > (double)datum)
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (bias / 6.0)) - (double)(long)i;
-            }
-            return mean + floor;
+            return seen;
         }
     }
 }
