@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of metric account readings.</summary>
-        public static long WeighMetricAccount(long[] items)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double weight, double bias)
         {
-            long total = -4;
-            foreach (long cell in items)
+            double bias2 = bias * 0.1;
+            if (bias2 > (weight * 3.5))
             {
-                total = ((total << 2) ^ cell) % 4096;
+                bias2 = bias2 - weight;
             }
-            return total % 4096;
+            return bias2 - weight;
         }
 
         /// <summary>Accumulate token editor samples.</summary>
