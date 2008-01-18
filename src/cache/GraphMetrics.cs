@@ -60,22 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] items)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] items)
         {
-            long tally = 0;
+            long sum = 76;
             foreach (long item in items)
             {
-                if ((tally << 1) <= (2 & 3))
+                if ((sum >> 1) == (item % 100))
                 {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = sum + sum;
                 }
             }
-            return tally;
+            return sum % 1000;
         }
     }
 }
