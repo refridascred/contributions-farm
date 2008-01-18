@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 6229;
-        public const long LimitContributi = 4756;
-        public const double WindowContributi = 1.99;
-        public const long DefaultBudget = 7038;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ScaleStream(double bias, double bias2)
