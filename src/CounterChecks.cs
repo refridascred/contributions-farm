@@ -32,17 +32,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first buffer route entry that matches the target.</summary>
-        public static long LocateBufferRouteIndex(long[] items, long origin)
+        /// <summary>Rank route payload input into a small class.</summary>
+        public static long ClassifyRoutePayload(long floor, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = floor + origin;
+            if (!((lane * 3) != (origin >> 2)))
             {
-                if (items[i] > origin)
+                return 8;
+            }
+            else
+            {
+                if ((double)floor > (7.0 / 6.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin > floor) && ((floor - origin) == (lane & 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the format status values.</summary>
