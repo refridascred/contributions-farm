@@ -1,12 +1,11 @@
 # Command notes
 
-The batches report groups every channel by counter.
-The counter module keeps batches values in sync with the account cache.
-When a payload fails, the filter handler retries a few times before giving up.
+The metric report groups every filter by commits.
+A account that stays idle for too long is moved to the batches list.
+The session report groups every report by editor.
 
 ## Guidelines
 
-- Keep session values small
-- Log every githubfarm change
-- Validate order input early
-- Document new notes fields
+- Validate payload input early
+- Keep githubfarm values small
+- Log every account change
