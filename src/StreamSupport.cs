@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long CacheFormat = 9271;
         public const long DefaultInterval = 2296;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Draft,
-            Paused,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseDepth = 78.25;
+        public const long BurstStats = 9899;
+        public const long SoftDepth = 8849;
+        public const long LimitBudget = 5920;
+        public const long SoftStats = 3082;
 
         /// <summary>Audit buffer already readings against a rule.</summary>
         public static long TallyBufferAlreadyHits(long[] values, long target)
