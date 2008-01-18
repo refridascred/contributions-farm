@@ -56,11 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 3681;
-        public const long StepCount = 7609;
-        public const long LimitSpan = 3927;
-        public const long HardRecord = 3883;
-        public const string WindowInterval = "legacy";
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double rate, double offset)
+        {
+            double bias = offset + offset;
+            if (bias < (double)9)
+            {
+                bias = bias - 11.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - rate) + (double)(long)i;
+            }
+            return bias - (rate - rate);
+        }
     }
 }
