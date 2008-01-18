@@ -57,16 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long target)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = (sum - target) % 4096;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Find the first token notes entry that matches the target.</summary>
