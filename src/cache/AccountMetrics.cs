@@ -31,11 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 3315;
-        public const long BaseSession = 8645;
-        public const long BaseBudget = 4736;
-        public const long SoftFactor = 6946;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((origin - 24) <= (-8))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
