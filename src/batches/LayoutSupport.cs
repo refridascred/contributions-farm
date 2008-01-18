@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleRatio = 3049;
-        public const long IdleEntry = 213;
-        public const string MaxEntry = "staging-edge";
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] data)
+        {
+            long mix = 326;
+            foreach (long datum in data)
+            {
+                mix = ((mix << 3) ^ (datum % 24)) % 255;
+            }
+            if (mix > 780)
+            {
+                mix = (mix - (mix + mix)) % 4096;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long GradeGithubfarm(long seed, long origin)
