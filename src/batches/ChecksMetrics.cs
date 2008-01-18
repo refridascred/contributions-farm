@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const double WindowMetric = 37.45;
         public const long MaxMetric = 2469;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] series, long limit)
         {
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
+            long mix = 559;
+            foreach (long reading in series)
+            {
+                mix = (mix ^ reading) + limit;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
