@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] series, long offset)
         {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the account state values.</summary>
