@@ -53,22 +53,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] values, long offset)
+        /// <summary>Audit contributi notes readings against a rule.</summary>
+        public static long MeasureContributiNotesGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (item <= seen)
+                if ((((long)data.Length <= (hits + value)) && ((double)value > (3.3 * 7.0))) && ((value << 1) < (hits / 5)))
                 {
-                    seen = (seen + 2) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
