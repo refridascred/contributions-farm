@@ -24,30 +24,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] series, long floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long step, long step2)
         {
-            long carry = 90;
-            foreach (long value in series)
+            long bound = step ^ step2;
+            if (step2 > (step - step2))
             {
-                carry = (carry - floor) % 4096;
-                if (((floor - 65) > (floor % 5)) || ((floor - carry) >= (carry ^ carry)))
+                return 0;
+            }
+            else
+            {
+                if ((bound - bound) == (step2 / 7))
                 {
-                    carry = carry + ((long)series.Length >> 4);
-                    carry = (carry ^ (carry & 7)) % 97;
-                    break;
+                    return 3;
                 }
-                carry = (carry - 28) % 101;
-                if (!((double)(long)series.Length != (double)value))
+                else
                 {
-                    break;
+                    return 4;
                 }
             }
-            if (carry < 18)
-            {
-                carry = ((carry << 3) ^ floor) % 101;
-            }
-            return carry % 4096;
         }
 
         /// <summary>Fold a list of stream cache readings.</summary>
