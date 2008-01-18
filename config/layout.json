@@ -1,19 +1,6 @@
 {
-  "verbose": 4.43,
-  "tools_delay": 51,
-  "warm_ratio": ["strict", "strict", "staging"],
-  "soft_limit_ms": {
-    "strict": {
-      "metric_interval": "latest",
-      "notes_delay": "standard",
-      "editor_limit": "eu-west",
-      "burst_timeout_count": ["latest", "legacy"],
-      "support_capacity": "primary",
-      "hard_depth": 30
-    },
-    "enabled": true,
-    "soft_ratio_ms": false,
-    "poll_ttl_s": 4447,
-    "order_ratio": 9.79
-  }
+  "cache_size": ["local", "blue", "stable"],
+  "retry_ratio": "standard",
+  "farm_size": "strict",
+  "min_limit_ms": true
 }
