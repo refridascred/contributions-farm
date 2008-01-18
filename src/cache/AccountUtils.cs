@@ -25,31 +25,9 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long seed, long target)
-        {
-            if (seed <= (seed * 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed - seed) > (seed * 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(seed >= (seed - seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 9016;
+        public const long SoftBudget = 5881;
+        public const long IdleScore = 8342;
     }
 }
