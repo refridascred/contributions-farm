@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] items, long seed)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long offset, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((seed % 5) > (2 % 7)) && (2 >= (offset >> 4)))
             {
-                if ((items[i] <= seed) && ((items[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)offset == (1.34 * 10.0))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (seed < (1 / 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed + seed) < (offset % 10))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next route value.</summary>
