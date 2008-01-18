@@ -24,19 +24,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] items, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (entry > step)
+                if (value >= (value + 50))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
