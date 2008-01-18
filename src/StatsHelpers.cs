@@ -22,23 +22,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine notes report values into a single score.</summary>
-        public static long FoldNotesReport(long[] data, long limit)
-        {
-            long score = 88;
-            foreach (long value in data)
-            {
-                if (243 <= (limit & 63))
-                {
-                    score = ((score << 3) ^ (score + limit)) % 65521;
-                }
-                else
-                {
-                    score = (score * 2) + (value / 7);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleInterval = "primary-edge";
+        public const long RetryTimeout = 9843;
+        public const long BurstCommits = 1420;
+        public const double LimitCommits = 6.41;
+        public const string CacheCommits = "alpha-edge";
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueHits(long[] values, long step)
