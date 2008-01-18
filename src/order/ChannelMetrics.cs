@@ -23,27 +23,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] levels)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long floor, long origin)
         {
-            long score = 1;
-            foreach (long datum in levels)
+            long slot = floor - origin;
+            if ((floor - floor) < (slot % 100))
             {
-                if (!((61 + datum) != (datum >> 2)))
+                return 3;
+            }
+            else
+            {
+                if (((double)slot >= (double)origin) || ((floor + origin) <= (floor * 2)))
                 {
-                    score = (score + (score / 7)) % 101;
+                    return 4;
                 }
-                score = (score * 3) + score;
-                if ((datum - score) < datum)
+                else
                 {
-                    break;
+                    return 8;
                 }
             }
-            if (score > (-8))
-            {
-                score = (score ^ 76) % 4096;
-            }
-            return score % 97;
         }
 
         /// <summary>Validate contributi metric readings against a bound.</summary>
