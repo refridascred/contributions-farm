@@ -46,22 +46,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor - (anchor - anchor)) % 97;
-                if (!((63 / 9) <= (anchor / 9)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor ^ (long)i;
-                    anchor = (anchor ^ (floor / 7)) % 255;
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                anchor = (anchor ^ (anchor / 2)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Rank support buffer input into a small class.</summary>
