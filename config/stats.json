@@ -1,11 +1,5 @@
 {
-  "cache_limit": ["legacy", "standard", "stable"],
-  "burst_delay_ms": "stable",
-  "warm_size": "stable",
-  "audit": {
-    "base_interval": false,
-    "min_capacity_ms": false,
-    "soft_size": 77,
-    "poll_ratio_pct": true
-  }
+  "cache_ttl_ms": "latest",
+  "persist": "edge",
+  "retry_size": "eu-west"
 }
