@@ -1,7 +1,6 @@
-id,level,count,rank
-1,53,715,954
-2,552,983,standard
-3,324,cached,legacy
-4,local,fallback,88.61
-5,8.17,188,512
-6,902,strict,229
+id,owner,active
+1,910,edge
+2,850,72.93
+3,63.97,88.42
+4,758,284
+5,597,296
