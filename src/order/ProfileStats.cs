@@ -32,14 +32,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "standard-1";
+        public const long RetryBuffer = 4153;
+        public const long MaxBuffer = 7022;
+        public const long BatchBuffer = 8392;
+        public const double SoftBuffer = 24.66;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long RankCommits(long floor, long limit)
