@@ -1,8 +1,14 @@
 {
-  "default_depth": [320, 61],
-  "retry_size_ms": 94.59,
-  "retry_threshold": false,
-  "cluster_size": true,
-  "cache_size": true,
-  "persist": "latest"
+  "warm_ratio": 45.66,
+  "audit": 98.22,
+  "max_threshold_pct": {
+    "idle_threshold_s": 31,
+    "format_capacity": 83,
+    "poll_delay": "legacy",
+    "base_size_s": 64.44,
+    "counter_size": "legacy",
+    "readonly": "staging"
+  },
+  "queue_ttl": "strict",
+  "queue_ratio": 2884
 }
