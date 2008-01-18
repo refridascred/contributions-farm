@@ -1,6 +1,12 @@
 {
-  "max_threshold_pct": [297, 454],
-  "strict": "eu-west",
-  "max_limit": "primary",
-  "verbose": "standard"
+  "flush_retries": {
+    "idle_delay_pct": 4886,
+    "queue_retries": true,
+    "retry_window_pct": 48,
+    "audit": 30,
+    "max_capacity_count": [25, 244, 176, 419]
+  },
+  "flush_threshold_pct": 67.33,
+  "soft_capacity": true,
+  "report_limit": "green"
 }
