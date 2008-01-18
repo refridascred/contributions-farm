@@ -1,21 +1,6 @@
 {
-  "batch_timeout": false,
-  "filter_threshold": {
-    "min_ratio_ms": {
-      "record_ratio": [48, 130],
-      "soft_timeout_count": 2002,
-      "default_retries": "green",
-      "entry_limit": 57.93,
-      "already_depth": false
-    },
-    "burst_ratio_ms": 97,
-    "batch_window": 51.69,
-    "githubfarm_limit": "eu-west",
-    "persist": "fallback",
-    "base_retries_s": true
-  },
-  "verbose": true,
-  "strict": "cached",
-  "max_retries_ms": 82,
-  "cache_threshold": ["fallback", "staging", "blue", "green"]
+  "dry_run": "stable",
+  "compress": false,
+  "soft_size_count": 71,
+  "channel_capacity": 7872
 }
