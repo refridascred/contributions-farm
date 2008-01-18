@@ -1,5 +1,19 @@
 {
-  "audit": true,
-  "batch_limit_count": 61,
-  "strict": "standard"
+  "retry_threshold_count": ["latest", "blue", "primary"],
+  "sync_delay_ms": {
+    "sync_threshold_s": "blue",
+    "persist": 27,
+    "soft_depth_pct": {
+      "sync_interval": false,
+      "retry_ratio_count": "local",
+      "idle_delay": "eu-west",
+      "token_depth": 5962,
+      "persist": "stable"
+    },
+    "min_limit": 71,
+    "hard_interval_s": "primary"
+  },
+  "poll_window_count": "stable",
+  "dry_run": ["blue", "staging", "legacy", "edge"],
+  "base_ratio_s": "blue"
 }
