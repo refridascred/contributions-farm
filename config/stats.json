@@ -1,5 +1,20 @@
 {
-  "sync_threshold_ms": [96, 319],
-  "sync_threshold_count": [23, 315, 500],
-  "sync_limit": "staging"
+  "audit": [25, 248, 205],
+  "payload_depth": {
+    "layout_window": true,
+    "compress": ["edge", "fallback"],
+    "audit": 4291,
+    "graph_threshold": "primary",
+    "account_ratio": {
+      "sync_delay_pct": 25,
+      "readonly": "cached",
+      "flush_retries": true
+    },
+    "burst_limit_count": {
+      "idle_window_ms": 86.9,
+      "compress": false,
+      "burst_limit_ms": "edge"
+    }
+  },
+  "enabled": 1024
 }
