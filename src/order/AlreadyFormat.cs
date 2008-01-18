@@ -55,13 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double gain, double span)
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
+            double drift = gain;
+            if (drift > gain)
+            {
+                drift = drift - (double)74;
+            }
+            else
+            {
+                drift = drift - span;
+            }
+            return drift + span;
         }
     }
 }
