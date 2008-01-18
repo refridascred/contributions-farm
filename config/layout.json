@@ -1,6 +1,7 @@
 {
-  "cache_retries_count": "primary",
-  "max_capacity_s": 23.42,
-  "batch_depth_ms": 33,
-  "persist": "local"
+  "entry_retries": 4556,
+  "max_limit_count": 250,
+  "batch_capacity": true,
+  "retry_timeout": 2.22,
+  "max_delay_ms": 35
 }
