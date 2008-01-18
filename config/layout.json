@@ -1,17 +1,10 @@
 {
-  "cache_delay_ms": {
-    "persist": {
-      "channel_size": true,
-      "graph_capacity": ["open", "latest", "stable", "edge"],
-      "readonly": "latest"
-    },
-    "poll_limit_count": "fallback",
-    "hard_depth_s": 250,
-    "default_interval_pct": true,
-    "batch_delay": 94.17
-  },
-  "session_ttl": 2281,
-  "support_limit": false,
-  "audit": "legacy",
-  "strict": 30.26
+  "editor_size": 20,
+  "audit": "local",
+  "checks_size": {
+    "soft_size_ms": 30,
+    "retry_capacity": "local",
+    "compress": 500,
+    "stats_timeout": 80.1
+  }
 }
