@@ -22,17 +22,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a batch metric sample.</summary>
-        public static long LookupBatchMetricIndex(long[] items, long floor)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
