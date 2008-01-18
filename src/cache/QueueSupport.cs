@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of batches context readings.</summary>
