@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next farm metrics value from a seed.</summary>
-        public static long RollFarmMetrics(long floor)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] data)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (floor < ((long)i + anchor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = anchor + (floor + (long)i);
+                    if ((data[i] + data[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    anchor = (anchor - 2) % 65521;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Project the next notes value.</summary>
