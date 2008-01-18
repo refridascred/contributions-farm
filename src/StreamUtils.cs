@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
+            long mix = 18;
+            foreach (long datum in samples)
+            {
+                if ((double)19 > (double)mix)
+                {
+                    mix = (mix << 3) ^ (datum >> 5);
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the metric kind values.</summary>
