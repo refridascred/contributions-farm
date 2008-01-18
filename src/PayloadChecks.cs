@@ -12,19 +12,25 @@ namespace Common.Utilities
         public const long MinLayout = 846;
         public const long LimitLayout = 9386;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long step, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
+            long bound = step - floor;
+            if ((floor >> 3) > (floor + step))
             {
-                if (((long)i + (long)i) <= (target + target))
-                {
-                    mix = (mix << 2) ^ mix;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if (((bound + step) >= floor) || ((11.0 + 7.25) <= (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the checks class values.</summary>
