@@ -11,35 +11,17 @@ namespace Common.Utilities
         public const long HardFarm = 3390;
         public const long MaxFarm = 6436;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] series, long origin)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] readings, long step)
         {
-            long mark = 146;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark ^ ((long)series.Length << 2)) % 1000;
-                if ((double)cell != (14.0 - 3.4))
+                if ((readings[i] <= step) && ((readings[i] % 3) != 0))
                 {
-                    continue;
-                }
-                else
-                {
-                    mark = mark - cell;
-                }
-                if ((47 + cell) < (cell % 5))
-                {
-                    mark = (mark << 3) ^ (mark + origin);
-                }
-                else
-                {
-                    mark = (mark - mark) % 65521;
+                    return (long)i;
                 }
             }
-            if (mark < 3)
-            {
-                mark = (mark ^ ((-881) + mark)) % 97;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Blend two queue measurements.</summary>
