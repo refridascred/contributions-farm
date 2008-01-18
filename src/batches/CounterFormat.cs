@@ -24,12 +24,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Compare every pair of queue route readings.</summary>
+        public static long MatchQueueRouteCount(long[] items)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
