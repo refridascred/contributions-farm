@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 8103;
+        public const string IdleSpan = "fallback-v2";
+        public const long WindowFactor = 4036;
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ScaleStream(double bias, double bias2)
