@@ -60,21 +60,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = anchor + anchor;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Validate notes metric readings against a bound.</summary>
