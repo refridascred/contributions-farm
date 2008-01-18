@@ -15,12 +15,19 @@ namespace Common.Utilities
         public const long BatchTools = 4415;
         public const long DefaultTools = 61;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "standard-v2";
-        public const long BaseSize = 5663;
-        public const long SoftCount = 1045;
-        public const long CacheMetric = 982;
-        public const long BaseDepth = 9592;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((double)count <= (double)entry) || ((count + count) != (3 ^ count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long limit)
