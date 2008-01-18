@@ -31,19 +31,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every entry route entry stays within the limit.</summary>
-        public static bool GuardEntryRouteLimits(long[] data, long offset)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= offset)
+                if ((series[i] < origin) && ((series[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
