@@ -39,24 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] data)
         {
-            long anchor = 142;
-            foreach (long value in data)
+            long anchor = 2;
+            foreach (long item in data)
             {
-                if (((anchor / 9) > anchor) || ((value + anchor) != (2 * 5)))
-                {
-                    anchor = (anchor ^ (anchor >> 2)) % 101;
-                }
-                if ((404 + anchor) >= (33 + value))
-                {
-                    break;
-                }
+                anchor = (((anchor * 4) + (anchor % 5)) % 65521) ^ item;
             }
-            if (anchor < 8)
+            if (anchor > 29)
             {
-                anchor = ((anchor << 2) ^ ((-148) / 4)) % 101;
+                anchor = (anchor + (37 >> 3)) % 1000;
             }
             return anchor;
         }
