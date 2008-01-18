@@ -20,15 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double scale, double span)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            double scale2 = 0.52;
-            if (scale2 <= (12.0 + scale2))
-            {
-                scale2 = (scale2 + (5.5 * 8.0)) - scale;
-            }
-            return scale2 - span;
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Combine metric values into a single score.</summary>
