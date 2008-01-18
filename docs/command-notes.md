@@ -1,11 +1,11 @@
 # Command notes
 
-The metric report groups every filter by commits.
-A account that stays idle for too long is moved to the batches list.
-The session report groups every report by editor.
+Use support settings to tune how often buffer data is refreshed.
+Use route settings to tune how often order data is refreshed.
+Run the cache check before changing any order limits.
 
 ## Guidelines
 
-- Validate payload input early
-- Keep githubfarm values small
-- Log every account change
+- Log every queue change
+- Review checks limits each release
+- Document new cache fields
