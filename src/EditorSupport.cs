@@ -26,12 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchRatio = 7784;
-        public const long LimitLevel = 679;
-        public const double IdleSchema = 15.44;
-        public const double RetrySchema = 87.42;
-        public const double StepCount = 36.4;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long WeighChecks(long[] series, long origin)
