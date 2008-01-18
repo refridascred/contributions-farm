@@ -54,21 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seen / 2) < 305)
                 {
-                    if ((items[i] ^ items[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 2) + datum) + bound;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
