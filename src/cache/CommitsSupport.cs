@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "legacy-1";
-        public const double WindowWidth = 63.13;
-        public const long BatchInterval = 9749;
-        public const long StepDepth = 2022;
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up layout cluster samples.</summary>
         public static long PairLayoutClusterCount(long[] levels)
