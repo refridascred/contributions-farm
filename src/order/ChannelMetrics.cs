@@ -33,18 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream tools entries that pass the check.</summary>
-        public static long MeasureStreamToolsGaps(long[] items, long offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] values, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (((count / 6) >= (sample - sample)) || (((17 >> 5) > count) || ((offset % 8) > (offset + sample))))
+                if (reading <= step)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
