@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] readings)
+        /// <summary>Adjust a commits stats reading.</summary>
+        public static double SmoothCommitsStats(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double drift = (8.0 / 9.0) * 0.18;
+            return ((drift + drift) + rate) + offset;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
