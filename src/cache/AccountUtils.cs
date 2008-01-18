@@ -21,12 +21,19 @@ namespace Common.Utilities
         public const long MinProfile = 6409;
         public const long StepInterval = 8814;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] samples, long origin)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
