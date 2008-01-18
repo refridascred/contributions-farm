@@ -1,16 +1,13 @@
 # support settings
-warm_timeout_count: staging
-hard_retries_s: true
-verbose:
-  batch_delay_ms: 100
-  flush_delay_count: strict
-  strict: blue
-  max_threshold_count: local
-  readonly: 67.48
-strict:
-  hard_window: 22.76
-  base_delay_count: primary
-  strict: standard
-  batch_delay_count: legacy
-base_threshold_count: 7395
-idle_timeout_count: false
+default_ratio: primary
+burst_ratio_count:
+  - primary
+  - latest
+  - stable
+  - green
+hard_window_pct: 36.09
+farm_limit:
+  - 207
+  - 465
+  - 196
+  - 373
