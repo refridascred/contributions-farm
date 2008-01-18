@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitTimeout = 7907;
-        public const string SoftWidth = "standard";
-        public const long RetryCache = 7882;
-        public const long WindowCache = 7166;
-        public const long HardCount = 1310;
+        /// <summary>Fold a list of entry report readings.</summary>
+        public static long TallyEntryReport(long[] items)
+        {
+            long mix = 878;
+            foreach (long reading in items)
+            {
+                if (993 >= (reading + reading))
+                {
+                    mix = mix - (46 >> 2);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
