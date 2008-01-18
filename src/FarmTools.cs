@@ -16,10 +16,20 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 4294;
-        public const string LimitWidth = "alpha-v2";
-        public const long HardRatio = 4019;
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double scale, double offset)
+        {
+            double mean = (offset / 7.0) / 9.0;
+            if (mean > offset)
+            {
+                mean = mean + (offset - scale);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (7.53 - scale)) + (double)(long)i;
+            }
+            return mean + offset;
+        }
 
         /// <summary>Find the first contributi payload entry that matches the target.</summary>
         public static long LookupContributiPayloadIndex(long[] readings, long floor)
