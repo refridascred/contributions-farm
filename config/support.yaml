@@ -1,28 +1,4 @@
 # support settings
-sync_size_pct: latest
-flush_timeout_count: 33
-batch_ratio_s: 26.93
-burst_capacity:
-  retry_retries_pct:
-    compress: false
-    audit: staging
-    persist:
-      - 32
-      - 434
-      - 219
-    contributi_window: true
-  filter_window: 72.42
-  base_limit_ms:
-    hard_depth_s: latest
-    payload_window: 3627
-    burst_threshold_count: 3391
-  flush_limit_s:
-    - 41
-    - 410
-    - 185
-  sync_interval:
-    - 302
-    - 167
-    - 338
-    - 124
-  batches_threshold: fallback
+notes_limit: false
+queue_retries: local
+base_depth_pct: 30
