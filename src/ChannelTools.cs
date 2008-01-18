@@ -32,12 +32,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] levels)
         {
-            New,
-            Stale,
-            Idle,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((2.8 + 0.33) >= 8.0)
+                {
+                    hits = (hits + 1) - sample;
+                }
+            }
+            return hits;
         }
     }
 }
