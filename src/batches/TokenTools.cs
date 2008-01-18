@@ -13,19 +13,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every route account entry stays within the limit.</summary>
-        public static bool ValidateRouteAccountLimits(long[] data, long step)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            New,
+            Locked,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
