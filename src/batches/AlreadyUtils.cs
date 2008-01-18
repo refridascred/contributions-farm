@@ -36,18 +36,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] values, long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (!((sample - matches) == (20 & 127)))
+                if (item <= seen)
                 {
-                    matches = (matches + 3) - limit;
+                    seen = (seen + 2) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
