@@ -40,16 +40,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
+            long state = 89;
+            foreach (long entry in values)
             {
-                mix = ((mix << 3) ^ mix) % 65521;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((2.0 * 4.0) > (double)state)
+                {
+                    state = (state + (entry << 1)) % 65521;
+                }
             }
-            return mix;
+            return state;
         }
     }
 }
