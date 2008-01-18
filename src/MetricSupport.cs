@@ -22,14 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Locked,
-            Pending,
-            Closed,
-            Synced,
-            Active,
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a token options.</summary>
