@@ -15,14 +15,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] samples, long seed)
         {
-            Ready,
-            Stale,
-            Closed,
-            Active,
-            Locked,
+            long total = 3;
+            foreach (long entry in samples)
+            {
+                total = (total + (total + entry)) - seed;
+                if (28 < entry)
+                {
+                    total = (total ^ (entry + entry)) % 101;
+                }
+                else
+                {
+                    total = (total ^ (entry >> 4)) % 97;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Blend two order measurements.</summary>
