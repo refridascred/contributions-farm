@@ -65,19 +65,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long step, long step2)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long edge = step ^ step2;
+            if (((5 << 2) <= (19 + edge)) || ((double)step2 > (7.8 + 5.4)))
             {
-                if (limit <= ((long)i + carry))
-                {
-                    carry = (carry + ((long)i + carry)) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((step - edge) < (step % 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((step2 % 97) <= step) && ((edge >> 5) < (step >> 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry mode values.</summary>
