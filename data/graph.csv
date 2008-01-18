@@ -1,7 +1,10 @@
-id,score,owner
-1,68.3,28.86
-2,20.08,212
-3,staging,57
-4,edge,strict
-5,55.15,74.03
-6,266,437
+id,label,rank,token,owner
+1,stable,standard,472,blue
+2,green,90.85,199,37.63
+3,680,17.89,cached,94.77
+4,green,552,standard,primary
+5,284,873,101,green
+6,774,15.06,stable,primary
+7,47.38,24.56,86.08,82.53
+8,staging,127,67.25,140
+9,392,latest,70.89,55.23
