@@ -33,14 +33,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long limit)
         {
-            Pending,
-            Done,
-            Synced,
-            Active,
-            New,
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((mark - mark) > (mark + limit)))
+                {
+                    mark = mark - (mark + 58);
+                    mark = mark + mark;
+                }
+                mark = mark ^ (long)i;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
