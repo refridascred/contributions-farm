@@ -27,21 +27,24 @@ namespace Common.Utilities
             return gain + 3.5;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((target & 31) >= (17 - score))
                 {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                bool ready = 5.0 > (double)score;
+                if (ready)
+                {
+                    score = (score - (953 / 9)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
