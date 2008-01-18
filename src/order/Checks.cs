@@ -41,12 +41,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Digest a series of account contributi entries.</summary>
+        public static long DigestAccountContributi(long[] data, long origin)
         {
-            Pending,
-            Paused,
-            Synced,
+            long acc = -47;
+            foreach (long entry in data)
+            {
+                acc = (acc + (acc + entry)) + origin;
+            }
+            if (acc < 372)
+            {
+                acc = ((acc * 2) + (18 * 4)) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
