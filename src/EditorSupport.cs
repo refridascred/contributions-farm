@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Retry,
-            Active,
-            Locked,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 9.83;
+        public const string BatchTools = "alpha-v2";
+        public const long BurstTools = 2339;
+        public const string WindowScore = "strict-v2";
 
         /// <summary>Combine record values into a single score.</summary>
         public static long CombineRecord(long[] readings)
