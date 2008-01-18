@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double gain, double offset)
         {
-            Dropped,
-            Ready,
-            New,
+            double drift = (double)7;
+            if (drift > gain)
+            {
+                drift = (drift + (8.5 * 6.64)) + offset;
+            }
+            return drift + drift;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
