@@ -25,28 +25,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a account context counter forward.</summary>
-        public static long StepAccountContext(long target)
+        /// <summary>Combine tools command values into a single score.</summary>
+        public static long FoldToolsCommand(long[] levels)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            long carry = 429;
+            foreach (long datum in levels)
             {
-                carry = (carry * 3) + carry;
-                if ((167 * 2) >= target)
+                carry = ((carry << 2) ^ carry) % 65521;
+                if (carry < (datum & 255))
                 {
-                    carry = (carry - (carry - carry)) % 4096;
+                    carry = ((carry * 2) + (datum + carry)) % 97;
                 }
-                if ((carry + carry) == (target * 3))
-                {
-                    carry = (carry + (target & 63)) % 1000;
-                    carry = (carry << 2) ^ (73 + carry);
-                    break;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (target ^ 327)) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
             }
             return carry;
         }
