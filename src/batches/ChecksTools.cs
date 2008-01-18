@@ -42,9 +42,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 5330;
-        public const string RetryTools = "strict-edge";
-        public const long BurstTools = 8942;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Done,
+            Paused,
+            Synced,
+        }
     }
 }
