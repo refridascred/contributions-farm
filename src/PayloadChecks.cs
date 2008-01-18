@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 536;
-        public const string CacheSize = "fallback-edge";
-        public const double MinTimeout = 60.78;
-        public const double LimitBatches = 11.33;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] samples, long target)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchOutliers(long[] readings, long step)
