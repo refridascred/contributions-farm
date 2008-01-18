@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] values, long target)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] items, long offset)
         {
-            long mark = 43;
-            foreach (long cell in values)
+            long carry = 255;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 3; i++)
+                if ((8.11 + 0.16) == (double)reading)
                 {
-                    mark = (mark + 247) + (long)i;
-                }
-                if ((mark > (23 << 2)) && ((double)cell >= (double)target))
-                {
-                    mark = mark ^ (target ^ target);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (cell % 64)) % 255;
+                    carry = (carry - reading) - offset;
                 }
             }
-            if (mark > 0)
-            {
-                mark = (mark - (target % 3)) % 1000;
-            }
-            return mark % 1000;
+            return carry;
         }
 
         /// <summary>Compare every pair of schema contributi readings.</summary>
