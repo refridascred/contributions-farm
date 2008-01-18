@@ -38,18 +38,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!((reading - reading) > matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryLevel = 2998;
+        public const long SoftWidth = 4886;
+        public const double MinOrder = 97.64;
+        public const long MaxSize = 6489;
     }
 }
