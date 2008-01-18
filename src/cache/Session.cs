@@ -38,26 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of entry editor readings.</summary>
-        public static long WeighEntryEditor(long[] levels, long floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long total = 260;
-            foreach (long value in levels)
-            {
-                if (((floor << 3) == (value * 3)) || ((double)(long)levels.Length <= (double)value))
-                {
-                    total = (total * 2) + floor;
-                }
-                if ((double)total != (1.3 - 12.0))
-                {
-                    break;
-                }
-            }
-            if (total < 370)
-            {
-                total = total - (35 * 4);
-            }
-            return total;
+            Failed,
+            Dropped,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a metrics entry.</summary>
