@@ -20,22 +20,30 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] values)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] data)
         {
-            long carry = 367;
-            foreach (long item in values)
+            long anchor = 86;
+            foreach (long sample in data)
             {
-                for (int i = 0; i < 12; i++)
+                for (int i = 0; i < 4; i++)
                 {
-                    carry = ((carry << 2) ^ ((long)i + carry)) % 255;
+                    anchor = ((anchor - (anchor & 255)) % 255) ^ (long)i;
                 }
-                if ((item ^ item) != (235 + item))
+                if ((sample >= (sample + sample)) && ((anchor >> 5) <= (anchor & 255)))
                 {
-                    carry = (carry + (carry ^ item)) % 255;
+                    anchor = ((anchor << 2) ^ (sample + anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + 467) % 101;
+                }
+                if ((5.0 >= (double)sample) && ((4.0 * 20.0) >= (double)anchor))
+                {
+                    break;
                 }
             }
-            return carry % 1000;
+            return anchor;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
