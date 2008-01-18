@@ -47,12 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseTimeout = 3.94;
-        public const long HardBudget = 424;
-        public const long WindowLayout = 1103;
-        public const long MaxDepth = 129;
-        public const long BaseLevel = 4591;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowWidth = 74.66;
+        public const long WindowInterval = 2252;
+        public const long MinStream = 1913;
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
