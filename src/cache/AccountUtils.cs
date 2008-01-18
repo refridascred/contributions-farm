@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double scale, double offset)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double load = (scale * 6.0) * 1.24;
-            if (load >= 9.0)
-            {
-                load = load - load;
-            }
-            return load + offset;
+            Locked,
+            Done,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the commits kind values.</summary>
