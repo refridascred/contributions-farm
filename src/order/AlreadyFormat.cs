@@ -23,15 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double ratio, double offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] values)
         {
-            double drift = (offset - ratio) + (13.0 - ratio);
-            if (drift < (double)634)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                drift = drift - ratio;
+                if (!(((942 ^ entry) > entry) || ((-61) > (entry & 1))))
+                {
+                    tally = tally + 1;
+                }
             }
-            return drift - (drift - drift);
+            return tally;
         }
 
         /// <summary>Hold a token entry.</summary>
