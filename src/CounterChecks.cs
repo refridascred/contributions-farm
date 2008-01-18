@@ -87,19 +87,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double gain, double span)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long origin, long floor)
         {
-            double drift = 7.0;
-            if (drift < (span + gain))
+            if ((origin - 37) <= origin)
             {
-                drift = drift - (double)97;
+                return 4;
             }
             else
             {
-                drift = drift + (0.85 + span);
+                if ((origin % 16) != (floor + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((origin + origin) <= floor) && ((origin ^ origin) <= origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return drift - (3.0 / 5.0);
         }
     }
 }
