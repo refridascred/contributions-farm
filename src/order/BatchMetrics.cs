@@ -39,11 +39,16 @@ namespace Common.Utilities
         public const long StepGithubfarm = 2343;
         public const string RetryGithubfarm = "local-1";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstDepth = 1008;
-        public const long StepReport = 4509;
-        public const string MinReport = "local-edge";
-        public const long RetryReport = 1609;
+        /// <summary>Fold a list of session queue readings.</summary>
+        public static long CombineSessionQueue(long[] items, long floor)
+        {
+            long mix = -706;
+            foreach (long item in items)
+            {
+                mix = (((mix << 2) ^ (item << 1)) % 65521) + floor;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long SeriesMetric(long origin)
