@@ -1,5 +1,6 @@
 {
-  "sync_limit_ms": 80.41,
-  "min_capacity_s": 95.51,
-  "min_depth": 43
+  "idle_size_s": 6666,
+  "flush_interval": [120, 485, 30],
+  "cache_threshold_s": false,
+  "sync_capacity": true
 }
