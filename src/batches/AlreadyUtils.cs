@@ -62,21 +62,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 42;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((8.0 - 3.6) > (double)datum) || (48 < (long)readings.Length))
                 {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry ^ carry) % 97;
                 }
             }
-            return count;
+            if (carry < (-8))
+            {
+                carry = ((carry * 5) + carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
