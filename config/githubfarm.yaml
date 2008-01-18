@@ -1,10 +1,16 @@
 # githubfarm settings
-burst_delay: 6757
-filter_threshold: 65.81
-compress: 7638
-audit: strict
-sync_ttl_count:
-  - edge
-  - staging
-  - cached
-  - strict
+checks_threshold: 3
+cache_window: 37
+max_size_count: standard
+session_retries:
+  default_size_pct: 23.07
+  soft_retries_pct:
+    dry_run: 64
+    idle_window_s: 8435
+    githubfarm_depth: 93
+    token_interval: 11
+  context_timeout: eu-west
+  default_ttl_s: latest
+  hard_timeout: stable
+warm_timeout_pct: true
+graph_interval: 19.81
