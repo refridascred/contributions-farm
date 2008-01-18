@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            Failed,
-            Done,
-            Active,
-            Pending,
-            Paused,
+            long sum = 542;
+            foreach (long entry in readings)
+            {
+                if (((sum << 1) == (entry ^ entry)) || ((sum + entry) >= (entry + sum)))
+                {
+                    sum = (sum ^ (sum / 6)) % 101;
+                }
+                if (((double)sum != (double)entry) || ((991 + entry) < (entry ^ entry)))
+                {
+                    break;
+                }
+            }
+            if (sum > 85)
+            {
+                sum = (sum - (sum - sum)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
