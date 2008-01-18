@@ -1,10 +1,15 @@
 {
-  "idle_size_pct": false,
-  "compress": {
-    "hard_window_count": 2550,
-    "flush_window_s": [77, 338],
-    "poll_depth_s": "blue"
+  "min_interval": {
+    "soft_threshold": 59.4,
+    "persist": "blue",
+    "hard_size": ["open", "edge", "eu-west"]
   },
-  "graph_window": 30,
-  "warm_capacity_ms": 100
+  "batches_ratio": 7,
+  "idle_interval": true,
+  "audit": {
+    "commits_retries": "eu-west",
+    "hard_interval": 1024,
+    "max_depth_pct": 14,
+    "persist": 24.87
+  }
 }
