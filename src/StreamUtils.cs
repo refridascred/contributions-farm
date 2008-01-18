@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] values, long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (cell >= seed)
+                if (((item & 63) == (item << 2)) || ((6.61 * 2.0) >= (double)tally))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) - step;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
