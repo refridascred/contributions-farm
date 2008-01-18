@@ -55,15 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] levels)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] values)
         {
             long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (tally < (tally << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) ^ reading;
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
