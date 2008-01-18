@@ -28,11 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "staging-1";
-        public const long StepFilter = 7448;
-        public const long BatchSpan = 5553;
-        public const long MaxRatio = 9190;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] readings, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)offset == (9.2 * 12.0))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
