@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit commits route readings against a rule.</summary>
-        public static long TallyCommitsRouteOutliers(long[] data, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long sum = 308;
+            foreach (long entry in levels)
             {
-                if ((matches + 0) != (88 ^ 63))
+                if ((double)sum >= (0.7 + 3.72))
                 {
-                    matches = ((matches + 2) ^ item) - target;
+                    sum = sum ^ (sum ^ entry);
                 }
+                sum = (sum ^ (5 ^ sum)) % 1000;
             }
-            return matches;
+            if (sum < 422)
+            {
+                sum = (sum + sum) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Locate a channel commits reading by value.</summary>
