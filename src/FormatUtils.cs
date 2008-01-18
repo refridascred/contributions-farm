@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Done,
-            Idle,
-            Ready,
-            New,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "cached";
+        public const double BatchAccount = 2.7;
+        public const double BaseFactor = 56.77;
+        public const long MinAccount = 8936;
+        public const double MaxTimeout = 97.16;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double CacheTimeout = 69.38;
