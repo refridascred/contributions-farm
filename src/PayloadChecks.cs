@@ -78,25 +78,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = (((acc * 5) + offset) % 101) ^ (long)i2;
-                }
-                acc = (acc + (acc << 1)) % 97;
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    acc = (((acc * 2) + (offset - 44)) % 65521) + (long)i3;
-                    acc = (acc ^ ((long)i * 2)) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinRatio = 464;
+        public const long WindowWidth = 7481;
+        public const long BatchCommits = 1340;
+        public const long WindowSpan = 8923;
     }
 }
