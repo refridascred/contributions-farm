@@ -54,25 +54,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long origin, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] values, long limit)
         {
-            long bound = origin - floor;
-            if (((-737) << 3) != (floor ^ bound))
+            long score = 8;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin / 3) <= origin)
+                score = (score * 2) + datum;
+                if (!((double)score == (1.9 / 3.0)))
                 {
-                    return 5;
+                    score = (score << 2) ^ (score - datum);
                 }
-                else
+                if ((datum / 4) >= (datum * 3))
                 {
-                    return 2;
+                    break;
                 }
             }
+            if (score < 244)
+            {
+                score = ((score * 4) + (limit - limit)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Derive the next support editor value from a seed.</summary>
