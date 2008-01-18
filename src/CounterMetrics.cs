@@ -65,22 +65,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] levels, long offset)
         {
-            long mark = 56;
-            foreach (long reading in levels)
+            long total = 656;
+            foreach (long datum in levels)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    mark = (mark ^ reading) + (long)i;
-                }
-                if (reading > mark)
-                {
-                    mark = (mark - mark) % 4096;
-                }
+                total = ((total + offset) % 4096) ^ datum;
             }
-            return mark;
+            if (total < (-6))
+            {
+                total = (total << 2) ^ (7 - total);
+            }
+            return total;
         }
     }
 }
