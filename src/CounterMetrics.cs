@@ -65,21 +65,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Retry,
+            Failed,
+            Idle,
+            Closed,
         }
     }
 }
