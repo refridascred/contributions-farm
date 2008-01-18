@@ -1,14 +1,7 @@
 # support settings
-flush_capacity: true
-sync_retries:
-  - green
-  - standard
-  - stable
-  - legacy
-default_capacity: 59
-channel_depth: local
-default_delay_ms:
-  soft_delay: legacy
-  hard_threshold: edge
-  warm_size_ms: 500
-persist: staging
+dry_run: legacy
+readonly: 30
+idle_depth_count: 42.55
+max_capacity_s: 1917
+idle_depth: 43.54
+default_ratio: 96
