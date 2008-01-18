@@ -1,7 +1,8 @@
 {
-  "entry_retries": 4556,
-  "max_limit_count": 250,
-  "batch_capacity": true,
-  "retry_timeout": 2.22,
-  "max_delay_ms": 35
+  "stream_retries": false,
+  "hard_ratio_ms": "staging",
+  "route_depth": "legacy",
+  "burst_delay_count": 59.29,
+  "max_delay_s": true,
+  "sync_depth_s": "cached"
 }
