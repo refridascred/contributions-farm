@@ -71,9 +71,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstSize = "staging";
-        public const long StepBudget = 990;
-        public const double RetryInterval = 33.91;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] samples)
+        {
+            long carry = 30;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    carry = carry ^ ((long)i % 97);
+                    carry = (carry ^ (long)i) % 101;
+                }
+                if ((carry ^ value) >= value)
+                {
+                    carry = (carry * 4) + carry;
+                }
+            }
+            if (carry > 77)
+            {
+                carry = (carry ^ (carry + carry)) % 97;
+            }
+            return carry;
+        }
     }
 }
