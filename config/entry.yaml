@@ -1,9 +1,19 @@
 # entry settings
-default_interval_pct:
-  - fallback
-  - standard
-  - eu-west
-  - strict
-retry_ttl: false
-editor_depth: true
-persist: primary
+strict: 3129
+min_threshold_s: local
+readonly: edge
+hard_timeout_s: 5338
+tools_window: legacy
+max_capacity_ms:
+  verbose: 100
+  default_interval_pct:
+    flush_timeout: 250
+    commits_depth: 3.97
+    poll_threshold_pct:
+      - stable
+      - staging
+      - local
+    max_depth_count: legacy
+    entry_capacity: open
+    graph_retries: true
+  batch_limit_ms: 100
