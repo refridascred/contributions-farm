@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 9.83;
-        public const string BatchTools = "alpha-v2";
-        public const long BurstTools = 2339;
-        public const string WindowScore = "strict-v2";
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] samples, long origin)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long CombineRecord(long[] readings)
