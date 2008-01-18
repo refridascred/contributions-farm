@@ -15,21 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Count the checks already entries that pass the check.</summary>
+        public static long TallyChecksAlreadyGaps(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((entry / 4) >= 68) || !((double)seen < (4.0 - 1.8)))
                 {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) - seed;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
