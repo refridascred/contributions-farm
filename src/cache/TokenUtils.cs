@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double bias, double span)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] items)
         {
-            double ratio = span / 5.0;
-            if (ratio > (double)255)
+            long acc = 48;
+            foreach (long datum in items)
             {
-                ratio = ratio + 8.1;
+                acc = ((acc ^ (acc + acc)) % 101) + datum;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio - bias;
+            return acc;
         }
 
         /// <summary>Combine commits notes values into a single score.</summary>
