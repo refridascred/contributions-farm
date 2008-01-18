@@ -1,6 +1,5 @@
 {
-  "poll_threshold": "standard",
-  "strict": 3239,
-  "batch_limit_ms": ["blue", "legacy", "staging"],
-  "sync_timeout": true
+  "sync_threshold_ms": [96, 319],
+  "sync_threshold_count": [23, 315, 500],
+  "sync_limit": "staging"
 }
