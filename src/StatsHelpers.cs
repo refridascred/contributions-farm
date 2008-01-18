@@ -22,12 +22,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleInterval = "primary-edge";
-        public const long RetryTimeout = 9843;
-        public const long BurstCommits = 1420;
-        public const double LimitCommits = 6.41;
-        public const string CacheCommits = "alpha-edge";
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Queued,
+            Stale,
+            Draft,
+            Locked,
+            New,
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueHits(long[] values, long step)
