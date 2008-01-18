@@ -23,19 +23,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine tools command values into a single score.</summary>
-        public static long FoldToolsCommand(long[] levels)
+        /// <summary>Locate a counter token reading by value.</summary>
+        public static long LookupCounterTokenIndex(long[] samples, long bound)
         {
-            long carry = 429;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry << 2) ^ carry) % 65521;
-                if (carry < (datum & 255))
+                if (samples[i] == bound)
                 {
-                    carry = ((carry * 2) + (datum + carry)) % 97;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
