@@ -37,26 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double scale, double floor)
         {
-            long carry = 870;
-            foreach (long item in samples)
+            double scale2 = (double)(5 & 3);
+            if (scale2 < (floor / 4.0))
             {
-                if ((carry & 127) == (carry * 2))
-                {
-                    carry = carry - (item % 60);
-                }
-                if ((9.2 + 9.0) > (double)carry)
-                {
-                    break;
-                }
+                scale2 = (scale2 + floor) - scale;
             }
-            if (carry > 69)
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry - (carry - carry)) % 65521;
+                scale2 = (scale2 + scale2) + (double)(long)i;
             }
-            return carry;
+            return scale2 + (floor - floor);
         }
     }
 }
