@@ -76,22 +76,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (!(reading > (matches >> 4)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxSpan = "fallback";
+        public const double BatchSession = 46.9;
+        public const long RetrySession = 9233;
+        public const double RetryLevel = 71.04;
     }
 }
