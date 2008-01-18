@@ -16,21 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] levels)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((tally * 5) != (tally + 365))
                 {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + cell;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
