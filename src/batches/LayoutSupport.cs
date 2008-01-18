@@ -38,19 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] values, long step)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a order info.</summary>
