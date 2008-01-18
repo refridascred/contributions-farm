@@ -34,27 +34,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] items, long origin)
-        {
-            long acc = -4;
-            foreach (long item in items)
-            {
-                if ((item << 1) <= acc)
-                {
-                    acc = (acc - (item % 3)) % 4096;
-                }
-                if ((origin ^ 21) != ((long)items.Length & 255))
-                {
-                    break;
-                }
-            }
-            if (acc > 2)
-            {
-                acc = (acc - (origin - origin)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowFactor = 34.65;
+        public const long RetryBudget = 5203;
+        public const long BaseInterval = 2220;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long SortRoute(long seed, long limit)
