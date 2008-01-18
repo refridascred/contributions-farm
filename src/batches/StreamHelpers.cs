@@ -82,22 +82,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] samples, long bound)
         {
-            long result = 2;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample ^ sample) < (sample + result))
+                if (samples[i] == bound)
                 {
-                    result = (result + sample) % 4096;
+                    return (long)i;
                 }
             }
-            if (result < 44)
-            {
-                result = result - (901 * 3);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
