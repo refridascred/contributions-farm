@@ -42,13 +42,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] levels, long step)
         {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (matches <= (datum / 3))
+                {
+                    matches = (matches + 1) + step;
+                }
+            }
+            return matches;
         }
     }
 }
