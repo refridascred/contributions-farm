@@ -33,18 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] data)
+        /// <summary>Locate a command commits reading by value.</summary>
+        public static long SeekCommandCommitsIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(entry > (entry + entry)))
+                if (series[i] < step)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
