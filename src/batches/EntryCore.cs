@@ -42,15 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double rate, double bias)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] series)
         {
-            double load = (double)(159 ^ 3);
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                load = ((load - (rate + 6.6)) + (double)(long)i) - bias;
+                if ((4 + tally) != (datum + 8))
+                {
+                    tally = tally + 1;
+                }
             }
-            return load - (8.0 * 1.02);
+            return tally;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
