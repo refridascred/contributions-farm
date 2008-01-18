@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a batch tools reading by value.</summary>
-        public static long LookupBatchToolsIndex(long[] levels, long limit)
+        /// <summary>Check that every schema stats entry stays within the limit.</summary>
+        public static bool VerifySchemaStatsLimits(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
+                if (cell >= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
