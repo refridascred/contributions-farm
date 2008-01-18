@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] levels)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally * 5) != (tally + 365))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            Active,
+            Pending,
+            Retry,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
