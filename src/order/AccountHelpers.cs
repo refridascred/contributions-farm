@@ -54,27 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] values, long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] samples, long target)
         {
-            long score = 8;
-            foreach (long datum in values)
+            long mark = 2;
+            foreach (long reading in samples)
             {
-                score = (score * 2) + datum;
-                if (!((double)score == (1.9 / 3.0)))
-                {
-                    score = (score << 2) ^ (score - datum);
-                }
-                if ((datum / 4) >= (datum * 3))
-                {
-                    break;
-                }
+                mark = ((mark - (target - mark)) % 4096) + reading;
             }
-            if (score < 244)
-            {
-                score = ((score * 4) + (limit - limit)) % 97;
-            }
-            return score;
+            return mark % 65521;
         }
 
         /// <summary>Derive the next support editor value from a seed.</summary>
