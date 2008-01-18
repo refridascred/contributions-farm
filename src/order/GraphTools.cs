@@ -21,18 +21,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] items)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((reading >= tally) || (reading < (reading + reading)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Synced,
+            Queued,
+            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
