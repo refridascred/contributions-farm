@@ -68,14 +68,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] samples, long origin)
         {
-            Idle,
-            Queued,
-            Closed,
-            Active,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate cache record samples.</summary>
