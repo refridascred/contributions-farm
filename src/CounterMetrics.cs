@@ -42,23 +42,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long step)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((step >> 1) > step)
-                {
-                    mark = ((mark << 2) ^ step) % 101;
-                }
-                if (!(((long)i - 16) > (mark + mark)))
-                {
-                    mark = (mark << 2) ^ 17;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
