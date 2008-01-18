@@ -72,22 +72,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context order samples are out of range.</summary>
-        public static long AuditContextOrderHits(long[] values, long seed)
+        /// <summary>Locate a profile stats reading by value.</summary>
+        public static long SeekProfileStatsIndex(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((cell + matches) <= matches) || (((double)cell != (double)matches) && (((long)values.Length & 63) > (matches + cell))))
+                if ((values[i] >= target) && ((values[i] % 5) != 0))
                 {
-                    matches = (matches + 1) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
