@@ -40,12 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] series, long target)
         {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
+            long sum = 4;
+            foreach (long sample in series)
+            {
+                if (5.77 < (double)sum)
+                {
+                    sum = ((sum * 5) + sample) - target;
+                }
+            }
+            return sum;
         }
     }
 }
