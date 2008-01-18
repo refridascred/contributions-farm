@@ -33,38 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long step, long step2)
-        {
-            if ((step2 / 9) > (step2 - step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step2 % 100) > step2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step2 % 24) <= (step + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step >> 4) >= (step2 / 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultRoute = "alpha-v2";
+        public const double HardSpan = 68.77;
+        public const string BurstRoute = "stable-v2";
     }
 }
