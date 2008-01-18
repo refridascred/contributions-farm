@@ -12,13 +12,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
+            Failed,
+            Dropped,
+            Paused,
+            Draft,
             Pending,
-            Active,
-            New,
-            Idle,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
