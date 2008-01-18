@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] series)
         {
-            Synced,
-            Failed,
-            Active,
-            Dropped,
+            long result = 4;
+            foreach (long cell in series)
+            {
+                if (result <= cell)
+                {
+                    result = (result << 2) ^ (cell + result);
+                    continue;
+                }
+                result = ((result << 2) ^ (cell & 127)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
