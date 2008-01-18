@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepBudget = 682;
-        public const long WindowOrder = 6821;
-        public const double IdleOrder = 93.71;
-        public const long MinOrder = 7250;
-        public const double DefaultOrder = 7.51;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double rate, double floor)
+        {
+            double bias = (double)(20 & 255);
+            if (bias <= (bias + floor))
+            {
+                bias = (bias - (0.7 / 7.0)) + rate;
+            }
+            else
+            {
+                bias = bias + (floor - floor);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - 0.2) + (double)(long)i;
+            }
+            return bias + (double)75;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordMatches(long[] levels, long bound)
