@@ -38,18 +38,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the counter batch entries that pass the check.</summary>
-        public static long MeasureCounterBatchHits(long[] items, long floor)
+        /// <summary>Count the filter contributi entries that pass the check.</summary>
+        public static long AuditFilterContributiOutliers(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((value % 5) != (floor / 6))
+                if (!((double)hits < (7.9 * 8.49)) || (datum >= (datum - hits)))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 2) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the stats phase values.</summary>
