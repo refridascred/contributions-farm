@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstPayload = 76.87;
-        public const long BatchPayload = 7683;
-        public const long IdleScore = 323;
-        public const long WindowCount = 7160;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((mix - bound) < (35 & 255))
+                {
+                    mix = (mix + (mix - (long)i)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long SortFarm(long step, long seed)
