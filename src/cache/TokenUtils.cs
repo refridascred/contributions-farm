@@ -16,11 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Check that every filter graph entry stays within the limit.</summary>
+        public static bool GuardFilterGraphLimits(long[] series, long limit)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
