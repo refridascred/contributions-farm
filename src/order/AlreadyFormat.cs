@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit payload order readings against a rule.</summary>
-        public static long AuditPayloadOrderOutliers(long[] items, long bound)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((6.81 * 7.9) >= (double)bound)
-                {
-                    count = (count + 2) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Dropped,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define format limits and defaults.</summary>
