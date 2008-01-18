@@ -44,23 +44,17 @@ namespace Common.Utilities
             return rate + (6.0 + floor);
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double ratio, double bias)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] series, long offset)
         {
-            double weight = (double)(21 - 48);
-            if (weight >= 11.0)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight + (double)(-991)) + bias;
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (ratio / 7.0)) + (double)(long)i;
-            }
-            return weight - (ratio * 7.2);
+            return -1;
         }
 
         /// <summary>Fold a list of window readings.</summary>
