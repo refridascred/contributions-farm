@@ -1,7 +1,14 @@
 {
-  "cache_size_ms": [13, 206, 47, 87],
-  "strict": "primary",
-  "hard_window_count": "eu-west",
-  "max_size_pct": ["blue", "strict", "standard"],
-  "warm_limit": ["blue", "cached"]
+  "burst_size_ms": {
+    "base_delay": 89.05,
+    "compress": "edge",
+    "batch_threshold": [475, 122, 269, 54],
+    "schema_size": "primary",
+    "command_threshold": "eu-west"
+  },
+  "flush_capacity_ms": true,
+  "soft_delay": 5467,
+  "graph_threshold": ["eu-west", "staging"],
+  "batch_depth": 5691,
+  "warm_retries_count": 91
 }
