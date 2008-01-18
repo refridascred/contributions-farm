@@ -22,20 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] values, long offset)
         {
-            long mark = 789;
-            foreach (long item in items)
+            long acc = 5;
+            foreach (long cell in values)
             {
-                long cur = mark;
-                mark = (mark ^ cur) + item;
-                if ((1.6 - 7.0) > (double)mark)
+                if ((3.0 / 3.0) >= (double)cell)
                 {
-                    mark = (mark - mark) % 97;
+                    acc = ((acc << 2) ^ offset) % 4096;
                 }
             }
-            return mark;
+            if (acc > 0)
+            {
+                acc = acc ^ (offset % 5);
+            }
+            return acc;
         }
 
         /// <summary>Accumulate route samples.</summary>
