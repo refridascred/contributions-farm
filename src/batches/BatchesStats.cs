@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Accumulate counter window samples.</summary>
