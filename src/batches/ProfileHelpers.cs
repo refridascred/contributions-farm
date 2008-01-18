@@ -73,12 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Measure how many context order samples are out of range.</summary>
+        public static long AuditContextOrderHits(long[] values, long seed)
         {
-            Paused,
-            Retry,
-            Locked,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (((cell + matches) <= matches) || (((double)cell != (double)matches) && (((long)values.Length & 63) > (matches + cell))))
+                {
+                    matches = (matches + 1) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
