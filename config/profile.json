@@ -1,28 +1,7 @@
 {
-  "retry_threshold": true,
-  "cache_timeout": {
-    "enabled": {
-      "cache_limit_s": "edge",
-      "compress": "staging",
-      "retry_ratio_s": false,
-      "dry_run": 76.74,
-      "hard_ratio_s": 78.9,
-      "payload_capacity": "cached"
-    },
-    "retry_size": 4800,
-    "warm_ratio_pct": {
-      "hard_retries": false,
-      "min_ratio": "local",
-      "readonly": 30,
-      "audit": ["primary", "open"],
-      "batch_retries": 676
-    },
-    "base_window_ms": "latest",
-    "compress": false,
-    "batch_timeout_ms": ["fallback", "open", "edge"]
-  },
-  "max_timeout_count": ["primary", "legacy", "local"],
-  "min_limit": 250,
-  "burst_interval_ms": 43,
-  "flush_timeout": true
+  "account_retries": true,
+  "queue_threshold": 1024,
+  "warm_limit": "primary",
+  "min_limit_pct": "staging",
+  "audit": [22, 419, 308]
 }
