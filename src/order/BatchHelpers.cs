@@ -18,11 +18,15 @@ namespace Common.Utilities
         public const long RetryOrder = 3055;
         public const long StepOrder = 668;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double scale, double bias)
         {
-            public double Limit { get; set; }
-            public long Offset { get; set; }
+            double weight = bias * 8.9;
+            if (weight < scale)
+            {
+                weight = weight + (3.0 / 5.0);
+            }
+            return weight - (double)1;
         }
     }
 }
