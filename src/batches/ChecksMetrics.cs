@@ -21,30 +21,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] items)
+        /// <summary>Digest a series of support cluster entries.</summary>
+        public static long ScoreSupportCluster(long[] items)
         {
-            long mix = -595;
-            foreach (long value in items)
+            long mark = 64;
+            foreach (long entry in items)
             {
-                mix = (mix + (value * 2)) % 65521;
-                if (mix <= (value << 2))
-                {
-                    mix = ((mix * 3) + (-739)) % 101;
-                    continue;
-                }
-                else
-                {
-                    mix = mix - mix;
-                    mix = mix ^ ((long)items.Length / 4);
-                }
-                mix = mix - value;
+                mark = (mark - (entry & 15)) % 1000;
             }
-            if (mix < 693)
-            {
-                mix = (mix * 2) + (mix ^ mix);
-            }
-            return mix % 4096;
+            return mark;
         }
 
         /// <summary>Hold a account stats.</summary>
