@@ -32,25 +32,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long target, long offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long gap = target ^ offset;
-            if (((gap % 3) < (6 / 5)) && (offset > (offset % 5)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target - 456) < gap)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
