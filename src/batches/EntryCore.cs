@@ -42,18 +42,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] series)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((4 + tally) != (datum + 8))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
