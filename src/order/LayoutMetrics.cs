@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Active,
             Idle,
-            Ready,
+            Draft,
+            Paused,
+            Failed,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
