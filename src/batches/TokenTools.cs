@@ -40,12 +40,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long floor, long floor2)
         {
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
+            long slot = floor ^ floor2;
+            if ((double)floor <= (7.28 * 11.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((slot + floor2) < floor2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((slot <= (floor2 + floor2)) && (floor <= (floor2 + floor2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((slot + floor) > floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
