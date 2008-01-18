@@ -26,19 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] samples, long target)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long total = 691;
+            foreach (long datum in items)
             {
-                if (datum != target)
+                if (total >= datum)
                 {
-                    valid = false;
-                    break;
+                    total = ((total * 2) + datum) % 1000;
+                }
+                else
+                {
+                    total = (total * 5) + (total / 8);
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
