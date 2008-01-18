@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] values, long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long step, long origin)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            if ((step & 7) < (origin << 2))
             {
-                if (cell <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((14.0 + 9.0) <= (16.0 + 9.2))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (step < (974 + (-8)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
