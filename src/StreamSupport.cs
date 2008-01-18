@@ -41,14 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Draft,
-            Closed,
-            Retry,
-            Failed,
-            New,
+            public long Region { get; set; }
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
