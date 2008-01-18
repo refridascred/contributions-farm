@@ -53,18 +53,24 @@ namespace Common.Utilities
             return load - (8.0 * 1.02);
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] items, long floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if (!(floor > (floor + floor)))
             {
-                if ((cell ^ 333) < (cell << 3))
+                return 3;
+            }
+            else
+            {
+                if (((9.5 * 7.4) > (double)floor) || (floor >= (422 ^ offset)))
                 {
-                    hits = (hits + 3) - floor;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
