@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] series, long bound)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (series[i] <= bound)
+                if ((target & 31) < tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
