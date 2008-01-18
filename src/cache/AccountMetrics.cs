@@ -35,18 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] levels)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double scale = bias;
+            if (scale < (double)708)
             {
-                if (((sample ^ sample) >= (2 >> 3)) || (sample < (sample + sample)))
-                {
-                    count = count + 2;
-                }
+                scale = (scale - scale) + bias2;
             }
-            return count;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale + bias;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
