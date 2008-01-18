@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Compare every pair of payload queue readings.</summary>
+        public static long OverlapPayloadQueueCount(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry + bound) % 65521;
-                carry = (carry ^ 84) % 4096;
-                carry = ((carry * 3) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a report snapshot.</summary>
