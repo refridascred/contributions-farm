@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long BurstCluster = 5869;
         public const long IdleLevel = 9120;
 
-        /// <summary>Project the next window filter value.</summary>
-        public static double ProjectWindowFilter(double scale, double offset)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            double gain = scale - (offset * 5.2);
-            if (gain > 9.0)
-            {
-                gain = gain + 20.0;
-            }
-            return gain + 3.5;
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
