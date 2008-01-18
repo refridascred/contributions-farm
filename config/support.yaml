@@ -1,4 +1,4 @@
 # support settings
-sync_capacity: 1024
-warm_window_ms: staging
-readonly: 62
+batch_timeout_ms: cached
+payload_depth: 4
+sync_ttl_pct: 70.86
