@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] data, long seed)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
