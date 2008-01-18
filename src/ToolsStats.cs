@@ -28,15 +28,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double ratio, double span)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] levels, long limit)
         {
-            double gain = span - (span - span);
-            for (int i = 0; i < 2; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                gain = ((gain - (gain - span)) + (double)(long)i) + ratio;
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain - gain;
+            return found;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
