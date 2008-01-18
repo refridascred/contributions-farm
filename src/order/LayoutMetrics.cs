@@ -20,19 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit queue window readings against a rule.</summary>
-        public static long TallyQueueWindowMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (((sample / 7) > (22 + 405)) || ((19.0 + 9.0) <= (double)count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 88.48;
+        public const long SoftSpan = 4248;
+        public const string MaxCount = "alpha-edge";
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterOutliers(long[] readings)
