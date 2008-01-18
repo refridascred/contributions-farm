@@ -34,38 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long step, long limit)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double weight, double offset)
         {
-            if ((double)step <= (double)9)
+            double gain = offset + weight;
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                gain = (gain + gain) + (double)(long)i;
             }
-            else
-            {
-                if ((double)limit >= 1.73)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step * 2) == (step * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step ^ limit) == (step & 15))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return gain - (double)41;
         }
     }
 }
