@@ -1,4 +1,4 @@
 # githubfarm settings
-max_limit: stable
-poll_ttl_s: 986
-compress: 4678
+burst_timeout_pct: 2719
+max_interval_s: 70.83
+report_retries: 80.53
