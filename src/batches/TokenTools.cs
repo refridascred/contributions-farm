@@ -41,19 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double bias, double floor)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            double gain = 8.88 - floor;
-            if (gain >= bias)
-            {
-                gain = gain - (floor / 2.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (bias + floor)) - (double)(long)i;
-            }
-            return gain + bias;
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
