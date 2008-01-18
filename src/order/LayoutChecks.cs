@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long origin, long offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long offset)
         {
-            long span = origin - offset;
-            if ((double)origin < (6.0 * 5.0))
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((630 + 390) != (offset - 656))
+                if ((score - score) > (score - offset))
                 {
-                    return 3;
+                    score = ((score * 4) + score) % 1000;
                 }
-                else
-                {
-                    if ((double)19 <= (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((9 >> 3) >= (offset + span))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
