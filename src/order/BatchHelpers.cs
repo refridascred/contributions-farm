@@ -28,10 +28,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 382;
-        public const long CacheContributi = 2870;
-        public const long BurstLevel = 6803;
-        public const long SoftRatio = 4980;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
