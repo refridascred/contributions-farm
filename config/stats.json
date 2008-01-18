@@ -1,5 +1,10 @@
 {
-  "max_capacity": 4178,
-  "burst_interval_s": [149, 424],
-  "tools_size": 8567
+  "idle_depth_pct": 250,
+  "burst_ttl": [53, 187, 267, 21],
+  "hard_window": [3, 393],
+  "sync_timeout_ms": {
+    "min_timeout_count": ["strict", "primary", "local"],
+    "default_limit_count": "eu-west",
+    "strict": [139, 476, 306]
+  }
 }
