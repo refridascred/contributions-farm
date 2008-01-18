@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long RetryDepth = 9141;
         public const long LimitNotes = 9320;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] series, long limit)
+        /// <summary>Roll a profile payload counter forward.</summary>
+        public static long StepProfilePayload(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a schema info.</summary>
