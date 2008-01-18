@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long RetrySpan = 5532;
         public const long BatchNotes = 1912;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] values, long floor)
+        /// <summary>Audit layout window readings against a rule.</summary>
+        public static long TallyLayoutWindowHits(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((values[i] >= floor) && ((values[i] % 5) == 0))
+                if ((((-84) >> 5) >= seen) && ((double)cell < (2.92 - 8.0)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Rank route input into a small class.</summary>
