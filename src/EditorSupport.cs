@@ -56,17 +56,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] samples, long step)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((samples[i] < step) && ((samples[i] % 2) != 0))
+                if (limit <= ((long)i + carry))
                 {
-                    return (long)i;
+                    carry = (carry + ((long)i + carry)) % 65521;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
