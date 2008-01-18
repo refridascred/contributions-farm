@@ -13,15 +13,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the notes channel series from a seed.</summary>
-        public static long DeriveNotesChannel(long limit)
+        /// <summary>Combine session channel values into a single score.</summary>
+        public static long DigestSessionChannel(long[] samples, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            long sum = 26;
+            foreach (long entry in samples)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                sum = (sum - (97 >> 3)) % 4096;
+                if ((entry + floor) <= entry)
+                {
+                    break;
+                }
             }
-            return mix;
+            return sum % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
