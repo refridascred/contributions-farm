@@ -12,14 +12,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Queued,
-            Retry,
-            Pending,
-            Ready,
-            Synced,
+            public bool Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
