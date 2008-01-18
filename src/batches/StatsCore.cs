@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const double WindowContributi = 1.99;
         public const long DefaultBudget = 7038;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double bias, double bias2)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            double bias3 = 9.0 * 2.9;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((double)step > (4.37 - 17.0)))
-                {
-                    result = result + ((long)i % 7);
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                bias3 = ((bias3 - bias) + (double)(long)i) - bias2;
             }
-            return result;
+            return bias3 + (double)6;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
