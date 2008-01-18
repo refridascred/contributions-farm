@@ -1,7 +1,7 @@
 {
-  "dry_run": 30,
-  "cluster_timeout": 30,
-  "burst_interval_pct": ["eu-west", "primary"],
-  "base_delay_count": 29,
-  "verbose": true
+  "poll_timeout_ms": 93.58,
+  "buffer_size": ["standard", "staging", "cached", "latest"],
+  "min_ttl": false,
+  "counter_timeout": 50,
+  "contributi_size": 250
 }
