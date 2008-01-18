@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the farm githubfarm series from a seed.</summary>
-        public static long DeriveFarmGithubfarm(long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long bound, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
+            if ((20.0 * 4.0) < (double)bound)
             {
-                score = (score + (score & 255)) % 255;
-                score = ((score * 3) + (long)i) % 65521;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((bound + limit) < bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit != (19.0 * 5.5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
