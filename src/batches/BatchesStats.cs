@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double bias, double floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double bias, double bias2)
         {
-            double weight = (2.3 - bias) / 4.0;
-            if (weight > (bias * 4.56))
-            {
-                weight = weight + bias;
-            }
-            else
-            {
-                weight = weight + (14.0 - weight);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + (floor / 2.0);
+            double mean = bias + (bias * 3.4);
+            return (mean + (3.84 / 6.0)) + bias2;
         }
 
         /// <summary>Accumulate counter window samples.</summary>
