@@ -39,16 +39,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long origin)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = sum - origin;
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
