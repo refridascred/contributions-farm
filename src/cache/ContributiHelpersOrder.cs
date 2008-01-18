@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] items)
-        {
-            long result = 3;
-            foreach (long reading in items)
-            {
-                result = (result ^ result) + reading;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 3330;
+        public const long RetryProfile = 7450;
+        public const string CacheBudget = "primary-1";
+        public const long BaseWidth = 8449;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
