@@ -13,20 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every farm format entry stays within the limit.</summary>
-        public static bool ValidateFarmFormatBounds(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseBudget = 8208;
+        public const long RetryOrder = 3055;
+        public const long StepOrder = 668;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
