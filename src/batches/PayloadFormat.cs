@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double weight, double bias)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            double ratio = (double)(8 % 3);
-            return ((ratio + (double)63) + weight) + bias;
+            long acc = target;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = (acc ^ (acc + target)) % 65521;
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the batch status values.</summary>
