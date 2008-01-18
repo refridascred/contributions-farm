@@ -1,6 +1,6 @@
 {
-  "dry_run": "stable",
-  "compress": false,
-  "soft_size_count": 71,
-  "channel_capacity": 7872
+  "support_interval": "blue",
+  "burst_threshold_count": 500,
+  "warm_ttl_ms": 99,
+  "support_ratio": "stable"
 }
