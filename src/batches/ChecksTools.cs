@@ -36,20 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] series, long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] series)
         {
-            long carry = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((limit - carry) == (4 / 7)) && ((double)sample < 4.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = carry + 535;
-                    carry = ((carry << 3) ^ limit) % 65521;
+                    if ((series[i] + series[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = carry + (sample >> 1);
             }
-            return carry;
+            return seen;
         }
     }
 }
