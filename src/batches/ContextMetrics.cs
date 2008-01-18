@@ -28,17 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] series, long origin)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 9;
+            foreach (long sample in values)
             {
-                if ((series[i] < origin) && ((series[i] % 3) == 0))
+                if (sample < (sample - mark))
                 {
-                    return (long)i;
+                    mark = (mark + (sample % 7)) % 101;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
