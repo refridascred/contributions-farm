@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first notes format entry that matches the target.</summary>
-        public static long SeekNotesFormatIndex(long[] items, long bound)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] > bound)
+                if ((values[i] == target) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
