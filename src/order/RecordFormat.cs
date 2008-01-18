@@ -32,12 +32,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] samples, long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] == target) && ((samples[i] % 3) == 0))
+                if (items[i] >= origin)
                 {
                     return (long)i;
                 }
