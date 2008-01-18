@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long mix = 8;
-            foreach (long reading in samples)
-            {
-                mix = mix + mix;
-                if (!((mix >> 3) != (reading + reading)))
-                {
-                    mix = (mix - (reading + mix)) % 255;
-                }
-                mix = mix + ((-7) + reading);
-            }
-            return mix;
+            Active,
+            Queued,
+            Paused,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define format limits and defaults.</summary>
