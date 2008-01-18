@@ -57,18 +57,25 @@ namespace Common.Utilities
         public const double BatchDepth = 38.8;
         public const string CacheGithubfarm = "stable-v2";
 
-        /// <summary>Measure how many format channel samples are out of range.</summary>
-        public static long CountFormatChannelOutliers(long[] readings)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long step = seed ^ offset;
+            if ((offset / 6) != (step + 86))
             {
-                if ((seen + seen) > (long)readings.Length)
+                return 5;
+            }
+            else
+            {
+                if ((12.0 * 6.59) <= (double)step)
                 {
-                    seen = (seen + 2) - value;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
