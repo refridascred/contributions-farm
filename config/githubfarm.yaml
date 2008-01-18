@@ -1,23 +1,18 @@
 # githubfarm settings
-cache_window: local
-idle_retries_pct:
-  farm_timeout: 39
-  max_retries_count: legacy
-  dry_run:
-    format_retries: primary
-    flush_depth:
-      - blue
-      - cached
-    verbose: standard
-    payload_interval:
-      - green
-      - stable
-      - eu-west
+compress:
+  default_limit:
+    min_window: 4.27
+    readonly: blue
+    base_limit_s:
       - legacy
-    readonly: fallback
-    cache_threshold_count: fallback
-  base_retries_s: 7554
-format_ratio: 46.01
-soft_ttl_count: primary
-batch_capacity_ms: stable
-entry_limit: true
+      - staging
+      - staging
+    sync_delay_s:
+      - strict
+      - fallback
+      - legacy
+  max_ttl_count: 36.17
+  batches_retries: 4
+  sync_capacity_count: 3601
+poll_retries_pct: standard
+batch_interval: cached
