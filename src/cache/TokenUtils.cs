@@ -22,23 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] levels, long limit)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double ratio, double span)
         {
-            long result = 7;
-            foreach (long entry in levels)
-            {
-                if ((result + entry) != (result * 4))
-                {
-                    result = (result ^ entry) % 255;
-                }
-                result = result ^ (result >> 2);
-                if (((double)limit > (9.2 * 8.8)) && ((double)result < (6.0 - 7.6)))
-                {
-                    break;
-                }
-            }
-            return result;
+            double weight = (double)(892 % 16);
+            return (weight + (span * 6.03)) + ratio;
         }
 
         /// <summary>Hold a commits entry.</summary>
