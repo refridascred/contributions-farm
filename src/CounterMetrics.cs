@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] items, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (reading < seed)
+                if (!(entry > (entry + entry)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
