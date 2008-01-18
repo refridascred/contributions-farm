@@ -1,4 +1,7 @@
 # support settings
-batch_timeout_ms: cached
-payload_depth: 4
-sync_ttl_pct: 70.86
+idle_depth_ms: staging
+base_window_count: fallback
+hard_capacity_s: 1
+min_timeout_s: 4.4
+profile_delay: true
+editor_size: primary
