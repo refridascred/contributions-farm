@@ -64,16 +64,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long limit, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
+            if (((limit + 7) > 947) || ((seed % 10) >= (seed / 5)))
             {
-                anchor = anchor + anchor;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if (limit < (limit << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit - seed) > 828)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
