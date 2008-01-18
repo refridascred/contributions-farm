@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardScore = 8155;
-        public const string IdleDepth = "strict-edge";
-        public const double LimitRatio = 56.63;
-        public const long MinTimeout = 695;
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of buffer channel entries.</summary>
         public static long FoldBufferChannel(long[] readings, long offset)
