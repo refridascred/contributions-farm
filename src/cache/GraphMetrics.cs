@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheDepth = 36.52;
-        public const long CacheBudget = 7419;
-        public const string BatchChecks = "standard-edge";
-        public const double BatchRatio = 7.36;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a commits stats reading.</summary>
         public static double SmoothCommitsStats(double rate, double offset)
