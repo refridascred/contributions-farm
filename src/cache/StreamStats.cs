@@ -48,12 +48,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Pending,
-            Locked,
-            Paused,
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
