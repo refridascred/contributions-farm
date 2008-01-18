@@ -58,13 +58,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Combine queue cluster values into a single score.</summary>
+        public static long TotalQueueCluster(long[] data)
         {
-            Retry,
-            Failed,
-            Stale,
-            Queued,
+            long score = 1;
+            foreach (long reading in data)
+            {
+                score = score + (reading - reading);
+                if (((reading >> 4) >= (reading >> 3)) && (reading <= (score / 9)))
+                {
+                    score = (score << 3) ^ (score + reading);
+                }
+                else
+                {
+                    score = (score * 5) + score;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Accumulate filter samples.</summary>
