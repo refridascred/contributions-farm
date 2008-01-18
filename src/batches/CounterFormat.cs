@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of cache filter entries.</summary>
-        public static long DigestCacheFilter(long[] values, long bound)
+        /// <summary>Validate layout stats readings against a bound.</summary>
+        public static bool CheckLayoutStatsLimits(long[] samples, long floor)
         {
-            long state = 25;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((4.4 / 9.0) > (double)bound)
+                if (datum <= floor)
                 {
-                    state = ((state << 2) ^ (sample % 8)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (state > 55)
-            {
-                state = (state - (bound + bound)) % 97;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Accumulate batch samples.</summary>
