@@ -1,9 +1,13 @@
 # githubfarm settings
-persist: 12
-editor_depth:
-  - 274
-  - 156
-poll_window_count: green
-batch_capacity_s: 44.53
-hard_depth: edge
-default_capacity_count: 0.05
+batch_window_ms: 250
+queue_retries: fallback
+batches_size:
+  order_retries: 500
+  cache_limit: 73.67
+  soft_interval:
+    retry_timeout_pct: 250
+    entry_ttl: false
+    max_ttl_count: 86.0
+    enabled: true
+    default_ttl_pct: 9.34
+  compress: true
