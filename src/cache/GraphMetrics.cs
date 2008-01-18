@@ -74,22 +74,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] readings, long target)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long mark = 683;
-            foreach (long datum in readings)
-            {
-                if ((mark ^ target) == (74 >> 1))
-                {
-                    mark = ((mark - (81 + 3)) % 65521) - datum;
-                }
-                if ((double)target != (6.28 + 16.0))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
         }
     }
 }
