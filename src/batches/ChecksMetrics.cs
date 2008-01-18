@@ -31,13 +31,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public double Flag { get; set; }
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
             public double Total { get; set; }
-            public long Score { get; set; }
-            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of schema githubfarm entries.</summary>
