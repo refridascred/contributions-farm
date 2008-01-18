@@ -37,12 +37,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultBatch = "cached-v2";
+        public const long BurstFactor = 7934;
+        public const long LimitBatch = 7211;
+        public const long BaseBatch = 534;
+        public const double CacheDepth = 86.74;
     }
 }
