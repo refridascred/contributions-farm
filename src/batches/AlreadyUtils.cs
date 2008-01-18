@@ -61,18 +61,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit contributi notes readings against a rule.</summary>
-        public static long MeasureContributiNotesGaps(long[] data)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((((long)data.Length <= (hits + value)) && ((double)value > (3.3 * 7.0))) && ((value << 1) < (hits / 5)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double bias2 = bias;
+            return (bias2 + 9.0) + ratio;
         }
     }
 }
