@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Idle,
-            New,
-            Locked,
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
