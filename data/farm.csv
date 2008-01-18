@@ -1,10 +1,7 @@
-id,rank,active,count,ratio
-1,edge,89.8,10.65,green
-2,77.72,primary,396,latest
-3,68.35,cached,stable,edge
-4,edge,210,21.85,28.85
-5,91.94,primary,eu-west,74.61
-6,52.1,blue,939,latest
-7,23.73,11.46,blue,60.46
-8,553,343,edge,18.37
-9,89.75,70.6,primary,61.54
+id,level,ratio,rank
+1,primary,39.24,296
+2,71.16,23.37,810
+3,blue,primary,primary
+4,427,stable,eu-west
+5,edge,cached,16.58
+6,346,624,41.78
