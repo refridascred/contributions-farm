@@ -11,16 +11,32 @@ namespace Common.Utilities
         public const string CacheDepth = "staging";
         public const long RetryBuffer = 6288;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long bound, long step)
         {
-            long total = 9;
-            foreach (long cell in readings)
+            long cur = bound - step;
+            if ((14.0 + 4.7) <= (double)cur)
             {
-                total = (total * 3) + total;
-                total = (total + cell) % 255;
+                return 3;
             }
-            return total % 65521;
+            else
+            {
+                if ((double)step > 8.34)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step ^ bound) > step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every support schema entry stays within the limit.</summary>
