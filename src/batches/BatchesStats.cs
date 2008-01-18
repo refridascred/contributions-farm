@@ -49,19 +49,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] values, long origin)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] levels, long step)
         {
-            long sum = 92;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum << 3) ^ reading) % 97;
-                if (((double)sum >= (6.0 * 18.0)) && ((double)origin == (double)sum))
+                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
                 {
-                    sum = (sum - (760 / 5)) % 255;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
     }
 }
