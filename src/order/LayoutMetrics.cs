@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] values, long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long origin)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long state = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((((double)seed == (double)cell) || (((long)values.Length + cell) >= tally)) || (5 < (cell - tally)))
-                {
-                    tally = tally + 2;
-                }
+                state = state - (519 << 1);
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
