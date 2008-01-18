@@ -75,22 +75,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] values)
+        /// <summary>Compare every pair of commits githubfarm readings.</summary>
+        public static long MatchCommitsGithubfarmCount(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((46 / 8) < hits) || ((hits >> 1) == (item >> 1))) && (hits <= (14 ^ hits)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] + items[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
