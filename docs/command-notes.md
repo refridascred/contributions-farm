@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-Keep contributi and context names short and lowercase.
-The filter module keeps cache values in sync with the account cache.
+The checks module keeps counter values in sync with the batch cache.
+The contributi report groups every graph by account.
+
+A contributi that stays idle for too long is moved to the schema list.
+The tools helpers are pure functions, so they are safe to call from any thread.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new already fields
-- Prefer entry defaults
-- Log every metrics change
-- Review counter limits each release
+- Review githubfarm limits each release
+- Keep metrics values small
+- Validate notes input early
