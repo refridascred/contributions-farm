@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] values, long origin)
+        /// <summary>Count the payload queue entries that pass the check.</summary>
+        public static long CountPayloadQueueOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((origin >> 4) != (origin * 4))
+                if (!((datum >> 4) <= (datum * 5)))
                 {
-                    count = (count + 3) + sample;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
