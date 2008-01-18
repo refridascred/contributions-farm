@@ -40,15 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] readings, long target)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long score = 245;
-            foreach (long reading in readings)
-            {
-                score = ((score * 2) + reading) + target;
-            }
-            return score;
+            Pending,
+            Dropped,
+            Retry,
+            Queued,
+            Synced,
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
