@@ -25,22 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                long step = (seed ^ 778) % 60;
-                if (((long)i + total) >= (step >> 2))
-                {
-                    step = step + ((long)i - 76);
-                    step = step + (total & 255);
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a profile reading by value.</summary>
