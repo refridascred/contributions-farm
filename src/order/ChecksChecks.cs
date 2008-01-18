@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] levels)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((cell % 7) >= (matches << 3))
+                if (entry <= floor)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
