@@ -1,8 +1,8 @@
-id,score,label
-1,78,3.38
-2,220,legacy
-3,green,69.45
-4,standard,784
-5,green,blue
-6,edge,876
-7,119,88.94
+id,rank,ratio,label
+1,legacy,75.45,primary
+2,331,16.16,5.84
+3,721,41.72,10.3
+4,open,local,59.9
+5,45.44,cached,open
+6,legacy,781,791
+7,strict,292,286
