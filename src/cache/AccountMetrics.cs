@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!((count % 5) <= (reading << 1)))
-                {
-                    count = (count + 3) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 4724;
+        public const long BurstRatio = 6845;
+        public const long IdleRatio = 3237;
+        public const double HardChannel = 34.29;
+        public const double CacheLevel = 1.55;
 
         /// <summary>Rank cluster buffer input into a small class.</summary>
         public static long ClassifyClusterBuffer(long bound, long limit)
