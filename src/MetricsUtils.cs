@@ -29,15 +29,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] readings)
+        /// <summary>Scale a notes support figure with a bias.</summary>
+        public static double BlendNotesSupport(double ratio, double span)
         {
-            long acc = 0;
-            foreach (long sample in readings)
+            double gain = (double)934;
+            if (gain > span)
             {
-                acc = (acc ^ (32 + acc)) ^ sample;
+                gain = gain - (double)48;
             }
-            return acc;
+            else
+            {
+                gain = gain - (double)19;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + ratio) - (double)(long)i;
+            }
+            return gain - span;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
