@@ -1,15 +1,25 @@
 # entry settings
-audit:
-  retry_limit_s: 8425
-  audit:
-    - 198
-    - 344
-    - 266
-    - 56
-  contributi_retries: primary
-  poll_timeout: 79.25
-  verbose: 500
-warm_delay_s:
-  - 399
-  - 490
-persist: false
+poll_size_s:
+  layout_limit:
+    - 36
+    - 250
+  enabled: false
+  idle_ttl_pct:
+    warm_ratio_s: latest
+    burst_timeout_s: green
+    compress: 55.84
+    soft_delay_s: 250
+    burst_limit: 30
+  order_delay: standard
+  max_interval_ms:
+    - legacy
+    - strict
+    - green
+    - eu-west
+  sync_ttl_pct:
+    idle_limit_pct: 24.76
+    idle_limit_count: green
+    verbose: 100
+burst_size: 30
+verbose: stable
+filter_threshold: 82
