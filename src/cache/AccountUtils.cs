@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Locked,
-            Done,
-            Failed,
-            Dropped,
+            public double Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
