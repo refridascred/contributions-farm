@@ -13,13 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            Idle,
-            Failed,
-            Dropped,
-            Draft,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
