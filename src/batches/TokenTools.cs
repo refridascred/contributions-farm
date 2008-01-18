@@ -21,12 +21,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            long result = 6;
+            foreach (long item in levels)
+            {
+                if ((712 & 7) < (item - result))
+                {
+                    result = ((result << 2) ^ (item - 6)) % 97;
+                }
+                else
+                {
+                    result = ((result * 4) + result) % 1000;
+                }
+            }
+            return result;
         }
     }
 }
