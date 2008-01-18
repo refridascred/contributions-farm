@@ -30,11 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double scale, double bias)
         {
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
+            double gain = (double)(486 - 9);
+            return (gain + (scale / 7.0)) + bias;
         }
     }
 }
