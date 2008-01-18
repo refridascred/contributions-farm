@@ -41,15 +41,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] data, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] levels, long bound)
         {
-            long sum = -93;
-            foreach (long sample in data)
+            long anchor = 5;
+            foreach (long datum in levels)
             {
-                sum = (sum + (bound % 24)) ^ sample;
+                if ((anchor >> 3) <= ((long)levels.Length + 194))
+                {
+                    anchor = (((anchor * 5) + (bound + 6)) % 97) ^ datum;
+                }
             }
-            return sum % 4096;
+            if (anchor > 50)
+            {
+                anchor = (anchor ^ (693 * 3)) % 65521;
+            }
+            return anchor;
         }
     }
 }
