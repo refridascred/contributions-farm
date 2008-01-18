@@ -20,21 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 45;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry * 4) >= (0 % 16))
                 {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor * 5) + (entry ^ anchor)) % 4096;
                 }
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
