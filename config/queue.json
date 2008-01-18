@@ -1,22 +1,5 @@
 {
-  "compress": 15.67,
-  "warm_ratio": {
-    "strict": 60,
-    "account_ratio": 30,
-    "cache_depth": [25, 378]
-  },
-  "default_capacity_ms": {
-    "default_window": {
-      "verbose": [438, 192, 130, 288],
-      "burst_window_count": 78.09,
-      "persist": 8.21,
-      "channel_interval": ["edge", "legacy", "open", "stable"],
-      "strict": false,
-      "command_ratio": [100, 355]
-    },
-    "layout_window": "blue",
-    "hard_depth_count": 64.03,
-    "max_size_ms": 250
-  },
-  "window_capacity": "green"
+  "readonly": 60,
+  "support_timeout": 250,
+  "min_capacity_ms": "staging"
 }
