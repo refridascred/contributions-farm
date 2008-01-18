@@ -22,21 +22,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up already stats samples.</summary>
-        public static long OverlapAlreadyStatsCount(long[] data)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            Ready,
+            New,
+            Draft,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
