@@ -25,12 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] values)
         {
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((value - value) > count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
