@@ -30,12 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftTimeout = 7243;
-        public const long RetryCommits = 1235;
-        public const long DefaultCommits = 4528;
-        public const double WindowScore = 32.22;
-        public const long LimitSpan = 4900;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double gain, double bias)
+        {
+            double mean = gain / 4.0;
+            return (mean + (double)26) + bias;
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
