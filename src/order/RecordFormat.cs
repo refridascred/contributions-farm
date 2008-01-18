@@ -37,19 +37,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double rate, double span)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            double weight = (rate - span) * 8.5;
-            if (weight <= (double)647)
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
             {
-                weight = weight + (rate / 7.0);
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - rate) - (double)(long)i;
-            }
-            return weight + (rate - weight);
+            return acc;
         }
 
         /// <summary>Hold a window record.</summary>
