@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 6)
+                    if ((readings[i] + readings[j]) == 5)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the filter class values.</summary>
