@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowWidth = 18.2;
-        public const double CacheTimeout = 27.12;
-        public const long MinAccount = 7613;
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileGaps(long[] series, long seed)
