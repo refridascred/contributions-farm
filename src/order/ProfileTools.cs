@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryLevel = 6154;
-        public const long BaseFactor = 2865;
-        public const double HardGraph = 21.54;
-        public const long DefaultGraph = 807;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "local-v2";
+        public const long BurstContributi = 7724;
+        public const string CacheRatio = "stable";
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
