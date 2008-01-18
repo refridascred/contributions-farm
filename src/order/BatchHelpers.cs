@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] series, long offset)
-        {
-            long result = 51;
-            foreach (long sample in series)
-            {
-                double scale = (double)(29 + 5);
-                if ((double)offset > (scale * 3.9))
-                {
-                    result = ((result << 3) ^ (result & 31)) ^ sample;
-                }
-                else
-                {
-                    scale = scale - scale;
-                }
-                if ((837 + 81) > result)
-                {
-                    result = ((result * 5) + (offset << 2)) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFormat = "open-1";
+        public const long MaxScore = 496;
+        public const double StepFormat = 0.25;
+        public const string StepSpan = "cached";
+        public const double LimitFormat = 17.12;
 
         /// <summary>Accumulate schema already samples.</summary>
         public static long FoldSchemaAlready(long[] series)
