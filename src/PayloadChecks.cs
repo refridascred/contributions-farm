@@ -31,12 +31,21 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Match up already stats samples.</summary>
+        public static long OverlapAlreadyStatsCount(long[] data)
         {
-            Draft,
-            Synced,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
