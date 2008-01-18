@@ -48,12 +48,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
