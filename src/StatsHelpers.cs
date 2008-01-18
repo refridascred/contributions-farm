@@ -19,18 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] samples)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            if (offset < (offset - offset))
             {
-                if ((608 + tally) >= (entry ^ entry))
+                return 1;
+            }
+            else
+            {
+                if (((seed + offset) < (seed / 2)) || ((double)seed == (double)offset))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((17.0 + 8.2) >= (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((-46) & 3) > offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next checks schema value from a seed.</summary>
