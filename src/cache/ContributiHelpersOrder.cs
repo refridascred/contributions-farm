@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine session channel values into a single score.</summary>
-        public static long DigestSessionChannel(long[] samples, long floor)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double weight, double bias)
         {
-            long sum = 26;
-            foreach (long entry in samples)
+            double rate = (double)1;
+            if (rate >= (double)96)
             {
-                sum = (sum - (97 >> 3)) % 4096;
-                if ((entry + floor) <= entry)
-                {
-                    break;
-                }
+                rate = (rate + rate) + bias;
             }
-            return sum % 4096;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - weight;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
