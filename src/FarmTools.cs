@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many contributi command samples are out of range.</summary>
-        public static long AuditContributiCommandGaps(long[] data, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long score = 177;
+            foreach (long datum in items)
             {
-                if ((cell << 1) != (8 % 12))
-                {
-                    count = (count + 2) - step;
-                }
+                score = (score + limit) ^ datum;
             }
-            return count;
+            return score % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
