@@ -40,23 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] levels)
-        {
-            long sum = -4;
-            foreach (long datum in levels)
-            {
-                if ((4.8 + 6.0) != (double)datum)
-                {
-                    sum = (sum + datum) % 255;
-                }
-            }
-            if (sum > 4)
-            {
-                sum = (sum ^ sum) % 4096;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleBudget = 4922;
+        public const long IdleGraph = 1108;
+        public const long WindowInterval = 8348;
+        public const double HardInterval = 20.55;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenHits(long[] items)
