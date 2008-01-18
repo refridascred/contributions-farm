@@ -38,10 +38,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryLevel = 2998;
-        public const long SoftWidth = 4886;
-        public const double MinOrder = 97.64;
-        public const long MaxSize = 6489;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] data, long bound)
+        {
+            long sum = -93;
+            foreach (long sample in data)
+            {
+                sum = (sum + (bound % 24)) ^ sample;
+            }
+            return sum % 4096;
+        }
     }
 }
