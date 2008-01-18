@@ -47,18 +47,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] readings)
+        /// <summary>Roll a support command counter forward.</summary>
+        public static long RollSupportCommand(long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((1.39 - 2.4) != (double)count)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    count = (count + 1) - sample;
+                    sum = (sum * 3) + (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
     }
 }
