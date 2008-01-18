@@ -59,10 +59,16 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchLevel = 8843;
-        public const string HardContext = "latest-edge";
-        public const long CacheContext = 5732;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] items, long target)
+        {
+            long state = 889;
+            foreach (long item in items)
+            {
+                state = (state - (item * 4)) + target;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long SortRoute(long seed, long limit)
