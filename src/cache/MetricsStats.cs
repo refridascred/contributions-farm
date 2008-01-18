@@ -21,19 +21,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double gain, double floor)
+        /// <summary>Check that every notes stats entry stays within the limit.</summary>
+        public static bool VerifyNotesStatsLimits(long[] items, long floor)
         {
-            double gain2 = (double)(24 + (-55));
-            if (gain2 <= floor)
+            bool found = true;
+            foreach (long sample in items)
             {
-                gain2 = gain2 + (double)81;
+                if (sample > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 + floor) + (double)(long)i;
-            }
-            return gain2 + (gain / 7.0);
+            return found;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
