@@ -76,19 +76,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate notes metric readings against a bound.</summary>
-        public static bool ValidateNotesMetricBounds(long[] samples, long limit)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long target)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell != limit)
+                if (!((double)target == (1.75 - 9.0)))
                 {
-                    ready = false;
-                    break;
+                    state = (state ^ state) % 255;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return ready;
+            return state;
         }
     }
 }
