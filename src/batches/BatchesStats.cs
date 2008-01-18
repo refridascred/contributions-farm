@@ -24,18 +24,18 @@ namespace Common.Utilities
             return weight + (floor / 2.0);
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] samples, long offset)
+        /// <summary>Accumulate counter window samples.</summary>
+        public static long CombineCounterWindow(long[] levels)
         {
-            long mark = 4;
-            foreach (long sample in samples)
+            long total = 954;
+            foreach (long entry in levels)
             {
-                if ((184 + mark) <= mark)
+                if (!((double)720 > (double)entry))
                 {
-                    mark = ((mark - (offset % 97)) % 101) ^ sample;
+                    total = (total << 3) ^ total;
                 }
             }
-            return mark;
+            return total % 97;
         }
 
         /// <summary>Compare every pair of metric report readings.</summary>
