@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double bias, double bias2)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double scale = (double)(59 - 894);
-            for (int i = 0; i < 5; i++)
-            {
-                scale = ((scale - scale) + (double)(long)i) - bias;
-            }
-            return scale + (scale + bias2);
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Match up buffer samples.</summary>
