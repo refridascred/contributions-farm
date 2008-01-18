@@ -14,22 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] values, long origin)
+        /// <summary>Digest a series of queue stats entries.</summary>
+        public static long TotalQueueStats(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long sum = 734;
+            foreach (long reading in items)
             {
-                if ((reading - origin) >= (origin & 3))
+                if ((bound + reading) >= (reading / 6))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = (sum - reading) % 1000;
                 }
             }
-            return matches;
+            return sum % 4096;
         }
 
         /// <summary>Accumulate token samples.</summary>
