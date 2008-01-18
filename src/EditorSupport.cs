@@ -83,22 +83,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] levels)
+        /// <summary>Count the cluster counter entries that pass the check.</summary>
+        public static long MeasureClusterCounterMatches(long[] data, long offset)
         {
-            long state = 726;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((reading % 64) < (state & 3))
+                if ((offset * 5) < offset)
                 {
-                    state = ((state << 2) ^ state) % 1000;
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (state < 650)
-            {
-                state = state - (state & 127);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
