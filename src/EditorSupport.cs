@@ -48,21 +48,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] levels, long limit)
         {
-            long matches = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (levels[i] > limit)
                 {
-                    if ((levels[i] + levels[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
