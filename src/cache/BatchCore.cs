@@ -43,38 +43,11 @@ namespace Common.Utilities
         public const double MinSpan = 29.0;
         public const long RetryCommand = 267;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long step, long target)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            if ((6.2 + 2.5) > (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((16 >> 2) >= (step >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target <= (2 & 127))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step * 2) <= target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
