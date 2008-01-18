@@ -23,24 +23,38 @@ namespace Common.Utilities
             return gain + 3.5;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long limit, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            if ((offset - limit) < (offset + offset))
             {
-                if ((target & 31) >= (17 - score))
-                {
-                    continue;
-                }
-                bool ready = 5.0 > (double)score;
-                if (ready)
-                {
-                    score = (score - (953 / 9)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((offset >> 3) <= limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + limit) <= (offset >> 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (1.22 <= (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
