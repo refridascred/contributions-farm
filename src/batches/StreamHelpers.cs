@@ -79,20 +79,15 @@ namespace Common.Utilities
             return weight + (double)40;
         }
 
-        /// <summary>Roll a session token counter forward.</summary>
-        public static long RollSessionToken(long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            long sum = 8;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = (((state * 2) + (401 << 1)) % 97) - (long)i2;
-                    state = (state ^ (long)i) % 255;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                sum = (sum - (2 & 127)) ^ item;
             }
-            return state;
+            return sum;
         }
     }
 }
