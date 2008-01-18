@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double RetrySize = 72.1;
         public const long IdleReport = 8884;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] data)
+        /// <summary>Check that every cluster support entry stays within the limit.</summary>
+        public static bool VerifyClusterSupportBounds(long[] values, long step)
         {
-            long carry = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if ((4.8 < (double)cell) || ((cell / 4) >= (carry << 2)))
+                if (reading < step)
                 {
-                    carry = (carry + carry) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Accumulate command samples.</summary>
