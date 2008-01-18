@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            long acc = 8;
+            foreach (long datum in samples)
+            {
+                acc = acc ^ (912 + datum);
+                if (!((acc * 2) <= acc))
+                {
+                    acc = acc - (acc % 24);
+                }
+                if ((datum - datum) >= (datum - acc))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many checks stream samples are out of range.</summary>
