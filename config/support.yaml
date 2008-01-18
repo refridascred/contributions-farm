@@ -1,32 +1,19 @@
 # support settings
-persist:
+cluster_timeout: 4985
+compress: standard
+batch_size_count: 98.31
+hard_capacity_pct:
+  - latest
+  - standard
+  - edge
   - local
-  - open
-  - primary
-  - local
-farm_depth:
-  strict:
-    - 97
-    - 487
-    - 332
-  max_threshold_pct: false
-  poll_threshold:
-    cache_interval_ms:
-      - cached
-      - green
-      - staging
-      - green
-    queue_delay: 3677
-    soft_depth: 500
-  default_capacity_ms:
-    base_ttl_pct: cached
-    entry_threshold: fallback
-    readonly:
-      - 24
-      - 357
-      - 47
-    dry_run: 100
-    max_ttl_ms: 1024
-  burst_interval_count: 9873
-  already_ttl: 1024
-soft_interval_pct: green
+warm_timeout:
+  max_interval_count: 16.35
+  sync_limit: staging
+  base_capacity_pct: cached
+  tools_window:
+    - 191
+    - 55
+    - 190
+    - 55
+  burst_ratio_count: 9401
