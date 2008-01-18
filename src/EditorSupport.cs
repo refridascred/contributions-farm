@@ -20,23 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double rate, double bias)
         {
-            long carry = 1;
-            foreach (long reading in readings)
+            double rate2 = (12.0 - rate) / 5.0;
+            if (rate2 <= bias)
             {
-                carry = carry ^ (reading + reading);
-                if ((7.0 + 13.0) == (double)carry)
-                {
-                    carry = carry ^ (reading - reading);
-                }
+                rate2 = rate2 - (double)364;
             }
-            if (carry < 63)
-            {
-                carry = (carry - carry) % 97;
-            }
-            return carry % 1000;
+            return rate2 + 1.65;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
