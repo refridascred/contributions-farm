@@ -44,19 +44,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double rate, double bias)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double scale, double offset)
         {
-            double scale = (double)3 / 6.0;
-            if (scale > (bias * 2.01))
+            double weight = (double)981 * 6.7;
+            if (weight > scale)
             {
-                scale = scale - (double)8;
+                weight = (weight - scale) + offset;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                scale = scale - (rate * 1.0);
+                weight = (weight + 7.3) + (double)(long)i;
             }
-            return scale + (bias * 5.3);
+            return weight - weight;
         }
     }
 }
