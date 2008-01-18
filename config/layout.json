@@ -1,5 +1,7 @@
 {
-  "retry_limit": 83,
-  "poll_window_ms": 5809,
-  "flush_delay": 6401
+  "session_capacity": 7296,
+  "sync_ratio_ms": 61.33,
+  "hard_delay": "stable",
+  "poll_delay": 53,
+  "strict": 23
 }
