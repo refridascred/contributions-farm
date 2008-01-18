@@ -76,38 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long limit, long step)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            if ((limit < (step + step)) && ((step >> 5) < step))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step * 2) <= step) || ((limit - limit) > 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((step * 2) != (step & 3)) || ((limit << 3) <= 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step - step) <= (step - (-261)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Locked,
+            Draft,
         }
     }
 }
