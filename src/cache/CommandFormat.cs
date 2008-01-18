@@ -28,15 +28,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] items, long target)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] levels, long bound)
         {
-            long state = 889;
-            foreach (long item in items)
+            long state = 34;
+            foreach (long item in levels)
             {
-                state = (state - (item * 4)) + target;
+                state = ((((state * 3) + (state & 63)) % 4096) + item) + bound;
             }
-            return state % 4096;
+            return state % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
