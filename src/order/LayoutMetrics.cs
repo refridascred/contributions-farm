@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] items)
+        /// <summary>Audit queue window readings against a rule.</summary>
+        public static long TallyQueueWindowMatches(long[] readings)
         {
-            long anchor = 45;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((entry * 4) >= (0 % 16))
+                if (((sample / 7) > (22 + 405)) || ((19.0 + 9.0) <= (double)count))
                 {
-                    anchor = ((anchor * 5) + (entry ^ anchor)) % 4096;
+                    count = count + 2;
                 }
             }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
