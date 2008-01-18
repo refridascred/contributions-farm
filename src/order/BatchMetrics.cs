@@ -30,15 +30,12 @@ namespace Common.Utilities
         public const long HardBudget = 463;
         public const long MinWidth = 8874;
 
-        /// <summary>Digest a series of layout record entries.</summary>
-        public static long ScoreLayoutRecord(long[] readings, long offset)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long mark = 820;
-            foreach (long entry in readings)
-            {
-                mark = (((mark * 2) + (mark - mark)) - entry) - offset;
-            }
-            return mark % 65521;
+            public double Token { get; set; }
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of session queue readings.</summary>
