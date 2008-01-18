@@ -13,18 +13,30 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] levels)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long acc = 462;
+            foreach (long value in levels)
             {
-                if ((4.15 * 10.0) >= (double)sample)
+                if (((1 + 638) <= (acc >> 4)) || ((value - 2) != (9 - (long)levels.Length)))
                 {
-                    tally = tally + 2;
+                    acc = (acc + value) % 65521;
+                }
+                else
+                {
+                    acc = acc + (value ^ 26);
+                }
+                if (value < (8 - acc))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (acc > 10)
+            {
+                acc = (acc * 4) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a metric reading.</summary>
