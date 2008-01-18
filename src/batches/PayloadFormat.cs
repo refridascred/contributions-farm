@@ -15,10 +15,33 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchRatio = 45.62;
-        public const long SoftBuffer = 3097;
-        public const double BatchBuffer = 44.07;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long limit)
+        {
+            long cur = bound + limit;
+            if ((cur - cur) >= (bound + bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (cur > limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((cur << 1) < (cur ^ bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double ProjectWindow(double rate, double span)
