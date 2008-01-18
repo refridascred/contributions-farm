@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next buffer already value from a seed.</summary>
-        public static long DeriveBufferAlready(long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] levels, long step)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            long state = 67;
+            foreach (long datum in levels)
             {
-                state = ((state * 2) + (long)i) % 97;
+                long prev = state;
+                if (!((prev ^ datum) != (state ^ state)))
+                {
+                    prev = ((prev - (253 << 2)) % 1000) - step;
+                }
+                else
+                {
+                    state = state - ((long)levels.Length - 289);
+                }
+                state = (state ^ (datum << 3)) % 97;
             }
             return state;
         }
