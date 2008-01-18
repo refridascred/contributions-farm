@@ -12,16 +12,16 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long floor)
         {
-            long acc = target;
+            long anchor = floor;
             for (int i = 0; i < 11; i++)
             {
-                acc = (acc - (acc + target)) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
+                anchor = (anchor - ((long)i + 82)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Digest a series of queue editor entries.</summary>
