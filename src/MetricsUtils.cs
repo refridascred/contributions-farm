@@ -14,15 +14,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] samples, long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long mark = 26;
-            foreach (long entry in samples)
-            {
-                mark = (((mark << 2) ^ (27 + bound)) % 101) - entry;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Locate a queue reading by value.</summary>
