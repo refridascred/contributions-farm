@@ -54,18 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] series, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long sum = 92;
+            foreach (long reading in values)
             {
-                if ((seen / 2) < 305)
+                sum = ((sum << 3) ^ reading) % 97;
+                if (((double)sum >= (6.0 * 18.0)) && ((double)origin == (double)sum))
                 {
-                    seen = ((seen + 2) + datum) + bound;
+                    sum = (sum - (760 / 5)) % 255;
                 }
             }
-            return seen;
+            return sum % 65521;
         }
     }
 }
