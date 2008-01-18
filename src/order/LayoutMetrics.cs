@@ -22,10 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 1944;
-        public const long WindowWidth = 9760;
-        public const long HardRoute = 2956;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Dropped,
+            Pending,
+            Active,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long GradeStream(long offset, long bound)
