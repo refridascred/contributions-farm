@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] data, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)i <= (4 / 2))
+                if (data[i] >= origin)
                 {
-                    mix = mix - (72 & 15);
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
