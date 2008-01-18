@@ -18,15 +18,19 @@ namespace Common.Utilities
             return (weight + (weight / 3.0)) + gain;
         }
 
-        /// <summary>Digest a series of schema tools entries.</summary>
-        public static long TotalSchemaTools(long[] data)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] series, long floor)
         {
-            long score = 635;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                score = ((score ^ (score + score)) % 101) + value;
+                if (sample > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Describe the format status values.</summary>
