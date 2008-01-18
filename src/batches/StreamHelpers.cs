@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a session channel reading by value.</summary>
-        public static long SeekSessionChannelIndex(long[] samples, long seed)
+        /// <summary>Derive the next graph tools value from a seed.</summary>
+        public static long IterateGraphTools(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (samples[i] >= seed)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (step + step)) + (long)i2;
                 }
+                for (int i3 = 0; i3 < 9; i3++)
+                {
+                    score = (score ^ (step - step)) + (long)i3;
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a batch options.</summary>
