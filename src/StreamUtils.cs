@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 1781;
+        public const long CacheCounter = 2616;
+        public const long DefaultCounter = 6939;
+        public const double BurstCount = 89.93;
+        public const double BatchCounter = 36.83;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long SeekEditorIndex(long[] data, long target)
