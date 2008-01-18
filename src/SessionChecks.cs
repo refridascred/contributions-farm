@@ -27,11 +27,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Compare every pair of cache token readings.</summary>
+        public static long OverlapCacheTokenCount(long[] values)
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a entry metric reading by value.</summary>
