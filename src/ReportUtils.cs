@@ -48,13 +48,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 9352;
+        public const long HardRatio = 8201;
+        public const double BaseFactor = 34.5;
+        public const double RetryFactor = 27.07;
     }
 }
