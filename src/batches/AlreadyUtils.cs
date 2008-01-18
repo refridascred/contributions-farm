@@ -20,14 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Compare every pair of schema contributi readings.</summary>
+        public static long MatchSchemaContributiCount(long[] items)
         {
-            Failed,
-            Dropped,
-            Paused,
-            Draft,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
