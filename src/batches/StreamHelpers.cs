@@ -56,13 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Validate cluster profile readings against a bound.</summary>
+        public static bool GuardClusterProfileRange(long[] samples, long offset)
         {
-            Pending,
-            Done,
-            Stale,
-            Closed,
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two notes already measurements.</summary>
