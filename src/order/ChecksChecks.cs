@@ -32,15 +32,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double weight, double offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double gain = offset + weight;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - (double)41;
+            Ready,
+            Done,
+            Failed,
+            Closed,
+            Synced,
         }
     }
 }
