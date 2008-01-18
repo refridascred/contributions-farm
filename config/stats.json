@@ -1,6 +1,7 @@
 {
-  "editor_timeout": 6067,
-  "cache_delay_s": "stable",
-  "sync_retries": "latest",
-  "cache_window": 92.11
+  "strict": 8571,
+  "tools_interval": 61.95,
+  "base_retries": "strict",
+  "compress": 4.64,
+  "min_size_count": 233
 }
