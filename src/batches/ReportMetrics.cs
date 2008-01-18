@@ -29,12 +29,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] items, long limit)
         {
-            public double Owner { get; set; }
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
