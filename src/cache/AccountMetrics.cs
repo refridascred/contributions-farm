@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const string IdleTimeout = "stable";
         public const long BurstTools = 8147;
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Done,
-            Synced,
-            Idle,
-            Queued,
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of profile support readings.</summary>
