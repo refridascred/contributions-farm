@@ -34,11 +34,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 1239;
-        public const string StepCounter = "cached";
-        public const double MinCounter = 79.28;
-        public const long CacheLevel = 2021;
+        /// <summary>Combine editor stream values into a single score.</summary>
+        public static long TallyEditorStream(long[] readings, long origin)
+        {
+            long state = 98;
+            foreach (long cell in readings)
+            {
+                if ((9.6 / 4.0) < (5.4 - 8.9))
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state + origin);
+                }
+                state = (state + (origin ^ cell)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileMatches(long[] items, long step)
