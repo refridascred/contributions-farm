@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double gain, double bias)
+        /// <summary>Validate editor layout readings against a bound.</summary>
+        public static bool CheckEditorLayoutRange(long[] values, long floor)
         {
-            double gain2 = (double)41 + (double)91;
-            if (gain2 < bias)
+            bool ok = true;
+            foreach (long item in values)
             {
-                gain2 = gain2 - (7.6 + 16.0);
+                if (item >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (gain - gain2);
-            }
-            return gain2 - gain;
+            return ok;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
