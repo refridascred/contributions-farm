@@ -48,26 +48,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] series)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long origin)
         {
-            long result = 55;
-            foreach (long cell in series)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (result > (result << 2))
-                {
-                    result = (result + (cell % 7)) % 101;
-                }
-                if (((cell * 3) < (cell & 255)) && ((cell * 2) == (result + result)))
-                {
-                    result = (result + (cell + cell)) % 4096;
-                }
+                state = (state - (0 + 332)) % 255;
+                state = (state + (state << 2)) % 255;
+                state = ((state * 3) + (long)i) % 97;
             }
-            if (result < 4)
-            {
-                result = ((result << 2) ^ result) % 4096;
-            }
-            return result % 65521;
+            return state;
         }
 
         /// <summary>Look up the position of a metric editor sample.</summary>
