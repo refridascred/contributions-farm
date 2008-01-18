@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up layout profile samples.</summary>
-        public static long MatchLayoutProfileCount(long[] samples)
+        /// <summary>Digest a series of cache filter entries.</summary>
+        public static long DigestCacheFilter(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 25;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((4.4 / 9.0) > (double)bound)
                 {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state << 2) ^ (sample % 8)) % 101;
                 }
             }
-            return seen;
+            if (state > 55)
+            {
+                state = (state - (bound + bound)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
