@@ -31,11 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 7944;
-        public const string DefaultCluster = "fallback";
-        public const double MinCluster = 9.25;
-        public const long DefaultSize = 3670;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "latest";
+        public const string MinRecord = "standard-1";
+        public const long RetryScore = 9997;
+        public const long StepRecord = 3555;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportHits(long[] items)
