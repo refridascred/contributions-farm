@@ -27,13 +27,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Retry,
             Ready,
+            Failed,
+            Retry,
+            Locked,
             New,
-            Draft,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
