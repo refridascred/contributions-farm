@@ -1,7 +1,9 @@
 {
-  "retry_timeout_pct": true,
-  "max_threshold_count": 4334,
-  "max_depth": 82,
-  "min_ratio_pct": [129, 30, 132, 177],
-  "strict": true
+  "retry_ttl_count": {
+    "stream_ttl": 250,
+    "base_limit_count": 7720,
+    "payload_window": "fallback"
+  },
+  "soft_threshold_count": [489, 435, 205],
+  "warm_delay_s": [448, 455, 170]
 }
