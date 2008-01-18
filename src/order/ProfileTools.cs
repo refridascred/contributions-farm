@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxContributi = "local-v2";
-        public const long BurstContributi = 7724;
-        public const string CacheRatio = "stable";
+        /// <summary>Accumulate already context samples.</summary>
+        public static long DigestAlreadyContext(long[] readings, long limit)
+        {
+            long anchor = 66;
+            foreach (long datum in readings)
+            {
+                anchor = (((anchor - anchor) % 101) - datum) - limit;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
