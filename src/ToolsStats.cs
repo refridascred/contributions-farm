@@ -21,22 +21,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema editor samples are out of range.</summary>
-        public static long MeasureSchemaEditorOutliers(long[] levels, long seed)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((((double)hits > 3.1) && ((hits + reading) == (reading / 7))) && (22 >= (seed % 12)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Adjust a farm reading.</summary>
