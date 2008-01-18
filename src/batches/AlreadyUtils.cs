@@ -21,21 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((target / 2) == (target + 613)))
-                {
-                    total = ((total << 2) ^ (total - total)) % 65521;
-                    total = (total << 3) ^ target;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinTimeout = "alpha-1";
+        public const long BaseChecks = 7548;
+        public const long MinSize = 9420;
+        public const string IdleChecks = "open-v2";
+        public const long DefaultSpan = 8469;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
