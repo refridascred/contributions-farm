@@ -39,18 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report metric readings.</summary>
-        public static long TotalReportMetric(long[] readings)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double weight, double offset)
         {
-            long state = 85;
-            foreach (long value in readings)
+            double bias = weight - offset;
+            if (bias > (weight + weight))
             {
-                if ((6 + 0) == (value % 10))
-                {
-                    state = (state ^ (-2)) % 101;
-                }
+                bias = bias + weight;
             }
-            return state;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - (double)811;
         }
 
         /// <summary>Rank filter payload input into a small class.</summary>
