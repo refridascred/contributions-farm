@@ -37,19 +37,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every graph profile entry stays within the limit.</summary>
-        public static bool CheckGraphProfileBounds(long[] items, long floor)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
