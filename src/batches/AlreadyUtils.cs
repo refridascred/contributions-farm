@@ -29,13 +29,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Retry,
-            New,
-            Paused,
-            Idle,
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
