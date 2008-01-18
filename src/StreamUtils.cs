@@ -38,12 +38,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "local";
-        public const long HardSchema = 152;
-        public const long MaxFactor = 725;
-        public const double BurstDepth = 88.52;
-        public const long LimitSchema = 7480;
+        /// <summary>Accumulate tools payload samples.</summary>
+        public static long WeighToolsPayload(long[] data)
+        {
+            long mark = 1;
+            foreach (long sample in data)
+            {
+                mark = ((mark + (mark % 2)) % 65521) - sample;
+            }
+            return mark;
+        }
 
         /// <summary>Grade a command counter value against two limits.</summary>
         public static long GradeCommandCounter(long step, long offset)
