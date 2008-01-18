@@ -53,22 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] readings)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long acc = 498;
-            foreach (long datum in readings)
-            {
-                if ((acc - datum) >= (datum + acc))
-                {
-                    acc = ((acc * 2) + (acc + acc)) % 101;
-                }
-            }
-            if (acc > (-60))
-            {
-                acc = (acc + (acc + acc)) % 255;
-            }
-            return acc;
+            public double Level { get; set; }
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
