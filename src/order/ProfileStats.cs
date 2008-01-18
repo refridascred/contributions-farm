@@ -46,21 +46,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of githubfarm contributi readings.</summary>
-        public static long OverlapGithubfarmContributiCount(long[] data)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long origin, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = origin + target;
+            if ((833 ^ origin) >= target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((8.63 + 5.0) >= (double)target)
                 {
-                    if ((data[i] - data[j]) < 4)
+                    return 0;
+                }
+                else
+                {
+                    if ((1 > (next << 2)) && ((4.4 / 9.0) >= (double)next))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
