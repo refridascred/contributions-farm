@@ -31,11 +31,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Count schema window pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaWindowCount(long[] levels)
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
