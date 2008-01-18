@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Done,
-            Closed,
-            Failed,
-            Active,
-            Dropped,
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Iterate the notes channel series from a seed.</summary>
