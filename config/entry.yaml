@@ -1,5 +1,7 @@
 # entry settings
-cache_interval: standard
-strict: 51
-max_interval_s: 96.45
-min_limit_ms: 1024
+sync_delay: local
+base_threshold: latest
+warm_interval: false
+queue_capacity: strict
+enabled: 7385
+dry_run: 14
