@@ -33,18 +33,10 @@ namespace Common.Utilities
         public const long WindowInterval = 8348;
         public const double HardInterval = 20.55;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstInterval = "primary-1";
+        public const double BurstReport = 62.12;
+        public const long HardReport = 9376;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
