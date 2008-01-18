@@ -42,15 +42,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Active,
-            Done,
-            Dropped,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 2107;
+        public const long WindowLevel = 5377;
+        public const string BatchNotes = "legacy-edge";
+        public const long MinTimeout = 4758;
+        public const double DefaultCount = 90.74;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long OverlapBatchCount(long[] data)
