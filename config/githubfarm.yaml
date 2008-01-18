@@ -1,9 +1,10 @@
 # githubfarm settings
-base_capacity: true
-route_timeout:
-  - fallback
-  - cached
-record_timeout: 60
-batch_retries: local
-strict: primary
-dry_run: 2412
+hard_delay_ms: open
+readonly: blue
+warm_depth_count: false
+batch_depth_s:
+  soft_threshold_pct: cached
+  hard_retries_ms: 79
+  stream_ratio: green
+default_delay_pct: 7955
+hard_threshold_s: true
