@@ -22,10 +22,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 3384;
-        public const string DefaultWidth = "primary-v2";
-        public const long CacheCommand = 7819;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell > (double)matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsGaps(long[] samples, long origin)
