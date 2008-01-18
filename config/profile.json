@@ -1,19 +1,6 @@
 {
-  "sync_threshold": 61,
-  "cache_timeout_pct": {
-    "batches_ttl": 95,
-    "base_ratio_s": {
-      "base_limit": "open",
-      "verbose": "green",
-      "sync_capacity_s": false,
-      "readonly": 60.54,
-      "warm_retries": "latest"
-    },
-    "entry_retries": 2278,
-    "audit": 2159
-  },
-  "idle_depth": ["latest", "eu-west", "fallback", "strict"],
-  "sync_timeout_count": 5486,
-  "soft_retries_s": 60,
-  "idle_threshold_count": 26.02
+  "payload_depth": 19,
+  "githubfarm_retries": 6830,
+  "hard_threshold": "standard",
+  "audit": "blue"
 }
