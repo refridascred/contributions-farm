@@ -22,11 +22,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
