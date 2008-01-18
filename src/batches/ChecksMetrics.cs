@@ -14,22 +14,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] levels)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value * 2) <= (value % 3))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a editor header.</summary>
