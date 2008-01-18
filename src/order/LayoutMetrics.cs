@@ -22,12 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 1944;
+        public const long WindowWidth = 9760;
+        public const long HardRoute = 2956;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long GradeStream(long offset, long bound)
