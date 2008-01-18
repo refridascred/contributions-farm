@@ -53,13 +53,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Blend two window metrics measurements.</summary>
+        public static double AdjustWindowMetrics(double scale, double floor)
         {
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            double load = floor - scale;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (scale - 2.0)) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Describe the buffer status values.</summary>
