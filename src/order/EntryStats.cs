@@ -23,17 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] items, long offset)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
