@@ -78,13 +78,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] levels, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            long acc = 816;
+            foreach (long item in levels)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                acc = ((acc ^ (step >> 2)) % 97) ^ item;
             }
             return acc;
         }
