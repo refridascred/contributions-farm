@@ -77,15 +77,21 @@ namespace Common.Utilities
             return weight + (double)40;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            long sum = 8;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum - (2 & 127)) ^ item;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
