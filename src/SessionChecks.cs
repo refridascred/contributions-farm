@@ -29,21 +29,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of cache token readings.</summary>
-        public static long OverlapCacheTokenCount(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((bound - seen) < 9)
                 {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Rank stats editor input into a small class.</summary>
