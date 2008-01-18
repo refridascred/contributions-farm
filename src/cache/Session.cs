@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count stats schema pairs that satisfy a relation.</summary>
-        public static long OverlapStatsSchemaCount(long[] levels)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total * 5) + (step - step)) ^ (long)i2;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
