@@ -1,8 +1,8 @@
-id,label,ratio,score
-1,76.39,standard,fallback
-2,eu-west,latest,primary
-3,legacy,latest,staging
-4,615,edge,6.89
-5,76.71,53.72,978
-6,663,72.34,340
-7,latest,45.35,5.9
+id,score,label
+1,78,3.38
+2,220,legacy
+3,green,69.45
+4,standard,784
+5,green,blue
+6,edge,876
+7,119,88.94
