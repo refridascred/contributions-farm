@@ -31,23 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics stream readings against a rule.</summary>
-        public static long MeasureMetricsStreamGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches * 2) == (232 >> 3))
-                {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 7944;
+        public const string DefaultCluster = "fallback";
+        public const double MinCluster = 9.25;
+        public const long DefaultSize = 3670;
 
         /// <summary>Project the next route value.</summary>
         public static double ProjectRoute(double ratio, double floor)
