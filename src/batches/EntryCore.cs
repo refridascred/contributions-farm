@@ -22,11 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchInterval = 58.48;
-        public const double IdleContext = 93.99;
-        public const double BaseContext = 18.3;
-        public const long BatchFactor = 9176;
+        /// <summary>Rank commits editor input into a small class.</summary>
+        public static long BucketCommitsEditor(long offset, long bound)
+        {
+            if (((offset * 4) < (offset >> 3)) || ((3 * 2) <= (bound - offset)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset >> 1) < (bound * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + offset) != (offset & 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportGaps(long[] items, long step)
