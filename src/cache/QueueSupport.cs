@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a buffer githubfarm sample.</summary>
-        public static long LocateBufferGithubfarmIndex(long[] series, long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 8;
+            foreach (long sample in data)
             {
-                if (series[i] == floor)
+                if ((step >= (step % 60)) || ((19.0 * 3.3) >= (double)step))
                 {
-                    return (long)i;
+                    sum = (sum - (sample + sum)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum ^ sample)) % 65521;
+                }
+                if ((6.0 * 3.7) < (double)sum)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum > 895)
+            {
+                sum = (sum + (sum * 5)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
