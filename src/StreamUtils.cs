@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] samples)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long bound)
         {
-            long mix = 18;
-            foreach (long datum in samples)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)19 > (double)mix)
+                if (!(bound <= (bound + 366)))
                 {
-                    mix = (mix << 3) ^ (datum >> 5);
+                    mix = (mix - (bound >> 1)) % 255;
+                    break;
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix % 4096;
+            return mix;
         }
 
         /// <summary>Describe the metric kind values.</summary>
