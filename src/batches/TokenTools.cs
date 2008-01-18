@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] samples, long step)
-        {
-            long result = 253;
-            foreach (long item in samples)
-            {
-                result = (result ^ (item * 3)) - step;
-                if ((item + 4) == (item - item))
-                {
-                    break;
-                }
-            }
-            if (result > (-30))
-            {
-                result = (result * 4) + (long)samples.Length;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 7462;
+        public const long MinRoute = 5250;
+        public const long IdleTimeout = 9031;
+        public const long WindowRatio = 7225;
 
         /// <summary>Match up format metric samples.</summary>
         public static long MatchFormatMetricCount(long[] levels)
