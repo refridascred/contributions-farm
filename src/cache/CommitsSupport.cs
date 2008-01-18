@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] items, long seed)
+        /// <summary>Check that every counter report entry stays within the limit.</summary>
+        public static bool ValidateCounterReportLimits(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((items[i] < seed) && ((items[i] % 2) != 0))
+                if (value <= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
