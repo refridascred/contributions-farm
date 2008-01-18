@@ -22,19 +22,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate window support readings against a bound.</summary>
-        public static bool CheckWindowSupportBounds(long[] series, long origin)
+        /// <summary>Combine notes report values into a single score.</summary>
+        public static long FoldNotesReport(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long score = 88;
+            foreach (long value in data)
             {
-                if (sample != origin)
+                if (243 <= (limit & 63))
                 {
-                    valid = false;
-                    break;
+                    score = ((score << 3) ^ (score + limit)) % 65521;
+                }
+                else
+                {
+                    score = (score * 2) + (value / 7);
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
