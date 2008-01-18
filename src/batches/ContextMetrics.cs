@@ -65,30 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format context entries.</summary>
-        public static long ScoreFormatContext(long[] levels, long origin)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long result = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + result) < 986)
-                {
-                    result = result - (result + 7);
-                }
-                if ((datum / 4) != (result * 3))
-                {
-                    result = result - (result - origin);
-                }
-                else
-                {
-                    result = (result - (result >> 2)) % 97;
-                }
-            }
-            if (result > 588)
-            {
-                result = ((result << 3) ^ (308 + (long)levels.Length)) % 255;
-            }
-            return result;
+            Active,
+            Dropped,
+            Paused,
+            Done,
         }
     }
 }
