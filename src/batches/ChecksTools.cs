@@ -15,14 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] readings)
         {
-            Failed,
-            Draft,
-            Active,
-            New,
-            Closed,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
