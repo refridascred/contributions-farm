@@ -1,4 +1,30 @@
 # githubfarm settings
-hard_window: false
-hard_size_ms: stable
-idle_limit: 45.35
+idle_ratio_s:
+  - strict
+  - standard
+route_depth:
+  cache_window_ms: 27
+  retry_capacity: 2
+  order_ttl: legacy
+max_size:
+  - fallback
+  - staging
+strict:
+  hard_capacity_count:
+    context_timeout: 82
+    base_delay: latest
+    flush_interval_s: 11
+    soft_size:
+      - green
+      - strict
+      - standard
+      - cached
+    warm_threshold_pct: latest
+    warm_timeout_ms: 21.48
+  min_ttl_count:
+    soft_depth_s: stable
+    base_threshold: 90
+    channel_interval: 30
+  verbose: legacy
+  cache_ratio_pct: 95.31
+  entry_window: 30
