@@ -41,13 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Pending,
-            Active,
+            Draft,
+            Closed,
+            Retry,
+            Failed,
             New,
-            Queued,
         }
     }
 }
