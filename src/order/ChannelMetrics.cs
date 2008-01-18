@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepSize = 6702;
-        public const long BaseFormat = 9856;
-        public const long RetryFormat = 3196;
-        public const long DefaultFormat = 5580;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (hits > ((long)levels.Length - sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] series)
