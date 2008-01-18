@@ -22,21 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up filter profile samples.</summary>
-        public static long MatchFilterProfileCount(long[] data)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value < step)
                 {
-                    if ((data[i] + data[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Blend two route measurements.</summary>
