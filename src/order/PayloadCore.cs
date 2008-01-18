@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long StepBatch = 3271;
         public const long RetryRatio = 6185;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] levels, long step)
+        /// <summary>Locate a session stats reading by value.</summary>
+        public static long LookupSessionStatsIndex(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= step)
+                if ((series[i] >= target) && ((series[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
