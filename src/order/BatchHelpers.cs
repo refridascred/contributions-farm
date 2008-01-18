@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
             Locked,
-            Paused,
-            Retry,
+            Failed,
+            Idle,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
