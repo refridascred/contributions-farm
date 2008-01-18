@@ -42,21 +42,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next contributi farm value from a seed.</summary>
-        public static long StepContributiFarm(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                bool ready = ((long)i + 68) > limit;
-                total = ((total << 2) ^ (total << 3)) % 1000;
-                if (ready)
-                {
-                    total = total ^ total;
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 5330;
+        public const string RetryTools = "strict-edge";
+        public const long BurstTools = 8942;
     }
 }
