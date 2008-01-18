@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] samples, long target)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a stream header.</summary>
