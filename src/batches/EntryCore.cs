@@ -28,19 +28,18 @@ namespace Common.Utilities
             return (weight - (double)471) + scale;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] items, long origin)
+        /// <summary>Fold a list of batches schema readings.</summary>
+        public static long TotalBatchesSchema(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long mark = 505;
+            foreach (long item in samples)
             {
-                if (value > origin)
+                if ((double)item > (7.0 + 0.01))
                 {
-                    ok = false;
-                    break;
+                    mark = (((mark * 4) + (item + (-953))) % 101) - bound;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
