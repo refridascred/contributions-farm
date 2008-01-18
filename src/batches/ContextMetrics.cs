@@ -44,25 +44,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long floor, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            long prev = floor - step;
-            if ((0.8 + 17.0) >= (double)step)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
+                mark = (mark * 2) + mark;
+                mark = mark + (mark + mark);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((floor + step) != (prev * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Describe the context phase values.</summary>
