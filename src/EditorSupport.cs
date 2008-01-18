@@ -90,19 +90,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] samples, long offset)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > offset)
+                if ((values[i] <= origin) && ((values[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
