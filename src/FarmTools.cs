@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Closed,
-            Retry,
-            Done,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchScore = 9313;
+        public const string CacheRecord = "legacy-edge";
+        public const long SoftRatio = 4138;
+        public const long IdleRecord = 7090;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteHits(long[] levels)
