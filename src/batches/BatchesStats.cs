@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 6184;
+        public const long IdleRatio = 8946;
+        public const string CacheDepth = "staging";
+        public const long RetryBuffer = 6288;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long DigestContributi(long[] readings)
