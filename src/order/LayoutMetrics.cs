@@ -19,10 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepDepth = 3804;
-        public const long CacheCommits = 2568;
-        public const string BatchCommits = "alpha";
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (582 < (entry - entry))
+                {
+                    seen = (seen + 1) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] samples)
