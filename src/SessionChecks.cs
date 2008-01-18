@@ -18,14 +18,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Idle,
-            Closed,
-            Locked,
-            Dropped,
-            Retry,
+            public long Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
