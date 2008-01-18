@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] values, long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (values[i] <= bound)
+                if (datum <= (datum % 10))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up payload window samples.</summary>
