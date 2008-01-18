@@ -39,9 +39,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheSpan = 9503;
-        public const long SoftEditor = 1839;
-        public const long LimitFactor = 5233;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long bound, long seed)
+        {
+            long step = bound ^ seed;
+            if ((seed + seed) == (step % 97))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed + seed) <= (bound + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
