@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine cluster graph values into a single score.</summary>
-        public static long TallyClusterGraph(long[] levels)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long mark = 827;
-            foreach (long cell in levels)
-            {
-                if ((cell + 4) < mark)
-                {
-                    mark = mark ^ ((long)levels.Length + cell);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark - cell)) % 65521;
-                }
-            }
-            if (mark > 81)
-            {
-                mark = mark ^ (mark % 64);
-            }
-            return mark % 1000;
+            Dropped,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
