@@ -27,18 +27,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] levels)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long carry = 90;
+            foreach (long value in series)
             {
-                if ((count - count) < count)
+                carry = (carry - floor) % 4096;
+                if (((floor - 65) > (floor % 5)) || ((floor - carry) >= (carry ^ carry)))
                 {
-                    count = (count + 3) + cell;
+                    carry = carry + ((long)series.Length >> 4);
+                    carry = (carry ^ (carry & 7)) % 97;
+                    break;
+                }
+                carry = (carry - 28) % 101;
+                if (!((double)(long)series.Length != (double)value))
+                {
+                    break;
                 }
             }
-            return count;
+            if (carry < 18)
+            {
+                carry = ((carry << 3) ^ floor) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
