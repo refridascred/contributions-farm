@@ -33,18 +33,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] series)
+        /// <summary>Rank farm profile input into a small class.</summary>
+        public static long GradeFarmProfile(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long slot = limit + offset;
+            if ((slot + offset) < 950)
             {
-                if ((double)cell > (double)matches)
+                return 4;
+            }
+            else
+            {
+                if ((limit >> 2) <= slot)
                 {
-                    matches = matches + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
