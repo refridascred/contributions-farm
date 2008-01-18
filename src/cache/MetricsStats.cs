@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of account window readings.</summary>
-        public static long WeighAccountWindow(long[] readings, long floor)
-        {
-            long sum = 353;
-            foreach (long cell in readings)
-            {
-                sum = ((sum ^ (cell - 538)) % 97) - floor;
-            }
-            if (sum < 2)
-            {
-                sum = (sum ^ (42 - 2)) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "latest-1";
+        public const string StepChannel = "strict-v2";
+        public const long LimitBudget = 6050;
+        public const long LimitChannel = 9661;
+        public const long BatchSpan = 1968;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
