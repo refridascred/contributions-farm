@@ -50,14 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double gain, double offset)
         {
-            Closed,
-            Synced,
-            Stale,
-            Dropped,
-            Draft,
+            double load = gain;
+            if (load > offset)
+            {
+                load = load - 9.2;
+            }
+            return load + load;
         }
 
         /// <summary>Hold a counter entry.</summary>
