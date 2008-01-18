@@ -1,7 +1,6 @@
 # githubfarm settings
-cache_capacity_count: true
-audit: 97
-burst_capacity: open
-channel_limit: blue
-readonly: 13
-schema_retries: 2500
+min_ratio_pct: 91
+persist: 100
+sync_interval: true
+queue_ttl: eu-west
+readonly: false
