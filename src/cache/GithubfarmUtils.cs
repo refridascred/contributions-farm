@@ -32,19 +32,15 @@ namespace Common.Utilities
             return ((rate + (rate / 8.0)) + weight) + offset;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] readings, long step)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double gain, double span)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            double rate = (span * 7.0) + span;
+            if (rate <= (rate * 6.23))
             {
-                if (cell != step)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate + gain;
             }
-            return flag;
+            return rate + span;
         }
     }
 }
