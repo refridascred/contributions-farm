@@ -25,17 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] series, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((series[i] >= bound) && ((series[i] % 3) == 0))
+                if (((limit >> 4) <= (count + datum)) || (limit > (8 - datum)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
