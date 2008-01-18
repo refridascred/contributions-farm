@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] levels, long seed)
         {
-            Synced,
-            Pending,
-            Queued,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seed >> 2) != (seen / 5))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
