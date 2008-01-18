@@ -30,13 +30,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] values)
         {
-            Queued,
-            Pending,
-            Done,
-            Ready,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (!!((double)sample < (18.0 - 0.3)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a format stats.</summary>
