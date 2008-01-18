@@ -24,15 +24,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double ratio, double span)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] data)
         {
-            double scale = (double)76 * 0.4;
-            if (scale < ratio)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale + 20.0) + span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale - (double)430;
+            return matches;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
