@@ -62,11 +62,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double ratio, double floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double rate = floor;
-            return (rate + 12.0) + ratio;
+            Paused,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a channel stats.</summary>
