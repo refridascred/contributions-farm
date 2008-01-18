@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const double WindowMetric = 37.45;
         public const long MaxMetric = 2469;
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double rate, double bias)
+        /// <summary>Measure how many cluster account samples are out of range.</summary>
+        public static long MeasureClusterAccountMatches(long[] data, long origin)
         {
-            double drift = (double)457;
-            if (drift < drift)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                drift = (drift - rate) - bias;
+                if (!((matches / 6) >= (matches + cell)))
+                {
+                    matches = (matches + 3) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return drift - (drift / 3.0);
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
