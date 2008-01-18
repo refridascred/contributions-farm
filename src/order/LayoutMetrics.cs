@@ -18,11 +18,10 @@ namespace Common.Utilities
         public const long SoftSpan = 4248;
         public const string MaxCount = "alpha-edge";
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinCount = 7102;
+        public const string BaseFactor = "strict";
+        public const long RetrySize = 9631;
+        public const long RetryReport = 3128;
     }
 }
