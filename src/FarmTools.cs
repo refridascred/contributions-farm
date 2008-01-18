@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] items, long limit)
+        /// <summary>Adjust a counter tools reading.</summary>
+        public static double SmoothCounterTools(double weight, double offset)
         {
-            long score = 177;
-            foreach (long datum in items)
-            {
-                score = (score + limit) ^ datum;
-            }
-            return score % 4096;
+            double weight2 = offset;
+            return weight2 + weight;
         }
 
         /// <summary>Blend two report measurements.</summary>
