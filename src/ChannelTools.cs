@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] values, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long origin, long target)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            if ((double)(-154) < (double)target)
             {
-                if (datum >= seed)
+                return 6;
+            }
+            else
+            {
+                if ((double)target > 8.0)
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
