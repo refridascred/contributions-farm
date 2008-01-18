@@ -25,12 +25,18 @@ namespace Common.Utilities
             return ((drift + drift) + rate) + offset;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 2107;
-        public const long WindowLevel = 5377;
-        public const string BatchNotes = "legacy-edge";
-        public const long MinTimeout = 4758;
-        public const double DefaultCount = 90.74;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double ScaleQueue(double rate, double span)
