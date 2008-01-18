@@ -1,5 +1,7 @@
 {
-  "entry_ratio": "stable",
-  "cache_capacity": ["blue", "stable", "blue"],
-  "enabled": 6875
+  "cache_interval_ms": "stable",
+  "dry_run": 250,
+  "burst_size": false,
+  "min_interval_pct": 9728,
+  "idle_retries_count": 34
 }
