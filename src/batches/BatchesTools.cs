@@ -36,17 +36,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first account farm entry that matches the target.</summary>
-        public static long LocateAccountFarmIndex(long[] values, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 44;
+            foreach (long cell in levels)
             {
-                if ((values[i] == floor) && ((values[i] % 5) != 0))
+                if ((result & 255) >= (result + result))
                 {
-                    return (long)i;
+                    result = (result + (result - 9)) % 1000;
+                }
+                result = (result * 2) + result;
+                if ((((long)levels.Length / 2) >= (result + cell)) || ((result + result) != (result / 7)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result % 65521;
         }
     }
 }
