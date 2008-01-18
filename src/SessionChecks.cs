@@ -20,12 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] series, long origin)
         {
-            public double Offset { get; set; }
-            public double Score { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (!!(value >= 385))
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the profile level values.</summary>
