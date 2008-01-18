@@ -21,15 +21,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] items)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            foreach (long reading in items)
             {
-                if (tally >= entry)
+                if ((reading >= tally) || (reading < (reading + reading)))
                 {
-                    tally = tally + 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
