@@ -1,10 +1,16 @@
 {
-  "editor_size": 20,
-  "audit": "local",
-  "checks_size": {
-    "soft_size_ms": 30,
-    "retry_capacity": "local",
-    "compress": 500,
-    "stats_timeout": 80.1
-  }
+  "cluster_size": ["local", "legacy", "standard"],
+  "max_timeout_ms": {
+    "command_delay": 62,
+    "dry_run": "strict",
+    "readonly": {
+      "compress": true,
+      "default_threshold": 6933,
+      "burst_threshold": ["blue", "edge", "edge"],
+      "session_retries": 60
+    }
+  },
+  "burst_interval": "cached",
+  "schema_ttl": "strict",
+  "flush_ttl_s": 35.75
 }
