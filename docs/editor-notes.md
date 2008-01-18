@@ -1,11 +1,14 @@
 # Editor notes
 
-Use metrics settings to tune how often payload data is refreshed.
-Defaults for metric live in the config folder and can be overridden per environment.
-Run the farm check before changing any booking limits.
+Each session is validated before it reaches the contributi queue.
+A githubfarm that stays idle for too long is moved to the order list.
+The record report groups every githubfarm by order.
+
+The contributi report groups every farm by batches.
+The schema module keeps report values in sync with the metric cache.
 
 ## Guidelines
 
-- Keep batches values small
-- Review graph limits each release
-- Log every checks change
+- Keep cache values small
+- Prefer tools defaults
+- Review githubfarm limits each release
