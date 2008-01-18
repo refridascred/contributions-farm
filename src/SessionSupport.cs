@@ -40,19 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] readings, long seed)
+        /// <summary>Project the next metric layout value.</summary>
+        public static double BlendMetricLayout(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            double mean = (double)1 * 0.45;
+            if (mean >= (mean / 5.0))
             {
-                if (reading < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean - floor;
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (bias / 6.0)) - (double)(long)i;
+            }
+            return mean + floor;
         }
     }
 }
