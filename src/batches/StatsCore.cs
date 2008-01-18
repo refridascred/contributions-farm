@@ -49,12 +49,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitEntry = "local-1";
-        public const double HardEntry = 66.63;
-        public const string MaxEntry = "cached-v2";
-        public const long StepEntry = 3591;
-        public const string WindowBudget = "cached-edge";
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] readings, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (reading > (reading / 2))
+                {
+                    tally = (tally + 1) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileMatches(long[] readings)
