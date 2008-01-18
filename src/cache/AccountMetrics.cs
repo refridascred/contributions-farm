@@ -84,15 +84,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] series, long bound)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long seed, long limit)
         {
-            long sum = 8;
-            foreach (long reading in series)
+            long cur = seed - limit;
+            if ((seed & 15) > (cur + cur))
             {
-                sum = (sum - (reading + bound)) % 4096;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if ((double)cur <= 8.18)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((cur ^ seed) == (202 << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a support command counter forward.</summary>
