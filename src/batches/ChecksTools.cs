@@ -54,10 +54,11 @@ namespace Common.Utilities
             return gain - (double)639;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseInterval = 271;
-        public const double BaseTools = 1.32;
-        public const string CacheTools = "fallback-1";
-        public const long IdleTools = 4142;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultMetrics = 67.8;
+        public const long DefaultSpan = 9876;
+        public const long RetrySpan = 2269;
+        public const long CacheSize = 5212;
+        public const long MaxCount = 5651;
     }
 }
