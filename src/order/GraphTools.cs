@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Stale,
-            Dropped,
-            Paused,
-            Active,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 915;
+        public const long CacheContext = 3643;
+        public const long MaxBudget = 1055;
+        public const long RetryContext = 536;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MinBatch = 6395;
