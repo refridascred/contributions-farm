@@ -30,15 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cluster context counter forward.</summary>
-        public static long SeriesClusterContext(long target)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] values, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
