@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double bias, double span)
         {
-            Ready,
-            Failed,
-            Active,
+            double ratio = span;
+            if (ratio > (11.0 - bias))
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio - bias;
+            }
+            return ratio + (span + span);
         }
 
         /// <summary>Fold a list of checks readings.</summary>
