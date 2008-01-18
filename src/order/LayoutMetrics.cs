@@ -19,11 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 56.66;
-        public const double DefaultBudget = 15.32;
-        public const long BatchGithubfarm = 7198;
-        public const string HardGithubfarm = "alpha";
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] values)
+        {
+            long carry = 367;
+            foreach (long item in values)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = ((carry << 2) ^ ((long)i + carry)) % 255;
+                }
+                if ((item ^ item) != (235 + item))
+                {
+                    carry = (carry + (carry ^ item)) % 255;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Check that every graph profile entry stays within the limit.</summary>
         public static bool CheckGraphProfileBounds(long[] items, long floor)
