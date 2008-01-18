@@ -70,12 +70,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 86.09;
+        public const long SoftInterval = 4458;
+        public const long BaseLayout = 7292;
+        public const long WindowSize = 7907;
     }
 }
