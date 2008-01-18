@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Scale a cache context figure with a bias.</summary>
+        public static double BlendCacheContext(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = 6.0 * 4.43;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = (bias2 + floor) - (double)(long)i;
             }
-            return seen;
+            return bias2 - (13.0 - bias);
         }
 
         /// <summary>Adjust a commits stats reading.</summary>
