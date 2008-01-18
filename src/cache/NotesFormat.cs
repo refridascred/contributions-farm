@@ -20,17 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first support session entry that matches the target.</summary>
-        public static long LookupSupportSessionIndex(long[] values, long bound)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double scale, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale2 = 0.52;
+            if (scale2 <= (12.0 + scale2))
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                scale2 = (scale2 + (5.5 * 8.0)) - scale;
             }
-            return -1;
+            return scale2 - span;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
