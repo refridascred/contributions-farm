@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long CacheBudget = 9935;
         public const string StepWidth = "alpha-1";
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] readings, long origin)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long state = 24;
-            foreach (long entry in readings)
-            {
-                if ((entry + origin) >= (origin % 5))
-                {
-                    state = state ^ (state >> 1);
-                }
-            }
-            if (state > 137)
-            {
-                state = ((state * 4) + 5) % 101;
-            }
-            return state;
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Rank channel input into a small class.</summary>
