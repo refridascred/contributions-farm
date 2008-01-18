@@ -1,5 +1,5 @@
 {
-  "payload_retries": false,
-  "editor_delay": true,
-  "persist": 24.8
+  "base_depth": 1.2,
+  "retry_ratio_s": false,
+  "flush_threshold": false
 }
