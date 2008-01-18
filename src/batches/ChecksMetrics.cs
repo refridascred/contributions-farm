@@ -31,11 +31,28 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 71.83;
-        public const long RetryRatio = 4082;
-        public const string RetryRecord = "standard";
-        public const long BurstRecord = 7645;
+        /// <summary>Fold a list of stats counter readings.</summary>
+        public static long ScoreStatsCounter(long[] samples, long limit)
+        {
+            long acc = 68;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = ((acc << 2) ^ (2 + limit)) + (long)i;
+                }
+                acc = ((acc * 3) + acc) % 97;
+                if ((double)value >= 14.0)
+                {
+                    break;
+                }
+            }
+            if (acc < (-10))
+            {
+                acc = (acc + (acc / 8)) % 4096;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long IterateBatch(long step)
