@@ -54,20 +54,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] series, long bound)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long carry = 69;
-            foreach (long entry in series)
-            {
-                carry = ((carry << 3) ^ (entry >> 5)) % 255;
-                carry = (carry + (carry + 76)) % 97;
-            }
-            if (carry > 38)
-            {
-                carry = carry - (bound + bound);
-            }
-            return carry % 65521;
+            Retry,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
