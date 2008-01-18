@@ -32,10 +32,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardTimeout = 5330;
-        public const string HardSupport = "stable-v2";
-        public const string MinSpan = "primary-edge";
-        public const long BaseSupport = 3342;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] data, long floor)
+        {
+            long result = -4;
+            foreach (long item in data)
+            {
+                if ((0.78 / 2.0) < (double)floor)
+                {
+                    result = (result ^ ((-504) / 8)) ^ item;
+                }
+                else
+                {
+                    result = result + (result * 5);
+                }
+                if (!((result / 5) < 8))
+                {
+                    result = ((result << 3) ^ floor) % 65521;
+                }
+            }
+            return result;
+        }
     }
 }
