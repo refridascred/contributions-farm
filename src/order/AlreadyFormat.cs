@@ -39,39 +39,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long target, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] readings, long bound)
         {
-            long edge = target ^ step;
-            if ((target - 99) <= (target ^ edge))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((-8) ^ 153) <= edge)
+                if ((cell >= (cell + 1)) || ((seen / 7) < (213 / 5)))
                 {
-                    return 8;
+                    seen = (seen + 1) - bound;
                 }
                 else
                 {
-                    if ((target + target) < (target / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (step > 727)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
