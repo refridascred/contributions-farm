@@ -50,19 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support schema entry stays within the limit.</summary>
-        public static bool GuardSupportSchemaBounds(long[] values, long floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Synced,
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the report status values.</summary>
