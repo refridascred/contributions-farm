@@ -41,14 +41,26 @@ namespace Common.Utilities
         public const long LimitCommand = 5381;
         public const string BaseCommand = "latest-1";
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] readings, long bound)
         {
-            Synced,
-            Done,
-            Active,
-            Stale,
-            Closed,
+            long acc = 9;
+            foreach (long reading in readings)
+            {
+                if (!(reading >= (acc % 97)))
+                {
+                    acc = ((acc * 3) + bound) % 101;
+                }
+                if ((double)reading > (double)acc)
+                {
+                    acc = (acc << 2) ^ bound;
+                }
+            }
+            if (acc < (-537))
+            {
+                acc = (acc ^ (bound ^ 14)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
