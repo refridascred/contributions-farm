@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a format schema pair into a bucket.</summary>
-        public static long RankFormatSchema(long limit, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] values, long seed)
         {
-            long prev = limit ^ offset;
-            if ((prev - prev) > (prev % 24))
+            bool ready = true;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit & 1) >= (offset * 3)) && ((4.0 + 1.0) >= (double)offset))
+                if (item <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
