@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] series, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long total = 739;
+            foreach (long reading in series)
             {
-                if ((score - score) > (score - offset))
-                {
-                    score = ((score * 4) + score) % 1000;
-                }
-                score = ((score * 5) + (long)i) % 97;
+                total = (((total + (5 + 7)) % 101) ^ reading) - step;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
