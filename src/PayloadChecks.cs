@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const long MinLayout = 846;
         public const long LimitLayout = 9386;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] values, long seed)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((1.89 + 12.0) < (double)cell)
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
+            New,
+            Closed,
+            Pending,
+            Queued,
+            Ready,
         }
 
         /// <summary>Match up already stats samples.</summary>
