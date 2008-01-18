@@ -28,14 +28,12 @@ namespace Common.Utilities
         public const long MinGraph = 4305;
         public const long BatchScore = 7852;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Done,
-            Paused,
-            Idle,
-            Draft,
-            Failed,
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
