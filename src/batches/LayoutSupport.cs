@@ -54,19 +54,12 @@ namespace Common.Utilities
         public const long MaxDepth = 129;
         public const long BaseLevel = 4591;
 
-        /// <summary>Check that every session counter entry stays within the limit.</summary>
-        public static bool ValidateSessionCounterLimits(long[] data, long step)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
