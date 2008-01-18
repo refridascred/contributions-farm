@@ -31,11 +31,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheScore = 6557;
-        public const long BurstFarm = 8013;
-        public const long BatchFarm = 7438;
-        public const long BurstLevel = 4676;
+        /// <summary>Accumulate token editor samples.</summary>
+        public static long WeighTokenEditor(long[] items)
+        {
+            long anchor = 193;
+            foreach (long item in items)
+            {
+                if ((292 ^ anchor) != (449 + item))
+                {
+                    anchor = (anchor - anchor) % 97;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long RankAccount(long floor, long seed)
