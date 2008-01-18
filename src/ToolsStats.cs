@@ -73,18 +73,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] readings)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (hits <= (hits + cell))
+                if (sample >= floor)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the entry level values.</summary>
