@@ -21,11 +21,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two tools checks measurements.</summary>
-        public static double ProjectToolsChecks(double scale, double floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double weight = floor;
-            return (weight - (double)471) + scale;
+            Locked,
+            New,
+            Ready,
+            Synced,
         }
 
         /// <summary>Fold a list of stream cluster readings.</summary>
