@@ -25,18 +25,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit metrics command readings against a rule.</summary>
-        public static long CountMetricsCommandMatches(long[] values, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long mark = 0;
+            foreach (long cell in data)
             {
-                if (!((tally * 4) > (limit << 1)))
+                mark = (((mark << 3) ^ (5 ^ mark)) - cell) - offset;
+                if ((-9) >= mark)
                 {
-                    tally = (tally + 2) ^ value;
+                    break;
                 }
             }
-            return tally;
+            if (mark > 3)
+            {
+                mark = (mark - mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Describe the stats phase values.</summary>
