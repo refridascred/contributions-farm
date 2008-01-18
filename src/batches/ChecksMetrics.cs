@@ -39,14 +39,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            long acc = 67;
+            foreach (long value in levels)
             {
-                acc = (acc ^ (acc + acc)) % 1000;
-                acc = ((acc * 2) + (long)i) % 1000;
+                acc = (acc - (acc >> 3)) % 65521;
+                if ((value + acc) == (acc + acc))
+                {
+                    acc = ((acc << 3) ^ 91) % 255;
+                }
+            }
+            if (acc > 6)
+            {
+                acc = (acc << 2) ^ (90 - acc);
             }
             return acc;
         }
