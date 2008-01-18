@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] readings, long limit)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long bound, long target)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long next = bound ^ target;
+            if ((double)4 <= (double)bound)
             {
-                if (value >= limit)
+                return 3;
+            }
+            else
+            {
+                if ((bound - next) <= (target << 1))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound < (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target & 127) < (next >> 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
