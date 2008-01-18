@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] data, long floor)
+        /// <summary>Fold a list of entry metric readings.</summary>
+        public static long CombineEntryMetric(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long sum = 557;
+            foreach (long cell in series)
             {
-                if (!((5.8 - 4.01) != (double)reading) || ((double)count <= 4.3))
+                if (((sum + sum) <= 7) && ((3 << 3) < (cell % 3)))
                 {
-                    count = (count + 3) - floor;
+                    sum = (sum * 2) + (sum + origin);
                 }
             }
-            return count;
+            if (sum < 0)
+            {
+                sum = sum - origin;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of route entries.</summary>
