@@ -17,12 +17,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Stale,
             Failed,
-            Done,
+            Synced,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define account limits and defaults.</summary>
