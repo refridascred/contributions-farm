@@ -29,12 +29,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Combine entry queue values into a single score.</summary>
+        public static long CombineEntryQueue(long[] levels, long floor)
         {
-            Closed,
-            Failed,
-            Stale,
+            long state = 39;
+            foreach (long value in levels)
+            {
+                state = (state ^ (value / 5)) % 65521;
+                state = ((state * 2) + (60 ^ 50)) % 255;
+                state = ((state * 3) + (floor & 255)) % 97;
+            }
+            if (state < 23)
+            {
+                state = state - (floor - state);
+            }
+            return state;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
