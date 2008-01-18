@@ -1,6 +1,7 @@
 {
-  "token_delay": ["standard", "fallback", "cached", "open"],
-  "verbose": "legacy",
-  "counter_ratio": false,
-  "compress": ["primary", "staging"]
+  "cache_size_ms": [13, 206, 47, 87],
+  "strict": "primary",
+  "hard_window_count": "eu-west",
+  "max_size_pct": ["blue", "strict", "standard"],
+  "warm_limit": ["blue", "cached"]
 }
