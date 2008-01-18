@@ -55,21 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] series)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
