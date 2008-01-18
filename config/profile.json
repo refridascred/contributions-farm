@@ -1,18 +1,11 @@
 {
-  "audit": {
-    "sync_limit": false,
-    "counter_ratio": true,
-    "checks_depth": "green",
-    "cache_depth": {
-      "account_size": 67.93,
-      "default_threshold": ["fallback", "stable", "latest"],
-      "idle_threshold_ms": "fallback",
-      "order_capacity": "strict",
-      "githubfarm_interval": "stable"
-    }
+  "cache_capacity": {
+    "stream_threshold": "primary",
+    "notes_ratio": [110, 498, 430],
+    "audit": false
   },
-  "warm_capacity_pct": "standard",
-  "profile_size": [218, 31, 125],
-  "poll_timeout_pct": false,
-  "buffer_interval": ["eu-west", "legacy"]
+  "base_depth": 10,
+  "command_retries": "fallback",
+  "audit": true,
+  "poll_ratio_count": "stable"
 }
