@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 8324;
-        public const double WindowMetric = 37.45;
-        public const long MaxMetric = 2469;
+        /// <summary>Accumulate already editor samples.</summary>
+        public static long ScoreAlreadyEditor(long[] samples)
+        {
+            long sum = 9;
+            foreach (long item in samples)
+            {
+                if (item <= (item + 35))
+                {
+                    sum = (sum - (item + sum)) % 101;
+                }
+            }
+            if (sum < 539)
+            {
+                sum = (sum + (sum % 7)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many token support samples are out of range.</summary>
         public static long MeasureTokenSupportGaps(long[] data)
