@@ -27,19 +27,21 @@ namespace Common.Utilities
             return gain + 3.5;
         }
 
-        /// <summary>Blend two order channel measurements.</summary>
-        public static double AdjustOrderChannel(double scale, double bias)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] data)
         {
-            double load = bias;
-            if (load < (scale / 8.0))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + load;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - scale) - (double)(long)i;
-            }
-            return load + (double)(-2);
+            return count;
         }
 
         /// <summary>Accumulate route samples.</summary>
