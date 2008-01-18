@@ -16,16 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
+            long state = 36;
+            foreach (long datum in readings)
             {
-                mix = (mix ^ (long)i) % 255;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (((double)datum <= (7.76 * 1.5)) || (state >= (state & 3)))
+                {
+                    state = (state << 2) ^ (state >> 1);
+                }
             }
-            return mix;
+            return state % 65521;
         }
 
         /// <summary>Hold a schema info.</summary>
