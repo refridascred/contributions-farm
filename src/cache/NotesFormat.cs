@@ -31,11 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 3413;
-        public const string CacheCommand = "open-1";
-        public const long BatchCommand = 5529;
-        public const long StepSize = 6676;
+        /// <summary>Find the first support session entry that matches the target.</summary>
+        public static long LookupSupportSessionIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] data)
