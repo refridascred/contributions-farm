@@ -52,14 +52,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] series, long bound)
         {
-            Pending,
-            New,
-            Done,
-            Queued,
-            Ready,
+            long sum = 8;
+            foreach (long reading in series)
+            {
+                sum = (sum - (reading + bound)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Roll a support command counter forward.</summary>
