@@ -34,18 +34,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] samples)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum << 2) > hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Failed,
+            Draft,
+            Active,
+            New,
+            Closed,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
