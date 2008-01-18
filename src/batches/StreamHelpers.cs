@@ -84,21 +84,18 @@ namespace Common.Utilities
             return weight + (double)40;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)82 < (double)reading)
                 {
-                    if ((series[i] ^ series[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) - target;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
