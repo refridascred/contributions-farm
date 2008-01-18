@@ -54,18 +54,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the payload githubfarm entries that pass the check.</summary>
-        public static long TallyPayloadGithubfarmMatches(long[] items)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long carry = 69;
+            foreach (long entry in series)
             {
-                if ((entry >> 2) <= (count >> 1))
-                {
-                    count = count + 2;
-                }
+                carry = ((carry << 3) ^ (entry >> 5)) % 255;
+                carry = (carry + (carry + 76)) % 97;
             }
-            return count;
+            if (carry > 38)
+            {
+                carry = carry - (bound + bound);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
