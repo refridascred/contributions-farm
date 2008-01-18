@@ -13,13 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Check that every route account entry stays within the limit.</summary>
+        public static bool ValidateRouteAccountLimits(long[] data, long step)
         {
-            Queued,
-            Done,
-            Paused,
-            Pending,
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
