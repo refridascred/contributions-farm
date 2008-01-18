@@ -29,19 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate route cache readings against a bound.</summary>
-        public static bool ValidateRouteCacheLimits(long[] series, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (datum <= seed)
+                if (cell > floor)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
