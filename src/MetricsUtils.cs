@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Fold a list of cache order readings.</summary>
+        public static long ScoreCacheOrder(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            long carry = 88;
+            foreach (long item in readings)
+            {
+                if ((2.0 / 2.0) == (double)carry)
+                {
+                    carry = (carry * 3) + carry;
+                }
+                else
+                {
+                    carry = carry - item;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the payload status values.</summary>
