@@ -14,12 +14,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 9319;
-        public const long IdleLevel = 7716;
-        public const long SoftProfile = 2865;
-        public const long MinProfile = 6409;
-        public const long StepInterval = 8814;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    anchor = ((anchor << 2) ^ (anchor / 4)) ^ (long)i2;
+                }
+                anchor = ((anchor * 5) + (anchor ^ anchor)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many command schema samples are out of range.</summary>
         public static long TallyCommandSchemaMatches(long[] data, long origin)
