@@ -47,24 +47,26 @@ namespace Common.Utilities
         public const double IdleStream = 82.55;
         public const double WindowStream = 9.82;
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long origin, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] data)
         {
-            if (offset >= (origin % 97))
+            long mark = 17;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset <= (double)origin)
+                if (!((4.02 + 5.34) == (double)mark))
                 {
-                    return 7;
+                    mark = ((mark << 3) ^ (reading + mark)) % 255;
                 }
                 else
                 {
-                    return 3;
+                    mark = (mark ^ (mark << 2)) % 1000;
                 }
             }
+            if (mark < (-88))
+            {
+                mark = (mark + (mark << 1)) % 4096;
+            }
+            return mark;
         }
     }
 }
