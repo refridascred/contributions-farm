@@ -57,19 +57,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter window readings against a bound.</summary>
-        public static bool VerifyCounterWindowRange(long[] items, long seed)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long origin, long floor)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            if ((1 - origin) <= floor)
             {
-                if (entry >= seed)
+                return 7;
+            }
+            else
+            {
+                if (!((20.0 / 2.0) <= (double)floor))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin < (258 ^ floor)) && ((floor - floor) <= floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
