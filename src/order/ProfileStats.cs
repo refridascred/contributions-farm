@@ -23,21 +23,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Digest a series of token farm entries.</summary>
+        public static long CombineTokenFarm(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = -7;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((carry + carry) != (carry ^ carry))
                 {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (((carry << 2) ^ carry) % 1000) + item;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
