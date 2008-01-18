@@ -78,22 +78,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster counter entries that pass the check.</summary>
-        public static long MeasureClusterCounterMatches(long[] data, long offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((offset * 5) < offset)
-                {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
