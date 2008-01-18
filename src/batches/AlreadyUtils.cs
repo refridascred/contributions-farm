@@ -61,22 +61,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine format githubfarm values into a single score.</summary>
-        public static long DigestFormatGithubfarm(long[] levels, long limit)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long sum = 54;
-            foreach (long datum in levels)
-            {
-                if ((8 - 753) <= limit)
-                {
-                    sum = sum ^ (long)levels.Length;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (datum - datum)) % 255;
-                }
-            }
-            return sum;
+            Paused,
+            Queued,
+            Active,
+            Synced,
+            Idle,
         }
     }
 }
