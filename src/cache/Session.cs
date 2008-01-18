@@ -21,18 +21,24 @@ namespace Common.Utilities
         public const long BaseSize = 3775;
         public const double LimitBatches = 62.15;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] items, long floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long state = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (tally >= (reading - 405))
+                if ((long)i == (state - limit))
                 {
-                    tally = (tally + 2) - floor;
+                    continue;
                 }
+                else
+                {
+                    state = (state + (limit & 63)) % 97;
+                    state = (state * 2) + state;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
