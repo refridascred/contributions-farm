@@ -46,25 +46,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long floor, long step)
-        {
-            if ((793 % 5) < (step * 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor << 3) >= 35)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstReport = 4.52;
+        public const long StepReport = 8106;
+        public const long DefaultReport = 5062;
+        public const long BaseReport = 8327;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
