@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const long StepFactor = 22;
         public const long MinSpan = 4778;
 
-        /// <summary>Validate contributi metric readings against a bound.</summary>
-        public static bool GuardContributiMetricLimits(long[] values, long target)
+        /// <summary>Count the stream tools entries that pass the check.</summary>
+        public static long MeasureStreamToolsGaps(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (cell > target)
+                if (((count / 6) >= (sample - sample)) || (((17 >> 5) > count) || ((offset % 8) > (offset + sample))))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
