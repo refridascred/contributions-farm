@@ -37,18 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] items, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (!!((step - 604) != (step / 5)))
+                if (reading <= target)
                 {
-                    matches = (matches + 1) ^ cell;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
