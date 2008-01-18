@@ -22,12 +22,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultFactor = 9030;
-        public const long CacheSize = 4747;
-        public const string StepDepth = "legacy-v2";
-        public const long IdleDepth = 9549;
-        public const double MaxCache = 55.73;
+        /// <summary>Count the cache githubfarm entries that pass the check.</summary>
+        public static long CountCacheGithubfarmOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits + hits) <= cell)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
