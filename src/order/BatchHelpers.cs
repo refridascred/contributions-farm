@@ -13,23 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double scale, double span)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] series, long floor)
         {
-            double weight = span;
-            if (weight < (span * 6.5))
+            bool stale = true;
+            foreach (long item in series)
             {
-                weight = weight + span;
+                if (item <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (scale - span);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - (3.9 * 5.69);
+            return stale;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
