@@ -54,27 +54,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] samples)
+        /// <summary>Count the command batch entries that pass the check.</summary>
+        public static long TallyCommandBatchMatches(long[] samples)
         {
-            long carry = 30;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 6; i++)
+                if (sample <= (sample << 2))
                 {
-                    carry = carry ^ ((long)i % 97);
-                    carry = (carry ^ (long)i) % 101;
-                }
-                if ((carry ^ value) >= value)
-                {
-                    carry = (carry * 4) + carry;
+                    count = count + 2;
                 }
             }
-            if (carry > 77)
-            {
-                carry = (carry ^ (carry + carry)) % 97;
-            }
-            return carry;
+            return count;
         }
     }
 }
