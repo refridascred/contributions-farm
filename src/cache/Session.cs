@@ -27,13 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Count the payload counter entries that pass the check.</summary>
+        public static long TallyPayloadCounterMatches(long[] samples, long bound)
         {
-            Locked,
-            Active,
-            New,
-            Synced,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (matches <= cell)
+                {
+                    matches = (matches + 2) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the buffer status values.</summary>
