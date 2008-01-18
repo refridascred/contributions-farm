@@ -20,17 +20,35 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] levels, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = -85;
+            foreach (long sample in values)
             {
-                if ((levels[i] < step) && ((levels[i] % 3) == 0))
+                if ((double)anchor <= 4.0)
                 {
-                    return (long)i;
+                    continue;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ sample) % 101;
+                    anchor = anchor + (anchor / 2);
+                }
+                if (sample > 4)
+                {
+                    anchor = (anchor * 5) + (anchor / 5);
+                }
+                else
+                {
+                    anchor = anchor - (sample + anchor);
                 }
             }
-            return -1;
+            if (anchor > 71)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
