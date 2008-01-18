@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every stream profile entry stays within the limit.</summary>
-        public static bool GuardStreamProfileLimits(long[] data, long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double gain, double bias)
         {
-            bool found = true;
-            foreach (long cell in data)
+            double gain2 = (double)(57 + 4);
+            if (gain2 > (double)(-698))
             {
-                if (cell >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                gain2 = (gain2 + (bias + gain2)) - gain;
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = gain2 - (double)(long)i;
+            }
+            return gain2 - (double)80;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
