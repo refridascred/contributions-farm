@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long origin, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            if ((((-966) ^ bound) <= (origin & 15)) || ((origin - 966) >= (bound ^ bound)))
             {
-                if (3.6 >= (double)sum)
-                {
-                    sum = ((sum << 3) ^ (sum % 8)) % 97;
-                }
-                sum = (sum + (487 - (long)i)) % 4096;
-                sum = ((sum * 2) + (long)i) % 4093;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (((double)origin < 7.9) || ((origin << 1) <= origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-3) < (origin + bound)) && ((242 - 50) != (bound % 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound > origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the counter kind values.</summary>
