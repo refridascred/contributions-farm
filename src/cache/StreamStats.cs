@@ -21,24 +21,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a cache metric pair into a bucket.</summary>
-        public static long BucketCacheMetric(long seed, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] data, long origin)
         {
-            if (!(step > (seed - step)))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)step <= (4.8 / 4.0)) && ((seed - 74) > (step + step)))
+                if ((double)origin != (5.62 - 6.91))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    hits = (hits + 2) - datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine command values into a single score.</summary>
