@@ -56,28 +56,36 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank support buffer input into a small class.</summary>
-        public static long GradeSupportBuffer(long origin, long offset)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long offset, long origin)
         {
-            if ((origin - 4) < origin)
+            long span = offset - origin;
+            if ((double)offset == (double)645)
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((double)offset > (8.1 * 6.0))
+                if ((origin < offset) && ((span + offset) < origin))
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if ((origin <= (origin % 64)) || ((1.23 + 1.0) >= (double)origin))
+                    if ((offset ^ 6) >= origin)
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        return 3;
+                        if ((double)offset <= (5.72 - 2.08))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
