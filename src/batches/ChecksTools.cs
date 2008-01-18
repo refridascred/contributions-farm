@@ -39,19 +39,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double rate, double span)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            double gain = span;
-            if (gain >= (gain - span))
+            long carry = target;
+            for (int i = 0; i < 8; i++)
             {
-                gain = (gain - (double)(-18)) + rate;
+                if (carry >= (target % 3))
+                {
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain + 8.0;
-            }
-            return gain - (double)639;
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
