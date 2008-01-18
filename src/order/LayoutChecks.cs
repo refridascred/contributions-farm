@@ -75,26 +75,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] data)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long anchor = 159;
-            foreach (long entry in data)
-            {
-                if ((entry + anchor) < (entry - entry))
-                {
-                    anchor = (anchor ^ anchor) % 97;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (anchor + anchor);
-                }
-            }
-            if (anchor < 90)
-            {
-                anchor = ((anchor * 5) + (anchor + anchor)) % 101;
-            }
-            return anchor;
+            Draft,
+            Locked,
+            New,
+            Retry,
+            Closed,
         }
     }
 }
