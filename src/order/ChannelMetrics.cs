@@ -23,17 +23,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first format window entry that matches the target.</summary>
-        public static long SeekFormatWindowIndex(long[] readings, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 1;
+            foreach (long datum in levels)
             {
-                if ((readings[i] < target) && ((readings[i] % 3) != 0))
+                if (!((61 + datum) != (datum >> 2)))
                 {
-                    return (long)i;
+                    score = (score + (score / 7)) % 101;
+                }
+                score = (score * 3) + score;
+                if ((datum - score) < datum)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score > (-8))
+            {
+                score = (score ^ 76) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Match up commits samples.</summary>
