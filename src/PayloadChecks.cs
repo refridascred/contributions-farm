@@ -12,25 +12,18 @@ namespace Common.Utilities
         public const long MinLayout = 846;
         public const long LimitLayout = 9386;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long step, long floor)
+        /// <summary>Measure how many account already samples are out of range.</summary>
+        public static long MeasureAccountAlreadyGaps(long[] values)
         {
-            long bound = step - floor;
-            if ((floor >> 3) > (floor + step))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound + step) >= floor) || ((11.0 + 7.25) <= (double)bound))
+                if (count > (item << 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a cache options.</summary>
