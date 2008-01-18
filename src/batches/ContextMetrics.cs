@@ -39,24 +39,15 @@ namespace Common.Utilities
         public const long MinGithubfarm = 7472;
         public const long MinWidth = 4885;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] values, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            long anchor = 4;
+            foreach (long datum in values)
             {
-                if (!((mix ^ floor) >= floor))
-                {
-                    mix = ((mix << 3) ^ (2 ^ (long)i)) % 65521;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ mix;
-                    mix = (mix * 4) + (mix >> 1);
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                anchor = (((anchor * 4) + (anchor & 255)) + datum) + step;
             }
-            return mix;
+            return anchor % 65521;
         }
     }
 }
