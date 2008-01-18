@@ -20,21 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] data, long target)
         {
-            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((data[i] <= target) && ((data[i] % 2) != 0))
                 {
-                    if ((data[i] + data[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
