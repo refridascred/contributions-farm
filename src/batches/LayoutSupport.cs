@@ -64,16 +64,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] data, long step)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long limit)
         {
-            long acc = 835;
-            foreach (long sample in data)
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((23 >> 4) > (acc & 127))
+                if (((long)i & 255) < (limit + acc))
                 {
-                    acc = ((((acc * 2) + acc) % 97) - sample) - step;
+                    acc = ((acc * 5) + limit) % 4096;
+                    acc = acc ^ (9 + acc);
+                    break;
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
             return acc;
         }
