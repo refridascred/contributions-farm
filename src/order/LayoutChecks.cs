@@ -91,31 +91,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long offset, long offset2)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] levels, long step)
         {
-            if ((offset % 5) < (offset - offset))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset >= (offset << 1))
+                if ((levels[i] > step) && ((levels[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((4 % 97) == (offset / 9)) || ((double)offset == (8.0 * 3.6)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate route samples.</summary>
