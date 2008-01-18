@@ -58,12 +58,15 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] items, long origin)
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
+            long result = 841;
+            foreach (long sample in items)
+            {
+                result = ((result + sample) % 255) - origin;
+            }
+            return result % 4096;
         }
     }
 }
