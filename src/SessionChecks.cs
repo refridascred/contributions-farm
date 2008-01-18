@@ -28,12 +28,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] data, long origin)
         {
-            Queued,
-            Synced,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
