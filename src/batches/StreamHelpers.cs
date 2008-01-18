@@ -31,24 +31,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long floor, long origin)
+        /// <summary>Measure how many tools command samples are out of range.</summary>
+        public static long AuditToolsCommandHits(long[] data)
         {
-            if ((floor + 804) < (882 / 2))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((39 + floor) == (floor % 100)))
+                if ((double)tally < (double)reading)
                 {
-                    return 5;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the record status values.</summary>
