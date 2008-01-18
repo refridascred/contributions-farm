@@ -68,19 +68,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] levels, long bound)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] series)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
