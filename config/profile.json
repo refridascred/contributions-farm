@@ -1,8 +1,6 @@
 {
-  "min_delay_pct": "staging",
-  "enabled": 250,
-  "flush_depth": true,
-  "max_timeout_pct": ["edge", "strict"],
-  "queue_timeout": "local",
-  "record_retries": false
+  "queue_retries": "legacy",
+  "max_size": true,
+  "retry_interval": "blue",
+  "batch_window_count": "local"
 }
