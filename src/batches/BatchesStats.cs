@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstTimeout = "staging-edge";
+        public const long StepCounter = 2165;
+        public const double MinCounter = 27.14;
+        public const long RetryCounter = 7028;
+        public const double HardBudget = 24.65;
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long GradeCache(long bound, long step)
