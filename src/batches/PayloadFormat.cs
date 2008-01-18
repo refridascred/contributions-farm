@@ -58,12 +58,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long offset)
         {
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
+            long total = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((total / 8) <= (offset << 1)))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = total ^ ((-8) - 62);
+                }
+                if ((double)7 <= (double)offset)
+                {
+                    break;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
