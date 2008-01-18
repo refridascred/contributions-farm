@@ -12,38 +12,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long target, long target2)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] values, long seed)
         {
-            if (target2 <= (target ^ target2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(target2 <= (target + target)))
+                if ((values[i] <= seed) && ((values[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.5 + 5.0) == (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(target <= (target + 223)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
