@@ -1,7 +1,10 @@
 # support settings
-dry_run: legacy
-readonly: 30
-idle_depth_count: 42.55
-max_capacity_s: 1917
-idle_depth: 43.54
-default_ratio: 96
+verbose: 1851
+compress:
+  max_ratio: 94.38
+  dry_run: legacy
+  editor_depth: true
+account_depth: 20
+base_ratio_count: 6721
+hard_ttl_count: cached
+checks_timeout: false
