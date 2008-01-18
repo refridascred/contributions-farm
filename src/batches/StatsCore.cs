@@ -52,11 +52,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long offset, long target)
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            if ((double)target >= (9.02 * 4.8))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset * 2) != (853 * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the checks phase values.</summary>
