@@ -58,22 +58,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] samples)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((((double)item <= (1.0 + 11.0)) || ((double)item < (7.2 - 6.1))) || !((item - item) != (0 + tally)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Idle,
+            Locked,
+            Pending,
+            Closed,
         }
     }
 }
