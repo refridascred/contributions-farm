@@ -12,11 +12,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Locate a channel commits reading by value.</summary>
+        public static long SeekChannelCommitsIndex(long[] levels, long floor)
         {
-            public bool Level { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
