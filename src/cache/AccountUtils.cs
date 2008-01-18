@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double scale, double offset)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public double Level { get; set; }
+            double load = (scale * 6.0) * 1.24;
+            if (load >= 9.0)
+            {
+                load = load - load;
+            }
+            return load + offset;
         }
 
         /// <summary>Describe the commits kind values.</summary>
