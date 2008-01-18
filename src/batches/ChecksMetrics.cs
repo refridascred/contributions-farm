@@ -31,12 +31,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
+            public double Flag { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of schema githubfarm entries.</summary>
