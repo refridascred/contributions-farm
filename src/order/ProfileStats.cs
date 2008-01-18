@@ -28,12 +28,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] levels)
         {
-            Queued,
-            New,
-            Failed,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((((9.44 + 9.1) == (double)seen) && (((long)levels.Length * 5) > (item + item))) || ((double)(long)levels.Length != (double)seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit payload metrics readings against a rule.</summary>
