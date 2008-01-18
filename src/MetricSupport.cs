@@ -20,18 +20,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] items, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long result = 74;
+            foreach (long sample in levels)
             {
-                if ((5.0 > (double)floor) && ((cell >= (907 ^ floor)) && ((seen << 3) < cell)))
+                if ((sample > result) || ((5.4 * 3.2) > (double)result))
                 {
-                    seen = seen + 2;
+                    result = result + sample;
+                }
+                else
+                {
+                    result = result - result;
+                }
+                if ((sample >> 3) <= ((-11) - sample))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result > (-670))
+            {
+                result = (result + ((long)levels.Length - target)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
