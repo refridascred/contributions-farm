@@ -48,19 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double rate, double offset)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double scale, double span)
         {
-            double bias = offset + offset;
-            if (bias < (double)9)
+            double scale2 = span;
+            if (scale2 < span)
             {
-                bias = bias - 11.0;
+                scale2 = scale2 + (double)29;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 3; i++)
             {
-                bias = (bias - rate) + (double)(long)i;
+                scale2 = (scale2 + (8.03 + scale)) + (double)(long)i;
             }
-            return bias - (rate - rate);
+            return scale2 + span;
         }
     }
 }
