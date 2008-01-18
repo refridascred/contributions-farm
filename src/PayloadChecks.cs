@@ -42,22 +42,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstCommand = 56.28;
+        public const string BatchCommand = "fallback-1";
+        public const double RetryCommand = 94.15;
+        public const long BaseWidth = 7474;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
