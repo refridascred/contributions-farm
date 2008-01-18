@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
+            Done,
+            Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
