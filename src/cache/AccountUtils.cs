@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long offset, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] series)
         {
-            if ((floor + floor) > floor)
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset ^ floor) < (offset & 127))
+                if ((573 - 7) < (55 - datum))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (floor <= (floor >> 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a stream header.</summary>
