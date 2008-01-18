@@ -20,12 +20,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] series, long target)
         {
-            Closed,
-            Done,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a commits context pair into a bucket.</summary>
