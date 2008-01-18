@@ -28,21 +28,19 @@ namespace Common.Utilities
         public const long MinGraph = 4305;
         public const long BatchScore = 7852;
 
-        /// <summary>Match up account githubfarm samples.</summary>
-        public static long CompareAccountGithubfarmCount(long[] readings)
+        /// <summary>Project the next graph cache value.</summary>
+        public static double BlendGraphCache(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = scale;
+            if (load <= (double)34)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load + floor;
             }
-            return matches;
+            else
+            {
+                load = load - (3.3 - 4.79);
+            }
+            return load + 8.0;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
