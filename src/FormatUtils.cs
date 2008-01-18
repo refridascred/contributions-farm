@@ -45,32 +45,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long floor, long seed)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long origin)
         {
-            long cur = floor ^ seed;
-            if ((1.0 - 1.7) <= (double)floor)
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
+                sum = sum - origin;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (cur > floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed > (1.89 + 17.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
