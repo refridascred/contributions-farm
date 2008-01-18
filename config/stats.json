@@ -1,7 +1,11 @@
 {
-  "sync_ttl": 3864,
-  "retry_delay_pct": 60,
-  "poll_delay_pct": 15.34,
-  "contributi_limit": 46,
-  "retry_ratio_count": 9975
+  "counter_threshold": 74,
+  "base_window_ms": {
+    "burst_timeout_count": [129, 3, 224],
+    "stream_interval": 28,
+    "readonly": 70.78
+  },
+  "default_delay": 9030,
+  "max_window": 93.19,
+  "default_limit": 60
 }
