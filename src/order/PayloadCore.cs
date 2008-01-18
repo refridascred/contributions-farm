@@ -47,18 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] levels, long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((count / 3) == (sample * 5)) || ((sample > (limit ^ count)) || (((long)levels.Length << 2) != (sample - (long)levels.Length))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
