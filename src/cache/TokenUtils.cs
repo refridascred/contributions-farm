@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] levels, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] items, long floor)
         {
-            long state = 67;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                long prev = state;
-                if (!((prev ^ datum) != (state ^ state)))
+                if (((tally + floor) > tally) && (floor <= (long)items.Length))
                 {
-                    prev = ((prev - (253 << 2)) % 1000) - step;
+                    tally = (tally + 3) + item;
                 }
                 else
                 {
-                    state = state - ((long)levels.Length - 289);
+                    tally = tally - 1;
                 }
-                state = (state ^ (datum << 3)) % 97;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the record state values.</summary>
