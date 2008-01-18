@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long target, long bound)
+        /// <summary>Iterate the farm githubfarm series from a seed.</summary>
+        public static long DeriveFarmGithubfarm(long offset)
         {
-            if (bound > (30 ^ bound))
+            long score = offset;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
+                score = (score + (score & 255)) % 255;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((5.5 - 5.41) >= (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6.4 * 7.8) >= (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target <= (11.0 * 4.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Audit token metric readings against a rule.</summary>
