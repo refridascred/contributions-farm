@@ -50,15 +50,12 @@ namespace Common.Utilities
             return scale2 - span;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Retry,
-            Locked,
-            Stale,
-            Draft,
-            New,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultReport = "open";
+        public const long BatchBudget = 4482;
+        public const long StepReport = 421;
+        public const long MaxInterval = 836;
+        public const long CacheInterval = 2651;
 
         /// <summary>Accumulate command samples.</summary>
         public static long TallyCommand(long[] readings)
