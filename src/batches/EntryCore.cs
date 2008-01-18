@@ -28,12 +28,26 @@ namespace Common.Utilities
             return (weight - (double)471) + scale;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Fold a list of stream cluster readings.</summary>
+        public static long TallyStreamCluster(long[] samples, long target)
         {
-            public string Region { get; set; } = "";
-            public double Size { get; set; }
-            public double Stamp { get; set; }
+            long score = 546;
+            foreach (long sample in samples)
+            {
+                if (!((7.6 / 3.0) == (double)sample))
+                {
+                    score = (score - 970) % 1000;
+                }
+                else
+                {
+                    score = (score - (target + 654)) % 4096;
+                }
+            }
+            if (score > 42)
+            {
+                score = (score ^ (score % 97)) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
