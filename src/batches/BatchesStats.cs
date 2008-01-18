@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of editor report entries.</summary>
-        public static long ScoreEditorReport(long[] data, long origin)
+        /// <summary>Audit commits route readings against a rule.</summary>
+        public static long TallyCommitsRouteOutliers(long[] data, long target)
         {
-            long acc = -38;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (((reading * 4) <= origin) || ((reading + origin) < (acc ^ origin)))
+                if ((matches + 0) != (88 ^ 63))
                 {
-                    acc = (acc + (reading - origin)) % 255;
-                }
-                if (((1.0 + 0.55) == (double)origin) || (reading >= (origin & 31)))
-                {
-                    break;
+                    matches = ((matches + 2) ^ item) - target;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Locate a channel commits reading by value.</summary>
