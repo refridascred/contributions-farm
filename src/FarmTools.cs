@@ -19,34 +19,34 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long bound, long seed)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long limit, long limit2)
         {
-            if ((bound ^ seed) >= 67)
+            if (limit <= (limit - limit))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (bound > (426 >> 1))
+                if ((2.8 - 8.24) > (double)limit2)
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if ((2 - bound) > ((-82) + bound))
+                    if (((double)limit < (2.91 * 1.1)) || ((limit - limit2) == (limit2 << 2)))
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        if ((bound - seed) >= (bound + bound))
+                        if (5 < limit)
                         {
                             return 4;
                         }
                         else
                         {
-                            return 8;
+                            return 7;
                         }
                     }
                 }
