@@ -47,14 +47,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] values, long limit)
         {
-            Paused,
-            Queued,
-            Active,
-            Synced,
-            Idle,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (!((sample - matches) == (20 & 127)))
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
         }
     }
 }
