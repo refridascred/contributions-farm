@@ -1,6 +1,5 @@
 {
-  "support_interval": "blue",
-  "burst_threshold_count": 500,
-  "warm_ttl_ms": 99,
-  "support_ratio": "stable"
+  "persist": 2566,
+  "retry_timeout_pct": "legacy",
+  "batch_window_ms": [313, 424, 380, 120]
 }
