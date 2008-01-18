@@ -32,19 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] series, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (sample > step)
+                if ((item ^ count) >= (54 / 2))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) - floor;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
