@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 9987;
-        public const string MinTools = "staging";
-        public const double BatchBudget = 60.78;
-        public const long BurstCount = 9314;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = (carry + bound) % 65521;
+                carry = (carry ^ 84) % 4096;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
