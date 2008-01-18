@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] readings, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            long result = 27;
+            foreach (long datum in readings)
             {
-                acc = acc ^ (step + step);
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((15.0 * 1.7) > (double)result)
+                {
+                    result = (((result * 4) + (5 - seed)) % 101) + datum;
+                }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Describe the account mode values.</summary>
