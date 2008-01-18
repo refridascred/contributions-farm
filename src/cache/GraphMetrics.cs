@@ -38,39 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long step, long origin)
+        /// <summary>Accumulate batch layout samples.</summary>
+        public static long CombineBatchLayout(long[] data)
         {
-            long step2 = step - origin;
-            if ((double)step2 < (16.0 * 3.02))
+            long anchor = 38;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + origin) > (origin - origin))
+                if ((double)775 <= (double)anchor)
                 {
-                    return 6;
+                    anchor = (anchor - (anchor - anchor)) ^ reading;
                 }
                 else
                 {
-                    if ((7.3 * 8.75) == (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step2 + step) < (origin * 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = (anchor * 4) + 76;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a payload record.</summary>
