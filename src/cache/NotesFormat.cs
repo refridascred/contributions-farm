@@ -20,12 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count contributi command pairs that satisfy a relation.</summary>
+        public static long CompareContributiCommandCount(long[] items)
         {
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
