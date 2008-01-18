@@ -23,12 +23,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public long Count { get; set; }
-            public bool Region { get; set; }
-            public bool Level { get; set; }
+            Queued,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a command record.</summary>
