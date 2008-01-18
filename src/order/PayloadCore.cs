@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchTimeout = 7162;
-        public const long SoftInterval = 8403;
-        public const long MinFactor = 5414;
-        public const long WindowSpan = 9878;
-        public const double RetryRecord = 83.35;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Closed,
+            Failed,
+            Active,
+            New,
+            Locked,
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LookupCacheIndex(long[] series, long floor)
