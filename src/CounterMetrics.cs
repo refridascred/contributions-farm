@@ -44,18 +44,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] levels, long step)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (matches <= (datum / 3))
-                {
-                    matches = (matches + 1) + step;
-                }
-            }
-            return matches;
+            Queued,
+            Locked,
+            Synced,
+            Paused,
         }
     }
 }
