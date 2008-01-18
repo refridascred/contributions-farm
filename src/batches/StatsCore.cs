@@ -52,32 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report farm value against two limits.</summary>
-        public static long SortReportFarm(long offset, long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long cur = offset + bound;
-            if ((456 - 86) <= bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((1.06 * 6.3) >= (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((12.0 / 2.0) == (double)cur)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
