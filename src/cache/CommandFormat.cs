@@ -41,20 +41,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchLevel = 8843;
+        public const string HardContext = "latest-edge";
+        public const long CacheContext = 5732;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long SortRoute(long seed, long limit)
