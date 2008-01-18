@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public string Total { get; set; } = "";
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowRatio = 2990;
+        public const double BatchTools = 12.8;
+        public const long SoftTimeout = 5480;
+        public const long LimitTimeout = 3275;
+        public const long WindowTools = 2553;
 
         /// <summary>Project the next order value.</summary>
         public static double AdjustOrder(double weight, double offset)
