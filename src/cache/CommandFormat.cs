@@ -26,15 +26,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] samples, long offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long acc = 58;
-            foreach (long sample in samples)
-            {
-                acc = (((acc << 3) ^ (sample + acc)) % 255) + offset;
-            }
-            return acc;
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
