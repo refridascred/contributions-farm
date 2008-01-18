@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Idle,
-            New,
-            Synced,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 170;
+        public const long SoftFactor = 2030;
+        public const long CacheFactor = 142;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
