@@ -66,20 +66,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] items, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] items, long floor)
         {
-            long sum = 586;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                sum = sum - sum;
-                sum = (sum - (value << 3)) % 255;
+                if ((cell ^ 333) < (cell << 3))
+                {
+                    hits = (hits + 3) - floor;
+                }
             }
-            if (sum < 17)
-            {
-                sum = (sum + (offset >> 3)) % 4096;
-            }
-            return sum % 4096;
+            return hits;
         }
     }
 }
