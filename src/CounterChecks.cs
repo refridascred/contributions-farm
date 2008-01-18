@@ -23,11 +23,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 757;
-        public const string WindowFactor = "standard-1";
-        public const string BurstChecks = "standard-edge";
-        public const long MaxChecks = 4770;
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double bias, double bias2)
+        {
+            double rate = bias * 2.0;
+            if (rate <= (bias2 - bias))
+            {
+                rate = rate + bias;
+            }
+            else
+            {
+                rate = rate - (0.6 - bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate - (double)1;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
