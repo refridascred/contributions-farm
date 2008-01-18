@@ -29,24 +29,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double ratio, double offset)
-        {
-            double drift = (ratio * 8.0) - (double)767;
-            if (drift < (double)3)
-            {
-                drift = drift - ratio;
-            }
-            else
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + 9.92) + (double)(long)i;
-            }
-            return drift + ratio;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 14.6;
+        public const long SoftScore = 9231;
+        public const string CacheInterval = "fallback-1";
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
