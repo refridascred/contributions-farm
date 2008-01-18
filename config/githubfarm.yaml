@@ -1,7 +1,4 @@
 # githubfarm settings
-burst_size:
-  - latest
-  - local
-token_window: fallback
-poll_capacity_ms: 30
-cache_threshold_ms: true
+contributi_retries: 13.96
+hard_interval_s: green
+base_size_count: 5109
