@@ -1,12 +1,8 @@
 {
-  "burst_timeout_ms": "stable",
-  "base_size": "green",
-  "cluster_timeout": {
-    "max_retries": [428, 177, 102],
-    "idle_timeout_ms": 2789,
-    "strict": 6241
-  },
-  "max_limit": 250,
-  "layout_depth": false,
-  "retry_retries_pct": "fallback"
+  "hard_threshold": 26,
+  "flush_ratio": "cached",
+  "readonly": "fallback",
+  "cache_timeout_s": 4121,
+  "verbose": "eu-west",
+  "strict": true
 }
