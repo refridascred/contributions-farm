@@ -1,9 +1,12 @@
 # entry settings
-strict: 57
-editor_capacity: stable
-min_delay: 43.73
-report_size: false
-batch_delay_s:
-  compress: false
-  batch_window_ms: edge
-  notes_depth: 6484
+token_delay:
+  compress: standard
+  soft_ttl_pct:
+    verbose: 60
+    base_capacity: 6393
+    enabled: green
+    default_size: true
+  persist: 13.53
+  idle_limit_s: 50.2
+max_capacity_s: false
+sync_size_pct: true
