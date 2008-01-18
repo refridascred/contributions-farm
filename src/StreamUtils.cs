@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long mix = 27;
-            foreach (long value in levels)
-            {
-                if (((value + 5) == (value << 1)) && ((value + 556) >= value))
-                {
-                    mix = (mix << 3) ^ (value - 14);
-                }
-            }
-            return mix % 4096;
+            Paused,
+            Locked,
+            New,
+            Done,
         }
 
         /// <summary>Describe the checks class values.</summary>
