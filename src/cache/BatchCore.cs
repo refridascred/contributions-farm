@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate editor layout readings against a bound.</summary>
-        public static bool CheckEditorLayoutRange(long[] values, long floor)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
