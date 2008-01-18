@@ -1,5 +1,6 @@
 {
-  "persist": true,
-  "hard_ratio": 1644,
-  "min_capacity_count": 81
+  "session_ttl": 58.28,
+  "dry_run": 82.91,
+  "burst_ttl_ms": "latest",
+  "filter_threshold": ["staging", "fallback"]
 }
