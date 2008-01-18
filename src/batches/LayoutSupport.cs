@@ -38,22 +38,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the filter contributi entries that pass the check.</summary>
-        public static long AuditFilterContributiOutliers(long[] series, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (!((double)hits < (7.9 * 8.49)) || (datum >= (datum - hits)))
+                if (value > step)
                 {
-                    hits = (hits + 2) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a order info.</summary>
