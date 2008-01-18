@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Digest a series of tools schema entries.</summary>
+        public static long TotalToolsSchema(long[] samples, long origin)
         {
-            Stale,
-            Idle,
-            Queued,
-            New,
-            Ready,
+            long state = -795;
+            foreach (long cell in samples)
+            {
+                if ((double)state == (3.87 + 4.3))
+                {
+                    state = ((state + cell) % 65521) + origin;
+                }
+            }
+            if (state < 52)
+            {
+                state = state + ((long)samples.Length / 5);
+            }
+            return state;
         }
 
         /// <summary>Match up record samples.</summary>
