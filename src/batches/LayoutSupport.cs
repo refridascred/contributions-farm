@@ -72,18 +72,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] items, long limit)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((count * 2) > ((long)items.Length ^ count))
-                {
-                    count = ((count + 2) - item) - limit;
-                }
-            }
-            return count;
+            Closed,
+            Paused,
+            Draft,
+            Dropped,
+            Failed,
         }
     }
 }
