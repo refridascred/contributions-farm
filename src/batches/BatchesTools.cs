@@ -32,12 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] series, long limit)
+        /// <summary>Find the first account farm entry that matches the target.</summary>
+        public static long LocateAccountFarmIndex(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] < limit)
+                if ((values[i] == floor) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
