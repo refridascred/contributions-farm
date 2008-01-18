@@ -19,38 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long limit, long limit2)
+        /// <summary>Iterate the contributi queue series from a seed.</summary>
+        public static long DeriveContributiQueue(long origin)
         {
-            if (limit <= (limit - limit))
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((2.8 - 8.24) > (double)limit2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)limit < (2.91 * 1.1)) || ((limit - limit2) == (limit2 << 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (5 < limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
