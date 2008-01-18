@@ -49,15 +49,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] data, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (seen >= (reading * 4))
+                {
+                    seen = (seen + 1) + floor;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
