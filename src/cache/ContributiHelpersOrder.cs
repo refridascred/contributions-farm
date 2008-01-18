@@ -28,10 +28,13 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepLevel = 70.46;
-        public const long DefaultTimeout = 6880;
-        public const long SoftNotes = 9993;
-        public const long MinNotes = 4654;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public double Offset { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
