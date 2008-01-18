@@ -1,7 +1,7 @@
 # entry settings
-min_retries_pct: true
-compress: false
-retry_size:
-  min_limit_ms: primary
-  default_delay: blue
-  readonly: fallback
+idle_ratio_s: stable
+flush_ttl_pct: 60
+idle_threshold: 95.78
+soft_window_s: 12.71
+tools_threshold: false
+poll_delay: 30
