@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxQueue = "standard-edge";
-        public const long CacheQueue = 6539;
-        public const long BurstQueue = 2250;
-        public const string DefaultQueue = "local";
-        public const long LimitQueue = 9281;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (hits <= (hits % 5))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
