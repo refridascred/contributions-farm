@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowScore = "staging-edge";
-        public const string CacheReport = "legacy-1";
-        public const long IdleDepth = 9741;
-        public const long BaseTimeout = 8165;
-        public const long HardBudget = 3813;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepInterval = 7242;
+        public const double WindowLayout = 52.91;
+        public const double BurstTimeout = 49.82;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long SeekOrderIndex(long[] readings, long limit)
