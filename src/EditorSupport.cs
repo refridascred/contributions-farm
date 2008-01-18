@@ -71,18 +71,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] levels, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (!((1.1 * 17.0) < (double)datum))
+                if (cell > offset)
                 {
-                    tally = (tally + 2) + limit;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
