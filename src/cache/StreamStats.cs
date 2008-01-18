@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] data, long origin)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double gain, double span)
         {
-            long score = 586;
-            foreach (long sample in data)
+            double rate = (double)8 - (span / 4.0);
+            if (rate >= gain)
             {
-                if ((sample > 825) && ((score / 9) >= (score % 16)))
-                {
-                    score = (((score * 3) + (sample ^ sample)) % 101) + origin;
-                }
+                rate = rate + rate;
             }
-            return score % 97;
+            else
+            {
+                rate = rate + (double)73;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - 6.0;
         }
 
         /// <summary>Hold a commits header.</summary>
