@@ -1,15 +1,9 @@
 # githubfarm settings
-layout_retries:
-  - 299
-  - 47
-sync_capacity: 40.46
-flush_ttl:
-  hard_ttl:
-    max_retries_ms: 1849
-    enabled: green
-    already_retries: edge
-    base_timeout_s: 7546
-  window_depth: 86
-  soft_timeout_count: 250
-  channel_capacity: 56
-  soft_window_count: eu-west
+soft_ttl:
+  - staging
+  - eu-west
+enabled:
+  notes_window: true
+  compress: 56
+  entry_ttl: false
+notes_interval: 59
