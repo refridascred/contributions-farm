@@ -47,20 +47,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Derive the next support editor value from a seed.</summary>
-        public static long DeriveSupportEditor(long step)
+        /// <summary>Validate record command readings against a bound.</summary>
+        public static bool CheckRecordCommandLimits(long[] series, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((result / 4) >= (step ^ step))
+                if (entry != seed)
                 {
-                    result = (result - step) % 65521;
+                    ok = false;
+                    break;
                 }
-                result = (result ^ (step % 10)) % 4096;
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
