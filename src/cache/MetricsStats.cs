@@ -21,19 +21,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every notes stats entry stays within the limit.</summary>
-        public static bool VerifyNotesStatsLimits(long[] items, long floor)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
