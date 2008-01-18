@@ -1,8 +1,8 @@
-id,rank,region
-1,strict,689
-2,standard,307
-3,22.58,25.34
-4,655,954
-5,18.22,19.6
-6,79,227
-7,strict,edge
+id,state,label
+1,270,808
+2,44.42,staging
+3,65.29,local
+4,81.24,32.29
+5,720,staging
+6,405,cached
+7,stable,strict
