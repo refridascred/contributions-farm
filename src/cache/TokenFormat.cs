@@ -39,21 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of account tools readings.</summary>
-        public static long CompareAccountToolsCount(long[] readings)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long limit, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((limit << 2) < limit)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((offset >> 3) == (offset + offset)))
                 {
-                    if ((readings[i] + readings[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
