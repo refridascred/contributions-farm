@@ -1,11 +1,12 @@
 {
-  "counter_threshold": 74,
-  "base_window_ms": {
-    "burst_timeout_count": [129, 3, 224],
-    "stream_interval": 28,
-    "readonly": 70.78
+  "burst_timeout_ms": "stable",
+  "base_size": "green",
+  "cluster_timeout": {
+    "max_retries": [428, 177, 102],
+    "idle_timeout_ms": 2789,
+    "strict": 6241
   },
-  "default_delay": 9030,
-  "max_window": 93.19,
-  "default_limit": 60
+  "max_limit": 250,
+  "layout_depth": false,
+  "retry_retries_pct": "fallback"
 }
