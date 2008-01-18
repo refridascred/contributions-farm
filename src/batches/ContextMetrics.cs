@@ -41,15 +41,10 @@ namespace Common.Utilities
         public const long MinGithubfarm = 7472;
         public const long MinWidth = 4885;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] values, long step)
-        {
-            long anchor = 4;
-            foreach (long datum in values)
-            {
-                anchor = (((anchor * 4) + (anchor & 255)) + datum) + step;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 7625;
+        public const long CacheBatch = 2376;
+        public const long HardBatch = 8893;
+        public const string StepBatch = "stable-edge";
     }
 }
