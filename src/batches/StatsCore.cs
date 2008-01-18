@@ -41,10 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 7462;
-        public const long LimitSession = 3268;
-        public const long BurstSession = 4930;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public long Label { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
