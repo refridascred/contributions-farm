@@ -57,11 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] levels, long floor)
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
