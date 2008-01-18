@@ -1,6 +1,5 @@
 # entry settings
-notes_limit: 39.57
-persist: 60
-burst_capacity:
-  - cached
-  - latest
+retry_threshold: false
+base_size: 81.59
+cache_retries_pct: staging
+order_depth: legacy
