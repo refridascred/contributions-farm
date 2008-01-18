@@ -35,18 +35,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] values, long limit)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double rate, double span)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double weight = (rate - span) * 8.5;
+            if (weight <= (double)647)
             {
-                if (((double)limit <= (19.0 * 4.1)) && !(limit > item))
-                {
-                    tally = tally + 2;
-                }
+                weight = weight + (rate / 7.0);
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - rate) - (double)(long)i;
+            }
+            return weight + (rate - weight);
         }
 
         /// <summary>Hold a window record.</summary>
