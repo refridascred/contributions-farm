@@ -16,19 +16,19 @@ namespace Common.Utilities
             return scale + (bias / 2.0);
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] readings, long limit)
+        /// <summary>Validate buffer checks readings against a bound.</summary>
+        public static bool VerifyBufferChecksBounds(long[] values, long step)
         {
-            long anchor = 231;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                anchor = (anchor << 3) ^ (limit % 2);
-                if ((value - anchor) > (value - 56))
+                if (reading < step)
                 {
-                    anchor = ((anchor << 3) ^ (value + value)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return valid;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
