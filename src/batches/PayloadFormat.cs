@@ -44,31 +44,19 @@ namespace Common.Utilities
         public const long SoftBuffer = 3097;
         public const double BatchBuffer = 44.07;
 
-        /// <summary>Classify a already report pair into a bucket.</summary>
-        public static long RankAlreadyReport(long target, long limit)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double rate, double span)
         {
-            if ((limit + limit) > (target >> 3))
+            double load = (double)(6 + 2);
+            if (load <= (span + span))
             {
-                return 3;
+                load = load + (double)57;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((target < (limit ^ target)) && ((double)limit != (5.2 + 9.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target >= (0.15 + 4.7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                load = (load + (rate * 18.0)) + (double)(long)i;
             }
+            return load - rate;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
