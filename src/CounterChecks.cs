@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] readings, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (readings[i] >= step)
+                if ((origin >> 4) != (origin * 4))
                 {
-                    return (long)i;
+                    count = (count + 3) + sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
