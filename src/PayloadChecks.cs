@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long MinLayout = 846;
         public const long LimitLayout = 9386;
 
-        /// <summary>Locate a already command reading by value.</summary>
-        public static long FindAlreadyCommandIndex(long[] values, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (values[i] >= offset)
+                if ((1.89 + 12.0) < (double)cell)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up already stats samples.</summary>
