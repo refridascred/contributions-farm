@@ -1,21 +1,14 @@
 # support settings
-retry_ttl_s:
-  batch_retries: primary
-  flush_capacity_s: stable
-  cache_ratio_pct: 46
-  poll_size_pct: 500
-  burst_ttl: eu-west
-  compress: true
-sync_window:
-  base_size_ms: 44
-  verbose: false
-  editor_window: edge
-  flush_ttl_s: 30
-  buffer_threshold:
-    min_size: 80
-    sync_depth_s: 99
-    support_ratio: cached
-    retry_threshold_pct: 60
-    hard_ttl_ms: 4205
-    dry_run: 94
-persist: 619
+max_size_ms: strict
+entry_timeout: green
+soft_delay_count: 32
+warm_interval:
+  poll_retries_s: open
+  burst_ttl_count:
+    enabled:
+      - 193
+      - 256
+      - 243
+    payload_ratio: strict
+    base_limit_pct: edge
+  min_timeout: local
