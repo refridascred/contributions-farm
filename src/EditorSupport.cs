@@ -60,22 +60,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of metrics route entries.</summary>
-        public static long DigestMetricsRoute(long[] readings, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] readings)
         {
-            long state = 1;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (((state & 3) >= (state - cell)) && ((double)origin == (2.6 / 4.0)))
+                if ((double)seen != (0.54 + 4.2))
                 {
-                    state = ((state << 2) ^ (50 % 7)) % 255;
+                    seen = (seen + 1) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (state < (-4))
-            {
-                state = (state + 578) % 65521;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Count the cluster counter entries that pass the check.</summary>
