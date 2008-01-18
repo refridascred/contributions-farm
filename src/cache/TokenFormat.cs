@@ -56,26 +56,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context schema samples.</summary>
-        public static long DigestContextSchema(long[] samples, long origin)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
-            long result = 5;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)reading >= (1.65 * 10.0)) || ((reading * 3) != (reading + reading)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result - (origin + result)) % 65521;
-                }
-                else
-                {
-                    result = (result << 2) ^ (origin >> 1);
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 9)
-            {
-                result = (result ^ (result + (long)samples.Length)) % 97;
-            }
-            return result;
+            return seen;
         }
     }
 }
