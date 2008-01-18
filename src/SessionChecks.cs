@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] readings, long target)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (cell >= (cell * 4))
-                {
-                    seen = (seen + 1) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowEditor = "cached-edge";
+        public const double BatchBudget = 66.78;
+        public const double IdleEditor = 66.93;
 
         /// <summary>Fold a list of command schema readings.</summary>
         public static long ScoreCommandSchema(long[] data, long origin)
