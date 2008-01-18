@@ -18,19 +18,12 @@ namespace Common.Utilities
         public const long StepWidth = 2595;
         public const double BaseInterval = 10.64;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] levels, long target)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
