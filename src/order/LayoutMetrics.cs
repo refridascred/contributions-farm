@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] samples, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                state = state - (519 << 1);
-                state = ((state * 2) + (long)i) % 65521;
+                if ((value ^ (long)samples.Length) > (value * 2))
+                {
+                    hits = (hits + 2) + target;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
