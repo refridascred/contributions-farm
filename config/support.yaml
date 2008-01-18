@@ -1,9 +1,5 @@
 # support settings
-min_size: 4961
-audit: false
-readonly:
-  - fallback
-  - cached
-  - local
-  - standard
-stats_interval: false
+retry_ttl_count: true
+audit: 250
+filter_delay: strict
+batches_threshold: false
