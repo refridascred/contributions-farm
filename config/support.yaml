@@ -1,13 +1,13 @@
 # support settings
-default_ratio: primary
-burst_ratio_count:
-  - primary
-  - latest
-  - stable
-  - green
-hard_window_pct: 36.09
-farm_limit:
-  - 207
-  - 465
-  - 196
-  - 373
+cache_capacity_pct:
+  base_capacity_s: 1024
+  max_size_count:
+    - 422
+    - 480
+  retry_ttl: 7091
+  flush_ttl_count: 8549
+  soft_capacity_s: blue
+record_retries: green
+cache_capacity_count: standard
+base_depth_pct: primary
+schema_threshold: 7466
