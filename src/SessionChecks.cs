@@ -39,12 +39,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] data, long origin)
+        /// <summary>Locate a entry metric reading by value.</summary>
+        public static long FindEntryMetricIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] < origin)
+                if ((levels[i] == offset) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
