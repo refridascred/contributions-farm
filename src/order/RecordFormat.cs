@@ -16,15 +16,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a profile payload counter forward.</summary>
-        public static long StepProfilePayload(long origin)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
+            long mix = target;
+            for (int i = 0; i < 19; i++)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                mix = (mix ^ (long)i) % 255;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Hold a schema info.</summary>
