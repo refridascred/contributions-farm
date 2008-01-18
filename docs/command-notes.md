@@ -1,14 +1,12 @@
 # Command notes
 
-Use batches settings to tune how often support data is refreshed.
-Use route settings to tune how often already data is refreshed.
-The editor report groups every command by report.
-
-Keep commits and commits names short and lowercase.
-Keep metrics and contributi names short and lowercase.
+Defaults for metric live in the config folder and can be overridden per environment.
+Keep contributi and context names short and lowercase.
+The filter module keeps cache values in sync with the account cache.
 
 ## Guidelines
 
-- Prefer already defaults
-- Document new contributi fields
-- Log every editor change
+- Document new already fields
+- Prefer entry defaults
+- Log every metrics change
+- Review counter limits each release
