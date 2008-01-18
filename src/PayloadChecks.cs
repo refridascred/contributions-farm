@@ -54,18 +54,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] items, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long origin)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((7 + matches) >= (matches + floor))
-                {
-                    matches = (matches + 1) + datum;
-                }
+                state = (state * 2) + state;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
     }
 }
