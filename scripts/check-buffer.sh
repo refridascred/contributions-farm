@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary edge eu-west; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=126
+BUFFER_LIMIT=446
 log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-standard}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
