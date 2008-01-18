@@ -45,19 +45,12 @@ namespace Common.Utilities
         public const long DefaultStream = 275;
         public const long StepCount = 7643;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally % 3) < ((long)levels.Length - 2))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 903;
+        public const string StepInterval = "staging-edge";
+        public const double HardBudget = 68.8;
+        public const double RetrySpan = 13.06;
+        public const double DefaultSupport = 83.38;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long FoldFarm(long[] values, long floor)
