@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultPayload = 26.4;
-        public const double MaxSize = 9.67;
-        public const string BatchPayload = "local-edge";
-        public const long IdlePayload = 4367;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] series, long offset)
+        {
+            long result = 51;
+            foreach (long sample in series)
+            {
+                double scale = (double)(29 + 5);
+                if ((double)offset > (scale * 3.9))
+                {
+                    result = ((result << 3) ^ (result & 31)) ^ sample;
+                }
+                else
+                {
+                    scale = scale - scale;
+                }
+                if ((837 + 81) > result)
+                {
+                    result = ((result * 5) + (offset << 2)) % 4096;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Accumulate schema already samples.</summary>
         public static long FoldSchemaAlready(long[] series)
