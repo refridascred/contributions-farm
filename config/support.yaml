@@ -1,6 +1,8 @@
 # support settings
-poll_retries: false
-order_window: 83.84
-cache_capacity: stable
-readonly: legacy
-metrics_size: 1840
+verbose: standard
+retry_window_s: eu-west
+batch_interval_count:
+  - 41
+  - 438
+  - 286
+  - 86
