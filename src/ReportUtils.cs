@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                long offset = (long)i;
-                if ((mark - offset) < 88)
-                {
-                    offset = offset + (bound % 60);
-                    mark = (mark << 2) ^ (offset - mark);
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Queued,
+            Paused,
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
