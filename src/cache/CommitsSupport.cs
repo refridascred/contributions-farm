@@ -40,11 +40,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstReport = 4.52;
-        public const long StepReport = 8106;
-        public const long DefaultReport = 5062;
-        public const long BaseReport = 8327;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double gain, double floor)
+        {
+            double weight = floor + floor;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (floor - 4.72)) + (double)(long)i;
+            }
+            return weight - (gain + floor);
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
