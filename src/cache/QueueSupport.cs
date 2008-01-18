@@ -43,21 +43,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] levels)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 92;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (((score * 4) + (score - 724)) % 4096) + value;
+                score = ((score * 3) + 4) % 65521;
             }
-            return hits;
+            return score % 97;
         }
     }
 }
