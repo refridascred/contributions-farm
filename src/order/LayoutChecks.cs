@@ -91,13 +91,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] data)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long result = 1;
+            foreach (long value in data)
+            {
+                result = (result << 3) ^ value;
+            }
+            return result;
         }
 
         /// <summary>Accumulate route samples.</summary>
