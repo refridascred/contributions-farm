@@ -1,7 +1,5 @@
 {
-  "cache_interval_ms": "stable",
-  "dry_run": 250,
-  "burst_size": false,
-  "min_interval_pct": 9728,
-  "idle_retries_count": 34
+  "metric_ratio": false,
+  "persist": 98.07,
+  "audit": ["cached", "fallback", "open", "stable"]
 }
