@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every githubfarm entry entry stays within the limit.</summary>
-        public static bool GuardGithubfarmEntryRange(long[] samples, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 8324;
+        public const double WindowMetric = 37.45;
+        public const long MaxMetric = 2469;
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double AdjustRoute(double rate, double bias)
