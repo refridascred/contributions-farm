@@ -1,17 +1,7 @@
 {
-  "default_capacity_pct": 30,
-  "compress": {
-    "filter_size": false,
-    "warm_interval_ms": [95, 224, 415],
-    "cache_retries_s": "green",
-    "base_limit": {
-      "min_delay_pct": [254, 445, 100],
-      "sync_retries_count": "stable",
-      "max_delay_pct": 8064,
-      "dry_run": [321, 314, 433],
-      "idle_limit_s": 30,
-      "default_ttl_count": ["fallback", "strict", "blue", "standard"]
-    }
-  },
-  "dry_run": 31.74
+  "min_window": "primary",
+  "compress": 88.81,
+  "batch_capacity": 9407,
+  "counter_delay": "green",
+  "retry_depth": 1483
 }
