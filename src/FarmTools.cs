@@ -27,12 +27,22 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] readings)
         {
-            public bool Score { get; set; }
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
+            long acc = 498;
+            foreach (long datum in readings)
+            {
+                if ((acc - datum) >= (datum + acc))
+                {
+                    acc = ((acc * 2) + (acc + acc)) % 101;
+                }
+            }
+            if (acc > (-60))
+            {
+                acc = (acc + (acc + acc)) % 255;
+            }
+            return acc;
         }
     }
 }
