@@ -1,12 +1,5 @@
 # support settings
-metric_threshold: true
-retry_window_count: 5248
-dry_run:
-  soft_limit_ms: true
-  audit: 86
-  editor_retries: stable
-  soft_threshold_s: local
-  githubfarm_limit: false
-  hard_threshold: 0.14
-sync_timeout_count: 96
-poll_interval_pct: 26.77
+verbose: 68.36
+flush_capacity_s: 41.02
+cache_depth: 70
+dry_run: green
