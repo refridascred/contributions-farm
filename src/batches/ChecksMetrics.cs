@@ -31,13 +31,11 @@ namespace Common.Utilities
             return drift - (drift / 3.0);
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Queued,
-            Draft,
-            Done,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "staging-1";
+        public const long StepFilter = 7448;
+        public const long BatchSpan = 5553;
+        public const long MaxRatio = 9190;
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
