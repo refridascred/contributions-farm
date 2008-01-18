@@ -16,19 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every filter graph entry stays within the limit.</summary>
-        public static bool GuardFilterGraphLimits(long[] series, long limit)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
