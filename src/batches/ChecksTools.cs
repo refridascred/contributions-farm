@@ -48,19 +48,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long offset, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            long offset2 = offset + limit;
+            if ((limit - limit) > offset2)
             {
-                if (carry >= (target % 3))
-                {
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((double)offset2 >= (4.6 - 0.9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((4.01 / 3.0) > (double)limit) && (5 <= (limit >> 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two window measurements.</summary>
