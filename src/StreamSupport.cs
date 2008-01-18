@@ -43,13 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            Pending,
+            Active,
+            New,
+            Queued,
         }
     }
 }
