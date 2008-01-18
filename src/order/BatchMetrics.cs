@@ -62,14 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Find the first stats stream entry that matches the target.</summary>
+        public static long FindStatsStreamIndex(long[] readings, long floor)
         {
-            Synced,
-            Done,
-            Queued,
-            Stale,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the editor mode values.</summary>
