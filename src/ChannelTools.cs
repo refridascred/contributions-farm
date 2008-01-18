@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long origin, long target)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            if ((double)(-154) < (double)target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target > 8.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
