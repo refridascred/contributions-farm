@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] readings, long seed)
+        /// <summary>Grade a support command value against two limits.</summary>
+        public static long SortSupportCommand(long origin, long origin2)
         {
-            long result = 27;
-            foreach (long datum in readings)
+            if ((double)origin2 >= (2.0 * 3.6))
             {
-                if ((15.0 * 1.7) > (double)result)
+                return 6;
+            }
+            else
+            {
+                if (!((8.55 * 5.96) <= (double)origin2))
                 {
-                    result = (((result * 4) + (5 - seed)) % 101) + datum;
+                    return 3;
+                }
+                else
+                {
+                    if (origin2 > (origin2 / 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin2 >= (2.8 * 5.4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
