@@ -42,17 +42,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] series, long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long seed, long seed2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = seed + seed2;
+            if (!((double)seed2 < 6.0))
             {
-                if (series[i] > origin)
+                return 4;
+            }
+            else
+            {
+                if ((68 < (seed2 ^ 730)) && ((seed2 + seed) > ((-25) + cur)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
