@@ -46,11 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long step)
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
+            long mark = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!(((step ^ 862) < (long)i) && ((double)step > (16.0 / 9.0))))
+                {
+                    mark = mark + 618;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
