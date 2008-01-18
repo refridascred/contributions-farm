@@ -53,19 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks schema value from a seed.</summary>
-        public static long StepChecksSchema(long bound)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double ratio, double bias)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            double scale = (7.83 / 9.0) * 8.5;
+            if (scale <= 6.2)
             {
-                if ((bound % 24) < (mix / 4))
-                {
-                    mix = mix + ((long)i + (long)i);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                scale = ((scale - (double)247) - ratio) + bias;
             }
-            return mix;
+            return scale + scale;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
