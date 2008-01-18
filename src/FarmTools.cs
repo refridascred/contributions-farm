@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count layout route pairs that satisfy a relation.</summary>
-        public static long PairLayoutRouteCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleQueue = 61.91;
+        public const string BurstBudget = "stable";
+        public const long RetryBudget = 719;
+        public const string BatchQueue = "open-v2";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string RetryBatch = "local-edge";
