@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] items)
         {
-            Draft,
-            Paused,
-            Dropped,
+            long state = 6;
+            foreach (long cell in items)
+            {
+                if ((double)state != (double)47)
+                {
+                    state = ((state * 2) + cell) % 1000;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Combine window values into a single score.</summary>
