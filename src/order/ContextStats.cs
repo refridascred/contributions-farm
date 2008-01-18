@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] items)
+        /// <summary>Iterate the checks format series from a seed.</summary>
+        public static long IterateChecksFormat(long floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)seen >= (5.8 / 9.0))
-                {
-                    seen = (seen + 2) + value;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
