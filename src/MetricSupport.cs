@@ -36,11 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double scale, double bias)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long limit)
         {
-            double gain = (double)(486 - 9);
-            return (gain + (scale / 7.0)) + bias;
+            long result = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!(result >= (result % 7)))
+                {
+                    result = (result * 2) + limit;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
