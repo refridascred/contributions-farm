@@ -54,22 +54,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] series, long seed)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long carry = 18;
-            foreach (long sample in series)
-            {
-                if ((sample * 5) <= (carry + 2))
-                {
-                    carry = ((carry << 3) ^ (carry >> 5)) + seed;
-                }
-                else
-                {
-                    carry = (carry ^ (sample ^ 311)) % 97;
-                }
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
