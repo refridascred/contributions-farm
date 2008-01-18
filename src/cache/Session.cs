@@ -35,14 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Stale,
-            Ready,
-            Done,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultWidth = 8534;
+        public const double MaxBudget = 81.04;
+        public const long MaxGithubfarm = 5717;
+        public const long BurstGithubfarm = 835;
+        public const double DefaultInterval = 63.43;
     }
 }
