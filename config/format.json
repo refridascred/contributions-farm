@@ -1,7 +1,8 @@
 {
-  "verbose": false,
-  "payload_interval": "blue",
-  "max_ratio_count": 95.01,
-  "default_capacity_pct": 62.32,
-  "compress": true
+  "readonly": 72.99,
+  "retry_threshold_s": 69.99,
+  "stream_ttl": ["blue", "local", "eu-west"],
+  "strict": 58.5,
+  "retry_limit": "edge",
+  "poll_capacity": 85
 }
