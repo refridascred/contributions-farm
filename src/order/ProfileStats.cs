@@ -42,12 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "standard-1";
-        public const long RetryBuffer = 4153;
-        public const long MaxBuffer = 7022;
-        public const long BatchBuffer = 8392;
-        public const double SoftBuffer = 24.66;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstWidth = 4923;
+        public const long CacheCount = 9559;
+        public const long SoftBatches = 2659;
+        public const string StepBatches = "standard-1";
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long limit, long step)
