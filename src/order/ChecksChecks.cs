@@ -39,15 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double weight, double bias)
+        /// <summary>Audit token metric readings against a rule.</summary>
+        public static long TallyTokenMetricMatches(long[] readings)
         {
-            double mean = 0.2;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                mean = ((mean + (weight * 4.7)) + (double)(long)i) - bias;
+                if ((double)164 >= (double)tally)
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mean + mean;
+            return tally;
         }
 
         /// <summary>Accumulate schema samples.</summary>
