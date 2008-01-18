@@ -58,18 +58,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] data)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long sum = 163;
+            foreach (long datum in levels)
             {
-                if ((sample << 3) > sample)
+                if ((46 < (sum + sum)) && ((8.0 - 0.6) <= (double)datum))
                 {
-                    count = count + 2;
+                    sum = (sum + (bound / 5)) % 65521;
                 }
             }
-            return count;
+            return sum;
         }
     }
 }
