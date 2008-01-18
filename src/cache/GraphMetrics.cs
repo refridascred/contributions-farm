@@ -49,12 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double ratio, double floor)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
+            double scale = ratio;
+            if (scale >= (double)88)
+            {
+                scale = scale + (double)1;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - ratio) + (double)(long)i;
+            }
+            return scale - floor;
         }
     }
 }
