@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = 8.7 + bias;
+            if (ratio > bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio + bias;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (scale * 7.7)) + (double)(long)i;
+            }
+            return ratio + (8.9 - 0.96);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
