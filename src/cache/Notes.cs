@@ -31,25 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long step, long step2)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            long bound = step ^ step2;
-            if (step2 > (step - step2))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - bound) == (step2 / 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first graph session entry that matches the target.</summary>
