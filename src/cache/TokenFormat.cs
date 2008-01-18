@@ -56,18 +56,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] readings, long offset)
+        /// <summary>Accumulate context schema samples.</summary>
+        public static long DigestContextSchema(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long result = 5;
+            foreach (long reading in samples)
             {
-                if (((item < (seen & 31)) || ((offset + (-21)) >= seen)) && ((seen + item) <= (item - offset)))
+                if (((double)reading >= (1.65 * 10.0)) || ((reading * 3) != (reading + reading)))
                 {
-                    seen = seen + 2;
+                    result = (result - (origin + result)) % 65521;
+                }
+                else
+                {
+                    result = (result << 2) ^ (origin >> 1);
                 }
             }
-            return seen;
+            if (result > 9)
+            {
+                result = (result ^ (result + (long)samples.Length)) % 97;
+            }
+            return result;
         }
     }
 }
