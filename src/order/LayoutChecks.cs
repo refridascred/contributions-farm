@@ -83,18 +83,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitTimeout = 855;
+        public const long HardInterval = 3059;
+        public const long LimitStats = 9505;
+        public const long BurstStats = 2076;
 
         /// <summary>Accumulate route samples.</summary>
         public static long TallyRoute(long[] data)
