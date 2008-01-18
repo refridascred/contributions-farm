@@ -55,26 +55,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] readings, long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] readings)
         {
-            long total = 813;
+            long anchor = 773;
             foreach (long reading in readings)
             {
-                total = ((total * 4) + floor) % 65521;
-                if (reading >= ((-648) << 1))
+                if ((long)readings.Length <= (reading - anchor))
                 {
-                    long matches = reading & 127;
-                    total = (total + (matches - matches)) % 255;
-                    continue;
-                }
-                total = (total ^ floor) % 1000;
-                if (total >= (reading * 2))
-                {
-                    break;
+                    anchor = ((anchor * 4) + (reading >> 3)) % 255;
                 }
             }
-            return total;
+            if (anchor > 9)
+            {
+                anchor = ((anchor << 3) ^ (anchor >> 1)) % 101;
+            }
+            return anchor;
         }
     }
 }
