@@ -1,12 +1,7 @@
 # githubfarm settings
-dry_run: 24.51
-poll_capacity: 37.16
-batch_ratio_s:
-  strict: staging
-  default_limit_ms: 250
-  cache_delay_count: true
-  idle_retries: 7954
-  retry_ratio_count: 9978
-  min_capacity: 4588
-burst_timeout_count: 2253
-persist: false
+burst_size:
+  - latest
+  - local
+token_window: fallback
+poll_capacity_ms: 30
+cache_threshold_ms: true
