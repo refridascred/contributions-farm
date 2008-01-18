@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] readings)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long target, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if (((target * 3) > target) && (target > (87 * 4)))
             {
-                if (3.91 < (double)cell)
+                return 2;
+            }
+            else
+            {
+                if ((target - step) > (target - target))
                 {
-                    tally = tally + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((target / 3) >= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (5 > target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
