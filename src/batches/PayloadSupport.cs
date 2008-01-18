@@ -25,10 +25,15 @@ namespace Common.Utilities
         public const long BatchCluster = 118;
         public const double CacheRatio = 33.7;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftContext = "standard-v2";
-        public const string CacheBudget = "staging-1";
-        public const double LimitCount = 65.64;
-        public const long IdleFactor = 8933;
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double rate, double span)
+        {
+            double drift = rate;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = ((drift - drift) + (double)(long)i) - span;
+            }
+            return drift - drift;
+        }
     }
 }
