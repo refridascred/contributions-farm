@@ -48,23 +48,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] samples, long origin)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] levels)
         {
-            long mix = 552;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 2) + (mix + 94)) ^ datum;
-                if ((double)mix != (1.87 - 10.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix << 2) ^ (149 & 127);
+                    if ((levels[i] + levels[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix > 0)
-            {
-                mix = (mix ^ (origin / 7)) % 1000;
-            }
-            return mix % 4096;
+            return count;
         }
     }
 }
