@@ -40,22 +40,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((mark - mark) > (mark + limit)))
-                {
-                    mark = mark - (mark + 58);
-                    mark = mark + mark;
-                }
-                mark = mark ^ (long)i;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 7462;
+        public const long LimitSession = 3268;
+        public const long BurstSession = 4930;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long TallyStreamOutliers(long[] readings, long origin)
