@@ -23,15 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double ratio, double span)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double drift = (double)5 * 10.0;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (ratio - drift)) + (double)(long)i;
-            }
-            return drift - (span + span);
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the support mode values.</summary>
