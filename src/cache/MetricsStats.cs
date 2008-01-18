@@ -69,14 +69,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Accumulate schema farm samples.</summary>
+        public static long TotalSchemaFarm(long[] levels)
         {
-            Draft,
-            Stale,
-            New,
-            Idle,
-            Paused,
+            long state = 32;
+            foreach (long reading in levels)
+            {
+                if ((double)state <= (0.2 * 1.0))
+                {
+                    state = ((state * 5) + reading) % 4096;
+                }
+                if (!((state - reading) <= (state - state)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
