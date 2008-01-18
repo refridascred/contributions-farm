@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long step, long limit)
         {
-            Synced,
-            Paused,
-            Closed,
-            Active,
-            Draft,
+            long span = step ^ limit;
+            if (limit <= (step * 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)83 > (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((827 & 7) > (span & 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
