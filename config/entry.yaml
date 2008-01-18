@@ -1,7 +1,9 @@
 # entry settings
-graph_interval: staging
-hard_ttl_pct: 0.5
-tools_window: true
-soft_depth_count: 32
-compress: 100
-persist: 18.37
+flush_depth: latest
+batch_ttl_pct: 13
+idle_threshold:
+  - stable
+  - blue
+warm_depth_pct: standard
+entry_ratio: stable
+max_depth_ms: 500
