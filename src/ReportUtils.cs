@@ -64,21 +64,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
