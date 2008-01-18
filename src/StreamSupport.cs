@@ -14,28 +14,29 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long bound, long offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long floor, long origin)
         {
-            if ((7.65 * 7.76) != (double)bound)
+            long next = floor + origin;
+            if ((next + origin) < (next / 4))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((offset - bound) < (offset * 3))
+                if ((double)origin <= (2.38 / 2.0))
                 {
                     return 8;
                 }
                 else
                 {
-                    if (((bound + (-318)) >= offset) && ((double)bound >= (1.92 + 15.0)))
+                    if (689 > (origin * 3))
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        return 7;
+                        return 3;
                     }
                 }
             }
