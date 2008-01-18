@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long bound, long floor)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            if ((bound - 8) == (floor + floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor <= (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
