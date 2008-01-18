@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Blend two batch counter measurements.</summary>
+        public static double AdjustBatchCounter(double bias, double span)
         {
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
+            double scale = 9.0;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = ((scale + scale) - (double)(long)i) - span;
+            }
+            return scale + (bias / 2.0);
         }
 
         /// <summary>Describe the notes phase values.</summary>
