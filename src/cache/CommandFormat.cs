@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a session queue counter forward.</summary>
-        public static long RollSessionQueue(long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] samples, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((20.0 * 7.79) < (double)(long)i)
+                if (reading <= origin)
                 {
-                    anchor = anchor - (anchor - anchor);
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor - (anchor / 2)) % 101;
-                    anchor = ((anchor << 2) ^ (anchor * 2)) % 4096;
-                }
-                anchor = anchor + (0 - 8);
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Accumulate cache samples.</summary>
