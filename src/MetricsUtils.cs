@@ -14,12 +14,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleBudget = 9620;
-        public const long RetryRecord = 5512;
-        public const long MinRecord = 5383;
-        public const long IdleScore = 8895;
-        public const long IdleRecord = 6827;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] values)
+        {
+            long sum = 868;
+            foreach (long sample in values)
+            {
+                sum = (sum * 4) + (sum - sample);
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long CombineToken(long[] readings)
