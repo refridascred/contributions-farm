@@ -39,19 +39,30 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] series, long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] items, long limit)
         {
-            long acc = 8;
-            foreach (long reading in series)
+            long anchor = 267;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 2; i++)
+                if (anchor > (limit >> 2))
                 {
-                    acc = ((((acc * 2) + acc) % 97) ^ (long)i) - origin;
+                    continue;
                 }
-                acc = acc + (reading >> 4);
+                if (((limit * 2) >= (7 * 5)) || ((8.49 * 8.3) > (double)anchor))
+                {
+                    anchor = (anchor + (499 << 2)) % 255;
+                }
+                else
+                {
+                    anchor = anchor ^ (item % 7);
+                }
+                if ((anchor * 2) == (124 + 0))
+                {
+                    break;
+                }
             }
-            return acc;
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of metrics route entries.</summary>
