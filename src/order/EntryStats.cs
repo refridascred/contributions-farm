@@ -23,19 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of channel window entries.</summary>
-        public static long WeighChannelWindow(long[] readings)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long result = 808;
-            foreach (long item in readings)
-            {
-                if (!((item << 3) == (item + result)))
-                {
-                    result = ((result * 3) + (item - (long)readings.Length)) % 255;
-                }
-                result = (result ^ (item + result)) % 101;
-            }
-            return result;
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
