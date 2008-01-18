@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 5608;
-        public const long MinLevel = 5815;
-        public const string WindowTimeout = "stable-v2";
-        public const long LimitGithubfarm = 3223;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Pending,
+            Closed,
+            Paused,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
