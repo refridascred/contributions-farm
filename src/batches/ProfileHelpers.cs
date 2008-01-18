@@ -92,18 +92,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((73 % 24) < (value * 3))
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetrySpan = 8292;
+        public const long CacheCluster = 9356;
+        public const long MinTimeout = 9281;
+        public const string LimitCluster = "stable-1";
     }
 }
