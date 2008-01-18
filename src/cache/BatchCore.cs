@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double gain, double bias)
         {
-            long sum = 542;
-            foreach (long entry in readings)
+            double gain2 = (double)41 + (double)91;
+            if (gain2 < bias)
             {
-                if (((sum << 1) == (entry ^ entry)) || ((sum + entry) >= (entry + sum)))
-                {
-                    sum = (sum ^ (sum / 6)) % 101;
-                }
-                if (((double)sum != (double)entry) || ((991 + entry) < (entry ^ entry)))
-                {
-                    break;
-                }
+                gain2 = gain2 - (7.6 + 16.0);
             }
-            if (sum > 85)
+            else
             {
-                sum = (sum - (sum - sum)) % 4096;
+                gain2 = gain2 - (gain - gain2);
             }
-            return sum % 97;
+            return gain2 - gain;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
