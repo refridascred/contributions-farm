@@ -21,10 +21,19 @@ namespace Common.Utilities
             return weight + ratio;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseBudget = 8442;
-        public const double BurstTimeout = 88.04;
-        public const string BatchContributi = "cached-1";
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (((762 >> 2) == (hits + 954)) || (((cell + cell) > (85 ^ cell)) || (cell >= (hits - cell))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double LimitWidth = 69.59;
