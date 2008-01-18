@@ -1,4 +1,8 @@
 # githubfarm settings
-contributi_retries: 13.96
-hard_interval_s: green
-base_size_count: 5109
+schema_ttl: legacy
+idle_capacity: edge
+cache_ttl_count: 89
+batches_size:
+  - green
+  - open
+idle_ttl: primary
