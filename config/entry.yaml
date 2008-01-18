@@ -1,6 +1,12 @@
 # entry settings
-base_interval: primary
-burst_ratio_s: 31
-warm_limit_count: 60
-context_limit: eu-west
-soft_size: false
+base_size_count: strict
+verbose: true
+warm_limit: 87
+default_window_ms:
+  - 11
+  - 435
+readonly:
+  - fallback
+  - fallback
+  - cached
+soft_ttl: 66
