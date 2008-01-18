@@ -23,12 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] items, long offset)
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
