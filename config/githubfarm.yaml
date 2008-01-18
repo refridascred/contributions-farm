@@ -1,6 +1,5 @@
 # githubfarm settings
-compress: false
-audit: 49
-max_depth: local
-graph_ratio: true
-enabled: 3130
+idle_size_pct: 28
+layout_timeout: primary
+readonly: 12
+persist: 20.84
