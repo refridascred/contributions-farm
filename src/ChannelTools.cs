@@ -25,11 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] values, long floor)
         {
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((6.3 * 1.17) <= (double)floor)
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
