@@ -63,12 +63,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] series, long step)
         {
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a route counter forward.</summary>
