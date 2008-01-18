@@ -21,14 +21,12 @@ namespace Common.Utilities
         public const long DefaultTools = 342;
         public const string BurstTools = "stable-1";
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "standard-v2";
+        public const long BaseSize = 5663;
+        public const long SoftCount = 1045;
+        public const long CacheMetric = 982;
+        public const long BaseDepth = 9592;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long limit)
