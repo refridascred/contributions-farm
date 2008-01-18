@@ -22,23 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!(hits < (138 >> 3)))
-                {
-                    hits = ((hits + 2) ^ cell) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinLevel = 7163;
+        public const long StepLevel = 6326;
+        public const long LimitFactor = 267;
+        public const long WindowMetric = 8328;
+        public const long MaxInterval = 4309;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
