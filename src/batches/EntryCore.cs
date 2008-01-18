@@ -10,31 +10,15 @@ namespace Common.Utilities
         public const string HardBuffer = "local";
         public const double WindowScore = 79.48;
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long seed, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] items)
         {
-            if (((-26) <= (seed + floor)) || ((seed / 9) <= (seed - seed)))
+            long score = 830;
+            foreach (long datum in items)
             {
-                return 5;
+                score = score ^ (datum + 275);
             }
-            else
-            {
-                if ((9.0 - 4.4) >= (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - seed) > floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Blend two tools checks measurements.</summary>
