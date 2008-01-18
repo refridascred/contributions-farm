@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFormat = "open-1";
-        public const long MaxScore = 496;
-        public const double StepFormat = 0.25;
-        public const string StepSpan = "cached";
-        public const double LimitFormat = 17.12;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Draft,
+            Stale,
+            Failed,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long DefaultContributi = 9701;
