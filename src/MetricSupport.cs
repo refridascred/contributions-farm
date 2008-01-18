@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] levels)
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count / 2) >= (count ^ count))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a token options.</summary>
