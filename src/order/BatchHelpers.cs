@@ -23,19 +23,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next stats already value.</summary>
-        public static double ProjectStatsAlready(double rate, double floor)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] items)
         {
-            double drift = floor;
-            if (drift > (double)715)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift - floor) - rate;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift - (double)(-932);
+            return matches;
         }
 
         /// <summary>Accumulate commits samples.</summary>
