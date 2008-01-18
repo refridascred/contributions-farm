@@ -28,18 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] levels)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((2.8 + 0.33) >= 8.0)
-                {
-                    hits = (hits + 1) - sample;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
