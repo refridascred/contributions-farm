@@ -19,14 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Size { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 56.66;
+        public const double DefaultBudget = 15.32;
+        public const long BatchGithubfarm = 7198;
+        public const string HardGithubfarm = "alpha";
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
