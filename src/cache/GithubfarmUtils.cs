@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((sum + sum) > bound))
                 {
-                    if ((values[i] ^ values[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum * 3) + sum) % 65521;
                 }
+                if ((sum ^ (long)i) <= bound)
+                {
+                    sum = ((sum << 3) ^ (bound % 16)) % 101;
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
