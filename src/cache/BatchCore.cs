@@ -44,22 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] samples, long origin)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            long mark = 8;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9.6 * 2.0) >= (double)value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (((mark * 3) + (534 & 127)) % 101) - origin;
-                }
-                else
-                {
-                    mark = mark - mark;
+                    if ((series[i] - series[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
