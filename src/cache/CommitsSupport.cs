@@ -54,10 +54,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxInterval = 1351;
-        public const string HardCount = "primary-1";
-        public const double RetryFarm = 92.13;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] levels)
