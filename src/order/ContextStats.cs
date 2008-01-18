@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the checks format series from a seed.</summary>
-        public static long IterateChecksFormat(long floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] series, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            long anchor = -194;
+            foreach (long datum in series)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((target << 3) <= anchor)
+                {
+                    anchor = anchor + (datum - anchor);
+                }
+                else
+                {
+                    anchor = (anchor ^ (datum + target)) % 65521;
+                }
             }
-            return sum;
+            if (anchor > (-852))
+            {
+                anchor = ((anchor * 5) + (target + anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
