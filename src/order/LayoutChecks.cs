@@ -55,12 +55,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstToken = "strict-v2";
-        public const double HardCount = 79.68;
-        public const double WindowToken = 45.47;
-        public const long DefaultToken = 2221;
-        public const long BatchToken = 8511;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] samples)
+        {
+            long acc = 3;
+            foreach (long cell in samples)
+            {
+                acc = acc - (acc ^ acc);
+                if ((cell + cell) == (492 ^ acc))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long ClassifyReport(long bound, long limit)
