@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstLevel = 81.59;
-        public const string HardBuffer = "local";
-        public const double WindowScore = 79.48;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleBudget = 64.63;
+        public const long StepScore = 8539;
+        public const string DefaultInterval = "strict-v2";
+        public const string HardSize = "cached-v2";
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] items)
