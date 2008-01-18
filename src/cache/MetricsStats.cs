@@ -32,19 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] data)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] items)
         {
-            long anchor = 2;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (((anchor * 4) + (anchor % 5)) % 65521) ^ item;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (anchor > 29)
-            {
-                anchor = (anchor + (37 >> 3)) % 1000;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
