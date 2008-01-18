@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many already metric samples are out of range.</summary>
-        public static long TallyAlreadyMetricHits(long[] series)
+        /// <summary>Compare every pair of queue batches readings.</summary>
+        public static long CompareQueueBatchesCount(long[] series)
         {
             long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count + 79) > (datum - count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 1;
+                    if ((series[i] ^ series[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
