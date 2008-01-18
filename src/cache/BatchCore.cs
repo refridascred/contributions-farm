@@ -32,15 +32,13 @@ namespace Common.Utilities
         public const double MinSpan = 29.0;
         public const long RetryCommand = 267;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long target)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Ready,
+            Stale,
+            Idle,
+            New,
         }
     }
 }
