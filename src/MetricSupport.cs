@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] series, long target)
+        /// <summary>Locate a metric cache reading by value.</summary>
+        public static long LocateMetricCacheIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < (count >> 2))
+                if (items[i] < seed)
                 {
-                    count = (count + 2) + target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a notes info.</summary>
