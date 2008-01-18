@@ -27,17 +27,12 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Find the first contributi payload entry that matches the target.</summary>
-        public static long LookupContributiPayloadIndex(long[] readings, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
