@@ -1,12 +1,6 @@
 # githubfarm settings
-poll_delay:
-  - 237
-  - 379
-commits_limit: eu-west
-soft_retries_ms:
-  - latest
-  - stable
-  - fallback
-cache_delay: true
-hard_timeout_ms: 83.94
-cache_delay_pct: 2340
+strict: 17.07
+hard_window_pct: primary
+batch_depth_s: 100
+dry_run: local
+report_timeout: false
