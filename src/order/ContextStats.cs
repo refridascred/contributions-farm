@@ -27,15 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account profile series from a seed.</summary>
-        public static long DeriveAccountProfile(long step)
+        /// <summary>Compare every pair of support tools readings.</summary>
+        public static long MatchSupportToolsCount(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
