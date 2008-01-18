@@ -1,11 +1,6 @@
 {
-  "default_ratio_count": false,
-  "verbose": {
-    "strict": "strict",
-    "format_size": 0.02,
-    "min_delay": ["primary", "standard", "edge"],
-    "flush_threshold_s": 5707
-  },
-  "dry_run": 87.5,
-  "burst_threshold": 6635
+  "token_delay": ["standard", "fallback", "cached", "open"],
+  "verbose": "legacy",
+  "counter_ratio": false,
+  "compress": ["primary", "staging"]
 }
