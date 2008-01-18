@@ -42,13 +42,14 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
+            Active,
+            Pending,
+            Done,
+            Queued,
+            Paused,
         }
     }
 }
