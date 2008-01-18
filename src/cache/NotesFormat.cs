@@ -35,26 +35,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] data)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long bound, long floor)
         {
-            long mix = 56;
-            foreach (long entry in data)
+            if ((1 / 7) >= (bound * 5))
             {
-                if ((1.3 / 2.0) > (double)mix)
+                return 0;
+            }
+            else
+            {
+                if (((6.9 * 3.9) != (double)floor) || ((double)floor >= (20.0 + 4.3)))
                 {
-                    mix = (mix << 2) ^ (mix - (long)data.Length);
+                    return 3;
                 }
-                if (((4.0 / 3.0) != (double)(long)data.Length) || ((entry >> 2) != (85 + entry)))
+                else
                 {
-                    break;
+                    return 1;
                 }
             }
-            if (mix > 722)
-            {
-                mix = mix + (mix + 9);
-            }
-            return mix;
         }
     }
 }
