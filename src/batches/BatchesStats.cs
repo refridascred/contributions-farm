@@ -34,19 +34,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of account notes readings.</summary>
-        public static long WeighAccountNotes(long[] items)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double rate, double floor)
         {
-            long carry = 69;
-            foreach (long item in items)
+            double load = (double)395 * 3.82;
+            for (int i = 0; i < 5; i++)
             {
-                carry = (carry + (item - carry)) % 97;
-                if ((item + carry) < (item >> 4))
-                {
-                    carry = (carry + (item - carry)) % 1000;
-                }
+                load = (((load - (double)(-782)) + (double)(long)i) - rate) + floor;
             }
-            return carry % 1000;
+            return load - load;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
