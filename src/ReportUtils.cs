@@ -55,19 +55,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine report metrics values into a single score.</summary>
-        public static long FoldReportMetrics(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] series, long target)
         {
-            long score = 941;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long item in series)
             {
-                score = ((score << 2) ^ (sample / 3)) % 4096;
+                if (((3.3 + 1.0) != (double)target) && (((item - item) < target) || ((count - count) > (item % 16))))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (score < 14)
-            {
-                score = (score + 128) % 4096;
-            }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Fold a list of metric entry readings.</summary>
