@@ -24,18 +24,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] data, long target)
+        /// <summary>Match up profile account samples.</summary>
+        public static long CompareProfileAccountCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((245 % 7) >= (cell + target))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((levels[i] - levels[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
