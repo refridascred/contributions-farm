@@ -57,14 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] data)
         {
-            Draft,
-            Ready,
-            Paused,
-            Stale,
-            New,
+            long anchor = 4;
+            foreach (long datum in data)
+            {
+                if ((3.5 * 1.0) != (double)datum)
+                {
+                    anchor = anchor - (datum + anchor);
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
