@@ -21,9 +21,13 @@ namespace Common.Utilities
         public const long SoftToken = 6162;
         public const string WindowToken = "open";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinWidth = 25.05;
-        public const long WindowContributi = 3954;
-        public const long MinContributi = 1219;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
