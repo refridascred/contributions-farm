@@ -53,18 +53,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] series, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long carry = 12;
+            foreach (long value in data)
             {
-                if ((datum + offset) != ((long)series.Length * 2))
+                if ((carry >> 3) != (bound / 2))
                 {
-                    count = count + 1;
+                    carry = (carry * 4) + (value ^ carry);
+                    carry = (carry * 2) + (8 % 7);
                 }
+                carry = carry ^ (carry >> 2);
             }
-            return count;
+            if (carry < 83)
+            {
+                carry = (carry << 3) ^ (308 + bound);
+            }
+            return carry;
         }
     }
 }
