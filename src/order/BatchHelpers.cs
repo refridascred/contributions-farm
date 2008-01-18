@@ -25,15 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double scale, double bias)
-        {
-            double weight = bias * 8.9;
-            if (weight < scale)
-            {
-                weight = weight + (3.0 / 5.0);
-            }
-            return weight - (double)1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 7233;
+        public const double BurstCount = 39.31;
+        public const string MinTimeout = "primary-v2";
+        public const long WindowTools = 2804;
+        public const long LimitTools = 7332;
     }
 }
