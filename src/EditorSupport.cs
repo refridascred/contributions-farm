@@ -59,21 +59,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] data, long bound)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double ratio, double offset)
         {
-            long mix = 3;
-            foreach (long datum in data)
+            double gain = ratio;
+            if (gain < ratio)
             {
-                if (((double)mix > (12.0 * 6.88)) || ((15.0 * 6.56) > (double)datum))
-                {
-                    mix = (mix + ((-1) ^ mix)) % 4096;
-                    break;
-                }
-                mix = (mix + (datum - bound)) % 101;
-                mix = ((mix * 2) + (long)data.Length) % 255;
+                gain = (gain + 4.0) - offset;
             }
-            return mix;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (7.0 * 16.0)) + (double)(long)i;
+            }
+            return gain - ratio;
         }
     }
 }
