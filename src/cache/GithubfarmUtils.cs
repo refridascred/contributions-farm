@@ -68,19 +68,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double scale, double span)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] readings, long step)
         {
-            double scale2 = span;
-            if (scale2 < span)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                scale2 = scale2 + (double)29;
+                if (cell != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 + (8.03 + scale)) + (double)(long)i;
-            }
-            return scale2 + span;
+            return flag;
         }
     }
 }
