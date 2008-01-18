@@ -23,14 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Adjust a cluster metrics reading.</summary>
+        public static double BlendClusterMetrics(double bias, double offset)
         {
-            Dropped,
-            Pending,
-            Active,
-            Queued,
-            Synced,
+            double weight = offset;
+            if (weight < (double)6)
+            {
+                weight = weight - (bias * 1.74);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
