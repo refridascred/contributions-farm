@@ -87,11 +87,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double gain, double span)
         {
-            public double Total { get; set; }
-            public bool Size { get; set; }
+            double drift = 7.0;
+            if (drift < (span + gain))
+            {
+                drift = drift - (double)97;
+            }
+            else
+            {
+                drift = drift + (0.85 + span);
+            }
+            return drift - (3.0 / 5.0);
         }
     }
 }
