@@ -23,17 +23,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] levels, long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (levels[i] > bound)
+                if ((7 + matches) > (matches + matches))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + sample) + seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
