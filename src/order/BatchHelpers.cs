@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string StepSpan = "cached";
         public const double LimitFormat = 17.12;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 9701;
+        public const long HardContributi = 7376;
+        public const string LimitContributi = "fallback";
+        public const double StepSize = 11.06;
+        public const long IdleContributi = 3215;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTools = 7233;
