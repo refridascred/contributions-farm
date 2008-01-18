@@ -51,19 +51,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate record command readings against a bound.</summary>
-        public static bool CheckRecordCommandLimits(long[] series, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (entry != seed)
+                if (cell >= (tally + 653))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
