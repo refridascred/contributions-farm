@@ -40,21 +40,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowInterval = 9902;
+        public const long MaxToken = 9775;
+        public const string RetryRatio = "stable";
+        public const double SoftBudget = 28.97;
+        public const long BatchLevel = 2045;
     }
 }
