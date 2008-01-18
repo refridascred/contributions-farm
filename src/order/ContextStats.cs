@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double scale, double floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double drift = 9.0;
-            if (drift >= drift)
-            {
-                drift = (drift - floor) + scale;
-            }
-            return drift + 1.0;
+            Pending,
+            Done,
+            Active,
+            Idle,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
