@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "latest-1";
-        public const string StepChannel = "strict-v2";
-        public const long LimitBudget = 6050;
-        public const long LimitChannel = 9661;
-        public const long BatchSpan = 1968;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Idle,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
