@@ -18,15 +18,12 @@ namespace Common.Utilities
         public const long BurstScore = 2473;
         public const long SoftBatch = 8292;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Synced,
-            Queued,
-            New,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepDepth = 1678;
+        public const double BatchChannel = 72.23;
+        public const long MinCount = 1601;
+        public const double SoftChannel = 72.5;
+        public const long IdleChannel = 3127;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long bound)
