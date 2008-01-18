@@ -36,18 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] levels)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long state = 15;
+            foreach (long reading in data)
             {
-                if ((10.0 * 3.51) <= (double)tally)
+                if ((reading + 11) > (reading & 7))
                 {
-                    tally = (tally + 3) + datum;
+                    state = ((state * 4) + (995 - reading)) % 101;
                 }
             }
-            return tally;
+            return state % 65521;
         }
 
         /// <summary>Hold a order entry.</summary>
