@@ -22,12 +22,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a format stats.</summary>
