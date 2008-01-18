@@ -1,6 +1,7 @@
 # githubfarm settings
-checks_capacity: 23.39
-verbose: blue
-min_size_ms: standard
-base_delay_ms: 94
-persist: local
+cache_capacity_count: true
+audit: 97
+burst_capacity: open
+channel_limit: blue
+readonly: 13
+schema_retries: 2500
