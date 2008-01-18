@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
