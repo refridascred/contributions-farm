@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 4724;
-        public const long BurstRatio = 6845;
-        public const long IdleRatio = 3237;
-        public const double HardChannel = 34.29;
-        public const double CacheLevel = 1.55;
+        /// <summary>Count already cluster pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyClusterCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] levels)
