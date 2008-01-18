@@ -44,12 +44,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Audit queue schema readings against a rule.</summary>
+        public static long AuditQueueSchemaGaps(long[] values, long floor)
         {
-            Stale,
-            Closed,
-            Failed,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((reading < (floor + count)) && (4.24 <= (double)floor))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
