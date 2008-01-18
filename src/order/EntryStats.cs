@@ -55,17 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] data, long limit)
+        /// <summary>Roll a stats entry counter forward.</summary>
+        public static long SeriesStatsEntry(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (data[i] == limit)
+                if ((step ^ step) > ((long)i * 3))
                 {
-                    return (long)i;
+                    score = (score + (48 - score)) % 65521;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Blend two stats measurements.</summary>
