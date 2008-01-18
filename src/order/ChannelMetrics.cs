@@ -23,10 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "primary";
-        public const long StepFactor = 22;
-        public const long MinSpan = 4778;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseTimeout = "local-edge";
+        public const string RetrySpan = "fallback-edge";
+        public const long BatchLevel = 329;
+        public const string StepContext = "legacy-1";
+        public const long LimitFactor = 7072;
 
         /// <summary>Count the stream tools entries that pass the check.</summary>
         public static long MeasureStreamToolsGaps(long[] items, long offset)
