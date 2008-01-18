@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a stream checks value against two limits.</summary>
-        public static long GradeStreamChecks(long seed, long origin)
-        {
-            if ((origin % 2) > (origin << 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin & 15) == (4 + 125))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 9987;
+        public const string MinTools = "staging";
+        public const double BatchBudget = 60.78;
+        public const long BurstCount = 9314;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
