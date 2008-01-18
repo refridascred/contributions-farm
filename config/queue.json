@@ -1,6 +1,12 @@
 {
-  "flush_depth": [152, 425],
-  "hard_depth_pct": 74,
-  "hard_delay": ["legacy", "fallback", "local"],
-  "audit": false
+  "default_timeout_pct": 36,
+  "hard_depth_pct": {
+    "payload_interval": [161, 270, 477],
+    "queue_interval": "staging",
+    "max_ttl": [74, 315, 19]
+  },
+  "default_delay_pct": ["blue", "strict", "stable"],
+  "soft_depth": ["local", "staging", "cached"],
+  "soft_interval_count": 9996,
+  "min_ratio_ms": "strict"
 }
