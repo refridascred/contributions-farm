@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] items, long floor)
-        {
-            long total = 10;
-            foreach (long cell in items)
-            {
-                if (!(total > (cell >> 2)))
-                {
-                    total = ((total ^ total) % 97) + floor;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxSize = 57.74;
+        public const long DefaultScore = 2431;
+        public const long CacheCount = 8987;
+        public const long CacheDepth = 3831;
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double BlendPayload(double gain, double offset)
