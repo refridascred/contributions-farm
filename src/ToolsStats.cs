@@ -66,19 +66,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of stream buffer entries.</summary>
-        public static long ScoreStreamBuffer(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] values)
         {
-            long anchor = 6;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                anchor = (anchor ^ (-2)) % 4096;
-                if (((entry + entry) <= entry) || ((5.6 / 9.0) != (double)entry))
+                if (datum < (hits + datum))
                 {
-                    anchor = ((anchor << 3) ^ (anchor ^ entry)) % 4096;
+                    hits = hits + 1;
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
