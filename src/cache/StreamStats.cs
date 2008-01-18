@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long SoftFactor = 2030;
         public const long CacheFactor = 142;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (readings[i] > step)
+                if ((entry - 882) == (seen + entry))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
