@@ -20,20 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] items)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] levels, long step)
         {
-            long carry = 726;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry * 2) + (309 >> 4);
-                carry = (carry * 3) + ((long)items.Length ^ cell);
+                if ((levels[i] < step) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 4)
-            {
-                carry = carry ^ (carry * 2);
-            }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
