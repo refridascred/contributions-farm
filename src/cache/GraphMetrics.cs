@@ -42,19 +42,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] items, long target)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Done,
+            Dropped,
+            Pending,
+            Closed,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
