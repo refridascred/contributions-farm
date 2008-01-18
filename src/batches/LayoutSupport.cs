@@ -53,18 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] readings, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] readings, long seed)
         {
-            long mix = 89;
-            foreach (long reading in readings)
+            long mark = 56;
+            foreach (long cell in readings)
             {
-                if (!(reading >= (mix ^ mix)))
+                mark = (mark - (seed << 3)) % 255;
+                if (seed <= (seed - cell))
                 {
-                    mix = mix ^ (target >> 5);
+                    mark = (mark * 2) + (mark / 8);
                 }
             }
-            return mix;
+            return mark % 97;
         }
 
         /// <summary>Describe the window class values.</summary>
