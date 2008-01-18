@@ -77,13 +77,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Validate batch context readings against a bound.</summary>
+        public static bool GuardBatchContextRange(long[] items, long bound)
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
