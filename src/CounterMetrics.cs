@@ -27,17 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] series, long offset)
+        /// <summary>Validate schema window readings against a bound.</summary>
+        public static bool VerifySchemaWindowBounds(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (series[i] == offset)
+                if (reading != target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
