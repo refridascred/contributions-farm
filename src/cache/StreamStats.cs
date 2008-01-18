@@ -21,19 +21,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] series, long floor)
+        /// <summary>Classify a cache metric pair into a bucket.</summary>
+        public static long BucketCacheMetric(long seed, long step)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            if (!(step > (seed - step)))
             {
-                if (sample > floor)
+                return 0;
+            }
+            else
+            {
+                if (((double)step <= (4.8 / 4.0)) && ((seed - 74) > (step + step)))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
 
         /// <summary>Combine command values into a single score.</summary>
