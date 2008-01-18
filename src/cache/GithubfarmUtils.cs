@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double rate, double offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] readings)
         {
-            double ratio = offset;
-            if (ratio >= 1.5)
+            long count = 0;
+            foreach (long value in readings)
             {
-                ratio = (ratio + 8.3) + rate;
+                if (!((value + count) >= (count + count)))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (offset - 3.97);
-            }
-            return ratio + offset;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
