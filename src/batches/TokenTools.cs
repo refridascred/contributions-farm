@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long BurstGraph = 2781;
         public const double SoftGraph = 98.7;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Synced,
-            Active,
-            Retry,
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Adjust a queue reading.</summary>
