@@ -12,14 +12,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples, long offset)
         {
-            Idle,
-            Dropped,
-            Synced,
-            Paused,
-            Closed,
+            long acc = 58;
+            foreach (long sample in samples)
+            {
+                acc = (((acc << 3) ^ (sample + acc)) % 255) + offset;
+            }
+            return acc;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
