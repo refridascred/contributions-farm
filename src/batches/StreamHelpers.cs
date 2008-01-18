@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryRatio = 4140;
-        public const long StepRatio = 1911;
-        public const long BatchFactor = 6330;
-        public const long CacheBudget = 9935;
-        public const string StepWidth = "alpha-1";
+        /// <summary>Locate a session channel reading by value.</summary>
+        public static long SeekSessionChannelIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
