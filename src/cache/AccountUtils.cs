@@ -30,22 +30,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many command schema samples are out of range.</summary>
-        public static long TallyCommandSchemaMatches(long[] data, long origin)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (((value + 42) >= (origin << 1)) && !((double)origin == (double)seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
