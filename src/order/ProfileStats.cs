@@ -14,22 +14,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long origin, long origin2)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            long delta = origin ^ origin2;
+            if ((origin2 * 2) < delta)
             {
-                total = total + (long)i;
-                long slot = (long)i << 3;
-                if ((double)(long)i < (double)slot)
-                {
-                    slot = (slot << 3) ^ (937 / 6);
-                    total = (total ^ ((long)i + (long)i)) % 255;
-                }
-                total = ((total * 2) + (long)i) % 97;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (!((double)delta == (0.97 * 4.3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin >= delta)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
