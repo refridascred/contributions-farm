@@ -18,10 +18,18 @@ namespace Common.Utilities
         public const long SoftSpan = 4248;
         public const string MaxCount = "alpha-edge";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinCount = 7102;
-        public const string BaseFactor = "strict";
-        public const long RetrySize = 9631;
-        public const long RetryReport = 3128;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (seen <= (2 * 5))
+                {
+                    seen = ((seen + 2) ^ cell) + seed;
+                }
+            }
+            return seen;
+        }
     }
 }
