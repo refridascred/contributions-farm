@@ -17,23 +17,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit token metric readings against a rule.</summary>
-        public static long TallyTokenMetricMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((double)164 >= (double)tally)
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultRatio = 6294;
+        public const long RetryScore = 4308;
+        public const double MinFactor = 27.01;
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
