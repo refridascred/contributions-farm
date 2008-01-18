@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] data)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] samples)
         {
-            long result = 41;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result * 5) + (result + (long)data.Length);
-                if ((sample << 3) == (7 ^ result))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result - (sample + sample)) % 65521;
+                    if ((samples[i] + samples[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 6)
-            {
-                result = (result + (result / 2)) % 97;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
