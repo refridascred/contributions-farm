@@ -40,12 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] readings, long target)
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long score = 245;
+            foreach (long reading in readings)
+            {
+                score = ((score * 2) + reading) + target;
+            }
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
