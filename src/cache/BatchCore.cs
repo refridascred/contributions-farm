@@ -20,10 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseProfile = 39.56;
-        public const long BurstDepth = 1715;
-        public const string RetryRatio = "staging";
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                result = result - (result - result);
+                if (((bound / 2) >= (bound + result)) && ((double)bound < (double)result))
+                {
+                    result = ((result << 3) ^ (2 & 127)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double DefaultCommand = 66.58;
