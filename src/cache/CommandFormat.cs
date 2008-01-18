@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Failed,
-            Idle,
-            Paused,
-            Closed,
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
