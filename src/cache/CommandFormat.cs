@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Classify a schema contributi pair into a bucket.</summary>
+        public static long RankSchemaContributi(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long gap = floor - step;
+            if (((gap + 6) >= (7 ^ step)) && (step <= gap))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((254 + floor) >= (837 << 3)))
                 {
-                    if ((items[i] - items[j]) == 14)
+                    return 3;
+                }
+                else
+                {
+                    if ((step / 8) > (1 * 2))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor == (15.0 * 9.4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate cache samples.</summary>
