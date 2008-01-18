@@ -1,13 +1,12 @@
 {
-  "soft_delay": 58.56,
-  "sync_limit": 31,
-  "burst_threshold_ms": "green",
-  "min_ratio_ms": 55.58,
-  "compress": "eu-west",
-  "poll_window_count": {
-    "retry_capacity_pct": ["primary", "edge", "local", "green"],
-    "cluster_capacity": 95.08,
-    "default_ttl_pct": 8.17,
-    "audit": "edge"
-  }
+  "checks_delay": {
+    "flush_ratio": 250,
+    "min_ttl": "eu-west",
+    "readonly": "latest",
+    "verbose": "eu-west"
+  },
+  "max_window_ms": "latest",
+  "default_interval_pct": ["strict", "blue", "standard", "edge"],
+  "sync_interval_count": 6804,
+  "contributi_threshold": 6.35
 }
