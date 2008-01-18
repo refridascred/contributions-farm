@@ -6,15 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=135
+log "limit is ${CHANNEL_LIMIT}"
 
 count=0
 while [ "${count}" -lt 8 ]; do
@@ -22,8 +15,6 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for item in blue open standard; do
+    log "checking ${item}"
 done
-log "total ${total}"
