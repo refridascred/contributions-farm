@@ -71,23 +71,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double weight, double floor)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double bias = floor;
-            if (bias >= floor)
-            {
-                bias = bias - (double)427;
-            }
-            else
-            {
-                bias = bias + (double)(-5);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)23) + (double)(long)i;
-            }
-            return bias + (weight * 0.58);
+            Failed,
+            Retry,
+            Paused,
+            Stale,
         }
     }
 }
