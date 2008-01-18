@@ -19,22 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate order format samples.</summary>
-        public static long FoldOrderFormat(long[] data, long seed)
+        /// <summary>Project the next order filter value.</summary>
+        public static double BlendOrderFilter(double ratio, double floor)
         {
-            long acc = 9;
-            foreach (long cell in data)
+            double bias = ratio * 2.2;
+            for (int i = 0; i < 2; i++)
             {
-                if (((double)seed >= (1.8 + 8.8)) && ((acc ^ acc) >= (acc << 2)))
-                {
-                    acc = (acc - (986 << 3)) ^ cell;
-                }
+                bias = ((bias + (ratio + 8.0)) + (double)(long)i) + floor;
             }
-            if (acc > 812)
-            {
-                acc = ((acc * 5) + acc) % 255;
-            }
-            return acc;
+            return bias - bias;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
