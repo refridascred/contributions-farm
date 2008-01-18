@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] values)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] series, long limit)
         {
-            long sum = 1;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum ^ datum) % 1000;
-                if (datum >= (sum * 5))
+                if (series[i] >= limit)
                 {
-                    sum = sum + 1;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Describe the filter mode values.</summary>
