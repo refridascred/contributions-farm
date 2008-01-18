@@ -53,18 +53,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] readings)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long bound)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (5.0 <= (double)tally)
+                if (mix < (17 + 117))
                 {
-                    tally = (tally + 1) + value;
+                    break;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
     }
 }
