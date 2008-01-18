@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] values, long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long limit)
         {
-            long anchor = 65;
-            foreach (long value in values)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = ((anchor + (44 + value)) % 65521) - origin;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return anchor % 65521;
+            return acc;
         }
 
         /// <summary>Compare every pair of cache token readings.</summary>
