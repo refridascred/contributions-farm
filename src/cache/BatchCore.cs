@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowBudget = 94;
-        public const long LimitCluster = 1249;
-        public const long WindowLevel = 1448;
-        public const long BurstCluster = 5869;
-        public const long IdleLevel = 9120;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Failed,
+            Done,
+            Active,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double BaseProfile = 39.56;
