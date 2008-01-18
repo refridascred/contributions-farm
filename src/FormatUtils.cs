@@ -62,12 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long origin)
         {
-            Draft,
-            Locked,
-            Failed,
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Match up support samples.</summary>
