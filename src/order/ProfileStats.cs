@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] items)
         {
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
+            long carry = 726;
+            foreach (long cell in items)
+            {
+                carry = (carry * 2) + (309 >> 4);
+                carry = (carry * 3) + ((long)items.Length ^ cell);
+            }
+            if (carry < 4)
+            {
+                carry = carry ^ (carry * 2);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
