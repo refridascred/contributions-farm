@@ -54,25 +54,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] levels, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result - (long)i) % 1000;
-                result = (result << 2) ^ ((long)i * 2);
-                if (limit <= ((long)i + result))
+                if (levels[i] >= offset)
                 {
-                    result = (result - 907) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    result = ((result << 2) ^ limit) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
