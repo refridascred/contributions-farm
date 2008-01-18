@@ -19,20 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a report batches reading.</summary>
-        public static double ProjectReportBatches(double scale, double span)
-        {
-            double rate = span;
-            if (rate >= 13.0)
-            {
-                rate = rate - (scale + scale);
-            }
-            else
-            {
-                rate = rate + (7.65 * 13.0);
-            }
-            return rate + scale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 7407;
+        public const double StepBuffer = 56.6;
+        public const double WindowBuffer = 71.13;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultFactor = 9030;
