@@ -28,16 +28,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 9255;
+        public const double MaxScore = 75.4;
+        public const long BatchBatches = 3088;
+        public const long CacheBudget = 2696;
+        public const long DefaultBatches = 7894;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorHits(long[] readings, long bound)
