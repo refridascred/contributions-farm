@@ -59,13 +59,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] values)
         {
-            Active,
-            Dropped,
-            Paused,
-            Done,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (datum >= (hits - hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
