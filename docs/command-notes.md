@@ -1,12 +1,11 @@
 # Command notes
 
-The account helpers are pure functions, so they are safe to call from any thread.
-Keep payload and support names short and lowercase.
-The filter report groups every githubfarm by batches.
+The order module keeps batch values in sync with the graph cache.
+Run the context check before changing any counter limits.
+Defaults for profile live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Review cache limits each release
-- Prefer metric defaults
-- Document new cache fields
+- Log every buffer change
+- Prefer cluster defaults
+- Validate route input early
