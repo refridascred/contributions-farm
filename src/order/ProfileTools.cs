@@ -40,16 +40,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double bias, double offset)
-        {
-            double drift = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift - (offset + 1.39)) + (double)(long)i) - bias;
-            }
-            return drift + (double)22;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchSize = 3490;
+        public const double DefaultGithubfarm = 21.3;
+        public const double BatchDepth = 38.8;
+        public const string CacheGithubfarm = "stable-v2";
 
         /// <summary>Digest a series of report entries.</summary>
         public static long ScoreReport(long[] data, long target)
