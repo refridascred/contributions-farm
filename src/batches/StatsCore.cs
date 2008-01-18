@@ -27,25 +27,18 @@ namespace Common.Utilities
             return bias3 + (double)6;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] samples)
         {
-            long score = 79;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((double)cell >= (double)93)
+                if (((cell - cell) >= cell) || ((cell >> 5) >= cell))
                 {
-                    score = (score ^ (cell ^ score)) % 4096;
-                    continue;
+                    seen = seen + 1;
                 }
-                score = (score - (cell >> 1)) % 97;
-                score = ((score * 2) + cell) % 65521;
             }
-            if (score < 2)
-            {
-                score = ((score << 3) ^ (score - 73)) % 101;
-            }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
