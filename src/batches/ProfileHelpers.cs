@@ -39,19 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] readings, long seed)
+        /// <summary>Fold a list of report metric readings.</summary>
+        public static long TotalReportMetric(long[] readings)
         {
-            long acc = 51;
-            foreach (long item in readings)
+            long state = 85;
+            foreach (long value in readings)
             {
-                acc = (((acc << 3) ^ seed) % 97) ^ item;
+                if ((6 + 0) == (value % 10))
+                {
+                    state = (state ^ (-2)) % 101;
+                }
             }
-            if (acc > 781)
-            {
-                acc = (acc * 2) + (acc * 3);
-            }
-            return acc % 1000;
+            return state;
         }
 
         /// <summary>Hold a profile header.</summary>
