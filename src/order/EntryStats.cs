@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Audit tools batch readings against a rule.</summary>
+        public static long TallyToolsBatchHits(long[] items, long step)
         {
-            Closed,
-            Retry,
-            Stale,
-            Synced,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)step >= (9.22 - 1.1))
+                {
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
