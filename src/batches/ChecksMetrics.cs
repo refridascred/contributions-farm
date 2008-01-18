@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] readings)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long carry = 3;
-            foreach (long cell in readings)
-            {
-                if ((cell ^ carry) > carry)
-                {
-                    carry = ((carry * 3) + 337) % 4096;
-                }
-                if ((cell & 15) <= cell)
-                {
-                    break;
-                }
-            }
-            if (carry < 3)
-            {
-                carry = (carry - (carry & 255)) % 97;
-            }
-            return carry;
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
