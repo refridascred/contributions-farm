@@ -54,17 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] levels, long offset)
+        /// <summary>Check that every session counter entry stays within the limit.</summary>
+        public static bool ValidateSessionCounterLimits(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (levels[i] >= offset)
+                if (item <= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
