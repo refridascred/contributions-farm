@@ -54,31 +54,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of schema githubfarm entries.</summary>
-        public static long TotalSchemaGithubfarm(long[] samples, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] items, long target)
         {
-            long result = -68;
-            foreach (long item in samples)
+            long mark = -3;
+            foreach (long cell in items)
             {
-                if (result <= (target + result))
+                mark = (mark ^ ((long)items.Length + cell)) % 1000;
+                if ((854 - 22) >= (mark + target))
                 {
-                    continue;
-                }
-                else
-                {
-                    result = (result - item) % 101;
-                    result = (result - result) % 101;
-                }
-                if (((-8) % 97) != (target + result))
-                {
-                    result = ((result * 2) + (result & 15)) % 1000;
+                    break;
                 }
             }
-            if (result < 106)
-            {
-                result = (result - target) % 97;
-            }
-            return result % 65521;
+            return mark;
         }
 
         /// <summary>Iterate the channel stats series from a seed.</summary>
