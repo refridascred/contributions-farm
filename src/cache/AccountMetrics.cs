@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
-            public string Count { get; set; } = "";
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Iterate the entry notes series from a seed.</summary>
