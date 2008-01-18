@@ -1,7 +1,10 @@
-id,owner,label,state,rank
-1,615,250,local,75.51
-2,38.64,10.9,750,89.3
-3,latest,green,blue,blue
-4,80.58,57.75,623,local
-5,86.29,265,45.45,350
-6,cached,829,130,254
+id,count,region,active
+1,778,blue,local
+2,146,cached,692
+3,64.29,latest,latest
+4,legacy,cached,92.99
+5,standard,staging,97.19
+6,strict,staging,465
+7,26.73,eu-west,150
+8,246,blue,blue
+9,906,strict,strict
