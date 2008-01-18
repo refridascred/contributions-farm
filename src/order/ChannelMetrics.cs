@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double bias, double span)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            double gain = bias;
-            if (gain <= bias)
-            {
-                gain = gain + span;
-            }
-            else
-            {
-                gain = gain + span;
-            }
-            return gain - (bias * 9.04);
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many stats githubfarm samples are out of range.</summary>
