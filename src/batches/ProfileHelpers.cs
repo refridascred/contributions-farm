@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepCount = 7793;
+        public const long MaxTimeout = 9580;
+        public const double RetrySize = 87.77;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool CheckWindowRange(long[] levels, long limit)
