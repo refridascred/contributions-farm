@@ -1,6 +1,7 @@
 {
-  "persist": "stable",
-  "schema_window": 500,
-  "flush_timeout_ms": "eu-west",
-  "tools_size": 14.44
+  "soft_ratio_pct": "standard",
+  "graph_window": "edge",
+  "poll_ratio_s": false,
+  "route_capacity": false,
+  "verbose": "strict"
 }
