@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long step, long seed)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] readings, long bound)
         {
-            long offset = step - seed;
-            if (step < offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3 - step) <= (offset & 255))
+                if ((readings[i] <= bound) && ((readings[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
