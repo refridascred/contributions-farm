@@ -12,14 +12,15 @@ namespace Common.Utilities
             return rate + (ratio / 7.0);
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Iterate the notes channel series from a seed.</summary>
+        public static long DeriveNotesChannel(long limit)
         {
-            Pending,
-            Synced,
-            Closed,
-            Locked,
-            Done,
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
