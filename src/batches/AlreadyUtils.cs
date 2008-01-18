@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] items)
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((4 % 12) == (matches - entry))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of schema contributi readings.</summary>
