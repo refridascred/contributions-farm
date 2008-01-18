@@ -7,17 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in green standard staging fallback; do
+for item in latest green; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
