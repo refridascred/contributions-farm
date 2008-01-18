@@ -31,19 +31,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long acc = 3;
-            foreach (long cell in samples)
-            {
-                acc = acc - (acc ^ acc);
-                if ((cell + cell) == (492 ^ acc))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Adjust a command support reading.</summary>
