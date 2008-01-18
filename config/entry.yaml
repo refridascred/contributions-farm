@@ -1,9 +1,39 @@
 # entry settings
-batch_size: 65.77
-support_depth: fallback
-soft_ttl:
-  readonly: false
-  support_size: 45.25
-  warm_retries_pct: green
-default_size: eu-west
-persist: open
+batch_window: false
+max_depth_count:
+  batches_capacity: strict
+  hard_retries: strict
+  min_size_pct:
+    - open
+    - fallback
+    - green
+  dry_run:
+    idle_interval_count: 30.91
+    dry_run: 66.99
+    strict: strict
+  format_retries: true
+  default_delay: eu-west
+max_depth_pct:
+  sync_interval_ms:
+    flush_limit_count:
+      - edge
+      - cached
+      - green
+    already_timeout: fallback
+    retry_ratio:
+      - 326
+      - 199
+    batch_depth_ms: 500
+  already_interval: staging
+  base_threshold: false
+token_retries:
+  retry_timeout_pct: primary
+  metrics_threshold: 818
+  persist: true
+  strict:
+    - standard
+    - eu-west
+    - staging
+  verbose:
+    - 218
+    - 477
