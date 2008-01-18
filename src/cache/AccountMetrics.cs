@@ -35,10 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepSize = 2981;
-        public const long BatchWidth = 3956;
-        public const double StepGraph = 85.72;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public double Score { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueOutliers(long[] samples, long origin)
