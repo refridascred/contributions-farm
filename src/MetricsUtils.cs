@@ -61,17 +61,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a metric editor sample.</summary>
-        public static long LocateMetricEditorIndex(long[] data, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (data[i] == floor)
+                if (sample < offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
