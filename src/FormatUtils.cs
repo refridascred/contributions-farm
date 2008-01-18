@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] data, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] readings, long floor)
         {
-            long carry = 69;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                carry = ((carry + (1 & 31)) % 255) + target;
-                carry = (carry << 3) ^ (carry + entry);
+                if (item != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry % 1000;
+            return ready;
         }
 
         /// <summary>Fold a list of metric account readings.</summary>
