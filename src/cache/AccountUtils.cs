@@ -23,18 +23,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] data, long limit)
+        /// <summary>Validate editor stream readings against a bound.</summary>
+        public static bool VerifyEditorStreamBounds(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((limit % 60) != (tally ^ (-6)))
+                if (sample <= step)
                 {
-                    tally = (tally + 1) - datum;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
