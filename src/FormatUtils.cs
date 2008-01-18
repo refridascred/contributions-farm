@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] readings, long floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Idle,
+            Ready,
+            New,
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
