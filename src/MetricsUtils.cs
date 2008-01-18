@@ -48,17 +48,12 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long origin)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state - (0 + 332)) % 255;
-                state = (state + (state << 2)) % 255;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Draft,
+            Active,
+            Locked,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
