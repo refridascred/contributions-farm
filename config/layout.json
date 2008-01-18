@@ -1,6 +1,6 @@
 {
-  "checks_size": ["eu-west", "cached", "stable"],
-  "profile_threshold": "eu-west",
-  "warm_timeout_count": "staging",
-  "readonly": "strict"
+  "already_ttl": 22.31,
+  "compress": 6693,
+  "warm_capacity": 30,
+  "layout_delay": 8150
 }
