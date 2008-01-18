@@ -52,19 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double ratio, double offset)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double mean = offset;
-            if (mean >= (ratio / 5.0))
-            {
-                mean = mean + ratio;
-            }
-            else
-            {
-                mean = mean - 11.0;
-            }
-            return mean + mean;
+            Queued,
+            Failed,
+            Stale,
+            Retry,
+            Locked,
         }
     }
 }
