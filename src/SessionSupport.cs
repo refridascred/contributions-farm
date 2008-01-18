@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Done,
+            Closed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
