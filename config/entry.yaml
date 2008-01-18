@@ -1,22 +1,11 @@
 # entry settings
-entry_ttl:
-  - 409
-  - 96
-  - 379
-  - 28
-burst_size_ms:
-  min_timeout: staging
-  idle_retries_pct: 30.87
-  base_window_count: false
-  persist:
-    - staging
-    - standard
-    - blue
-    - strict
-  buffer_size: cached
-format_interval:
-  - 485
-  - 351
-  - 31
-hard_size_s: green
-min_size: 30
+record_retries:
+  - cached
+  - legacy
+  - legacy
+  - open
+dry_run: edge
+audit:
+  - cached
+  - open
+  - latest
