@@ -56,13 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Ready,
-            Pending,
-            Synced,
-            Paused,
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
