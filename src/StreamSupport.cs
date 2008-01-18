@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double weight, double offset)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double scale = weight;
-            for (int i = 0; i < 5; i++)
-            {
-                scale = ((scale + (weight / 5.0)) + (double)(long)i) - offset;
-            }
-            return scale - (scale - 1.82);
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
