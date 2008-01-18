@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultBudget = 62.32;
-        public const double SoftWidth = 79.42;
-        public const long LimitWidth = 3753;
-        public const long BaseCount = 8390;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Dropped,
+            Stale,
+            Closed,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
