@@ -44,10 +44,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 9013;
-        public const double LimitBudget = 25.0;
-        public const long LimitWindow = 9160;
-        public const long BurstDepth = 9213;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Queued,
+            Synced,
+            Paused,
+        }
     }
 }
