@@ -22,19 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double scale, double offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long bound, long seed)
         {
-            double mean = (offset / 7.0) / 9.0;
-            if (mean > offset)
+            if ((bound ^ seed) >= 67)
             {
-                mean = mean + (offset - scale);
+                return 0;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                mean = (mean - (7.53 - scale)) + (double)(long)i;
+                if (bound > (426 >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2 - bound) > ((-82) + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound - seed) >= (bound + bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return mean + offset;
         }
 
         /// <summary>Fold a list of token readings.</summary>
