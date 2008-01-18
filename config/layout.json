@@ -1,6 +1,5 @@
 {
-  "cache_size": ["local", "blue", "stable"],
-  "retry_ratio": "standard",
-  "farm_size": "strict",
-  "min_limit_ms": true
+  "retry_limit": 83,
+  "poll_window_ms": 5809,
+  "flush_delay": 6401
 }
