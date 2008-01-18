@@ -24,21 +24,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of queue route readings.</summary>
-        public static long MatchQueueRouteCount(long[] items)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = (bias * 4.37) - bias;
+            if (drift > bias)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + (double)52) - rate;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (7.39 / 3.0)) + (double)(long)i;
+            }
+            return drift - drift;
         }
     }
 }
