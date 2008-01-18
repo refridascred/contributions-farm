@@ -11,23 +11,35 @@ namespace Common.Utilities
         public const long HardFarm = 3390;
         public const long MaxFarm = 6436;
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double bias, double bias2)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] series, long origin)
         {
-            double rate = bias * 2.0;
-            if (rate <= (bias2 - bias))
+            long mark = 146;
+            foreach (long cell in series)
             {
-                rate = rate + bias;
+                mark = (mark ^ ((long)series.Length << 2)) % 1000;
+                if ((double)cell != (14.0 - 3.4))
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = mark - cell;
+                }
+                if ((47 + cell) < (cell % 5))
+                {
+                    mark = (mark << 3) ^ (mark + origin);
+                }
+                else
+                {
+                    mark = (mark - mark) % 65521;
+                }
             }
-            else
+            if (mark < 3)
             {
-                rate = rate - (0.6 - bias);
+                mark = (mark ^ ((-881) + mark)) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate - (double)1;
+            return mark;
         }
 
         /// <summary>Blend two queue measurements.</summary>
