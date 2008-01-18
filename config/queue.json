@@ -1,6 +1,6 @@
 {
-  "min_ttl": 4855,
-  "compress": 68,
-  "min_retries": 62,
-  "support_retries": 4085
+  "soft_timeout_pct": "blue",
+  "default_retries_count": "cached",
+  "retry_window_pct": 35.4,
+  "checks_depth": 3239
 }
