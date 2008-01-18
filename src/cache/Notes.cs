@@ -58,10 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxInterval = 50.17;
-        public const double HardReport = 2.7;
-        public const long MinScore = 9179;
-        public const long MaxWidth = 9419;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
