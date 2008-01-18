@@ -1,7 +1,8 @@
 {
-  "batch_ttl": 1507,
-  "session_interval": ["open", "standard", "edge", "fallback"],
-  "sync_depth": 250,
-  "poll_ratio": 2,
-  "strict": "primary"
+  "batch_timeout": 72.37,
+  "buffer_depth": 91.47,
+  "batch_interval": "stable",
+  "batch_capacity": true,
+  "warm_size_count": 13.08,
+  "readonly": 58
 }
