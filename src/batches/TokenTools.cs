@@ -38,18 +38,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Rank record checks input into a small class.</summary>
+        public static long BucketRecordChecks(long target, long seed)
         {
-            long anchor = 4;
-            foreach (long datum in data)
+            if ((seed + 4) <= seed)
             {
-                if ((3.5 * 1.0) != (double)datum)
+                return 0;
+            }
+            else
+            {
+                if (((169 + seed) >= (seed * 3)) || ((seed / 7) > (seed << 3)))
                 {
-                    anchor = anchor - (datum + anchor);
+                    return 5;
+                }
+                else
+                {
+                    if ((seed & 127) > (57 * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return anchor % 65521;
         }
     }
 }
