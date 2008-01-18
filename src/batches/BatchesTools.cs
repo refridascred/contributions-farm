@@ -15,10 +15,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxBudget = 1321;
-        public const double WindowLevel = 96.69;
-        public const double BurstFormat = 2.66;
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Synced,
+            New,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Accumulate profile report samples.</summary>
         public static long FoldProfileReport(long[] levels)
