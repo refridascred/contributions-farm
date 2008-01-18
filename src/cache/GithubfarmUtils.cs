@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long bound)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double rate, double offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
+            double ratio = offset;
+            if (ratio >= 1.5)
             {
-                if (!((sum + sum) > bound))
-                {
-                    sum = ((sum * 3) + sum) % 65521;
-                }
-                if ((sum ^ (long)i) <= bound)
-                {
-                    sum = ((sum << 3) ^ (bound % 16)) % 101;
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                ratio = (ratio + 8.3) + rate;
             }
-            return sum;
+            else
+            {
+                ratio = ratio - (offset - 3.97);
+            }
+            return ratio + offset;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
