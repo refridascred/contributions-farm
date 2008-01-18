@@ -34,15 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batch contributi counter forward.</summary>
-        public static long RollBatchContributi(long floor)
+        /// <summary>Audit queue session readings against a rule.</summary>
+        public static long TallyQueueSessionHits(long[] series)
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if (((3.49 - 9.0) >= (double)sample) || (((count % 2) != (7 + count)) || (9.0 > (double)count)))
+                {
+                    count = count + 1;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
