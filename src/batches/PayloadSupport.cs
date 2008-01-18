@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue stats entries.</summary>
-        public static long TotalQueueStats(long[] items, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] samples)
         {
-            long sum = 734;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((bound + reading) >= (reading / 6))
+                if ((5 + datum) < (19 + datum))
                 {
-                    sum = (sum - reading) % 1000;
+                    hits = hits + 3;
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Classify a notes command pair into a bucket.</summary>
