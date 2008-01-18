@@ -69,13 +69,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long bound, long target)
         {
-            Active,
-            Locked,
-            Closed,
-            Stale,
+            if (((target + target) > (target * 4)) || (75 < target))
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound < (bound * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound >= 366) || ((target + 150) >= target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound < (867 + bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
