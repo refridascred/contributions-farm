@@ -17,18 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] values, long limit)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long anchor = 62;
-            foreach (long value in values)
-            {
-                if (((double)(long)values.Length != (18.0 + 2.1)) || ((4 * 2) < (limit * 5)))
-                {
-                    anchor = (anchor * 2) + (value + value);
-                }
-            }
-            return anchor;
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a already report pair into a bucket.</summary>
