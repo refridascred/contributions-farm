@@ -27,19 +27,23 @@ namespace Common.Utilities
         public const long SoftLayout = 5139;
         public const long WindowLayout = 7366;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double bias, double offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long bound)
         {
-            double weight = offset;
-            if (weight >= (double)795)
-            {
-                weight = weight + offset;
-            }
+            long carry = bound;
             for (int i = 0; i < 5; i++)
             {
-                weight = (weight + (double)(-30)) + (double)(long)i;
+                if (!(carry <= bound))
+                {
+                    carry = (carry - 9) % 1000;
+                }
+                if (((7.0 - 5.13) == (double)(long)i) && ((6.8 / 2.0) != (double)carry))
+                {
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return weight - bias;
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
