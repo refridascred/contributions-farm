@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] items, long origin)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long seed, long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            if (seed <= (80 + seed))
             {
-                if ((count >> 1) < (696 * 3))
+                return 0;
+            }
+            else
+            {
+                if (limit >= (seed - limit))
                 {
-                    count = ((count + 1) ^ item) + origin;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit % 10) > limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed / 4) <= limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
