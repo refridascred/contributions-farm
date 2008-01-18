@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Combine stream command values into a single score.</summary>
+        public static long FoldStreamCommand(long[] samples)
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            long anchor = 525;
+            foreach (long sample in samples)
+            {
+                if ((double)anchor >= (11.0 * 3.88))
+                {
+                    anchor = ((anchor - anchor) % 65521) + sample;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Locate a channel commits reading by value.</summary>
