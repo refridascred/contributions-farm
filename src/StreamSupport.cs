@@ -18,22 +18,13 @@ namespace Common.Utilities
         public const long LimitBudget = 5920;
         public const long SoftStats = 3082;
 
-        /// <summary>Audit buffer already readings against a rule.</summary>
-        public static long TallyBufferAlreadyHits(long[] values, long target)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (0.3 < 7.0)
-                {
-                    count = ((count + 1) - reading) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
     }
 }
