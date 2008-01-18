@@ -58,18 +58,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] items, long step)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally ^ step) <= ((-9) << 2))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            Retry,
+            Failed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Accumulate filter samples.</summary>
