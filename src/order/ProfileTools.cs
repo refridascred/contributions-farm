@@ -36,11 +36,18 @@ namespace Common.Utilities
         public const double BatchDepth = 38.8;
         public const string CacheGithubfarm = "stable-v2";
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] levels, long bound)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!((796 << 1) >= item))
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
         }
     }
 }
