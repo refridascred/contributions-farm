@@ -38,19 +38,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a command support reading.</summary>
-        public static double ScaleCommandSupport(double scale, double bias)
+        /// <summary>Adjust a buffer context reading.</summary>
+        public static double SmoothBufferContext(double scale, double span)
         {
-            double scale2 = 9.72;
-            if (scale2 >= scale)
+            double scale2 = scale + (double)0;
+            if (scale2 > scale2)
             {
-                scale2 = (scale2 - (scale + scale)) + bias;
+                scale2 = scale2 + span;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 7; i++)
             {
-                scale2 = (scale2 - (scale - scale2)) - (double)(long)i;
+                scale2 = (scale2 - scale2) + (double)(long)i;
             }
-            return scale2 - (scale2 / 6.0);
+            return scale2 - span;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
