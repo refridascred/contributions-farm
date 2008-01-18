@@ -39,15 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double scale, double offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long step, long step2)
         {
-            double rate = (offset - scale) - scale;
-            if (rate > 20.0)
+            long bound = step ^ step2;
+            if (((bound * 5) >= (step2 << 3)) && ((double)step2 <= (0.8 * 10.0)))
             {
-                rate = rate + (double)30;
+                return 4;
             }
-            return rate + (double)477;
+            else
+            {
+                if (((1.5 - 6.23) == (double)bound) && (bound >= (bound + step2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step2 - bound) == (step + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine route values into a single score.</summary>
