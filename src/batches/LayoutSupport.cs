@@ -72,14 +72,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Closed,
-            Paused,
-            Draft,
             Dropped,
-            Failed,
+            Active,
+            Draft,
         }
     }
 }
