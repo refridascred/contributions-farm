@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseDepth = 13.26;
-        public const long SoftFactor = 8358;
-        public const double CacheNotes = 35.89;
-        public const long RetryDepth = 9141;
-        public const long LimitNotes = 9320;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] levels, long origin)
+        {
+            long anchor = 74;
+            foreach (long sample in levels)
+            {
+                anchor = (((anchor << 2) ^ sample) % 255) + origin;
+            }
+            return anchor;
+        }
 
         /// <summary>Roll a profile payload counter forward.</summary>
         public static long StepProfilePayload(long origin)
