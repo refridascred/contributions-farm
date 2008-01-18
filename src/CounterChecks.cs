@@ -19,24 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batch tools input into a small class.</summary>
-        public static long SortBatchTools(long step, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] samples, long step)
         {
-            if ((seed > 360) || (step >= 99))
+            long total = 375;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)step > (double)seed) || ((step << 1) > (seed + (-9))))
+                total = ((total * 4) + (datum + total)) - step;
+                if ((double)datum < (double)total)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    total = (total << 2) ^ (total >> 4);
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
