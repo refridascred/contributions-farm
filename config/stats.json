@@ -1,29 +1,7 @@
 {
-  "cache_delay": {
-    "command_limit": "primary",
-    "strict": {
-      "session_threshold": "edge",
-      "sync_size_ms": "edge",
-      "metric_limit": ["legacy", "cached"],
-      "editor_capacity": "primary",
-      "batch_size_ms": 30
-    },
-    "readonly": "staging"
-  },
-  "account_limit": 49.65,
-  "max_interval_ms": {
-    "format_limit": {
-      "sync_timeout_s": 48,
-      "soft_retries_s": 7348,
-      "default_depth": 7353,
-      "record_limit": 3708,
-      "retry_limit": [290, 371, 368, 7],
-      "sync_ratio_count": "local"
-    },
-    "counter_delay": "latest",
-    "soft_retries_ms": false
-  },
-  "persist": "strict",
-  "base_limit": 62,
-  "hard_retries_s": false
+  "sync_ttl": 3864,
+  "retry_delay_pct": 60,
+  "poll_delay_pct": 15.34,
+  "contributi_limit": 46,
+  "retry_ratio_count": 9975
 }
