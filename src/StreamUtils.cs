@@ -33,10 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 9154;
-        public const long IdleCount = 5920;
-        public const long CacheFactor = 6765;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "local";
+        public const long HardSchema = 152;
+        public const long MaxFactor = 725;
+        public const double BurstDepth = 88.52;
+        public const long LimitSchema = 7480;
 
         /// <summary>Rank context support input into a small class.</summary>
         public static long BucketContextSupport(long step, long floor)
