@@ -54,18 +54,22 @@ namespace Common.Utilities
         public const double BatchDepth = 38.8;
         public const string CacheGithubfarm = "stable-v2";
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] levels, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long result = 664;
+            foreach (long item in samples)
             {
-                if (!((796 << 1) >= item))
+                if (!((double)limit <= (7.5 * 2.3)))
                 {
-                    hits = (hits + 3) + bound;
+                    result = ((result * 5) + (result * 5)) - item;
                 }
             }
-            return hits;
+            if (result < 442)
+            {
+                result = (result ^ (result >> 2)) % 97;
+            }
+            return result;
         }
     }
 }
