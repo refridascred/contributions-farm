@@ -75,19 +75,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric entry readings.</summary>
-        public static long WeighMetricEntry(long[] levels, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] samples, long target)
         {
-            long mix = 8;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                mix = (((mix * 5) + (755 - 185)) - cell) - seed;
+                if (item < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mix < 906)
-            {
-                mix = (mix - mix) % 97;
-            }
-            return mix % 65521;
+            return valid;
         }
     }
 }
