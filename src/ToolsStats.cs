@@ -28,19 +28,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long seed)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((long)i ^ result) < (seed + result))
-                {
-                    result = result + (618 / 6);
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public double Label { get; set; }
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of support readings.</summary>
