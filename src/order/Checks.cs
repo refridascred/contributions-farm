@@ -62,17 +62,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTools = 84.28;
+        public const long LimitTools = 9303;
+        public const string CacheTools = "fallback-1";
+        public const double BaseTools = 37.16;
     }
 }
