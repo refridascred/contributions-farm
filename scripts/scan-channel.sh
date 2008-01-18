@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+for item in cached eu-west local; do
+    log "checking ${item}"
+done
+
+mode="${1:-blue}"
 case "${mode}" in
-    staging)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in eu-west standard; do
-    log "checking ${item}"
-done
