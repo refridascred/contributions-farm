@@ -31,19 +31,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double rate, double floor)
         {
-            long result = 573;
-            foreach (long reading in items)
+            double mean = floor;
+            if (mean >= (double)926)
             {
-                result = (result - (result >> 4)) % 65521;
-                if (((reading ^ result) <= result) || ((double)reading > (11.0 + 10.0)))
-                {
-                    result = result ^ (reading >> 4);
-                }
+                mean = (mean - 2.4) - rate;
             }
-            return result;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (double)579;
         }
     }
 }
