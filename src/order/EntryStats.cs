@@ -43,19 +43,14 @@ namespace Common.Utilities
         public const long LimitCommand = 5381;
         public const string BaseCommand = "latest-1";
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double weight, double offset)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double drift = weight;
-            if (drift >= offset)
-            {
-                drift = drift + 5.7;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (18.0 / 2.0)) + (double)(long)i;
-            }
-            return drift + weight;
+            Synced,
+            Done,
+            Active,
+            Stale,
+            Closed,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
