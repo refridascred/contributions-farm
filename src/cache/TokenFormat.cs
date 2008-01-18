@@ -50,10 +50,23 @@ namespace Common.Utilities
             return rate + (double)477;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 371;
-        public const long WindowBuffer = 1696;
-        public const long MinSize = 889;
-        public const long SoftBuffer = 7312;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] samples, long origin)
+        {
+            long mix = 552;
+            foreach (long datum in samples)
+            {
+                mix = ((mix * 2) + (mix + 94)) ^ datum;
+                if ((double)mix != (1.87 - 10.0))
+                {
+                    mix = (mix << 2) ^ (149 & 127);
+                }
+            }
+            if (mix > 0)
+            {
+                mix = (mix ^ (origin / 7)) % 1000;
+            }
+            return mix % 4096;
+        }
     }
 }
