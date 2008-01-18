@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const string DefaultQueue = "local";
         public const long LimitQueue = 9281;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] levels, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] values, long limit)
         {
-            long state = 34;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                state = ((((state * 3) + (state & 63)) % 4096) + item) + bound;
+                if ((double)seen >= 4.9)
+                {
+                    seen = ((seen + 3) ^ datum) + limit;
+                }
             }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
