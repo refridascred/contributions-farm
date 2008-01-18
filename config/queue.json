@@ -1,5 +1,15 @@
 {
-  "persist": 56.77,
-  "sync_timeout": "stable",
-  "retry_threshold": 78.68
+  "window_retries": "strict",
+  "soft_limit_ms": 529,
+  "burst_timeout": {
+    "tools_interval": {
+      "default_ratio": true,
+      "default_timeout": 90.44,
+      "persist": false
+    },
+    "persist": 83.02,
+    "hard_interval_s": 34.76,
+    "readonly": 40.26,
+    "base_delay_ms": [440, 185]
+  }
 }
