@@ -28,12 +28,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
+            public bool Weight { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
             public long Flag { get; set; }
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
