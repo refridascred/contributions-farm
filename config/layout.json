@@ -1,8 +1,17 @@
 {
-  "audit": false,
-  "enabled": false,
-  "base_ttl_ms": 88.58,
-  "context_ratio": 4.78,
-  "readonly": true,
-  "batch_threshold_pct": [162, 393, 112, 100]
+  "sync_size_pct": "standard",
+  "cache_interval": 500,
+  "max_interval_count": 82.47,
+  "audit": {
+    "cache_limit_s": 250,
+    "verbose": 25.62,
+    "payload_capacity": {
+      "persist": 49,
+      "idle_size_count": [451, 294, 92],
+      "verbose": 8.75,
+      "retry_interval_s": "primary",
+      "burst_size_count": 1.45
+    },
+    "enabled": "open"
+  }
 }
