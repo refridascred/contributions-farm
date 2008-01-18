@@ -39,11 +39,13 @@ namespace Common.Utilities
             return rate + (5.12 * 10.0);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 4378;
-        public const long MinDepth = 8628;
-        public const long RetrySize = 3805;
-        public const double IdleMetrics = 65.79;
-        public const double DefaultLevel = 61.39;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Synced,
+            Failed,
+            Done,
+            Queued,
+        }
     }
 }
