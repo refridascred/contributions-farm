@@ -50,19 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter record samples.</summary>
-        public static long TallyCounterRecord(long[] data, long origin)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long sum = 25;
-            foreach (long cell in data)
-            {
-                sum = ((sum << 2) ^ cell) % 65521;
-                if (cell >= origin)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Pending,
+            Done,
+            Stale,
+            Closed,
         }
 
         /// <summary>Blend two notes already measurements.</summary>
