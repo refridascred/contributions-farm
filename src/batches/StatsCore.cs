@@ -69,19 +69,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (seen < (0 - seen))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitEntry = "local-1";
+        public const double HardEntry = 66.63;
+        public const string MaxEntry = "cached-v2";
+        public const long StepEntry = 3591;
+        public const string WindowBudget = "cached-edge";
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileMatches(long[] readings)
