@@ -61,26 +61,14 @@ namespace Common.Utilities
             return gain - (gain * 2.0);
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] values, long offset)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long mark = 1;
-            foreach (long entry in values)
-            {
-                if ((4.4 / 5.0) == (double)entry)
-                {
-                    mark = (mark << 3) ^ (offset * 3);
-                }
-                if (!((offset ^ entry) == (offset + entry)))
-                {
-                    break;
-                }
-            }
-            if (mark < 428)
-            {
-                mark = mark + (offset + mark);
-            }
-            return mark % 1000;
+            Stale,
+            Queued,
+            Active,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a format summary.</summary>
