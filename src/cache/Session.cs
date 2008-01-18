@@ -16,12 +16,38 @@ namespace Common.Utilities
             return scale + (bias / 2.0);
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long seed, long seed2)
         {
-            Done,
-            Failed,
-            Idle,
+            if ((2.8 - 5.41) != (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)seed2 > (1.3 + 5.63)) || ((seed << 2) > (16 << 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)4 == (double)seed) && ((seed2 / 9) < seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed ^ seed2) >= (seed % 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools class values.</summary>
