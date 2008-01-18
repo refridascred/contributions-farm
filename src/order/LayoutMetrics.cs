@@ -13,10 +13,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 88.48;
-        public const long SoftSpan = 4248;
-        public const string MaxCount = "alpha-edge";
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] samples, long target)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmGaps(long[] items, long seed)
