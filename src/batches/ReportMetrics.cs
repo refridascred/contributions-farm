@@ -29,9 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 4943;
-        public const long HardCount = 7843;
-        public const long MinTimeout = 467;
+        /// <summary>Validate route cache readings against a bound.</summary>
+        public static bool ValidateRouteCacheLimits(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
