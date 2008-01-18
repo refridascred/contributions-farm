@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftSpan = "staging-v2";
-        public const long MaxEditor = 192;
-        public const long MaxScore = 6373;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] series, long origin)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((33 + count) >= (origin << 2))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextOutliers(long[] levels)
