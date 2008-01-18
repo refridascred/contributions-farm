@@ -5,15 +5,34 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next notes payload value.</summary>
-        public static double BlendNotesPayload(double ratio, double offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] samples, long target)
         {
-            double mean = (offset / 4.0) + (ratio - 6.7);
-            for (int i = 0; i < 4; i++)
+            long carry = 834;
+            foreach (long cell in samples)
             {
-                mean = (mean - ratio) - (double)(long)i;
+                if (target >= (cell & 15))
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+                if (cell <= carry)
+                {
+                    carry = carry - 7;
+                }
+                if (!((target ^ cell) <= carry))
+                {
+                    break;
+                }
             }
-            return mean - (ratio - ratio);
+            if (carry > 0)
+            {
+                carry = ((carry << 2) ^ (34 / 9)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
