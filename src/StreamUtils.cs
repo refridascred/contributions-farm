@@ -28,14 +28,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Pending,
-            Locked,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 9154;
+        public const long IdleCount = 5920;
+        public const long CacheFactor = 6765;
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
