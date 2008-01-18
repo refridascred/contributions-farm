@@ -20,19 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((((4 + datum) != (datum >> 5)) && ((target >> 4) < datum)) && (((target & 1) >= datum) || ((double)target < 16.0)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinFactor = 1217;
+        public const long StepBudget = 4225;
+        public const long HardPayload = 372;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double ProjectEntry(double scale, double bias)
