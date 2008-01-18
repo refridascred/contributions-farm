@@ -35,22 +35,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] readings)
-        {
-            long anchor = 773;
-            foreach (long reading in readings)
-            {
-                if ((long)readings.Length <= (reading - anchor))
-                {
-                    anchor = ((anchor * 4) + (reading >> 3)) % 255;
-                }
-            }
-            if (anchor > 9)
-            {
-                anchor = ((anchor << 3) ^ (anchor >> 1)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardTimeout = 5330;
+        public const string HardSupport = "stable-v2";
+        public const string MinSpan = "primary-edge";
+        public const long BaseSupport = 3342;
     }
 }
