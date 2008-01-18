@@ -1,9 +1,13 @@
 {
-  "hard_delay_pct": 60,
-  "readonly": 64.07,
-  "route_window": {
-    "audit": "staging",
-    "warm_delay_pct": "stable",
-    "strict": "fallback"
-  }
+  "soft_interval_pct": false,
+  "base_capacity_s": "primary",
+  "queue_limit": 94,
+  "cache_capacity_s": {
+    "report_threshold": "stable",
+    "idle_threshold_count": "open",
+    "cache_ttl": false,
+    "sync_size_ms": 11
+  },
+  "batch_timeout_count": ["eu-west", "latest"],
+  "record_window": ["blue", "legacy"]
 }
