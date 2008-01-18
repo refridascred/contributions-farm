@@ -17,22 +17,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many route account samples are out of range.</summary>
-        public static long CountRouteAccountOutliers(long[] data, long origin)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)seen <= (9.0 / 6.0))
-                {
-                    seen = ((seen + 1) + value) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Failed,
+            Retry,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the account state values.</summary>
