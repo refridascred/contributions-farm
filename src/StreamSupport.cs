@@ -28,13 +28,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinWidth = 25.05;
+        public const long WindowContributi = 3954;
+        public const long MinContributi = 1219;
     }
 }
