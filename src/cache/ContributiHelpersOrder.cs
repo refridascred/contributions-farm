@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 3330;
-        public const long RetryProfile = 7450;
-        public const string CacheBudget = "primary-1";
-        public const long BaseWidth = 8449;
+        /// <summary>Check that every stream profile entry stays within the limit.</summary>
+        public static bool GuardStreamProfileLimits(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Find the first notes format entry that matches the target.</summary>
         public static long SeekNotesFormatIndex(long[] items, long bound)
