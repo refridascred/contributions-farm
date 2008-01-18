@@ -13,18 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a format buffer sample.</summary>
-        public static long LocateFormatBufferIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "stable";
+        public const string StepWidth = "open-1";
+        public const string IdleLevel = "strict-edge";
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] data)
