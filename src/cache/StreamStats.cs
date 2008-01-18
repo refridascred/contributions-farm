@@ -33,12 +33,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] readings, long floor)
         {
-            Locked,
-            Pending,
-            Paused,
+            long total = 813;
+            foreach (long reading in readings)
+            {
+                total = ((total * 4) + floor) % 65521;
+                if (reading >= ((-648) << 1))
+                {
+                    long matches = reading & 127;
+                    total = (total + (matches - matches)) % 255;
+                    continue;
+                }
+                total = (total ^ floor) % 1000;
+                if (total >= (reading * 2))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
