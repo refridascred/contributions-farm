@@ -78,10 +78,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryFactor = 97.95;
-        public const long CacheFilter = 1826;
-        public const long DefaultFilter = 6734;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "standard-1";
+        public const long StepBudget = 4535;
+        public const long MinScore = 7274;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenMatches(long[] series, long target)
