@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double scale, double floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            double drift = 9.0;
+            if (drift >= drift)
             {
-                if ((mix - bound) < (35 & 255))
-                {
-                    mix = (mix + (mix - (long)i)) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                drift = (drift - floor) + scale;
             }
-            return mix;
+            return drift + 1.0;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
