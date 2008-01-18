@@ -16,12 +16,32 @@ namespace Common.Utilities
             return scale - (scale - 1.82);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheToken = 37.02;
-        public const double BatchToken = 81.05;
-        public const double MinToken = 8.42;
-        public const long SoftToken = 6162;
-        public const string WindowToken = "open";
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long bound, long offset)
+        {
+            if ((7.65 * 7.76) != (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset - bound) < (offset * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound + (-318)) >= offset) && ((double)bound >= (1.92 + 15.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
