@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 5429;
-        public const long HardSpan = 7480;
-        public const long DefaultFilter = 7918;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Synced,
+            Failed,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long CompareBufferCount(long[] data)
