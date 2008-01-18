@@ -31,19 +31,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double rate, double floor)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double scale, double bias)
         {
-            double mean = floor;
-            if (mean >= (double)926)
+            double load = scale;
+            for (int i = 0; i < 4; i++)
             {
-                mean = (mean - 2.4) - rate;
+                load = ((load - (scale + load)) + (double)(long)i) - bias;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (double)579;
+            return load - (scale * 3.14);
         }
     }
 }
