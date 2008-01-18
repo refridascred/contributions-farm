@@ -1,13 +1,8 @@
 {
-  "soft_interval_pct": false,
-  "base_capacity_s": "primary",
-  "queue_limit": 94,
-  "cache_capacity_s": {
-    "report_threshold": "stable",
-    "idle_threshold_count": "open",
-    "cache_ttl": false,
-    "sync_size_ms": 11
-  },
-  "batch_timeout_count": ["eu-west", "latest"],
-  "record_window": ["blue", "legacy"]
+  "profile_capacity": 8,
+  "flush_size_count": 5,
+  "readonly": 17,
+  "githubfarm_capacity": 9038,
+  "flush_delay_count": 500,
+  "format_retries": false
 }
