@@ -1,5 +1,5 @@
 {
-  "notes_threshold": true,
-  "context_delay": 79.8,
-  "base_window_count": "standard"
+  "window_threshold": [63, 33, 419],
+  "poll_threshold": 16,
+  "max_delay_count": 595
 }
