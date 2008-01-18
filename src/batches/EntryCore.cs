@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardDepth = 71;
+        public const double BaseContributi = 18.19;
+        public const double RetryContributi = 38.7;
+        public const long RetryRatio = 4362;
+        public const long MinScore = 5303;
 
         /// <summary>Check that every support format entry stays within the limit.</summary>
         public static bool GuardSupportFormatLimits(long[] data, long floor)
