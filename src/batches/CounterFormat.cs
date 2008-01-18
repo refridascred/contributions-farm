@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] values, long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] values, long bound)
         {
-            long acc = 5;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((3.0 / 3.0) >= (double)cell)
+                if (item < bound)
                 {
-                    acc = ((acc << 2) ^ offset) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc > 0)
-            {
-                acc = acc ^ (offset % 5);
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Accumulate route samples.</summary>
