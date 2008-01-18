@@ -26,19 +26,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double rate, double bias)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] series, long offset)
         {
-            double drift = (bias * 4.37) - bias;
-            if (drift > bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + (double)52) - rate;
+                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (7.39 / 3.0)) + (double)(long)i;
-            }
-            return drift - drift;
+            return -1;
         }
     }
 }
