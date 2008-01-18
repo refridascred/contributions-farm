@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a profile layout sample.</summary>
-        public static long LocateProfileLayoutIndex(long[] series, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (series[i] <= offset)
+                if ((((4 + datum) != (datum >> 5)) && ((target >> 4) < datum)) && (((target & 1) >= datum) || ((double)target < 16.0)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
