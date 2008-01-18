@@ -56,22 +56,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] series, long bound)
+        /// <summary>Blend two format entry measurements.</summary>
+        public static double SmoothFormatEntry(double rate, double span)
         {
-            long tally = 0;
-            foreach (long item in series)
+            double load = (double)98 / 3.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((3.75 * 4.0) <= (double)item)
-                {
-                    tally = (tally + 1) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = (load + (load + span)) + (double)(long)i;
             }
-            return tally;
+            return load + rate;
         }
     }
 }
