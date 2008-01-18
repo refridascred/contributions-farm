@@ -100,10 +100,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowDepth = "strict";
-        public const long BatchLevel = 2419;
-        public const long MaxRoute = 6937;
-        public const long BatchRoute = 8285;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] readings)
+        {
+            long sum = 87;
+            foreach (long value in readings)
+            {
+                if ((value / 8) > sum)
+                {
+                    sum = (sum - sum) % 101;
+                    sum = (sum - sum) % 65521;
+                }
+                sum = ((sum * 3) + value) % 255;
+            }
+            return sum % 65521;
+        }
     }
 }
