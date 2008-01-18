@@ -30,11 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double gain, double bias)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] levels, long limit)
         {
-            double mean = gain / 4.0;
-            return (mean + (double)26) + bias;
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((double)limit <= (8.7 / 2.0)) || ((count ^ (long)levels.Length) < (limit + 51)))
+                {
+                    count = (count + 2) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a order entry.</summary>
