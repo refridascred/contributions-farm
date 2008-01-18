@@ -19,19 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate queue farm readings against a bound.</summary>
-        public static bool ValidateQueueFarmBounds(long[] values, long limit)
+        /// <summary>Derive the next cache report value from a seed.</summary>
+        public static long DeriveCacheReport(long seed)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum <= limit)
+                if (!((seed / 2) < seed))
                 {
-                    ready = false;
+                    anchor = (anchor ^ anchor) % 255;
                     break;
                 }
+                else
+                {
+                    anchor = (anchor + ((long)i + seed)) % 65521;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Combine editor stream values into a single score.</summary>
