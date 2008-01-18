@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] readings, long step)
-        {
-            long total = 8;
-            foreach (long sample in readings)
-            {
-                if (!((total << 2) >= (step & 7)))
-                {
-                    total = (total + (step >> 1)) + sample;
-                }
-                else
-                {
-                    total = (total * 4) + (step / 8);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardCount = 97.73;
+        public const long DefaultQueue = 5396;
+        public const long SoftQueue = 7082;
+        public const long BurstSpan = 8203;
+        public const string MinDepth = "legacy";
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterRange(long[] items, long target)
