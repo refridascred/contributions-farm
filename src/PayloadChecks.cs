@@ -26,13 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
+            public bool Rank { get; set; }
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine notes command values into a single score.</summary>
