@@ -26,25 +26,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long bound, long floor)
-        {
-            long slot = bound - floor;
-            if (!((5.82 * 16.0) < (double)slot))
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound < (slot - bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitGithubfarm = "fallback-v2";
+        public const double IdleCount = 79.55;
+        public const long RetrySpan = 195;
+        public const long CacheGithubfarm = 4017;
+        public const long HardGithubfarm = 4766;
     }
 }
