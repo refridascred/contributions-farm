@@ -14,12 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 6395;
+        public const double MaxTimeout = 71.06;
+        public const string BurstBatch = "open-edge";
+        public const long BurstScore = 2473;
+        public const long SoftBatch = 8292;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
