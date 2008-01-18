@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const double RetrySize = 72.1;
         public const long IdleReport = 8884;
 
-        /// <summary>Check that every cluster support entry stays within the limit.</summary>
-        public static bool VerifyClusterSupportBounds(long[] values, long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long total = 307;
+            foreach (long reading in levels)
             {
-                if (reading < step)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total << 2) ^ (reading << 1)) + bound;
             }
-            return flag;
+            return total % 65521;
         }
 
         /// <summary>Accumulate command samples.</summary>
