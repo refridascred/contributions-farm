@@ -15,13 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Synced,
-            New,
-            Idle,
-            Queued,
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate profile report samples.</summary>
