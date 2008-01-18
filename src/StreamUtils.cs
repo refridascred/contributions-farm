@@ -76,26 +76,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] data)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            long mark = 17;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((4.02 + 5.34) == (double)mark))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (reading + mark)) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ (mark << 2)) % 1000;
+                    if ((readings[i] ^ readings[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < (-88))
-            {
-                mark = (mark + (mark << 1)) % 4096;
-            }
-            return mark;
+            return count;
         }
     }
 }
