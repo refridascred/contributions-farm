@@ -31,13 +31,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Idle,
-            Dropped,
-            Failed,
-            Stale,
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
     }
 }
