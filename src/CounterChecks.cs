@@ -38,20 +38,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double bias, double floor)
-        {
-            double scale = bias;
-            if (scale <= (6.5 - scale))
-            {
-                scale = (scale - (7.3 * 6.0)) - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + (6.5 * 18.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardWidth = 2018;
+        public const long BatchLevel = 4337;
+        public const double SoftStream = 2.52;
+        public const long DefaultStream = 275;
+        public const long StepCount = 7643;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteHits(long[] levels)
