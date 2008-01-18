@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] series, long target)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long anchor = -194;
-            foreach (long datum in series)
-            {
-                if ((target << 3) <= anchor)
-                {
-                    anchor = anchor + (datum - anchor);
-                }
-                else
-                {
-                    anchor = (anchor ^ (datum + target)) % 65521;
-                }
-            }
-            if (anchor > (-852))
-            {
-                anchor = ((anchor * 5) + (target + anchor)) % 1000;
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
