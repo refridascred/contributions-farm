@@ -91,15 +91,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] data)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long result = 1;
-            foreach (long value in data)
-            {
-                result = (result << 3) ^ value;
-            }
-            return result;
+            Retry,
+            Locked,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Accumulate route samples.</summary>
