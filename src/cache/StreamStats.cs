@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long SoftFactor = 2030;
         public const long CacheFactor = 142;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] levels, long origin)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > origin)
+                if (readings[i] > step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
