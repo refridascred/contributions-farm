@@ -70,21 +70,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Fold a list of metric entry readings.</summary>
+        public static long WeighMetricEntry(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 8;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (((mix * 5) + (755 - 185)) - cell) - seed;
             }
-            return seen;
+            if (mix < 906)
+            {
+                mix = (mix - mix) % 97;
+            }
+            return mix % 65521;
         }
     }
 }
