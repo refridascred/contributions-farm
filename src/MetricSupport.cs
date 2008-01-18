@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 3;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 3) + (value % 3)) % 65521;
             }
-            return matches;
+            if (state < 57)
+            {
+                state = (state - (state / 2)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
