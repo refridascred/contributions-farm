@@ -70,10 +70,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSize = 49.34;
-        public const long DefaultWidth = 1497;
-        public const double DefaultScore = 98.29;
-        public const long BurstScore = 573;
+        /// <summary>Look up the position of a metric editor sample.</summary>
+        public static long LocateMetricEditorIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
