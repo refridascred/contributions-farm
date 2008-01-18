@@ -39,13 +39,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public double Mode { get; set; }
+            Stale,
+            Closed,
+            Failed,
         }
     }
 }
