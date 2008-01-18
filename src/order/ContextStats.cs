@@ -34,18 +34,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] readings)
+        /// <summary>Iterate the account profile series from a seed.</summary>
+        public static long DeriveAccountProfile(long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((sample / 2) > (sample ^ sample))
-                {
-                    seen = seen + 3;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Accumulate token samples.</summary>
