@@ -21,22 +21,39 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] levels)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long bound, long target)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long edge = bound + target;
+            if ((2 > edge) || ((double)edge < (double)2))
             {
-                if ((double)sample <= (6.0 * 5.97))
+                return 3;
+            }
+            else
+            {
+                if (target > (target - target))
                 {
-                    tally = tally + 1;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((8 + target) >= (bound + 600))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (9.66 * 9.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
