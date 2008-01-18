@@ -16,14 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Dropped,
-            Idle,
-            Retry,
-            Synced,
-            Closed,
+            public long Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a buffer options.</summary>
