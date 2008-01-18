@@ -41,19 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double scale, double bias)
-        {
-            double load = bias;
-            if (load < scale)
-            {
-                load = load + (bias / 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load + bias;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitCount = 7087;
+        public const double BurstTimeout = 48.99;
+        public const long BaseAccount = 4119;
+        public const long WindowAccount = 2891;
+        public const string SoftScore = "primary-v2";
     }
 }
