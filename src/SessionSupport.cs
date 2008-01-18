@@ -34,13 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
+            public bool Token { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
