@@ -43,14 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] data, long offset)
         {
-            Queued,
-            Idle,
-            Dropped,
-            Pending,
-            Stale,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
