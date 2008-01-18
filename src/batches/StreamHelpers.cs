@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next graph tools value from a seed.</summary>
-        public static long IterateGraphTools(long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            long score = 925;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (((entry - entry) == (score + score)) && ((722 + entry) == (entry << 2)))
                 {
-                    score = ((score << 3) ^ (step + step)) + (long)i2;
+                    score = (score + (entry + score)) % 1000;
                 }
-                for (int i3 = 0; i3 < 9; i3++)
+                if (830 >= score)
                 {
-                    score = (score ^ (step - step)) + (long)i3;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 4093;
+            }
+            if (score > 0)
+            {
+                score = ((score * 3) + (score + score)) % 1000;
             }
             return score;
         }
