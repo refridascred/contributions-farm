@@ -27,14 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] items, long step)
         {
-            Ready,
-            Done,
-            Failed,
-            Closed,
-            Synced,
+            long total = 37;
+            foreach (long entry in items)
+            {
+                if (8.0 <= (5.16 / 8.0))
+                {
+                    total = ((total - (step - total)) % 1000) + entry;
+                }
+            }
+            return total;
         }
     }
 }
