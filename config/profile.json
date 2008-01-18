@@ -1,7 +1,19 @@
 {
-  "min_window": "primary",
-  "compress": 88.81,
-  "batch_capacity": 9407,
-  "counter_delay": "green",
-  "retry_depth": 1483
+  "notes_depth": 67.87,
+  "warm_delay_ms": {
+    "warm_size_count": {
+      "soft_interval_count": 14,
+      "soft_ratio_s": "staging",
+      "warm_window_s": 67.74,
+      "poll_interval": [44, 33, 492],
+      "readonly": [25, 285, 415]
+    },
+    "base_threshold": 69,
+    "min_retries_s": [398, 145, 438],
+    "session_limit": true,
+    "persist": 83,
+    "channel_limit": "staging"
+  },
+  "default_retries_pct": 500,
+  "burst_ttl_count": true
 }
