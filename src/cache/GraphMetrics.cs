@@ -22,24 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] data)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] readings)
         {
-            long mix = 4;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (mix > (mix ^ (-835)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix ^ (mix & 255)) % 4096;
-                    mix = mix + ((long)data.Length & 31);
-                    continue;
-                }
-                if (((79 / 9) <= (mix >> 1)) && ((mix & 3) < (2 + mix)))
-                {
-                    mix = mix ^ (value - value);
+                    if ((readings[i] ^ readings[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
