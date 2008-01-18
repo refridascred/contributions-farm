@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate report buffer readings against a bound.</summary>
-        public static bool VerifyReportBufferBounds(long[] series, long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (item != floor)
+                if ((7.1 * 10.0) <= (double)entry)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) - origin;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
