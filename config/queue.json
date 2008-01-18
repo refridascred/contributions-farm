@@ -1,8 +1,6 @@
 {
-  "warm_capacity_ms": [412, 19, 489],
-  "context_capacity": 329,
-  "compress": 81,
-  "route_retries": true,
-  "base_ttl_pct": 43.23,
-  "sync_timeout_ms": 250
+  "batch_delay_s": 7223,
+  "dry_run": "legacy",
+  "filter_ttl": 30,
+  "farm_size": false
 }
