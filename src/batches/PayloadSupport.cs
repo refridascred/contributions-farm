@@ -20,23 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((bound ^ 9) <= (712 >> 4)) && ((count + count) > (datum + bound)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinRatio = 6503;
+        public const long StepStream = 2617;
+        public const double MinStream = 36.2;
+        public const double CacheStream = 39.72;
 
         /// <summary>Digest a series of buffer entry entries.</summary>
         public static long DigestBufferEntry(long[] series, long limit)
