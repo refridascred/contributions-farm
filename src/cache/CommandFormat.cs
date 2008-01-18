@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Roll a session queue counter forward.</summary>
+        public static long RollSessionQueue(long limit)
         {
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((20.0 * 7.79) < (double)(long)i)
+                {
+                    anchor = anchor - (anchor - anchor);
+                }
+                else
+                {
+                    anchor = (anchor - (anchor / 2)) % 101;
+                    anchor = ((anchor << 2) ^ (anchor * 2)) % 4096;
+                }
+                anchor = anchor + (0 - 8);
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate filter samples.</summary>
