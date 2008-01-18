@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Idle,
-            Stale,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchAlready = 56.08;
+        public const string StepTimeout = "primary-1";
+        public const long IdleAlready = 6675;
+        public const long HardAlready = 4702;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long FindContextIndex(long[] data, long offset)
