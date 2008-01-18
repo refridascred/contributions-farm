@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitFactor = 2336;
-        public const long HardScore = 5508;
-        public const double MinRatio = 6.91;
+        /// <summary>Measure how many contributi command samples are out of range.</summary>
+        public static long AuditContributiCommandGaps(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell << 1) != (8 % 12))
+                {
+                    count = (count + 2) - step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
