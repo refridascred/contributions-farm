@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 7530;
-        public const long BurstFormat = 4797;
-        public const long CacheFormat = 9271;
-        public const long DefaultInterval = 2296;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Pending,
+            Draft,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double BaseDepth = 78.25;
