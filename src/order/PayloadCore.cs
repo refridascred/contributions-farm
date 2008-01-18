@@ -47,14 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] data)
         {
-            Queued,
-            Closed,
-            Active,
-            Failed,
-            Draft,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally + 0) >= tally)
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
         }
     }
 }
