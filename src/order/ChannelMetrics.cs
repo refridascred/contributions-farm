@@ -23,21 +23,24 @@ namespace Common.Utilities
         public const long MaxContributi = 4540;
         public const long CacheContributi = 4254;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long target, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((target * 4) >= target)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (target > limit)
                 {
-                    if ((samples[i] ^ samples[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
     }
 }
