@@ -77,22 +77,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] items, long bound)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long acc = 7;
-            foreach (long value in items)
-            {
-                if ((value - acc) > (acc * 3))
-                {
-                    acc = (((acc * 4) + acc) % 255) + bound;
-                }
-            }
-            if (acc > 752)
-            {
-                acc = ((acc << 3) ^ 15) % 101;
-            }
-            return acc;
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
