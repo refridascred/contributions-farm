@@ -23,12 +23,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long seed)
         {
-            Retry,
-            Queued,
-            Dropped,
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 3) + ((long)i >> 2)) % 1000;
+                sum = (sum ^ (long)i) % 4096;
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
