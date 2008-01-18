@@ -29,23 +29,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a notes support figure with a bias.</summary>
-        public static double BlendNotesSupport(double ratio, double span)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] levels, long bound)
         {
-            double gain = (double)934;
-            if (gain > span)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain - (double)48;
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (double)19;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + ratio) - (double)(long)i;
-            }
-            return gain - span;
+            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
