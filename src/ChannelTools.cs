@@ -39,19 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] readings, long seed)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Stale,
+            Idle,
         }
     }
 }
