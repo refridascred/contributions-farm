@@ -33,15 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double ratio, double floor)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] samples)
         {
-            double rate = floor * 2.11;
-            if (rate > floor)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - (double)918) - ratio;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + (6.0 + floor);
+            return tally;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
