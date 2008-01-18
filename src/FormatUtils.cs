@@ -13,17 +13,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] items, long target)
+        /// <summary>Fold a list of metric account readings.</summary>
+        public static long WeighMetricAccount(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = -4;
+            foreach (long cell in items)
             {
-                if ((items[i] < target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total << 2) ^ cell) % 4096;
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
