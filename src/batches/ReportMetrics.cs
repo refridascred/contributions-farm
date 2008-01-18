@@ -30,14 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Roll a cluster context counter forward.</summary>
+        public static long SeriesClusterContext(long target)
         {
-            Dropped,
-            Synced,
-            Paused,
-            Draft,
-            Idle,
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
