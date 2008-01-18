@@ -60,13 +60,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Locked,
-            Active,
-            Paused,
-            Idle,
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
