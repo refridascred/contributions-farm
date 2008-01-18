@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const string StepSpan = "cached";
         public const double LimitFormat = 17.12;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] levels, long target)
         {
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
