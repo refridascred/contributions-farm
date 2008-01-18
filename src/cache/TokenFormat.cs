@@ -29,19 +29,22 @@ namespace Common.Utilities
         public const double MinDepth = 87.71;
         public const long MinSize = 7258;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] items)
+        /// <summary>Audit stats token readings against a rule.</summary>
+        public static long CountStatsTokenGaps(long[] series)
         {
-            long sum = 1;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 6; i++)
+                if (!((sample - sample) >= (tally / 6)))
                 {
-                    sum = ((sum ^ item) % 255) + (long)i;
+                    tally = tally + 2;
                 }
-                sum = ((sum * 2) + (1 / 5)) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum % 65521;
+            return tally;
         }
     }
 }
