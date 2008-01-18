@@ -83,19 +83,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate cache record samples.</summary>
-        public static long FoldCacheRecord(long[] readings)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] items)
         {
-            long score = 6;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score << 2) ^ (score >> 4)) ^ cell;
-                if ((score + score) <= (score - score))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score << 2) ^ (score & 15);
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return seen;
         }
     }
 }
