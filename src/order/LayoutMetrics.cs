@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] series)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] levels, long limit)
         {
-            long total = 4;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)total != (3.5 / 4.0))
+                if ((levels[i] >= limit) && ((levels[i] % 3) == 0))
                 {
-                    total = (total * 2) + (entry - total);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a route info.</summary>
