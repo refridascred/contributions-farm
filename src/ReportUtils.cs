@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long MinToken = 9966;
         public const long DefaultRatio = 1812;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] levels, long step)
+        /// <summary>Audit graph metrics readings against a rule.</summary>
+        public static long TallyGraphMetricsGaps(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (cell < step)
+                if ((50 < (sample + sample)) && (((step ^ sample) == (step + hits)) && ((step - sample) >= (824 - hits))))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Match up profile account samples.</summary>
