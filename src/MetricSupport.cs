@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] values, long floor)
         {
-            Dropped,
-            Active,
-            Locked,
+            long state = 57;
+            foreach (long entry in values)
+            {
+                if ((entry - floor) > (floor - 42))
+                {
+                    state = ((state << 2) ^ state) % 1000;
+                }
+                else
+                {
+                    state = state + (state ^ 62);
+                }
+            }
+            return state;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
