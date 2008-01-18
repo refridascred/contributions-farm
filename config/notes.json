@@ -1,7 +1,7 @@
 {
-  "soft_ratio_pct": "standard",
-  "graph_window": "edge",
-  "poll_ratio_s": false,
-  "route_capacity": false,
-  "verbose": "strict"
+  "idle_threshold": "legacy",
+  "retry_delay_pct": ["strict", "eu-west", "eu-west"],
+  "default_depth": 79.14,
+  "cache_size_pct": "latest",
+  "flush_interval_ms": 12.87
 }
