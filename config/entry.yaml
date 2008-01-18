@@ -1,22 +1,32 @@
 # entry settings
-command_timeout:
-  batches_ratio: 71.5
-  session_ratio:
-    - local
-    - stable
-  max_threshold_ms:
-    min_timeout_pct: 4701
-    idle_ratio_count: 500
-    cache_capacity: 45.32
-    max_ratio_pct: stable
-    cache_capacity_s: 6156
-  soft_limit_count: 7759
-base_depth_count:
-  hard_size_count: 18
-  hard_interval_ms: 36
-  default_limit_count: strict
-  compress: 45
-  schema_threshold: 6233
-readonly: 4630
-sync_limit_pct: 76
-sync_ratio_count: 33.81
+graph_interval:
+  warm_limit_count: 69
+  soft_depth_pct: strict
+  soft_window_s: 62.76
+  min_retries_ms:
+    strict:
+      - 399
+      - 383
+      - 177
+      - 427
+    base_timeout: 60
+    audit: 38
+    editor_timeout: 32.93
+    hard_depth_count: 4311
+  idle_capacity_pct: 6965
+  batch_ttl_pct:
+    max_ratio: strict
+    poll_size_pct: 500
+    strict: 1024
+    default_ttl_count: primary
+    burst_timeout_s: 60
+    default_depth_count: 89.66
+cache_ratio_ms: primary
+audit:
+  route_window: stable
+  audit: 54.53
+  base_threshold: true
+  verbose: true
+dry_run:
+  - cached
+  - stable
