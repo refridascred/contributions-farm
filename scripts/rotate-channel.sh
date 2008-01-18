@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary eu-west strict latest; do
+CHANNEL_LIMIT=471
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in fallback green stable; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
