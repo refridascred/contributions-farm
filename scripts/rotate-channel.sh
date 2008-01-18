@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=471
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in fallback green stable; do
+for item in legacy strict eu-west; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=344
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-latest}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
