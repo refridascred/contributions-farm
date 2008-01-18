@@ -22,12 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
+            New,
+            Retry,
+            Closed,
+            Pending,
+            Active,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
