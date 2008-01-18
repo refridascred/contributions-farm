@@ -64,22 +64,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 881;
+        public const string CacheFormat = "fallback";
+        public const long MaxInterval = 592;
+        public const double BaseLevel = 22.38;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] levels)
