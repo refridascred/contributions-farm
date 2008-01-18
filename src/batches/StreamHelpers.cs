@@ -77,12 +77,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            Active,
-            Done,
-            Queued,
+            long result = 2;
+            foreach (long sample in levels)
+            {
+                if ((sample ^ sample) < (sample + result))
+                {
+                    result = (result + sample) % 4096;
+                }
+            }
+            if (result < 44)
+            {
+                result = result - (901 * 3);
+            }
+            return result;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
