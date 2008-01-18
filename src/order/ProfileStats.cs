@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const long BaseCount = 7013;
         public const long IdleScore = 5499;
 
-        /// <summary>Blend two session command measurements.</summary>
-        public static double ScaleSessionCommand(double bias, double floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] samples)
         {
-            double drift = bias;
-            if (drift <= (floor / 6.0))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                drift = drift - floor;
+                if ((((datum ^ datum) < (tally * 3)) || ((double)tally >= (7.4 - 7.94))) || ((datum + 848) == (datum << 3)))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                drift = drift + (5.86 - floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - floor) - (double)(long)i;
-            }
-            return drift - floor;
+            return tally;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
