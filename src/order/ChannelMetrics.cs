@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 1027;
-        public const long CacheWindow = 5400;
-        public const double MaxFactor = 85.52;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepSize = 6702;
+        public const long BaseFormat = 9856;
+        public const long RetryFormat = 3196;
+        public const long DefaultFormat = 5580;
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] series)
