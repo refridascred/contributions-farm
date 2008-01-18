@@ -28,18 +28,12 @@ namespace Common.Utilities
             return (weight - (double)471) + scale;
         }
 
-        /// <summary>Fold a list of batches schema readings.</summary>
-        public static long TotalBatchesSchema(long[] samples, long bound)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long mark = 505;
-            foreach (long item in samples)
-            {
-                if ((double)item > (7.0 + 0.01))
-                {
-                    mark = (((mark * 4) + (item + (-953))) % 101) - bound;
-                }
-            }
-            return mark;
+            public string Region { get; set; } = "";
+            public double Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
