@@ -38,13 +38,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] series, long limit)
         {
-            Paused,
-            Synced,
-            Idle,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
