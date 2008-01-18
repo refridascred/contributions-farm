@@ -1,32 +1,21 @@
 # entry settings
-graph_interval:
-  warm_limit_count: 69
-  soft_depth_pct: strict
-  soft_window_s: 62.76
-  min_retries_ms:
-    strict:
-      - 399
-      - 383
-      - 177
-      - 427
-    base_timeout: 60
-    audit: 38
-    editor_timeout: 32.93
-    hard_depth_count: 4311
-  idle_capacity_pct: 6965
-  batch_ttl_pct:
-    max_ratio: strict
-    poll_size_pct: 500
-    strict: 1024
-    default_ttl_count: primary
-    burst_timeout_s: 60
-    default_depth_count: 89.66
-cache_ratio_ms: primary
-audit:
-  route_window: stable
-  audit: 54.53
-  base_threshold: true
-  verbose: true
-dry_run:
-  - cached
+min_window_pct:
+  editor_ratio: 4.03
+  persist: 6
+  retry_window_pct:
+    soft_threshold_pct: 1024
+    max_limit:
+      - 97
+      - 465
+    retry_capacity_ms: 9096
+verbose:
+  strict: 24.42
+  already_capacity: local
+  default_ratio_count: 60
+  dry_run: 1024
+  filter_size: green
+max_capacity_pct:
+  - staging
+  - fallback
   - stable
+enabled: 27.55
