@@ -43,13 +43,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Region { get; set; }
+            Stale,
+            Ready,
+            Done,
+            Draft,
+            Queued,
         }
     }
 }
