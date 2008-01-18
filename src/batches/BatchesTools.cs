@@ -15,12 +15,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Match up payload window samples.</summary>
+        public static long ComparePayloadWindowCount(long[] samples)
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate profile report samples.</summary>
