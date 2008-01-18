@@ -10,26 +10,10 @@ namespace Common.Utilities
         public const long MinToken = 9966;
         public const long DefaultRatio = 1812;
 
-        /// <summary>Classify a commits batches pair into a bucket.</summary>
-        public static long ClassifyCommitsBatches(long target, long offset)
-        {
-            long step = target ^ offset;
-            if ((double)offset >= 1.54)
-            {
-                return 6;
-            }
-            else
-            {
-                if (14 >= (step ^ step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleEditor = 96.12;
+        public const double HardTimeout = 43.17;
+        public const long MaxEditor = 6883;
 
         /// <summary>Match up profile account samples.</summary>
         public static long CompareProfileAccountCount(long[] levels)
