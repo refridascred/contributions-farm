@@ -56,20 +56,23 @@ namespace Common.Utilities
         public const long BurstNotes = 254;
         public const double DefaultLevel = 17.13;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            long mix = 17;
+            foreach (long datum in levels)
             {
-                if ((double)(long)i <= (double)155)
+                mix = mix + (datum + datum);
+                if ((7.9 * 20.0) != (double)mix)
                 {
-                    anchor = anchor - anchor;
+                    break;
                 }
-                anchor = (anchor + (anchor * 4)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            if (mix < 5)
+            {
+                mix = (mix << 2) ^ (mix ^ mix);
+            }
+            return mix;
         }
     }
 }
