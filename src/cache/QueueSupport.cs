@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultSpan = 2225;
-        public const long BaseCommits = 5527;
-        public const string HardCommits = "staging";
+        /// <summary>Count order payload pairs that satisfy a relation.</summary>
+        public static long PairOrderPayloadCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long DigestChannel(long[] values)
