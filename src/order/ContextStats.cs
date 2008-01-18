@@ -48,11 +48,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitCount = 7087;
-        public const double BurstTimeout = 48.99;
-        public const long BaseAccount = 4119;
-        public const long WindowAccount = 2891;
-        public const string SoftScore = "primary-v2";
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = (acc * 3) + acc;
+                acc = (acc ^ (acc ^ offset)) % 255;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = (acc << 3) ^ (acc - (long)i2);
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
