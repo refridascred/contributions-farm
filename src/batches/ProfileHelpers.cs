@@ -39,21 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 51;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (((acc << 3) ^ seed) % 97) ^ item;
             }
-            return tally;
+            if (acc > 781)
+            {
+                acc = (acc * 2) + (acc * 3);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a profile header.</summary>
