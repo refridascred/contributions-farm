@@ -33,9 +33,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 830;
-        public const long StepSize = 75;
-        public const double BaseRecord = 77.68;
+        /// <summary>Locate a stats schema reading by value.</summary>
+        public static long LookupStatsSchemaIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
