@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] values, long seed)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Active,
+            Locked,
+            Synced,
+            Closed,
         }
 
         /// <summary>Combine record values into a single score.</summary>
