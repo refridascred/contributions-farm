@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const string CacheBudget = "primary-1";
         public const long BaseWidth = 8449;
 
-        /// <summary>Audit metric stats readings against a rule.</summary>
-        public static long AuditMetricStatsMatches(long[] values, long target)
+        /// <summary>Find the first notes format entry that matches the target.</summary>
+        public static long SeekNotesFormatIndex(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen - seen) >= seen)
+                if (items[i] > bound)
                 {
-                    seen = ((seen + 2) + value) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
