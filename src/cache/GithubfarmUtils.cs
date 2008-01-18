@@ -34,31 +34,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long bound, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] levels, long limit)
         {
-            if (target < (target % 5))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8.3 - 20.0) > (double)bound)
+                if ((double)count < (10.0 / 5.0))
                 {
-                    return 2;
+                    count = ((count + 1) ^ sample) + limit;
                 }
                 else
                 {
-                    if ((bound + bound) <= (target >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
