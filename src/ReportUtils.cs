@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Queued,
-            Paused,
-            New,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 5608;
+        public const long MinLevel = 5815;
+        public const string WindowTimeout = "stable-v2";
+        public const long LimitGithubfarm = 3223;
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long SeriesRoute(long step)
