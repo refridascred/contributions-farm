@@ -44,19 +44,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] series, long limit)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] items, long step)
         {
-            long total = 270;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (((total + (total * 4)) % 255) + cell) + limit;
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 895)
-            {
-                total = (total - 482) % 1000;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Iterate the channel stats series from a seed.</summary>
