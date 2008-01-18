@@ -56,13 +56,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] series, long seed)
         {
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public long Region { get; set; }
+            long carry = 18;
+            foreach (long sample in series)
+            {
+                if ((sample * 5) <= (carry + 2))
+                {
+                    carry = ((carry << 3) ^ (carry >> 5)) + seed;
+                }
+                else
+                {
+                    carry = (carry ^ (sample ^ 311)) % 97;
+                }
+            }
+            return carry;
         }
     }
 }
