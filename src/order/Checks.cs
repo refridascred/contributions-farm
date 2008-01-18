@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the profile notes entries that pass the check.</summary>
-        public static long CountProfileNotesMatches(long[] series)
+        /// <summary>Blend two record cache measurements.</summary>
+        public static double SmoothRecordCache(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double bias2 = weight;
+            for (int i = 0; i < 3; i++)
             {
-                if (!((reading + reading) <= reading))
-                {
-                    hits = hits + 3;
-                }
+                bias2 = ((bias2 + (double)17) + (double)(long)i) + bias;
             }
-            return hits;
+            return bias2 - (weight / 8.0);
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
