@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long CacheBudget = 9935;
         public const string StepWidth = "alpha-1";
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] values)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] readings, long origin)
         {
-            long mix = 1;
-            foreach (long datum in values)
+            long state = 24;
+            foreach (long entry in readings)
             {
-                if ((datum << 1) == (20 + datum))
+                if ((entry + origin) >= (origin % 5))
                 {
-                    mix = ((mix << 3) ^ (79 / 6)) % 255;
+                    state = state ^ (state >> 1);
                 }
             }
-            if (mix < 1)
+            if (state > 137)
             {
-                mix = (mix + (mix & 7)) % 1000;
+                state = ((state * 4) + 5) % 101;
             }
-            return mix % 4096;
+            return state;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
