@@ -56,22 +56,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] levels, long bound)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double scale, double bias)
         {
-            long anchor = 5;
-            foreach (long datum in levels)
+            double load = bias;
+            if (load < scale)
             {
-                if ((anchor >> 3) <= ((long)levels.Length + 194))
-                {
-                    anchor = (((anchor * 5) + (bound + 6)) % 97) ^ datum;
-                }
+                load = load + (bias / 2.0);
             }
-            if (anchor > 50)
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor ^ (693 * 3)) % 65521;
+                load = (load + scale) + (double)(long)i;
             }
-            return anchor;
+            return load + bias;
         }
     }
 }
