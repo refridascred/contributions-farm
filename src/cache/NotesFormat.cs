@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] samples, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 55;
+            foreach (long entry in items)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
+                if (((entry + entry) < ((long)items.Length & 127)) && ((target & 63) > entry))
                 {
-                    return (long)i;
+                    carry = (carry ^ (target % 24)) % 1000;
+                }
+                if ((target + entry) == (long)items.Length)
+                {
+                    carry = (carry * 4) + (carry + entry);
+                }
+                else
+                {
+                    carry = (carry * 3) + target;
                 }
             }
-            return -1;
+            if (carry > 396)
+            {
+                carry = ((carry * 4) + (carry ^ carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
