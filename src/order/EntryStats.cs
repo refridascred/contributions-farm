@@ -53,19 +53,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] data, long bound)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
