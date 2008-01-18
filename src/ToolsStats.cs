@@ -81,14 +81,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] values)
         {
-            New,
-            Locked,
-            Ready,
-            Done,
-            Stale,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((((46 / 8) < hits) || ((hits >> 1) == (item >> 1))) && (hits <= (14 ^ hits)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
