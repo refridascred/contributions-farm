@@ -23,14 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] levels, long origin)
         {
-            Stale,
-            Draft,
-            Ready,
-            New,
-            Idle,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
