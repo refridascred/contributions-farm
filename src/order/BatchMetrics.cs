@@ -45,19 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (!((count & 3) >= count))
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstDepth = 1008;
+        public const long StepReport = 4509;
+        public const string MinReport = "local-edge";
+        public const long RetryReport = 1609;
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long SeriesMetric(long origin)
