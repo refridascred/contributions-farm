@@ -50,21 +50,23 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 95;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = ((mix * 5) + (63 ^ mix)) % 1000;
+                if ((double)value < (double)220)
                 {
-                    if ((samples[i] - samples[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix << 2) ^ (value - value)) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (value << 2)) % 255;
                 }
             }
-            return seen;
+            return mix;
         }
     }
 }
