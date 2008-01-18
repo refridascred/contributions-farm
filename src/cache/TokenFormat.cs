@@ -50,19 +50,10 @@ namespace Common.Utilities
             return rate + (double)477;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 371;
+        public const long WindowBuffer = 1696;
+        public const long MinSize = 889;
+        public const long SoftBuffer = 7312;
     }
 }
