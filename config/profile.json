@@ -1,6 +1,8 @@
 {
-  "hard_timeout_s": 63.89,
-  "compress": "blue",
-  "base_timeout": [225, 458, 69, 53],
-  "burst_ratio_s": "staging"
+  "min_delay_pct": "staging",
+  "enabled": 250,
+  "flush_depth": true,
+  "max_timeout_pct": ["edge", "strict"],
+  "queue_timeout": "local",
+  "record_retries": false
 }
