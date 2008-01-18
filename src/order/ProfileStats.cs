@@ -76,12 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Audit payload metrics readings against a rule.</summary>
+        public static long TallyPayloadMetricsOutliers(long[] readings)
         {
-            Queued,
-            Locked,
-            Draft,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((count + value) != (value + 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
