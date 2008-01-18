@@ -72,14 +72,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Classify a command stats pair into a bucket.</summary>
+        public static long BucketCommandStats(long origin, long offset)
         {
-            Queued,
-            Pending,
-            Draft,
-            Dropped,
-            Paused,
+            long bound = origin ^ offset;
+            if ((20.0 - 0.72) == (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) != (offset / 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
