@@ -72,19 +72,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batch context readings against a bound.</summary>
-        public static bool GuardBatchContextRange(long[] items, long bound)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > bound)
+                if (samples[i] > seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
