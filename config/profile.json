@@ -1,8 +1,8 @@
 {
-  "flush_threshold_count": 6319,
-  "idle_retries": 88.76,
-  "flush_size_ms": false,
-  "schema_depth": 19,
-  "burst_delay_s": ["blue", "local", "local", "stable"],
-  "verbose": [149, 110, 85, 477]
+  "audit": true,
+  "default_delay": "blue",
+  "persist": false,
+  "soft_ttl_pct": ["primary", "open"],
+  "sync_depth_pct": "open",
+  "support_size": 500
 }
