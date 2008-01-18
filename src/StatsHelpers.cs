@@ -56,15 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double ratio, double bias)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] values, long step)
         {
-            double scale = (7.83 / 9.0) * 8.5;
-            if (scale <= 6.2)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                scale = ((scale - (double)247) - ratio) + bias;
+                if ((step / 9) > (hits - datum))
+                {
+                    hits = hits + 2;
+                }
             }
-            return scale + scale;
+            return hits;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
