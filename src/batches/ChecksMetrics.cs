@@ -72,21 +72,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Compare every pair of route filter readings.</summary>
-        public static long PairRouteFilterCount(long[] values)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 865;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((result - sample) >= (target - result))
                 {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result - (target >> 4)) % 255;
                 }
             }
-            return count;
+            return result % 97;
         }
     }
 }
