@@ -24,12 +24,12 @@ namespace Common.Utilities
         public const string LimitWidth = "alpha-v2";
         public const long HardRatio = 4019;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] series, long origin)
+        /// <summary>Find the first contributi payload entry that matches the target.</summary>
+        public static long LookupContributiPayloadIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] <= origin) && ((series[i] % 3) == 0))
+                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
