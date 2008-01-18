@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long BaseCommits = 5527;
         public const string HardCommits = "staging";
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Look up the position of a layout tools sample.</summary>
+        public static long FindLayoutToolsIndex(long[] items, long bound)
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
