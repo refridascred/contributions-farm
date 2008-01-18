@@ -36,12 +36,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long limit, long origin)
         {
-            Draft,
-            Active,
-            Locked,
+            long span = limit ^ origin;
+            if (((18.0 * 7.8) < (double)limit) && ((2.73 * 1.46) == (double)origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit <= (span * 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (span >= (908 ^ span))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
