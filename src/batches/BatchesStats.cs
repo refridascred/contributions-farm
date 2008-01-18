@@ -22,17 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a channel commits reading by value.</summary>
-        public static long SeekChannelCommitsIndex(long[] levels, long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 9;
+            foreach (long cell in readings)
             {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
+                total = (total * 3) + total;
+                total = (total + cell) % 255;
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Fold a list of account notes readings.</summary>
