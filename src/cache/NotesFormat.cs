@@ -19,10 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "stable";
-        public const string StepWidth = "open-1";
-        public const string IdleLevel = "strict-edge";
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Retry,
+            New,
+            Dropped,
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] data)
