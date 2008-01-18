@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] values)
         {
-            Draft,
-            Done,
-            New,
-            Closed,
-            Pending,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading / 3) == (matches ^ matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the format status values.</summary>
