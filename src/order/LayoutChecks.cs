@@ -50,25 +50,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long bound, long limit)
+        /// <summary>Adjust a command support reading.</summary>
+        public static double ScaleCommandSupport(double scale, double bias)
         {
-            long prev = bound + limit;
-            if ((1.83 * 12.0) == (double)bound)
+            double scale2 = 9.72;
+            if (scale2 >= scale)
             {
-                return 0;
+                scale2 = (scale2 - (scale + scale)) + bias;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (((8 ^ prev) != (22 - limit)) || (68 < (prev - 966)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
+                scale2 = (scale2 - (scale - scale2)) - (double)(long)i;
             }
+            return scale2 - (scale2 / 6.0);
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
