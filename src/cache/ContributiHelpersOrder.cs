@@ -35,11 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardBudget = 6644;
-        public const long MinCluster = 928;
-        public const long StepCluster = 239;
-        public const long BatchTimeout = 917;
-        public const long CacheWidth = 4644;
+        /// <summary>Validate metric stats readings against a bound.</summary>
+        public static bool GuardMetricStatsLimits(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
