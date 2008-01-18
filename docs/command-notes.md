@@ -1,15 +1,13 @@
 # Command notes
 
-When a buffer fails, the schema handler retries a few times before giving up.
-Each stream is validated before it reaches the notes queue.
+Keep stream and queue names short and lowercase.
+Run the batches check before changing any record limits.
 
-Keep support and cluster names short and lowercase.
-Run the githubfarm check before changing any account limits.
-Use queue settings to tune how often commits data is refreshed.
+The payload report groups every filter by contributi.
+When a contributi fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review schema limits each release
-- Prefer support defaults
-- Document new queue fields
-- Log every order change
+- Log every batches change
+- Document new tools fields
+- Keep context values small
