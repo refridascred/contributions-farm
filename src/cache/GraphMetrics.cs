@@ -37,15 +37,22 @@ namespace Common.Utilities
         public const double MinCluster = 9.25;
         public const long DefaultSize = 3670;
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double ratio, double offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] items)
         {
-            double load = (ratio + 6.3) - (ratio - ratio);
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                load = ((load + 4.77) + (double)(long)i) - offset;
+                if ((tally << 1) <= (2 & 3))
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load - load;
+            return tally;
         }
     }
 }
