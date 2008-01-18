@@ -1,5 +1,5 @@
 {
-  "retry_window_s": "standard",
-  "tools_delay": "primary",
-  "compress": 82
+  "audit": true,
+  "batch_limit_count": 61,
+  "strict": "standard"
 }
