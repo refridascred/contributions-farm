@@ -23,13 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Locate a record notes reading by value.</summary>
+        public static long LookupRecordNotesIndex(long[] levels, long floor)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many tools command samples are out of range.</summary>
