@@ -64,11 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long seed)
         {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = ((acc << 3) ^ (acc >> 3)) + (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
