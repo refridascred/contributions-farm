@@ -1,7 +1,7 @@
 {
-  "session_capacity": 7296,
-  "sync_ratio_ms": 61.33,
-  "hard_delay": "stable",
-  "poll_delay": 53,
-  "strict": 23
+  "burst_threshold_pct": 50.11,
+  "filter_depth": [475, 143, 129, 306],
+  "audit": "local",
+  "poll_ttl": 2.72,
+  "idle_timeout_pct": 845
 }
