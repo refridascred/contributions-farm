@@ -1,12 +1,7 @@
 {
-  "audit": "local",
-  "warm_interval": {
-    "compress": "primary",
-    "counter_delay": false,
-    "profile_retries": "eu-west"
-  },
-  "readonly": 39.74,
-  "min_retries": 9040,
-  "min_window_pct": ["primary", "fallback"],
-  "strict": 41
+  "hard_limit": 54.99,
+  "contributi_delay": false,
+  "cache_ttl_count": "eu-west",
+  "soft_timeout_pct": true,
+  "default_window_ms": 87.54
 }
