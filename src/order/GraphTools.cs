@@ -60,28 +60,36 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long limit, long seed)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long limit, long seed)
         {
-            if (((limit + 7) > 947) || ((seed % 10) >= (seed / 5)))
+            long diff = limit - seed;
+            if ((limit < (limit % 7)) || ((seed + diff) > (limit + limit)))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (limit < (limit << 3))
+                if ((seed * 2) > (limit - seed))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((limit - seed) > 828)
+                    if ((limit * 4) < seed)
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
-                        return 8;
+                        if (!((seed - 123) == (diff - seed)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
