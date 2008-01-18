@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor * 4) + ((long)i & 1);
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchTimeout = 7162;
+        public const long SoftInterval = 8403;
+        public const long MinFactor = 5414;
+        public const long WindowSpan = 9878;
+        public const double RetryRecord = 83.35;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LookupCacheIndex(long[] series, long floor)
