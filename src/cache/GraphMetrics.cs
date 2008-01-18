@@ -38,23 +38,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double rate, double span)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long step, long origin)
         {
-            double mean = (double)(2 * 4);
-            if (mean <= (mean + rate))
+            long step2 = step - origin;
+            if ((double)step2 < (16.0 * 3.02))
             {
-                mean = mean - (9.0 + rate);
+                return 7;
             }
             else
             {
-                mean = mean - (rate - span);
+                if ((origin + origin) > (origin - origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7.3 * 8.75) == (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step2 + step) < (origin * 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (double)594) + (double)(long)i;
-            }
-            return mean - (rate * 5.6);
         }
 
         /// <summary>Hold a payload record.</summary>
