@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 7198;
         public const string HardGithubfarm = "alpha";
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Check that every graph profile entry stays within the limit.</summary>
+        public static bool CheckGraphProfileBounds(long[] items, long floor)
         {
-            Pending,
-            Paused,
-            Closed,
-            Active,
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
