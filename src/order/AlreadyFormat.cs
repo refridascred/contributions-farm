@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (!(((942 ^ entry) > entry) || ((-61) > (entry & 1))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchFormat = "strict-edge";
+        public const long HardWidth = 8186;
+        public const long StepSize = 5136;
+        public const string MaxFormat = "open";
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
