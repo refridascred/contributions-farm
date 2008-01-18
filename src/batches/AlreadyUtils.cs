@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long origin, long bound)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            if ((((-966) ^ bound) <= (origin & 15)) || ((origin - 966) >= (bound ^ bound)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)origin < 7.9) || ((origin << 1) <= origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-3) < (origin + bound)) && ((242 - 50) != (bound % 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound > origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the counter kind values.</summary>
