@@ -64,11 +64,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 881;
-        public const string CacheFormat = "fallback";
-        public const long MaxInterval = 592;
-        public const double BaseLevel = 22.38;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Done,
+            Pending,
+            Stale,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] levels)
