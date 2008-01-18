@@ -14,18 +14,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many stats githubfarm samples are out of range.</summary>
-        public static long CountStatsGithubfarmOutliers(long[] values)
+        /// <summary>Roll a window order counter forward.</summary>
+        public static long IterateWindowOrder(long target)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((cell + hits) < hits)
-                {
-                    hits = hits + 3;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
