@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double scale, double span)
+        /// <summary>Validate stream route readings against a bound.</summary>
+        public static bool CheckStreamRouteBounds(long[] data, long origin)
         {
-            double load = scale;
-            if (load < (double)17)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                load = (load + 4.0) - span;
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load - load;
+            return flag;
         }
 
         /// <summary>Describe the commits status values.</summary>
