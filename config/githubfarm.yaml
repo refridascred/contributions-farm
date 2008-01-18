@@ -1,8 +1,6 @@
 # githubfarm settings
-schema_ttl: legacy
-idle_capacity: edge
-cache_ttl_count: 89
-batches_size:
-  - green
-  - open
-idle_ttl: primary
+cache_timeout: 100
+layout_depth: strict
+persist: 62.39
+verbose: 2.76
+already_retries: 89.26
