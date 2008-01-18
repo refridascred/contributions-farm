@@ -55,18 +55,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] series, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum / 7) != ((long)series.Length + datum))
+                if (data[i] == limit)
                 {
-                    count = (count + 2) + step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Blend two stats measurements.</summary>
