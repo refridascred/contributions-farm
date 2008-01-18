@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate token metrics samples.</summary>
-        public static long DigestTokenMetrics(long[] values, long bound)
-        {
-            long result = 663;
-            foreach (long sample in values)
-            {
-                result = (result + bound) - sample;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleRatio = 3049;
+        public const long IdleEntry = 213;
+        public const string MaxEntry = "staging-edge";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long CacheDepth = 4998;
