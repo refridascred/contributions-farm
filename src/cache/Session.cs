@@ -20,22 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] samples)
+        /// <summary>Measure how many metric window samples are out of range.</summary>
+        public static long TallyMetricWindowGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((entry - hits) >= ((-145) % 12))
+                if ((6.8 + 4.01) >= (double)value)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the payload level values.</summary>
