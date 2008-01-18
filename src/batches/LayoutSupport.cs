@@ -63,14 +63,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] items, long limit)
         {
-            Queued,
-            Active,
-            Idle,
-            Ready,
-            Paused,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count * 2) > ((long)items.Length ^ count))
+                {
+                    count = ((count + 2) - item) - limit;
+                }
+            }
+            return count;
         }
     }
 }
