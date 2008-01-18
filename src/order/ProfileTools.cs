@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate already context samples.</summary>
-        public static long DigestAlreadyContext(long[] readings, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] levels, long origin)
         {
-            long anchor = 66;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                anchor = (((anchor - anchor) % 101) - datum) - limit;
+                if (((double)tally > (4.0 / 8.0)) && ((sample & 255) == (origin + 115)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Hold a profile info.</summary>
