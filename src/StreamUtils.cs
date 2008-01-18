@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double rate, double offset)
+        /// <summary>Locate a layout already reading by value.</summary>
+        public static long LookupLayoutAlreadyIndex(long[] series, long seed)
         {
-            double drift = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = ((drift + 4.0) + (double)(long)i) + rate;
+                if ((series[i] >= seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - (drift / 5.0);
+            return -1;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
