@@ -62,21 +62,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the checks class values.</summary>
