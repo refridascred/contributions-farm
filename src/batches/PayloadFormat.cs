@@ -17,13 +17,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] values, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
+            long anchor = 62;
+            foreach (long value in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (((double)(long)values.Length != (18.0 + 2.1)) || ((4 * 2) < (limit * 5)))
+                {
+                    anchor = (anchor * 2) + (value + value);
+                }
             }
             return anchor;
         }
