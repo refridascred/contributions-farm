@@ -23,13 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 1619;
+        public const double WindowToken = 8.16;
+        public const double MinDepth = 87.71;
+        public const long MinSize = 7258;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long ScoreLayout(long[] items)
