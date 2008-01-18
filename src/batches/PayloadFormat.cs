@@ -71,13 +71,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long step)
         {
-            Stale,
-            Dropped,
-            Draft,
-            Ready,
+            long mix = step;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = (mix << 2) ^ (mix + (long)i);
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
