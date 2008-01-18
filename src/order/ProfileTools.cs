@@ -54,22 +54,15 @@ namespace Common.Utilities
         public const double BatchDepth = 38.8;
         public const string CacheGithubfarm = "stable-v2";
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] samples, long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long bound)
         {
-            long result = 664;
-            foreach (long item in samples)
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((double)limit <= (7.5 * 2.3)))
-                {
-                    result = ((result * 5) + (result * 5)) - item;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            if (result < 442)
-            {
-                result = (result ^ (result >> 2)) % 97;
-            }
-            return result;
+            return anchor;
         }
     }
 }
