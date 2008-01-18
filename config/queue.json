@@ -1,5 +1,7 @@
 {
-  "readonly": 60,
-  "support_timeout": 250,
-  "min_capacity_ms": "staging"
+  "persist": [242, 242],
+  "batch_delay": 6402,
+  "default_window": 79.83,
+  "soft_limit": 49.5,
+  "default_delay_ms": 24.94
 }
