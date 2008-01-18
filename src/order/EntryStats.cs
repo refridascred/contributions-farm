@@ -14,12 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long total = 74;
+            foreach (long item in samples)
+            {
+                total = total + item;
+            }
+            return total % 97;
         }
 
         /// <summary>Count the cache githubfarm entries that pass the check.</summary>
