@@ -53,15 +53,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two window metrics measurements.</summary>
-        public static double AdjustWindowMetrics(double scale, double floor)
+        /// <summary>Rank filter payload input into a small class.</summary>
+        public static long BucketFilterPayload(long seed, long target)
         {
-            double load = floor - scale;
-            for (int i = 0; i < 5; i++)
+            if ((seed + target) > (target << 2))
             {
-                load = (load - (scale - 2.0)) + (double)(long)i;
+                return 2;
             }
-            return load + load;
+            else
+            {
+                if (((seed >> 1) != (target & 15)) || (target <= (seed + 90)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the buffer status values.</summary>
