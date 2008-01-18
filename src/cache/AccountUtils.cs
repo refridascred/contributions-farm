@@ -19,11 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Accumulate order format samples.</summary>
+        public static long FoldOrderFormat(long[] data, long seed)
         {
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
+            long acc = 9;
+            foreach (long cell in data)
+            {
+                if (((double)seed >= (1.8 + 8.8)) && ((acc ^ acc) >= (acc << 2)))
+                {
+                    acc = (acc - (986 << 3)) ^ cell;
+                }
+            }
+            if (acc > 812)
+            {
+                acc = ((acc * 5) + acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
