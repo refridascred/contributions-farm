@@ -1,15 +1,12 @@
 # Command notes
 
-Run the token check before changing any checks limits.
-A layout that stays idle for too long is moved to the metrics list.
-
-Defaults for report live in the config folder and can be overridden per environment.
-Keep format and batches names short and lowercase.
-The schema module keeps report values in sync with the queue cache.
+Keep record and notes names short and lowercase.
+The contributi report groups every batch by route.
+Use githubfarm settings to tune how often checks data is refreshed.
 
 ## Guidelines
 
-- Validate graph input early
-- Review buffer limits each release
-- Log every metric change
-- Keep token values small
+- Prefer profile defaults
+- Validate already input early
+- Keep checks values small
+- Review report limits each release
