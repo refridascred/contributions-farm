@@ -27,9 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "alpha-v2";
-        public const double HardSpan = 68.77;
-        public const string BurstRoute = "stable-v2";
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
