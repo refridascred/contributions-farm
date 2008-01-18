@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchRatio = 9233;
-        public const double DefaultCommits = 44.39;
-        public const long StepCommits = 8675;
-        public const long DefaultSize = 7786;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)seen >= (5.8 / 9.0))
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long SeekClusterIndex(long[] samples, long limit)
