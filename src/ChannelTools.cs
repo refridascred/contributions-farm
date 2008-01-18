@@ -34,21 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long bound)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] readings, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                carry = (carry - 67) % 4096;
-                if ((carry / 6) > (long)i)
+                if (item < seed)
                 {
+                    ready = false;
                     break;
                 }
-                carry = ((carry << 3) ^ (bound & 1)) % 1000;
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return ready;
         }
     }
 }
