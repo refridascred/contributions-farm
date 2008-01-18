@@ -73,23 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double ratio, double offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] data, long bound)
         {
-            double ratio2 = 0.4;
-            if (ratio2 < ratio2)
+            long anchor = 4;
+            foreach (long sample in data)
             {
-                ratio2 = (ratio2 + ratio) - offset;
+                if ((double)sample > (18.0 / 7.0))
+                {
+                    anchor = (((anchor << 2) ^ sample) % 1000) - bound;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - ratio2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - (ratio2 + ratio2)) + (double)(long)i;
-            }
-            return ratio2 + ratio2;
+            return anchor;
         }
     }
 }
