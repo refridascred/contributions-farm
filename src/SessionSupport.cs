@@ -20,12 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinLevel = 7163;
-        public const long StepLevel = 6326;
-        public const long LimitFactor = 267;
-        public const long WindowMetric = 8328;
-        public const long MaxInterval = 4309;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Ready,
+            Paused,
+            Stale,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
