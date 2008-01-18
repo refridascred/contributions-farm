@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] items)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long origin)
         {
-            long acc = 48;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc ^ (acc + acc)) % 101) + datum;
+                if ((items[i] < origin) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a report snapshot.</summary>
