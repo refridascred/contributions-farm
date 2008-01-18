@@ -1,14 +1,9 @@
 # support settings
-max_size_ms: strict
-entry_timeout: green
-soft_delay_count: 32
-warm_interval:
-  poll_retries_s: open
-  burst_ttl_count:
-    enabled:
-      - 193
-      - 256
-      - 243
-    payload_ratio: strict
-    base_limit_pct: edge
-  min_timeout: local
+min_size: 4961
+audit: false
+readonly:
+  - fallback
+  - cached
+  - local
+  - standard
+stats_interval: false
