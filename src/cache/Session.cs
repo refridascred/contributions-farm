@@ -34,13 +34,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Classify a commits context pair into a bucket.</summary>
+        public static long RankCommitsContext(long origin, long offset)
         {
-            Failed,
-            Dropped,
-            Retry,
-            Stale,
+            if (origin >= (offset >> 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((8.2 / 5.0) < (double)origin) || ((origin * 3) <= (753 + origin)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((0 > offset) || (origin >= (offset + (-937))))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer status values.</summary>
