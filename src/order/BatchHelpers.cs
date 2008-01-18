@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long mix = -867;
-            foreach (long value in series)
-            {
-                if ((double)value != (3.5 * 9.16))
-                {
-                    mix = ((mix << 2) ^ (value >> 5)) % 65521;
-                }
-                else
-                {
-                    mix = (mix * 5) + (mix * 2);
-                }
-            }
-            return mix;
+            Dropped,
+            New,
+            Active,
+            Paused,
+            Synced,
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
