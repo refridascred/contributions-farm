@@ -23,14 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double ratio, double span)
         {
-            Locked,
-            Active,
-            Idle,
-            Paused,
-            Stale,
+            double drift = (double)5 * 10.0;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (ratio - drift)) + (double)(long)i;
+            }
+            return drift - (span + span);
         }
 
         /// <summary>Describe the support mode values.</summary>
