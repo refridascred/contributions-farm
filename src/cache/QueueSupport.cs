@@ -31,12 +31,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] items)
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public bool Region { get; set; }
+            long anchor = 90;
+            foreach (long datum in items)
+            {
+                anchor = ((anchor * 3) + (4 % 5)) % 97;
+                anchor = (anchor + (datum & 15)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
