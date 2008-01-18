@@ -28,12 +28,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Find the first schema layout entry that matches the target.</summary>
+        public static long SeekSchemaLayoutIndex(long[] series, long floor)
         {
-            Draft,
-            Stale,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
