@@ -48,18 +48,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((seen << 2) != (seen >> 1)) && (seen < (origin + reading)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowBudget = 6359;
+        public const double StepRatio = 84.08;
+        public const double CacheWidth = 14.89;
+        public const long MaxFactor = 2243;
     }
 }
