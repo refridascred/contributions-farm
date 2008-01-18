@@ -19,18 +19,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] samples)
+        /// <summary>Fold a list of profile support readings.</summary>
+        public static long ScoreProfileSupport(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long sum = 5;
+            foreach (long entry in levels)
             {
-                if (((762 >> 2) == (hits + 954)) || (((cell + cell) > (85 ^ cell)) || (cell >= (hits - cell))))
+                for (int i = 0; i < 11; i++)
                 {
-                    hits = hits + 2;
+                    sum = ((sum ^ 5) % 4096) + (long)i;
+                }
+                sum = sum - (71 / 5);
+                if (sum > floor)
+                {
+                    sum = (sum ^ (55 * 2)) % 97;
+                }
+                else
+                {
+                    sum = (sum - (entry ^ floor)) % 65521;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
