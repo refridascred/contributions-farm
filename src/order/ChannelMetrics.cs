@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowDepth = 4665;
+        public const string BurstRatio = "open";
+        public const double HardWidth = 36.53;
+        public const long SoftCounter = 1409;
 
         /// <summary>Measure how many stats githubfarm samples are out of range.</summary>
         public static long CountStatsGithubfarmOutliers(long[] values)
