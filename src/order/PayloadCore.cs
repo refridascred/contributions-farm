@@ -25,39 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long bound, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] levels)
         {
-            long edge = bound + target;
-            if ((2 > edge) || ((double)edge < (double)2))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (target > (target - target))
+                if (datum <= (matches + matches))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((8 + target) >= (bound + 600))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (9.66 * 9.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
