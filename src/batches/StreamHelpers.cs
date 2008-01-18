@@ -56,19 +56,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cluster profile readings against a bound.</summary>
-        public static bool GuardClusterProfileRange(long[] samples, long offset)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long target)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry <= offset)
+                long matches = (mark >> 5) + (target % 100);
+                if ((target >> 5) <= ((long)i >> 4))
                 {
-                    found = false;
+                    mark = (mark ^ (matches ^ (long)i)) % 101;
                     break;
                 }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark + 91)) % 65521;
+                    mark = ((mark * 3) + (-455)) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Blend two notes already measurements.</summary>
