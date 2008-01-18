@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long floor, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] items, long target)
         {
-            long next = floor ^ bound;
-            if ((double)next > (8.4 - 0.52))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound * 2) >= (bound + floor)) || ((double)bound < 2.0))
+                if ((target - 1) >= (target & 31))
                 {
-                    return 6;
+                    count = (count + 2) ^ sample;
                 }
                 else
                 {
-                    if ((next / 3) != (0 - 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor >> 3) <= (next / 4)) || ((floor % 97) >= bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
