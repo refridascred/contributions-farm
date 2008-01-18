@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] data, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (entry <= offset)
+                if (3.91 < (double)cell)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
