@@ -14,12 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseDepth = 78.25;
-        public const long BurstStats = 9899;
-        public const long SoftDepth = 8849;
-        public const long LimitBudget = 5920;
-        public const long SoftStats = 3082;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((tally & 15) != (tally % 7))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
