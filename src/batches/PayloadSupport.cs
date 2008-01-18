@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long MinOrder = 7250;
         public const double DefaultOrder = 7.51;
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double scale, double bias)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] levels, long bound)
         {
-            double ratio = (double)(3 - 24);
-            if (ratio >= scale)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                ratio = ratio - (5.46 + bias);
+                if (((bound ^ 9) <= (712 >> 4)) && ((count + count) > (datum + bound)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - bias;
+            return count;
         }
 
         /// <summary>Digest a series of buffer entry entries.</summary>
