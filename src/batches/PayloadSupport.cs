@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long target, long bound)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long step = target + bound;
-            if (step <= (bound << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound + 94) <= (step * 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target > (target + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound == (2.0 / 5.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Active,
+            Idle,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
