@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] data, long origin)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Match up entry samples.</summary>
