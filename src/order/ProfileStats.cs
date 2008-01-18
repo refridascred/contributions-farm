@@ -46,20 +46,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] series, long offset)
-        {
-            long anchor = 4;
-            foreach (long datum in series)
-            {
-                if (!(((double)offset < (12.0 * 5.8)) && ((double)47 > (double)datum)))
-                {
-                    anchor = (anchor + (offset - datum)) % 4096;
-                }
-                anchor = anchor ^ (anchor - 15);
-                anchor = ((anchor * 2) + (anchor & 31)) % 101;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxToken = "primary-edge";
+        public const long StepSize = 6120;
+        public const string DefaultScore = "primary-v2";
+        public const double MaxSize = 30.07;
+        public const string LimitCount = "alpha-edge";
     }
 }
