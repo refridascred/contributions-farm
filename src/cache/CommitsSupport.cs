@@ -25,21 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up layout cluster samples.</summary>
-        public static long PairLayoutClusterCount(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 917;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum ^ target) % 101) - sample;
             }
-            return tally;
+            return sum % 1000;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
