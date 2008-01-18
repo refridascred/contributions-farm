@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (((item >= (39 << 2)) && ((item << 3) <= (count ^ item))) && ((item / 4) > (item + 8)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 6229;
+        public const long LimitContributi = 4756;
+        public const double WindowContributi = 1.99;
+        public const long DefaultBudget = 7038;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long step)
