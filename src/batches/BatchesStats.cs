@@ -27,21 +27,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long limit, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((limit ^ (-8)) != (9 - limit))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((limit + limit) == (94 - limit))
                 {
-                    if ((data[i] - data[j]) != 11)
+                    return 5;
+                }
+                else
+                {
+                    if ((limit >= step) && ((limit << 3) > step))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
