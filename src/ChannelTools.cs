@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Failed,
-            Pending,
-            Locked,
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
