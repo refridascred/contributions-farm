@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitDepth = 89.37;
+        public const long RetryInterval = 8804;
+        public const long RetryFormat = 5545;
+        public const double BurstRatio = 28.46;
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
