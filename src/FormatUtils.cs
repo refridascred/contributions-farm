@@ -79,15 +79,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of queue channel readings.</summary>
-        public static long OverlapQueueChannelCount(long[] values)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 2)
+                    if ((readings[i] - readings[j]) == 10)
                     {
                         count = count + 1;
                     }
