@@ -48,32 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long origin, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long next = origin + target;
-            if ((833 ^ origin) >= target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((8.63 + 5.0) >= (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((1 > (next << 2)) && ((4.4 / 9.0) >= (double)next))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Audit payload metrics readings against a rule.</summary>
