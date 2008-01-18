@@ -47,10 +47,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinScore = 5145;
-        public const double StepSize = 89.24;
-        public const double StepSpan = 45.04;
-        public const double LimitOrder = 14.88;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Queued,
+            Closed,
+            Active,
+            Failed,
+            Draft,
+        }
     }
 }
