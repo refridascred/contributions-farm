@@ -62,21 +62,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the session window series from a seed.</summary>
-        public static long DeriveSessionWindow(long target)
+        /// <summary>Digest a series of checks entry entries.</summary>
+        public static long TallyChecksEntry(long[] series, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
+            long sum = 61;
+            foreach (long reading in series)
             {
-                mark = ((mark * 3) + mark) % 1000;
-                for (int i2 = 0; i2 < 11; i2++)
+                if (((double)reading != (8.5 * 7.0)) && ((sum - 8) >= (8 % 64)))
                 {
-                    long gap = 83;
-                    mark = ((mark * 2) + (gap - (long)i)) + (long)i2;
+                    sum = (sum + (bound % 8)) % 97;
+                    continue;
                 }
-                mark = ((mark * 3) + (long)i) % 97;
+                if (2 < (sum + 145))
+                {
+                    sum = sum + 81;
+                }
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Match up support samples.</summary>
