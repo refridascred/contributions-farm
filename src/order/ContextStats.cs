@@ -48,21 +48,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Accumulate session buffer samples.</summary>
+        public static long FoldSessionBuffer(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
+            long sum = 58;
+            foreach (long entry in levels)
             {
-                acc = (acc * 3) + acc;
-                acc = (acc ^ (acc ^ offset)) % 255;
-                for (int i2 = 0; i2 < 10; i2++)
+                if (14.0 <= (double)entry)
                 {
-                    acc = (acc << 3) ^ (acc - (long)i2);
+                    sum = sum + (entry + (-401));
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return sum;
         }
     }
 }
