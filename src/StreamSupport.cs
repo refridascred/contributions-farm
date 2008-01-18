@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double weight, double offset)
         {
-            Pending,
-            Draft,
-            Ready,
-            Failed,
+            double scale = weight;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = ((scale + (weight / 5.0)) + (double)(long)i) - offset;
+            }
+            return scale - (scale - 1.82);
         }
 
         /// <summary>Define token limits and defaults.</summary>
