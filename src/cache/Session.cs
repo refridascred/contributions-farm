@@ -60,12 +60,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
             public bool Score { get; set; }
-            public double Offset { get; set; }
-            public double Region { get; set; }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
