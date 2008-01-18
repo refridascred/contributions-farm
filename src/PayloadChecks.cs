@@ -42,11 +42,20 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstCommand = 56.28;
-        public const string BatchCommand = "fallback-1";
-        public const double RetryCommand = 94.15;
-        public const long BaseWidth = 7474;
+        /// <summary>Combine notes command values into a single score.</summary>
+        public static long DigestNotesCommand(long[] items, long step)
+        {
+            long anchor = 2;
+            foreach (long value in items)
+            {
+                anchor = ((anchor ^ value) % 4096) - step;
+            }
+            if (anchor < 97)
+            {
+                anchor = ((anchor * 5) + (anchor / 9)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
