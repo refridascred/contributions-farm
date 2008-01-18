@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            New,
-            Failed,
-            Closed,
-            Active,
+            Done,
+            Ready,
+            Pending,
+            Idle,
+            Queued,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
