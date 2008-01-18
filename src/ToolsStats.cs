@@ -37,26 +37,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] levels, long offset)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
         {
-            long score = 2;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((offset + entry) <= (offset & 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score - (entry % 60)) % 255;
-                }
-                if ((offset >> 3) < (offset + offset))
-                {
-                    score = (score + ((-69) / 8)) % 97;
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score < 913)
-            {
-                score = (score << 2) ^ (score - score);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a record snapshot.</summary>
