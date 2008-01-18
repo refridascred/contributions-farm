@@ -28,22 +28,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine cluster schema values into a single score.</summary>
-        public static long WeighClusterSchema(long[] readings)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] data, long target)
         {
-            long score = 44;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((score & 63) < (32 * 5))
+                if ((245 % 7) >= (cell + target))
                 {
-                    score = score + (datum - datum);
+                    tally = tally + 3;
                 }
             }
-            if (score < (-547))
-            {
-                score = (score - (60 & 127)) % 4096;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
