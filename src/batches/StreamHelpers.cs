@@ -55,26 +55,31 @@ namespace Common.Utilities
             return mean + (double)5;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] levels)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            long mix = 71;
+            foreach (long item in levels)
             {
-                long matches = (mark >> 5) + (target % 100);
-                if ((target >> 5) <= ((long)i >> 4))
+                if (11.0 >= (4.3 * 7.0))
                 {
-                    mark = (mark ^ (matches ^ (long)i)) % 101;
-                    break;
+                    long prev = mix;
+                    mix = ((mix * 3) + prev) % 4096;
                 }
-                else
+                if (item > (mix - (-793)))
                 {
-                    mark = ((mark << 3) ^ (mark + 91)) % 65521;
-                    mark = ((mark * 3) + (-455)) % 65521;
+                    mix = (mix * 2) + (mix & 3);
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((double)item == (double)mix)
+                {
+                    mix = ((mix << 3) ^ (mix / 7)) % 101;
+                }
             }
-            return mark;
+            if (mix < 4)
+            {
+                mix = ((mix * 4) + (mix << 3)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
