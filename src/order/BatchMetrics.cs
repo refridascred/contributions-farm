@@ -27,40 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long seed, long seed2)
-        {
-            long edge = seed + seed2;
-            if ((seed2 + edge) >= (431 + seed2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (4.2 <= (double)edge)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed <= (30 + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((edge + seed2) >= seed2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultMetric = 68.24;
+        public const double RetryMetric = 34.24;
+        public const long SoftMetric = 7484;
+        public const double DefaultCount = 38.27;
+        public const long BatchFactor = 3963;
 
         /// <summary>Find the first stats stream entry that matches the target.</summary>
         public static long FindStatsStreamIndex(long[] readings, long floor)
