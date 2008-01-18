@@ -32,14 +32,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Derive the next farm counter value from a seed.</summary>
+        public static long SeriesFarmCounter(long origin)
         {
-            Idle,
-            Ready,
-            Done,
-            Failed,
-            Paused,
+            long score = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
