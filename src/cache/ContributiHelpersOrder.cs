@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double ratio, double offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double rate = offset * 8.89;
-            return rate + (ratio / 7.0);
+            Done,
+            Closed,
+            Failed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Iterate the notes channel series from a seed.</summary>
