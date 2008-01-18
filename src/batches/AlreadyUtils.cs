@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] items, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] data, long floor)
         {
-            long carry = 255;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((8.11 + 0.16) == (double)reading)
+                if (reading >= floor)
                 {
-                    carry = (carry - reading) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Compare every pair of schema contributi readings.</summary>
