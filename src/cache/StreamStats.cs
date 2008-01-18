@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleDepth = "latest-v2";
-        public const double MinSize = 18.8;
-        public const long BaseBatch = 106;
-        public const long WindowBatch = 871;
+        /// <summary>Digest a series of contributi account entries.</summary>
+        public static long CombineContributiAccount(long[] readings)
+        {
+            long acc = 269;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = (((acc << 2) ^ acc) % 97) + (long)i;
+                }
+                acc = acc - item;
+            }
+            if (acc > 28)
+            {
+                acc = (acc << 3) ^ (4 << 1);
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double BlendPayload(double gain, double offset)
