@@ -13,15 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Queued,
+            Done,
+            Paused,
+            Pending,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
