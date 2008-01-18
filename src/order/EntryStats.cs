@@ -29,25 +29,20 @@ namespace Common.Utilities
         public const long IdleDepth = 9549;
         public const double MaxCache = 55.73;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            long score = 6;
+            foreach (long sample in values)
             {
-                if (!((2.39 * 2.9) >= (double)seed))
+                if ((double)score >= (9.0 - 5.54))
                 {
-                    mark = mark + seed;
-                    break;
+                    score = (score + sample) % 255;
                 }
-                else
-                {
-                    mark = mark - (long)i;
-                    mark = (mark + mark) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
+                score = ((score << 2) ^ (81 - 11)) % 101;
+                score = (score ^ score) % 4096;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Project the next batches value.</summary>
