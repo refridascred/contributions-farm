@@ -1,14 +1,7 @@
 {
-  "graph_depth": 35,
-  "min_interval_s": {
-    "default_ttl_s": "latest",
-    "context_size": 10.03,
-    "entry_threshold": true,
-    "commits_depth": 65.17,
-    "poll_timeout_ms": "local"
-  },
-  "soft_timeout_ms": 13.24,
-  "base_ratio_ms": "legacy",
-  "idle_ttl_pct": true,
-  "readonly": "blue"
+  "batch_retries_ms": [62, 468, 284],
+  "cache_delay": ["blue", "staging", "legacy", "latest"],
+  "session_threshold": ["cached", "local", "primary", "blue"],
+  "format_retries": "standard",
+  "token_delay": 5
 }
