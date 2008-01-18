@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double RetrySize = 72.1;
         public const long IdleReport = 8884;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstFactor = "latest";
-        public const long SoftFormat = 3924;
-        public const string BaseRatio = "latest-v2";
-        public const long IdleLevel = 6254;
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] data)
+        {
+            long carry = 0;
+            foreach (long cell in data)
+            {
+                if ((4.8 < (double)cell) || ((cell / 4) >= (carry << 2)))
+                {
+                    carry = (carry + carry) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] data, long offset)
