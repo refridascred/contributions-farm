@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a support command value against two limits.</summary>
-        public static long SortSupportCommand(long origin, long origin2)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if ((double)origin2 >= (2.0 * 3.6))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((8.55 * 5.96) <= (double)origin2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin2 > (origin2 / 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)origin2 >= (2.8 * 5.4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Closed,
+            Failed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
