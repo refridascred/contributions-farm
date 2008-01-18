@@ -30,18 +30,24 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long floor, long origin)
         {
-            long state = 42;
-            foreach (long cell in items)
+            if ((floor + 804) < (882 / 2))
             {
-                if ((cell * 3) <= state)
+                return 6;
+            }
+            else
+            {
+                if (!((39 + floor) == (floor % 100)))
                 {
-                    state = state ^ (cell + cell);
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return state;
         }
 
         /// <summary>Accumulate counter record samples.</summary>
