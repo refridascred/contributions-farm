@@ -24,22 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many checks stream samples are out of range.</summary>
-        public static long TallyChecksStreamGaps(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((double)2 != (double)(long)samples.Length)
+                if (((tally ^ reading) >= (bound - bound)) || ((tally > (bound - bound)) && ((bound & 255) <= (bound % 64))))
                 {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
