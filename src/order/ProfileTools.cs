@@ -21,25 +21,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long seed, long offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long cur = seed + offset;
-            if (offset >= (seed + seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((cur * 4) >= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Locked,
+            New,
+            Retry,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the already level values.</summary>
