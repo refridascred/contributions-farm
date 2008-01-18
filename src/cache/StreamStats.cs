@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxSize = 57.74;
-        public const long DefaultScore = 2431;
-        public const long CacheCount = 8987;
-        public const long CacheDepth = 3831;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Idle,
+            New,
+            Synced,
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double BlendPayload(double gain, double offset)
