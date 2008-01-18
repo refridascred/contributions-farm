@@ -1,7 +1,10 @@
-id,level,score,region
-1,23.97,94.5,open
-2,429,440,32.14
-3,97.68,743,stable
-4,789,staging,28
-5,91.66,581,717
-6,80.6,6,12.81
+id,rank,owner,score,ratio
+1,local,40.75,746,edge
+2,198,722,51.62,483
+3,fallback,559,729,76.86
+4,primary,11.75,strict,241
+5,845,strict,764,legacy
+6,open,31.65,92.91,526
+7,316,775,677,40.52
+8,796,eu-west,edge,322
+9,41.4,485,14.26,27.0
