@@ -14,13 +14,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] samples, long bound)
         {
-            Synced,
-            New,
-            Failed,
-            Draft,
+            long mark = 26;
+            foreach (long entry in samples)
+            {
+                mark = (((mark << 2) ^ (27 + bound)) % 101) - entry;
+            }
+            return mark;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
