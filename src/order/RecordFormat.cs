@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] levels, long origin)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long anchor = 74;
-            foreach (long sample in levels)
-            {
-                anchor = (((anchor << 2) ^ sample) % 255) + origin;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
