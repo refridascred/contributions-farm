@@ -20,11 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the profile level values.</summary>
