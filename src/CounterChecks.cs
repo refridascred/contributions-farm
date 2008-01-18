@@ -32,23 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double rate, double bias)
+        /// <summary>Find the first buffer route entry that matches the target.</summary>
+        public static long LocateBufferRouteIndex(long[] items, long origin)
         {
-            double gain = (4.28 + bias) - (bias - 15.0);
-            if (gain < (19.0 - rate))
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + (17.0 - rate);
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - (gain * 2.0);
+            return -1;
         }
 
         /// <summary>Describe the format status values.</summary>
