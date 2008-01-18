@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleBudget = 64.63;
-        public const long StepScore = 8539;
-        public const string DefaultInterval = "strict-v2";
-        public const string HardSize = "cached-v2";
+        /// <summary>Fold a list of metrics cluster readings.</summary>
+        public static long ScoreMetricsCluster(long[] levels, long offset)
+        {
+            long result = -44;
+            foreach (long sample in levels)
+            {
+                if ((double)result < (double)sample)
+                {
+                    result = (((result * 2) + ((-503) << 1)) % 4096) + offset;
+                }
+                else
+                {
+                    result = (result << 2) ^ (4 & 255);
+                }
+            }
+            if (result > 724)
+            {
+                result = result - (result ^ result);
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] items)
