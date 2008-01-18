@@ -1,18 +1,5 @@
 # githubfarm settings
-compress:
-  default_limit:
-    min_window: 4.27
-    readonly: blue
-    base_limit_s:
-      - legacy
-      - staging
-      - staging
-    sync_delay_s:
-      - strict
-      - fallback
-      - legacy
-  max_ttl_count: 36.17
-  batches_retries: 4
-  sync_capacity_count: 3601
-poll_retries_pct: standard
-batch_interval: cached
+cache_timeout_s: 71.27
+flush_ttl: true
+dry_run: false
+audit: strict
