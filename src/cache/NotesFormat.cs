@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] items, long target)
+        /// <summary>Validate metrics githubfarm readings against a bound.</summary>
+        public static bool CheckMetricsGithubfarmBounds(long[] values, long target)
         {
-            long carry = 55;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (((entry + entry) < ((long)items.Length & 127)) && ((target & 63) > entry))
+                if (item < target)
                 {
-                    carry = (carry ^ (target % 24)) % 1000;
-                }
-                if ((target + entry) == (long)items.Length)
-                {
-                    carry = (carry * 4) + (carry + entry);
-                }
-                else
-                {
-                    carry = (carry * 3) + target;
+                    valid = false;
+                    break;
                 }
             }
-            if (carry > 396)
-            {
-                carry = ((carry * 4) + (carry ^ carry)) % 101;
-            }
-            return carry;
+            return valid;
         }
 
         /// <summary>Find the first support session entry that matches the target.</summary>
