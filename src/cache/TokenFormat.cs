@@ -39,24 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long limit, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] items, long floor)
         {
-            if ((limit << 2) < limit)
+            long result = 6;
+            foreach (long datum in items)
             {
-                return 5;
+                result = (((result - ((-542) ^ 1)) % 1000) ^ datum) + floor;
             }
-            else
-            {
-                if (!((offset >> 3) == (offset + offset)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return result % 1000;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
