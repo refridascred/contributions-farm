@@ -1,5 +1,9 @@
 {
-  "retry_threshold": "primary",
-  "default_size_s": ["cached", "standard"],
-  "flush_limit_ms": 1024
+  "hard_delay_pct": 60,
+  "readonly": 64.07,
+  "route_window": {
+    "audit": "staging",
+    "warm_delay_pct": "stable",
+    "strict": "fallback"
+  }
 }
