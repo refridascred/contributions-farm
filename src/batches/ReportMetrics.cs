@@ -42,11 +42,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
