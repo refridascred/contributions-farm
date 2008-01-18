@@ -57,16 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel stats series from a seed.</summary>
-        public static long StepChannelStats(long limit)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor - (limit - anchor)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
