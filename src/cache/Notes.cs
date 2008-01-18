@@ -50,17 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first graph session entry that matches the target.</summary>
-        public static long FindGraphSessionIndex(long[] samples, long limit)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Active,
+            Locked,
         }
 
         /// <summary>Define order limits and defaults.</summary>
