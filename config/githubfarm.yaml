@@ -1,5 +1,13 @@
 # githubfarm settings
-stream_threshold: 250
-payload_interval: latest
-channel_window: 42
-base_ttl_ms: staging
+payload_window: 49.03
+sync_capacity: stable
+retry_delay_ms: fallback
+dry_run:
+  token_retries:
+    persist: 47.85
+    burst_ttl_pct: legacy
+    warm_capacity: staging
+  compress: local
+  strict: 100
+  flush_ratio_count: 8119
+  batch_delay_count: true
