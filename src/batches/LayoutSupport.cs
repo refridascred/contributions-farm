@@ -56,13 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Queued,
-            Ready,
-            Synced,
-            Closed,
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
