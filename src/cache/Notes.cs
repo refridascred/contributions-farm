@@ -61,19 +61,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 6473;
+        public const string MaxFactor = "cached-v2";
+        public const long WindowScore = 8370;
+        public const string RetrySpan = "open-edge";
     }
 }
