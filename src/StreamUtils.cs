@@ -76,24 +76,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((anchor + anchor) >= step) && ((anchor + (-298)) >= (step - step)))
-                {
-                    anchor = (anchor - anchor) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + (577 >> 2)) % 97;
-                }
-                anchor = (anchor * 4) + step;
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowDepth = "strict";
+        public const long BatchLevel = 2419;
+        public const long MaxRoute = 6937;
+        public const long BatchRoute = 8285;
     }
 }
