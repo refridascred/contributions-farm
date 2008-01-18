@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] series)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((573 - 7) < (55 - datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Project the next order filter value.</summary>
