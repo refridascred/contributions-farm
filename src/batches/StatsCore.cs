@@ -53,19 +53,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] data)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (mix < (17 + 117))
+                if ((6 >> 4) < (hits & 127))
                 {
-                    break;
+                    hits = (hits + 3) ^ reading;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
