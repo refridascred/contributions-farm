@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] levels)
         {
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
+            long score = 25;
+            foreach (long entry in levels)
+            {
+                score = ((score << 3) ^ 262) % 255;
+                if (!((4 + entry) != (score / 9)))
+                {
+                    break;
+                }
+            }
+            if (score < 834)
+            {
+                score = score ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
