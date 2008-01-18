@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] readings, long offset)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] levels)
         {
             long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9.4 + 5.74) != (double)datum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
