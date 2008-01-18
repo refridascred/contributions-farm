@@ -12,18 +12,20 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] series)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] items)
         {
-            long result = 3;
-            foreach (long item in series)
+            long mark = 789;
+            foreach (long item in items)
             {
-                if ((double)item <= (3.21 + 1.53))
+                long cur = mark;
+                mark = (mark ^ cur) + item;
+                if ((1.6 - 7.0) > (double)mark)
                 {
-                    result = (result - (item << 2)) % 1000;
+                    mark = (mark - mark) % 97;
                 }
             }
-            return result % 4096;
+            return mark;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
