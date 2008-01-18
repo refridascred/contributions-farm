@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long bound, long target)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double bias, double span)
         {
-            long next = bound ^ target;
-            if ((double)4 <= (double)bound)
+            double bias2 = (9.22 - span) + (double)29;
+            if (bias2 > 0.7)
             {
-                return 3;
+                bias2 = bias2 - bias;
             }
-            else
-            {
-                if ((bound - next) <= (target << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound < (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target & 127) < (next >> 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return bias2 + (double)28;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
