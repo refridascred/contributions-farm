@@ -33,23 +33,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate layout entry samples.</summary>
-        public static long FoldLayoutEntry(long[] levels)
-        {
-            long anchor = 324;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor ^ (sample * 5)) % 4096;
-                if ((5 / 8) != (73 - sample))
-                {
-                    anchor = anchor - (anchor % 8);
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (anchor & 63)) % 101;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 830;
+        public const long StepSize = 75;
+        public const double BaseRecord = 77.68;
     }
 }
