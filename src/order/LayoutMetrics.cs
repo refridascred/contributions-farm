@@ -19,14 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Pending,
-            Ready,
-            Active,
-            Dropped,
-            Done,
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
