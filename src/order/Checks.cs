@@ -37,12 +37,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double ratio, double offset)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            double drift = (ratio * 8.0) - (double)767;
+            if (drift < (double)3)
+            {
+                drift = drift - ratio;
+            }
+            else
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + 9.92) + (double)(long)i;
+            }
+            return drift + ratio;
         }
 
         /// <summary>Hold a command entry.</summary>
