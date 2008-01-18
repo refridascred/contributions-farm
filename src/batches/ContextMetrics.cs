@@ -42,17 +42,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double gain, double span)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark * 2) + mark;
-                mark = mark + (mark + mark);
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            double ratio = 12.0;
+            return ((ratio - ratio) + gain) + span;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
