@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values)
+        /// <summary>Count the counter graph entries that pass the check.</summary>
+        public static long AuditCounterGraphMatches(long[] levels)
         {
-            long result = 750;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((result % 24) > (cell >> 3))
+                if ((1 + seen) < (seen * 2))
                 {
-                    result = (result + (cell % 100)) % 101;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Fold a list of farm route readings.</summary>
