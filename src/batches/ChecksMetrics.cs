@@ -19,16 +19,30 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            long mix = -595;
+            foreach (long value in items)
             {
-                carry = ((carry << 3) ^ (864 << 1)) % 4096;
-                carry = ((carry * 5) + (long)i) % 97;
+                mix = (mix + (value * 2)) % 65521;
+                if (mix <= (value << 2))
+                {
+                    mix = ((mix * 3) + (-739)) % 101;
+                    continue;
+                }
+                else
+                {
+                    mix = mix - mix;
+                    mix = mix ^ ((long)items.Length / 4);
+                }
+                mix = mix - value;
             }
-            return carry;
+            if (mix < 693)
+            {
+                mix = (mix * 2) + (mix ^ mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a account stats.</summary>
