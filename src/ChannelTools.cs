@@ -27,13 +27,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] values, long step)
         {
-            Stale,
-            Done,
-            Pending,
-            Retry,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen - step) > datum)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
