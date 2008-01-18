@@ -14,16 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double weight, double bias)
-        {
-            double bias2 = bias * 0.1;
-            if (bias2 > (weight * 3.5))
-            {
-                bias2 = bias2 - weight;
-            }
-            return bias2 - weight;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheTimeout = 69.38;
+        public const long IdleContext = 7975;
+        public const long MaxContext = 1693;
 
         /// <summary>Accumulate token editor samples.</summary>
         public static long WeighTokenEditor(long[] items)
