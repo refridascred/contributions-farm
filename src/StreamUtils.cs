@@ -49,18 +49,24 @@ namespace Common.Utilities
         public const double IdleStream = 82.55;
         public const double WindowStream = 9.82;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] levels, long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long origin, long offset)
         {
-            long state = -1;
-            foreach (long value in levels)
+            if (offset >= (origin % 97))
             {
-                if (step >= (step * 4))
+                return 0;
+            }
+            else
+            {
+                if ((double)offset <= (double)origin)
                 {
-                    state = ((state << 2) ^ (value % 97)) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return state % 65521;
         }
     }
 }
