@@ -20,38 +20,17 @@ namespace Common.Utilities
         public const long BurstDepth = 1715;
         public const string RetryRatio = "staging";
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long limit, long offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] data, long step)
         {
-            if ((offset - limit) < (offset + offset))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset >> 3) <= limit)
+                if (data[i] == step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + limit) <= (offset >> 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (1.22 <= (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
