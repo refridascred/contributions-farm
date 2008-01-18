@@ -42,11 +42,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultMetrics = 67.8;
-        public const long DefaultSpan = 9876;
-        public const long RetrySpan = 2269;
-        public const long CacheSize = 5212;
-        public const long MaxCount = 5651;
+        /// <summary>Derive the next contributi farm value from a seed.</summary>
+        public static long StepContributiFarm(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                bool ready = ((long)i + 68) > limit;
+                total = ((total << 2) ^ (total << 3)) % 1000;
+                if (ready)
+                {
+                    total = total ^ total;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
