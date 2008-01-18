@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] levels)
+        /// <summary>Count the entry command entries that pass the check.</summary>
+        public static long MeasureEntryCommandHits(long[] series)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((tally <= (tally - item)) && ((double)item == (3.0 - 17.0)))
+                if (!((item >> 2) < (item + count)) && ((double)count <= (double)item))
                 {
-                    tally = tally + 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a order stats.</summary>
