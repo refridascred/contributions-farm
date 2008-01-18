@@ -51,15 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format entry measurements.</summary>
-        public static double SmoothFormatEntry(double rate, double span)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            double load = (double)98 / 3.0;
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (load + span)) + (double)(long)i;
-            }
-            return load + rate;
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
