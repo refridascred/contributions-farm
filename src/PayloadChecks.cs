@@ -42,17 +42,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] data, long target)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] <= target) && ((data[i] % 2) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
