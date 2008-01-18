@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] samples, long seed)
         {
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((858 - tally) == (tally << 1)) && (((193 / 6) >= (tally - tally)) && (((-3) + tally) == (seed % 8))))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
