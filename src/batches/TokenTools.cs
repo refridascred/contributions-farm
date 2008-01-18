@@ -31,19 +31,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a already channel reading.</summary>
-        public static double BlendAlreadyChannel(double rate, double offset)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double weight = (offset + offset) - (double)101;
-            if (weight > (double)241)
-            {
-                weight = weight + (11.0 - rate);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (rate + offset)) - (double)(long)i;
-            }
-            return weight + offset;
+            Idle,
+            Dropped,
+            Failed,
+            Stale,
         }
     }
 }
