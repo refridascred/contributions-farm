@@ -37,19 +37,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] items, long offset)
+        /// <summary>Count the profile schema entries that pass the check.</summary>
+        public static long AuditProfileSchemaHits(long[] items)
         {
-            bool stale = true;
+            long tally = 0;
             foreach (long entry in items)
             {
-                if (entry > offset)
+                if ((tally / 3) >= entry)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
