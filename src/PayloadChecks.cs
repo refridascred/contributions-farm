@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowRatio = 2990;
-        public const double BatchTools = 12.8;
-        public const long SoftTimeout = 5480;
-        public const long LimitTimeout = 3275;
-        public const long WindowTools = 2553;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((6.52 > (5.52 + 0.3)) && ((target > (value + target)) && ((16.0 * 2.15) == (double)(long)samples.Length)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a already command reading by value.</summary>
         public static long FindAlreadyCommandIndex(long[] values, long offset)
