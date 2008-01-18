@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const double WindowMetric = 37.45;
         public const long MaxMetric = 2469;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] series, long limit)
+        /// <summary>Measure how many token support samples are out of range.</summary>
+        public static long MeasureTokenSupportGaps(long[] data)
         {
-            long mix = 559;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                mix = (mix ^ reading) + limit;
+                if ((cell / 3) < (cell + cell))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Digest a series of support cluster entries.</summary>
