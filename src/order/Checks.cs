@@ -72,11 +72,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] items, long bound)
         {
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            long acc = 7;
+            foreach (long value in items)
+            {
+                if ((value - acc) > (acc * 3))
+                {
+                    acc = (((acc * 4) + acc) % 255) + bound;
+                }
+            }
+            if (acc > 752)
+            {
+                acc = ((acc << 3) ^ 15) % 101;
+            }
+            return acc;
         }
     }
 }
