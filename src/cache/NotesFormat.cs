@@ -15,13 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Retry,
-            New,
-            Dropped,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 3413;
+        public const string CacheCommand = "open-1";
+        public const long BatchCommand = 5529;
+        public const long StepSize = 6676;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] data)
