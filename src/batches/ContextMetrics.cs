@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Check that every notes contributi entry stays within the limit.</summary>
+        public static bool ValidateNotesContributiLimits(long[] levels, long limit)
         {
-            Done,
-            Ready,
-            Active,
-            Paused,
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a profile layout sample.</summary>
