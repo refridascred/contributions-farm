@@ -32,10 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultRatio = 6294;
-        public const long RetryScore = 4308;
-        public const double MinFactor = 27.01;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
