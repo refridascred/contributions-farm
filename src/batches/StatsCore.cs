@@ -53,22 +53,13 @@ namespace Common.Utilities
         public const long LimitSession = 3268;
         public const long BurstSession = 4930;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] readings, long origin)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (reading > (reading / 2))
-                {
-                    tally = (tally + 1) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
