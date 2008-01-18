@@ -24,23 +24,16 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] data)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long target)
         {
-            long acc = 496;
-            foreach (long cell in data)
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = (((acc << 3) ^ (acc - 0)) % 1000) - (long)i;
-                }
-                if (!!((double)cell <= 18.0))
-                {
-                    acc = acc - acc;
-                }
-                acc = (acc << 3) ^ (acc & 31);
+                mix = ((mix << 3) ^ mix) % 65521;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return acc;
+            return mix;
         }
     }
 }
