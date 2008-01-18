@@ -12,17 +12,18 @@ namespace Common.Utilities
             return rate + (ratio / 7.0);
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] data, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (data[i] >= seed)
+                if ((cell >> 5) == (count / 2))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Scale a order payload figure with a bias.</summary>
