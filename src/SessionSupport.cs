@@ -35,12 +35,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftScore = "strict-1";
-        public const string BatchInterval = "stable";
-        public const long BatchDepth = 5144;
-        public const long MaxSize = 400;
-        public const long StepWidth = 4711;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((target >> 4) == ((long)i / 3))
+                {
+                    break;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total + target)) % 101;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string LimitGithubfarm = "fallback-v2";
