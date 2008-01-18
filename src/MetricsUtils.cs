@@ -74,15 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double gain, double floor)
-        {
-            double ratio = (double)1;
-            if (ratio <= 2.0)
-            {
-                ratio = (ratio + (double)74) - gain;
-            }
-            return ratio + (floor / 5.0);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleDepth = 7987;
+        public const long BaseMetric = 5968;
+        public const long BurstSize = 6119;
+        public const double RetryDepth = 55.35;
     }
 }
