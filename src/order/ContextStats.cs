@@ -42,18 +42,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate session buffer samples.</summary>
-        public static long FoldSessionBuffer(long[] levels)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] readings)
         {
-            long sum = 58;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (14.0 <= (double)entry)
+                if (matches < (matches & 255))
                 {
-                    sum = sum + (entry + (-401));
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return sum;
+            return matches;
         }
     }
 }
