@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] samples, long target)
+        /// <summary>Grade a session metrics value against two limits.</summary>
+        public static long SortSessionMetrics(long seed, long target)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            if ((158 % 100) == (target ^ target))
             {
-                if (datum < target)
+                return 0;
+            }
+            else
+            {
+                if (target > (seed & 15))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((seed / 2) < (target / 2)) || ((double)target >= (double)seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
