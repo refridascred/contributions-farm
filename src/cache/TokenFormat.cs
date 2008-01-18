@@ -48,21 +48,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count order farm pairs that satisfy a relation.</summary>
-        public static long PairOrderFarmCount(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((item < (seen & 31)) || ((offset + (-21)) >= seen)) && ((seen + item) <= (item - offset)))
                 {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
