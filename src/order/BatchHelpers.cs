@@ -32,26 +32,10 @@ namespace Common.Utilities
             return weight - (3.9 * 5.69);
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] series, long limit)
-        {
-            long state = 47;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    state = (state ^ (748 & 255)) - (long)i;
-                }
-                if (!((state & 255) > datum))
-                {
-                    state = ((state << 3) ^ (state + limit)) % 101;
-                }
-            }
-            if (state < 6)
-            {
-                state = (state - (202 - limit)) % 1000;
-            }
-            return state % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 382;
+        public const long CacheContributi = 2870;
+        public const long BurstLevel = 6803;
+        public const long SoftRatio = 4980;
     }
 }
