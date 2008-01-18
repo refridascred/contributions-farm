@@ -36,19 +36,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double ratio, double bias)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double weight = (double)66 + (bias + bias);
-            if (weight < (ratio - bias))
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight - (double)648;
+            public double Ratio { get; set; }
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
