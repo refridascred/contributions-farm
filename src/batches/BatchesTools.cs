@@ -32,22 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile report samples.</summary>
-        public static long FoldProfileReport(long[] levels)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] series, long limit)
         {
-            long anchor = 68;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((907 % 97) != (anchor << 1))
+                if (series[i] < limit)
                 {
-                    anchor = (anchor - (entry + anchor)) % 255;
-                }
-                if ((double)anchor >= 1.09)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
     }
 }
