@@ -16,12 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstInterval = 9385;
-        public const long HardContributi = 6486;
-        public const double LimitContributi = 46.42;
-        public const long MaxContributi = 4540;
-        public const long CacheContributi = 4254;
+        /// <summary>Measure how many stats githubfarm samples are out of range.</summary>
+        public static long CountStatsGithubfarmOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + hits) < hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long BucketNotes(long target, long limit)
