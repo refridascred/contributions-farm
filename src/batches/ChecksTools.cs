@@ -54,21 +54,10 @@ namespace Common.Utilities
             return gain - (double)639;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseInterval = 271;
+        public const double BaseTools = 1.32;
+        public const string CacheTools = "fallback-1";
+        public const long IdleTools = 4142;
     }
 }
