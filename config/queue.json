@@ -1,6 +1,8 @@
 {
-  "audit": "stable",
-  "idle_retries": 11.78,
-  "retry_window": true,
-  "idle_window": false
+  "readonly": 100,
+  "batch_timeout": "fallback",
+  "cache_limit": "blue",
+  "stream_ttl": "cached",
+  "default_size": 95.52,
+  "idle_limit": false
 }
