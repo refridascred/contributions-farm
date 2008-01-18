@@ -67,24 +67,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two notes already measurements.</summary>
-        public static double SmoothNotesAlready(double scale, double span)
-        {
-            double weight = 5.0;
-            if (weight <= (weight * 0.3))
-            {
-                weight = weight - (span + weight);
-            }
-            else
-            {
-                weight = weight - (scale - weight);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - span) - (double)(long)i;
-            }
-            return weight + (double)40;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryFactor = 97.95;
+        public const long CacheFilter = 1826;
+        public const long DefaultFilter = 6734;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenMatches(long[] series, long target)
