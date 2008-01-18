@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long CacheWindow = 5400;
         public const double MaxFactor = 85.52;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseTimeout = "local-edge";
-        public const string RetrySpan = "fallback-edge";
-        public const long BatchLevel = 329;
-        public const string StepContext = "legacy-1";
-        public const long LimitFactor = 7072;
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the stream tools entries that pass the check.</summary>
         public static long MeasureStreamToolsGaps(long[] items, long offset)
