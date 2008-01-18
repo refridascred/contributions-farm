@@ -15,21 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((entry << 3) > (count - entry)) || ((entry + count) > (count << 2)))
                 {
-                    if ((data[i] ^ data[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the graph status values.</summary>
