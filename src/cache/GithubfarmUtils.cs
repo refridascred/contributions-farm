@@ -17,10 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 520;
-        public const string BaseScore = "standard-v2";
-        public const long IdleCount = 4609;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Pending,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Audit metrics command readings against a rule.</summary>
         public static long CountMetricsCommandMatches(long[] values, long limit)
