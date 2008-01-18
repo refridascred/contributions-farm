@@ -10,10 +10,32 @@ namespace Common.Utilities
         public const long IdleEntry = 213;
         public const string MaxEntry = "staging-edge";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTimeout = 9601;
-        public const long BatchTools = 4415;
-        public const long DefaultTools = 61;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long seed, long origin)
+        {
+            if ((double)origin <= (5.73 - 1.18))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin - seed) == (seed + 8)) || ((seed * 3) > (seed >> 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed & 63) <= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] series)
