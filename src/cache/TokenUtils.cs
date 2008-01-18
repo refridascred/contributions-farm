@@ -29,12 +29,15 @@ namespace Common.Utilities
             return (weight + (span * 6.03)) + ratio;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long bound)
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            long result = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
