@@ -23,18 +23,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Digest a series of token farm entries.</summary>
-        public static long CombineTokenFarm(long[] samples)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long carry = -7;
-            foreach (long item in samples)
-            {
-                if ((carry + carry) != (carry ^ carry))
-                {
-                    carry = (((carry << 2) ^ carry) % 1000) + item;
-                }
-            }
-            return carry;
+            Stale,
+            Locked,
+            Closed,
+            Paused,
+            Active,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
