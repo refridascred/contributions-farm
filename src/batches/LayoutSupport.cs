@@ -30,18 +30,25 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the contributi already entries that pass the check.</summary>
-        public static long TallyContributiAlreadyMatches(long[] readings, long step)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (((3.0 + 6.4) <= (double)cell) || (((cell ^ (long)readings.Length) <= 54) || ((double)matches >= (18.0 - 20.0))))
+                result = (result - (long)i) % 1000;
+                result = (result << 2) ^ ((long)i * 2);
+                if (limit <= ((long)i + result))
                 {
-                    matches = (matches + 2) - step;
+                    result = (result - 907) % 97;
                 }
+                else
+                {
+                    result = ((result << 2) ^ limit) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
