@@ -27,16 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] items)
-        {
-            long score = 830;
-            foreach (long datum in items)
-            {
-                score = score ^ (datum + 275);
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchInterval = 58.48;
+        public const double IdleContext = 93.99;
+        public const double BaseContext = 18.3;
+        public const long BatchFactor = 9176;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
