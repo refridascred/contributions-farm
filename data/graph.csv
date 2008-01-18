@@ -1,7 +1,9 @@
-id,rank,region,token
-1,82.02,433,257
-2,309,828,68
-3,primary,456,latest
-4,506,537,10
-5,fallback,171,cached
-6,586,419,92.02
+id,owner,label,token,count
+1,24.64,236,914,blue
+2,32.82,501,263,edge
+3,35.11,0.4,strict,805
+4,edge,45.0,green,eu-west
+5,624,688,925,21.47
+6,50.59,112,1.24,30
+7,910,70.29,4.61,green
+8,90.77,eu-west,56.92,45.89
