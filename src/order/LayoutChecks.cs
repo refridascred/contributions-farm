@@ -63,14 +63,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] readings)
         {
-            Draft,
-            Locked,
-            New,
-            Retry,
-            Closed,
+            long state = 33;
+            foreach (long item in readings)
+            {
+                if ((item << 1) >= 7)
+                {
+                    state = state - state;
+                }
+                else
+                {
+                    state = ((state * 5) + item) % 97;
+                }
+                state = state + (state << 3);
+            }
+            return state;
         }
     }
 }
