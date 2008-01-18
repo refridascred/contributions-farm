@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Count the queue stream entries that pass the check.</summary>
+        public static long CountQueueStreamHits(long[] series, long floor)
         {
-            Pending,
-            Done,
-            Active,
-            Idle,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((tally ^ entry) > floor)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
