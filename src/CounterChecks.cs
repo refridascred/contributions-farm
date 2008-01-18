@@ -44,19 +44,12 @@ namespace Common.Utilities
         public const double RetrySpan = 13.06;
         public const double DefaultSupport = 83.38;
 
-        /// <summary>Check that every graph githubfarm entry stays within the limit.</summary>
-        public static bool CheckGraphGithubfarmLimits(long[] levels, long origin)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the stream status values.</summary>
