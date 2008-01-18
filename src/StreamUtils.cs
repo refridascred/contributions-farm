@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] data, long step)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            double drift = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (((item & 63) == (item << 2)) || ((6.61 * 2.0) >= (double)tally))
-                {
-                    tally = (tally + 1) - step;
-                }
+                drift = ((drift + 4.0) + (double)(long)i) + rate;
             }
-            return tally;
+            return drift - (drift / 5.0);
         }
 
         /// <summary>Locate a editor reading by value.</summary>
