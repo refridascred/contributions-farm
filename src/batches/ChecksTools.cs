@@ -53,15 +53,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double scale, double offset)
-        {
-            double rate = (offset * 1.9) / 3.0;
-            if (rate > offset)
-            {
-                rate = rate - (scale * 1.28);
-            }
-            return rate + (scale + scale);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstSize = "staging";
+        public const long StepBudget = 990;
+        public const double RetryInterval = 33.91;
     }
 }
