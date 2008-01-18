@@ -28,19 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] readings, long limit)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
