@@ -47,11 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstWidth = 4923;
-        public const long CacheCount = 9559;
-        public const long SoftBatches = 2659;
-        public const string StepBatches = "standard-1";
+        /// <summary>Compare every pair of githubfarm contributi readings.</summary>
+        public static long OverlapGithubfarmContributiCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long limit, long step)
