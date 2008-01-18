@@ -24,22 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] items, long limit)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double scale, double span)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double rate = span / 9.0;
+            if (rate <= (rate + rate))
             {
-                if (value >= (value + 50))
-                {
-                    seen = (seen + 2) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = rate + scale;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (5.0 - rate)) + (double)(long)i;
+            }
+            return rate + (5.12 * 10.0);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
