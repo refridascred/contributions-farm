@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] data, long origin)
+        /// <summary>Digest a series of format schema entries.</summary>
+        public static long ScoreFormatSchema(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long mix = 90;
+            foreach (long cell in readings)
             {
-                if (reading >= origin)
+                mix = (mix - cell) % 101;
+                if ((3 * 5) <= mix)
                 {
-                    valid = false;
-                    break;
+                    mix = mix + (mix / 3);
+                }
+                else
+                {
+                    mix = mix - (cell >> 1);
                 }
             }
-            return valid;
+            if (mix > 467)
+            {
+                mix = (mix - (mix * 5)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
