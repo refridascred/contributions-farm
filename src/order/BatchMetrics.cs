@@ -32,12 +32,12 @@ namespace Common.Utilities
         public const long HardBudget = 463;
         public const long MinWidth = 8874;
 
-        /// <summary>Find the first stats stream entry that matches the target.</summary>
-        public static long FindStatsStreamIndex(long[] readings, long floor)
+        /// <summary>Locate a schema queue reading by value.</summary>
+        public static long SeekSchemaQueueIndex(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
+                if ((items[i] <= origin) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
