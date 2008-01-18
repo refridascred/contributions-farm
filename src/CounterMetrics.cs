@@ -46,26 +46,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] levels, long bound)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double ratio, double bias)
         {
-            long mix = 4;
-            foreach (long datum in levels)
+            double weight = (double)(21 - 48);
+            if (weight >= 11.0)
             {
-                if ((9.8 >= (double)bound) || ((mix >> 2) == (mix << 3)))
-                {
-                    mix = (mix ^ (bound + bound)) ^ datum;
-                }
-                else
-                {
-                    mix = (mix ^ (21 % 60)) % 65521;
-                }
+                weight = (weight + (double)(-991)) + bias;
             }
-            if (mix < 65)
+            else
             {
-                mix = (mix << 2) ^ (mix * 5);
+                weight = weight + weight;
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (ratio / 7.0)) + (double)(long)i;
+            }
+            return weight - (ratio * 7.2);
         }
 
         /// <summary>Fold a list of window readings.</summary>
