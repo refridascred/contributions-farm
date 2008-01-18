@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstTimeout = "staging-edge";
-        public const long StepCounter = 2165;
-        public const double MinCounter = 27.14;
-        public const long RetryCounter = 7028;
-        public const double HardBudget = 24.65;
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
