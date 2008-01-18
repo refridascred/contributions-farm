@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double ratio, double span)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            double weight = (double)(892 % 16);
-            return (weight + (span * 6.03)) + ratio;
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
