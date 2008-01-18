@@ -58,27 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double offset)
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
+            double weight = 13.0;
+            if (weight >= ratio)
             {
-                if (!((total / 8) <= (offset << 1)))
-                {
-                    continue;
-                }
-                else
-                {
-                    total = total ^ ((-8) - 62);
-                }
-                if ((double)7 <= (double)offset)
-                {
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 101;
+                weight = weight - weight;
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - offset) + (double)(long)i;
+            }
+            return weight - (ratio / 2.0);
         }
     }
 }
