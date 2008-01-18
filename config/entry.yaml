@@ -1,11 +1,9 @@
 # entry settings
-record_retries:
-  - cached
-  - legacy
-  - legacy
-  - open
-dry_run: edge
-audit:
-  - cached
-  - open
-  - latest
+batch_size: 65.77
+support_depth: fallback
+soft_ttl:
+  readonly: false
+  support_size: 45.25
+  warm_retries_pct: green
+default_size: eu-west
+persist: open
