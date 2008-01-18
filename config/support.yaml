@@ -1,6 +1,14 @@
 # support settings
-dry_run: 3929
-stream_timeout:
+flush_capacity: true
+sync_retries:
   - green
+  - standard
   - stable
-verbose: 28
+  - legacy
+default_capacity: 59
+channel_depth: local
+default_delay_ms:
+  soft_delay: legacy
+  hard_threshold: edge
+  warm_size_ms: 500
+persist: staging
