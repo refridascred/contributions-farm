@@ -61,21 +61,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((long)i & 255) < (limit + acc))
-                {
-                    acc = ((acc * 5) + limit) % 4096;
-                    acc = acc ^ (9 + acc);
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public double Level { get; set; }
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
