@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long SoftFactor = 2030;
         public const long CacheFactor = 142;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] levels, long origin)
         {
-            Dropped,
-            Ready,
-            Done,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
