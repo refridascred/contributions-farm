@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] readings, long step)
         {
-            Ready,
-            Active,
-            Stale,
-            Retry,
-            Done,
+            long score = 828;
+            foreach (long value in readings)
+            {
+                score = ((((score << 3) ^ (score / 3)) % 65521) ^ value) + step;
+            }
+            if (score < 26)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
