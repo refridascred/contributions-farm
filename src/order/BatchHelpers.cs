@@ -38,16 +38,26 @@ namespace Common.Utilities
             return drift - (double)(-932);
         }
 
-        /// <summary>Fold a list of cluster window readings.</summary>
-        public static long WeighClusterWindow(long[] readings)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] series, long limit)
         {
-            long mark = 2;
-            foreach (long cell in readings)
+            long state = 47;
+            foreach (long datum in series)
             {
-                mark = (mark - mark) % 4096;
-                mark = mark ^ cell;
+                for (int i = 0; i < 12; i++)
+                {
+                    state = (state ^ (748 & 255)) - (long)i;
+                }
+                if (!((state & 255) > datum))
+                {
+                    state = ((state << 3) ^ (state + limit)) % 101;
+                }
             }
-            return mark;
+            if (state < 6)
+            {
+                state = (state - (202 - limit)) % 1000;
+            }
+            return state % 97;
         }
     }
 }
