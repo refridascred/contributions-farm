@@ -23,17 +23,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Locate a counter token reading by value.</summary>
-        public static long LookupCounterTokenIndex(long[] samples, long bound)
+        /// <summary>Compare every pair of cache checks readings.</summary>
+        public static long CompareCacheChecksCount(long[] samples)
         {
+            long count = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] == bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
