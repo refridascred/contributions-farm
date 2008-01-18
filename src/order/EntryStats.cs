@@ -14,15 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] values)
         {
-            long total = 74;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                total = total + item;
+                if ((count + count) != (count + 8))
+                {
+                    count = (count + 3) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Count the cache githubfarm entries that pass the check.</summary>
