@@ -1,12 +1,32 @@
 # support settings
-idle_limit: staging
-payload_size:
-  - 67
-  - 367
-order_interval: 9100
-max_window_s: false
-idle_threshold_ms:
+persist:
   - local
-  - edge
-  - fallback
-  - stable
+  - open
+  - primary
+  - local
+farm_depth:
+  strict:
+    - 97
+    - 487
+    - 332
+  max_threshold_pct: false
+  poll_threshold:
+    cache_interval_ms:
+      - cached
+      - green
+      - staging
+      - green
+    queue_delay: 3677
+    soft_depth: 500
+  default_capacity_ms:
+    base_ttl_pct: cached
+    entry_threshold: fallback
+    readonly:
+      - 24
+      - 357
+      - 47
+    dry_run: 100
+    max_ttl_ms: 1024
+  burst_interval_count: 9873
+  already_ttl: 1024
+soft_interval_pct: green
