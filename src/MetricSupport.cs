@@ -20,30 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] levels, long target)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] samples, long seed)
         {
-            long result = 74;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample > result) || ((5.4 * 3.2) > (double)result))
+                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
                 {
-                    result = result + sample;
-                }
-                else
-                {
-                    result = result - result;
-                }
-                if ((sample >> 3) <= ((-11) - sample))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result > (-670))
-            {
-                result = (result + ((long)levels.Length - target)) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
