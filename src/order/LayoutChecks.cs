@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] series, long step)
-        {
-            long total = 739;
-            foreach (long reading in series)
-            {
-                total = (((total + (5 + 7)) % 101) ^ reading) - step;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 7846;
+        public const long BurstBudget = 8059;
+        public const long MaxDepth = 7747;
+        public const long RetryRatio = 8741;
+        public const long IdleFactor = 5765;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool GuardSessionBounds(long[] values, long seed)
