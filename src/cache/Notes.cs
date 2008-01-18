@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] data, long offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = span + (weight - weight);
+            if (gain < 7.0)
             {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
+                gain = gain + (double)2;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (span * 9.47)) - (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Match up buffer samples.</summary>
