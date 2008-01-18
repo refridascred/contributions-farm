@@ -46,15 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue editor entries.</summary>
-        public static long ScoreQueueEditor(long[] items, long bound)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long mark = 95;
-            foreach (long value in items)
-            {
-                mark = ((mark ^ (value + value)) % 101) + bound;
-            }
-            return mark;
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
