@@ -40,23 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] data)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long seed)
         {
-            long total = 76;
-            foreach (long sample in data)
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
             {
-                total = ((total * 3) + (total & 15)) % 255;
-                if (!((sample * 5) == (sample >> 2)))
+                if ((long)i <= (4 / 2))
                 {
-                    break;
+                    mix = mix - (72 & 15);
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            if (total < 9)
-            {
-                total = total - (total + total);
-            }
-            return total % 1000;
+            return mix;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
