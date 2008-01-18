@@ -31,11 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Adjust a buffer context reading.</summary>
