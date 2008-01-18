@@ -36,15 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double gain, double span)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double rate = (span * 7.0) + span;
-            if (rate <= (rate * 6.23))
-            {
-                rate = rate + gain;
-            }
-            return rate + span;
+            Stale,
+            Synced,
+            Draft,
         }
     }
 }
