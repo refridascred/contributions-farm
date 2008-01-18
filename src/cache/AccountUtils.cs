@@ -28,17 +28,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] series, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (series[i] <= limit)
+                if ((limit % 60) != (tally ^ (-6)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - datum;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
