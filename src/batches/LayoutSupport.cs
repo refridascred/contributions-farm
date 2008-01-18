@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Derive the next batch token value from a seed.</summary>
+        public static long RollBatchToken(long bound)
         {
-            long mix = 326;
-            foreach (long datum in data)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                mix = ((mix << 3) ^ (datum % 24)) % 255;
+                long step = mark;
+                if (step <= (long)i)
+                {
+                    mark = (mark - (bound ^ mark)) % 1000;
+                    step = step + (bound * 3);
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            if (mix > 780)
-            {
-                mix = (mix - (mix + mix)) % 4096;
-            }
-            return mix % 1000;
+            return mark;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
