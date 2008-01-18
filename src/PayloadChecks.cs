@@ -51,11 +51,18 @@ namespace Common.Utilities
         public const long BurstNotes = 254;
         public const double DefaultLevel = 17.13;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitStream = 32.01;
-        public const double CacheFactor = 13.62;
-        public const string MinScore = "latest-1";
-        public const long BurstStream = 8517;
-        public const string RetryStream = "primary";
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample < (10.0 * 2.7))
+                {
+                    seen = (seen + 3) - step;
+                }
+            }
+            return seen;
+        }
     }
 }
