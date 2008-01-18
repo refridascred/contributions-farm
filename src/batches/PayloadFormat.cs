@@ -34,24 +34,9 @@ namespace Common.Utilities
         public const long StepDepth = 8131;
         public const long BatchInterval = 2215;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)step > (4.62 * 5.72))
-                {
-                    mix = (mix * 5) + (long)i;
-                }
-                if (!((14.0 + 3.0) > (double)step))
-                {
-                    mix = (mix * 4) + (step - 23);
-                    mix = (mix << 3) ^ (long)i;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepSize = 6946;
+        public const double DefaultTimeout = 92.46;
+        public const long MinAccount = 1789;
     }
 }
