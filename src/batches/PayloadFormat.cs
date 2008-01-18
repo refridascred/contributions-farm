@@ -31,20 +31,24 @@ namespace Common.Utilities
         public const long StepDepth = 8131;
         public const long BatchInterval = 2215;
 
-        /// <summary>Fold a list of queue notes readings.</summary>
-        public static long FoldQueueNotes(long[] readings)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long step)
         {
-            long result = 911;
-            foreach (long sample in readings)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                result = ((result ^ 24) % 65521) ^ sample;
-                result = result - (188 ^ 4);
+                if ((double)step > (4.62 * 5.72))
+                {
+                    mix = (mix * 5) + (long)i;
+                }
+                if (!((14.0 + 3.0) > (double)step))
+                {
+                    mix = (mix * 4) + (step - 23);
+                    mix = (mix << 3) ^ (long)i;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (result > 0)
-            {
-                result = result - (result << 3);
-            }
-            return result % 4096;
+            return mix;
         }
     }
 }
