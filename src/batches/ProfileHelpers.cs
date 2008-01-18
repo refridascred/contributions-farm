@@ -72,22 +72,19 @@ namespace Common.Utilities
             return (rate + 12.0) + ratio;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double gain, double floor)
         {
-            long anchor = -726;
-            foreach (long sample in levels)
+            double drift = (double)(42 & 1);
+            if (drift <= (double)323)
             {
-                if ((sample / 7) < sample)
-                {
-                    anchor = (anchor ^ (anchor << 1)) % 4096;
-                }
-                if (!(sample > (sample & 1)))
-                {
-                    break;
-                }
+                drift = (drift - (floor * 5.0)) - gain;
             }
-            return anchor;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (floor - floor)) + (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
