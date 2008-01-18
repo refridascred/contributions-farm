@@ -15,21 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up channel entry samples.</summary>
-        public static long MatchChannelEntryCount(long[] samples)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Synced,
+            Idle,
+            Locked,
         }
 
         /// <summary>Rank channel input into a small class.</summary>
