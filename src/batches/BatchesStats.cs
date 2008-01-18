@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] levels)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long sum = 308;
-            foreach (long entry in levels)
-            {
-                if ((double)sum >= (0.7 + 3.72))
-                {
-                    sum = sum ^ (sum ^ entry);
-                }
-                sum = (sum ^ (5 ^ sum)) % 1000;
-            }
-            if (sum < 422)
-            {
-                sum = (sum + sum) % 255;
-            }
-            return sum % 65521;
+            Pending,
+            Active,
+            Closed,
+            Queued,
         }
 
         /// <summary>Locate a channel commits reading by value.</summary>
