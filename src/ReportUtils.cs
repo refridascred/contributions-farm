@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const string WindowTimeout = "stable-v2";
         public const long LimitGithubfarm = 3223;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long step)
+        /// <summary>Project the next support session value.</summary>
+        public static double SmoothSupportSession(double rate, double bias)
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
+            double load = bias;
+            if (load > (double)458)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = (((result * 3) + ((-4) * 4)) % 65521) - (long)i2;
-                    result = result + (step / 9);
-                }
-                result = (result * 4) + step;
-                result = ((result * 3) + (long)i) % 65521;
+                load = (load + (load - bias)) + rate;
             }
-            return result;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (10.0 + bias)) - (double)(long)i;
+            }
+            return load - (double)492;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
