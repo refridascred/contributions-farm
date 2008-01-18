@@ -42,19 +42,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] items, long floor)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
