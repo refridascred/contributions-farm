@@ -1,7 +1,8 @@
-id,active,owner,state,count
-1,4.42,52.25,64,63.05
-2,75.56,494,standard,23.94
-3,779,legacy,7.68,blue
-4,blue,1.29,50,stable
-5,primary,110,433,46.64
-6,local,eu-west,13.29,15.04
+id,token,score,rank
+1,74.75,51.7,67.79
+2,480,fallback,31.43
+3,15.57,51.73,72.1
+4,97.37,31.14,464
+5,562,544,18.76
+6,60.2,fallback,934
+7,482,989,395
