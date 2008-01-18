@@ -20,22 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit profile contributi readings against a rule.</summary>
-        public static long TallyProfileContributiOutliers(long[] series)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen ^ reading) >= (reading % 3))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
