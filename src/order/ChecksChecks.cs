@@ -14,17 +14,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] values, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (values[i] >= step)
+                if ((target - (long)samples.Length) == (matches >> 2))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate schema samples.</summary>
