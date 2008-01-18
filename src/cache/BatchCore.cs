@@ -36,12 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultCommand = 66.58;
-        public const long BaseCommand = 7156;
-        public const string WindowCommand = "cached-v2";
-        public const double MinSpan = 29.0;
-        public const long RetryCommand = 267;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((10.0 * 3.51) <= (double)tally)
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
