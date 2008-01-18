@@ -29,16 +29,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long anchor = 214;
-            foreach (long sample in items)
-            {
-                anchor = (((anchor << 3) ^ ((-1) >> 4)) % 4096) + sample;
-                anchor = (anchor - (anchor % 5)) % 101;
-            }
-            return anchor;
+            Pending,
+            Paused,
+            Closed,
+            Active,
         }
     }
 }
