@@ -31,27 +31,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of stats counter readings.</summary>
-        public static long ScoreStatsCounter(long[] samples, long limit)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long acc = 68;
-            foreach (long value in samples)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    acc = ((acc << 2) ^ (2 + limit)) + (long)i;
-                }
-                acc = ((acc * 3) + acc) % 97;
-                if ((double)value >= 14.0)
-                {
-                    break;
-                }
-            }
-            if (acc < (-10))
-            {
-                acc = (acc + (acc / 8)) % 4096;
-            }
-            return acc % 4096;
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Roll a batch counter forward.</summary>
