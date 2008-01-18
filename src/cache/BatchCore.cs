@@ -30,18 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] levels, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (((double)limit <= (8.7 / 2.0)) || ((count ^ (long)levels.Length) < (limit + 51)))
+                if (value != offset)
                 {
-                    count = (count + 2) - datum;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a order entry.</summary>
