@@ -1,6 +1,9 @@
-id,active,owner
-1,74.45,212
-2,175,228
-3,81.34,559
-4,blue,92.77
-5,green,950
+id,token,owner,active
+1,202,227,cached
+2,381,26.76,stable
+3,staging,46.71,971
+4,991,567,33.14
+5,916,63.88,127
+6,fallback,primary,7.88
+7,strict,fallback,blue
+8,88.18,primary,85.07
