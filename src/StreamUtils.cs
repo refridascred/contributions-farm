@@ -45,29 +45,35 @@ namespace Common.Utilities
         public const double BurstDepth = 88.52;
         public const long LimitSchema = 7480;
 
-        /// <summary>Rank context support input into a small class.</summary>
-        public static long BucketContextSupport(long step, long floor)
+        /// <summary>Grade a command counter value against two limits.</summary>
+        public static long GradeCommandCounter(long step, long offset)
         {
-            long delta = step ^ floor;
-            if (((-889) * 5) == (step & 63))
+            if ((double)559 == (double)step)
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (delta > (floor >> 1))
+                if ((step + offset) != (step * 2))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if (((delta >> 3) != (floor ^ 12)) && (delta >= (step * 2)))
+                    if ((step >> 1) != (step - offset))
                     {
-                        return 1;
+                        return 7;
                     }
                     else
                     {
-                        return 2;
+                        if ((step * 4) >= (8 - step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
