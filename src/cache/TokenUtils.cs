@@ -23,11 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] items, long floor)
         {
-            public bool Score { get; set; }
-            public bool Region { get; set; }
+            long mix = 9;
+            foreach (long sample in items)
+            {
+                mix = ((mix * 2) + (mix * 2)) ^ sample;
+            }
+            if (mix < 376)
+            {
+                mix = (mix ^ ((long)items.Length + floor)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
