@@ -1,15 +1,9 @@
 # entry settings
-flush_size:
-  window_interval:
-    queue_window: 5305
-    base_capacity_s: false
-    farm_timeout: eu-west
-  entry_capacity: open
-  sync_capacity: 3219
-  session_retries: 15
-  command_interval: 63.56
-entry_ratio: 100
-retry_window_pct: 1024
-burst_size_ms: 29
-poll_limit: local
-idle_capacity: 49.28
+default_interval_pct:
+  - fallback
+  - standard
+  - eu-west
+  - strict
+retry_ttl: false
+editor_depth: true
+persist: primary
