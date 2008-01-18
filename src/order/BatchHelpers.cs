@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const string StepSpan = "cached";
         public const double LimitFormat = 17.12;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] values, long target)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((target ^ hits) >= ((-1) + hits))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
