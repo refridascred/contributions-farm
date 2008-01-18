@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 6594;
-        public const long BaseContext = 6195;
-        public const long StepScore = 3321;
-        public const long MinSize = 7388;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            New,
+            Failed,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool VerifyClusterRange(long[] items, long origin)
