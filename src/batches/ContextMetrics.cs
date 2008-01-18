@@ -48,16 +48,24 @@ namespace Common.Utilities
         public const long MinGithubfarm = 7472;
         public const long MinWidth = 4885;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long limit)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
             {
-                sum = (sum - (136 - 177)) % 101;
-                sum = ((sum * 5) + (long)i) % 97;
+                if (!((mix ^ floor) >= floor))
+                {
+                    mix = ((mix << 3) ^ (2 ^ (long)i)) % 65521;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ mix;
+                    mix = (mix * 4) + (mix >> 1);
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return sum;
+            return mix;
         }
     }
 }
