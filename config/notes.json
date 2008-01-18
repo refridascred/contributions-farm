@@ -1,12 +1,5 @@
 {
-  "base_interval_pct": 6768,
-  "min_retries": "stable",
-  "flush_delay": 8.21,
-  "base_delay_ms": 73.72,
-  "poll_ratio": {
-    "soft_capacity_pct": 15.81,
-    "idle_ttl": 1024,
-    "persist": "standard",
-    "idle_capacity_ms": 8310
-  }
+  "persist": true,
+  "hard_ratio": 1644,
+  "min_capacity_count": 81
 }
