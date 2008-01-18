@@ -39,9 +39,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstSpan = 6805;
-        public const long SoftLevel = 8892;
-        public const string BatchInterval = "latest-1";
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepWindow = "fallback-v2";
+        public const double StepCount = 73.37;
+        public const string MaxWindow = "local-1";
+        public const double HardWindow = 0.76;
+        public const long BaseDepth = 9765;
     }
 }
