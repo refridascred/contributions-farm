@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const string StepSpan = "cached";
         public const double LimitFormat = 17.12;
 
-        /// <summary>Accumulate schema already samples.</summary>
-        public static long FoldSchemaAlready(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] values, long target)
         {
-            long anchor = 467;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (((double)anchor <= (13.0 + 5.79)) || ((datum + datum) > datum))
+                if ((target ^ hits) >= ((-1) + hits))
                 {
-                    anchor = ((anchor << 3) ^ (datum / 5)) % 101;
+                    hits = (hits + 3) + entry;
                 }
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor ^ (anchor * 2)) % 4096;
-            }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
