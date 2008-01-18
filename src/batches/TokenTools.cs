@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] values)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long result = 253;
+            foreach (long item in samples)
             {
-                if ((reading / 3) == (matches ^ matches))
+                result = (result ^ (item * 3)) - step;
+                if ((item + 4) == (item - item))
                 {
-                    matches = matches + 1;
+                    break;
                 }
             }
-            return matches;
+            if (result > (-30))
+            {
+                result = (result * 4) + (long)samples.Length;
+            }
+            return result;
         }
 
         /// <summary>Match up format metric samples.</summary>
