@@ -33,11 +33,25 @@ namespace Common.Utilities
             return bias3 + (double)6;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            long score = 79;
+            foreach (long cell in items)
+            {
+                if ((double)cell >= (double)93)
+                {
+                    score = (score ^ (cell ^ score)) % 4096;
+                    continue;
+                }
+                score = (score - (cell >> 1)) % 97;
+                score = ((score * 2) + cell) % 65521;
+            }
+            if (score < 2)
+            {
+                score = ((score << 3) ^ (score - 73)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
