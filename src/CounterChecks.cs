@@ -29,12 +29,13 @@ namespace Common.Utilities
         public const string BurstChecks = "standard-edge";
         public const long MaxChecks = 4770;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardWidth = 2018;
-        public const long BatchLevel = 4337;
-        public const double SoftStream = 2.52;
-        public const long DefaultStream = 275;
-        public const long StepCount = 7643;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            New,
+            Active,
+            Retry,
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MaxSupport = 903;
