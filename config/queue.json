@@ -1,8 +1,11 @@
 {
-  "readonly": 100,
-  "batch_timeout": "fallback",
-  "cache_limit": "blue",
-  "stream_ttl": "cached",
-  "default_size": 95.52,
-  "idle_limit": false
+  "batch_size_s": {
+    "cache_limit_count": "green",
+    "report_delay": 250,
+    "min_delay_pct": 250,
+    "default_ratio_ms": "strict",
+    "audit": 96.41
+  },
+  "hard_retries_pct": 91,
+  "compress": 7580
 }
