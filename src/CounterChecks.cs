@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 8962;
-        public const string IdleFarm = "stable-edge";
-        public const long HardFarm = 3390;
-        public const long MaxFarm = 6436;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LocateReportIndex(long[] readings, long step)
