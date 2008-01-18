@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a session metrics value against two limits.</summary>
-        public static long SortSessionMetrics(long seed, long target)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            if ((158 % 100) == (target ^ target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (target > (seed & 15))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed / 2) < (target / 2)) || ((double)target >= (double)seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
