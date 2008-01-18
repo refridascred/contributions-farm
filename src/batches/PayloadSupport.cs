@@ -32,21 +32,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] values)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 496;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (((acc << 3) ^ (acc - 0)) % 1000) - (long)i;
                 }
+                if (!!((double)cell <= 18.0))
+                {
+                    acc = acc - acc;
+                }
+                acc = (acc << 3) ^ (acc & 31);
             }
-            return tally;
+            return acc;
         }
     }
 }
