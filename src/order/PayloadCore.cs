@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] readings, long step)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] values, long origin)
         {
-            long score = 828;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                score = ((((score << 3) ^ (score / 3)) % 65521) ^ value) + step;
+                if (cell <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (score < 26)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score % 97;
+            return ok;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
