@@ -23,26 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long floor, long origin)
-        {
-            long slot = floor - origin;
-            if ((floor - floor) < (slot % 100))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)slot >= (double)origin) || ((floor + origin) <= (floor * 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "primary";
+        public const long StepFactor = 22;
+        public const long MinSpan = 4778;
 
         /// <summary>Validate contributi metric readings against a bound.</summary>
         public static bool GuardContributiMetricLimits(long[] values, long target)
