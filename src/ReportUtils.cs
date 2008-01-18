@@ -35,32 +35,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long floor, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] values)
         {
-            long gap = floor + step;
-            if ((floor + step) < gap)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((-87) >= (gap + floor))
+                if ((0.02 / 2.0) != (double)sample)
                 {
-                    return 7;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((gap + 218) >= (floor + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine report metrics values into a single score.</summary>
