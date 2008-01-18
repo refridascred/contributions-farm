@@ -49,12 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "local";
-        public const long MinSize = 2727;
-        public const string WindowInterval = "local-edge";
-        public const long BurstNotes = 254;
-        public const double DefaultLevel = 17.13;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Queued,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long WeighMetric(long[] levels)
