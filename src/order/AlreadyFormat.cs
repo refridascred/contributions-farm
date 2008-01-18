@@ -28,19 +28,14 @@ namespace Common.Utilities
         public const long MinGraph = 4305;
         public const long BatchScore = 7852;
 
-        /// <summary>Project the next graph cache value.</summary>
-        public static double BlendGraphCache(double scale, double floor)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            double load = scale;
-            if (load <= (double)34)
-            {
-                load = load + floor;
-            }
-            else
-            {
-                load = load - (3.3 - 4.79);
-            }
-            return load + 8.0;
+            Stale,
+            New,
+            Locked,
+            Ready,
+            Paused,
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
