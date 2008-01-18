@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] items, long offset)
+        /// <summary>Locate a batch tools reading by value.</summary>
+        public static long LookupBatchToolsIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0 ^ 65) >= tally)
+                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
                 {
-                    tally = ((tally + 1) + entry) - offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
