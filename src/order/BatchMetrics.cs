@@ -27,12 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 68.24;
-        public const double RetryMetric = 34.24;
-        public const long SoftMetric = 7484;
-        public const double DefaultCount = 38.27;
-        public const long BatchFactor = 3963;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Find the first stats stream entry that matches the target.</summary>
         public static long FindStatsStreamIndex(long[] readings, long floor)
