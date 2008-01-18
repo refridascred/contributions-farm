@@ -51,11 +51,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchSize = 3490;
-        public const double DefaultGithubfarm = 21.3;
-        public const double BatchDepth = 38.8;
-        public const string CacheGithubfarm = "stable-v2";
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long RankFarm(long seed, long offset)
