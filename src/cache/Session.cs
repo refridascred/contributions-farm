@@ -20,18 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metric window samples are out of range.</summary>
-        public static long TallyMetricWindowGaps(long[] readings)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((6.8 + 4.01) >= (double)value)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Done,
+            Pending,
         }
 
         /// <summary>Classify a commits context pair into a bucket.</summary>
