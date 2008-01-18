@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
+            long sum = 1;
+            foreach (long datum in values)
+            {
+                sum = (sum ^ datum) % 1000;
+                if (datum >= (sum * 5))
+                {
+                    sum = sum + 1;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Locate a report reading by value.</summary>
