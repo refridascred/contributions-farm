@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstSpan = 50.44;
-        public const string CacheSize = "stable-v2";
-        public const double RetrySize = 72.1;
-        public const long IdleReport = 8884;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxSpan = 5333;
+        public const string WindowBatches = "standard-1";
+        public const double BaseBatches = 47.53;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long WeighMetric(long[] levels, long bound)
