@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] data, long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long sum = 24;
+            foreach (long reading in series)
             {
-                if (value >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((((sum << 3) ^ sum) % 4096) + reading) + target;
             }
-            return flag;
+            if (sum > 879)
+            {
+                sum = sum ^ (736 / 3);
+            }
+            return sum;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
