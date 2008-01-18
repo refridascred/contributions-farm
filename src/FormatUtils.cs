@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] data, long target)
         {
-            public long Limit { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
+            long carry = 69;
+            foreach (long entry in data)
+            {
+                carry = ((carry + (1 & 31)) % 255) + target;
+                carry = (carry << 3) ^ (carry + entry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of metric account readings.</summary>
