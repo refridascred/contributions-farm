@@ -39,12 +39,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double rate, double bias)
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public double Limit { get; set; }
+            double ratio = (bias / 9.0) - (rate - rate);
+            if (ratio < bias)
+            {
+                ratio = ratio + (double)(-40);
+            }
+            return ratio + 7.99;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
