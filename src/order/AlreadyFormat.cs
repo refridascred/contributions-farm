@@ -69,13 +69,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Synced,
-            Ready,
+            Active,
+            Locked,
             Closed,
-            Idle,
+            Stale,
         }
     }
 }
