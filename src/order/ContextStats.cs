@@ -24,21 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of support tools readings.</summary>
-        public static long MatchSupportToolsCount(long[] items)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 65;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mark << 2) < step)
                 {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (((mark * 5) + (8 >> 5)) % 65521) ^ datum;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
