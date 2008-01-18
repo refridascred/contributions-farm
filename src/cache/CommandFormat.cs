@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
