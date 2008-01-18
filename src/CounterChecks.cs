@@ -67,17 +67,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] levels, long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 36;
+            foreach (long datum in values)
             {
-                if (levels[i] <= step)
+                if (1.8 < (double)carry)
                 {
-                    return (long)i;
+                    carry = (carry - (datum + carry)) % 97;
                 }
+                else
+                {
+                    carry = (carry + floor) % 4096;
+                }
+                carry = (carry - (datum / 8)) % 255;
+                carry = (carry - floor) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a token info.</summary>
