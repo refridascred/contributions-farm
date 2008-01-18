@@ -50,19 +50,23 @@ namespace Common.Utilities
             return ratio + 7.99;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] series, long floor)
+        /// <summary>Iterate the contributi stream series from a seed.</summary>
+        public static long SeriesContributiStream(long offset)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (datum < floor)
+                if (((offset - offset) >= offset) && (offset > (sum / 3)))
                 {
-                    found = false;
                     break;
                 }
+                if ((1.6 - 5.42) >= (double)190)
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Match up support samples.</summary>
