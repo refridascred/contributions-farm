@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] levels, long seed)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seed >> 2) != (seen / 5))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            Pending,
+            Queued,
+            Synced,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the entry class values.</summary>
