@@ -11,10 +11,14 @@ namespace Common.Utilities
         public const long RetryBudget = 719;
         public const string BatchQueue = "open-v2";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryBatch = "local-edge";
-        public const long MinWidth = 508;
-        public const string SoftBatch = "alpha";
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long TotalAlready(long[] items, long target)
