@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of tools schema entries.</summary>
-        public static long TotalToolsSchema(long[] samples, long origin)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long seed, long seed2)
         {
-            long state = -795;
-            foreach (long cell in samples)
+            long lane = seed + seed2;
+            if ((7 * 2) <= (lane - 59))
             {
-                if ((double)state == (3.87 + 4.3))
+                return 5;
+            }
+            else
+            {
+                if ((lane + seed) > (seed2 % 60))
                 {
-                    state = ((state + cell) % 65521) + origin;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (state < 52)
-            {
-                state = state + ((long)samples.Length / 5);
-            }
-            return state;
         }
 
         /// <summary>Match up record samples.</summary>
