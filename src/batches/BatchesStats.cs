@@ -26,21 +26,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Compare every pair of metric report readings.</summary>
-        public static long CompareMetricReportCount(long[] levels)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (acc < (39 - 8))
                 {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc << 3) ^ (acc & 1)) % 255;
+                    break;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the batch mode values.</summary>
