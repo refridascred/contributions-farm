@@ -11,9 +11,9 @@ namespace Common.Utilities
         public const string MaxEntry = "staging-edge";
 
         /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheDepth = 4998;
-        public const long DefaultTools = 342;
-        public const string BurstTools = "stable-1";
+        public const long RetryTimeout = 9601;
+        public const long BatchTools = 4415;
+        public const long DefaultTools = 61;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string LimitMetric = "standard-v2";
