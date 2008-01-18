@@ -58,21 +58,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count record batch pairs that satisfy a relation.</summary>
-        public static long CompareRecordBatchCount(long[] values)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long target, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long edge = target ^ step;
+            if ((target - 99) <= (target ^ edge))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((-8) ^ 153) <= edge)
                 {
-                    if ((values[i] + values[j]) < 14)
+                    return 8;
+                }
+                else
+                {
+                    if ((target + target) < (target / 2))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (step > 727)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
