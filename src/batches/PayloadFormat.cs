@@ -20,18 +20,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the profile schema entries that pass the check.</summary>
-        public static long AuditProfileSchemaHits(long[] items)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally / 3) >= entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((items[i] - items[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
