@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (!((tally >> 5) == (entry & 3)))
+                if ((item >> 5) >= count)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Adjust a cluster metrics reading.</summary>
