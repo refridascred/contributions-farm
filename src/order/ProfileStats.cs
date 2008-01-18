@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every schema stats entry stays within the limit.</summary>
-        public static bool VerifySchemaStatsLimits(long[] readings, long floor)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Locked,
+            Retry,
+            Ready,
+            Idle,
         }
 
         /// <summary>Blend two session command measurements.</summary>
