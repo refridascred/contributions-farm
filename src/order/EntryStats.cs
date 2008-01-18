@@ -41,12 +41,11 @@ namespace Common.Utilities
         public const long IdleDepth = 9549;
         public const double MaxCache = 55.73;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultCount = 2877;
-        public const double DefaultContext = 68.34;
-        public const string IdleContext = "latest-v2";
-        public const double BatchContext = 62.28;
-        public const long StepBudget = 8836;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryWidth = 1163;
+        public const long StepChecks = 5274;
+        public const long MaxSpan = 3904;
+        public const long CacheRatio = 7639;
 
         /// <summary>Project the next batches value.</summary>
         public static double ScaleBatches(double rate, double bias)
