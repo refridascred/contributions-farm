@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine githubfarm commits values into a single score.</summary>
-        public static long FoldGithubfarmCommits(long[] values, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] readings, long target)
         {
-            long total = 1;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                total = (total - datum) + target;
-                if ((total & 7) <= (59 & 3))
+                if (cell >= (cell * 4))
                 {
-                    break;
+                    seen = (seen + 1) - target;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
