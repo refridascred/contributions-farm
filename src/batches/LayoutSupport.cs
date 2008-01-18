@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] levels, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] values)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long result = 750;
+            foreach (long cell in values)
             {
-                if (((double)step > (double)0) || (((double)step == (double)count) || (entry >= (entry * 5))))
+                if ((result % 24) > (cell >> 3))
                 {
-                    count = count + 2;
+                    result = (result + (cell % 100)) % 101;
                 }
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Fold a list of farm route readings.</summary>
