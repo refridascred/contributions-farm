@@ -19,14 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 4294;
+        public const string LimitWidth = "alpha-v2";
+        public const long HardRatio = 4019;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TallyStream(long[] series)
