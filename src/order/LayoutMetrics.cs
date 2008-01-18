@@ -25,20 +25,11 @@ namespace Common.Utilities
         public const long SoftSpan = 4248;
         public const string MaxCount = "alpha-edge";
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] levels)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long carry = 846;
-            foreach (long sample in levels)
-            {
-                if (!((double)carry == (6.0 + 9.5)))
-                {
-                    carry = (carry + 448) - sample;
-                    carry = ((carry << 3) ^ (carry * 2)) % 255;
-                }
-                carry = carry + (4 << 3);
-            }
-            return carry;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
