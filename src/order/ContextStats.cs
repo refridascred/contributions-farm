@@ -14,24 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long step, long seed)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] samples, long limit)
         {
-            if (!((seed + step) != (step * 3)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + seed) >= (753 + 563))
+                if (samples[i] > limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the account profile series from a seed.</summary>
