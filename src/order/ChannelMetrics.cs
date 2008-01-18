@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] readings, long offset)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
+            long mark = -90;
+            foreach (long value in readings)
+            {
+                if ((offset & 15) == (offset * 3))
+                {
+                    mark = (mark + (mark & 63)) + value;
+                }
+            }
+            if (mark > 8)
+            {
+                mark = (mark ^ (offset / 2)) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Roll a window order counter forward.</summary>
