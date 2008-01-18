@@ -72,12 +72,12 @@ namespace Common.Utilities
             return (rate + 12.0) + ratio;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Dropped,
-            Idle,
-            Paused,
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
     }
 }
