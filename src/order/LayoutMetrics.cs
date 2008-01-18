@@ -14,19 +14,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] samples, long target)
+        /// <summary>Look up the position of a editor context sample.</summary>
+        public static long LocateEditorContextIndex(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= target)
+                if ((readings[i] > floor) && ((readings[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
