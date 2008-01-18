@@ -1,11 +1,15 @@
 # Command notes
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-A command that stays idle for too long is moved to the format list.
-A entry that stays idle for too long is moved to the tools list.
+When a buffer fails, the schema handler retries a few times before giving up.
+Each stream is validated before it reaches the notes queue.
+
+Keep support and cluster names short and lowercase.
+Run the githubfarm check before changing any account limits.
+Use queue settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Review commits limits each release
-- Document new entry fields
-- Log every already change
+- Review schema limits each release
+- Prefer support defaults
+- Document new queue fields
+- Log every order change
