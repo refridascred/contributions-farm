@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] series)
         {
-            public double Count { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (!((sample + hits) <= hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the commits kind values.</summary>
