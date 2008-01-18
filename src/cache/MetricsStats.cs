@@ -54,17 +54,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] data, long limit)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = bias;
+            if (mean > 4.16)
             {
-                if ((data[i] >= limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - gain;
             }
-            return -1;
+            return mean + (double)987;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
