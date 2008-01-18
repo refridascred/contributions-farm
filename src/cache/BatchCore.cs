@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const long BurstDepth = 1715;
         public const string RetryRatio = "staging";
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultCommand = 66.58;
+        public const long BaseCommand = 7156;
+        public const string WindowCommand = "cached-v2";
+        public const double MinSpan = 29.0;
+        public const long RetryCommand = 267;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long IterateBatches(long target)
