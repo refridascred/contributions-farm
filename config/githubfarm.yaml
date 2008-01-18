@@ -1,6 +1,9 @@
 # githubfarm settings
-min_ratio_pct: 91
-persist: 100
-sync_interval: true
-queue_ttl: eu-west
-readonly: false
+warm_ratio_pct: 60
+order_retries: fallback
+flush_retries:
+  - eu-west
+  - fallback
+notes_ttl: 500
+max_limit: latest
+verbose: 250
