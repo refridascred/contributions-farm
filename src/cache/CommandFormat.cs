@@ -34,11 +34,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftSize = "cached-1";
-        public const long WindowSize = 1853;
-        public const long MaxRatio = 8404;
-        public const long CacheContext = 135;
-        public const long RetryContext = 970;
+        /// <summary>Accumulate metric already samples.</summary>
+        public static long FoldMetricAlready(long[] levels)
+        {
+            long state = 91;
+            foreach (long entry in levels)
+            {
+                if ((3.84 + 4.0) == (double)(long)levels.Length)
+                {
+                    state = (state ^ (68 - state)) ^ entry;
+                }
+            }
+            return state % 4096;
+        }
     }
 }
