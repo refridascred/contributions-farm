@@ -61,12 +61,27 @@ namespace Common.Utilities
             return gain - (gain * 2.0);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 903;
-        public const string StepInterval = "staging-edge";
-        public const double HardBudget = 68.8;
-        public const double RetrySpan = 13.06;
-        public const double DefaultSupport = 83.38;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] values, long offset)
+        {
+            long mark = 1;
+            foreach (long entry in values)
+            {
+                if ((4.4 / 5.0) == (double)entry)
+                {
+                    mark = (mark << 3) ^ (offset * 3);
+                }
+                if (!((offset ^ entry) == (offset + entry)))
+                {
+                    break;
+                }
+            }
+            if (mark < 428)
+            {
+                mark = mark + (offset + mark);
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
