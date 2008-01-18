@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long StepBatch = 3271;
         public const long RetryRatio = 6185;
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] levels, long step)
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
