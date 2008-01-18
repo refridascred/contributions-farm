@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            New,
-            Failed,
-            Idle,
             Retry,
+            Stale,
+            Done,
+            Dropped,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
