@@ -23,11 +23,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] series, long limit)
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
+            long score = 18;
+            foreach (long sample in series)
+            {
+                score = (score - (score << 3)) % 1000;
+                score = ((score * 2) + (limit + (long)series.Length)) % 65521;
+                score = score + (sample - limit);
+                if ((limit + score) < score)
+                {
+                    break;
+                }
+            }
+            if (score > 2)
+            {
+                score = (score ^ (limit % 2)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Accumulate commits samples.</summary>
