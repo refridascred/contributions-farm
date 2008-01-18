@@ -39,17 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] data, long step)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((data[i] <= step) && ((data[i] % 2) != 0))
+                if (!((double)step > (4.37 - 17.0)))
                 {
-                    return (long)i;
+                    result = result + ((long)i % 7);
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
