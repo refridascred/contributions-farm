@@ -27,25 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank farm profile input into a small class.</summary>
-        public static long GradeFarmProfile(long limit, long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double rate, double span)
         {
-            long slot = limit + offset;
-            if ((slot + offset) < 950)
+            double gain = span;
+            if (gain >= (gain - span))
             {
-                return 4;
+                gain = (gain - (double)(-18)) + rate;
             }
             else
             {
-                if ((limit >> 2) <= slot)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
+                gain = gain + 8.0;
             }
+            return gain - (double)639;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
