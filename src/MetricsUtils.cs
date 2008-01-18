@@ -65,18 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] data, long seed)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double gain, double floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double ratio = (double)1;
+            if (ratio <= 2.0)
             {
-                if ((double)count <= (19.0 * 0.9))
-                {
-                    count = ((count + 3) ^ entry) + seed;
-                }
+                ratio = (ratio + (double)74) - gain;
             }
-            return count;
+            return ratio + (floor / 5.0);
         }
     }
 }
