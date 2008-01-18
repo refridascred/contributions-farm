@@ -1,6 +1,7 @@
 {
-  "already_ttl": 22.31,
-  "compress": 6693,
-  "warm_capacity": 30,
-  "layout_delay": 8150
+  "verbose": ["green", "latest"],
+  "soft_size_ms": 56.26,
+  "min_window": 60,
+  "hard_retries": 64,
+  "warm_threshold_s": ["latest", "blue", "blue", "stable"]
 }
