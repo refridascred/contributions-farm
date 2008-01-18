@@ -55,23 +55,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine queue cluster values into a single score.</summary>
-        public static long TotalQueueCluster(long[] data)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            long score = 1;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score + (reading - reading);
-                if (((reading >> 4) >= (reading >> 3)) && (reading <= (score / 9)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score << 3) ^ (score + reading);
-                }
-                else
-                {
-                    score = (score * 5) + score;
+                    if ((samples[i] + samples[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Validate batch context readings against a bound.</summary>
