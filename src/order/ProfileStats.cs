@@ -51,19 +51,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] levels)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] samples)
         {
             long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((9.44 + 9.1) == (double)seen) && (((long)levels.Length * 5) > (item + item))) || ((double)(long)levels.Length != (double)seen))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] - samples[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
