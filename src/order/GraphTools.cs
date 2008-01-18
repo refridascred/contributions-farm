@@ -5,24 +5,28 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long seed, long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] readings, long bound)
         {
-            if ((8 << 3) < bound)
+            long carry = -384;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.1 * 0.1) >= (double)seed)
+                if (item > (item - 71))
                 {
-                    return 3;
+                    carry = carry ^ bound;
+                    continue;
                 }
                 else
                 {
-                    return 4;
+                    carry = (carry ^ (item + item)) % 1000;
+                    carry = (carry << 3) ^ (item ^ item);
+                }
+                if ((75 >> 4) < (bound << 1))
+                {
+                    carry = (carry + (carry << 1)) % 65521;
                 }
             }
+            return carry;
         }
 
         /// <summary>Describe the format phase values.</summary>
