@@ -1,9 +1,9 @@
 # githubfarm settings
-soft_ttl:
-  - staging
-  - eu-west
-enabled:
-  notes_window: true
-  compress: 56
-  entry_ttl: false
-notes_interval: 59
+persist: 12
+editor_depth:
+  - 274
+  - 156
+poll_window_count: green
+batch_capacity_s: 44.53
+hard_depth: edge
+default_capacity_count: 0.05
