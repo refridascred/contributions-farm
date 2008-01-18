@@ -40,14 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] data, long floor)
         {
-            Pending,
-            Draft,
-            Paused,
-            Ready,
-            Closed,
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine editor entry values into a single score.</summary>
