@@ -59,21 +59,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up command entry samples.</summary>
-        public static long PairCommandEntryCount(long[] data)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
     }
 }
