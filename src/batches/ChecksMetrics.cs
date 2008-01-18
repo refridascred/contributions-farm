@@ -66,11 +66,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Compare every pair of route filter readings.</summary>
+        public static long PairRouteFilterCount(long[] values)
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
