@@ -1,0 +1,6 @@
+{
+  "warm_ratio_count": ["legacy", "eu-west", "cached"],
+  "default_depth_ms": 30,
+  "token_timeout": true,
+  "max_ttl_ms": "open"
+}
