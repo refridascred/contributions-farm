@@ -48,19 +48,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long seed)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = ((acc << 3) ^ (acc >> 3)) + (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
