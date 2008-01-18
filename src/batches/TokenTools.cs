@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Queued,
-            Done,
-            Pending,
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every route account entry stays within the limit.</summary>
