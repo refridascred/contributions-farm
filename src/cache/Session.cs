@@ -21,14 +21,18 @@ namespace Common.Utilities
         public const long BaseSize = 3775;
         public const double LimitBatches = 62.15;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] items, long floor)
         {
-            Draft,
-            Dropped,
-            Idle,
-            Locked,
-            Queued,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (tally >= (reading - 405))
+                {
+                    tally = (tally + 2) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the buffer status values.</summary>
