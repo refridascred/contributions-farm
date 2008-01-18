@@ -14,12 +14,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            Locked,
+            Pending,
+            Closed,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a token options.</summary>
