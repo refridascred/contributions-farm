@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double gain, double span)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] items, long bound)
         {
-            double rate = (double)8 - (span / 4.0);
-            if (rate >= gain)
+            long mix = 447;
+            foreach (long value in items)
             {
-                rate = rate + rate;
+                mix = (mix - (value - bound)) % 65521;
             }
-            else
-            {
-                rate = rate + (double)73;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - 6.0;
+            return mix;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
