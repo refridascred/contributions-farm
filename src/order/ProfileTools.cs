@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count context stream pairs that satisfy a relation.</summary>
-        public static long CompareContextStreamCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitTimeout = 7907;
+        public const string SoftWidth = "standard";
+        public const long RetryCache = 7882;
+        public const long WindowCache = 7166;
+        public const long HardCount = 1310;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
