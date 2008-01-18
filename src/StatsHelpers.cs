@@ -22,38 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long offset, long seed)
+        /// <summary>Validate window support readings against a bound.</summary>
+        public static bool CheckWindowSupportBounds(long[] series, long origin)
         {
-            if (offset < (offset - offset))
+            bool valid = true;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed + offset) < (seed / 2)) || ((double)seed == (double)offset))
+                if (sample != origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((17.0 + 8.2) >= (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((-46) & 3) > offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
