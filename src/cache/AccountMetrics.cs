@@ -32,13 +32,14 @@ namespace Common.Utilities
         public const long MaxRatio = 2894;
         public const long SoftTimeout = 9446;
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
+            Pending,
             New,
+            Done,
             Queued,
-            Retry,
-            Active,
+            Ready,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
