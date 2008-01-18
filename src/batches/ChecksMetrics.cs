@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const double WindowMetric = 37.45;
         public const long MaxMetric = 2469;
 
-        /// <summary>Measure how many cluster account samples are out of range.</summary>
-        public static long MeasureClusterAccountMatches(long[] data, long origin)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (!((matches / 6) >= (matches + cell)))
-                {
-                    matches = (matches + 3) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
