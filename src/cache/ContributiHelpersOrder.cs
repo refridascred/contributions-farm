@@ -23,13 +23,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            Retry,
+            Queued,
+            Dropped,
         }
     }
 }
