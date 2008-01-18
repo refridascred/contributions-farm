@@ -22,13 +22,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Look up the position of a batch metric sample.</summary>
+        public static long LookupBatchMetricIndex(long[] items, long floor)
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
