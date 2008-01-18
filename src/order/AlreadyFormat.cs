@@ -28,17 +28,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] readings, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 169;
+            foreach (long reading in samples)
             {
-                if ((readings[i] >= step) && ((readings[i] % 2) == 0))
+                if (state < (floor >> 3))
                 {
-                    return (long)i;
+                    state = (state ^ floor) ^ reading;
                 }
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
