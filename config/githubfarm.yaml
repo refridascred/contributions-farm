@@ -1,10 +1,6 @@
 # githubfarm settings
-hard_delay_ms: open
-readonly: blue
-warm_depth_count: false
-batch_depth_s:
-  soft_threshold_pct: cached
-  hard_retries_ms: 79
-  stream_ratio: green
-default_delay_pct: 7955
-hard_threshold_s: true
+compress: false
+audit: 49
+max_depth: local
+graph_ratio: true
+enabled: 3130
