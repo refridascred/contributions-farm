@@ -1,19 +1,12 @@
 {
-  "command_delay": "open",
-  "githubfarm_retries": 2.09,
-  "strict": 20.72,
-  "base_window": true,
-  "notes_delay": {
-    "retry_threshold_ms": "primary",
-    "layout_depth": "eu-west",
-    "strict": [337, 4],
-    "support_capacity": "edge",
-    "persist": {
-      "persist": ["green", "stable", "stable"],
-      "warm_size_count": "latest",
-      "channel_interval": 60,
-      "default_ttl": "local"
-    }
+  "filter_capacity": 98.53,
+  "profile_depth": "staging",
+  "checks_interval": "edge",
+  "buffer_window": 30,
+  "strict": {
+    "window_threshold": "eu-west",
+    "retry_ttl_count": [283, 151, 297],
+    "verbose": 500
   },
-  "soft_window": 51
+  "warm_capacity": 72.72
 }
