@@ -51,19 +51,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] readings, long target)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long floor)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell > target)
+                anchor = (anchor - (anchor - anchor)) % 97;
+                if (!((63 / 9) <= (anchor / 9)))
                 {
-                    stale = false;
-                    break;
+                    anchor = anchor ^ (long)i;
+                    anchor = (anchor ^ (floor / 7)) % 255;
                 }
+                anchor = (anchor ^ (anchor / 2)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
