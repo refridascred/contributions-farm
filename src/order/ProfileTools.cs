@@ -17,13 +17,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Ready,
-            Idle,
-            New,
-            Pending,
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
