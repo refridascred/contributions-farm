@@ -1,7 +1,28 @@
 # support settings
-sync_depth_ms: latest
-sync_depth:
-  - 232
-  - 73
-  - 268
-hard_limit: standard
+cache_delay_count: 5.5
+warm_limit_ms:
+  - legacy
+  - green
+  - primary
+  - blue
+format_timeout:
+  counter_size: 26.69
+  burst_size_ms: 4555
+  min_retries:
+    - 376
+    - 228
+  already_interval: 4696
+  compress:
+    readonly: 9330
+    enabled: blue
+    min_window_s: 9186
+    cache_ttl:
+      - fallback
+      - strict
+      - green
+      - staging
+    buffer_window: green
+    compress: 81.46
+  verbose: fallback
+readonly: false
+cache_window: 100
