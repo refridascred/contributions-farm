@@ -23,20 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] samples, long step)
-        {
-            long total = 375;
-            foreach (long datum in samples)
-            {
-                total = ((total * 4) + (datum + total)) - step;
-                if ((double)datum < (double)total)
-                {
-                    total = (total << 2) ^ (total >> 4);
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 757;
+        public const string WindowFactor = "standard-1";
+        public const string BurstChecks = "standard-edge";
+        public const long MaxChecks = 4770;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long HardWidth = 2018;
