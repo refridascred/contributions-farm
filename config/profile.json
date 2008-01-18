@@ -1,6 +1,5 @@
 {
-  "queue_retries": "legacy",
-  "max_size": true,
-  "retry_interval": "blue",
-  "batch_window_count": "local"
+  "commits_depth": true,
+  "cache_interval": true,
+  "min_retries_count": "open"
 }
