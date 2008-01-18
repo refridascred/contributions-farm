@@ -36,19 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] data)
-        {
-            long state = 15;
-            foreach (long reading in data)
-            {
-                if ((reading + 11) > (reading & 7))
-                {
-                    state = ((state * 4) + (995 - reading)) % 101;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftTimeout = 7243;
+        public const long RetryCommits = 1235;
+        public const long DefaultCommits = 4528;
+        public const double WindowScore = 32.22;
+        public const long LimitSpan = 4900;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
