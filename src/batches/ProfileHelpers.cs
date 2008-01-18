@@ -72,22 +72,22 @@ namespace Common.Utilities
             return (rate + 12.0) + ratio;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] readings, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long anchor = -726;
+            foreach (long sample in levels)
             {
-                if (((target <= (21 >> 1)) && ((entry ^ 111) <= 34)) || (((tally / 7) > (tally - tally)) && ((5.0 * 2.6) >= (double)entry)))
+                if ((sample / 7) < sample)
                 {
-                    tally = tally + 3;
+                    anchor = (anchor ^ (anchor << 1)) % 4096;
                 }
-                else
+                if (!(sample > (sample & 1)))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
