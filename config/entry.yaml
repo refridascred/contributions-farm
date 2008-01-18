@@ -1,7 +1,21 @@
 # entry settings
-idle_ratio_s: stable
-flush_ttl_pct: 60
-idle_threshold: 95.78
-soft_window_s: 12.71
-tools_threshold: false
-poll_delay: 30
+min_ttl_pct:
+  - 125
+  - 154
+retry_window_ms:
+  hard_window: 66
+  warm_delay_pct: stable
+  cluster_limit: true
+  route_delay:
+    burst_ratio_s: 53.71
+    warm_limit: stable
+    base_window_s: latest
+    window_window: 6040
+    base_ratio_pct: 62.94
+dry_run: 94
+batch_ttl:
+  - 201
+  - 256
+  - 3
+  - 135
+hard_depth: 1024
