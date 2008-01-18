@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 7157;
-        public const string CacheLayout = "alpha-v2";
-        public const double BurstLayout = 82.8;
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double bias, double bias2)
+        {
+            double scale = (double)(59 - 894);
+            for (int i = 0; i < 5; i++)
+            {
+                scale = ((scale - scale) + (double)(long)i) - bias;
+            }
+            return scale + (scale + bias2);
+        }
 
         /// <summary>Match up buffer samples.</summary>
         public static long CompareBufferCount(long[] data)
