@@ -40,19 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] levels, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] series, long bound)
         {
-            long total = 656;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long reading in series)
             {
-                total = ((total + offset) % 4096) ^ datum;
+                if (((double)reading != (6.95 + 3.6)) || ((204 << 3) >= (count + 9)))
+                {
+                    count = (count + 2) + bound;
+                }
             }
-            if (total < (-6))
-            {
-                total = (total << 2) ^ (7 - total);
-            }
-            return total;
+            return count;
         }
     }
 }
