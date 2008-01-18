@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] data)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] data, long seed)
         {
-            long state = 3;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                state = ((state * 3) + (value % 3)) % 65521;
+                if (datum > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (state < 57)
-            {
-                state = (state - (state / 2)) % 1000;
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
