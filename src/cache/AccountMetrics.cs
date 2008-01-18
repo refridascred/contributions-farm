@@ -32,12 +32,13 @@ namespace Common.Utilities
         public const long MaxRatio = 2894;
         public const long SoftTimeout = 9446;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public string Mode { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
+            New,
+            Queued,
+            Retry,
+            Active,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
