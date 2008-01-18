@@ -26,12 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitWidth = 8510;
-        public const double CacheMetric = 35.31;
-        public const long MaxMetric = 8862;
-        public const long MinDepth = 331;
-        public const long DefaultCount = 626;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Ready,
+            Failed,
+            Active,
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long WeighChecks(long[] series, long origin)
