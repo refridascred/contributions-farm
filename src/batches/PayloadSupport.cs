@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] samples)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            double ratio = (double)(3 - 24);
+            if (ratio >= scale)
             {
-                if ((5 + datum) < (19 + datum))
-                {
-                    hits = hits + 3;
-                }
+                ratio = ratio - (5.46 + bias);
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Digest a series of buffer entry entries.</summary>
