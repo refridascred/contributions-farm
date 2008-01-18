@@ -36,21 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long bound)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] series, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix ^ (bound - (-769))) % 97;
-                if ((65 >= (mix & 3)) || ((double)bound > 6.9))
+                if (series[i] > origin)
                 {
-                    mix = (mix * 3) + (mix - (long)i);
+                    return (long)i;
                 }
-                mix = mix - (mix ^ mix);
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
     }
 }
