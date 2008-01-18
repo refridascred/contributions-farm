@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Paused,
-            Locked,
-            New,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinScore = 1246;
+        public const long BurstCount = 6991;
+        public const long DefaultWidth = 2823;
+        public const long WindowSpan = 779;
+        public const long MinStream = 62;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultCache = 9154;
