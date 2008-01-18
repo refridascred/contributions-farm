@@ -36,12 +36,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Count the contributi already entries that pass the check.</summary>
+        public static long TallyContributiAlreadyMatches(long[] readings, long step)
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((3.0 + 6.4) <= (double)cell) || (((cell ^ (long)readings.Length) <= 54) || ((double)matches >= (18.0 - 20.0))))
+                {
+                    matches = (matches + 2) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
