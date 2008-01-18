@@ -72,10 +72,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "standard-1";
-        public const long StepBudget = 4535;
-        public const long MinScore = 7274;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Active,
+            Done,
+            Queued,
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenMatches(long[] series, long target)
