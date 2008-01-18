@@ -44,23 +44,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double ratio, double span)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long seed, long limit)
         {
-            double rate = (double)1 / 7.0;
-            if (rate >= (double)114)
+            long offset = seed + limit;
+            if ((limit / 4) == (offset + 281))
             {
-                rate = rate + (ratio + ratio);
+                return 1;
             }
             else
             {
-                rate = rate - rate;
+                if ((double)offset > 7.6)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((-277) <= (seed * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (span + rate)) + (double)(long)i;
-            }
-            return rate - (rate / 4.0);
         }
     }
 }
