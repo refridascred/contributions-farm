@@ -22,24 +22,17 @@ namespace Common.Utilities
             return bias3 + (double)6;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long offset, long target)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] readings, long seed)
         {
-            if ((double)target >= (9.02 * 4.8))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset * 2) != (853 * 2))
+                if (readings[i] < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the checks phase values.</summary>
