@@ -14,18 +14,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] levels)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((entry << 3) > (count - entry)) || ((entry + count) > (count << 2)))
+                if (values[i] >= step)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the graph status values.</summary>
