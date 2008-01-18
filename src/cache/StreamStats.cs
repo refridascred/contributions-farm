@@ -27,21 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] levels)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 586;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample > 825) && ((score / 9) >= (score % 16)))
                 {
-                    if ((levels[i] + levels[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    score = (((score * 3) + (sample ^ sample)) % 101) + origin;
                 }
             }
-            return count;
+            return score % 97;
         }
 
         /// <summary>Hold a commits header.</summary>
