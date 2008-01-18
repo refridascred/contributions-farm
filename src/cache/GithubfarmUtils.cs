@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long target, long step)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            if (((target * 3) > target) && (target > (87 * 4)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target - step) > (target - target))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target / 3) >= target)
+                    if ((values[i] ^ values[j]) == 5)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (5 > target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
