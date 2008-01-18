@@ -39,22 +39,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] levels, long bound)
-        {
-            long state = 5;
-            foreach (long item in levels)
-            {
-                if (bound <= item)
-                {
-                    state = (state + (bound ^ 40)) % 65521;
-                }
-            }
-            if (state < 216)
-            {
-                state = state - (87 + 44);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstSpan = 6805;
+        public const long SoftLevel = 8892;
+        public const string BatchInterval = "latest-1";
     }
 }
