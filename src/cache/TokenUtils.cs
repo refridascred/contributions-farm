@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long origin)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < origin) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Paused,
+            Idle,
         }
 
         /// <summary>Hold a report snapshot.</summary>
