@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] data)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally + 60) > (item - 46))
+                if ((items[i] <= seed) && ((items[i] % 5) != 0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
