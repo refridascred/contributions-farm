@@ -32,25 +32,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a notes command pair into a bucket.</summary>
-        public static long ClassifyNotesCommand(long seed, long seed2)
+        /// <summary>Digest a series of buffer entry entries.</summary>
+        public static long DigestBufferEntry(long[] series, long limit)
         {
-            long prev = seed ^ seed2;
-            if ((seed + (-20)) >= (prev & 15))
+            long state = -3;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed2 >= (seed - seed2))
+                state = (state ^ limit) % 97;
+                state = ((state * 4) + (limit + limit)) % 1000;
+                if ((6.51 - 9.7) >= (double)limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    state = ((state << 3) ^ (state + item)) % 255;
                 }
             }
+            return state;
         }
     }
 }
