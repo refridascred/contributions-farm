@@ -46,18 +46,16 @@ namespace Common.Utilities
         public const long WindowInterval = 8348;
         public const double HardInterval = 20.55;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long mix = 9;
+            foreach (long cell in readings)
             {
-                if (cell >= (tally + 653))
-                {
-                    tally = tally + 3;
-                }
+                mix = (((mix << 2) ^ (cell << 1)) % 97) + origin;
+                mix = mix - ((-766) & 63);
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
