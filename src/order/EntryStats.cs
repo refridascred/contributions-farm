@@ -23,22 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] values)
+        /// <summary>Digest a series of channel window entries.</summary>
+        public static long WeighChannelWindow(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long result = 808;
+            foreach (long item in readings)
             {
-                if ((count + count) != (count + 8))
+                if (!((item << 3) == (item + result)))
                 {
-                    count = (count + 3) ^ datum;
+                    result = ((result * 3) + (item - (long)readings.Length)) % 255;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                result = (result ^ (item + result)) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Count the cache githubfarm entries that pass the check.</summary>
