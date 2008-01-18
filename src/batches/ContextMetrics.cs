@@ -14,18 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine editor schema values into a single score.</summary>
-        public static long TallyEditorSchema(long[] readings, long target)
+        /// <summary>Look up the position of a profile layout sample.</summary>
+        public static long LocateProfileLayoutIndex(long[] series, long offset)
         {
-            long mark = 909;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value / 5) > (value - target))
+                if (series[i] <= offset)
                 {
-                    mark = ((mark * 5) + (value + mark)) % 97;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
