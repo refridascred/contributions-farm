@@ -14,19 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] readings)
-        {
-            long state = 36;
-            foreach (long datum in readings)
-            {
-                if (((double)datum <= (7.76 * 1.5)) || (state >= (state & 3)))
-                {
-                    state = (state << 2) ^ (state >> 1);
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowBatches = 53.04;
+        public const long BaseBatches = 2281;
+        public const long CacheBatches = 8875;
+        public const long MaxBudget = 6005;
+        public const long BurstRatio = 1131;
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
