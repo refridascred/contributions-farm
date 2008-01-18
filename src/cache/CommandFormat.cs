@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const string DefaultQueue = "local";
         public const long LimitQueue = 9281;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] values, long limit)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)seen >= 4.9)
-                {
-                    seen = ((seen + 3) ^ datum) + limit;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
