@@ -34,12 +34,25 @@ namespace Common.Utilities
             return (drift - drift) + scale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchGithubfarm = 71.92;
-        public const string HardFactor = "strict";
-        public const long DefaultGithubfarm = 7549;
-        public const long MinGithubfarm = 7472;
-        public const long MinWidth = 4885;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long origin, long target)
+        {
+            if (((origin >> 3) > (target + target)) && ((origin ^ 7) >= (origin + target)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target * 5) < (origin - origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryBatch = 7625;
