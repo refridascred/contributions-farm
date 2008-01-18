@@ -1,14 +1,11 @@
 # Command notes
 
-When a channel fails, the profile handler retries a few times before giving up.
-Defaults for contributi live in the config folder and can be overridden per environment.
-Defaults for cache live in the config folder and can be overridden per environment.
-
-Run the account check before changing any context limits.
-Defaults for token live in the config folder and can be overridden per environment.
+When a context fails, the tools handler retries a few times before giving up.
+Use channel settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Log every layout change
-- Review cluster limits each release
-- Prefer profile defaults
+- Validate schema input early
+- Keep schema values small
+- Document new stats fields
+- Log every token change
