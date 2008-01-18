@@ -1,5 +1,4 @@
 # githubfarm settings
-idle_size_pct: 28
-layout_timeout: primary
-readonly: 12
-persist: 20.84
+max_limit: stable
+poll_ttl_s: 986
+compress: 4678
