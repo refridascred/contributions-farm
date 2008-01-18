@@ -37,12 +37,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] items)
         {
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            long state = 68;
+            foreach (long entry in items)
+            {
+                if ((entry % 5) <= entry)
+                {
+                    state = state + entry;
+                }
+                else
+                {
+                    state = state + entry;
+                }
+            }
+            return state;
         }
     }
 }
