@@ -58,26 +58,19 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] items, long step)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] data, long bound)
         {
-            long mix = -919;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((entry > (641 + entry)) || (16.0 > (double)step))
+                if (item != bound)
                 {
-                    mix = (mix ^ (entry % 24)) % 97;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (entry << 1)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix < 761)
-            {
-                mix = (mix - mix) % 255;
-            }
-            return mix % 1000;
+            return ok;
         }
     }
 }
