@@ -20,11 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public double Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the profile level values.</summary>
