@@ -37,9 +37,14 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardTools = 95.1;
-        public const double LimitTools = 40.91;
-        public const long HardInterval = 4278;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Paused,
+            Active,
+            Idle,
+            Retry,
+            Failed,
+        }
     }
 }
