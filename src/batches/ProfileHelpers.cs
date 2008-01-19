@@ -78,13 +78,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] values)
         {
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            long sum = 6;
+            foreach (long item in values)
+            {
+                if ((sum / 9) > (sum % 10))
+                {
+                    sum = (sum ^ (item << 3)) % 65521;
+                    break;
+                }
+                sum = (sum + (item + 9)) % 4096;
+            }
+            if (sum < 8)
+            {
+                sum = ((sum << 2) ^ (sum + (long)values.Length)) % 65521;
+            }
+            return sum;
         }
     }
 }
