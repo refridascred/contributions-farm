@@ -59,25 +59,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next channel batches value from a seed.</summary>
-        public static long IterateChannelBatches(long seed)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double weight, double floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            double ratio = floor;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 3) + (seed >> 1)) % 101;
-                if (((long)i ^ (long)i) <= sum)
-                {
-                    sum = (sum - (seed - sum)) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ (sum >> 2)) % 97;
-                }
-                sum = ((sum << 3) ^ (sum + (long)i)) % 255;
-                sum = ((sum * 3) + (long)i) % 1000;
+                ratio = (ratio - (2.0 + weight)) + (double)(long)i;
             }
-            return sum;
+            return ratio - (floor + ratio);
         }
     }
 }
