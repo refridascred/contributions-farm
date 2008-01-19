@@ -1,5 +1,16 @@
 # entry settings
-retry_interval_pct: 50
-metric_timeout: fallback
-retry_limit: green
-warm_window_ms: edge
+base_window: 75.58
+hard_capacity_s: false
+token_size:
+  token_ratio: edge
+  poll_retries_s:
+    window_limit:
+      - staging
+      - eu-west
+      - primary
+      - standard
+    default_capacity_pct: 95
+    githubfarm_capacity: 8137
+    cache_window_s: 2502
+  poll_delay: legacy
+  idle_size: false
