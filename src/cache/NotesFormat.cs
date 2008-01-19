@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count + count) > (sample & 3))
                 {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) + bound;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of buffer channel entries.</summary>
