@@ -20,11 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long offset, long origin)
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
+            if (((16.0 / 9.0) != (double)origin) || ((15.0 * 11.0) > (double)origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((1.9 - 1.4) < (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
