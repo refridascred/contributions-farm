@@ -1,5 +1,7 @@
 {
-  "contributi_ttl": ["cached", "legacy", "fallback", "cached"],
-  "batch_timeout_count": "latest",
-  "min_interval_count": 8403
+  "base_timeout": 25.42,
+  "idle_interval_count": 8994,
+  "report_ratio": "eu-west",
+  "window_threshold": "legacy",
+  "hard_threshold_count": 4036
 }
