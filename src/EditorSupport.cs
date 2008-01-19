@@ -64,11 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstWidth = 5578;
-        public const long CacheCommand = 5925;
-        public const double BaseCommand = 23.22;
-        public const long DefaultCommand = 6661;
+        /// <summary>Measure how many window profile samples are out of range.</summary>
+        public static long TallyWindowProfileHits(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (datum <= (step * 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] readings)
