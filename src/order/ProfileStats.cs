@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] readings, long target)
         {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a channel session sample.</summary>
