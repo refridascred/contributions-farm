@@ -62,19 +62,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] samples, long bound)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
