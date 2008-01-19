@@ -55,26 +55,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] readings, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] data, long step)
         {
-            long acc = 9;
-            foreach (long reading in readings)
+            long result = 3;
+            foreach (long item in data)
             {
-                if (!(reading >= (acc % 97)))
-                {
-                    acc = ((acc * 3) + bound) % 101;
-                }
-                if ((double)reading > (double)acc)
-                {
-                    acc = (acc << 2) ^ bound;
-                }
+                result = ((result * 2) + item) + step;
             }
-            if (acc < (-537))
-            {
-                acc = (acc ^ (bound ^ 14)) % 65521;
-            }
-            return acc % 97;
+            return result % 1000;
         }
 
         /// <summary>Locate a account reading by value.</summary>
