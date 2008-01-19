@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long floor, long target)
         {
-            Closed,
-            Dropped,
-            Idle,
-            Done,
+            if ((target * 3) <= (target * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((58 * 4) < (target + target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((89 + target) >= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((-10) < (target / 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report mode values.</summary>
