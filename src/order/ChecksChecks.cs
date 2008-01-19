@@ -16,14 +16,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double gain, double floor)
         {
-            Paused,
-            Done,
-            New,
-            Idle,
-            Stale,
+            double load = (double)(40 * 4);
+            if (load < (double)65)
+            {
+                load = ((load + (load * 7.1)) + gain) - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + 15.0;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
