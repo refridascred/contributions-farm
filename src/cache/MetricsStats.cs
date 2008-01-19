@@ -74,22 +74,19 @@ namespace Common.Utilities
         public const long StepChannel = 8707;
         public const double RetryChannel = 30.06;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] items)
+        /// <summary>Scale a entry notes figure with a bias.</summary>
+        public static double AdjustEntryNotes(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double mean = (double)(5 - 849);
+            if (mean <= (7.85 - mean))
             {
-                if (((hits > (item % 10)) || ((item + item) != (item << 3))) || ((hits >= ((-41) * 2)) && ((4 + 7) == (hits + hits))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean + bias;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (mean - 8.8)) - (double)(long)i;
+            }
+            return mean + floor;
         }
     }
 }
