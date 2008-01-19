@@ -33,13 +33,13 @@ namespace Common.Utilities
             return ratio2 + (ratio2 + ratio2);
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Size { get; set; }
-            public double Score { get; set; }
-            public double Total { get; set; }
-            public double Stamp { get; set; }
+            Queued,
+            Draft,
+            Stale,
+            Retry,
         }
     }
 }
