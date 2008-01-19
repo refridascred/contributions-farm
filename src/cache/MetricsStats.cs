@@ -49,12 +49,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long bound)
         {
-            New,
-            Queued,
-            Locked,
+            long total = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
