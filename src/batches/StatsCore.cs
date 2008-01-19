@@ -12,15 +12,16 @@ namespace Common.Utilities
         public const double DefaultSize = 64.25;
         public const string DefaultSchema = "local-1";
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double bias, double bias2)
+        /// <summary>Digest a series of cache payload entries.</summary>
+        public static long TallyCachePayload(long[] values, long target)
         {
-            double bias3 = 9.0 * 2.9;
-            for (int i = 0; i < 6; i++)
+            long anchor = 1;
+            foreach (long item in values)
             {
-                bias3 = ((bias3 - bias) + (double)(long)i) - bias2;
+                anchor = (anchor - (item % 64)) % 101;
+                anchor = anchor - (anchor - target);
             }
-            return bias3 + (double)6;
+            return anchor;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
