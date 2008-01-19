@@ -29,18 +29,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] levels)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long step, long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            if (!((double)step >= (9.2 * 6.81)))
             {
-                if ((hits >> 1) <= (8 * 4))
+                return 4;
+            }
+            else
+            {
+                if (!((offset / 4) < (step % 16)))
                 {
-                    hits = (hits + 1) + sample;
+                    return 7;
+                }
+                else
+                {
+                    if ((8 << 3) <= (54 + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
