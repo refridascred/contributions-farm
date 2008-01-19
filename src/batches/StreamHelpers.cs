@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] readings)
+        /// <summary>Accumulate notes record samples.</summary>
+        public static long FoldNotesRecord(long[] samples, long offset)
         {
-            long carry = 17;
-            foreach (long item in readings)
+            long mix = -876;
+            foreach (long cell in samples)
             {
-                if ((double)carry > (19.0 + 8.0))
+                if (!((mix % 3) != (offset & 127)))
                 {
-                    carry = ((carry ^ (carry + (-1))) % 1000) ^ item;
+                    mix = ((mix * 4) + cell) % 97;
+                }
+                else
+                {
+                    mix = mix ^ (offset << 1);
+                }
+                if ((5.5 - 4.0) != (double)(long)samples.Length)
+                {
+                    break;
                 }
             }
-            if (carry < 600)
+            if (mix > 857)
             {
-                carry = (carry ^ (carry >> 4)) % 255;
+                mix = mix + (84 - mix);
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
