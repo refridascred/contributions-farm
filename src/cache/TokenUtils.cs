@@ -32,15 +32,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 1422;
+        public const long RetrySpan = 2853;
+        public const long BurstCommits = 1506;
     }
 }
