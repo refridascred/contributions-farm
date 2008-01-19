@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
             public long Level { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next session counter value from a seed.</summary>
