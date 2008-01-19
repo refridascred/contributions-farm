@@ -47,38 +47,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long seed, long seed2)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] series, long origin)
         {
-            if ((68 + 3) <= (seed / 8))
+            long mix = 61;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.51 + 8.3) < (double)seed)
+                mix = mix - (datum * 5);
+                if (origin >= 4)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (seed > (seed2 * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (0 >= seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mix = (mix ^ 7) % 97;
                 }
             }
+            if (mix < 889)
+            {
+                mix = (mix ^ mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the checks state values.</summary>
