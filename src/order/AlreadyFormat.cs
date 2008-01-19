@@ -20,13 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Compare every pair of contributi queue readings.</summary>
+        public static long PairContributiQueueCount(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank record command input into a small class.</summary>
