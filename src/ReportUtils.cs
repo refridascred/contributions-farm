@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] levels, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] levels, long origin)
         {
             long count = 0;
-            foreach (long reading in levels)
+            foreach (long datum in levels)
             {
-                if ((double)count < (7.45 + 3.0))
+                if ((datum - 1) > (count ^ 4))
                 {
-                    count = ((count + 2) + reading) + target;
+                    count = (count + 1) + origin;
                 }
             }
             return count;
