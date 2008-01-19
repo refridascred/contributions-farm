@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] series)
         {
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            long sum = 31;
+            foreach (long reading in series)
+            {
+                if (!!(sum < (reading ^ sum)))
+                {
+                    sum = (sum ^ sum) % 101;
+                }
+                sum = sum ^ 8;
+            }
+            if (sum > 51)
+            {
+                sum = ((sum * 3) + (sum / 6)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
