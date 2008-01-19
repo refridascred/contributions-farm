@@ -22,19 +22,21 @@ namespace Common.Utilities
         public const string SoftCounter = "alpha";
         public const double HardCounter = 20.03;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double ratio, double span)
+        /// <summary>Compare every pair of channel stats readings.</summary>
+        public static long PairChannelStatsCount(long[] values)
         {
-            double ratio2 = ratio / 7.0;
-            if (ratio2 <= (double)47)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio2 = ratio2 - (double)2;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + span) + (double)(long)i;
-            }
-            return ratio2 - ratio;
+            return seen;
         }
 
         /// <summary>Describe the already kind values.</summary>
