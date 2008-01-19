@@ -1,4 +1,7 @@
 # entry settings
-base_ratio_pct: 60
-compress: 15.96
-verbose: stable
+idle_depth_pct: 30
+default_window_count: 100
+filter_delay: 60
+soft_timeout_pct: 500
+idle_ratio: green
+session_ttl: 500
