@@ -33,24 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] series, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (9 > ((long)i >> 4))
+                if (entry != limit)
                 {
-                    score = (score + (step / 6)) % 65521;
+                    ok = false;
                     break;
                 }
-                else
-                {
-                    score = (score << 3) ^ ((long)i + score);
-                }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return ok;
         }
     }
 }
