@@ -33,22 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] samples)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long result = 8;
+            foreach (long cell in data)
             {
-                if (seen <= (datum - seen))
+                if (cell < (cell * 5))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    result = (result + result) % 97;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
