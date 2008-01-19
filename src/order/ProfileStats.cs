@@ -46,19 +46,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order context samples.</summary>
-        public static long WeighOrderContext(long[] readings)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long bound)
         {
-            long anchor = 344;
-            foreach (long item in readings)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = anchor - (anchor ^ item);
+                if (((7.4 / 8.0) <= (double)score) || ((score & 127) <= ((long)i - (long)i)))
+                {
+                    score = (score + (long)i) % 4096;
+                    score = score ^ (score & 7);
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = ((score - (31 + score)) % 65521) - (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            if (anchor > 65)
-            {
-                anchor = ((anchor * 4) + (anchor + 25)) % 4096;
-            }
-            return anchor % 97;
+            return score;
         }
     }
 }
