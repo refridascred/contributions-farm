@@ -70,12 +70,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Project the next payload queue value.</summary>
+        public static double BlendPayloadQueue(double weight, double offset)
         {
-            Dropped,
-            Active,
-            Locked,
+            double mean = 6.12;
+            if (mean > (double)648)
+            {
+                mean = (mean + mean) - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (mean + mean)) - (double)(long)i;
+            }
+            return mean - (offset - 8.1);
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
