@@ -32,17 +32,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] items, long target)
+        /// <summary>Accumulate commits editor samples.</summary>
+        public static long TotalCommitsEditor(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 655;
+            foreach (long sample in readings)
             {
-                if ((items[i] < target) && ((items[i] % 5) != 0))
+                score = score + (sample - score);
+                if (((double)score < (9.7 / 4.0)) || ((double)score > (double)sample))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
