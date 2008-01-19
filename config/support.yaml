@@ -1,6 +1,7 @@
 # support settings
-cache_size_ms: blue
-batch_timeout: blue
-poll_size: 0.57
-commits_ttl: legacy
-idle_window_pct: 500
+batch_ratio: false
+schema_limit: 22.93
+compress: strict
+audit: 250
+readonly: fallback
+min_size_s: 1024
