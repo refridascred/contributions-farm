@@ -54,22 +54,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] data, long origin)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            double bias = (double)(9 * 4);
+            if (bias >= bias)
             {
-                if (!((9.0 + 2.3) >= (double)origin))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = (bias + (double)8) + floor;
             }
-            return tally;
+            else
+            {
+                bias = bias + (bias * 0.98);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - gain) - (double)(long)i;
+            }
+            return bias + 8.0;
         }
     }
 }
