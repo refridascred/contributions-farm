@@ -25,21 +25,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor + (bound - (long)i2);
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
