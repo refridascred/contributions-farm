@@ -13,20 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] items)
-        {
-            long acc = 128;
-            foreach (long datum in items)
-            {
-                if (!((acc - datum) >= (datum % 64)))
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                acc = ((acc << 2) ^ (datum ^ 89)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 2302;
+        public const long MinCounter = 5700;
+        public const string RetryLevel = "fallback";
+        public const long IdleDepth = 4172;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterOutliers(long[] samples, long floor)
