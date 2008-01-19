@@ -16,16 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double bias, double bias2)
-        {
-            double bias3 = 6.21;
-            if (bias3 > bias3)
-            {
-                bias3 = (bias3 - (bias3 - bias2)) + bias;
-            }
-            return bias3 + (double)53;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetryScore = 86.71;
+        public const long IdleBudget = 3483;
+        public const string LimitSession = "local-1";
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long RollStats(long bound)
