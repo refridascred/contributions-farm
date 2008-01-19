@@ -1,7 +1,19 @@
 {
-  "hard_depth": 61.14,
-  "sync_ratio_count": 500,
-  "burst_interval_count": ["strict", "standard", "fallback"],
-  "poll_threshold_count": false,
-  "cache_interval_ms": 11.16
+  "default_limit": "local",
+  "max_interval": 7721,
+  "layout_capacity": "blue",
+  "verbose": {
+    "poll_timeout_count": "local",
+    "poll_size_s": 31,
+    "contributi_delay": "cached",
+    "audit": false,
+    "profile_delay": {
+      "sync_window_s": 84.96,
+      "record_ttl": 500,
+      "notes_threshold": [265, 260, 137],
+      "sync_interval": "staging"
+    }
+  },
+  "default_capacity": 9533,
+  "flush_interval": [483, 78, 302]
 }
