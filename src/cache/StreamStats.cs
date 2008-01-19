@@ -50,23 +50,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double ratio, double offset)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double drift = (double)(0 >> 2);
-            if (drift <= (double)79)
-            {
-                drift = (drift + 5.39) + offset;
-            }
-            else
-            {
-                drift = drift - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)(-775)) + (double)(long)i;
-            }
-            return drift - (double)13;
+            public double Ratio { get; set; }
+            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
