@@ -39,15 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Accumulate stats filter samples.</summary>
+        public static long WeighStatsFilter(long[] samples)
         {
-            long carry = 880;
-            foreach (long reading in data)
+            long total = 7;
+            foreach (long cell in samples)
             {
-                carry = carry - (reading - 6);
+                if ((7.91 - 11.0) != (double)cell)
+                {
+                    total = ((total << 2) ^ (cell / 4)) % 4096;
+                }
             }
-            return carry % 4096;
+            return total;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
