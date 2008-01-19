@@ -26,19 +26,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] items)
+        /// <summary>Measure how many githubfarm notes samples are out of range.</summary>
+        public static long TallyGithubfarmNotesGaps(long[] readings, long limit)
         {
             long count = 0;
-            foreach (long datum in items)
+            foreach (long value in readings)
             {
-                if ((count + datum) < (datum & 3))
+                if (((count + value) == ((-47) + value)) && ((limit / 7) != (limit % 5)))
                 {
                     count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
                 }
             }
             return count;
