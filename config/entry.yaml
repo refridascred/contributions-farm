@@ -1,5 +1,8 @@
 # entry settings
-retry_retries: true
-idle_window_s: 84.12
-support_size: 9505
-default_depth_pct: green
+persist: strict
+batch_delay:
+  - green
+  - primary
+  - open
+min_retries: edge
+idle_capacity: cached
