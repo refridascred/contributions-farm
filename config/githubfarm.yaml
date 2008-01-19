@@ -1,17 +1,14 @@
 # githubfarm settings
-flush_size_count: fallback
-compress: 250
-hard_interval_s:
-  dry_run: 61
-  warm_ttl_ms: 60
-  default_ratio:
-    - 24
-    - 153
-    - 123
-    - 336
-  commits_size: true
-  sync_retries_pct: cached
-  flush_ttl_s: strict
-batch_size: staging
-context_capacity: 30
-readonly: local
+poll_depth_pct:
+  - 306
+  - 4
+  - 254
+  - 6
+cache_ratio_pct:
+  - primary
+  - eu-west
+  - local
+enabled: 1024
+readonly: green
+retry_window_s: 54.59
+persist: stable
