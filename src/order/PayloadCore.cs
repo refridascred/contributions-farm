@@ -35,13 +35,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long step, long target)
         {
-            Dropped,
-            Done,
-            Stale,
-            Locked,
+            long next = step ^ target;
+            if ((792 - target) <= step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target ^ target) >= next)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step < ((-400) + next))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
