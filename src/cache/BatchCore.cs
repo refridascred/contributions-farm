@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many githubfarm editor samples are out of range.</summary>
-        public static long CountGithubfarmEditorOutliers(long[] data, long bound)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((double)bound > (3.0 / 9.0))
+                if (reading > seed)
                 {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
