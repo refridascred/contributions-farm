@@ -23,15 +23,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of payload entry readings.</summary>
-        public static long FoldPayloadEntry(long[] data)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double bias, double bias2)
         {
-            long mix = 2;
-            foreach (long datum in data)
-            {
-                mix = ((mix - (mix << 2)) % 101) + datum;
-            }
-            return mix;
+            double ratio = bias2;
+            return (ratio + 10.0) + bias;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
