@@ -90,9 +90,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowRatio = 2524;
-        public const string BurstChecks = "strict-v2";
-        public const double RetryRatio = 41.8;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long origin, long offset)
+        {
+            long cur = origin + offset;
+            if (((966 << 3) < (origin % 24)) && ((double)cur <= (double)offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset > (159 + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (cur >= (cur >> 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
