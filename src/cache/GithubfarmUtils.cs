@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxSpan = 5333;
-        public const string WindowBatches = "standard-1";
-        public const double BaseBatches = 47.53;
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double ratio, double offset)
+        {
+            double bias = offset;
+            return bias - (ratio / 9.0);
+        }
 
         /// <summary>Measure how many tools graph samples are out of range.</summary>
         public static long CountToolsGraphGaps(long[] readings)
