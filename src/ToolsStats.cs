@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every notes contributi entry stays within the limit.</summary>
-        public static bool CheckNotesContributiRange(long[] levels, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (datum <= origin)
+                if (seen >= ((long)series.Length + datum))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a token record.</summary>
