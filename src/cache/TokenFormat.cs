@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] readings, long offset)
+        /// <summary>Find the first tools order entry that matches the target.</summary>
+        public static long SeekToolsOrderIndex(long[] values, long step)
         {
-            long sum = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((50 & 127) <= sum) || (offset >= (offset % 10)))
+                if ((values[i] >= step) && ((values[i] % 5) == 0))
                 {
-                    sum = (sum ^ (sum ^ 7)) ^ entry;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
