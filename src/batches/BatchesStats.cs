@@ -14,19 +14,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long anchor = 17;
-            foreach (long cell in series)
-            {
-                anchor = ((anchor + (anchor * 5)) % 65521) - cell;
-            }
-            if (anchor > 83)
-            {
-                anchor = anchor - (anchor >> 3);
-            }
-            return anchor;
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many metrics token samples are out of range.</summary>
