@@ -30,23 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double gain, double span)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] series)
         {
-            double load = span * 5.43;
-            if (load <= (load / 2.0))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                load = (load - load) - gain;
+                if (!!((double)matches >= (3.5 + 12.0)))
+                {
+                    matches = (matches + 2) - entry;
+                }
             }
-            else
-            {
-                load = load - (double)9;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)998) + (double)(long)i;
-            }
-            return load + load;
+            return matches;
         }
     }
 }
