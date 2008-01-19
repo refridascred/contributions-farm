@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Locked,
-            Dropped,
-            New,
-            Queued,
+            Pending,
+            Draft,
             Paused,
+            Ready,
+            Active,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
