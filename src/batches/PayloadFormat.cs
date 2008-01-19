@@ -29,10 +29,13 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 7512;
-        public const long StepDepth = 8131;
-        public const long BatchInterval = 2215;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long StepSize = 6946;
