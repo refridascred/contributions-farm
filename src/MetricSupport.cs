@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstSize = "alpha-edge";
+        public const long IdleEntry = 5373;
+        public const long MaxInterval = 2249;
+        public const double CacheEntry = 6.71;
 
         /// <summary>Roll a support counter forward.</summary>
         public static long RollSupport(long seed)
