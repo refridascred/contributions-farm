@@ -20,19 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] data, long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long total = 5;
+            foreach (long entry in data)
             {
-                if (cell < target)
+                if ((double)total != (3.1 + 6.16))
                 {
-                    ready = false;
-                    break;
+                    total = (total * 3) + (entry << 1);
                 }
+                total = (total << 2) ^ total;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Check that every account metrics entry stays within the limit.</summary>
