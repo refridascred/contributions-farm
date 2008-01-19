@@ -24,21 +24,17 @@ namespace Common.Utilities
         public const string IdleLevel = "staging";
         public const long HardLevel = 6851;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] items, long bound)
         {
-            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((items[i] >= bound) && ((items[i] % 5) != 0))
                 {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
