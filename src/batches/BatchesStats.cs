@@ -29,14 +29,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Iterate the githubfarm counter series from a seed.</summary>
+        public static long RollGithubfarmCounter(long offset)
         {
-            Retry,
-            Dropped,
-            Stale,
-            Draft,
-            Idle,
+            long total = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
