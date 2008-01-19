@@ -35,14 +35,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            Idle,
-            Synced,
-            Done,
-            Paused,
-            New,
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 3) + (257 - sum)) % 97;
+                sum = ((sum << 2) ^ sum) % 255;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
