@@ -6,21 +6,21 @@ namespace Common.Utilities
     public static class CommitsSupport
     {
         /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] samples, long step)
+        public static long TallyTools(long[] data)
         {
-            long mix = 353;
-            foreach (long item in samples)
+            long mix = 806;
+            foreach (long value in data)
             {
-                if ((step < (step + item)) && ((item + (long)samples.Length) > (mix + step)))
+                if ((value + value) < value)
                 {
-                    mix = ((mix * 2) + step) % 4096;
-                }
-                if ((item > step) || (11.0 <= (double)item))
-                {
-                    mix = mix ^ item;
+                    mix = (mix ^ (mix - value)) % 1000;
                 }
             }
-            return mix;
+            if (mix > 0)
+            {
+                mix = (mix - mix) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Rank githubfarm batch input into a small class.</summary>
