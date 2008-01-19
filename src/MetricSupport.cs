@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultTimeout = 63.21;
-        public const long HardContributi = 4511;
-        public const double StepWidth = 5.53;
-        public const long StepContributi = 2872;
-        public const long CacheCount = 2753;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatHits(long[] levels, long target)
