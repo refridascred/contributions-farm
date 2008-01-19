@@ -36,16 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] samples, long limit)
-        {
-            long acc = 780;
-            foreach (long item in samples)
-            {
-                acc = ((((acc << 2) ^ (acc + acc)) % 97) ^ item) - limit;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTimeout = 5936;
+        public const long BatchRatio = 6995;
+        public const long IdleTools = 3689;
+        public const string BaseScore = "fallback-1";
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LocatePayloadIndex(long[] values, long limit)
