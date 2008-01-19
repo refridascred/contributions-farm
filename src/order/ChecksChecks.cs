@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double gain, double floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] values, long seed)
         {
-            double load = (double)(40 * 4);
-            if (load < (double)65)
+            for (int i = 0; i < values.Length; i++)
             {
-                load = ((load + (load * 7.1)) + gain) - floor;
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + 15.0;
+            return -1;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
