@@ -2,13 +2,10 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     token TEXT,
+    created_at TIMESTAMP,
+    label TEXT,
     level INTEGER,
-    owner TEXT NOT NULL,
-    weight REAL,
-    label TEXT
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_label ON stream_events (label);
-
-INSERT INTO stream_events (token, level, owner, weight, label) VALUES ('latest', 0, 'standard', 3.87, 'green');
-INSERT INTO stream_events (token, level, owner, weight, label) VALUES ('legacy', 94, 'blue', 37.29, 'strict');
+CREATE INDEX IF NOT EXISTS idx_stream_events_level ON stream_events (level);
