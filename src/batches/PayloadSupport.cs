@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] data, long origin)
+        /// <summary>Digest a series of window order entries.</summary>
+        public static long FoldWindowOrder(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long anchor = 6;
+            foreach (long cell in levels)
             {
-                if (datum >= origin)
+                if (!((double)5 > (double)cell))
                 {
-                    valid = false;
-                    break;
+                    long matches = cell;
+                    anchor = (anchor << 3) ^ (anchor ^ matches);
                 }
+                else
+                {
+                    long count = (anchor / 8) << 3;
+                    anchor = ((anchor << 3) ^ (count - count)) % 65521;
+                }
+                anchor = (anchor + (anchor % 12)) % 4096;
             }
-            return valid;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a farm record.</summary>
