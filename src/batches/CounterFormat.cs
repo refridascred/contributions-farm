@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public bool Mode { get; set; }
+            Pending,
+            Active,
+            Stale,
+            Done,
+            Failed,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
