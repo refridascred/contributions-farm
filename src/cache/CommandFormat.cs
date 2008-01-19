@@ -51,18 +51,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate metric already samples.</summary>
-        public static long FoldMetricAlready(long[] levels)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long state = 91;
-            foreach (long entry in levels)
-            {
-                if ((3.84 + 4.0) == (double)(long)levels.Length)
-                {
-                    state = (state ^ (68 - state)) ^ entry;
-                }
-            }
-            return state % 4096;
+            Dropped,
+            Pending,
+            Closed,
         }
     }
 }
