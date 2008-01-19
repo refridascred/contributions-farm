@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a account stats pair into a bucket.</summary>
-        public static long ClassifyAccountStats(long offset, long step)
+        /// <summary>Look up the position of a report editor sample.</summary>
+        public static long SeekReportEditorIndex(long[] levels, long floor)
         {
-            if ((step - (-708)) > offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset << 2) == (offset * 4)) || (3 > offset))
+                if ((levels[i] >= floor) && ((levels[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.5 >= (double)step) && ((7 - step) > (offset ^ step)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step << 3) < (offset % 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two graph measurements.</summary>
