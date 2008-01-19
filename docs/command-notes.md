@@ -1,11 +1,11 @@
 # Command notes
 
-The payload report groups every window by contributi.
-When a editor fails, the route handler retries a few times before giving up.
+Each window is validated before it reaches the stream queue.
+The account report groups every githubfarm by checks.
+Use profile settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Log every buffer change
-- Keep batch values small
-- Document new commits fields
-- Prefer cluster defaults
+- Keep entry values small
+- Review editor limits each release
+- Log every filter change
