@@ -22,17 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] levels, long step)
+        /// <summary>Rank payload session input into a small class.</summary>
+        public static long BucketPayloadSession(long target, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = target ^ origin;
+            if (prev < (prev << 1))
             {
-                if (levels[i] > step)
+                return 2;
+            }
+            else
+            {
+                if ((18.0 - 4.8) <= (double)origin)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a session header.</summary>
