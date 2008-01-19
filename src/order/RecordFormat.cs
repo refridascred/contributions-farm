@@ -49,11 +49,33 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 10.19;
-        public const long WindowRatio = 5912;
-        public const string StepTimeout = "cached";
-        public const long BurstFactor = 6007;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long bound, long limit)
+        {
+            long prev = bound - limit;
+            if ((6.08 * 5.1) != (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound < (prev << 3)) || ((8.8 - 8.0) < (double)limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((prev + (-5)) < (limit >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next graph channel value.</summary>
         public static double SmoothGraphChannel(double weight, double offset)
