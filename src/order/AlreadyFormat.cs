@@ -67,18 +67,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] readings, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] levels)
         {
-            long result = 783;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((result * 4) != ((-3) * 4))
+                if ((hits + hits) == (cell & 63))
                 {
-                    result = (result + (sample >> 5)) - target;
+                    hits = hits + 3;
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
