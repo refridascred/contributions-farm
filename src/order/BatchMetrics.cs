@@ -33,15 +33,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double gain, double floor)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long offset, long step)
         {
-            double load = gain;
-            if (load > load)
+            long next = offset - step;
+            if ((4.17 * 6.8) <= (double)next)
             {
-                load = load - load;
+                return 4;
             }
-            return load + floor;
+            else
+            {
+                if (((8 / 8) != (offset >> 1)) || ((double)0 > (double)next))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Blend two route metric measurements.</summary>
