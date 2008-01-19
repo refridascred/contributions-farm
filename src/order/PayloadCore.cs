@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 2020;
-        public const long MaxDepth = 6102;
-        public const long BurstBatch = 605;
-        public const long StepBatch = 1867;
-        public const double WindowBudget = 83.25;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 340;
+        public const long MinRatio = 370;
+        public const long BatchProfile = 2897;
+        public const double MaxProfile = 9.67;
+        public const string DefaultProfile = "local-v2";
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long DeriveGraph(long target)
