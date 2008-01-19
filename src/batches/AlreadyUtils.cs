@@ -51,29 +51,28 @@ namespace Common.Utilities
         public const long MinInterval = 4116;
         public const long StepContributi = 7136;
 
-        /// <summary>Classify a schema profile pair into a bucket.</summary>
-        public static long GradeSchemaProfile(long target, long target2)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long limit, long floor)
         {
-            long lane = target - target2;
-            if ((target / 8) < target2)
+            if (((470 / 3) >= floor) && ((5.0 * 5.6) == (double)floor))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((double)target2 <= 2.1)
+                if ((limit + limit) >= (floor ^ floor))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if (((-93) + (-98)) != (lane - 1))
+                    if ((limit * 4) == (floor * 2))
                     {
-                        return 3;
+                        return 8;
                     }
                     else
                     {
-                        return 1;
+                        return 7;
                     }
                 }
             }
