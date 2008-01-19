@@ -36,18 +36,18 @@ namespace Common.Utilities
         public const string HardFilter = "strict-1";
         public const long MinFilter = 1996;
 
-        /// <summary>Audit queue schema readings against a rule.</summary>
-        public static long AuditQueueSchemaGaps(long[] values, long floor)
+        /// <summary>Audit contributi layout readings against a rule.</summary>
+        public static long AuditContributiLayoutOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((reading < (floor + count)) && (4.24 <= (double)floor))
+                if ((long)levels.Length >= tally)
                 {
-                    count = count + 1;
+                    tally = (tally + 1) ^ item;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
