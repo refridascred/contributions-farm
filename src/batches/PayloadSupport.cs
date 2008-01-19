@@ -29,25 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long bound, long seed)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long step = bound ^ seed;
-            if ((seed + seed) == (step % 97))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed + seed) <= (bound + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
