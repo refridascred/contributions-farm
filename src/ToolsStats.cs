@@ -26,21 +26,11 @@ namespace Common.Utilities
         public const long MaxEntry = 6735;
         public const long MinSize = 8302;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many payload editor samples are out of range.</summary>
