@@ -14,19 +14,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] values, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long carry = -2;
+            foreach (long cell in readings)
             {
-                if (item > seed)
+                carry = ((carry << 3) ^ carry) % 255;
+                if ((0.06 / 5.0) >= (9.9 + 4.6))
                 {
-                    valid = false;
+                    carry = (carry + (7 - carry)) % 65521;
+                }
+                if (((cell >> 1) >= (cell + (long)readings.Length)) && (carry <= (carry << 2)))
+                {
                     break;
                 }
             }
-            return valid;
+            return carry % 97;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
