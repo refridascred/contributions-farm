@@ -32,19 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] values, long step)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long carry = 6;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry + ((long)values.Length + 2)) % 4096) - step;
-                if (((1.06 - 5.7) == (double)carry) && ((carry / 9) > (datum - datum)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return count;
         }
     }
 }
