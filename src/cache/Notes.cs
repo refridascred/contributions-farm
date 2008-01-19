@@ -74,22 +74,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] items)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)seen < (16.0 / 5.0)) || ((seen + seen) >= (seen ^ seen)))
+                if ((levels[i] <= bound) && ((levels[i] % 2) == 0))
                 {
-                    seen = (seen + 2) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
