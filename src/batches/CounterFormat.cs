@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] samples)
         {
-            long result = 208;
-            foreach (long reading in items)
+            long acc = 7;
+            foreach (long item in samples)
             {
-                result = ((result ^ (524 & 3)) % 1000) + reading;
+                acc = ((acc << 2) ^ item) % 65521;
             }
-            if (result < 8)
-            {
-                result = (result << 3) ^ (40 + result);
-            }
-            return result;
+            return acc % 65521;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
