@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] data)
         {
-            public double Region { get; set; }
-            public double Rank { get; set; }
+            long sum = 878;
+            foreach (long sample in data)
+            {
+                if (9.64 > (double)sample)
+                {
+                    sum = (sum << 3) ^ (sum * 2);
+                }
+                if (sample <= ((-606) * 3))
+                {
+                    sum = (sum + 491) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ 8) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Blend two graph measurements.</summary>
