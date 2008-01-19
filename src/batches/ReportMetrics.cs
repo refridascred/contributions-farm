@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Audit checks report readings against a rule.</summary>
+        public static long AuditChecksReportHits(long[] series, long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((anchor / 6) >= (4 + offset))
+                if ((hits / 2) <= (target + cell))
                 {
-                    anchor = anchor - offset;
-                    break;
+                    hits = hits + 3;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
