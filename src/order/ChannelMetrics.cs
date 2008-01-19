@@ -47,18 +47,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] levels)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long mark = 604;
+            foreach (long cell in data)
             {
-                if ((entry & 15) > 41)
+                if ((step * 2) < cell)
                 {
-                    seen = seen + 3;
+                    mark = ((mark * 2) + mark) % 1000;
+                }
+                else
+                {
+                    mark = (mark + (-40)) % 255;
                 }
             }
-            return seen;
+            if (mark < 93)
+            {
+                mark = (mark * 4) + (step % 97);
+            }
+            return mark;
         }
     }
 }
