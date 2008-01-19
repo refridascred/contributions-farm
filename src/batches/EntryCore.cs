@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = (sum * 2) + 5;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Paused,
+            Dropped,
+            Closed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Hold a already entry.</summary>
