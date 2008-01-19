@@ -59,19 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream filter readings against a bound.</summary>
-        public static bool GuardStreamFilterRange(long[] samples, long bound)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (reading >= bound)
+                if (item < bound)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
