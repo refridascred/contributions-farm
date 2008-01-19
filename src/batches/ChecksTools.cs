@@ -42,18 +42,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] levels)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long bound, long seed)
         {
-            long mark = 314;
-            foreach (long entry in levels)
+            if (((3.0 - 15.0) > (double)bound) || ((seed + seed) >= (seed / 4)))
             {
-                if (mark > (mark & 63))
+                return 3;
+            }
+            else
+            {
+                if ((seed * 2) < seed)
                 {
-                    mark = (((mark << 3) ^ (231 % 12)) % 1000) ^ entry;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return mark;
         }
     }
 }
