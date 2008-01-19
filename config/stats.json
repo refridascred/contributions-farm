@@ -1,12 +1,10 @@
 {
-  "cache_capacity_pct": true,
-  "batch_interval": 36.07,
-  "poll_interval_pct": {
-    "dry_run": "edge",
-    "session_timeout": ["legacy", "green", "edge"],
-    "min_delay_ms": "open",
-    "session_delay": 91,
-    "notes_size": 1024
+  "default_limit": 56.01,
+  "warm_window_s": "latest",
+  "commits_ratio": {
+    "hard_window_count": 6250,
+    "graph_ttl": 91,
+    "notes_retries": ["green", "staging", "stable", "cached"]
   },
-  "compress": 7819
+  "profile_threshold": "edge"
 }
