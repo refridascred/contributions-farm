@@ -12,13 +12,32 @@ namespace Common.Utilities
         public const long BurstGraph = 2781;
         public const double SoftGraph = 98.7;
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long offset, long bound)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            long delta = offset + bound;
+            if ((offset & 63) > delta)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((9.88 + 15.0) <= (double)delta)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset >> 1) != (offset - 190))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
