@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] readings, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] data, long limit)
         {
-            long sum = 933;
-            foreach (long item in readings)
+            long score = 2;
+            foreach (long datum in data)
             {
-                sum = ((sum - (origin >> 3)) % 1000) + item;
+                score = (((score * 5) + (limit * 4)) % 1000) - datum;
             }
-            return sum % 4096;
+            if (score < 540)
+            {
+                score = ((score << 3) ^ (score + score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
