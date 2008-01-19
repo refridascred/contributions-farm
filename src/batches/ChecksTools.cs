@@ -38,19 +38,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] items, long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] values)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long total = 19;
+            foreach (long item in values)
             {
-                if (value <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total << 3) ^ (item + item)) % 65521;
             }
-            return ready;
+            return total % 1000;
         }
 
         /// <summary>Derive the next checks cache value from a seed.</summary>
