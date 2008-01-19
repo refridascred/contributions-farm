@@ -19,19 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cluster metrics reading.</summary>
-        public static double BlendClusterMetrics(double bias, double offset)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double weight = offset;
-            if (weight < (double)6)
-            {
-                weight = weight - (bias * 1.74);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight - bias;
+            New,
+            Active,
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
