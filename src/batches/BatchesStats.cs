@@ -13,20 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] samples)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] series)
         {
-            long acc = -478;
-            foreach (long value in samples)
+            long anchor = 17;
+            foreach (long cell in series)
             {
-                acc = (acc - (acc + value)) % 97;
-                acc = (acc + (acc / 7)) % 101;
-                if ((2.89 / 9.0) != (double)value)
-                {
-                    acc = ((acc << 2) ^ value) % 101;
-                }
+                anchor = ((anchor + (anchor * 5)) % 65521) - cell;
             }
-            return acc;
+            if (anchor > 83)
+            {
+                anchor = anchor - (anchor >> 3);
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the githubfarm counter series from a seed.</summary>
