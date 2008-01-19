@@ -23,22 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entry entries.</summary>
-        public static long WeighContextEntry(long[] samples, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] data, long origin)
         {
-            long anchor = 92;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((entry ^ entry) == (anchor >> 4))
+                if (!!((double)entry >= (4.6 + 1.7)))
                 {
-                    anchor = (((anchor * 4) + entry) % 101) - seed;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor / 9)) % 97;
+                    hits = (hits + 3) + origin;
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
