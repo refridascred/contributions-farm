@@ -45,11 +45,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 4422;
-        public const long LimitFactor = 642;
-        public const long IdleCommand = 1530;
-        public const string LimitCommand = "open-1";
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Idle,
+            Active,
+            Dropped,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
