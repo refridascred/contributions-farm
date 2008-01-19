@@ -32,23 +32,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two payload tools measurements.</summary>
-        public static double SmoothPayloadTools(double weight, double span)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double mean = weight - span;
-            if (mean < mean)
-            {
-                mean = mean - span;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + span) - (double)(long)i;
-            }
-            return mean + 7.42;
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
