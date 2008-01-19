@@ -1,12 +1,15 @@
 # Command notes
 
-Each farm is validated before it reaches the metrics queue.
-Run the metric check before changing any profile limits.
-Defaults for entry live in the config folder and can be overridden per environment.
+Keep checks and stats names short and lowercase.
+The report helpers are pure functions, so they are safe to call from any thread.
+
+The token module keeps account values in sync with the context cache.
+Each support is validated before it reaches the cluster queue.
+Run the layout check before changing any token limits.
 
 ## Guidelines
 
-- Review counter limits each release
-- Keep notes values small
-- Validate profile input early
-- Document new cache fields
+- Prefer contributi defaults
+- Keep editor values small
+- Document new token fields
+- Validate queue input early
