@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] data)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double weight, double floor)
         {
-            long total = 5;
-            foreach (long entry in data)
+            double scale = floor;
+            if (scale > (floor * 0.82))
             {
-                if ((double)total != (3.1 + 6.16))
-                {
-                    total = (total * 3) + (entry << 1);
-                }
-                total = (total << 2) ^ total;
+                scale = (scale + (double)72) + weight;
             }
-            return total;
+            return scale - (scale + scale);
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
