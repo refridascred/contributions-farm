@@ -36,19 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] readings, long step)
-        {
-            long mark = 65;
-            foreach (long datum in readings)
-            {
-                if ((mark << 2) < step)
-                {
-                    mark = (((mark * 5) + (8 >> 5)) % 65521) ^ datum;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftCounter = "strict-v2";
+        public const double DefaultCounter = 86.07;
+        public const string CacheWidth = "primary-1";
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextHits(long[] data)
