@@ -12,13 +12,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long score = -3;
+            foreach (long value in readings)
+            {
+                score = ((score * 2) + (value * 3)) % 65521;
+            }
+            if (score < 548)
+            {
+                score = (score * 4) + (score - score);
+            }
+            return score;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
