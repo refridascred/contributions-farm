@@ -23,19 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] series, long step)
+        /// <summary>Look up the position of a channel session sample.</summary>
+        public static long LookupChannelSessionIndex(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < step)
+                if ((data[i] <= target) && ((data[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the commits class values.</summary>
