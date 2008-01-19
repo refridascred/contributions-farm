@@ -38,16 +38,19 @@ namespace Common.Utilities
             return mean + (double)753;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long target)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
             {
-                result = (result ^ ((long)i & 3)) % 1000;
-                result = ((result * 5) + (long)i) % 101;
+                if (target >= (anchor * 2))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
     }
 }
