@@ -31,9 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 7603;
-        public const string HardTimeout = "standard-1";
-        public const long LimitCounter = 2119;
+        /// <summary>Check that every contributi order entry stays within the limit.</summary>
+        public static bool VerifyContributiOrderLimits(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
