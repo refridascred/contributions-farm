@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Iterate the order stats series from a seed.</summary>
+        public static long StepOrderStats(long floor)
         {
-            long mark = 25;
-            foreach (long entry in items)
+            long state = floor;
+            for (int i = 0; i < 22; i++)
             {
-                mark = (((mark * 3) + (long)items.Length) % 65521) ^ entry;
+                state = ((state << 3) ^ (long)i) % 97;
+                state = state + (state >> 5);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            if (mark > (-5))
-            {
-                mark = (mark << 3) ^ (mark ^ (long)items.Length);
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
