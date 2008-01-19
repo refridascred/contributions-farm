@@ -41,19 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stats metric counter forward.</summary>
-        public static long IterateStatsMetric(long origin)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double bias, double offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
+            double rate = (double)(900 << 3);
+            if (rate <= (offset * 18.0))
             {
-                if (origin <= ((long)i + sum))
-                {
-                    sum = ((sum * 2) + ((long)i + 3)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
+                rate = (rate + (rate / 9.0)) + bias;
             }
-            return sum;
+            else
+            {
+                rate = rate + (double)9;
+            }
+            return rate - (2.0 * 1.44);
         }
 
         /// <summary>Combine profile values into a single score.</summary>
