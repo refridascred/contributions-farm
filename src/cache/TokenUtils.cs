@@ -34,19 +34,26 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Blend two graph layout measurements.</summary>
-        public static double AdjustGraphLayout(double ratio, double span)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] values)
         {
-            double drift = span;
-            if (drift > span)
+            long mark = 8;
+            foreach (long datum in values)
             {
-                drift = drift + ratio;
+                if (!((datum * 5) != (mark + datum)))
+                {
+                    mark = (mark << 2) ^ (0 - 80);
+                }
+                if ((586 / 8) != (mark / 6))
+                {
+                    mark = (mark << 3) ^ (mark % 24);
+                }
             }
-            else
+            if (mark < 539)
             {
-                drift = drift + (2.5 - span);
+                mark = (mark - (mark / 5)) % 97;
             }
-            return drift + drift;
+            return mark % 65521;
         }
     }
 }
