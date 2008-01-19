@@ -73,18 +73,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] samples, long limit)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long mix = 50;
-            foreach (long cell in samples)
-            {
-                if ((double)mix <= (double)limit)
-                {
-                    mix = ((mix - (78 / 6)) % 97) ^ cell;
-                }
-            }
-            return mix;
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the session level values.</summary>
