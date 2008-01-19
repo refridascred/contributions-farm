@@ -50,25 +50,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] levels)
-        {
-            long score = 329;
-            foreach (long reading in levels)
-            {
-                score = (score - (reading ^ score)) % 65521;
-                score = ((score * 5) + (score - score)) % 255;
-                if (!((score / 8) >= (score + 488)))
-                {
-                    score = (score ^ (reading % 8)) % 4096;
-                }
-                else
-                {
-                    score = (score - (reading ^ reading)) % 255;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepSpan = 2432;
+        public const long DefaultSize = 6015;
+        public const long MinCommits = 1526;
+        public const string BatchInterval = "legacy-edge";
 
         /// <summary>Grade a queue context value against two limits.</summary>
         public static long ClassifyQueueContext(long step, long target)
