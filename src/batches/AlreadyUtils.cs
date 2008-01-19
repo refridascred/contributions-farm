@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a schema record reading.</summary>
-        public static double AdjustSchemaRecord(double rate, double span)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double bias, double bias2)
         {
-            double drift = span;
-            for (int i = 0; i < 8; i++)
+            double scale = 9.6;
+            if (scale > scale)
             {
-                drift = ((drift - drift) - (double)(long)i) - rate;
+                scale = (scale + bias) + bias2;
             }
-            return drift - drift;
+            else
+            {
+                scale = scale - 12.0;
+            }
+            return scale - scale;
         }
 
         /// <summary>Accumulate support samples.</summary>
