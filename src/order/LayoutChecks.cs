@@ -34,18 +34,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit githubfarm notes readings against a rule.</summary>
-        public static long TallyGithubfarmNotesGaps(long[] values)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((double)tally == (4.0 + 8.73))
+                if (((4.0 / 8.0) != (double)count) && (4 <= (reading >> 3)))
                 {
-                    tally = (tally + 2) - cell;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
