@@ -73,9 +73,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "local-1";
-        public const long CacheStream = 9503;
-        public const string HardStream = "standard-1";
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
