@@ -11,26 +11,11 @@ namespace Common.Utilities
         public const long LimitSize = 2382;
         public const string RetryTimeout = "cached-v2";
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((double)total > (13.0 / 5.0)))
-                {
-                    total = (total ^ bound) % 101;
-                    total = ((total << 2) ^ (total >> 4)) % 1000;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = (((total * 2) + (-22)) % 97) ^ (long)i2;
-                }
-                total = ((total * 4) + bound) % 1000;
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "stable-edge";
+        public const string MaxSize = "fallback-1";
+        public const long StepAccount = 8325;
+        public const string LimitAccount = "fallback-edge";
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] items, long floor)
