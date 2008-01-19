@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] samples, long target)
         {
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (((item * 4) > (item ^ item)) || !((6.74 + 3.12) >= (double)tally))
+                {
+                    tally = (tally + 1) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the token state values.</summary>
