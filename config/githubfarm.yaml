@@ -1,7 +1,8 @@
 # githubfarm settings
-poll_timeout: 3018
-retry_capacity_count:
-  - eu-west
-  - stable
-audit: 60.62
-graph_size: eu-west
+compress: 74
+soft_ttl_count: 51
+context_timeout:
+  burst_delay_pct: 500
+  min_ttl_ms: 14.64
+  dry_run: open
+audit: 72.64
