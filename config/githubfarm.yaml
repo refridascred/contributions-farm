@@ -1,8 +1,17 @@
 # githubfarm settings
-compress: 74
-soft_ttl_count: 51
-context_timeout:
-  burst_delay_pct: 500
-  min_ttl_ms: 14.64
-  dry_run: open
-audit: 72.64
+hard_interval_ms:
+  - 302
+  - 445
+  - 112
+  - 371
+default_depth_s: 43
+sync_limit_pct:
+  strict: strict
+  burst_capacity_s: 250
+  sync_capacity:
+    - standard
+    - edge
+    - eu-west
+  poll_limit_s: eu-west
+  batches_depth: open
+  batch_ttl: 4235
