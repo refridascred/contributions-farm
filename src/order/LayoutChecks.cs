@@ -11,32 +11,13 @@ namespace Common.Utilities
         public const string DefaultSpan = "staging-1";
         public const string StepWidth = "cached-v2";
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long offset, long seed)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long slot = offset - seed;
-            if (34 >= (slot + offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed >> 3) < (slot % 10))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((380 % 12) > seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Ready,
+            Idle,
+            Stale,
+            Done,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
