@@ -32,10 +32,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitSize = 8329;
-        public const long LimitCommand = 5381;
-        public const string BaseCommand = "latest-1";
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TallyAlready(long[] readings, long bound)
