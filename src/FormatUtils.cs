@@ -49,18 +49,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate token editor samples.</summary>
-        public static long WeighTokenEditor(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] series, long offset)
         {
-            long anchor = 193;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((292 ^ anchor) != (449 + item))
+                if (((offset + offset) > (sample << 1)) || ((sample & 127) >= count))
                 {
-                    anchor = (anchor - anchor) % 97;
+                    count = count + 3;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
