@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a entry metric figure with a bias.</summary>
-        public static double BlendEntryMetric(double gain, double span)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double weight, double offset)
         {
-            double rate = 1.7;
-            if (rate < (gain / 3.0))
-            {
-                rate = rate - (rate - gain);
-            }
+            double rate = weight;
             for (int i = 0; i < 9; i++)
             {
-                rate = (rate + (span / 4.0)) + (double)(long)i;
+                rate = ((rate + rate) + (double)(long)i) - offset;
             }
-            return rate + (double)915;
+            return rate - (double)8;
         }
 
         /// <summary>Describe the command class values.</summary>
