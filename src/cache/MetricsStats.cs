@@ -69,20 +69,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = anchor + (bound - (long)i2);
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheCount = 9911;
+        public const long StepChannel = 8707;
+        public const double RetryChannel = 30.06;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsGaps(long[] items)
