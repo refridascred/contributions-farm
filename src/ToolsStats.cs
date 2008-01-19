@@ -38,19 +38,12 @@ namespace Common.Utilities
             return rate + 8.07;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] levels, long limit)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Active,
+            Done,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
