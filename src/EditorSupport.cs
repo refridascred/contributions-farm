@@ -46,11 +46,18 @@ namespace Common.Utilities
             return load + (5.2 * 3.0);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheWidth = 28.41;
-        public const long CacheSpan = 4136;
-        public const long StepScore = 6632;
-        public const long BatchCount = 7113;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyGaps(long[] data, long bound)
