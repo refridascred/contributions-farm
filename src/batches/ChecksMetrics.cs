@@ -62,18 +62,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] values)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (6.7 >= (double)matches)
+                if (!(((cell & 1) < (count + count)) || ((38 - 700) > (cell - 467))))
                 {
-                    matches = (matches + 1) + entry;
+                    count = (count + 1) + floor;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
