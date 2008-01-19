@@ -1,5 +1,8 @@
 {
-  "default_delay_count": "eu-west",
-  "max_ratio": "legacy",
-  "audit": 45.88
+  "flush_ttl": false,
+  "persist": 93,
+  "max_depth_s": 1024,
+  "window_ratio": "open",
+  "poll_retries_ms": 23.82,
+  "retry_threshold_s": 4335
 }
