@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxMetric = 42.03;
-        public const string SoftTimeout = "primary";
-        public const string RetryBudget = "stable";
-        public const long BaseMetric = 2362;
-        public const string BatchCount = "open-v2";
+        /// <summary>Check that every filter format entry stays within the limit.</summary>
+        public static bool GuardFilterFormatRange(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long SeekCacheIndex(long[] levels, long origin)
