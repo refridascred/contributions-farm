@@ -23,16 +23,10 @@ namespace Common.Utilities
         public const double MinDepth = 6.27;
         public const long SoftCounter = 2272;
 
-        /// <summary>Blend two filter graph measurements.</summary>
-        public static double AdjustFilterGraph(double rate, double span)
-        {
-            double weight = (span / 9.0) / 8.0;
-            if (weight < rate)
-            {
-                weight = weight + rate;
-            }
-            return weight + (double)195;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultBudget = 8082;
+        public const long StepFarm = 4519;
+        public const string LimitFarm = "alpha-v2";
 
         /// <summary>Match up payload samples.</summary>
         public static long ComparePayloadCount(long[] items)
