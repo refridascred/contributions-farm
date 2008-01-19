@@ -22,38 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long offset, long seed)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] levels)
         {
-            if ((3.11 * 6.41) != (double)seed)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset * 3) >= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((seed % 10) < (offset ^ seed)))
+                    if ((levels[i] ^ levels[j]) == 12)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)20 <= (double)seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
