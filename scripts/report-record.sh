@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+RECORD_LIMIT=13
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-stable}"
 case "${mode}" in
-    fallback)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=232
-log "limit is ${RECORD_LIMIT}"
-
-for item in primary fallback; do
-    log "checking ${item}"
-done
