@@ -20,18 +20,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit tools metrics readings against a rule.</summary>
-        public static long TallyToolsMetricsHits(long[] samples, long offset)
+        /// <summary>Iterate the stream counter series from a seed.</summary>
+        public static long DeriveStreamCounter(long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((value ^ value) != (offset + value))
-                {
-                    count = count + 2;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
     }
 }
