@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Stale,
-            Pending,
-            Done,
-            Idle,
-            Active,
+            public bool Limit { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
