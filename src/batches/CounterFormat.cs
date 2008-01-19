@@ -16,13 +16,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] samples)
         {
-            Ready,
-            Retry,
-            Idle,
-            Queued,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((20.0 / 7.0) > (double)sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
