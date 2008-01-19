@@ -20,10 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultLevel = "strict-edge";
-        public const long BaseGraph = 2355;
-        public const string HardGraph = "stable-1";
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Idle,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long WindowFactor = 6522;
