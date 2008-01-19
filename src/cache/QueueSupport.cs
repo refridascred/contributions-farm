@@ -32,18 +32,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] samples, long seed)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item + item) <= 963)
+                if (items[i] >= floor)
                 {
-                    tally = (tally + 1) + seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
