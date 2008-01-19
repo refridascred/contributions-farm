@@ -1,8 +1,12 @@
 # support settings
-verbose: standard
-retry_window_s: eu-west
-batch_interval_count:
-  - 41
-  - 438
-  - 286
-  - 86
+readonly:
+  - blue
+  - staging
+enabled: 2.47
+metric_depth: true
+schema_depth: eu-west
+entry_depth:
+  tools_capacity: 3261
+  audit: open
+  support_size: local
+payload_timeout: strict
