@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepRecord = 88.32;
+        public const long CacheWidth = 8194;
+        public const string RetryFactor = "latest-v2";
+        public const long IdleRecord = 7401;
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double ProjectMetrics(double ratio, double floor)
