@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] levels, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long result = 806;
+            foreach (long entry in levels)
             {
-                if (datum >= floor)
+                if (!((result + entry) > 559))
                 {
-                    found = false;
-                    break;
+                    result = (result + (entry - entry)) % 97;
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Roll a support counter forward.</summary>
