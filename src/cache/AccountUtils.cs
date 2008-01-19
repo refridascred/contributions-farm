@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] items, long floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((-5) - floor) >= (floor ^ 129))
-                {
-                    seen = (seen + 2) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Draft,
+            Done,
+            Ready,
         }
 
         /// <summary>Fold a list of command route readings.</summary>
