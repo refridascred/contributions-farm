@@ -35,18 +35,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] items, long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (value <= seed)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Synced,
+            Closed,
         }
     }
 }
