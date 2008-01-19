@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public double Label { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
