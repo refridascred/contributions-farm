@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = weight + (span / 9.0);
+            if (mean < (double)165)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean + (double)689;
             }
-            return tally;
+            return mean + (14.0 - mean);
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
