@@ -15,13 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
+            Stale,
+            Synced,
             Active,
-            Paused,
-            Idle,
-            Failed,
+            Queued,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
