@@ -1,5 +1,12 @@
 {
-  "strict": "eu-west",
-  "audit": "open",
-  "route_limit": "legacy"
+  "batch_ratio_s": [390, 269, 441, 52],
+  "soft_depth_pct": {
+    "counter_retries": [155, 264, 119, 179],
+    "warm_threshold_s": "blue",
+    "notes_retries": [145, 101],
+    "retry_limit_ms": "staging"
+  },
+  "enabled": ["fallback", "stable", "blue"],
+  "hard_limit": "latest",
+  "readonly": 42
 }
