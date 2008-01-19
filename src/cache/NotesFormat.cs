@@ -36,21 +36,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 1;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)anchor <= 9.3) && ((double)anchor <= (8.37 + 7.4)))
                 {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor + (anchor % 8);
+                    break;
+                }
+                if ((anchor + 329) <= reading)
+                {
+                    anchor = ((anchor * 3) + (reading & 31)) % 1000;
+                }
+                if ((double)anchor >= (1.33 - 18.0))
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
