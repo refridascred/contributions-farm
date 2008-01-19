@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string BurstCache = "standard-edge";
         public const long LimitCache = 5072;
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] data)
         {
-            public long Stamp { get; set; }
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)value <= (19.0 * 1.95))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the command mode values.</summary>
