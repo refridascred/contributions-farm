@@ -24,12 +24,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] series, long bound)
         {
-            Queued,
-            Closed,
-            New,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((bound + (-94)) < (hits << 3)) && (((value & 31) >= (hits ^ hits)) || ((double)value < (1.47 * 0.44))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up batches samples.</summary>
