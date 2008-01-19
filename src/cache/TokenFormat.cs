@@ -38,11 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double scale, double bias)
+        /// <summary>Validate graph account readings against a bound.</summary>
+        public static bool ValidateGraphAccountRange(long[] items, long limit)
         {
-            double bias2 = 5.75 * 5.02;
-            return (bias2 - (bias2 - scale)) + bias;
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
