@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] samples, long target)
+        /// <summary>Check that every tools batches entry stays within the limit.</summary>
+        public static bool VerifyToolsBatchesLimits(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (samples[i] <= target)
+                if (sample < floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
