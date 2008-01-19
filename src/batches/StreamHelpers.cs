@@ -40,12 +40,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public string Offset { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the stream state values.</summary>
