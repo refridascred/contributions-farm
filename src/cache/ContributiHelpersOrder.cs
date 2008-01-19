@@ -37,14 +37,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] series)
         {
-            Failed,
-            Synced,
-            Idle,
-            New,
-            Draft,
+            long state = 287;
+            foreach (long cell in series)
+            {
+                state = (state ^ (cell + state)) % 255;
+            }
+            return state;
         }
     }
 }
