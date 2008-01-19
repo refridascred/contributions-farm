@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every support order entry stays within the limit.</summary>
-        public static bool ValidateSupportOrderRange(long[] values, long origin)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (value <= origin)
+                if (entry <= step)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
