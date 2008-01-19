@@ -56,11 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "alpha-edge";
-        public const string LimitCache = "cached-edge";
-        public const long SoftTimeout = 6045;
-        public const double MaxSpan = 21.89;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstSize = 442;
+        public const long LimitProfile = 5282;
+        public const double HardProfile = 47.01;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long RollWindow(long floor)
