@@ -56,32 +56,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long origin, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] items)
         {
-            long cur = origin + offset;
-            if (((966 << 3) < (origin % 24)) && ((double)cur <= (double)offset))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset > (159 + offset))
+                if (59 >= (value / 4))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (cur >= (cur >> 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
