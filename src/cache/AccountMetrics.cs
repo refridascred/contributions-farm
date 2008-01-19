@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] items, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (items[i] < target)
+                if ((matches - cell) > cell)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count already cluster pairs that satisfy a relation.</summary>
