@@ -37,11 +37,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long floor)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long state = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(((floor * 4) >= 333) && ((state + 2) <= state)))
+                {
+                    state = state ^ floor;
+                }
+                state = (state - state) % 101;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Audit route notes readings against a rule.</summary>
