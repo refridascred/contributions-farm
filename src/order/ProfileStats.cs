@@ -43,13 +43,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long offset)
         {
-            public bool Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = (sum + (sum * 4)) % 97;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
