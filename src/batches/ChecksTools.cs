@@ -35,10 +35,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 8303;
-        public const long LimitLevel = 6341;
-        public const long MaxMetric = 5714;
-        public const string DefaultWidth = "open-edge";
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
