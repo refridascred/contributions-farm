@@ -19,12 +19,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 6395;
-        public const double MaxTimeout = 71.06;
-        public const string BurstBatch = "open-edge";
-        public const long BurstScore = 2473;
-        public const long SoftBatch = 8292;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == offset) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepDepth = 1678;
