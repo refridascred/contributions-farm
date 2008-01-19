@@ -46,15 +46,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double rate, double bias)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long seed, long seed2)
         {
-            double weight = bias;
-            if (weight >= rate)
+            if ((double)seed2 == (7.9 * 10.0))
             {
-                weight = weight + 6.1;
+                return 7;
             }
-            return weight - (double)5;
+            else
+            {
+                if ((seed2 % 24) <= (1 * 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)seed == (1.1 + 1.69)) || ((0 + 926) < seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of token editor entries.</summary>
