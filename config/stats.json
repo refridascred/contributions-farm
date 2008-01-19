@@ -1,6 +1,5 @@
 {
-  "default_ttl_ms": 250,
-  "readonly": 250,
-  "batch_ttl_count": false,
-  "min_limit": "edge"
+  "default_limit_ms": 93.13,
+  "min_ttl_pct": [69, 440],
+  "persist": 33.56
 }
