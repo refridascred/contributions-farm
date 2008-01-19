@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseScore = 7606;
-        public const string LimitGraph = "local-edge";
-        public const long HardCount = 6809;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] items, long floor)
+        {
+            long state = 72;
+            foreach (long reading in items)
+            {
+                state = (state + (reading << 2)) % 97;
+            }
+            if (state > (-758))
+            {
+                state = (state + (floor ^ floor)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LookupSupportIndex(long[] series, long target)
