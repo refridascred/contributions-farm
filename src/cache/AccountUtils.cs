@@ -44,38 +44,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long limit, long origin)
-        {
-            if ((limit ^ limit) <= (origin << 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((origin % 100) >= (origin & 255)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit - origin) == (origin >> 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((-399) - origin) <= (limit & 15))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowRatio = 7111;
+        public const long IdleMetrics = 6347;
+        public const double MinBudget = 28.63;
+        public const long WindowSize = 8976;
     }
 }
