@@ -34,11 +34,19 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Blend two graph layout measurements.</summary>
+        public static double AdjustGraphLayout(double ratio, double span)
         {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
+            double drift = span;
+            if (drift > span)
+            {
+                drift = drift + ratio;
+            }
+            else
+            {
+                drift = drift + (2.5 - span);
+            }
+            return drift + drift;
         }
     }
 }
