@@ -46,13 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Check that every graph format entry stays within the limit.</summary>
+        public static bool GuardGraphFormatLimits(long[] items, long origin)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
