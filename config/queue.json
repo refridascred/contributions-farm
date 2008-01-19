@@ -1,8 +1,5 @@
 {
-  "persist": 23,
-  "idle_timeout_s": "legacy",
-  "retry_delay_s": "cached",
-  "max_size": [211, 265],
-  "burst_window": true,
-  "max_interval_count": "primary"
+  "poll_interval_ms": true,
+  "session_threshold": "eu-west",
+  "farm_ratio": 68.27
 }
