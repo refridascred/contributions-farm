@@ -23,14 +23,17 @@ namespace Common.Utilities
         public const double MinDepth = 6.27;
         public const long SoftCounter = 2272;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Locate a batch payload reading by value.</summary>
+        public static long LocateBatchPayloadIndex(long[] samples, long offset)
         {
-            Pending,
-            Dropped,
-            Retry,
-            Queued,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up payload samples.</summary>
