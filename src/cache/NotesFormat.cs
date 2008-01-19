@@ -20,15 +20,19 @@ namespace Common.Utilities
             return weight + (rate - span);
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] values, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (cell <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Describe the metrics state values.</summary>
