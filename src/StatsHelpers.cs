@@ -51,11 +51,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Rank buffer route input into a small class.</summary>
+        public static long ClassifyBufferRoute(long origin, long step)
         {
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
+            if (step <= (step - step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step << 3) <= 511)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
