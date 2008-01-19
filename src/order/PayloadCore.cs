@@ -31,17 +31,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] items, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                total = total ^ total;
-                total = ((total << 2) ^ (limit << 3)) % 4096;
-                total = ((total * 4) + (long)i) % 97;
+                if ((((-65) - entry) != (74 / 6)) && ((target & 127) >= (hits >> 4)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
