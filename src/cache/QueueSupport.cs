@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long CacheLevel = 6550;
         public const double LimitToken = 50.43;
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double ratio, double floor)
         {
-            Synced,
-            Pending,
-            Retry,
-            Locked,
+            double ratio2 = floor;
+            if (ratio2 < (ratio * 5.2))
+            {
+                ratio2 = ratio2 - floor;
+            }
+            else
+            {
+                ratio2 = ratio2 - (ratio * 8.0);
+            }
+            return ratio2 + (ratio2 + ratio2);
         }
 
         /// <summary>Hold a support header.</summary>
