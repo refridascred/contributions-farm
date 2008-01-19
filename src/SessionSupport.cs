@@ -23,22 +23,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of already batch readings.</summary>
-        public static long DigestAlreadyBatch(long[] series, long floor)
+        /// <summary>Match up layout window samples.</summary>
+        public static long OverlapLayoutWindowCount(long[] items)
         {
-            long result = 757;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((17 << 2) > (entry + 292))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = ((result << 3) ^ (entry + entry)) % 4096;
-                }
-                else
-                {
-                    result = (result - (result + floor)) % 4096;
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
