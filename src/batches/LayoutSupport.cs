@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] series, long seed)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((seed * 4) == (seed + 295))
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
