@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinCount = 69.38;
-        public const long StepSchema = 6889;
-        public const long LimitSchema = 6625;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryCache = 6817;
