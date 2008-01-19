@@ -64,18 +64,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate counter batches samples.</summary>
-        public static long ScoreCounterBatches(long[] series, long target)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            long anchor = 19;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target % 7) < (-91))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = anchor ^ item;
+                    if ((data[i] + data[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Adjust a context counter reading.</summary>
