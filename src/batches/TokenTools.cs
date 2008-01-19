@@ -27,29 +27,35 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long offset, long bound)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long limit, long offset)
         {
-            long delta = offset + bound;
-            if ((offset & 63) > delta)
+            if (8.3 <= (double)limit)
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((9.88 + 15.0) <= (double)delta)
+                if ((1.0 * 4.49) > (double)limit)
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((offset >> 1) != (offset - 190))
+                    if ((double)offset != (17.0 * 2.7))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        return 5;
+                        if (((limit / 8) >= 75) || ((limit - limit) == (limit + 42)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
