@@ -23,18 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Count the route stats entries that pass the check.</summary>
+        public static long MeasureRouteStatsMatches(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((9.73 * 5.4) < (double)hits)
                 {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) ^ value;
                 }
             }
             return hits;
