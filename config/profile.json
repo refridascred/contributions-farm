@@ -1,5 +1,10 @@
 {
-  "persist": 100,
-  "account_limit": 3951,
-  "channel_retries": ["green", "stable", "open", "legacy"]
+  "already_interval": {
+    "cache_ttl": 1652,
+    "base_capacity_s": "blue",
+    "stream_threshold": "local",
+    "burst_capacity": 97.82
+  },
+  "hard_size_s": 6404,
+  "batch_delay_ms": false
 }
