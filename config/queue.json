@@ -1,5 +1,6 @@
 {
-  "persist": 40,
-  "soft_ratio": 3.79,
-  "cache_timeout_ms": 1624
+  "batch_timeout": "strict",
+  "persist": [408, 33],
+  "retry_ratio": ["eu-west", "blue"],
+  "max_size": "edge"
 }
