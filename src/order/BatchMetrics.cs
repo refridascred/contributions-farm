@@ -71,9 +71,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryTimeout = 5014;
-        public const long StepRatio = 6898;
-        public const string IdleDepth = "open";
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Pending,
+            Locked,
+            Active,
+            Synced,
+        }
     }
 }
