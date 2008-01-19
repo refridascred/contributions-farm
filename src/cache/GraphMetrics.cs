@@ -41,14 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 587;
+        public const long WindowScore = 3142;
+        public const long MinBudget = 7353;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double WindowSize = 3.97;
