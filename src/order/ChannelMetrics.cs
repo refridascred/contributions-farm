@@ -23,15 +23,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a window order counter forward.</summary>
-        public static long IterateWindowOrder(long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] values, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (reading != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
