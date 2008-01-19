@@ -37,38 +37,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long step, long offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            if ((step + offset) < (offset / 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((offset - offset) == (6 ^ step)) && ((10 * 2) != (step + (-9))))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset <= (offset + (-144)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + step) != (813 + step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
