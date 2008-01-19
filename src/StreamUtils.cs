@@ -35,21 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = ratio;
+            if (drift > (drift / 7.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + (bias * 4.2);
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - 0.47) + (double)(long)i;
+            }
+            return drift - (double)31;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
