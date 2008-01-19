@@ -42,15 +42,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of context payload entries.</summary>
-        public static long TallyContextPayload(long[] samples, long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] readings)
         {
-            long carry = 23;
-            foreach (long value in samples)
+            long sum = 79;
+            foreach (long datum in readings)
             {
-                carry = (carry + value) - bound;
+                if ((82 + datum) >= (45 * 5))
+                {
+                    sum = (sum ^ (72 ^ datum)) % 4096;
+                    continue;
+                }
+                if (datum < sum)
+                {
+                    sum = (sum ^ 9) % 97;
+                }
             }
-            return carry % 97;
+            return sum;
         }
     }
 }
