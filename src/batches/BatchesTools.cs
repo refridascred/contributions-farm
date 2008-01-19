@@ -39,14 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Synced,
-            Pending,
-            Active,
-            Paused,
-            Idle,
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the stream counter series from a seed.</summary>
