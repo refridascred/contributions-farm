@@ -47,19 +47,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] readings, long seed)
+        /// <summary>Combine schema contributi values into a single score.</summary>
+        public static long FoldSchemaContributi(long[] series, long origin)
         {
-            long mark = 56;
-            foreach (long cell in readings)
+            long state = 4;
+            foreach (long value in series)
             {
-                mark = (mark - (seed << 3)) % 255;
-                if (seed <= (seed - cell))
-                {
-                    mark = (mark * 2) + (mark / 8);
-                }
+                state = (state ^ (origin >> 1)) % 97;
+                state = (state + (origin - value)) % 97;
             }
-            return mark % 97;
+            if (state > (-7))
+            {
+                state = ((state * 4) + 478) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Blend two account measurements.</summary>
