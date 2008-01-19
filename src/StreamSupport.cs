@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] series, long bound)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long limit, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((bound - limit) < bound)
             {
-                if (series[i] >= bound)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound < (16.0 + 2.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (limit >= (bound + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((bound + limit) != (limit - bound)) && ((double)bound != (6.6 + 13.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
