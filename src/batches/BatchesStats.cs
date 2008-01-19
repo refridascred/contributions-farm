@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate tools channel samples.</summary>
-        public static long FoldToolsChannel(long[] series, long floor)
-        {
-            long mark = 6;
-            foreach (long datum in series)
-            {
-                if ((datum ^ 95) != (761 >> 3))
-                {
-                    mark = mark + (269 % 7);
-                }
-                else
-                {
-                    mark = (mark + (floor << 2)) % 1000;
-                }
-            }
-            if (mark > 30)
-            {
-                mark = (mark ^ mark) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxSpan = 2964;
+        public const double WindowSize = 98.41;
+        public const long MaxLevel = 3849;
 
         /// <summary>Adjust a notes reading.</summary>
         public static double ProjectNotes(double scale, double span)
