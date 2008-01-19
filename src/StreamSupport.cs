@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] levels, long origin)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
