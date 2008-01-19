@@ -16,12 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] data, long offset)
         {
-            Draft,
-            Pending,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= offset) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank format support input into a small class.</summary>
