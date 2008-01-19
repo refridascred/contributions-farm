@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a layout already reading by value.</summary>
-        public static long LookupLayoutAlreadyIndex(long[] series, long seed)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] series)
         {
+            long hits = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] >= seed) && ((series[i] % 5) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
