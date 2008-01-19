@@ -16,11 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "stable-edge";
-        public const string MaxSize = "fallback-1";
-        public const long StepAccount = 8325;
-        public const string LimitAccount = "fallback-edge";
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] items, long floor)
