@@ -39,11 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] items)
         {
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!!((double)reading < (4.0 * 9.17)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
