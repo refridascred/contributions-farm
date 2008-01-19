@@ -48,12 +48,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] data)
         {
-            Locked,
-            New,
-            Pending,
+            long sum = 2;
+            foreach (long reading in data)
+            {
+                if (((sum >> 2) < (sum - sum)) && (((-528) - sum) < ((-11) + sum)))
+                {
+                    sum = ((sum << 2) ^ ((-72) / 2)) % 101;
+                }
+                else
+                {
+                    sum = sum - (sum - 554);
+                    sum = (sum * 2) + (reading + sum);
+                }
+                sum = (sum ^ (sum - reading)) % 1000;
+            }
+            if (sum > 324)
+            {
+                sum = (sum ^ (sum + sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the checks class values.</summary>
