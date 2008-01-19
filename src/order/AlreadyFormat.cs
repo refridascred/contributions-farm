@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] readings)
+        /// <summary>Look up the position of a session batch sample.</summary>
+        public static long LookupSessionBatchIndex(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((values[i] <= floor) && ((values[i] % 2) != 0))
                 {
-                    if ((readings[i] ^ readings[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
