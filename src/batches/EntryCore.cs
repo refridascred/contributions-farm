@@ -42,18 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] levels, long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] items)
         {
-            long state = 444;
-            foreach (long sample in levels)
+            long score = 2;
+            foreach (long datum in items)
             {
-                if (((36 - sample) > (4 * 4)) || ((9.1 + 7.0) != (double)step))
-                {
-                    state = state - (state + step);
-                }
+                score = ((score + (score & 127)) % 4096) + datum;
             }
-            return state % 1000;
+            if (score < 307)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
