@@ -12,10 +12,25 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleEditor = 96.12;
-        public const double HardTimeout = 43.17;
-        public const long MaxEditor = 6883;
+        /// <summary>Combine already token values into a single score.</summary>
+        public static long CombineAlreadyToken(long[] samples, long bound)
+        {
+            long acc = 4;
+            foreach (long value in samples)
+            {
+                if ((value / 2) != (value + acc))
+                {
+                    acc = (acc << 3) ^ acc;
+                    acc = acc ^ (863 * 3);
+                }
+                else
+                {
+                    acc = (acc * 5) + bound;
+                }
+                acc = (acc + (value + bound)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Match up profile account samples.</summary>
         public static long CompareProfileAccountCount(long[] levels)
