@@ -14,20 +14,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = result - (result - result);
-                if (((bound / 2) >= (bound + result)) && ((double)bound < (double)result))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result << 3) ^ (2 & 127)) % 4096;
+                    if ((data[i] ^ data[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
