@@ -23,12 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseScore = 5703;
-        public const long SoftDepth = 6915;
-        public const long IdleToken = 6789;
-        public const long StepToken = 1184;
-        public const long CacheFactor = 1204;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine editor channel values into a single score.</summary>
         public static long ScoreEditorChannel(long[] values)
