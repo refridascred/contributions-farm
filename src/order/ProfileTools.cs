@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Find the first profile schema entry that matches the target.</summary>
+        public static long SeekProfileSchemaIndex(long[] readings, long target)
         {
-            long mix = 48;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 2) + ((long)readings.Length - (-766))) ^ cell;
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
