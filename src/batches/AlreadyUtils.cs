@@ -73,10 +73,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 3877;
-        public const double BurstTools = 1.33;
-        public const long MaxDepth = 8478;
-        public const long StepTools = 2677;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double CacheCounter = 11.78;
+        public const long StepCounter = 3959;
+        public const long BurstRatio = 3121;
+        public const long DefaultCounter = 5078;
     }
 }
