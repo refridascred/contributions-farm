@@ -14,13 +14,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] data)
         {
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
+            long mark = 85;
+            foreach (long item in data)
+            {
+                if (mark <= (item & 31))
+                {
+                    mark = (mark ^ 4) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (mark / 7)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
