@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count cache token pairs that satisfy a relation.</summary>
-        public static long MatchCacheTokenCount(long[] samples)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (levels[i] == floor)
                 {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the stream mode values.</summary>
