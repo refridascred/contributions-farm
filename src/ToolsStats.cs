@@ -61,24 +61,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] data, long bound)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long carry = 12;
-            foreach (long value in data)
-            {
-                if ((carry >> 3) != (bound / 2))
-                {
-                    carry = (carry * 4) + (value ^ carry);
-                    carry = (carry * 2) + (8 % 7);
-                }
-                carry = carry ^ (carry >> 2);
-            }
-            if (carry < 83)
-            {
-                carry = (carry << 3) ^ (308 + bound);
-            }
-            return carry;
+            Dropped,
+            Idle,
+            Stale,
         }
     }
 }
