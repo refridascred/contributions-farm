@@ -51,19 +51,11 @@ namespace Common.Utilities
         public const long MinInterval = 4116;
         public const long StepContributi = 7136;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((long)i & 255) > seed)
-                {
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftSpan = 9704;
+        public const long BatchStats = 947;
+        public const double BatchSize = 19.32;
+        public const string MinStats = "local";
+        public const long BurstStats = 3031;
     }
 }
