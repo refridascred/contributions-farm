@@ -51,24 +51,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank buffer route input into a small class.</summary>
-        public static long ClassifyBufferRoute(long origin, long step)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            if (step <= (step - step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step << 3) <= 511)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            Closed,
+            Paused,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
