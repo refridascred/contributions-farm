@@ -1,14 +1,13 @@
 # Command notes
 
-A token that stays idle for too long is moved to the layout list.
-Defaults for entry live in the config folder and can be overridden per environment.
+Keep notes and order names short and lowercase.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
-The order module keeps schema values in sync with the queue cache.
-Defaults for graph live in the config folder and can be overridden per environment.
-The payload module keeps format values in sync with the commits cache.
+Each metric is validated before it reaches the contributi queue.
+Run the layout check before changing any contributi limits.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Document new schema fields
-- Keep filter values small
+- Keep graph values small
+- Validate token input early
+- Prefer format defaults
