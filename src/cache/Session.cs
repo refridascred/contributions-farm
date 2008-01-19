@@ -50,18 +50,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of payload command entries.</summary>
-        public static long TotalPayloadCommand(long[] data, long offset)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long carry = 72;
-            foreach (long cell in data)
-            {
-                if (cell >= (carry >> 2))
-                {
-                    carry = (carry ^ (cell % 100)) - offset;
-                }
-            }
-            return carry;
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
