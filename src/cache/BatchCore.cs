@@ -45,21 +45,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] series)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long target, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((target - target) > (66 + limit)) || (target >= (target & 3)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((limit / 6) > limit)
                 {
-                    if ((series[i] + series[j]) < 11)
+                    return 8;
+                }
+                else
+                {
+                    if ((target + limit) != (target & 3))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target >> 3) <= (limit << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
