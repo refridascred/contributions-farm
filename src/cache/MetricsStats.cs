@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const double CacheBatches = 4.18;
         public const double RetryFactor = 71.12;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxLevel = "local-edge";
-        public const long BurstTools = 3755;
-        public const double MaxScore = 57.53;
-        public const double StepSpan = 54.03;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Idle,
+            Dropped,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LookupClusterIndex(long[] items, long step)
