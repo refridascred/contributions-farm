@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
