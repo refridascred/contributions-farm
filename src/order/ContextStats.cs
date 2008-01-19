@@ -59,19 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] values, long bound)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double scale, double bias)
         {
-            bool found = true;
-            foreach (long datum in values)
+            double drift = (double)6 + (bias + 6.0);
+            for (int i = 0; i < 2; i++)
             {
-                if (datum <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift + (scale + bias)) - (double)(long)i;
             }
-            return found;
+            return drift - (double)(-257);
         }
     }
 }
