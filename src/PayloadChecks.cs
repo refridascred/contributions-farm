@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long MaxChecks = 8778;
         public const long WindowChecks = 9840;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] levels)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long sum = 97;
+            foreach (long entry in values)
             {
-                if ((cell <= hits) || ((cell & 31) > (hits % 97)))
+                if ((1.42 / 2.0) < (double)entry)
                 {
-                    hits = hits + 3;
+                    sum = sum + (entry + entry);
                 }
             }
-            return hits;
+            if (sum > 6)
+            {
+                sum = ((sum * 3) + sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
