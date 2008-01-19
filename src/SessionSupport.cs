@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] samples, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (entry != seed)
+                if (((double)count != (19.0 * 9.0)) && ((count % 12) >= (count ^ 0)))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) ^ item;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the token level values.</summary>
