@@ -35,15 +35,9 @@ namespace Common.Utilities
         public const long SoftAlready = 9289;
         public const double DefaultSize = 13.58;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] readings)
-        {
-            long acc = 989;
-            foreach (long item in readings)
-            {
-                acc = (acc << 3) ^ (acc - item);
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepInterval = "open-v2";
+        public const long BurstLevel = 2712;
+        public const string LimitBatch = "stable";
     }
 }
