@@ -28,15 +28,15 @@ namespace Common.Utilities
         public const string LimitLevel = "strict-edge";
         public const long IdleFormat = 9329;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double gain, double offset)
+        /// <summary>Iterate the schema route series from a seed.</summary>
+        public static long RollSchemaRoute(long origin)
         {
-            double load = gain;
-            if (load > offset)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                load = load - 9.2;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return load + load;
+            return sum;
         }
 
         /// <summary>Describe the session class values.</summary>
