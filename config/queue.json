@@ -1,18 +1,5 @@
 {
-  "max_retries": {
-    "support_interval": true,
-    "commits_window": "eu-west",
-    "default_depth": 8068,
-    "route_ratio": {
-      "counter_ratio": "fallback",
-      "burst_threshold_ms": 87.22,
-      "min_retries_count": [481, 122, 359],
-      "base_size_pct": "eu-west"
-    }
-  },
-  "account_size": [220, 152, 202],
-  "stats_ratio": false,
-  "retry_capacity": 1024,
-  "flush_ratio_pct": ["stable", "legacy", "cached", "green"],
-  "soft_ratio_ms": 58.61
+  "idle_interval_count": "blue",
+  "stream_interval": [202, 402, 59],
+  "persist": [254, 465]
 }
