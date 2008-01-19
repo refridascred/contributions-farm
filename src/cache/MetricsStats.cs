@@ -27,38 +27,22 @@ namespace Common.Utilities
         public const long WindowFactor = 8583;
         public const string LimitBudget = "stable-v2";
 
-        /// <summary>Classify a channel tools pair into a bucket.</summary>
-        public static long BucketChannelTools(long floor, long floor2)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] values, long step)
         {
-            if ((floor - floor2) <= (floor2 ^ floor2))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((floor >> 4) >= ((-7) >> 5)) || ((double)floor <= (9.9 + 2.44)))
+                if ((seen - seen) < seen)
                 {
-                    return 0;
+                    seen = ((seen + 3) ^ cell) + step;
                 }
                 else
                 {
-                    if ((floor / 9) > floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor2 & 3) < floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
