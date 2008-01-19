@@ -61,11 +61,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryBudget = 25.09;
+        public const double HardBudget = 4.15;
+        public const double CacheCount = 26.25;
+        public const string HardWidth = "open-edge";
+        public const long BatchNotes = 6274;
     }
 }
