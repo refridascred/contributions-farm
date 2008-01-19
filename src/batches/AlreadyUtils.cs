@@ -47,28 +47,35 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long limit, long floor)
+        /// <summary>Classify a contributi account pair into a bucket.</summary>
+        public static long ClassifyContributiAccount(long origin, long limit)
         {
-            if (((470 / 3) >= floor) && ((5.0 * 5.6) == (double)floor))
+            if (((73 * 4) == (limit << 3)) || ((double)origin <= (1.0 + 9.4)))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((limit + limit) >= (floor ^ floor))
+                if (!((limit & 1) == (origin >> 5)))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if ((limit * 4) == (floor * 2))
+                    if ((limit >> 5) != (17 ^ origin))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        return 7;
+                        if (((limit - origin) < limit) && ((origin % 8) < origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
