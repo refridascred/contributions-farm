@@ -23,14 +23,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Compare every pair of buffer filter readings.</summary>
+        public static long PairBufferFilterCount(long[] levels)
         {
-            Done,
-            Queued,
-            Synced,
-            Dropped,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the commits class values.</summary>
