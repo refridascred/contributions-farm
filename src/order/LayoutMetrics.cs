@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine metric graph values into a single score.</summary>
-        public static long DigestMetricGraph(long[] samples)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long result = -7;
-            foreach (long datum in samples)
-            {
-                if ((long)samples.Length == (result - datum))
-                {
-                    continue;
-                }
-                if ((double)result >= (7.32 / 7.0))
-                {
-                    result = (result + (result + 204)) % 65521;
-                }
-            }
-            return result % 4096;
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
