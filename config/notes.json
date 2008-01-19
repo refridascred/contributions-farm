@@ -1,6 +1,11 @@
 {
-  "compress": 69,
-  "flush_capacity": 1024,
-  "retry_window_s": false,
-  "sync_size": 31.16
+  "persist": 60,
+  "strict": {
+    "idle_delay_pct": 30,
+    "warm_depth_ms": 10,
+    "retry_size_s": true
+  },
+  "batch_ttl_ms": 1513,
+  "editor_timeout": true,
+  "max_capacity_ms": [151, 238, 350, 135]
 }
