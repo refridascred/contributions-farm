@@ -26,11 +26,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] series, long seed)
         {
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
+            long acc = 3;
+            foreach (long cell in series)
+            {
+                acc = ((acc ^ (seed << 1)) % 97) ^ cell;
+            }
+            if (acc < 60)
+            {
+                acc = acc ^ (143 + acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit contributi layout readings against a rule.</summary>
