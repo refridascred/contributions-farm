@@ -1,16 +1,8 @@
 {
-  "cache_interval_s": 55,
-  "payload_interval": 60,
-  "retry_limit_ms": {
-    "compress": "latest",
-    "hard_ratio": 2363,
-    "farm_delay": {
-      "max_threshold_pct": 487,
-      "readonly": false,
-      "audit": [167, 182]
-    },
-    "counter_threshold": "fallback",
-    "filter_delay": false
-  },
-  "batch_retries": 32
+  "min_retries_count": 56,
+  "default_capacity_pct": "blue",
+  "route_limit": "staging",
+  "cache_interval": ["local", "latest", "local", "open"],
+  "batch_size_count": "standard",
+  "already_capacity": "local"
 }
