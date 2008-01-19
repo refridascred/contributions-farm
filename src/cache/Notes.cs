@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] series)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (!((cell > ((-603) >> 4)) || (cell <= ((long)series.Length + seen))))
+                if ((datum + datum) != (long)values.Length)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) + origin;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
