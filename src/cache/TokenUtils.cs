@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Scale a entry metric figure with a bias.</summary>
+        public static double BlendEntryMetric(double gain, double span)
         {
-            long total = -486;
-            foreach (long entry in values)
+            double rate = 1.7;
+            if (rate < (gain / 3.0))
             {
-                if (((total / 7) > (total + 7)) || ((2 * 2) <= total))
-                {
-                    total = (total << 2) ^ (entry & 7);
-                }
-                if (((total * 5) == (entry ^ total)) && (610 <= entry))
-                {
-                    break;
-                }
+                rate = rate - (rate - gain);
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (span / 4.0)) + (double)(long)i;
+            }
+            return rate + (double)915;
         }
 
         /// <summary>Describe the command class values.</summary>
