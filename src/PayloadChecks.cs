@@ -23,21 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Digest a series of context entry entries.</summary>
+        public static long WeighContextEntry(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 92;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry ^ entry) == (anchor >> 4))
                 {
-                    if ((values[i] - values[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (((anchor * 4) + entry) % 101) - seed;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor / 9)) % 97;
                 }
             }
-            return count;
+            return anchor % 65521;
         }
 
         /// <summary>Define session limits and defaults.</summary>
