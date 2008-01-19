@@ -73,13 +73,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Synced,
-            Done,
-            Dropped,
-            Draft,
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
