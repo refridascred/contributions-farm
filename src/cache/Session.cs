@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
+            Closed,
+            Locked,
+            New,
         }
 
         /// <summary>Compare every pair of channel stats readings.</summary>
