@@ -13,24 +13,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Classify a session contributi pair into a bucket.</summary>
-        public static long BucketSessionContributi(long origin, long floor)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] levels, long origin)
         {
-            if ((0.63 / 6.0) >= (double)floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor <= (44 << 2))
+                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
