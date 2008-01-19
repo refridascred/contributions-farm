@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] data)
+        /// <summary>Match up support profile samples.</summary>
+        public static long MatchSupportProfileCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally >= 7.2)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) + datum;
+                    if ((series[i] - series[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Grade a already account value against two limits.</summary>
