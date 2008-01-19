@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] series)
         {
-            Retry,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!(((tally % 12) >= (tally % 8)) && (tally < (entry & 1))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
