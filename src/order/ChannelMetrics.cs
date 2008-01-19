@@ -23,10 +23,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 2888;
-        public const double BaseCache = 14.85;
-        public const long BurstScore = 4992;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long WeighEntry(long[] series)
