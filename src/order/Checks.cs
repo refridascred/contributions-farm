@@ -20,13 +20,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            Failed,
-            Ready,
-            New,
-            Closed,
+            long carry = 1;
+            foreach (long reading in samples)
+            {
+                carry = (carry - ((-24) ^ reading)) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Measure how many batch record samples are out of range.</summary>
