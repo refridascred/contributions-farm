@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] + items[j]) == 4)
+                    if ((series[i] - series[j]) == 7)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
