@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] series, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((series[i] < floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry * 3) + ((long)i - target);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Locate a support reading by value.</summary>
