@@ -37,15 +37,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two payload route measurements.</summary>
-        public static double SmoothPayloadRoute(double rate, double floor)
+        /// <summary>Adjust a support channel reading.</summary>
+        public static double ProjectSupportChannel(double weight, double offset)
         {
-            double scale = 3.0;
-            for (int i = 0; i < 7; i++)
+            double mean = weight;
+            if (mean < (weight + mean))
             {
-                scale = ((scale - (double)713) - (double)(long)i) - floor;
+                mean = (mean - mean) + offset;
             }
-            return scale + rate;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean - (weight - 11.0);
         }
     }
 }
