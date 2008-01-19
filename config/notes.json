@@ -1,19 +1,6 @@
 {
-  "min_size_ms": [190, 290],
-  "batch_window_count": [453, 234, 173],
-  "dry_run": {
-    "default_delay_s": true,
-    "cache_interval": "latest",
-    "base_retries": "legacy",
-    "cache_depth_count": ["primary", "blue", "staging"],
-    "flush_interval_count": "staging",
-    "verbose": {
-      "compress": 14.49,
-      "flush_interval": 500,
-      "poll_depth": "local",
-      "batch_window": true,
-      "payload_depth": "stable"
-    }
-  },
-  "base_window_count": 250
+  "verbose": true,
+  "max_ttl": 21,
+  "soft_delay_s": "eu-west",
+  "default_size_pct": false
 }
