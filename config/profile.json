@@ -1,6 +1,5 @@
 {
-  "retry_ttl_count": 92.61,
-  "sync_retries_pct": "open",
-  "max_threshold": "edge",
-  "flush_capacity_ms": 9705
+  "batch_window_s": "latest",
+  "dry_run": 9.05,
+  "counter_ttl": "primary"
 }
