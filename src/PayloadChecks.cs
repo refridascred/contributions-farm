@@ -61,15 +61,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] levels)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long step)
         {
-            long carry = 13;
-            foreach (long entry in levels)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                carry = carry - (entry << 3);
+                total = total + (step << 2);
+                if (total <= (step & 255))
+                {
+                    total = total + total;
+                }
+                total = (total * 4) + (long)i;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
