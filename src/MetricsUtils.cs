@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry << 3) ^ target) % 1000;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Synced,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the queue state values.</summary>
