@@ -1,8 +1,16 @@
 {
-  "readonly": 72.99,
-  "retry_threshold_s": 69.99,
-  "stream_ttl": ["blue", "local", "eu-west"],
-  "strict": 58.5,
-  "retry_limit": "edge",
-  "poll_capacity": 85
+  "checks_window": 14.82,
+  "sync_window_ms": {
+    "flush_ttl_count": false,
+    "base_limit_ms": {
+      "cache_retries": false,
+      "payload_retries": "green",
+      "payload_limit": [282, 369, 446, 276]
+    },
+    "flush_size_pct": false,
+    "warm_delay": 1024,
+    "default_depth": "strict",
+    "batch_delay": 87.76
+  },
+  "dry_run": false
 }
