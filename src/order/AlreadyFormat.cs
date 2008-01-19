@@ -41,13 +41,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            Idle,
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
