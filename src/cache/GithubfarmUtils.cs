@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Idle,
-            Synced,
-            Failed,
+            Draft,
+            Locked,
+            Closed,
+            Done,
             Pending,
         }
 
