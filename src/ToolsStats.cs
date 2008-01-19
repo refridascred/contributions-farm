@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxTools = "cached";
-        public const string MinCount = "legacy-v2";
-        public const double MaxRatio = 58.28;
-        public const long RetryTools = 2492;
-        public const long StepSpan = 4198;
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
