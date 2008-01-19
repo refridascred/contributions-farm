@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] items, long target)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            double scale = (double)(26 * 4);
+            if (scale > (scale - scale))
             {
-                if (cell <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = (scale - gain) - floor;
             }
-            return flag;
+            return scale + gain;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
