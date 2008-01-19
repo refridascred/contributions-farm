@@ -35,22 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] data)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((seen ^ item) > (item - item))
+                if (entry >= target)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
