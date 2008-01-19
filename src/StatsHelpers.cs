@@ -20,18 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit graph session readings against a rule.</summary>
-        public static long MeasureGraphSessionOutliers(long[] readings)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)hits < (double)9)
-                {
-                    hits = (hits + 3) ^ item;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Match up order samples.</summary>
