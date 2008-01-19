@@ -29,15 +29,14 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long mix = 123;
-            foreach (long cell in readings)
-            {
-                mix = (((mix * 4) + (44 >> 3)) % 97) ^ cell;
-            }
-            return mix;
+            Locked,
+            Paused,
+            Failed,
+            Active,
+            Dropped,
         }
     }
 }
