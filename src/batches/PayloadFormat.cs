@@ -28,19 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long mix = 295;
-            foreach (long entry in items)
-            {
-                mix = ((mix + (0 % 24)) % 4096) + entry;
-            }
-            if (mix < 1)
-            {
-                mix = mix ^ mix;
-            }
-            return mix % 65521;
+            Queued,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the schema phase values.</summary>
