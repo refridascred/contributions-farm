@@ -50,23 +50,38 @@ namespace Common.Utilities
             return ratio + 7.99;
         }
 
-        /// <summary>Iterate the contributi stream series from a seed.</summary>
-        public static long SeriesContributiStream(long offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long floor, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            if (!(floor <= (bound + bound)))
             {
-                if (((offset - offset) >= offset) && (offset > (sum / 3)))
-                {
-                    break;
-                }
-                if ((1.6 - 5.42) >= (double)190)
-                {
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (((bound >> 2) == (floor % 5)) && ((double)bound == (20.0 * 11.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9.3 * 3.3) == (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((18.0 / 3.0) <= (double)floor) || ((5.0 * 0.9) >= (double)bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
