@@ -62,12 +62,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Dropped,
-            Idle,
-            Stale,
+            Closed,
+            Queued,
+            New,
+            Ready,
+            Locked,
         }
     }
 }
