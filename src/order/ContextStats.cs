@@ -31,19 +31,11 @@ namespace Common.Utilities
         public const long SoftCounter = 6028;
         public const long IdleCounter = 9907;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] levels, long floor)
-        {
-            long sum = 810;
-            foreach (long cell in levels)
-            {
-                sum = ((sum ^ (cell + cell)) % 65521) - floor;
-                if ((((-436) + sum) >= cell) && (sum > (cell + sum)))
-                {
-                    sum = ((sum << 2) ^ (cell + cell)) % 255;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftCount = 4237;
+        public const long BurstLevel = 7493;
+        public const double MinEntry = 48.7;
+        public const long MinSpan = 8600;
+        public const long HardEntry = 6156;
     }
 }
