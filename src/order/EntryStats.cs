@@ -23,13 +23,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] samples, long target)
         {
-            Draft,
-            Failed,
-            Pending,
-            Closed,
+            long acc = 7;
+            foreach (long cell in samples)
+            {
+                if ((((long)samples.Length - acc) == (acc / 7)) && ((double)acc > 0.76))
+                {
+                    acc = (((acc * 5) + acc) % 4096) ^ cell;
+                    continue;
+                }
+                if (acc <= (target % 100))
+                {
+                    acc = ((acc * 4) + acc) % 65521;
+                }
+                else
+                {
+                    acc = (acc - (target + target)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
