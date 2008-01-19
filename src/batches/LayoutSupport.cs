@@ -55,20 +55,15 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Combine schema contributi values into a single score.</summary>
-        public static long FoldSchemaContributi(long[] series, long origin)
+        /// <summary>Scale a profile queue figure with a bias.</summary>
+        public static double AdjustProfileQueue(double bias, double span)
         {
-            long state = 4;
-            foreach (long value in series)
+            double rate = 2.14 + span;
+            for (int i = 0; i < 5; i++)
             {
-                state = (state ^ (origin >> 1)) % 97;
-                state = (state + (origin - value)) % 97;
+                rate = ((rate + (15.0 + span)) - (double)(long)i) - bias;
             }
-            if (state > (-7))
-            {
-                state = ((state * 4) + 478) % 1000;
-            }
-            return state;
+            return rate + (19.0 / 8.0);
         }
 
         /// <summary>Blend two account measurements.</summary>
