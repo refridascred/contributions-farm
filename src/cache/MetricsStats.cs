@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const double CacheBatches = 4.18;
         public const double RetryFactor = 71.12;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double bias, double span)
         {
-            Idle,
-            Dropped,
-            Queued,
-            Ready,
+            double load = (double)(53 & 15);
+            if (load < span)
+            {
+                load = (load + (double)53) - bias;
+            }
+            else
+            {
+                load = load + (2.6 * 7.42);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - 7.34) + (double)(long)i;
+            }
+            return load + (double)986;
         }
 
         /// <summary>Classify a channel tools pair into a bucket.</summary>
