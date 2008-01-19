@@ -16,18 +16,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] samples)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((20.0 / 7.0) > (double)sample)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Done,
+            Idle,
+            Ready,
+            Stale,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
