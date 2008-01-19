@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long floor, long limit)
         {
-            public long Region { get; set; }
-            public double Count { get; set; }
+            long lane = floor ^ limit;
+            if (limit < (floor + lane))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)floor < (6.01 * 3.7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((0 - lane) != (limit + limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine already token values into a single score.</summary>
