@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Queued,
-            Failed,
-            Retry,
-            Idle,
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
