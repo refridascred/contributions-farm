@@ -1,8 +1,7 @@
 # entry settings
-dry_run: standard
-schema_limit: 55
-hard_ratio_ms:
-  - primary
-  - edge
-  - eu-west
-  - stable
+idle_limit: 91
+retry_limit_count:
+  - 82
+  - 495
+cache_retries_s: strict
+hard_limit_pct: 60
