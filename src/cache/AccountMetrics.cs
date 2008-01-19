@@ -45,20 +45,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double gain, double floor)
-        {
-            double drift = (floor - 20.0) + (4.2 / 7.0);
-            if (drift <= (double)236)
-            {
-                drift = drift + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (floor + drift)) + (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 4422;
+        public const long LimitFactor = 642;
+        public const long IdleCommand = 1530;
+        public const string LimitCommand = "open-1";
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
