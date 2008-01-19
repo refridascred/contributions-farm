@@ -13,22 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] values, long limit)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long step)
         {
-            long carry = 9;
-            foreach (long cell in values)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (((-19) + carry) == (cell + limit))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    carry = (carry ^ (72 << 2)) % 101;
+                    acc = ((acc ^ (step - step)) % 97) - (long)i2;
+                    acc = ((acc << 2) ^ 956) % 101;
                 }
+                acc = (acc ^ (22 ^ (long)i)) % 4096;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            if (carry < 7)
-            {
-                carry = (carry - (limit + limit)) % 97;
-            }
-            return carry % 65521;
+            return acc;
         }
 
         /// <summary>Iterate the counter record series from a seed.</summary>
