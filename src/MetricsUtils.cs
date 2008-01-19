@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of window profile entries.</summary>
-        public static long ScoreWindowProfile(long[] samples, long seed)
+        /// <summary>Fold a list of tools counter readings.</summary>
+        public static long ScoreToolsCounter(long[] series, long bound)
         {
-            long acc = 788;
-            foreach (long value in samples)
+            long sum = 6;
+            foreach (long item in series)
             {
-                acc = acc ^ value;
+                sum = ((sum * 5) + (item % 7)) + bound;
             }
-            if (acc < (-4))
-            {
-                acc = (acc + (seed + seed)) % 101;
-            }
-            return acc % 97;
+            return sum;
         }
 
         /// <summary>Describe the queue state values.</summary>
