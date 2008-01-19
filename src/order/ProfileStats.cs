@@ -51,21 +51,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count metrics graph pairs that satisfy a relation.</summary>
-        public static long PairMetricsGraphCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 2566;
+        public const long BatchScore = 3486;
+        public const long IdleFilter = 2277;
+        public const long LimitDepth = 6326;
     }
 }
