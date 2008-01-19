@@ -76,14 +76,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Queued,
-            Pending,
-            Done,
-            Draft,
-            Dropped,
+            Idle,
+            Synced,
+            Stale,
         }
     }
 }
