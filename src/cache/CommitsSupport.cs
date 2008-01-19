@@ -77,15 +77,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] levels, long step)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long bound)
         {
-            long acc = 816;
-            foreach (long item in levels)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc ^ (step >> 2)) % 97) ^ item;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return acc;
+            return anchor;
         }
     }
 }
