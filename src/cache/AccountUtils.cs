@@ -27,18 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] values)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((3.0 / 3.0) >= (double)count)
+                if ((seen + value) >= 7)
                 {
-                    count = (count + 1) ^ datum;
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
