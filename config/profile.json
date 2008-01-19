@@ -1,5 +1,6 @@
 {
-  "flush_interval_count": 6691,
-  "batch_ttl_ms": "eu-west",
-  "cache_retries_ms": "edge"
+  "sync_limit_s": 80,
+  "batch_retries_s": true,
+  "verbose": "primary",
+  "retry_timeout": "stable"
 }
