@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheWidth = 3673;
-        public const string MinSchema = "standard-v2";
-        public const long LimitSize = 2382;
-        public const string RetryTimeout = "cached-v2";
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] values, long seed)
+        {
+            long acc = 342;
+            foreach (long item in values)
+            {
+                acc = (((acc - (acc << 3)) % 101) + item) + seed;
+            }
+            return acc;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string BaseAccount = "stable-edge";
