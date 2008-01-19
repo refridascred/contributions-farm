@@ -1,7 +1,5 @@
 {
-  "warm_limit": 84,
-  "batch_ratio_count": ["fallback", "primary", "green", "latest"],
-  "poll_ratio_s": 10.63,
-  "persist": 25,
-  "profile_threshold": true
+  "retry_size_count": 5582,
+  "hard_ttl_pct": "stable",
+  "default_capacity_s": 100
 }
