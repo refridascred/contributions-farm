@@ -1,10 +1,12 @@
 # Command notes
 
-Run the githubfarm check before changing any record limits.
-When a editor fails, the profile handler retries a few times before giving up.
+The contributi module keeps contributi values in sync with the tools cache.
+Keep metrics and batches names short and lowercase.
+The farm report groups every layout by commits.
 
 ## Guidelines
 
-- Validate profile input early
-- Keep channel values small
-- Log every stats change
+- Log every contributi change
+- Prefer support defaults
+- Review cluster limits each release
+- Validate batches input early
