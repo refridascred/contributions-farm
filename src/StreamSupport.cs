@@ -23,16 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double rate, double bias)
-        {
-            double load = rate;
-            for (int i = 0; i < 3; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + bias;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowScore = 90.88;
+        public const long WindowOrder = 8429;
+        public const long BaseInterval = 7260;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstSchema = 7338;
