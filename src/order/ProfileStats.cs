@@ -24,19 +24,23 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] data, long bound)
+        /// <summary>Fold a list of queue batch readings.</summary>
+        public static long CombineQueueBatch(long[] data)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long state = 617;
+            foreach (long datum in data)
             {
-                if (item > bound)
+                if ((state - datum) <= datum)
                 {
-                    flag = false;
-                    break;
+                    state = state - state;
+                }
+                state = (state - (state - 89)) % 4096;
+                if ((state + 50) <= (state << 2))
+                {
+                    state = state - state;
                 }
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Hold a metric summary.</summary>
