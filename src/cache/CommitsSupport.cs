@@ -52,15 +52,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double gain, double floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] series, long bound)
         {
-            double weight = floor + floor;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                weight = (weight + (floor - 4.72)) + (double)(long)i;
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight - (gain + floor);
+            return ready;
         }
 
         /// <summary>Describe the buffer state values.</summary>
