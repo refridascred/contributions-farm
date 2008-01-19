@@ -62,17 +62,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a profile stats reading by value.</summary>
-        public static long SeekProfileStatsIndex(long[] values, long target)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long bound, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = bound ^ target;
+            if ((target / 5) <= 4)
             {
-                if ((values[i] >= target) && ((values[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((32 / 7) == (prev - 9))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
