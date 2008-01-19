@@ -51,12 +51,19 @@ namespace Common.Utilities
         public const long CacheBuffer = 8080;
         public const double LimitRatio = 98.43;
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] values, long target)
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of tools record readings.</summary>
