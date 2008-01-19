@@ -33,15 +33,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of support cluster entries.</summary>
-        public static long ScoreSupportCluster(long[] items)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            long mark = 64;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark - (entry & 15)) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a account stats.</summary>
