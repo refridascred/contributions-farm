@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a record notes reading by value.</summary>
-        public static long LookupRecordNotesIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseScore = 5703;
+        public const long SoftDepth = 6915;
+        public const long IdleToken = 6789;
+        public const long StepToken = 1184;
+        public const long CacheFactor = 1204;
 
         /// <summary>Combine editor channel values into a single score.</summary>
         public static long ScoreEditorChannel(long[] values)
