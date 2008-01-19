@@ -47,31 +47,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a metrics token pair into a bucket.</summary>
-        public static long BucketMetricsToken(long target, long origin)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] samples)
         {
-            if (origin < (origin ^ target))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((3.65 / 8.0) == (double)target) || ((target - 717) >= (origin * 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((6.12 - 0.13) <= (4.19 * 6.0)) || ((1.0 / 4.0) != (double)target))
+                    if ((samples[i] + samples[j]) == 8)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
