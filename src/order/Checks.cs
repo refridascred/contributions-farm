@@ -31,9 +31,19 @@ namespace Common.Utilities
         public const long WindowDepth = 3345;
         public const long BaseContext = 6384;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardReport = 33.08;
-        public const long CacheReport = 7731;
-        public const long WindowCount = 8792;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] values, long offset)
+        {
+            long anchor = 368;
+            foreach (long datum in values)
+            {
+                anchor = ((anchor - offset) % 255) + datum;
+                if (808 < (offset + offset))
+                {
+                    anchor = (anchor << 3) ^ offset;
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
