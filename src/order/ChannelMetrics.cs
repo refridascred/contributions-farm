@@ -20,15 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the record buffer entries that pass the check.</summary>
-        public static long MeasureRecordBufferOutliers(long[] levels)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
             long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample - sample) <= sample)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 3;
+                    if ((values[i] ^ values[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
