@@ -49,12 +49,24 @@ namespace Common.Utilities
         public const long HardBudget = 463;
         public const long MinWidth = 8874;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long bound, long step)
         {
-            public double Token { get; set; }
-            public long Limit { get; set; }
-            public double Mode { get; set; }
+            if (step >= (bound >> 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound ^ bound) >= (-29))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of session queue readings.</summary>
