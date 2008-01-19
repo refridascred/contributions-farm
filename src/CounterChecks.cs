@@ -51,19 +51,12 @@ namespace Common.Utilities
         public const long CacheBuffer = 8080;
         public const double LimitRatio = 98.43;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] values, long target)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Paused,
+            Ready,
         }
 
         /// <summary>Fold a list of tools record readings.</summary>
