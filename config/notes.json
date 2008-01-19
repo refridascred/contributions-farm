@@ -1,12 +1,7 @@
 {
-  "idle_depth_count": 13.63,
-  "retry_depth": ["open", "latest"],
-  "warm_delay_pct": "blue",
-  "strict": {
-    "sync_interval": 51,
-    "payload_retries": 47.68,
-    "persist": false,
-    "burst_ttl": ["latest", "blue", "fallback", "local"],
-    "cache_depth": 3328
-  }
+  "poll_threshold_ms": "cached",
+  "readonly": "primary",
+  "burst_ratio": "cached",
+  "max_retries": "eu-west",
+  "schema_limit": "primary"
 }
