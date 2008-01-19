@@ -29,18 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] data)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] levels, long floor)
         {
-            long result = 8;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (cell < (cell * 5))
+                if (reading != floor)
                 {
-                    result = (result + result) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
     }
 }
