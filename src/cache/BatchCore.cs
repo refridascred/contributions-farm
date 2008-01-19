@@ -41,18 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] samples)
+        /// <summary>Roll a stats metric counter forward.</summary>
+        public static long IterateStatsMetric(long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((424 + matches) >= 83)
+                if (origin <= ((long)i + sum))
                 {
-                    matches = (matches + 1) ^ reading;
+                    sum = ((sum * 2) + ((long)i + 3)) % 65521;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
