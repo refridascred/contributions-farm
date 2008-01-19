@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 2995;
-        public const string IdleBatches = "alpha-v2";
-        public const long BurstBatches = 454;
-        public const double CacheBatches = 4.18;
-        public const double RetryFactor = 71.12;
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] levels, long seed)
