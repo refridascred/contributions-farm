@@ -61,21 +61,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 519;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((((total * 3) + (51 + total)) % 1000) ^ entry) + limit;
             }
-            return tally;
+            if (total > (-809))
+            {
+                total = total ^ (total + 540);
+            }
+            return total;
         }
     }
 }
