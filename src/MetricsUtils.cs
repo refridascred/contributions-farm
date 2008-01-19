@@ -20,13 +20,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Queued,
-            Stale,
-            Locked,
-            Synced,
+            Closed,
+            Ready,
+            Failed,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
