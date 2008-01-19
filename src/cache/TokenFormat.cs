@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 2080;
+        public const long IdleProfile = 6249;
+        public const long CacheDepth = 3958;
+        public const string IdleLevel = "staging";
+        public const long HardLevel = 6851;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long OverlapStreamCount(long[] items)
