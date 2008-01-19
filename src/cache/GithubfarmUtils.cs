@@ -21,23 +21,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] data, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] samples, long limit)
         {
-            long mark = 0;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                mark = (((mark << 3) ^ (5 ^ mark)) - cell) - offset;
-                if ((-9) >= mark)
+                if (reading < limit)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (mark > 3)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Describe the stats phase values.</summary>
