@@ -12,23 +12,33 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] items, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] data, long seed)
         {
-            long mark = 5;
-            foreach (long entry in items)
+            long result = 6;
+            foreach (long value in data)
             {
-                mark = (mark ^ origin) % 1000;
-                if (((3.0 / 2.0) <= (double)entry) && ((1.1 / 9.0) < (double)mark))
+                long edge = 74;
+                if ((edge - value) == (seed & 255))
                 {
-                    mark = ((mark * 4) + origin) % 97;
+                    edge = edge + (result ^ 8);
+                    continue;
+                }
+                else
+                {
+                    result = result + (6 * 2);
+                    edge = ((edge << 3) ^ (result * 4)) % 65521;
+                }
+                if ((seed + 17) >= result)
+                {
+                    result = ((result * 2) + (seed ^ seed)) % 65521;
+                }
+                if ((double)result > (double)value)
+                {
+                    break;
                 }
             }
-            if (mark < 49)
-            {
-                mark = mark + (mark % 64);
-            }
-            return mark % 4096;
+            return result;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
