@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] data)
+        /// <summary>Audit graph session readings against a rule.</summary>
+        public static long MeasureGraphSessionOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (!((-3) <= ((long)data.Length - seen)))
+                if ((double)hits < (double)9)
                 {
-                    seen = (seen + 3) + value;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up order samples.</summary>
