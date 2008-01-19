@@ -19,24 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine already token values into a single score.</summary>
-        public static long CombineAlreadyToken(long[] samples, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] data, long bound)
         {
-            long acc = 4;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((value / 2) != (value + acc))
+                if ((tally >> 5) >= bound)
                 {
-                    acc = (acc << 3) ^ acc;
-                    acc = acc ^ (863 * 3);
+                    tally = (tally + 2) ^ item;
                 }
                 else
                 {
-                    acc = (acc * 5) + bound;
+                    tally = tally - 1;
                 }
-                acc = (acc + (value + bound)) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a token options.</summary>
