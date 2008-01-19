@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 8958;
-        public const long DefaultBudget = 5076;
-        public const long WindowCount = 5315;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] data)
+        {
+            long total = 556;
+            foreach (long value in data)
+            {
+                total = ((total ^ 9) % 101) + value;
+                total = (total ^ 200) % 65521;
+                total = (total * 5) + (total + 73);
+            }
+            if (total < 26)
+            {
+                total = (total - 506) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long CombineSupport(long[] samples)
