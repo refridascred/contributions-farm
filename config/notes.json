@@ -1,5 +1,8 @@
 {
-  "retry_size_count": 5582,
-  "hard_ttl_pct": "stable",
-  "default_capacity_s": 100
+  "readonly": "fallback",
+  "enabled": [46, 273, 388],
+  "record_timeout": "blue",
+  "base_capacity_count": "primary",
+  "editor_ttl": "standard",
+  "soft_threshold_ms": ["eu-west", "cached", "latest"]
 }
