@@ -1,7 +1,7 @@
 {
-  "format_size": false,
-  "verbose": 175,
-  "compress": "stable",
-  "persist": [61, 77, 50],
-  "dry_run": true
+  "warm_interval_pct": 36,
+  "strict": true,
+  "schema_ratio": 75.79,
+  "poll_interval_count": 43,
+  "idle_threshold_pct": "staging"
 }
