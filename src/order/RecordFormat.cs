@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] series, long target)
         {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
