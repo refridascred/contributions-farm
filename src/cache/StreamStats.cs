@@ -40,12 +40,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] items, long target)
         {
-            public double Ratio { get; set; }
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
