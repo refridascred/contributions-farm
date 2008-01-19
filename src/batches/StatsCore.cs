@@ -52,21 +52,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 34;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = score - cell;
+                if ((94 + score) >= score)
                 {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = score + cell;
+                }
+                else
+                {
+                    score = (score - 3) % 4096;
                 }
             }
-            return hits;
+            return score % 65521;
         }
 
         /// <summary>Grade a queue context value against two limits.</summary>
