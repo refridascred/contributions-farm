@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] readings, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((step * 2) > (count + count))
+                if (!((cell < hits) && ((3.12 - 9.7) != (double)cell)))
                 {
-                    count = (count + 2) + datum;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
