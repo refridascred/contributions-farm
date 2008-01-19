@@ -1,14 +1,4 @@
 # githubfarm settings
-strict:
-  - eu-west
-  - legacy
-retry_threshold: true
-warm_timeout_ms:
-  - 322
-  - 137
-  - 410
-  - 488
-flush_timeout: standard
-base_timeout:
-  - primary
-  - open
+audit: false
+cache_limit_count: fallback
+idle_threshold: 35
