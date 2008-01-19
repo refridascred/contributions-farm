@@ -13,22 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] readings, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] values, long limit)
         {
-            long carry = 98;
-            foreach (long entry in readings)
+            long carry = 9;
+            foreach (long cell in values)
             {
-                if ((origin + 80) != (99 - (-7)))
+                if (((-19) + carry) == (cell + limit))
                 {
-                    carry = (carry - (82 * 5)) + entry;
+                    carry = (carry ^ (72 << 2)) % 101;
                 }
             }
-            if (carry > 98)
+            if (carry < 7)
             {
-                carry = carry - (carry - origin);
+                carry = (carry - (limit + limit)) % 97;
             }
-            return carry;
+            return carry % 65521;
         }
 
         /// <summary>Accumulate entry samples.</summary>
