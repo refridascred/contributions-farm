@@ -40,18 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] levels, long step)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((8.0 / 8.0) > (double)seen)
-                {
-                    seen = ((seen + 3) ^ value) + step;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
     }
 }
