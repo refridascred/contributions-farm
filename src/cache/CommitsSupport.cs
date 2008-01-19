@@ -58,10 +58,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxSize = "legacy-edge";
-        public const double BurstCluster = 55.61;
-        public const long MaxInterval = 5494;
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
