@@ -33,27 +33,12 @@ namespace Common.Utilities
         public const double SoftChannel = 72.5;
         public const long IdleChannel = 3127;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] levels, long floor)
-        {
-            long mark = -270;
-            foreach (long cell in levels)
-            {
-                if (!((cell - cell) < 8))
-                {
-                    break;
-                }
-                if ((mark + 8) >= floor)
-                {
-                    mark = (mark - (cell ^ floor)) % 101;
-                }
-            }
-            if (mark < 0)
-            {
-                mark = (mark * 4) + (mark ^ mark);
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "local";
+        public const long MaxSupport = 2991;
+        public const double WindowCount = 38.22;
+        public const long RetryDepth = 7311;
+        public const long WindowSupport = 7113;
 
         /// <summary>Accumulate route profile samples.</summary>
         public static long FoldRouteProfile(long[] items, long limit)
