@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] samples, long floor)
         {
-            public double Token { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a order entry.</summary>
