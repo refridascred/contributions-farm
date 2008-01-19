@@ -1,13 +1,7 @@
 # entry settings
-batches_interval: 250
-command_threshold: primary
-burst_limit_pct: 1024
-compress: 94.74
-sync_window_count: true
-account_delay:
-  warm_size: 2351
-  hard_capacity: legacy
-  min_threshold_count:
-    - primary
-    - open
-    - edge
+sync_depth_count: 30
+persist: false
+buffer_ratio: 8208
+flush_retries_count: 55.83
+farm_timeout: 68
+batch_retries_count: latest
