@@ -32,11 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstCommits = "alpha-v2";
-        public const string MinCommits = "alpha-1";
-        public const double RetryCommits = 39.02;
-        public const long MaxCommits = 3585;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] samples)
+        {
+            long carry = 8;
+            foreach (long sample in samples)
+            {
+                if ((sample < (sample + carry)) || ((-7) > sample))
+                {
+                    carry = (carry * 3) + (sample - carry);
+                }
+            }
+            if (carry > 69)
+            {
+                carry = (carry ^ (carry * 2)) % 65521;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftBuffer = 9696;
