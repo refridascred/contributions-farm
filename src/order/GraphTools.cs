@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 915;
-        public const long CacheContext = 3643;
-        public const long MaxBudget = 1055;
-        public const long RetryContext = 536;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!((1.3 * 1.1) < (double)cell))
+                {
+                    tally = (tally + 1) - bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MinBatch = 6395;
