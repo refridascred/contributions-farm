@@ -1,4 +1,12 @@
 # entry settings
-sync_threshold_count: 33.89
-batch_ratio_pct: true
-max_limit_pct: 58.78
+poll_capacity:
+  - 404
+  - 333
+account_window: latest
+readonly: false
+profile_limit:
+  layout_size: false
+  idle_depth: 72.78
+  min_delay_ms: 2777
+batch_ratio: 33
+flush_retries_ms: 250
