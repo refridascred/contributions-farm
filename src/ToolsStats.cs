@@ -26,17 +26,16 @@ namespace Common.Utilities
         public const long MaxEntry = 6735;
         public const long MinSize = 8302;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] readings, long limit)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
+                result = (result - result) % 255;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many payload editor samples are out of range.</summary>
