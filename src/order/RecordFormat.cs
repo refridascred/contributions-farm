@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchDepth = 6.19;
-        public const long DefaultCount = 9990;
-        public const long BatchMetrics = 2797;
-        public const long IdleMetrics = 2666;
-        public const long HardMetrics = 1323;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long offset, long step)
+        {
+            long prev = offset - step;
+            if ((prev > (4 % 24)) && ((offset - offset) == (step - step)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((747 - offset) > 90)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
