@@ -54,17 +54,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] readings, long limit)
+        /// <summary>Iterate the tools editor series from a seed.</summary>
+        public static long DeriveToolsEditor(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix + (mix + 23)) % 97;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
     }
 }
