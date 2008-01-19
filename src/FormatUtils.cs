@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long seed, long seed2)
+        /// <summary>Derive the next batches counter value from a seed.</summary>
+        public static long RollBatchesCounter(long step)
         {
-            if ((seed2 - seed2) < (5 & 3))
+            long state = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 1;
+                state = state ^ (step % 24);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (seed2 > 7)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (18.0 < (double)seed2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((75 + seed2) < (seed + seed2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the counter class values.</summary>
