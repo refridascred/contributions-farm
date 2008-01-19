@@ -42,22 +42,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] items)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double scale, double floor)
         {
-            long state = 9;
-            foreach (long item in items)
+            double gain = (double)(78 % 64);
+            if (gain > (9.82 + scale))
             {
-                if ((2.0 >= (double)item) || ((state - 97) > state))
-                {
-                    state = state - state;
-                }
-                else
-                {
-                    state = state - 145;
-                }
+                gain = gain - gain;
             }
-            return state % 1000;
+            return gain - (floor + floor);
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
