@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 6;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = score + (score ^ entry);
+                if ((entry + entry) > score)
                 {
-                    if ((levels[i] ^ levels[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score ^ entry) % 1000;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a metrics options.</summary>
