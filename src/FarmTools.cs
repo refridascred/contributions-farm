@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = (carry * 3) + ((long)i - target);
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseScore = 7606;
+        public const string LimitGraph = "local-edge";
+        public const long HardCount = 6809;
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LookupSupportIndex(long[] series, long target)
