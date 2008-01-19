@@ -48,22 +48,19 @@ namespace Common.Utilities
         public const long CacheBudget = 2696;
         public const long DefaultBatches = 7894;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] readings, long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((cell >= (cell + 1)) || ((seen / 7) < (213 / 5)))
+                if (value != step)
                 {
-                    seen = (seen + 1) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
