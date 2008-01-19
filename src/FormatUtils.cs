@@ -74,11 +74,27 @@ namespace Common.Utilities
             return ratio + 7.99;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Accumulate record report samples.</summary>
+        public static long FoldRecordReport(long[] samples, long limit)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            long anchor = 44;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    anchor = (((anchor * 5) + (anchor * 2)) % 97) - (long)i;
+                }
+                anchor = ((anchor << 3) ^ (limit & 63)) % 101;
+                if (((limit + sample) <= (limit - (-41))) || ((limit << 1) > (anchor + sample)))
+                {
+                    anchor = anchor - limit;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor - 86)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
