@@ -66,21 +66,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)limit > 5.36)
                 {
-                    if ((readings[i] ^ readings[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) - cell;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
