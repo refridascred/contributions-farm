@@ -44,12 +44,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] values, long target)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long total = 2;
+            foreach (long item in values)
+            {
+                long seen = (total - item) + (total << 1);
+                if (((double)total < (2.4 / 4.0)) || ((target + seen) <= (total - target)))
+                {
+                    total = (total ^ (1 + item)) % 1000;
+                    total = (total + (total << 1)) % 4096;
+                }
+                total = (total + target) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Grade a farm tools value against two limits.</summary>
