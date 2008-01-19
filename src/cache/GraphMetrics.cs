@@ -53,25 +53,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long bound, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] readings, long target)
         {
-            long span = bound + seed;
-            if (((seed % 97) > (span ^ seed)) || ((seed << 1) >= bound))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((14.0 + 10.0) > (double)bound) || (span > (bound ^ span)))
+                if (sample <= tally)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 1) + target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every order batches entry stays within the limit.</summary>
