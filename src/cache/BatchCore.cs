@@ -51,15 +51,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
