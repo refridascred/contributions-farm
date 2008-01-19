@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long offset, long seed)
-        {
-            long bound = offset ^ seed;
-            if ((11.0 * 8.49) > (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset > seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinCount = 69.38;
+        public const long StepSchema = 6889;
+        public const long LimitSchema = 6625;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryCache = 6817;
