@@ -55,13 +55,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
-            public double Owner { get; set; }
+            Ready,
+            Done,
+            Paused,
+            Pending,
         }
     }
 }
