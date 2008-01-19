@@ -1,13 +1,22 @@
 # support settings
-enabled:
-  - standard
-  - open
-  - legacy
-default_depth_s:
-  base_delay_s: legacy
-  base_ratio: true
-  cache_retries_count: 73
-route_depth:
-  - legacy
-  - fallback
-  - staging
+strict: true
+retry_window_count: true
+persist: blue
+warm_limit:
+  counter_ratio: 35.27
+  schema_size:
+    poll_timeout_count: 250
+    hard_timeout_count: 500
+    warm_size_ms: 7075
+    min_ratio: latest
+    burst_limit_pct: standard
+  githubfarm_window:
+    - local
+    - local
+    - edge
+    - local
+  metric_ratio: 6
+  base_size: true
+  base_limit_count: 26.16
+flush_size_ms: 95
+retry_timeout_s: eu-west
