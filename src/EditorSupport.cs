@@ -73,11 +73,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleOrder = "cached-edge";
-        public const string MinRatio = "stable-v2";
-        public const double WindowTimeout = 75.11;
-        public const double SoftLevel = 85.2;
-        public const long WindowOrder = 3373;
+        /// <summary>Roll a report farm counter forward.</summary>
+        public static long StepReportFarm(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result + (result & 3)) % 65521;
+                if (!!((floor - (long)i) < (66 + (long)i)))
+                {
+                    result = result + (floor % 60);
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
