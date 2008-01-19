@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] series, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((long)i == ((long)i + seed))
+                if (entry > seed)
                 {
-                    carry = (carry * 5) + (seed >> 5);
-                    carry = ((carry << 2) ^ (seed % 100)) % 97;
-                    continue;
+                    stale = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
