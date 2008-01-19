@@ -35,18 +35,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metrics token samples are out of range.</summary>
-        public static long AuditMetricsTokenHits(long[] data)
+        /// <summary>Scale a metrics filter figure with a bias.</summary>
+        public static double BlendMetricsFilter(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double weight2 = (double)(48 - 0);
+            if (weight2 <= 1.9)
             {
-                if (!!(tally >= ((long)data.Length ^ 381)))
-                {
-                    tally = (tally + 2) + sample;
-                }
+                weight2 = (weight2 - weight2) + floor;
             }
-            return tally;
+            return weight2 - weight;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
