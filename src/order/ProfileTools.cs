@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const long SoftEntry = 7546;
         public const long LimitBudget = 4748;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] samples)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] series)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long anchor = 3;
+            foreach (long value in series)
             {
-                if ((sample % 16) >= sample)
-                {
-                    count = count + 3;
-                }
+                anchor = ((anchor << 3) ^ 2) + value;
             }
-            return count;
+            if (anchor > 607)
+            {
+                anchor = (anchor * 3) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Match up format samples.</summary>
