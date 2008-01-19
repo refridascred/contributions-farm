@@ -20,18 +20,21 @@ namespace Common.Utilities
             return weight - offset;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] readings)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading >> 5) == (count + reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Adjust a graph reading.</summary>
