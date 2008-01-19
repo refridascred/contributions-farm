@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Ready,
-            Done,
-            Locked,
-            New,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxInterval = 5508;
+        public const long RetryDepth = 9477;
+        public const long CacheLevel = 882;
+        public const long SoftPayload = 5322;
+        public const long MinPayload = 9381;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BatchScore = "alpha";
