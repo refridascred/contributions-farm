@@ -1,8 +1,7 @@
 {
-  "min_retries_count": 56,
-  "default_capacity_pct": "blue",
-  "route_limit": "staging",
-  "cache_interval": ["local", "latest", "local", "open"],
-  "batch_size_count": "standard",
-  "already_capacity": "local"
+  "poll_window_pct": 86.87,
+  "notes_size": 48,
+  "batch_threshold_count": [53, 419, 101],
+  "soft_window_pct": 30,
+  "sync_interval_s": 75.36
 }
