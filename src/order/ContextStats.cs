@@ -21,39 +21,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank format support input into a small class.</summary>
-        public static long GradeFormatSupport(long limit, long origin)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long diff = limit + origin;
-            if ((diff * 4) < 7)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((24 / 8) <= (origin % 64)) && ((limit + origin) > (diff >> 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit / 3) == (diff >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin <= (diff << 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public double Count { get; set; }
+            public bool Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
