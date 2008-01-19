@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long StepBatch = 3271;
         public const long RetryRatio = 6185;
 
-        /// <summary>Locate a session stats reading by value.</summary>
-        public static long LookupSessionStatsIndex(long[] series, long target)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] series, long step)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] >= target) && ((series[i] % 3) == 0))
+                if ((series[i] > step) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
