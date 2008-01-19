@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const string WindowBatches = "standard-1";
         public const double BaseBatches = 47.53;
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Measure how many tools graph samples are out of range.</summary>
+        public static long CountToolsGraphGaps(long[] readings)
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public double Rank { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (!(((long)readings.Length + tally) >= tally))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
