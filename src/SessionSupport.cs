@@ -25,15 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] samples, long seed)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long score = 8;
-            foreach (long item in samples)
-            {
-                score = (((score << 2) ^ (item + 245)) % 1000) + seed;
-            }
-            return score;
+            Failed,
+            Stale,
+            Paused,
+            New,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
