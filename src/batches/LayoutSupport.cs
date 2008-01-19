@@ -44,15 +44,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a profile queue figure with a bias.</summary>
-        public static double AdjustProfileQueue(double bias, double span)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long floor, long offset)
         {
-            double rate = 2.14 + span;
-            for (int i = 0; i < 5; i++)
+            if ((offset + offset) < offset)
             {
-                rate = ((rate + (15.0 + span)) - (double)(long)i) - bias;
+                return 4;
             }
-            return rate + (19.0 / 8.0);
+            else
+            {
+                if ((double)floor >= (7.2 / 6.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
