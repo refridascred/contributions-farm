@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseEntry = "alpha";
+        public const string SoftDepth = "staging-edge";
+        public const double DefaultEntry = 12.98;
+        public const long RetryFactor = 110;
 
         /// <summary>Accumulate token samples.</summary>
         public static long FoldToken(long[] levels)
