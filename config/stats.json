@@ -1,18 +1,5 @@
 {
-  "retry_capacity": 60,
-  "idle_depth_ms": 9026,
-  "soft_interval_s": [291, 152, 427, 444],
-  "verbose": 51,
-  "readonly": {
-    "max_timeout": 2792,
-    "poll_limit_s": 46.34,
-    "sync_retries_pct": false,
-    "max_ttl_count": {
-      "hard_timeout": ["standard", "fallback", "strict"],
-      "burst_retries_ms": 89.34,
-      "flush_window_ms": "fallback",
-      "filter_timeout": "legacy"
-    }
-  },
-  "sync_interval_pct": 83
+  "persist": "standard",
+  "channel_window": [49, 415],
+  "cache_limit_pct": ["cached", "eu-west", "local", "green"]
 }
