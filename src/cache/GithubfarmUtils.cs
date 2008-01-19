@@ -27,14 +27,18 @@ namespace Common.Utilities
         public const long BaseStream = 9493;
         public const long BaseScore = 4526;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] levels)
         {
-            Active,
-            Paused,
-            Idle,
-            Pending,
-            Ready,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (((double)matches > (19.0 / 7.0)) && !((matches & 3) == (value + value)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
