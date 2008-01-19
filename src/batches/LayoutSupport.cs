@@ -62,18 +62,19 @@ namespace Common.Utilities
             return rate + (19.0 / 8.0);
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] data)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (45 > hits)
+                if (datum <= target)
                 {
-                    hits = (hits + 2) + value;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
