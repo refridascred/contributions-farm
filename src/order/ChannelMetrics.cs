@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] readings)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry > limit)
                 {
-                    if ((readings[i] - readings[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Count the record buffer entries that pass the check.</summary>
