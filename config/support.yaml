@@ -1,9 +1,17 @@
 # support settings
-window_capacity: staging
-max_capacity: edge
-default_limit:
-  idle_interval_count: true
-  min_depth_ms:
-    - 452
-    - 355
-  min_size_count: eu-west
+githubfarm_ttl: 12.86
+readonly:
+  retry_retries_s:
+    hard_ratio_s: legacy
+    payload_window: green
+    soft_ttl_ms: true
+    order_retries: true
+    max_window_s:
+      - 424
+      - 62
+  idle_ttl_s: 51.95
+  flush_interval_count: 61.49
+  verbose: 23.43
+  default_ttl_s: 80
+default_threshold_pct: staging
+burst_capacity: eu-west
