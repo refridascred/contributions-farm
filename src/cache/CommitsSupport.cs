@@ -67,14 +67,10 @@ namespace Common.Utilities
         public const double BurstCluster = 55.61;
         public const long MaxInterval = 5494;
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Closed,
-            New,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinFactor = 9637;
+        public const long BurstStats = 5517;
+        public const long RetryRatio = 5253;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
