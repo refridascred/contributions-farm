@@ -37,18 +37,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] items, long seed)
+        /// <summary>Blend two payload route measurements.</summary>
+        public static double SmoothPayloadRoute(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double scale = 3.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (8 >= (seed - seen))
-                {
-                    seen = (seen + 3) + item;
-                }
+                scale = ((scale - (double)713) - (double)(long)i) - floor;
             }
-            return seen;
+            return scale + rate;
         }
     }
 }
