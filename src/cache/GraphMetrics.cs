@@ -20,24 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] values, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            long mix = 423;
+            foreach (long datum in values)
             {
-                if ((offset * 3) == (offset % 7))
-                {
-                    total = total + (offset % 100);
-                }
-                bool found = (double)total <= (2.0 / 9.0);
-                if (found)
-                {
-                    found = ((double)total > (0.08 * 9.01)) && found;
-                }
-                total = ((total * 3) + (long)i) % 65521;
+                mix = ((mix ^ datum) % 4096) - limit;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
