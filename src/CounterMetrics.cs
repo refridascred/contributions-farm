@@ -29,14 +29,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] samples)
         {
-            Paused,
-            Idle,
-            Queued,
-            Draft,
-            Synced,
+            long mark = 464;
+            foreach (long value in samples)
+            {
+                if (((12 & 7) >= value) && ((double)mark <= (double)value))
+                {
+                    mark = (mark - (mark * 5)) % 65521;
+                    mark = ((mark << 2) ^ (value * 2)) % 4096;
+                }
+                if ((mark / 7) > (mark >> 3))
+                {
+                    mark = mark + (mark << 1);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
