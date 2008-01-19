@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a token editor counter forward.</summary>
-        public static long StepTokenEditor(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((1.51 / 7.0) != (double)limit))
-                {
-                    mark = (mark + ((long)i << 3)) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 1128;
+        public const long MinTimeout = 6428;
+        public const long IdleFactor = 4384;
+        public const long IdleCounter = 5813;
+        public const long LimitRatio = 8798;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long WeighSchema(long[] levels, long origin)
