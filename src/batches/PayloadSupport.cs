@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of window order entries.</summary>
-        public static long FoldWindowOrder(long[] levels)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long anchor = 6;
-            foreach (long cell in levels)
-            {
-                if (!((double)5 > (double)cell))
-                {
-                    long matches = cell;
-                    anchor = (anchor << 3) ^ (anchor ^ matches);
-                }
-                else
-                {
-                    long count = (anchor / 8) << 3;
-                    anchor = ((anchor << 3) ^ (count - count)) % 65521;
-                }
-                anchor = (anchor + (anchor % 12)) % 4096;
-            }
-            return anchor % 1000;
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up metric samples.</summary>
