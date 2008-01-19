@@ -21,17 +21,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] items, long step)
+        /// <summary>Classify a channel tools pair into a bucket.</summary>
+        public static long BucketChannelTools(long floor, long floor2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((floor - floor2) <= (floor2 ^ floor2))
             {
-                if (items[i] < step)
+                return 8;
+            }
+            else
+            {
+                if (((floor >> 4) >= ((-7) >> 5)) || ((double)floor <= (9.9 + 2.44)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor / 9) > floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor2 & 3) < floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
