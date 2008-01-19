@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] values)
         {
-            long result = 715;
-            foreach (long reading in series)
+            long result = -3;
+            foreach (long reading in values)
             {
-                if (!((result + 6) <= result))
+                if ((reading % 100) < result)
                 {
-                    result = ((result + (result % 64)) % 65521) ^ reading;
+                    result = result ^ (428 + result);
+                }
+                else
+                {
+                    result = (result << 2) ^ (reading * 3);
                 }
             }
-            return result;
+            return result % 97;
         }
 
         /// <summary>Adjust a notes profile reading.</summary>
