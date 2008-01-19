@@ -13,18 +13,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] values, long bound)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long acc = 3;
-            foreach (long sample in values)
-            {
-                if (bound < (bound % 97))
-                {
-                    acc = (acc - (sample << 3)) % 101;
-                }
-            }
-            return acc;
+            Failed,
+            Retry,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a checks stats.</summary>
