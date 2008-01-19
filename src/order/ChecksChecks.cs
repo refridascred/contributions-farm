@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const string MaxLayout = "alpha-1";
         public const string HardCount = "primary";
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
