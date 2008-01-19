@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools payload samples.</summary>
-        public static long WeighToolsPayload(long[] data)
+        /// <summary>Measure how many filter schema samples are out of range.</summary>
+        public static long MeasureFilterSchemaGaps(long[] series)
         {
-            long mark = 1;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                mark = ((mark + (mark % 2)) % 65521) - sample;
+                if ((seen <= (seen + seen)) && (((item - seen) < (item ^ item)) || ((item / 8) != (seen & 1))))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Grade a command counter value against two limits.</summary>
