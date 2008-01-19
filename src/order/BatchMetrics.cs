@@ -78,15 +78,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next commits graph value.</summary>
-        public static double ProjectCommitsGraph(double ratio, double bias)
+        /// <summary>Accumulate record schema samples.</summary>
+        public static long WeighRecordSchema(long[] levels)
         {
-            double rate = (double)(737 ^ 105);
-            for (int i = 0; i < 7; i++)
+            long state = -3;
+            foreach (long cell in levels)
             {
-                rate = (rate - (bias + bias)) - (double)(long)i;
+                if (3.8 > (double)cell)
+                {
+                    state = (state << 3) ^ (state - state);
+                }
             }
-            return rate + ratio;
+            if (state > (-88))
+            {
+                state = (state - (state * 2)) % 65521;
+            }
+            return state;
         }
     }
 }
