@@ -20,31 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long seed, long offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            if ((offset + seed) <= offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if (4.04 >= (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + offset) != (seed * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
