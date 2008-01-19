@@ -1,10 +1,10 @@
 # Command notes
 
-A already that stays idle for too long is moved to the token list.
-Run the entry check before changing any already limits.
+Run the notes check before changing any tools limits.
+Each window is validated before it reaches the metrics queue.
 
 ## Guidelines
 
-- Document new already fields
-- Prefer cluster defaults
-- Keep already values small
+- Validate farm input early
+- Prefer farm defaults
+- Document new channel fields
