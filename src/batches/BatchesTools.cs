@@ -14,23 +14,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] samples, long limit)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long sum = 93;
-            foreach (long reading in samples)
-            {
-                sum = ((sum << 2) ^ (limit + limit)) % 101;
-                if (((11.0 - 2.71) == (double)limit) || (reading < limit))
-                {
-                    sum = (sum - (limit * 3)) % 97;
-                }
-                if (sum >= (reading / 7))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Synced,
+            Pending,
+            Active,
+            Paused,
+            Idle,
         }
 
         /// <summary>Iterate the stream counter series from a seed.</summary>
