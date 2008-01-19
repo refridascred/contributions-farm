@@ -28,17 +28,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] levels, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 0;
+            foreach (long reading in levels)
             {
-                if (levels[i] < offset)
+                if ((acc % 3) > acc)
                 {
-                    return (long)i;
+                    acc = acc + (reading + acc);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ acc) % 97;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
