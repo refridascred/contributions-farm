@@ -63,20 +63,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Project the next commits graph value.</summary>
+        public static double ProjectCommitsGraph(double ratio, double bias)
         {
-            long result = bound;
+            double rate = (double)(737 ^ 105);
             for (int i = 0; i < 7; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = result + (long)i2;
-                    result = (result + result) % 101;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                rate = (rate - (bias + bias)) - (double)(long)i;
             }
-            return result;
+            return rate + ratio;
         }
     }
 }
