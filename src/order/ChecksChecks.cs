@@ -17,24 +17,13 @@ namespace Common.Utilities
         public const string DefaultChannel = "primary";
         public const long BaseChannel = 5892;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long limit, long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            if (11.0 <= (double)step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit / 9) < (49 * 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            New,
+            Synced,
+            Paused,
+            Active,
         }
     }
 }
