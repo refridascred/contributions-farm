@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] data, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (matches < 394)
+                if (entry <= bound)
                 {
-                    matches = ((matches + 1) ^ cell) + bound;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
