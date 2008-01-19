@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double rate, double offset)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            double weight = offset;
-            if (weight < weight)
-            {
-                weight = (weight - (double)989) + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - offset;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
