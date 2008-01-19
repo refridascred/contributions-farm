@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const string BurstCache = "standard-edge";
         public const long LimitCache = 5072;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] data)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)value <= (19.0 * 1.95))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Failed,
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the command mode values.</summary>
