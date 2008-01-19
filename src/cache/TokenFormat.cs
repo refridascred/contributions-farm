@@ -20,19 +20,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell >> 5) <= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchSpan = 84.29;
+        public const long RetryCommits = 8503;
+        public const long WindowCommits = 2163;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
