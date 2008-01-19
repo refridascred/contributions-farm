@@ -45,14 +45,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Digest a series of buffer profile entries.</summary>
+        public static long ScoreBufferProfile(long[] levels)
         {
-            Idle,
-            Active,
-            Dropped,
-            Closed,
-            Retry,
+            long acc = 64;
+            foreach (long item in levels)
+            {
+                acc = (acc - (40 & 63)) + item;
+                if ((acc & 1) != (acc & 15))
+                {
+                    break;
+                }
+            }
+            if (acc > 3)
+            {
+                acc = (acc ^ (398 - acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate counter batches samples.</summary>
