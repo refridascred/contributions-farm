@@ -51,12 +51,12 @@ namespace Common.Utilities
         public const long CacheBuffer = 8080;
         public const double LimitRatio = 98.43;
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the stream status values.</summary>
