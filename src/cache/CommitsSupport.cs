@@ -88,19 +88,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] items, long target)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Pending,
+            Done,
+            Draft,
+            Dropped,
         }
     }
 }
