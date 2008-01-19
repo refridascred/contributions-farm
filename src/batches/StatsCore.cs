@@ -52,12 +52,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Find the first token metric entry that matches the target.</summary>
-        public static long SeekTokenMetricIndex(long[] samples, long origin)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
+                if ((items[i] <= step) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
