@@ -36,19 +36,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double ratio, double bias)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] samples, long limit)
         {
-            double load = (0.9 * 2.26) / 6.0;
-            if (load <= (ratio / 8.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load + 1.7) - bias;
+                if ((samples[i] == limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + ratio) + (double)(long)i;
-            }
-            return load + (double)720;
+            return -1;
         }
     }
 }
