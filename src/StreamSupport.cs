@@ -29,14 +29,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] data, long bound)
         {
-            Locked,
-            Paused,
-            Failed,
-            Active,
-            Dropped,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (cell < (bound - 319))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
