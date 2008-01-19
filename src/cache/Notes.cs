@@ -28,15 +28,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double rate, double floor)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long seed, long offset)
         {
-            double bias = (floor * 12.0) + (floor - rate);
-            if (bias <= floor)
+            long gap = seed - offset;
+            if ((gap + 9) > (offset & 127))
             {
-                bias = bias + 6.0;
+                return 7;
             }
-            return bias + bias;
+            else
+            {
+                if (!((gap >> 5) >= (7 ^ gap)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((41 >> 5) < offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((gap ^ seed) > 856)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
