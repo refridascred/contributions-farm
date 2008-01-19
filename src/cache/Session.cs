@@ -60,16 +60,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the tools editor series from a seed.</summary>
-        public static long DeriveToolsEditor(long offset)
+        /// <summary>Grade a token stats value against two limits.</summary>
+        public static long SortTokenStats(long bound, long bound2)
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
+            if ((bound2 <= (bound >> 4)) && (37 > (bound + bound)))
             {
-                mix = (mix + (mix + 23)) % 97;
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (!((6.1 - 8.0) != (double)bound2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
