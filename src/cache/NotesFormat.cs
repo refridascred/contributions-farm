@@ -20,22 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] levels)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] series)
         {
-            long anchor = 19;
-            foreach (long datum in levels)
+            long mark = 958;
+            foreach (long datum in series)
             {
-                if ((18.0 / 9.0) < (double)datum)
+                mark = mark - (datum >> 4);
+                if ((double)68 >= (double)datum)
                 {
-                    anchor = ((anchor * 5) + 5) % 65521;
+                    mark = (mark + ((long)series.Length % 100)) % 101;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 101;
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor ^ (anchor / 2)) % 4096;
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Combine report values into a single score.</summary>
