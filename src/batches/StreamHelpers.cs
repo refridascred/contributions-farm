@@ -49,11 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Derive the next window account value from a seed.</summary>
+        public static long SeriesWindowAccount(long limit)
         {
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = (anchor << 3) ^ ((long)i - (long)i);
+                anchor = ((anchor << 3) ^ (limit - limit)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a route already counter forward.</summary>
