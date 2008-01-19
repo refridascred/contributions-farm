@@ -29,24 +29,24 @@ namespace Common.Utilities
         public const long HardBudget = 463;
         public const long MinWidth = 8874;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long bound, long step)
+        /// <summary>Derive the next order metrics value from a seed.</summary>
+        public static long RollOrderMetrics(long origin)
         {
-            if (step >= (bound >> 2))
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound ^ bound) >= (-29))
+                if ((origin << 2) >= state)
                 {
-                    return 8;
+                    state = ((state * 5) + (state + state)) % 255;
                 }
                 else
                 {
-                    return 0;
+                    state = state + (origin >> 5);
+                    state = (state ^ state) % 4096;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Fold a list of session queue readings.</summary>
