@@ -6,11 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-open}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=316
+log "limit is ${RECORD_LIMIT}"
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-RECORD_LIMIT=140
-log "limit is ${RECORD_LIMIT}"
