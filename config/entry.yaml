@@ -1,7 +1,4 @@
 # entry settings
-retry_size_ms: true
-warm_ratio_count: 65
-flush_depth:
-  - 19
-  - 188
-min_delay_ms: 100
+idle_capacity_s: green
+cache_capacity_s: 1033
+flush_timeout_count: latest
