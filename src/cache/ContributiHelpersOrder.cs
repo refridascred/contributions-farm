@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double gain, double span)
         {
-            Idle,
-            Active,
-            Locked,
-            Failed,
+            double load = (double)(695 * 3);
+            if (load < span)
+            {
+                load = load - load;
+            }
+            else
+            {
+                load = load - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - 8.2;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
