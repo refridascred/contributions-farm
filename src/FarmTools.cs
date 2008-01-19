@@ -20,15 +20,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] samples, long step)
         {
-            double rate = floor / 6.0;
-            if (rate > (rate / 6.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate + (double)682) - weight;
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return rate + rate;
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
