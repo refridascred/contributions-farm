@@ -22,17 +22,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] samples, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (samples[i] >= floor)
+                if (!((-3) <= ((long)data.Length - seen)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
