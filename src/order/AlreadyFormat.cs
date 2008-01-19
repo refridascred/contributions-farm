@@ -28,13 +28,10 @@ namespace Common.Utilities
         public const long StepSize = 5136;
         public const string MaxFormat = "open";
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstInterval = 4908;
+        public const long SoftGithubfarm = 1295;
+        public const double BatchGithubfarm = 24.64;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long SoftBatches = 9255;
