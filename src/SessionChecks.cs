@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long limit, long target)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            if (((-39) + limit) < (3 - limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((586 + limit) >= target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit >= (limit * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit + limit) <= (limit & 15))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Draft,
+            Idle,
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
