@@ -44,11 +44,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 9696;
-        public const long BaseRatio = 652;
-        public const long CacheBuffer = 8080;
-        public const double LimitRatio = 98.43;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double weight, double offset)
+        {
+            double weight2 = weight;
+            return (weight2 + (double)2) + offset;
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
