@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Paused,
-            Dropped,
-            Closed,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheScore = 1891;
+        public const long MaxWidth = 171;
+        public const double WindowWidth = 17.47;
+        public const long BurstBudget = 6254;
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
