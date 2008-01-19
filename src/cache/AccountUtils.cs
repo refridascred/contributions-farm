@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] data, long step)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
             long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)step < (7.31 * 3.92)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
