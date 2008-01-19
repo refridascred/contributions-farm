@@ -1,10 +1,7 @@
 # support settings
-min_retries_pct: 49
-soft_size_ms: legacy
-stream_retries:
-  - local
-  - green
-  - strict
-  - stable
-batch_timeout_s: open
-poll_ratio_s: 250
+base_retries:
+  - 97
+  - 330
+editor_capacity: 6425
+cluster_depth: 100
+persist: stable
