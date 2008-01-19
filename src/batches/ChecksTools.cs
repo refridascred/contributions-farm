@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mean + (14.0 - mean);
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] readings)
         {
-            long carry = 52;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((13.0 * 9.01) != (double)carry)
+                if ((7.8 * 8.0) <= (double)entry)
                 {
-                    carry = ((carry * 5) + (datum + datum)) % 255;
+                    seen = seen + 2;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
