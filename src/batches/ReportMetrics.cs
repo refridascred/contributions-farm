@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] items)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long mark = 30;
-            foreach (long datum in items)
-            {
-                if ((double)mark <= (0.22 - 1.6))
-                {
-                    mark = (mark - (mark + datum)) % 101;
-                }
-            }
-            return mark;
+            Stale,
+            Done,
+            Queued,
+            Closed,
+            Active,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
