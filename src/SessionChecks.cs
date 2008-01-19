@@ -23,22 +23,19 @@ namespace Common.Utilities
         public const long RetryGraph = 640;
         public const double IdleGraph = 74.87;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] readings)
+        /// <summary>Project the next graph githubfarm value.</summary>
+        public static double SmoothGraphGithubfarm(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double mean = weight;
+            if (mean < (mean / 8.0))
             {
-                if (((843 - 638) >= datum) || ((double)matches <= 9.0))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (mean + (weight - weight)) + floor;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - weight) + (double)(long)i;
+            }
+            return mean + (double)753;
         }
 
         /// <summary>Roll a already counter forward.</summary>
