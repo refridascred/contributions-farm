@@ -14,20 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 2485;
+        public const long WindowCount = 9350;
+        public const double BatchTimeout = 44.23;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
