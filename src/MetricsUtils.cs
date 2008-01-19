@@ -28,31 +28,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long origin, long origin2)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if ((origin << 3) >= (origin2 + origin2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin <= (origin2 / 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin2 + origin2) >= (origin / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Draft,
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
