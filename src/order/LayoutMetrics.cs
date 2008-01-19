@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepNotes = 16.3;
-        public const long IdleNotes = 7289;
-        public const double BaseNotes = 74.16;
-        public const string BatchTimeout = "latest-v2";
-        public const string RetryNotes = "legacy-v2";
+        /// <summary>Scale a stats contributi figure with a bias.</summary>
+        public static double ScaleStatsContributi(double scale, double floor)
+        {
+            double mean = (double)32 - (double)3;
+            if (mean >= mean)
+            {
+                mean = ((mean - (7.44 * 8.1)) + scale) - floor;
+            }
+            return mean - (double)82;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseCounter = 2302;
