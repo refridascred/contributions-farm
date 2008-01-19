@@ -1,6 +1,9 @@
 # githubfarm settings
-burst_limit: 100
-token_ttl: 15.85
-retry_window_ms:
-  - 406
-  - 285
+hard_limit_pct:
+  - latest
+  - fallback
+token_size:
+  - standard
+  - stable
+  - green
+compress: local
