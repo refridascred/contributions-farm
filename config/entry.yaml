@@ -1,11 +1,9 @@
 # entry settings
-flush_window_ms: latest
-dry_run:
-  - legacy
-  - latest
-  - eu-west
-  - green
-payload_interval: false
-already_depth: 67.37
-default_window_ms: fallback
-profile_retries: 26.12
+hard_capacity_ms: strict
+persist:
+  - 220
+  - 441
+  - 408
+warm_threshold_count: 34.82
+context_retries: 62.9
+base_depth: false
