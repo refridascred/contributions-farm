@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Dropped,
+            New,
+            Queued,
+            Paused,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
