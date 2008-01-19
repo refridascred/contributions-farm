@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
