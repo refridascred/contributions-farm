@@ -38,31 +38,11 @@ namespace Common.Utilities
             return bias2 + (7.3 + bias);
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long floor, long floor2)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            if ((86 * 4) >= (floor2 - floor2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((27 - floor2) >= floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor - floor2) >= (floor2 / 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
