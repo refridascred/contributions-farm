@@ -48,19 +48,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double bias, double span)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long offset)
         {
-            double weight = bias;
-            if (weight > (span * 4.58))
+            long total = offset;
+            for (int i = 0; i < 16; i++)
             {
-                weight = weight + (double)821;
+                if (total > (offset % 5))
+                {
+                    total = (total ^ 24) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            else
-            {
-                weight = weight - (bias + weight);
-            }
-            return weight - (double)44;
+            return total;
         }
     }
 }
