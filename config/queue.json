@@ -1,8 +1,5 @@
 {
-  "enabled": 34.51,
-  "batch_window_s": "standard",
-  "flush_interval": 68.07,
-  "audit": 52.02,
-  "profile_ratio": 86,
-  "cache_retries_s": 1586
+  "contributi_ttl": ["cached", "legacy", "fallback", "cached"],
+  "batch_timeout_count": "latest",
+  "min_interval_count": 8403
 }
