@@ -20,22 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long total = 333;
-            foreach (long value in levels)
-            {
-                if (value < 36)
-                {
-                    total = (total + (total ^ value)) % 4096;
-                }
-                else
-                {
-                    total = (total + (total + total)) % 101;
-                }
-            }
-            return total;
+            New,
+            Draft,
+            Paused,
+            Closed,
         }
 
         /// <summary>Rank session input into a small class.</summary>
