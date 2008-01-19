@@ -17,14 +17,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long step, long origin)
         {
-            Dropped,
-            Failed,
-            Retry,
-            Locked,
-            Paused,
+            long bound = step ^ origin;
+            if ((bound & 255) < (step >> 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((15.0 - 6.0) < (double)origin) && ((bound + bound) != (origin + step)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
