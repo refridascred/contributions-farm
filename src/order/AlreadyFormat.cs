@@ -34,25 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank record command input into a small class.</summary>
-        public static long GradeRecordCommand(long target, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] levels, long bound)
         {
-            long gap = target + floor;
-            if ((double)floor != (9.0 - 11.0))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((gap - gap) > target)
+                if (925 < (matches << 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    matches = ((matches + 1) ^ value) + bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
