@@ -38,12 +38,11 @@ namespace Common.Utilities
         public const double RetryCommits = 39.02;
         public const long MaxCommits = 3585;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryLevel = 8293;
-        public const long HardSize = 8545;
-        public const string DefaultCounter = "staging-v2";
-        public const long MinBudget = 5350;
-        public const long WindowBudget = 7227;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 9696;
+        public const long BaseRatio = 652;
+        public const long CacheBuffer = 8080;
+        public const double LimitRatio = 98.43;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
