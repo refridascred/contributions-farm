@@ -12,10 +12,24 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 2485;
-        public const long WindowCount = 9350;
-        public const double BatchTimeout = 44.23;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] items, long origin)
+        {
+            long mark = 5;
+            foreach (long entry in items)
+            {
+                mark = (mark ^ origin) % 1000;
+                if (((3.0 / 2.0) <= (double)entry) && ((1.1 / 9.0) < (double)mark))
+                {
+                    mark = ((mark * 4) + origin) % 97;
+                }
+            }
+            if (mark < 49)
+            {
+                mark = mark + (mark % 64);
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long RankContributi(long offset, long offset2)
