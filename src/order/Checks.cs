@@ -28,11 +28,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
+            public string Owner { get; set; } = "";
             public long Region { get; set; }
-            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Accumulate stream samples.</summary>
