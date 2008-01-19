@@ -13,15 +13,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Measure how many channel contributi samples are out of range.</summary>
+        public static long AuditChannelContributiOutliers(long[] levels)
         {
-            long acc = 519;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                acc = ((acc << 2) ^ (acc - 9)) + value;
+                if (((tally + value) > (22 * 3)) || (value >= (value + tally)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
