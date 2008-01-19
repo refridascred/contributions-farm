@@ -13,13 +13,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] readings, long offset)
         {
-            Failed,
-            Retry,
-            Ready,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
