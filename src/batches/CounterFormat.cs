@@ -34,39 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch checks pair into a bucket.</summary>
-        public static long BucketBatchChecks(long step, long seed)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long prev = step + seed;
-            if ((8.8 + 9.0) == (double)prev)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((prev % 64) <= step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (960 > (prev % 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((seed + prev) != (prev + step)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
