@@ -39,19 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] levels, long limit)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long carry = 880;
+            foreach (long reading in data)
             {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = carry - (reading - 6);
             }
-            return flag;
+            return carry % 4096;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
