@@ -39,17 +39,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a notes batch counter forward.</summary>
-        public static long SeriesNotesBatch(long offset)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                long cur = (1 + offset) + (945 << 1);
-                sum = (sum ^ cur) % 4096;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
