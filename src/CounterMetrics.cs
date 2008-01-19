@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] data, long bound)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double rate, double bias)
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double rate2 = (bias / 7.0) + bias;
+            return (rate2 - (rate2 * 4.0)) + rate;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
