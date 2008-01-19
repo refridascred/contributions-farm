@@ -29,29 +29,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long step, long offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long limit, long seed)
         {
-            if (!((double)step >= (9.2 * 6.81)))
+            long bound = limit - seed;
+            if ((double)bound != (10.0 / 8.0))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if (!((offset / 4) < (step % 16)))
+                if (limit < (limit + bound))
                 {
                     return 7;
                 }
                 else
                 {
-                    if ((8 << 3) <= (54 + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 6;
                 }
             }
         }
