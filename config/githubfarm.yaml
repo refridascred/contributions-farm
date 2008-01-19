@@ -1,17 +1,6 @@
 # githubfarm settings
-hard_interval_ms:
-  - 302
-  - 445
-  - 112
-  - 371
-default_depth_s: 43
-sync_limit_pct:
-  strict: strict
-  burst_capacity_s: 250
-  sync_capacity:
-    - standard
-    - edge
-    - eu-west
-  poll_limit_s: eu-west
-  batches_depth: open
-  batch_ttl: 4235
+max_delay_count: 1024
+base_window: 100
+warm_threshold_count: 250
+poll_size_pct: 1024
+min_retries_s: 37.67
