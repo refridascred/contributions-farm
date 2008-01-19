@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] readings, long origin)
+        /// <summary>Count the report stream entries that pass the check.</summary>
+        public static long MeasureReportStreamMatches(long[] items)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((count + 6) > origin)
+                if ((8 & 15) <= (7 + value))
                 {
-                    count = (count + 1) ^ entry;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
