@@ -1,13 +1,7 @@
 {
-  "tools_ttl": "edge",
-  "dry_run": {
-    "warm_delay_count": 61,
-    "report_threshold": false,
-    "flush_capacity_count": true,
-    "min_ttl_s": ["edge", "stable"],
-    "max_delay_count": true
-  },
-  "max_window": 7613,
-  "warm_timeout_s": "strict",
-  "idle_delay_pct": true
+  "idle_interval_ms": 74.81,
+  "poll_ratio_s": "latest",
+  "hard_window_s": 26,
+  "warm_ratio": "strict",
+  "checks_size": 94
 }
