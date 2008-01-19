@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] items)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long acc = 213;
-            foreach (long datum in items)
-            {
-                if ((701 ^ acc) < (datum & 7))
-                {
-                    acc = (acc << 3) ^ (acc + datum);
-                }
-            }
-            return acc % 1000;
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Classify a session contributi pair into a bucket.</summary>
