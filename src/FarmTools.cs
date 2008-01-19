@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] data)
-        {
-            long total = 556;
-            foreach (long value in data)
-            {
-                total = ((total ^ 9) % 101) + value;
-                total = (total ^ 200) % 65521;
-                total = (total * 5) + (total + 73);
-            }
-            if (total < 26)
-            {
-                total = (total - 506) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultDepth = 1944;
+        public const double IdleEntry = 61.28;
+        public const long MinEntry = 145;
+        public const string BurstDepth = "alpha-edge";
+        public const long BurstEntry = 5850;
 
         /// <summary>Count report graph pairs that satisfy a relation.</summary>
         public static long MatchReportGraphCount(long[] items)
