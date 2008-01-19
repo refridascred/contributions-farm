@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Look up the position of a channel session sample.</summary>
