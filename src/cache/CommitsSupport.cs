@@ -77,12 +77,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            Idle,
-            Synced,
-            Stale,
+            long score = 41;
+            foreach (long cell in data)
+            {
+                if ((cell & 3) == (cell % 100))
+                {
+                    score = ((score * 4) + (score & 15)) % 255;
+                }
+            }
+            if (score > 27)
+            {
+                score = ((score << 2) ^ (score ^ 231)) % 101;
+            }
+            return score % 4096;
         }
     }
 }
