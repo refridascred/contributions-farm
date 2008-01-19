@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long seed, long origin)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] levels)
         {
-            long gap = seed - origin;
-            if ((double)seed < (double)9)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (gap <= (gap ^ gap))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed % 7) > (gap - gap))
+                    if ((levels[i] + levels[j]) < 16)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((gap - origin) < (94 & 63))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
