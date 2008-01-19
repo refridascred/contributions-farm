@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCount = 36;
-        public const long StepCache = 4329;
-        public const long RetryWidth = 8507;
-        public const double SoftCache = 22.7;
-        public const string BatchFactor = "standard-1";
+        /// <summary>Derive the next contributi metric value from a seed.</summary>
+        public static long IterateContributiMetric(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = (sum ^ (sum - 28)) % 4096;
+                sum = (sum + (655 ^ step)) % 65521;
+                if (2.0 <= (double)step)
+                {
+                    sum = (sum + sum) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double SmoothCommits(double rate, double bias)
