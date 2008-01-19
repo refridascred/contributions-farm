@@ -81,19 +81,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a context counter reading.</summary>
-        public static double ScaleContextCounter(double weight, double floor)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            double rate = weight;
-            if (rate > (double)847)
-            {
-                rate = (rate + (double)4) + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + weight;
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
