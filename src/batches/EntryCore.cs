@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] readings, long target)
         {
-            Queued,
-            Done,
-            New,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
