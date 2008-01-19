@@ -45,32 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long limit, long origin)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long span = limit ^ origin;
-            if (((18.0 * 7.8) < (double)limit) && ((2.73 * 1.46) == (double)origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit <= (span * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (span >= (908 ^ span))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Stale,
+            Pending,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
