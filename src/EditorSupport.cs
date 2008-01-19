@@ -57,21 +57,22 @@ namespace Common.Utilities
             return weight - (double)5;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)count >= (double)entry)
                 {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) - floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Roll a report farm counter forward.</summary>
