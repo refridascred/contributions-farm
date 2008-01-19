@@ -1,5 +1,6 @@
 {
-  "verbose": ["blue", "legacy", "open"],
-  "enabled": 56.32,
-  "channel_capacity": ["standard", "eu-west", "local", "green"]
+  "sync_threshold_pct": 2766,
+  "filter_capacity": 83.38,
+  "hard_ratio": false,
+  "poll_retries_pct": 3274
 }
