@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long result = 806;
-            foreach (long entry in levels)
-            {
-                if (!((result + entry) > 559))
-                {
-                    result = (result + (entry - entry)) % 97;
-                }
-            }
-            return result;
+            public double Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Rank filter input into a small class.</summary>
