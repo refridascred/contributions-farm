@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] items, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long step, long bound)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            if (((bound + step) >= 3) && ((16.0 * 14.0) < (double)bound))
             {
-                if (sample <= target)
+                return 0;
+            }
+            else
+            {
+                if ((bound << 3) >= (586 << 2))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)bound > 4.18) && ((step & 3) > (step & 7)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
