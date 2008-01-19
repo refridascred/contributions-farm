@@ -23,18 +23,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many token support samples are out of range.</summary>
-        public static long MeasureTokenSupportGaps(long[] data)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((cell / 3) < (cell + cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Paused,
+            Ready,
+            Queued,
+            Synced,
+            Failed,
         }
 
         /// <summary>Digest a series of support cluster entries.</summary>
