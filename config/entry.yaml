@@ -1,18 +1,21 @@
 # entry settings
-enabled: 5725
-retry_depth: 34
-soft_limit: 250
-warm_threshold_s: 75
-order_depth:
-  enabled: stable
-  soft_timeout_pct:
-    - 416
-    - 184
-    - 488
-  default_delay_ms: latest
-  sync_size_ms:
-    - 164
-    - 401
-    - 492
-    - 158
-compress: 78.44
+flush_interval: 7111
+batch_capacity_ms:
+  strict:
+    - 290
+    - 322
+  report_limit: 70.7
+  record_depth:
+    min_depth_count:
+      - 161
+      - 116
+      - 368
+    account_threshold: true
+    retry_size: false
+    soft_window_count: 580
+    strict: false
+    burst_capacity: false
+verbose: true
+batches_capacity: blue
+graph_threshold: eu-west
+batch_threshold_pct: cached
