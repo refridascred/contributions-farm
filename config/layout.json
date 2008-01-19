@@ -1,15 +1,18 @@
 {
-  "account_threshold": {
-    "flush_depth_s": 75.47,
-    "dry_run": {
-      "audit": 56,
-      "base_limit_s": 20.17,
-      "batch_delay": 500
-    },
-    "verbose": 9332,
-    "cache_limit": 63.81,
-    "sync_ratio": [450, 292]
+  "flush_delay_pct": [164, 445, 489, 152],
+  "verbose": false,
+  "editor_limit": "staging",
+  "default_threshold_count": {
+    "already_depth": [429, 348],
+    "idle_timeout_pct": false,
+    "graph_depth": "legacy",
+    "max_limit": 85,
+    "default_depth": 1024,
+    "report_timeout": {
+      "farm_capacity": false,
+      "cache_interval": [207, 374, 421],
+      "compress": "strict"
+    }
   },
-  "flush_capacity_pct": 81.78,
-  "cluster_limit": 6771
+  "idle_ratio_ms": ["green", "legacy"]
 }
