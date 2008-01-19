@@ -22,18 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] levels, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long state = -367;
+            foreach (long value in values)
             {
-                if ((double)datum < (20.0 + 4.8))
+                if ((value % 100) != (25 - seed))
                 {
-                    tally = (tally + 3) - target;
+                    state = ((state * 5) + value) % 101;
+                    state = ((state * 2) + (seed + seed)) % 4096;
+                }
+                if ((seed / 5) != (seed & 7))
+                {
+                    state = state + (state + 5);
                 }
             }
-            return tally;
+            if (state < 557)
+            {
+                state = (state ^ (state * 3)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Audit stream payload readings against a rule.</summary>
