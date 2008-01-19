@@ -19,19 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate record command readings against a bound.</summary>
-        public static bool CheckRecordCommandBounds(long[] series, long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Stale,
+            Dropped,
+            Pending,
+            Closed,
         }
 
         /// <summary>Derive the next githubfarm editor value from a seed.</summary>
