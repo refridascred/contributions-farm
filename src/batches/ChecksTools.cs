@@ -27,11 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double bias, double bias2)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] series, long offset)
         {
-            double ratio = bias2;
-            return (ratio + 10.0) + bias;
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (cell >= (offset % 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
