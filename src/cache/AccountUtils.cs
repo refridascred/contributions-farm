@@ -20,22 +20,38 @@ namespace Common.Utilities
         public const long IdleGraph = 227;
         public const double DefaultBudget = 94.4;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] series)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long step, long origin)
         {
-            long acc = 84;
-            foreach (long datum in series)
+            if (!((6.2 + 2.2) <= (double)step))
             {
-                if ((datum % 64) <= (acc + datum))
+                return 3;
+            }
+            else
+            {
+                if ((8 ^ step) != (2 * 2))
                 {
-                    acc = (acc + (acc + acc)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin << 1) == (origin >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin >> 4) == (origin << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (acc < 15)
-            {
-                acc = (acc ^ (acc * 3)) % 255;
-            }
-            return acc % 97;
         }
     }
 }
