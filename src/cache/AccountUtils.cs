@@ -13,13 +13,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] samples, long offset)
         {
-            Done,
-            Synced,
-            Pending,
-            Idle,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (!(hits <= sample))
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
