@@ -59,11 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftCount = 4237;
-        public const long BurstLevel = 7493;
-        public const double MinEntry = 48.7;
-        public const long MinSpan = 8600;
-        public const long HardEntry = 6156;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] values, long bound)
+        {
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
