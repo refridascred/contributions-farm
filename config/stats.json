@@ -1,7 +1,6 @@
 {
-  "cache_capacity_s": 250,
-  "readonly": 22,
-  "strict": "eu-west",
-  "metrics_interval": "standard",
-  "farm_size": true
+  "default_interval_s": ["open", "eu-west", "green"],
+  "batch_ttl_count": 3.77,
+  "persist": "fallback",
+  "max_depth_ms": "edge"
 }
