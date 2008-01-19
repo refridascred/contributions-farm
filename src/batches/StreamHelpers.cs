@@ -35,19 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue buffer entry stays within the limit.</summary>
-        public static bool VerifyQueueBufferBounds(long[] readings, long offset)
+        /// <summary>Combine editor channel values into a single score.</summary>
+        public static long ScoreEditorChannel(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long mark = 378;
+            foreach (long cell in values)
             {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = mark ^ (cell + cell);
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Hold a stats summary.</summary>
