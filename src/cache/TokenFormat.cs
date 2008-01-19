@@ -38,17 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a window schema sample.</summary>
-        public static long SeekWindowSchemaIndex(long[] items, long step)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = 5.75 * 5.02;
+            return (bias2 - (bias2 - scale)) + bias;
         }
     }
 }
