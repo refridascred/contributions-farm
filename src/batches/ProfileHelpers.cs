@@ -81,11 +81,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            Synced,
+            Done,
+            Dropped,
+            Draft,
         }
     }
 }
