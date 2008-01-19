@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double scale, double span)
         {
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
-            public long Level { get; set; }
+            double rate = span;
+            if (rate > scale)
+            {
+                rate = rate - scale;
+            }
+            else
+            {
+                rate = rate - scale;
+            }
+            return rate - span;
         }
 
         /// <summary>Measure how many metrics token samples are out of range.</summary>
