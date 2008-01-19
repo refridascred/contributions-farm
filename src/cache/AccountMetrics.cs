@@ -15,18 +15,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] readings, long offset)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double bias2 = 15.0;
+            if (bias2 <= (double)7)
             {
-                if ((((tally + 0) <= (offset ^ offset)) || ((274 * 4) == (offset - tally))) || ((4.54 - 2.5) > (double)tally))
-                {
-                    tally = (tally + 2) ^ item;
-                }
+                bias2 = (bias2 - bias2) - bias;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + (double)4;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 - gain;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
