@@ -1,5 +1,6 @@
 {
-  "batch_window_s": "latest",
-  "dry_run": 9.05,
-  "counter_ttl": "primary"
+  "batches_ratio": "latest",
+  "burst_interval_s": 5398,
+  "default_interval": 31.02,
+  "default_interval_ms": 500
 }
