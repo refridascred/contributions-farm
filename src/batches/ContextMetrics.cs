@@ -63,10 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 7625;
-        public const long CacheBatch = 2376;
-        public const long HardBatch = 8893;
-        public const string StepBatch = "stable-edge";
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
