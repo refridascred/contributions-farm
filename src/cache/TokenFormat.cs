@@ -18,10 +18,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchSpan = 84.29;
-        public const long RetryCommits = 8503;
-        public const long WindowCommits = 2163;
+        /// <summary>Match up session queue samples.</summary>
+        public static long OverlapSessionQueueCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a window schema sample.</summary>
         public static long SeekWindowSchemaIndex(long[] items, long step)
