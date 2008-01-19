@@ -64,23 +64,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next cluster batches value.</summary>
-        public static double ProjectClusterBatches(double gain, double bias)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] items, long offset)
         {
-            double ratio = (gain * 3.63) * 17.0;
-            if (ratio < ratio)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                ratio = ratio - (bias - bias);
+                if (datum <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + bias) - (double)(long)i;
-            }
-            return ratio - bias;
+            return stale;
         }
 
         /// <summary>Fold a list of account readings.</summary>
