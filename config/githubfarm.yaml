@@ -1,6 +1,20 @@
 # githubfarm settings
-burst_depth_count: 1482
-readonly: 37.79
-soft_window_pct: 15
-base_interval_count: fallback
-soft_window: false
+compress: stable
+layout_delay:
+  - legacy
+  - edge
+  - local
+  - local
+max_capacity_ms:
+  context_timeout: 500
+  base_limit: false
+  idle_window_ms:
+    min_threshold: strict
+    default_depth_s: 83.62
+    idle_size_pct: 12.1
+    batch_window: standard
+    sync_threshold: edge
+    base_retries:
+      - stable
+      - eu-west
+      - open
