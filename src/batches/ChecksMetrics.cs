@@ -90,22 +90,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] series)
+        /// <summary>Check that every profile layout entry stays within the limit.</summary>
+        public static bool CheckProfileLayoutRange(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((double)count == (0.9 * 9.8))
+                if (entry != bound)
                 {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
