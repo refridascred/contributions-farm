@@ -72,21 +72,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count buffer session pairs that satisfy a relation.</summary>
-        public static long CompareBufferSessionCount(long[] levels)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((bound >> 5) == ((long)i - bound)) || (bound < (bound % 24)))
                 {
-                    if ((levels[i] - levels[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total + (long)i) % 101;
+                    total = ((total * 3) + (bound & 31)) % 4096;
+                    break;
                 }
+                else
+                {
+                    total = ((total * 3) + (bound + total)) % 101;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
     }
 }
