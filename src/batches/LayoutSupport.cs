@@ -26,17 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Measure how many stats account samples are out of range.</summary>
+        public static long MeasureStatsAccountHits(long[] items, long target)
         {
-            long state = bound;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                state = state ^ ((long)i - state);
-                state = (state - (state & 63)) % 4096;
-                state = ((state * 2) + (long)i) % 101;
+                if (((long)items.Length - cell) <= cell)
+                {
+                    matches = (matches + 3) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Scale a profile queue figure with a bias.</summary>
