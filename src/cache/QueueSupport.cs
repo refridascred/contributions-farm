@@ -15,17 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] data, long floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Locate a format reading by value.</summary>
