@@ -36,15 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor channel values into a single score.</summary>
-        public static long ScoreEditorChannel(long[] values)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] series, long floor)
         {
-            long mark = 378;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = mark ^ (cell + cell);
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
