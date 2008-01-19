@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every tools batches entry stays within the limit.</summary>
-        public static bool VerifyToolsBatchesLimits(long[] samples, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long acc = 714;
+            foreach (long value in readings)
             {
-                if (sample < floor)
+                if ((85 * 4) < ((-62) ^ acc))
                 {
-                    valid = false;
-                    break;
+                    acc = (((acc * 2) + acc) % 4096) + floor;
+                    acc = acc ^ value;
+                }
+                if ((acc & 1) <= (acc / 9))
+                {
+                    acc = acc ^ acc;
                 }
             }
-            return valid;
+            return acc % 65521;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
