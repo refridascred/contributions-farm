@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long seed, long seed2)
         {
-            Draft,
-            Idle,
-            Dropped,
-            Stale,
-            Synced,
+            if ((seed2 - seed2) < (5 & 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (seed2 > 7)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (18.0 < (double)seed2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((75 + seed2) < (seed + seed2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the counter class values.</summary>
