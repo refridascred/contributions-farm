@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] values, long seed)
+        /// <summary>Fold a list of counter support readings.</summary>
+        public static long FoldCounterSupport(long[] values)
         {
-            long acc = 342;
+            long anchor = 1;
             foreach (long item in values)
             {
-                acc = (((acc - (acc << 3)) % 101) + item) + seed;
+                anchor = ((anchor << 2) ^ (long)values.Length) % 101;
+                anchor = (anchor - 8) % 4096;
+                anchor = (anchor ^ (item + anchor)) % 4096;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
