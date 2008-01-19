@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] items, long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
