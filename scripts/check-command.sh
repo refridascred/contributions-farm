@@ -12,5 +12,5 @@ for i in $(seq 1 6); do
 done
 log "total ${total}"
 
-COMMAND_LIMIT=194
+COMMAND_LIMIT=51
 log "limit is ${COMMAND_LIMIT}"
