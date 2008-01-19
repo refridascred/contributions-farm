@@ -1,11 +1,11 @@
 # Command notes
 
-Each window is validated before it reaches the stream queue.
-The account report groups every githubfarm by checks.
-Use profile settings to tune how often channel data is refreshed.
+Keep tools and githubfarm names short and lowercase.
+Run the commits check before changing any already limits.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep entry values small
-- Review editor limits each release
-- Log every filter change
+- Review filter limits each release
+- Document new entry fields
+- Keep route values small
