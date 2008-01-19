@@ -23,11 +23,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitDepth = 5705;
-        public const long CacheFarm = 2513;
-        public const long DefaultFarm = 9448;
-        public const double HardScore = 67.32;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Done,
+            Queued,
+            Synced,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
