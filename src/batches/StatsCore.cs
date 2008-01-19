@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] items, long floor)
         {
-            Stale,
-            Done,
-            Retry,
-            Queued,
-            Failed,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((37 - 14) == (floor + value))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
