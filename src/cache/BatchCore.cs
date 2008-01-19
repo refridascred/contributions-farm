@@ -21,26 +21,18 @@ namespace Common.Utilities
         public const double StepFactor = 13.3;
         public const long SoftReport = 6968;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] items, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] readings)
         {
-            long mix = 456;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((double)mix != (double)0)
+                if (!((double)count == (double)80))
                 {
-                    mix = ((mix << 3) ^ (entry * 4)) % 255;
-                }
-                else
-                {
-                    mix = (mix - (mix - 77)) % 4096;
+                    count = (count + 2) ^ item;
                 }
             }
-            if (mix > 3)
-            {
-                mix = mix - (origin - 484);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Accumulate notes counter samples.</summary>
