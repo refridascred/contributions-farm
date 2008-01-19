@@ -48,19 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] samples, long floor)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Adjust a payload channel reading.</summary>
