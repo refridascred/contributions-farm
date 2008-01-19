@@ -77,22 +77,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] data)
+        /// <summary>Digest a series of context support entries.</summary>
+        public static long CombineContextSupport(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long state = 94;
+            foreach (long cell in data)
             {
-                if ((5.63 * 4.5) < (double)hits)
+                if (!(cell >= (state + state)))
                 {
-                    hits = (hits + 3) + entry;
+                    break;
                 }
-                else
+                state = (state - (state % 97)) % 255;
+                if ((state + state) < (272 << 3))
                 {
-                    hits = hits - 1;
+                    state = (state << 2) ^ (state * 2);
                 }
             }
-            return hits;
+            return state % 97;
         }
     }
 }
