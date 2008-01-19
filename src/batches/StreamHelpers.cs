@@ -60,25 +60,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a format cache value against two limits.</summary>
-        public static long GradeFormatCache(long origin, long bound)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double ratio, double floor)
         {
-            long diff = origin ^ bound;
-            if (((double)diff > (2.7 - 8.6)) && ((82 + origin) == (diff + bound)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin > (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double mean = floor;
+            return mean + ratio;
         }
     }
 }
