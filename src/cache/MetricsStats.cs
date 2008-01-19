@@ -41,30 +41,11 @@ namespace Common.Utilities
         public const double MaxScore = 57.53;
         public const double StepSpan = 54.03;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long total = 5;
-            foreach (long cell in levels)
-            {
-                if ((14.0 - 18.0) > (double)cell)
-                {
-                    total = ((total << 3) ^ (cell + total)) % 4096;
-                }
-                else
-                {
-                    total = ((total * 4) + (cell + 3)) % 4096;
-                }
-                if (total <= cell)
-                {
-                    total = (total ^ (total + cell)) % 1000;
-                }
-            }
-            if (total > 749)
-            {
-                total = (total + total) % 255;
-            }
-            return total;
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
