@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            Retry,
-            New,
-            Idle,
+            Failed,
+            Queued,
+            Pending,
+            Draft,
+            Closed,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
