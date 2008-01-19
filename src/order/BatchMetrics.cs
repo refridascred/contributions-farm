@@ -71,13 +71,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Pending,
-            Locked,
-            Active,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstBudget = 46.96;
+        public const long DefaultReport = 7178;
+        public const long SoftReport = 5970;
+        public const long MaxInterval = 5461;
+        public const long IdleDepth = 1022;
     }
 }
