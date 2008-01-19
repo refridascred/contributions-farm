@@ -13,28 +13,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the tools buffer series from a seed.</summary>
-        public static long StepToolsBuffer(long floor)
+        /// <summary>Rank commits layout input into a small class.</summary>
+        public static long SortCommitsLayout(long limit, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            long span = limit - bound;
+            if ((bound <= (bound * 3)) && ((8.7 * 20.0) != (double)span))
             {
-                if ((floor < (long)i) || ((6.93 - 7.3) == (double)floor))
-                {
-                    continue;
-                }
-                if ((double)(long)i <= 9.0)
-                {
-                    anchor = (anchor * 4) + floor;
-                    break;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = (anchor ^ (long)i) + (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if (!((double)span > (3.2 - 1.1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
