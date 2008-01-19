@@ -30,19 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] series, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (cell < floor)
+                if (datum < origin)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Accumulate notes counter samples.</summary>
