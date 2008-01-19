@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a checks already reading.</summary>
-        public static double SmoothChecksAlready(double bias, double bias2)
+        /// <summary>Count cache token pairs that satisfy a relation.</summary>
+        public static long MatchCacheTokenCount(long[] samples)
         {
-            double rate = bias;
-            return (rate - bias) + bias2;
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
