@@ -34,20 +34,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long state = 731;
-            foreach (long sample in samples)
-            {
-                state = state - 134;
-                state = ((state << 2) ^ 58) % 255;
-                if ((double)sample == (5.0 + 8.3))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
