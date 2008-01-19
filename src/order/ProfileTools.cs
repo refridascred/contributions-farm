@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long limit)
         {
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            long total = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((total + limit) <= limit)
+                {
+                    total = ((total << 2) ^ limit) % 101;
+                    continue;
+                }
+                total = total - (long)i;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
