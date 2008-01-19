@@ -19,15 +19,31 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] data, long offset)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long step, long seed)
         {
-            long result = -319;
-            foreach (long entry in data)
+            if ((step < (step - seed)) && ((step << 2) > seed))
             {
-                result = ((result - (3 & 255)) + entry) + offset;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (2.94 > (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((313 & 3) < (step + seed)) && ((double)seed != (1.3 - 13.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token options.</summary>
