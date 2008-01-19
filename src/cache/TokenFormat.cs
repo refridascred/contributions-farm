@@ -19,21 +19,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up session queue samples.</summary>
-        public static long OverlapSessionQueueCount(long[] readings)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] readings, long seed)
         {
-            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (readings[i] > seed)
                 {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
