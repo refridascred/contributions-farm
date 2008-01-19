@@ -59,12 +59,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long bound, long limit)
         {
-            Paused,
-            Ready,
-            New,
+            if (!((bound << 3) >= (bound / 9)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (bound > (978 + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
