@@ -1,11 +1,18 @@
 {
-  "checks_depth": 3413,
-  "base_window": 5040,
-  "idle_depth": {
-    "metrics_depth": 3703,
-    "base_retries_pct": 30,
-    "default_retries": "legacy"
+  "retry_capacity_count": true,
+  "max_delay": {
+    "warm_depth_pct": {
+      "hard_limit": 250,
+      "layout_depth": [497, 267],
+      "hard_delay_count": 40.92
+    },
+    "cache_ttl_ms": "stable",
+    "batches_threshold": 99,
+    "audit": 24.7,
+    "max_timeout_ms": "cached",
+    "enabled": "primary"
   },
-  "channel_limit": "staging",
-  "window_capacity": 6244
+  "route_capacity": 66.84,
+  "cluster_ratio": false,
+  "audit": "legacy"
 }
