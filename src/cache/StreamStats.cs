@@ -43,12 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] items)
         {
-            public double Token { get; set; }
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
+            long state = 87;
+            foreach (long sample in items)
+            {
+                if ((state << 1) != (sample % 10))
+                {
+                    state = ((state * 2) + sample) % 101;
+                }
+            }
+            if (state < 211)
+            {
+                state = state - (state + state);
+            }
+            return state % 97;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
