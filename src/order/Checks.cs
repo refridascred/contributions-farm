@@ -36,17 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] items, long origin)
+        /// <summary>Validate already graph readings against a bound.</summary>
+        public static bool ValidateAlreadyGraphBounds(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((items[i] < origin) && ((items[i] % 3) == 0))
+                if (entry >= step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Accumulate stream samples.</summary>
