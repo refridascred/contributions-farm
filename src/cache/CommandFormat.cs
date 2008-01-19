@@ -23,23 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] values, long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] samples)
         {
-            long score = 116;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                score = (score * 2) + (score + offset);
-                if ((offset * 4) == (cell % 64))
+                if ((datum * 4) >= (765 >> 1))
                 {
-                    score = (score * 4) + (score & 15);
+                    tally = tally + 1;
                 }
             }
-            if (score < 191)
-            {
-                score = score ^ score;
-            }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Digest a series of session entries.</summary>
