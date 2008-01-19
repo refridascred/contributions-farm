@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const string BurstDepth = "alpha-edge";
         public const long BurstEntry = 5850;
 
-        /// <summary>Count report graph pairs that satisfy a relation.</summary>
-        public static long MatchReportGraphCount(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((85 - datum) != (datum << 3))
                 {
-                    if ((items[i] - items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
