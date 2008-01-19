@@ -31,23 +31,18 @@ namespace Common.Utilities
             return ratio2 + (double)7;
         }
 
-        /// <summary>Combine cache githubfarm values into a single score.</summary>
-        public static long FoldCacheGithubfarm(long[] levels)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] levels, long bound)
         {
-            long mix = 24;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((cell & 1) <= (69 / 8))
+                if (((double)value >= (8.0 / 5.0)) && (((bound + bound) != (bound ^ bound)) || ((seen % 97) == (35 - seen))))
                 {
-                    mix = ((mix << 2) ^ (cell + cell)) % 97;
+                    seen = seen + 3;
                 }
-                mix = (mix + mix) % 1000;
             }
-            if (mix > 445)
-            {
-                mix = (mix ^ (490 + mix)) % 65521;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the command class values.</summary>
