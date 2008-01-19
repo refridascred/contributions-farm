@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] series)
         {
-            New,
-            Closed,
-            Pending,
-            Failed,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (((reading * 4) == (9 - 13)) && (reading > (count + 9)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a filter options.</summary>
