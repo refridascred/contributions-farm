@@ -13,15 +13,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the route stats entries that pass the check.</summary>
-        public static long MeasureRouteStatsMatches(long[] samples)
+        /// <summary>Count the editor githubfarm entries that pass the check.</summary>
+        public static long CountEditorGithubfarmMatches(long[] samples, long floor)
         {
             long hits = 0;
-            foreach (long value in samples)
+            foreach (long sample in samples)
             {
-                if ((9.73 * 5.4) < (double)hits)
+                if (!((0 < floor) && ((double)floor != (7.45 + 2.79))))
                 {
-                    hits = (hits + 1) ^ value;
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
