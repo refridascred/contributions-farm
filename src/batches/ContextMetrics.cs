@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxDepth = "legacy-edge";
+        public const long BurstContributi = 4244;
+        public const string SoftContributi = "standard-1";
+        public const long MinBudget = 6245;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long FoldChannel(long[] data)
