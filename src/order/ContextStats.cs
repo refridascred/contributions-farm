@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] data, long target)
         {
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
+            long result = 985;
+            foreach (long entry in data)
+            {
+                result = ((((result * 2) + (238 >> 5)) % 97) + entry) + target;
+            }
+            return result;
         }
 
         /// <summary>Describe the command state values.</summary>
