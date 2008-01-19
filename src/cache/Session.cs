@@ -50,11 +50,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTools = 95.1;
+        public const double LimitTools = 40.91;
+        public const long HardInterval = 4278;
     }
 }
