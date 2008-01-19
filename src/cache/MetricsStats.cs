@@ -19,23 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a window stream reading.</summary>
-        public static double AdjustWindowStream(double gain, double bias)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] data, long floor)
         {
-            double ratio = (double)(59 - 4);
-            if (ratio >= bias)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                ratio = ratio + (ratio + bias);
+                if (datum > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (gain * 1.5)) - (double)(long)i;
-            }
-            return ratio + bias;
+            return stale;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
