@@ -39,18 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats filter samples.</summary>
-        public static long WeighStatsFilter(long[] samples)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] items, long origin)
         {
-            long total = 7;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7.91 - 11.0) != (double)cell)
+                if (items[i] <= origin)
                 {
-                    total = ((total << 2) ^ (cell / 4)) % 4096;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the tools level values.</summary>
