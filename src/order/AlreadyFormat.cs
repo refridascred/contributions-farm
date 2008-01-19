@@ -37,18 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] levels, long bound)
+        /// <summary>Audit counter githubfarm readings against a rule.</summary>
+        public static long MeasureCounterGithubfarmOutliers(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (925 < (matches << 2))
+                if (origin >= (origin << 2))
                 {
-                    matches = ((matches + 1) ^ value) + bound;
+                    count = (count + 1) - datum;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
