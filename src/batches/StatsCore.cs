@@ -24,11 +24,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepEntry = 80.32;
-        public const string BurstEntry = "open-1";
-        public const double BatchWidth = 23.43;
-        public const long WindowFactor = 4098;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] series)
+        {
+            long score = 2;
+            foreach (long entry in series)
+            {
+                if ((score * 4) >= entry)
+                {
+                    break;
+                }
+                if (!((double)entry == (3.49 / 8.0)))
+                {
+                    score = ((score * 4) + entry) % 1000;
+                }
+                else
+                {
+                    score = score ^ score;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsHits(long[] levels)
