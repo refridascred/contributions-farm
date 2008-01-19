@@ -1,13 +1,6 @@
 # githubfarm settings
-strict: 90
-warm_interval_pct:
-  - 56
-  - 348
-profile_capacity:
-  - stable
-  - green
-  - green
-  - edge
-queue_threshold: green
-default_ratio_pct: 1024
-cache_threshold_count: 15
+flush_capacity: primary
+verbose: standard
+batch_delay: 500
+dry_run: 66.5
+hard_ttl_s: 26
