@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 2094;
-        public const string WindowTimeout = "primary-v2";
-        public const long CacheFactor = 5014;
-        public const long IdleGithubfarm = 1466;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long bound, long origin)
+        {
+            if (origin >= 369)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)3 >= (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((9.0 / 7.0) != (double)bound) || ((bound + 155) >= (bound - origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin * 2) >= ((-89) + origin)) || ((origin + origin) >= (origin << 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long TallyCacheMatches(long[] series)
