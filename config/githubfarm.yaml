@@ -1,30 +1,7 @@
 # githubfarm settings
-default_ratio:
-  hard_capacity: true
-  min_limit: 30
-  verbose: false
-  default_limit_pct: true
-  hard_threshold_s:
-    soft_interval_pct: 1.76
-    token_interval: local
-    poll_threshold_count: 56
-  stream_interval: 1675
-metric_size:
-  base_depth_ms: 40
-  counter_capacity: 35.68
-  batches_delay: 33.94
-payload_interval: 9584
-stream_delay:
-  base_depth_pct:
-    flush_capacity_pct: cached
-    dry_run: 100
-    compress: 78.45
-    cluster_timeout: 30
-    readonly: local
-  default_limit_s: 5586
-  retry_ttl_count: true
-  base_ratio_pct: 41
-  retry_threshold: 11.93
-  base_size_ms: primary
-cache_size: 30
-flush_retries: blue
+poll_timeout: 3018
+retry_capacity_count:
+  - eu-west
+  - stable
+audit: 60.62
+graph_size: eu-west
