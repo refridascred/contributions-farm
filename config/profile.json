@@ -1,6 +1,5 @@
 {
-  "batches_ratio": "latest",
-  "burst_interval_s": 5398,
-  "default_interval": 31.02,
-  "default_interval_ms": 500
+  "verbose": ["blue", "legacy", "open"],
+  "enabled": 56.32,
+  "channel_capacity": ["standard", "eu-west", "local", "green"]
 }
