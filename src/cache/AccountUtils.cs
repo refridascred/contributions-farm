@@ -13,19 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((value % 64) == (value >> 1))
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstFactor = 53.39;
+        public const double MaxGraph = 27.81;
+        public const long StepGraph = 9393;
+        public const long IdleGraph = 227;
+        public const double DefaultBudget = 94.4;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchHits(long[] values)
