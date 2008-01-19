@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseEntry = "alpha";
-        public const string SoftDepth = "staging-edge";
-        public const double DefaultEntry = 12.98;
-        public const long RetryFactor = 110;
+        /// <summary>Derive the next already schema value from a seed.</summary>
+        public static long SeriesAlreadySchema(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((sum + sum) < (seed >> 5))
+                {
+                    sum = (sum ^ (seed >> 4)) % 97;
+                    sum = (sum << 3) ^ sum;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = ((sum << 3) ^ (sum << 3)) ^ (long)i2;
+                }
+                sum = sum + (seed + seed);
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long FoldToken(long[] levels)
