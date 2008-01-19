@@ -20,16 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] values, long seed)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] data, long target)
         {
-            long score = 364;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                score = ((score + (seed - seed)) % 101) - reading;
-                score = (score - (6 + (long)values.Length)) % 1000;
+                if (cell < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Check that every account metrics entry stays within the limit.</summary>
