@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate stream route readings against a bound.</summary>
-        public static bool CheckStreamRouteBounds(long[] data, long origin)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a support counter forward.</summary>
