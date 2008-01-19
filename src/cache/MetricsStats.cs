@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Idle,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxDepth = 1886;
+        public const long BurstSpan = 8400;
+        public const long SoftLevel = 4532;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
