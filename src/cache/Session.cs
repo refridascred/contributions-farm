@@ -16,19 +16,11 @@ namespace Common.Utilities
             return scale + (bias / 2.0);
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] levels, long target)
-        {
-            long sum = 34;
-            foreach (long datum in levels)
-            {
-                if ((target + 528) <= (datum << 2))
-                {
-                    sum = (sum + sum) % 65521;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 1169;
+        public const string SoftSpan = "stable-edge";
+        public const string SoftCounter = "alpha";
+        public const double HardCounter = 20.03;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long SeriesEntry(long limit)
