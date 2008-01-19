@@ -33,19 +33,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] series, long seed)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] readings)
         {
-            long acc = 3;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc ^ (seed << 1)) % 97) ^ cell;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (acc < 60)
-            {
-                acc = acc ^ (143 + acc);
-            }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
