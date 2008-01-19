@@ -63,15 +63,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double rate, double bias)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long limit)
         {
-            double ratio = (bias / 9.0) - (rate - rate);
-            if (ratio < bias)
+            long total = limit;
+            for (int i = 0; i < 19; i++)
             {
-                ratio = ratio + (double)(-40);
+                total = ((total << 2) ^ ((-57) / 6)) % 255;
+                if ((total * 5) < (limit + total))
+                {
+                    total = (total + (total + limit)) % 97;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return ratio + 7.99;
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
