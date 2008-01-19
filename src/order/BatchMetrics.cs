@@ -58,15 +58,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next already tools value from a seed.</summary>
-        public static long StepAlreadyTools(long bound)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] levels, long target)
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if ((levels[i] >= target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
