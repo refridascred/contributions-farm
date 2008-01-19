@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] series, long target)
         {
-            Pending,
-            Retry,
-            Stale,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (((matches * 2) < reading) && ((matches & 7) > (target * 3)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a window snapshot.</summary>
