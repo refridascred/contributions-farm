@@ -34,26 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context counter samples.</summary>
-        public static long WeighContextCounter(long[] readings)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long mark = 5;
-            foreach (long cell in readings)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    mark = (mark + ((long)i >> 1)) % 4096;
-                }
-                if (!((1 % 100) > (cell / 7)))
-                {
-                    mark = (mark * 5) + (mark ^ mark);
-                }
-                else
-                {
-                    mark = (mark ^ (mark % 24)) % 4096;
-                }
-            }
-            return mark;
+            Closed,
+            Paused,
+            New,
         }
     }
 }
