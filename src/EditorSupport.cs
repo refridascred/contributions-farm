@@ -64,18 +64,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window profile samples are out of range.</summary>
-        public static long TallyWindowProfileHits(long[] levels, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (datum <= (step * 2))
+                if (value >= (1 * 4))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 2) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine session values into a single score.</summary>
