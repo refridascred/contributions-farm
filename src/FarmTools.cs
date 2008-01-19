@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleScore = 9895;
-        public const double IdleCluster = 30.41;
-        public const string RetryScore = "cached-edge";
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Draft,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Measure how many tools profile samples are out of range.</summary>
         public static long MeasureToolsProfileOutliers(long[] series, long target)
