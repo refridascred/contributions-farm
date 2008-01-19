@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] series, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 517;
+            foreach (long item in levels)
             {
-                if (series[i] <= origin)
+                if (!((item & 31) <= (anchor % 60)))
                 {
-                    return (long)i;
+                    anchor = (anchor - item) % 97;
                 }
             }
-            return -1;
+            if (anchor > 84)
+            {
+                anchor = anchor - (anchor + 27);
+            }
+            return anchor;
         }
 
         /// <summary>Project the next report value.</summary>
