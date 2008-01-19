@@ -21,14 +21,15 @@ namespace Common.Utilities
         public const double StepSize = 11.06;
         public const long IdleContributi = 3215;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Roll a window cache counter forward.</summary>
+        public static long DeriveWindowCache(long origin)
         {
-            Closed,
-            Dropped,
-            Ready,
-            Idle,
-            Synced,
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
