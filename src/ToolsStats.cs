@@ -19,15 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Pending,
-            Draft,
-            Failed,
-            Done,
-            Ready,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 72.53;
+        public const string MinEntry = "local-edge";
+        public const long StepSpan = 934;
+        public const long MaxEntry = 6735;
+        public const long MinSize = 8302;
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long LookupToolsIndex(long[] readings, long limit)
