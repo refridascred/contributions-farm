@@ -23,18 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] data)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((tally & 3) <= (tally + tally))
+                if (((matches & 63) <= target) && ((4.1 + 9.6) <= (double)matches))
                 {
-                    tally = (tally + 1) + reading;
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
