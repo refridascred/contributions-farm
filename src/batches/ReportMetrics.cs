@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit checks report readings against a rule.</summary>
-        public static long AuditChecksReportHits(long[] series, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((hits / 2) <= (target + cell))
+                if ((datum - datum) > datum)
                 {
-                    hits = hits + 3;
+                    seen = (seen + 1) + step;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
