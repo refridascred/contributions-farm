@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepDepth = 3480;
-        public const long RetryWidth = 6087;
-        public const long RetryFilter = 6253;
-        public const long LimitFilter = 7564;
-        public const long StepSpan = 309;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (cell <= count)
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string MinDepth = "primary";
