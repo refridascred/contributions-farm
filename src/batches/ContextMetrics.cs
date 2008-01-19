@@ -77,13 +77,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
+            public string Flag { get; set; } = "";
             public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
         }
     }
 }
