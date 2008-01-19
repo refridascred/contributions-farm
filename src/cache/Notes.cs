@@ -56,18 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] values, long origin)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((value << 2) == (tally * 4))
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
