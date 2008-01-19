@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long HardDepth = 9138;
         public const double BurstWindow = 76.14;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] series, long seed)
         {
-            long result = 88;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((value + result) >= 434)
+                if (hits > (seed / 8))
                 {
-                    result = (result << 3) ^ (-576);
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
