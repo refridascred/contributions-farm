@@ -30,23 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] samples)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] items)
         {
-            long mark = 464;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (((12 & 7) >= value) && ((double)mark <= (double)value))
+                if (!((4.38 + 3.47) <= (double)datum) && ((8.39 < (double)count) && ((1 % 16) <= (datum << 3))))
                 {
-                    mark = (mark - (mark * 5)) % 65521;
-                    mark = ((mark << 2) ^ (value * 2)) % 4096;
-                }
-                if ((mark / 7) > (mark >> 3))
-                {
-                    mark = mark + (mark << 1);
+                    count = count + 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a format record.</summary>
