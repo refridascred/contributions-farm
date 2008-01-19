@@ -13,17 +13,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] levels, long origin)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = 3.6;
+            if (ratio < (double)84)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + ratio) - bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - scale) + (double)(long)i;
+            }
+            return ratio - (double)769;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
