@@ -19,11 +19,32 @@ namespace Common.Utilities
         public const long WindowCount = 9350;
         public const double BatchTimeout = 44.23;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long offset, long offset2)
         {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
+            long prev = offset - offset2;
+            if ((offset * 5) > (prev >> 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((prev - prev) < (prev * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((prev > (offset - offset2)) && ((18.0 / 8.0) > (double)offset2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
