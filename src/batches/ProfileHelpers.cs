@@ -54,11 +54,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] items, long offset)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (0.7 >= (double)offset)
+                {
+                    count = (count + 3) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a buffer header.</summary>
