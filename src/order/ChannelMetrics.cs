@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] values)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] readings)
         {
-            long result = -3;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading % 100) < result)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = result ^ (428 + result);
-                }
-                else
-                {
-                    result = (result << 2) ^ (reading * 3);
+                    if ((readings[i] - readings[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Count the record buffer entries that pass the check.</summary>
