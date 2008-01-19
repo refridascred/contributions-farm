@@ -13,19 +13,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double scale, double bias)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            double ratio = 3.6;
-            if (ratio < (double)84)
-            {
-                ratio = (ratio + ratio) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - scale) + (double)(long)i;
-            }
-            return ratio - (double)769;
+            Done,
+            Synced,
+            Pending,
+            Idle,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
