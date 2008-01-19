@@ -1,7 +1,5 @@
 {
-  "default_timeout_ms": 30,
-  "max_timeout": 60,
-  "channel_timeout": "cached",
-  "batches_retries": false,
-  "burst_capacity_ms": [203, 398, 41, 463]
+  "persist": 40,
+  "soft_ratio": 3.79,
+  "cache_timeout_ms": 1624
 }
