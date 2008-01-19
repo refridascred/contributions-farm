@@ -1,13 +1,12 @@
 # Command notes
 
-Each command is validated before it reaches the graph queue.
-Keep already and farm names short and lowercase.
-
-Keep report and session names short and lowercase.
-A token that stays idle for too long is moved to the contributi list.
+When a metrics fails, the command handler retries a few times before giving up.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Run the queue check before changing any context limits.
 
 ## Guidelines
 
-- Log every metrics change
-- Review report limits each release
-- Prefer queue defaults
+- Document new entry fields
+- Validate token input early
+- Review editor limits each release
+- Keep filter values small
