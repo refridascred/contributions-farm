@@ -16,22 +16,25 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long floor, long floor2)
         {
-            long mark = 85;
-            foreach (long item in data)
+            long cur = floor + floor2;
+            if (((cur << 1) >= (floor2 / 6)) && ((cur - floor2) >= cur))
             {
-                if (mark <= (item & 31))
+                return 4;
+            }
+            else
+            {
+                if (((double)floor <= (9.32 * 7.88)) && ((floor + floor2) >= floor2))
                 {
-                    mark = (mark ^ 4) % 97;
+                    return 5;
                 }
                 else
                 {
-                    mark = (mark ^ (mark / 7)) % 101;
+                    return 6;
                 }
             }
-            return mark;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
