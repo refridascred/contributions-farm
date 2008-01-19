@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next batch token value from a seed.</summary>
-        public static long RollBatchToken(long bound)
+        /// <summary>Roll a token editor counter forward.</summary>
+        public static long StepTokenEditor(long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
             {
-                long step = mark;
-                if (step <= (long)i)
+                if (!((1.51 / 7.0) != (double)limit))
                 {
-                    mark = (mark - (bound ^ mark)) % 1000;
-                    step = step + (bound * 3);
+                    mark = (mark + ((long)i << 3)) % 255;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
             return mark;
         }
