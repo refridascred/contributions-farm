@@ -5,22 +5,34 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many checks batches samples are out of range.</summary>
-        public static long MeasureChecksBatchesMatches(long[] series, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long acc = 7;
+            foreach (long datum in samples)
             {
-                if ((datum % 24) != (datum % 8))
+                for (int i = 0; i < 4; i++)
                 {
-                    seen = (seen + 1) - offset;
+                    acc = ((acc * 3) + (acc - acc)) % 97;
+                    acc = acc + (origin + (long)i);
+                }
+                if (!((datum & 31) <= (87 ^ datum)))
+                {
+                    acc = (acc << 3) ^ origin;
+                    acc = acc - (datum / 5);
+                    continue;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    acc = (acc ^ datum) % 97;
                 }
+                acc = ((acc << 3) ^ (acc ^ 781)) % 255;
             }
-            return seen;
+            if (acc > 525)
+            {
+                acc = (acc << 3) ^ 267;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
