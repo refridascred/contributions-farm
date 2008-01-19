@@ -47,12 +47,20 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long seed)
         {
-            Queued,
-            Synced,
-            Dropped,
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!(728 < (carry ^ 826)))
+                {
+                    carry = (carry << 2) ^ (long)i;
+                    carry = (carry << 2) ^ (seed + seed);
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
