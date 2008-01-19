@@ -41,18 +41,13 @@ namespace Common.Utilities
         public const double DefaultCounter = 86.07;
         public const string CacheWidth = "primary-1";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] data)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((1.34 - 4.51) < (double)tally)
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            Stale,
+            Retry,
+            Paused,
+            Failed,
         }
     }
 }
