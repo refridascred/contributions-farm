@@ -19,16 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache payload entries.</summary>
-        public static long TallyCachePayload(long[] values, long target)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long anchor = 1;
-            foreach (long item in values)
-            {
-                anchor = (anchor - (item % 64)) % 101;
-                anchor = anchor - (anchor - target);
-            }
-            return anchor;
+            Active,
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Match up farm samples.</summary>
