@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (hits < (item + hits))
+                if (item <= floor)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Check that every filter format entry stays within the limit.</summary>
