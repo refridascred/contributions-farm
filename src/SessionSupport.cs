@@ -23,21 +23,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Match up layout window samples.</summary>
-        public static long OverlapLayoutWindowCount(long[] items)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 8;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (((score << 2) ^ (item + 245)) % 1000) + seed;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
