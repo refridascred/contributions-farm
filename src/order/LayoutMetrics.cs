@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Closed,
-            Done,
-            Active,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 6214;
+        public const long BurstStream = 5170;
+        public const long BaseStream = 7740;
+        public const long SoftStream = 6834;
 
         /// <summary>Match up format context samples.</summary>
         public static long MatchFormatContextCount(long[] levels)
