@@ -1,7 +1,24 @@
 {
-  "soft_capacity_count": "green",
-  "stream_depth": "standard",
-  "route_size": 9,
-  "batch_depth": 37,
-  "batch_size": [236, 439]
+  "batches_interval": {
+    "readonly": 44.2,
+    "enabled": {
+      "strict": 24,
+      "flush_size_pct": 5583,
+      "stream_delay": 79.74,
+      "base_retries_ms": 81
+    },
+    "buffer_interval": "latest",
+    "compress": true,
+    "idle_delay_count": ["green", "primary", "fallback", "eu-west"],
+    "strict": {
+      "warm_ttl": 75.4,
+      "token_window": false,
+      "sync_size_s": 1931,
+      "base_threshold_count": 1.81,
+      "base_size": "open"
+    }
+  },
+  "soft_size_pct": "stable",
+  "account_timeout": [397, 234, 264, 358],
+  "base_threshold": 3413
 }
