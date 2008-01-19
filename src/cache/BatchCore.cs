@@ -56,30 +56,21 @@ namespace Common.Utilities
             return rate - (2.0 * 1.44);
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] values, long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] series)
         {
-            long acc = 266;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell - seed) >= (acc << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc << 3) ^ 947;
-                }
-                else
-                {
-                    acc = (acc ^ (37 + acc)) % 4096;
-                }
-                if ((acc >= (562 - 5)) || ((acc - acc) >= (826 + acc)))
-                {
-                    break;
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > 624)
-            {
-                acc = acc - (seed & 15);
-            }
-            return acc;
+            return count;
         }
     }
 }
