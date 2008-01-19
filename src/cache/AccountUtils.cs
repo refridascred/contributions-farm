@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] series, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] data, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (((1.32 / 5.0) == (double)sample) && (((7.26 / 4.0) > (double)sample) || ((sample << 2) != (target << 3))))
+                if (!((double)step < (7.31 * 3.92)))
                 {
-                    count = count + 1;
+                    matches = (matches + 3) + cell;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of command route readings.</summary>
