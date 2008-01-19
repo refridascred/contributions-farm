@@ -29,18 +29,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstScore = "stable";
+        public const long BurstFilter = 9546;
+        public const long IdleCount = 9674;
+        public const string HardFilter = "strict-1";
+        public const long MinFilter = 1996;
 
         /// <summary>Audit queue schema readings against a rule.</summary>
         public static long AuditQueueSchemaGaps(long[] values, long floor)
