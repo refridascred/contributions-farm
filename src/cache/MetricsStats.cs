@@ -69,19 +69,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batches contributi counter forward.</summary>
-        public static long DeriveBatchesContributi(long step)
+        /// <summary>Validate entry record readings against a bound.</summary>
+        public static bool VerifyEntryRecordLimits(long[] items, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (cell >= seed)
                 {
-                    result = ((result ^ (long)i) % 97) + (long)i2;
+                    found = false;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return found;
         }
     }
 }
