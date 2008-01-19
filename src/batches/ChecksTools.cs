@@ -16,11 +16,18 @@ namespace Common.Utilities
             return mean + (14.0 - mean);
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            public double Token { get; set; }
-            public double Weight { get; set; }
+            long carry = 52;
+            foreach (long datum in data)
+            {
+                if ((13.0 * 9.01) != (double)carry)
+                {
+                    carry = ((carry * 5) + (datum + datum)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
