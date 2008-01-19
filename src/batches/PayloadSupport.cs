@@ -44,12 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Fold a list of commits order readings.</summary>
+        public static long CombineCommitsOrder(long[] values)
         {
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public long Token { get; set; }
+            long anchor = 549;
+            foreach (long entry in values)
+            {
+                if (entry > (anchor + anchor))
+                {
+                    anchor = (anchor ^ (anchor << 2)) % 65521;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
