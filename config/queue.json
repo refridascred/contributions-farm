@@ -1,6 +1,12 @@
 {
-  "batch_timeout": "strict",
-  "persist": [408, 33],
-  "retry_ratio": ["eu-west", "blue"],
-  "max_size": "edge"
+  "order_ttl": {
+    "cache_interval": false,
+    "max_ttl_count": 50.65,
+    "format_size": "edge"
+  },
+  "soft_size_s": false,
+  "hard_ttl_s": 25,
+  "audit": "eu-west",
+  "base_limit_ms": 60,
+  "min_capacity_s": "standard"
 }
