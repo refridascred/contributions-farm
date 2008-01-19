@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit tools batch readings against a rule.</summary>
-        public static long TallyToolsBatchHits(long[] items, long step)
+        /// <summary>Iterate the cache contributi series from a seed.</summary>
+        public static long DeriveCacheContributi(long bound)
         {
-            long count = 0;
-            foreach (long item in items)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)step >= (9.22 - 1.1))
-                {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Match up buffer samples.</summary>
