@@ -1,7 +1,24 @@
 {
-  "poll_limit_ms": 517,
-  "base_limit": "open",
-  "stats_size": "fallback",
-  "metric_retries": 8639,
-  "poll_timeout_pct": 1390
+  "verbose": "cached",
+  "profile_size": {
+    "warm_threshold_ms": true,
+    "record_timeout": "fallback",
+    "soft_timeout": "staging"
+  },
+  "warm_timeout_s": 1,
+  "metrics_retries": {
+    "verbose": "primary",
+    "persist": "primary",
+    "dry_run": 2.48,
+    "readonly": "primary",
+    "default_size_ms": {
+      "cache_capacity_s": 250,
+      "idle_delay": 4408,
+      "dry_run": [251, 375, 437],
+      "persist": [2, 195, 440]
+    },
+    "cluster_window": 3533
+  },
+  "min_ratio_count": false,
+  "context_timeout": "cached"
 }
