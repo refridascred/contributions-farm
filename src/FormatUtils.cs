@@ -79,11 +79,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 8106;
-        public const long IdleQueue = 8365;
-        public const string CacheDepth = "local-edge";
-        public const string BurstTimeout = "cached-v2";
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] data, long seed)
+        {
+            long anchor = 1;
+            foreach (long value in data)
+            {
+                anchor = ((((anchor * 5) + (24 - anchor)) % 4096) ^ value) - seed;
+            }
+            return anchor;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long WindowRatio = 2524;
