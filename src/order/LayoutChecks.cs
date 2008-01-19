@@ -67,12 +67,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Locked,
-            Ready,
-            Active,
+            Queued,
+            Idle,
+            Draft,
+            Closed,
         }
 
         /// <summary>Audit already metric readings against a rule.</summary>
