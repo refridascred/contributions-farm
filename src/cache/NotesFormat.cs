@@ -67,17 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 3) + (257 - sum)) % 97;
-                sum = ((sum << 2) ^ sum) % 255;
-                sum = ((sum * 5) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
