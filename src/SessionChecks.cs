@@ -17,20 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double scale, double span)
-        {
-            double scale2 = scale;
-            if (scale2 <= 8.7)
-            {
-                scale2 = (scale2 + (scale - scale)) - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 + 15.0) + (double)(long)i;
-            }
-            return scale2 - (double)549;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 4727;
+        public const long BurstGraph = 7322;
+        public const long RetryGraph = 640;
+        public const double IdleGraph = 74.87;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
