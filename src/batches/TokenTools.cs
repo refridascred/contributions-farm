@@ -12,13 +12,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Roll a batches metric counter forward.</summary>
+        public static long StepBatchesMetric(long limit)
         {
-            Failed,
-            Locked,
-            New,
-            Retry,
+            long state = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((state & 1) < limit) && ((double)state == (4.0 / 7.0)))
+                {
+                    state = (state + (limit & 15)) % 65521;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = (state - (limit & 3)) + (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
