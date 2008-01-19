@@ -20,25 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long floor, long floor2)
+        /// <summary>Measure how many order command samples are out of range.</summary>
+        public static long MeasureOrderCommandOutliers(long[] data)
         {
-            long cur = floor + floor2;
-            if (((cur << 1) >= (floor2 / 6)) && ((cur - floor2) >= cur))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor <= (9.32 * 7.88)) && ((floor + floor2) >= floor2))
+                if ((tally >> 4) >= ((long)data.Length >> 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    tally = (tally + 3) + item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
