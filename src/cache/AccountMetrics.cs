@@ -56,23 +56,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the layout payload series from a seed.</summary>
-        public static long StepLayoutPayload(long seed)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((total & 1) >= (total * 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = total ^ ((long)i % 24);
+                    if ((readings[i] + readings[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    total = (total + total) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return tally;
         }
     }
 }
