@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double scale, double bias)
-        {
-            double scale2 = 3.61;
-            if (scale2 <= (scale + scale))
-            {
-                scale2 = scale2 - (bias * 7.0);
-            }
-            return scale2 + (scale / 3.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 8958;
+        public const long DefaultBudget = 5076;
+        public const long WindowCount = 5315;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long CombineSupport(long[] samples)
