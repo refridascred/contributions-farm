@@ -27,15 +27,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double weight, double bias)
+        /// <summary>Derive the next schema farm value from a seed.</summary>
+        public static long StepSchemaFarm(long floor)
         {
-            double rate = (double)1 - (14.0 / 6.0);
-            for (int i = 0; i < 8; i++)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                rate = ((rate - (double)(long)i) - weight) + bias;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return rate + 8.07;
+            return score;
         }
 
         /// <summary>Describe the stream status values.</summary>
