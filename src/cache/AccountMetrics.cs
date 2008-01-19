@@ -55,21 +55,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Validate schema layout readings against a bound.</summary>
+        public static bool GuardSchemaLayoutLimits(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value <= offset)
                 {
-                    if ((data[i] + data[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a contributi options.</summary>
