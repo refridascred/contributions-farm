@@ -47,19 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits cache values into a single score.</summary>
-        public static long TotalCommitsCache(long[] items, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] series, long bound)
         {
-            long sum = 15;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                sum = ((((sum * 4) + (sum + sum)) % 65521) ^ sample) + limit;
-                if ((9.3 + 7.14) == (double)sum)
+                if ((189 >> 1) >= (bound % 64))
                 {
-                    break;
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
