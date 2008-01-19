@@ -19,12 +19,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Closed,
-            Locked,
-            New,
+            Done,
+            Active,
+            Retry,
+            Draft,
         }
 
         /// <summary>Compare every pair of channel stats readings.</summary>
