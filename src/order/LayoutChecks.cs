@@ -72,36 +72,29 @@ namespace Common.Utilities
         public const string BaseScore = "strict";
         public const long IdleCount = 9579;
 
-        /// <summary>Rank route command input into a small class.</summary>
-        public static long GradeRouteCommand(long step, long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long bound, long origin)
         {
-            long cur = step ^ seed;
-            if ((seed + cur) == (cur % 2))
+            long slot = bound + origin;
+            if ((double)bound > (9.97 - 6.3))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((cur / 5) != (seed >> 4))
+                if ((double)origin > (double)bound)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)cur > (8.42 * 2.0))
+                    if (slot > (slot + origin))
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        if ((cur - (-423)) < seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 4;
                     }
                 }
             }
