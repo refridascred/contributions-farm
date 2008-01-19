@@ -1,5 +1,23 @@
 {
-  "batches_interval": true,
-  "cache_limit_pct": "blue",
-  "burst_size": false
+  "farm_limit": {
+    "idle_limit": 250,
+    "verbose": "primary",
+    "sync_delay_ms": 3.59
+  },
+  "dry_run": "green",
+  "flush_capacity_s": "fallback",
+  "idle_size_count": {
+    "channel_interval": false,
+    "sync_ratio_s": "eu-west",
+    "readonly": [155, 408, 196],
+    "filter_interval": {
+      "burst_ttl_pct": false,
+      "channel_retries": "edge",
+      "min_capacity_s": true,
+      "report_threshold": 73,
+      "persist": "standard"
+    },
+    "burst_timeout_ms": "eu-west"
+  },
+  "enabled": ["staging", "local"]
 }
