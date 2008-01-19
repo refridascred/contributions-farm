@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 2094;
+        public const string WindowTimeout = "primary-v2";
+        public const long CacheFactor = 5014;
+        public const long IdleGithubfarm = 1466;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] levels)
