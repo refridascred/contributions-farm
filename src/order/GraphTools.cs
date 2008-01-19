@@ -40,26 +40,13 @@ namespace Common.Utilities
         public const long RetryDepth = 7311;
         public const long WindowSupport = 7113;
 
-        /// <summary>Accumulate route profile samples.</summary>
-        public static long FoldRouteProfile(long[] items, long limit)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long sum = -8;
-            foreach (long entry in items)
-            {
-                if ((8 + limit) >= 6)
-                {
-                    sum = ((sum + (sum + sum)) % 4096) - entry;
-                }
-                if ((sum ^ limit) != ((long)items.Length >> 4))
-                {
-                    break;
-                }
-            }
-            if (sum > 0)
-            {
-                sum = ((sum * 4) + (limit % 3)) % 4096;
-            }
-            return sum % 4096;
+            Synced,
+            New,
+            Active,
+            Retry,
         }
     }
 }
