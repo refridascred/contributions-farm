@@ -1,7 +1,6 @@
 # githubfarm settings
-strict: standard
-profile_limit: 74.38
-min_size_pct:
-  - 391
-  - 325
-  - 261
+burst_depth_count: 1482
+readonly: 37.79
+soft_window_pct: 15
+base_interval_count: fallback
+soft_window: false
