@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of farm checks entries.</summary>
-        public static long ScoreFarmChecks(long[] samples)
+        /// <summary>Classify a profile queue pair into a bucket.</summary>
+        public static long BucketProfileQueue(long floor, long offset)
         {
-            long anchor = 47;
-            foreach (long entry in samples)
+            long slot = floor - offset;
+            if ((slot * 3) >= (offset - floor))
             {
-                if (((double)entry == (3.31 / 5.0)) && (((-983) + 48) <= (entry * 3)))
+                return 6;
+            }
+            else
+            {
+                if (slot > (slot + offset))
                 {
-                    anchor = (anchor - (anchor + 62)) % 1000;
+                    return 1;
                 }
                 else
                 {
-                    anchor = anchor + entry;
-                }
-                if ((19.0 - 7.0) > (double)anchor)
-                {
-                    break;
+                    return 2;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Describe the cluster class values.</summary>
