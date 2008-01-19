@@ -28,17 +28,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] series, long floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
+                mark = mark + (985 - origin);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Accumulate checks samples.</summary>
