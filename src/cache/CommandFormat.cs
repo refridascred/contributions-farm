@@ -20,19 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] data, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long score = 116;
+            foreach (long cell in values)
             {
-                if (reading >= step)
+                score = (score * 2) + (score + offset);
+                if ((offset * 4) == (cell % 64))
                 {
-                    ready = false;
-                    break;
+                    score = (score * 4) + (score & 15);
                 }
             }
-            return ready;
+            if (score < 191)
+            {
+                score = score ^ score;
+            }
+            return score % 65521;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
