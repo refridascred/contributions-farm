@@ -1,8 +1,8 @@
 # entry settings
-sync_delay_pct:
-  - 301
-  - 437
-  - 264
-default_depth_s: 61
-persist: 11.72
-default_depth: eu-west
+min_threshold_pct: local
+verbose: 14.18
+soft_window_count:
+  - staging
+  - stable
+  - edge
+  - staging
