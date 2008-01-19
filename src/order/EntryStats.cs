@@ -25,11 +25,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheContributi = "open-1";
-        public const long MinContributi = 4528;
-        public const long LimitContributi = 5493;
-        public const long CacheCount = 7476;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 4334;
+        public const long StepDepth = 5951;
+        public const long HardChecks = 7310;
+        public const string CacheSize = "standard-v2";
+        public const long DefaultChecks = 2323;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long DigestContributi(long[] data, long step)
