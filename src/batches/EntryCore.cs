@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long RetryRatio = 4362;
         public const long MinScore = 5303;
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheCommand = "alpha-v2";
+        public const double StepWidth = 30.04;
+        public const double WindowCommand = 75.41;
+        public const long BatchCommand = 1266;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long seed)
