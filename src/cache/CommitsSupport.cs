@@ -67,15 +67,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Closed,
-            Synced,
-            Retry,
-            Pending,
-            Done,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 514;
+        public const long RetryLevel = 6089;
+        public const double WindowSupport = 4.85;
+        public const string WindowLevel = "open-1";
+        public const string CacheSupport = "legacy";
 
         /// <summary>Digest a series of context support entries.</summary>
         public static long CombineContextSupport(long[] data)
