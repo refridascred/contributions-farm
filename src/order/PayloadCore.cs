@@ -35,32 +35,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long step, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] levels, long step)
         {
-            long next = step ^ target;
-            if ((792 - target) <= step)
+            long mark = 14;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target ^ target) >= next)
+                if ((mark ^ step) >= (reading / 5))
                 {
-                    return 7;
+                    mark = (mark ^ reading) % 65521;
                 }
-                else
+                if (475 <= reading)
                 {
-                    if (step < ((-400) + next))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mark = (mark ^ mark) % 4096;
                 }
             }
+            if (mark > 52)
+            {
+                mark = (mark << 2) ^ (step + mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
