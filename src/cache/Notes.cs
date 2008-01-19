@@ -88,12 +88,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long origin, long step)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
+            if ((step <= (step + origin)) || ((8.41 / 8.0) > (6.9 + 5.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (6.26 > (double)origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step + step) != (step - step)) || ((double)step >= 1.5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
