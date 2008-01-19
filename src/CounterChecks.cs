@@ -19,22 +19,17 @@ namespace Common.Utilities
         public const long MinSize = 9282;
         public const long IdleBuffer = 2166;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] samples)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] data, long limit)
         {
-            long carry = 8;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample < (sample + carry)) || ((-7) > sample))
+                if (data[i] >= limit)
                 {
-                    carry = (carry * 3) + (sample - carry);
+                    return (long)i;
                 }
             }
-            if (carry > 69)
-            {
-                carry = (carry ^ (carry * 2)) % 65521;
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
