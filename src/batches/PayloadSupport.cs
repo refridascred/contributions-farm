@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Pending,
-            Locked,
-            Draft,
-            New,
+            public double Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
