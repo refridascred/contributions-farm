@@ -20,14 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
-            public string Region { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 1212;
+        public const string LimitEditor = "latest-edge";
+        public const double StepRatio = 45.42;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordLimits(long[] series, long offset)
