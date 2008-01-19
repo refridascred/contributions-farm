@@ -33,14 +33,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            New,
-            Retry,
-            Paused,
             Idle,
-            Done,
+            Locked,
+            Ready,
         }
 
         /// <summary>Blend two counter measurements.</summary>
