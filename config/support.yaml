@@ -1,14 +1,5 @@
 # support settings
-base_threshold_count: false
-soft_timeout_count: true
-min_ratio:
-  - staging
-  - cached
-  - staging
-idle_threshold_s: 250
-hard_threshold_s:
-  - 382
-  - 165
-  - 302
-  - 325
-soft_capacity: 100
+max_timeout_pct: true
+burst_depth_pct: latest
+min_limit_ms: 67.14
+sync_window: false
