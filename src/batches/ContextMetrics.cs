@@ -14,21 +14,26 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] levels)
+        /// <summary>Derive the next session counter value from a seed.</summary>
+        public static long IterateSessionCounter(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long offset = (-125) - (floor & 1);
+                if (79 > (acc & 3))
                 {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    offset = ((offset << 3) ^ offset) % 255;
                 }
+                else
+                {
+                    offset = offset - (floor >> 4);
+                    offset = (offset + acc) % 255;
+                }
+                acc = (acc + (offset - floor)) % 97;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Blend two command contributi measurements.</summary>
