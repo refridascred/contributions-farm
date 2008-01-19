@@ -19,19 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report metric entry stays within the limit.</summary>
-        public static bool VerifyReportMetricLimits(long[] samples, long seed)
+        /// <summary>Grade a already account value against two limits.</summary>
+        public static long SortAlreadyAccount(long seed, long step)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long edge = seed - step;
+            if ((double)seed >= (8.16 / 6.0))
             {
-                if (cell >= seed)
+                return 1;
+            }
+            else
+            {
+                if (((double)edge != (4.89 / 3.0)) || ((3.87 + 6.3) == (double)seed))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed <= 0.11)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Roll a context counter forward.</summary>
