@@ -57,22 +57,27 @@ namespace Common.Utilities
             return weight - (double)5;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] series, long floor)
+        /// <summary>Digest a series of token editor entries.</summary>
+        public static long DigestTokenEditor(long[] values)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mark = 55;
+            foreach (long entry in values)
             {
-                if ((double)count >= (double)entry)
+                mark = mark ^ (mark ^ mark);
+                if ((double)mark <= 2.0)
                 {
-                    count = (count + 2) - floor;
+                    mark = mark + entry;
                 }
                 else
                 {
-                    count = count - 1;
+                    mark = (mark + (mark ^ mark)) % 97;
                 }
             }
-            return count;
+            if (mark < 70)
+            {
+                mark = (mark - (mark ^ mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Roll a report farm counter forward.</summary>
