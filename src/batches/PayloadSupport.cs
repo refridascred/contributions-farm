@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a payload entry pair into a bucket.</summary>
-        public static long SortPayloadEntry(long floor, long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] data, long origin)
         {
-            long diff = floor ^ limit;
-            if ((0 - limit) >= ((-41) * 4))
+            bool valid = true;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((floor >> 4) < (diff & 63)))
+                if (datum >= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a farm record.</summary>
