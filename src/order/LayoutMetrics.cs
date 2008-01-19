@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double scale, double floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] data)
         {
-            double load = 15.0;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = ((load - scale) + (double)(long)i) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load + (double)680;
+            return seen;
         }
 
         /// <summary>Count the route stats entries that pass the check.</summary>
