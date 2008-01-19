@@ -34,14 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Audit checks command readings against a rule.</summary>
+        public static long AuditChecksCommandMatches(long[] items)
         {
-            Paused,
-            Queued,
-            Ready,
-            Retry,
-            Closed,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((count ^ count) >= (entry % 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stats phase values.</summary>
