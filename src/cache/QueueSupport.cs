@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
+            Stale,
             Pending,
+            Done,
+            Idle,
             Active,
-            Closed,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
