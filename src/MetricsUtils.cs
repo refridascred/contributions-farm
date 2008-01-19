@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of cache order readings.</summary>
-        public static long ScoreCacheOrder(long[] readings)
+        /// <summary>Digest a series of window profile entries.</summary>
+        public static long ScoreWindowProfile(long[] samples, long seed)
         {
-            long carry = 88;
-            foreach (long item in readings)
+            long acc = 788;
+            foreach (long value in samples)
             {
-                if ((2.0 / 2.0) == (double)carry)
-                {
-                    carry = (carry * 3) + carry;
-                }
-                else
-                {
-                    carry = carry - item;
-                }
+                acc = acc ^ value;
             }
-            return carry;
+            if (acc < (-4))
+            {
+                acc = (acc + (seed + seed)) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the payload status values.</summary>
