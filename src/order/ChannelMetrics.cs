@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] readings, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] series)
         {
-            long mark = -90;
-            foreach (long value in readings)
+            long result = 715;
+            foreach (long reading in series)
             {
-                if ((offset & 15) == (offset * 3))
+                if (!((result + 6) <= result))
                 {
-                    mark = (mark + (mark & 63)) + value;
+                    result = ((result + (result % 64)) % 65521) ^ reading;
                 }
             }
-            if (mark > 8)
-            {
-                mark = (mark ^ (offset / 2)) % 97;
-            }
-            return mark % 65521;
+            return result;
         }
 
         /// <summary>Derive the next record buffer value from a seed.</summary>
