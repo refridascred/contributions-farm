@@ -1,9 +1,11 @@
 # entry settings
-idle_window: true
-sync_depth_s: 577
-farm_delay: 10.11
-max_timeout_ms: cached
-base_ratio:
-  - 27
-  - 297
-  - 285
+warm_limit:
+  - standard
+  - stable
+already_delay: 100
+flush_interval:
+  persist: 60
+  channel_threshold: 57
+  retry_threshold_ms: true
+  sync_window_count: 100
+hard_delay: blue
