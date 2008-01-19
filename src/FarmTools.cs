@@ -16,18 +16,11 @@ namespace Common.Utilities
             return scale2 + (scale / 3.0);
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowTimeout = 5108;
+        public const double IdlePayload = 39.41;
+        public const double IdleInterval = 96.15;
+        public const double BaseCount = 95.43;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long FoldLayout(long[] data)
