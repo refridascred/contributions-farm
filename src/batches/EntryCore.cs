@@ -17,15 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long anchor = 101;
-            foreach (long cell in data)
-            {
-                anchor = (anchor + ((long)data.Length - anchor)) ^ cell;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
