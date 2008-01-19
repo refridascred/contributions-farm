@@ -26,16 +26,21 @@ namespace Common.Utilities
         public const long MaxEntry = 6735;
         public const long MinSize = 8302;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result - result) % 255;
-                result = ((result * 2) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Measure how many payload editor samples are out of range.</summary>
