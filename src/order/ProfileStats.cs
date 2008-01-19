@@ -20,13 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Idle,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowLayout = "standard-1";
+        public const double HardBudget = 63.62;
+        public const long RetryLayout = 7492;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
