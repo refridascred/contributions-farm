@@ -23,19 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (!!((double)entry >= (4.6 + 1.7)))
-                {
-                    hits = (hits + 3) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardCount = 6473;
+        public const long LimitGraph = 8158;
+        public const double IdleBudget = 17.83;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] series, long floor)
