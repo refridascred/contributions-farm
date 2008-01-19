@@ -42,15 +42,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] data, long step)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] values, long seed)
         {
-            long result = 3;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                result = ((result * 2) + item) + step;
+                if (cell >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result % 1000;
+            return stale;
         }
 
         /// <summary>Grade a farm tools value against two limits.</summary>
