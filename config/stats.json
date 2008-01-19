@@ -1,6 +1,9 @@
 {
-  "max_threshold_ms": false,
-  "retry_depth": 500,
-  "warm_interval": true,
-  "max_size": "eu-west"
+  "min_interval_count": {
+    "cache_threshold_count": ["fallback", "fallback", "legacy"],
+    "base_threshold_s": [414, 472, 434, 258],
+    "max_size_s": "strict"
+  },
+  "sync_capacity": [349, 345, 397, 346],
+  "retry_delay": "staging"
 }
