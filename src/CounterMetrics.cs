@@ -49,21 +49,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long acc = 88;
-            foreach (long value in readings)
-            {
-                acc = (acc ^ (82 - value)) % 101;
-                acc = (acc ^ (acc ^ value)) % 255;
-                acc = ((acc * 2) + value) % 97;
-            }
-            if (acc < (-73))
-            {
-                acc = ((acc << 3) ^ acc) % 65521;
-            }
-            return acc % 4096;
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
