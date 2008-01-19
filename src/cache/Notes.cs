@@ -73,25 +73,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long seed, long target)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long floor)
         {
-            long bound = seed - target;
-            if ((double)seed != (double)target)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound << 3) >= (bound >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
