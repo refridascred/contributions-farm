@@ -13,15 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] series)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] levels, long target)
         {
             long tally = 0;
-            foreach (long datum in series)
+            foreach (long datum in levels)
             {
-                if ((datum + tally) <= tally)
+                if ((double)datum < (20.0 + 4.8))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 3) - target;
                 }
             }
             return tally;
