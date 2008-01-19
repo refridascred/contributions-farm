@@ -24,21 +24,22 @@ namespace Common.Utilities
         public const long StepSize = 5136;
         public const string MaxFormat = "open";
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 11;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item >= (item / 4))
                 {
-                    if ((items[i] ^ items[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
+                }
+                if (!((double)origin >= (1.69 / 9.0)))
+                {
+                    acc = ((acc * 3) + (acc - (-678))) % 255;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the contributi level values.</summary>
