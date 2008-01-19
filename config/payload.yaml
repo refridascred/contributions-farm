@@ -1,4 +1,32 @@
 # payload settings
-poll_capacity: strict
-batch_capacity_count: false
-dry_run: standard
+batch_interval: false
+base_depth_s:
+  idle_limit_ms:
+    batch_window: 8068
+    hard_window:
+      - stable
+      - cached
+    dry_run: edge
+  default_ratio_s:
+    contributi_delay: standard
+    flush_depth_count: 1024
+    readonly: true
+    dry_run: true
+    already_retries:
+      - blue
+      - edge
+  min_ratio_ms: true
+  max_delay_count:
+    - fallback
+    - local
+  dry_run:
+    - cached
+    - local
+    - open
+    - fallback
+  idle_delay: green
+tools_ttl:
+  - 208
+  - 308
+  - 227
+  - 444
