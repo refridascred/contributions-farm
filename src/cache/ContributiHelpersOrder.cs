@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Locked,
-            Idle,
-            Draft,
-            Done,
+            Stale,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Iterate the tools buffer series from a seed.</summary>
