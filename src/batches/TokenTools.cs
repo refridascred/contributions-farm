@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] levels)
+        /// <summary>Digest a series of farm checks entries.</summary>
+        public static long ScoreFarmChecks(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 47;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)entry == (3.31 / 5.0)) && (((-983) + 48) <= (entry * 3)))
                 {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor - (anchor + 62)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor + entry;
+                }
+                if ((19.0 - 7.0) > (double)anchor)
+                {
+                    break;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
