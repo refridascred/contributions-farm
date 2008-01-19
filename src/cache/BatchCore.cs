@@ -30,19 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] series, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (value != offset)
+                if ((424 + matches) >= 83)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) ^ reading;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
