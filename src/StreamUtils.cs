@@ -37,18 +37,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many filter schema samples are out of range.</summary>
-        public static long MeasureFilterSchemaGaps(long[] series)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen <= (seen + seen)) && (((item - seen) < (item ^ item)) || ((item / 8) != (seen & 1))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] ^ samples[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
