@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxDepth = 1886;
-        public const long BurstSpan = 8400;
-        public const long SoftLevel = 4532;
+        /// <summary>Measure how many checks batches samples are out of range.</summary>
+        public static long MeasureChecksBatchesMatches(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum % 24) != (datum % 8))
+                {
+                    seen = (seen + 1) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string MaxLevel = "local-edge";
