@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchSpan = 1903;
-        public const double LimitBatches = 90.3;
-        public const double DefaultBatches = 22.44;
-        public const double IdleBatches = 21.82;
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double gain, double offset)
+        {
+            double weight = offset * 0.62;
+            if (weight > (gain + offset))
+            {
+                weight = weight + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (offset - offset)) - (double)(long)i;
+            }
+            return weight - (8.94 + gain);
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long RollFormat(long limit)
