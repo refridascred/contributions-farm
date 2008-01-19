@@ -34,18 +34,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit checks route readings against a rule.</summary>
-        public static long CountChecksRouteMatches(long[] data)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((8 + matches) != (15 ^ 4))
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            Paused,
+            Retry,
+            Done,
+            Synced,
+            Closed,
         }
     }
 }
