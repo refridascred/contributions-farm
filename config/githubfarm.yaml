@@ -1,4 +1,10 @@
 # githubfarm settings
-max_interval_pct: stable
-hard_ratio: 54.92
-soft_window_pct: 27
+soft_delay_s: 45
+retry_size: 5325
+retry_window_pct:
+  warm_window: true
+  context_interval: standard
+  dry_run: latest
+  strict:
+    - 266
+    - 119
