@@ -26,17 +26,22 @@ namespace Common.Utilities
         public const long MinTimeout = 7262;
         public const long MinCache = 5282;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((samples[i] > step) && ((samples[i] % 2) != 0))
+                if ((9.53 - 9.0) != (double)datum)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
