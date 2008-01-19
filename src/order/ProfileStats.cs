@@ -50,14 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Accumulate order context samples.</summary>
+        public static long WeighOrderContext(long[] readings)
         {
-            Paused,
-            Retry,
-            Done,
-            Synced,
-            Closed,
+            long anchor = 344;
+            foreach (long item in readings)
+            {
+                anchor = anchor - (anchor ^ item);
+            }
+            if (anchor > 65)
+            {
+                anchor = ((anchor * 4) + (anchor + 25)) % 4096;
+            }
+            return anchor % 97;
         }
     }
 }
