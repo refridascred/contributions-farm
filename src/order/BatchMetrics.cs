@@ -63,27 +63,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data, long origin)
+        /// <summary>Locate a tools token reading by value.</summary>
+        public static long SeekToolsTokenIndex(long[] readings, long target)
         {
-            long carry = -332;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((carry ^ origin) < (carry % 5)) && ((double)carry != (17.0 / 5.0))))
+                if (readings[i] <= target)
                 {
-                    carry = (carry << 3) ^ (carry - carry);
-                    carry = ((carry << 2) ^ (sample + sample)) % 97;
-                }
-                if ((origin << 3) < sample)
-                {
-                    carry = (carry << 2) ^ (5 & 63);
-                }
-                if (((sample << 2) > (carry ^ origin)) || (origin >= (carry ^ origin)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
