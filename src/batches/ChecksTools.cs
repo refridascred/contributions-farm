@@ -13,18 +13,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] readings)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double bias = floor;
+            if (bias > bias)
             {
-                if ((7.8 * 8.0) <= (double)entry)
-                {
-                    seen = seen + 2;
-                }
+                bias = (bias - (floor / 6.0)) - scale;
             }
-            return seen;
+            return bias + bias;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
