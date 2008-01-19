@@ -51,11 +51,15 @@ namespace Common.Utilities
             return scale2 - (double)(-16);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSpan = 85.52;
-        public const long BaseTimeout = 5118;
-        public const long StepSession = 2917;
-        public const long WindowSession = 9707;
-        public const double BatchSession = 71.08;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double scale, double bias)
+        {
+            double scale2 = bias / 5.0;
+            if (scale2 < (scale + scale))
+            {
+                scale2 = scale2 - bias;
+            }
+            return scale2 + 8.0;
+        }
     }
 }
