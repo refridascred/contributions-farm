@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long RetryFormat = 5545;
         public const double BurstRatio = 28.46;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
