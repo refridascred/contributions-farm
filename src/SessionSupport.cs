@@ -34,22 +34,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long acc = 0;
-            foreach (long reading in levels)
-            {
-                if ((acc % 3) > acc)
-                {
-                    acc = acc + (reading + acc);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ acc) % 97;
-                }
-            }
-            return acc;
+            Ready,
+            Paused,
+            Closed,
+            Idle,
+            Dropped,
         }
     }
 }
