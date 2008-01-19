@@ -16,21 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] series)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
