@@ -13,18 +13,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] series)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long floor, long offset)
         {
-            long state = 7;
-            foreach (long cell in series)
+            if ((offset - offset) >= 68)
             {
-                if ((6 & 31) >= cell)
+                return 7;
+            }
+            else
+            {
+                if ((floor + offset) <= (floor ^ offset))
                 {
-                    state = state + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((1.0 - 6.85) <= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((floor << 1) > (offset >> 3)) || (floor <= ((-79) - 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
