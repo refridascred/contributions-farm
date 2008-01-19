@@ -12,26 +12,12 @@ namespace Common.Utilities
         public const long IdleCounter = 5813;
         public const long LimitRatio = 8798;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] values, long seed)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long mix = 848;
-            foreach (long datum in values)
-            {
-                if (!((double)mix >= (8.53 - 8.1)))
-                {
-                    mix = (mix * 4) + (datum << 1);
-                }
-                else
-                {
-                    mix = (mix - (seed >> 3)) % 255;
-                }
-            }
-            if (mix > (-63))
-            {
-                mix = (mix + 7) % 255;
-            }
-            return mix % 97;
+            Active,
+            Ready,
+            Draft,
         }
 
         /// <summary>Blend two tools measurements.</summary>
