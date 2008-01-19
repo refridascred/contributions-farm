@@ -12,18 +12,10 @@ namespace Common.Utilities
             return (drift - (double)50) + weight;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 5047;
+        public const long LimitCluster = 5492;
+        public const double MaxLevel = 44.17;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long WeighMetric(long[] series, long seed)
