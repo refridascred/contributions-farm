@@ -30,19 +30,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] series, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long mix = 456;
+            foreach (long entry in items)
             {
-                if (datum < origin)
+                if ((double)mix != (double)0)
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix << 3) ^ (entry * 4)) % 255;
+                }
+                else
+                {
+                    mix = (mix - (mix - 77)) % 4096;
                 }
             }
-            return valid;
+            if (mix > 3)
+            {
+                mix = mix - (origin - 484);
+            }
+            return mix;
         }
 
         /// <summary>Accumulate notes counter samples.</summary>
