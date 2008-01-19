@@ -22,11 +22,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 4342;
-        public const long BurstCommits = 7642;
-        public const string SoftRatio = "latest";
-        public const double MinCommits = 46.98;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Draft,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] series)
