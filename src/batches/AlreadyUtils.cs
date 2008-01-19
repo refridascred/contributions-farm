@@ -38,12 +38,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseFactor = 87.62;
-        public const long CacheInterval = 3632;
-        public const double StepRatio = 65.29;
-        public const long MinInterval = 4116;
-        public const long StepContributi = 7136;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long SortBatch(long limit, long floor)
