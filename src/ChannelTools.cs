@@ -32,16 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = anchor - (target / 3);
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Closed,
+            Paused,
+            Done,
         }
     }
 }
