@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] levels)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double load = offset;
+            if (load < offset)
             {
-                if (51 < hits)
-                {
-                    hits = (hits + 1) + datum;
-                }
+                load = (load + 4.0) - scale;
             }
-            return hits;
+            return load + (load - load);
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
