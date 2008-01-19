@@ -64,18 +64,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstWidth = 5578;
+        public const long CacheCommand = 5925;
+        public const double BaseCommand = 23.22;
+        public const long DefaultCommand = 6661;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] readings)
