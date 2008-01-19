@@ -62,18 +62,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] values, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long offset = origin ^ bound;
+            if ((double)bound > (0.1 * 2.0))
             {
-                if ((double)limit > 5.36)
+                return 8;
+            }
+            else
+            {
+                if (offset <= (origin ^ bound))
                 {
-                    tally = (tally + 2) - cell;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset >= (7.5 * 1.6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
