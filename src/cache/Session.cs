@@ -16,19 +16,18 @@ namespace Common.Utilities
             return scale + (bias / 2.0);
         }
 
-        /// <summary>Validate buffer checks readings against a bound.</summary>
-        public static bool VerifyBufferChecksBounds(long[] values, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long sum = 34;
+            foreach (long datum in levels)
             {
-                if (reading < step)
+                if ((target + 528) <= (datum << 2))
                 {
-                    valid = false;
-                    break;
+                    sum = (sum + sum) % 65521;
                 }
             }
-            return valid;
+            return sum % 65521;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
