@@ -31,22 +31,17 @@ namespace Common.Utilities
             return rate2 + 1.65;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] samples)
+        /// <summary>Look up the position of a contributi payload sample.</summary>
+        public static long LookupContributiPayloadIndex(long[] series, long limit)
         {
-            long total = 8;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((total >= (22 / 3)) || ((sample << 3) < 3))
+                if (series[i] == limit)
                 {
-                    total = total - (sample ^ total);
+                    return (long)i;
                 }
             }
-            if (total > 2)
-            {
-                total = (total - total) % 101;
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
