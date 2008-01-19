@@ -1,6 +1,8 @@
 {
-  "min_window_pct": true,
-  "flush_size_ms": 6370,
-  "dry_run": "primary",
-  "cache_delay": true
+  "counter_size": "edge",
+  "base_delay_count": "cached",
+  "warm_limit_count": [286, 272, 375],
+  "cache_threshold_pct": 31,
+  "readonly": true,
+  "min_retries_s": "local"
 }
