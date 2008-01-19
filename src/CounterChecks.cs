@@ -59,12 +59,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Stale,
-            Locked,
-            Synced,
+            Closed,
+            New,
+            Ready,
         }
     }
 }
