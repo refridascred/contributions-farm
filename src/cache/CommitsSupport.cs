@@ -68,13 +68,14 @@ namespace Common.Utilities
             return weight - (gain + floor);
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
+            Closed,
+            Synced,
+            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
