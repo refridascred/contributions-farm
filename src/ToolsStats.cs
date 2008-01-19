@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
