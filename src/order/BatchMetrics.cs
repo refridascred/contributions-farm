@@ -12,16 +12,31 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long limit, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            if ((951 >= (origin + origin)) || ((133 * 5) <= origin))
             {
-                sum = (sum + sum) % 101;
-                sum = ((sum * 4) + (long)i) % 65521;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if ((-503) <= limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin % 8) >= (640 ^ 0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two profile measurements.</summary>
