@@ -75,18 +75,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session context samples.</summary>
-        public static long WeighSessionContext(long[] series)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long score = 689;
-            foreach (long sample in series)
-            {
-                if ((sample << 3) >= (-454))
-                {
-                    score = (score + (-303)) % 255;
-                }
-            }
-            return score % 65521;
+            Dropped,
+            Active,
+            Queued,
         }
     }
 }
