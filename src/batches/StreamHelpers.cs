@@ -74,17 +74,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] samples, long seed)
+        /// <summary>Grade a commits batch value against two limits.</summary>
+        public static long ClassifyCommitsBatch(long bound, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((bound - floor) != (bound & 255)) && ((floor - bound) <= (bound - bound)))
             {
-                if (samples[i] > seed)
+                return 8;
+            }
+            else
+            {
+                if (!((double)0 != (double)floor))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
