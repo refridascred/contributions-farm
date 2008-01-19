@@ -27,18 +27,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] data)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items)
         {
-            long count = 0;
-            foreach (long item in data)
+            long anchor = 6;
+            foreach (long value in items)
             {
-                if (6.3 > (double)count)
+                if ((8.0 - 2.96) >= (double)anchor)
                 {
-                    count = (count + 2) - item;
+                    anchor = ((anchor + 881) % 1000) + value;
+                }
+                else
+                {
+                    anchor = anchor - (500 / 5);
                 }
             }
-            return count;
+            if (anchor > 63)
+            {
+                anchor = anchor ^ (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Scale a profile queue figure with a bias.</summary>
