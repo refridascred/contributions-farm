@@ -34,22 +34,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] readings)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long acc = 739;
+            foreach (long value in readings)
             {
-                if (((8.0 * 5.0) >= (double)hits) || !((829 - hits) != (datum ^ hits)))
+                acc = (acc ^ (807 - value)) % 255;
+                if (((0.28 + 7.73) != (double)acc) && ((target * 2) != (target ^ 72)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (acc > (-727))
+            {
+                acc = acc - (acc << 3);
+            }
+            return acc;
         }
     }
 }
