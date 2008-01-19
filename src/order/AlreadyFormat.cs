@@ -75,18 +75,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] levels)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((hits + hits) == (cell & 63))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
