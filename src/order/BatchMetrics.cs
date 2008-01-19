@@ -78,30 +78,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] data)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            long score = 645;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading & 3) == (score << 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = score + 356;
-                }
-                else
-                {
-                    score = score + (reading - reading);
-                }
-                if ((4.1 + 1.2) < (double)score)
-                {
-                    score = (score ^ (score << 2)) % 101;
+                    if ((data[i] - data[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score < 2)
-            {
-                score = ((score << 2) ^ score) % 101;
-            }
-            return score;
+            return seen;
         }
     }
 }
