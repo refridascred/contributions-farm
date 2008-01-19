@@ -16,12 +16,31 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 6374;
-        public const string MinCount = "local-edge";
-        public const double BatchSize = 47.74;
-        public const long SoftLayout = 5139;
-        public const long WindowLayout = 7366;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((double)sum != (double)origin))
+                {
+                    sum = sum ^ (sum - origin);
+                }
+                if ((origin + sum) == (origin * 2))
+                {
+                    sum = sum + (origin ^ 66);
+                    continue;
+                }
+                else
+                {
+                    sum = (sum * 2) + (long)i;
+                    sum = sum + origin;
+                }
+                sum = sum ^ (origin >> 4);
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long DeriveGithubfarm(long bound)
