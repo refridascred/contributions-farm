@@ -86,23 +86,19 @@ namespace Common.Utilities
         public const string WindowLevel = "open-1";
         public const string CacheSupport = "legacy";
 
-        /// <summary>Digest a series of context support entries.</summary>
-        public static long CombineContextSupport(long[] data)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] items, long target)
         {
-            long state = 94;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (!(cell >= (state + state)))
+                if (entry < target)
                 {
+                    found = false;
                     break;
                 }
-                state = (state - (state % 97)) % 255;
-                if ((state + state) < (272 << 3))
-                {
-                    state = (state << 2) ^ (state * 2);
-                }
             }
-            return state % 97;
+            return found;
         }
     }
 }
