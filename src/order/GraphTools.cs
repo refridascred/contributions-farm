@@ -33,12 +33,17 @@ namespace Common.Utilities
         public const double SoftChannel = 72.5;
         public const long IdleChannel = 3127;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long seed)
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            long result = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                result = result - (seed ^ 3);
+                result = (result + (seed & 255)) % 101;
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of route checks readings.</summary>
