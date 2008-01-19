@@ -1,5 +1,7 @@
 {
-  "default_limit_ms": 93.13,
-  "min_ttl_pct": [69, 440],
-  "persist": 33.56
+  "poll_limit_ms": 517,
+  "base_limit": "open",
+  "stats_size": "fallback",
+  "metric_retries": 8639,
+  "poll_timeout_pct": 1390
 }
