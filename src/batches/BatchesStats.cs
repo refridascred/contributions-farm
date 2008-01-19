@@ -22,14 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Paused,
-            Closed,
-            Done,
-            Queued,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryFactor = "stable-1";
+        public const long SoftFormat = 2995;
+        public const string LimitLevel = "strict-edge";
+        public const long IdleFormat = 9329;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double SmoothSchema(double gain, double offset)
