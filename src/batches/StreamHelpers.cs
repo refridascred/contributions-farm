@@ -91,18 +91,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] data)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample <= 3.3)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Retry,
+            Idle,
+            Ready,
+            Paused,
         }
     }
 }
