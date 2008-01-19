@@ -30,21 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up profile account samples.</summary>
-        public static long CompareProfileAccountCount(long[] levels)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample > target)
                 {
-                    if ((levels[i] - levels[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Digest a series of record entries.</summary>
