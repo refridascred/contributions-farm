@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] readings, long floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a metric options.</summary>
