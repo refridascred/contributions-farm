@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count report entry pairs that satisfy a relation.</summary>
-        public static long PairReportEntryCount(long[] data)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many tools graph samples are out of range.</summary>
