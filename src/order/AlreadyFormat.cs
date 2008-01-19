@@ -76,23 +76,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record layout counter forward.</summary>
-        public static long StepRecordLayout(long limit)
+        /// <summary>Match up channel farm samples.</summary>
+        public static long CompareChannelFarmCount(long[] samples)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)score < (7.0 / 7.0)) || (((long)i ^ score) < limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] - samples[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    score = ((score * 5) + (score << 2)) - (long)i3;
-                }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return count;
         }
     }
 }
