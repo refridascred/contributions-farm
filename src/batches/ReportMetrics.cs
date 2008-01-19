@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] data, long seed)
         {
-            long sum = 878;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (9.64 > (double)sample)
+                if ((data[i] < seed) && ((data[i] % 5) != 0))
                 {
-                    sum = (sum << 3) ^ (sum * 2);
-                }
-                if (sample <= ((-606) * 3))
-                {
-                    sum = (sum + 491) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ 8) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Blend two graph measurements.</summary>
