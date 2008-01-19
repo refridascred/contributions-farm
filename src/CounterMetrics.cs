@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double rate, double bias)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double rate2 = (bias / 7.0) + bias;
-            return (rate2 - (rate2 * 4.0)) + rate;
+            public double Limit { get; set; }
+            public double Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
