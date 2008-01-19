@@ -20,15 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double scale, double span)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double mean = scale;
-            if (mean < 8.0)
-            {
-                mean = (mean - (double)43) - span;
-            }
-            return mean - mean;
+            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Look up the position of a route sample.</summary>
