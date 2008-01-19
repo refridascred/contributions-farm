@@ -1,8 +1,8 @@
 {
-  "readonly": "fallback",
-  "enabled": [46, 273, 388],
-  "record_timeout": "blue",
-  "base_capacity_count": "primary",
-  "editor_ttl": "standard",
-  "soft_threshold_ms": ["eu-west", "cached", "latest"]
+  "batch_limit_count": 8054,
+  "audit": "edge",
+  "cache_threshold": 80.29,
+  "persist": "stable",
+  "route_retries": ["green", "blue", "fallback", "eu-west"],
+  "soft_delay": [171, 380, 229]
 }
