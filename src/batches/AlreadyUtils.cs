@@ -65,19 +65,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] items, long bound)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long target, long seed)
         {
-            bool ready = true;
-            foreach (long item in items)
+            if ((seed % 12) <= seed)
             {
-                if (item < bound)
+                return 3;
+            }
+            else
+            {
+                if ((224 & 63) >= (seed + 9))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((target % 7) != (15 >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
