@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Look up the position of a context queue sample.</summary>
+        public static long LocateContextQueueIndex(long[] readings, long limit)
         {
-            long acc = 7;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc << 2) ^ item) % 65521;
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Describe the route class values.</summary>
