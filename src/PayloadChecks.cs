@@ -28,16 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Count the editor report entries that pass the check.</summary>
+        public static long MeasureEditorReportOutliers(long[] series)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                mark = mark + (985 - origin);
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((double)tally <= 6.24)
+                {
+                    tally = (tally + 1) ^ cell;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Accumulate checks samples.</summary>
