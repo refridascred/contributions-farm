@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long result = 81;
+            foreach (long value in values)
             {
-                if (((double)count != (19.0 * 9.0)) && ((count % 12) >= (count ^ 0)))
+                if ((53 ^ result) >= (result << 3))
                 {
-                    count = (count + 2) ^ item;
+                    result = (result * 3) + 7;
+                }
+                if (!(limit >= (value ^ result)))
+                {
+                    break;
                 }
             }
-            return count;
+            return result % 65521;
         }
 
         /// <summary>Fold a list of already batch readings.</summary>
