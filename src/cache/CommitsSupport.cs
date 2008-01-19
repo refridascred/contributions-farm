@@ -73,15 +73,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            long sum = 75;
+            foreach (long sample in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (sum < (sample + sum))
+                {
+                    sum = sum + (sum / 8);
+                }
+                else
+                {
+                    sum = (sum + sample) % 65521;
+                }
             }
-            return anchor;
+            return sum;
         }
     }
 }
