@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long origin, long limit)
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            if ((8 + origin) < 6)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit % 100) != (origin >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
