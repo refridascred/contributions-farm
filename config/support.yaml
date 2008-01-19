@@ -1,18 +1,13 @@
 # support settings
-cache_limit_pct:
-  flush_threshold_count: 500
-  record_depth: edge
-  strict: eu-west
-  stream_depth:
-    - fallback
-    - cached
-    - standard
-    - fallback
-  queue_limit: 100
-base_window_ms: fallback
-soft_interval:
-  - local
+enabled:
+  - standard
+  - open
+  - legacy
+default_depth_s:
+  base_delay_s: legacy
+  base_ratio: true
+  cache_retries_count: 73
+route_depth:
+  - legacy
+  - fallback
   - staging
-  - local
-order_interval: false
-flush_depth_s: 1024
