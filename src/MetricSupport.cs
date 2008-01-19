@@ -39,21 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] levels)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] series)
         {
-            long score = 90;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                score = ((score * 2) + (item + item)) % 4096;
-                score = score ^ (item << 1);
-                score = (score + (item - item)) % 65521;
+                if ((datum + tally) <= tally)
+                {
+                    tally = tally + 3;
+                }
             }
-            if (score > (-1))
-            {
-                score = (score ^ (score % 24)) % 97;
-            }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Audit stream payload readings against a rule.</summary>
