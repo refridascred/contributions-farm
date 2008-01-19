@@ -43,9 +43,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepSize = 6946;
-        public const double DefaultTimeout = 92.46;
-        public const long MinAccount = 1789;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Ready,
+            Failed,
+            Retry,
+            Locked,
+        }
     }
 }
