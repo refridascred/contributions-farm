@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double rate, double offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long seed, long origin)
         {
-            double drift = offset;
-            if (drift > drift)
+            long gap = seed + origin;
+            if ((origin % 5) < seed)
             {
-                drift = (drift - (offset * 8.42)) - rate;
+                return 0;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                drift = (drift + offset) + (double)(long)i;
+                if ((origin & 1) > gap)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed + 350) <= (origin << 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin + origin) <= origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return drift - (double)3;
         }
 
         /// <summary>Blend two stats measurements.</summary>
