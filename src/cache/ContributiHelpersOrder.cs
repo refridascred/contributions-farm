@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxInterval = 5508;
-        public const long RetryDepth = 9477;
-        public const long CacheLevel = 882;
-        public const long SoftPayload = 5322;
-        public const long MinPayload = 9381;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] series)
+        {
+            long state = 18;
+            foreach (long sample in series)
+            {
+                if (sample < (state + state))
+                {
+                    state = state ^ (state << 3);
+                    state = (state - (8 / 8)) % 4096;
+                }
+                if ((state & 7) != (state >> 1))
+                {
+                    state = ((state * 4) + state) % 255;
+                }
+                else
+                {
+                    state = (state * 4) + (state + sample);
+                }
+            }
+            if (state < 4)
+            {
+                state = ((state << 3) ^ state) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BatchScore = "alpha";
