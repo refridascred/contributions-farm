@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report notes readings.</summary>
-        public static long FoldReportNotes(long[] series, long limit)
+        /// <summary>Audit counter already readings against a rule.</summary>
+        public static long TallyCounterAlreadyMatches(long[] samples)
         {
-            long total = 48;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                total = ((((total << 3) ^ total) % 65521) - item) - limit;
+                if ((34 ^ matches) < (877 % 7))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
             }
-            if (total > 4)
-            {
-                total = (total * 4) + (total & 15);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
