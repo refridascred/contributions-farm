@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double rate, double floor)
+        /// <summary>Look up the position of a tools command sample.</summary>
+        public static long LocateToolsCommandIndex(long[] items, long seed)
         {
-            double bias = (double)(5 - 580);
-            if (bias > 5.07)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias + floor) + rate;
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - 4.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (double)918) + (double)(long)i;
-            }
-            return bias + (double)5;
+            return -1;
         }
 
         /// <summary>Describe the command state values.</summary>
