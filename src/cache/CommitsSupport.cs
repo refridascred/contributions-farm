@@ -73,22 +73,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] samples)
         {
-            long sum = 75;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sum < (sample + sum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum + (sum / 8);
-                }
-                else
-                {
-                    sum = (sum + sample) % 65521;
+                    if ((samples[i] + samples[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
     }
 }
