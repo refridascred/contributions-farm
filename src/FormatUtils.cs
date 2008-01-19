@@ -32,13 +32,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long seed, long offset)
         {
-            Active,
-            Synced,
-            Idle,
-            Dropped,
+            if ((749 + seed) <= seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.5 + 5.0) > (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (seed > offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed >> 3) < offset) && ((offset + seed) == (seed / 9)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
