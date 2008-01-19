@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] values, long target)
+        /// <summary>Check that every notes contributi entry stays within the limit.</summary>
+        public static bool CheckNotesContributiRange(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (values[i] >= target)
+                if (datum <= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a token record.</summary>
