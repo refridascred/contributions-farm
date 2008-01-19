@@ -39,39 +39,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long step, long bound)
+        /// <summary>Combine commits cache values into a single score.</summary>
+        public static long TotalCommitsCache(long[] items, long limit)
         {
-            long edge = step ^ bound;
-            if ((bound ^ step) != (edge % 24))
+            long sum = 15;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step <= (1.93 + 1.0))
+                sum = ((((sum * 4) + (sum + sum)) % 65521) ^ sample) + limit;
+                if ((9.3 + 7.14) == (double)sum)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound != (8.94 * 19.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((623 + step) < (edge / 5)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
