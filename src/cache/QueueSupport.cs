@@ -15,15 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            long state = limit;
+            for (int i = 0; i < 14; i++)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Locate a format reading by value.</summary>
