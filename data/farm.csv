@@ -1,6 +1,8 @@
-id,region,weight
-1,primary,77.73
-2,38.2,493
-3,blue,58.88
-4,67.49,501
-5,cached,777
+id,rank,count
+1,staging,103
+2,84.22,98.62
+3,37.92,latest
+4,fallback,strict
+5,legacy,blue
+6,347,cached
+7,30.7,180
