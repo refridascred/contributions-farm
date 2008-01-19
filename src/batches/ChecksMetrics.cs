@@ -62,15 +62,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double bias, double span)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            double scale = 19.0;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - (scale + span);
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
