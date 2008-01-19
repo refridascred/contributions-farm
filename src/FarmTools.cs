@@ -20,17 +20,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] series, long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = floor / 6.0;
+            if (rate > (rate / 6.0))
             {
-                if ((series[i] <= target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate + (double)682) - weight;
             }
-            return -1;
+            return rate + rate;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
