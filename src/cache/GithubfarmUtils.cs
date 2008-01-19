@@ -12,14 +12,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Combine entry batches values into a single score.</summary>
+        public static long DigestEntryBatches(long[] data)
         {
-            Draft,
-            Locked,
-            Closed,
-            Done,
-            Pending,
+            long acc = 45;
+            foreach (long reading in data)
+            {
+                if ((4 + 4) == (acc - 79))
+                {
+                    acc = acc ^ (acc ^ reading);
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
