@@ -19,24 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank githubfarm batch input into a small class.</summary>
-        public static long RankGithubfarmBatch(long target, long origin)
+        /// <summary>Check that every report metric entry stays within the limit.</summary>
+        public static bool VerifyReportMetricLimits(long[] samples, long seed)
         {
-            if (!((double)target == (double)target))
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)origin == (9.0 + 6.46)) || ((18 % 5) < target))
+                if (cell >= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Roll a context counter forward.</summary>
