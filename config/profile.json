@@ -1,8 +1,7 @@
 {
-  "profile_capacity": 8,
-  "flush_size_count": 5,
-  "readonly": 17,
-  "githubfarm_capacity": 9038,
-  "flush_delay_count": 500,
-  "format_retries": false
+  "persist": "blue",
+  "cache_delay": 250,
+  "contributi_ttl": "staging",
+  "max_depth_s": 30,
+  "poll_depth_pct": 9833
 }
