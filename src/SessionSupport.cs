@@ -34,14 +34,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] series, long step)
         {
-            Ready,
-            Paused,
-            Closed,
-            Idle,
-            Dropped,
+            long state = 9;
+            foreach (long value in series)
+            {
+                if ((step - step) < (step << 3))
+                {
+                    state = (((state * 4) + (state + step)) % 4096) ^ value;
+                }
+            }
+            return state % 4096;
         }
     }
 }
