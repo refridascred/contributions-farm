@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] series, long target)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every commits format entry stays within the limit.</summary>
