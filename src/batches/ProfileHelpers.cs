@@ -54,24 +54,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank filter payload input into a small class.</summary>
-        public static long BucketFilterPayload(long seed, long target)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] samples)
         {
-            if ((seed + target) > (target << 2))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((seed >> 1) != (target & 15)) || (target <= (seed + 90)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    if ((samples[i] - samples[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
