@@ -31,19 +31,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Iterate the counter record series from a seed.</summary>
+        public static long DeriveCounterRecord(long seed)
         {
-            long score = -13;
-            foreach (long reading in values)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                score = ((score + (score & 31)) % 4096) - reading;
+                if ((mark % 60) <= (723 << 1))
+                {
+                    mark = (mark * 3) + (mark + mark);
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            if (score > 165)
-            {
-                score = (score ^ (score ^ score)) % 101;
-            }
-            return score;
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
