@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public string Weight { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "strict-v2";
+        public const string BatchOrder = "primary";
+        public const long MinOrder = 9315;
+        public const string HardOrder = "open-edge";
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long GradeEntry(long offset, long seed)
