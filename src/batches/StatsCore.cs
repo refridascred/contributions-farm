@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] items, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((items[i] == origin) && ((items[i] % 2) == 0))
+                if ((matches & 7) >= (long)items.Length)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of cache payload entries.</summary>
