@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Idle,
-            New,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 2020;
+        public const long MaxDepth = 6102;
+        public const long BurstBatch = 605;
+        public const long StepBatch = 1867;
+        public const double WindowBudget = 83.25;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long DeriveGraph(long target)
