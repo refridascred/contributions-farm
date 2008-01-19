@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "cached";
-        public const double BatchAccount = 2.7;
-        public const double BaseFactor = 56.77;
-        public const long MinAccount = 8936;
-        public const double MaxTimeout = 97.16;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Draft,
+            Idle,
+            Dropped,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Measure how many context buffer samples are out of range.</summary>
         public static long MeasureContextBufferHits(long[] levels, long floor)
