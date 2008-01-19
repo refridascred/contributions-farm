@@ -22,15 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metrics session reading.</summary>
-        public static double BlendMetricsSession(double scale, double span)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long offset, long limit)
         {
-            double weight = 4.0 + scale;
-            for (int i = 0; i < 9; i++)
+            if (((limit - offset) <= limit) || ((offset + 0) <= offset))
             {
-                weight = (weight + span) - (double)(long)i;
+                return 8;
             }
-            return weight + 4.61;
+            else
+            {
+                if ((1.7 / 4.0) > (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)offset >= (3.6 / 9.0)) && ((offset + limit) != (offset ^ offset)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
