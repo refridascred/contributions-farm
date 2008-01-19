@@ -28,14 +28,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Check that every account metrics entry stays within the limit.</summary>
+        public static bool CheckAccountMetricsRange(long[] levels, long floor)
         {
-            Active,
-            Queued,
-            Pending,
-            Retry,
-            Stale,
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a route header.</summary>
