@@ -37,19 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double scale, double bias)
+        /// <summary>Blend two command contributi measurements.</summary>
+        public static double AdjustCommandContributi(double bias, double floor)
         {
-            double ratio = (scale - scale) / 9.0;
-            if (ratio < ratio)
+            double drift = floor;
+            if (drift > (drift / 9.0))
             {
-                ratio = ratio + (double)755;
+                drift = drift - 1.42;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                ratio = ratio - (double)(long)i;
+                drift = drift - (floor + bias);
             }
-            return ratio - (bias - 3.48);
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (double)3;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
