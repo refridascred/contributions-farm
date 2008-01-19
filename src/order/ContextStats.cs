@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] data, long target)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long result = 985;
-            foreach (long entry in data)
-            {
-                result = ((((result * 2) + (238 >> 5)) % 97) + entry) + target;
-            }
-            return result;
+            Pending,
+            Retry,
+            Stale,
         }
 
         /// <summary>Locate a record reading by value.</summary>
