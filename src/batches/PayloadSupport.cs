@@ -26,12 +26,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] items)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count + datum) < (datum & 3))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a commits header.</summary>
