@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] values, long origin)
         {
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((value >= (long)values.Length) || ((double)count < (double)origin))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stats phase values.</summary>
