@@ -60,30 +60,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long origin, long bound)
+        /// <summary>Grade a format cache value against two limits.</summary>
+        public static long GradeFormatCache(long origin, long bound)
         {
-            long offset = origin ^ bound;
-            if ((double)bound > (0.1 * 2.0))
+            long diff = origin ^ bound;
+            if (((double)diff > (2.7 - 8.6)) && ((82 + origin) == (diff + bound)))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if (offset <= (origin ^ bound))
+                if ((double)origin > (double)bound)
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)offset >= (7.5 * 1.6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 8;
                 }
             }
         }
