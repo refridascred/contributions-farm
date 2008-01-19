@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 5778;
+        public const long DefaultQueue = 4800;
+        public const long BatchInterval = 5979;
+        public const long RetryQueue = 265;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] data)
