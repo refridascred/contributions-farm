@@ -49,11 +49,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
