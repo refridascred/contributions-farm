@@ -61,19 +61,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] items, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long carry = 13;
+            foreach (long entry in levels)
             {
-                if (sample <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = carry - (entry << 3);
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
