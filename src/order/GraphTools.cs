@@ -19,18 +19,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRecord = 34.41;
+        public const long BurstRecord = 5677;
+        public const long BurstScore = 6050;
+        public const string MaxRecord = "strict-1";
+        public const double MaxScore = 12.79;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepDepth = 1678;
