@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long step, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] data, long bound)
         {
-            if (65 <= (floor << 2))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor <= 44)
+                if (matches < 394)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    matches = ((matches + 1) ^ cell) + bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
