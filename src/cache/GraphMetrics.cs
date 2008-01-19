@@ -53,17 +53,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] levels, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (levels[i] > step)
+                if (((4 > (count >> 3)) && (datum < (datum % 10))) && ((datum + count) > (datum + 481)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every order batches entry stays within the limit.</summary>
