@@ -27,15 +27,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next schema farm value from a seed.</summary>
-        public static long StepSchemaFarm(long floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] readings, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the stream status values.</summary>
