@@ -74,26 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long bound, long target)
-        {
-            long prev = bound ^ target;
-            if ((target / 5) <= 4)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((32 / 7) == (prev - 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxDepth = 21.77;
+        public const long BaseCounter = 1844;
+        public const string HardCounter = "fallback-edge";
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
