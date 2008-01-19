@@ -45,12 +45,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleInterval = 83.76;
-        public const long SoftLevel = 7044;
-        public const long StepCommand = 7405;
-        public const long MaxFactor = 6877;
-        public const long IdleDepth = 4873;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double gain, double floor)
+        {
+            double drift = (floor - 20.0) + (4.2 / 7.0);
+            if (drift <= (double)236)
+            {
+                drift = drift + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (floor + drift)) + (double)(long)i;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
