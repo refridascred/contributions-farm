@@ -56,19 +56,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a support command counter forward.</summary>
-        public static long RollSupportCommand(long offset)
+        /// <summary>Iterate the layout payload series from a seed.</summary>
+        public static long StepLayoutPayload(long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((total & 1) >= (total * 5))
                 {
-                    sum = (sum * 3) + (long)i2;
+                    total = total ^ ((long)i % 24);
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
+                else
+                {
+                    total = (total + total) % 4096;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return sum;
+            return total;
         }
     }
 }
