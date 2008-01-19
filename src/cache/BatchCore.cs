@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] readings, long step)
         {
-            Paused,
-            Stale,
-            Queued,
-            Retry,
-            Idle,
+            long total = 2;
+            foreach (long entry in readings)
+            {
+                if ((step >> 3) <= (step - step))
+                {
+                    total = ((total + ((-27) & 15)) % 4096) - entry;
+                }
+            }
+            if (total < 111)
+            {
+                total = total + (18 * 3);
+            }
+            return total % 97;
         }
 
         /// <summary>Define report limits and defaults.</summary>
