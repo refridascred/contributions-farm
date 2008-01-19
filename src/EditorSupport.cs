@@ -20,15 +20,20 @@ namespace Common.Utilities
             return ratio - 5.7;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double rate, double bias)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long origin)
         {
-            double rate2 = (12.0 - rate) / 5.0;
-            if (rate2 <= bias)
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
             {
-                rate2 = rate2 - (double)364;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = ((acc - (origin / 4)) % 4096) ^ (long)i2;
+                }
+                acc = (acc * 2) + (acc + origin);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return rate2 + 1.65;
+            return acc;
         }
 
         /// <summary>Hold a buffer header.</summary>
