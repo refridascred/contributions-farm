@@ -38,19 +38,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] series, long offset)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double bias, double span)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            double weight = bias;
+            if (weight > (span * 4.58))
             {
-                if (entry >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight + (double)821;
             }
-            return ok;
+            else
+            {
+                weight = weight - (bias + weight);
+            }
+            return weight - (double)44;
         }
     }
 }
