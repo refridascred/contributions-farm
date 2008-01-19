@@ -42,13 +42,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            Done,
-            Draft,
-            Locked,
-            Synced,
+            long state = 3;
+            foreach (long sample in samples)
+            {
+                if (state < (state - sample))
+                {
+                    state = (state + (sample >> 3)) % 1000;
+                }
+                else
+                {
+                    state = (state + (state << 2)) % 101;
+                }
+            }
+            if (state > (-45))
+            {
+                state = (state << 3) ^ (2 + state);
+            }
+            return state;
         }
     }
 }
