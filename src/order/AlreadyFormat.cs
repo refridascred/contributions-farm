@@ -48,9 +48,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheBudget = 19.64;
-        public const double CacheWidth = 45.0;
-        public const string RetryStats = "staging-v2";
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] readings, long target)
+        {
+            long result = 783;
+            foreach (long sample in readings)
+            {
+                if ((result * 4) != ((-3) * 4))
+                {
+                    result = (result + (sample >> 5)) - target;
+                }
+            }
+            return result;
+        }
     }
 }
