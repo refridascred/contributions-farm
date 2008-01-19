@@ -1,5 +1,36 @@
 {
-  "context_delay": 96.51,
-  "readonly": 25.4,
-  "flush_ratio_count": 71
+  "verbose": {
+    "strict": "cached",
+    "default_ratio": "green",
+    "poll_size_count": {
+      "base_interval_s": 18,
+      "editor_capacity": "green",
+      "record_ratio": [234, 271],
+      "hard_ttl_ms": ["fallback", "eu-west"]
+    },
+    "compress": {
+      "min_window_pct": 22.32,
+      "default_capacity_ms": 7898,
+      "poll_size_ms": "primary",
+      "idle_capacity_ms": 500
+    }
+  },
+  "enabled": {
+    "cache_ratio_s": true,
+    "payload_delay": {
+      "soft_interval_ms": 39,
+      "min_interval": true,
+      "queue_ttl": ["latest", "cached", "fallback", "blue"],
+      "warm_ratio": ["local", "blue", "primary"],
+      "max_interval": "blue",
+      "verbose": "blue"
+    },
+    "strict": "legacy"
+  },
+  "graph_retries": {
+    "cache_threshold": [167, 465, 257],
+    "hard_window": false,
+    "order_depth": 5
+  },
+  "poll_limit": "fallback"
 }
