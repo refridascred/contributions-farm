@@ -22,21 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((long)i / 9) > (mix - mix))
                 {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = mix - (long)i;
+                    break;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
