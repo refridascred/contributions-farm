@@ -50,20 +50,24 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] samples)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long offset, long origin)
         {
-            long mix = 427;
-            foreach (long sample in samples)
+            if (!((81 / 6) < (origin % 5)))
             {
-                bool found = (sample & 31) < (mix * 2);
-                if (!found)
-                {
-                    mix = mix ^ (sample % 12);
-                }
-                mix = (mix ^ (sample + sample)) % 97;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((offset & 127) > (origin / 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
