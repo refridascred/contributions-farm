@@ -24,12 +24,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 9701;
-        public const long HardContributi = 7376;
-        public const string LimitContributi = "fallback";
-        public const double StepSize = 11.06;
-        public const long IdleContributi = 3215;
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] readings)
+        {
+            long sum = 881;
+            foreach (long datum in readings)
+            {
+                if (!((double)datum <= (double)sum))
+                {
+                    sum = (sum + (sum & 127)) % 255;
+                }
+            }
+            if (sum < (-2))
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
