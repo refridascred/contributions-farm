@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long BurstSpan = 8400;
         public const long SoftLevel = 4532;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double ratio, double bias)
-        {
-            double scale = bias;
-            return (scale + (double)327) + ratio;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxLevel = "local-edge";
+        public const long BurstTools = 3755;
+        public const double MaxScore = 57.53;
+        public const double StepSpan = 54.03;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long CompareAlreadyCount(long[] levels)
