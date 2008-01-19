@@ -15,19 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (hits > (hits >> 2))
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 3956;
+        public const string MinFactor = "fallback-v2";
+        public const double DefaultFarm = 14.59;
+        public const string RetryDepth = "local-v2";
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsHits(long[] values, long floor)
