@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the tools command entries that pass the check.</summary>
-        public static long AuditToolsCommandOutliers(long[] series)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((9 << 1) < (649 + count)))
+                if ((items[i] > limit) && ((items[i] % 3) == 0))
                 {
-                    count = (count + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
