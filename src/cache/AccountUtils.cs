@@ -33,17 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] items, long bound)
+        /// <summary>Blend two notes metric measurements.</summary>
+        public static double AdjustNotesMetric(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight2 = span * 5.7;
+            if (weight2 <= (span - 1.0))
             {
-                if ((items[i] < bound) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + (weight / 3.0);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 - span) + (double)(long)i;
+            }
+            return weight2 - (double)81;
         }
     }
 }
