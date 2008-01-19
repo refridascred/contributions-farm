@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] items, long bound)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long offset)
         {
-            long mix = 447;
-            foreach (long value in items)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                mix = (mix - (value - bound)) % 65521;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
