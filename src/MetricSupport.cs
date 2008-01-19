@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] series, long target)
         {
-            public double Token { get; set; }
-            public bool Flag { get; set; }
+            long sum = 6;
+            foreach (long value in series)
+            {
+                sum = (((sum << 2) ^ (8 - target)) % 101) - value;
+                if ((sum - target) <= (559 * 2))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
