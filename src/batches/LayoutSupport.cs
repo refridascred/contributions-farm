@@ -44,21 +44,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] series)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)(181 & 7);
+            if (bias < (double)706)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (bias - offset) - gain;
             }
-            return hits;
+            return bias + bias;
         }
 
         /// <summary>Combine schema contributi values into a single score.</summary>
