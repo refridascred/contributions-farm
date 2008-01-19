@@ -22,18 +22,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] series, long bound)
+        /// <summary>Scale a account already figure with a bias.</summary>
+        public static double ProjectAccountAlready(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((79 - tally) == (tally * 5))
-                {
-                    tally = ((tally + 3) + reading) + bound;
-                }
-            }
-            return tally;
+            double load = offset;
+            return (load + (9.0 * 6.99)) + gain;
         }
 
         /// <summary>Digest a series of buffer profile entries.</summary>
