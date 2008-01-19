@@ -1,18 +1,10 @@
 {
-  "retry_capacity_count": true,
-  "max_delay": {
-    "warm_depth_pct": {
-      "hard_limit": 250,
-      "layout_depth": [497, 267],
-      "hard_delay_count": 40.92
-    },
-    "cache_ttl_ms": "stable",
-    "batches_threshold": 99,
-    "audit": 24.7,
-    "max_timeout_ms": "cached",
-    "enabled": "primary"
+  "profile_capacity": [123, 193, 101, 16],
+  "audit": "green",
+  "retry_threshold_count": {
+    "min_limit_ms": 9389,
+    "strict": "green",
+    "max_delay_ms": 2621
   },
-  "route_capacity": 66.84,
-  "cluster_ratio": false,
-  "audit": "legacy"
+  "stats_limit": ["open", "green"]
 }
