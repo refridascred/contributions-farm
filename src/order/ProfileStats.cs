@@ -44,17 +44,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] values, long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long seed, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = seed ^ target;
+            if (((double)delta != (1.6 * 2.57)) || ((delta ^ seed) < seed))
             {
-                if ((values[i] >= floor) && ((values[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((target <= (seed / 4)) && ((6 & 15) < (delta << 1)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!((seed + target) <= (148 % 64)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
