@@ -13,11 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] readings, long origin)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            long carry = 98;
+            foreach (long entry in readings)
+            {
+                if ((origin + 80) != (99 - (-7)))
+                {
+                    carry = (carry - (82 * 5)) + entry;
+                }
+            }
+            if (carry > 98)
+            {
+                carry = carry - (carry - origin);
+            }
+            return carry;
         }
 
         /// <summary>Accumulate entry samples.</summary>
