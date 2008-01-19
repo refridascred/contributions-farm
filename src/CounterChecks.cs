@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowRatio = 5584;
+        public const double CacheBuffer = 57.65;
+        public const long MinSize = 9282;
+        public const long IdleBuffer = 2166;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TallyPayload(long[] samples)
