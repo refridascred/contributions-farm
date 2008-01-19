@@ -20,10 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowLayout = "standard-1";
-        public const double HardBudget = 63.62;
-        public const long RetryLayout = 7492;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitDepth = 5705;
+        public const long CacheFarm = 2513;
+        public const long DefaultFarm = 9448;
+        public const double HardScore = 67.32;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
