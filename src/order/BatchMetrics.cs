@@ -86,18 +86,9 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (seen >= (reading * 4))
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftFactor = 341;
+        public const double BatchMetrics = 17.5;
+        public const long DefaultCount = 4673;
     }
 }
