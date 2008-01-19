@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultInterval = 13.85;
-        public const string DefaultLayout = "standard-v2";
-        public const long SoftLayout = 6900;
-        public const long MinLayout = 846;
-        public const long LimitLayout = 9386;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] items, long bound)
+        {
+            long result = 51;
+            foreach (long item in items)
+            {
+                result = ((result + 59) % 101) + bound;
+                if (!(result <= (item >> 5)))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Measure how many account already samples are out of range.</summary>
         public static long MeasureAccountAlreadyGaps(long[] values)
