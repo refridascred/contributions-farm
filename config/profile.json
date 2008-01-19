@@ -1,6 +1,11 @@
 {
-  "retry_timeout": 14.44,
-  "flush_ttl_ms": "strict",
-  "support_retries": "open",
-  "soft_timeout_pct": 27.76
+  "retry_limit_s": {
+    "dry_run": 22,
+    "cache_limit": "strict",
+    "warm_window_count": ["stable", "eu-west"]
+  },
+  "poll_retries": 58.04,
+  "min_ttl": [490, 16, 275, 407],
+  "batch_capacity_pct": ["local", "local"],
+  "default_ttl_s": "standard"
 }
