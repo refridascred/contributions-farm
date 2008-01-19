@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Measure how many metric cache samples are out of range.</summary>
+        public static long MeasureMetricCacheMatches(long[] levels, long bound)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry / 6) <= (seen & 255))
+                {
+                    seen = (seen + 3) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
