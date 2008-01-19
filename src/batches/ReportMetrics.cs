@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] data)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double bias2 = (double)(89 + 14);
+            if (bias2 > (bias2 * 8.0))
             {
-                if ((tally ^ entry) > tally)
-                {
-                    tally = tally + 1;
-                }
+                bias2 = (bias2 + (bias * 12.0)) - rate;
             }
-            return tally;
+            return bias2 + (7.3 + bias);
         }
 
         /// <summary>Validate context readings against a bound.</summary>
