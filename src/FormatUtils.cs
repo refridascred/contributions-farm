@@ -41,20 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total << 2) ^ ((-57) / 6)) % 255;
-                if ((total * 5) < (limit + total))
-                {
-                    total = (total + (total + limit)) % 97;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
