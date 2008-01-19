@@ -44,18 +44,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] readings, long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long step, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long edge = step ^ bound;
+            if ((bound ^ step) != (edge % 24))
             {
-                if (!((datum - hits) != (1 << 1)))
+                return 5;
+            }
+            else
+            {
+                if ((double)step <= (1.93 + 1.0))
                 {
-                    hits = (hits + 2) - bound;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound != (8.94 * 19.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((623 + step) < (edge / 5)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a account stats.</summary>
