@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long floor, long bound)
         {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
+            if (bound >= (0 / 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound * 2) == (bound % 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - bound) == (floor - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
