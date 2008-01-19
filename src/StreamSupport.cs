@@ -57,11 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 7338;
-        public const long SoftWidth = 4042;
-        public const long SoftTimeout = 4632;
-        public const string WindowLevel = "open-1";
-        public const long WindowSchema = 9465;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
+        }
     }
 }
