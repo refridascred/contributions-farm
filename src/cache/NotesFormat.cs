@@ -40,13 +40,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Draft,
-            Queued,
-            Locked,
-            Done,
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
