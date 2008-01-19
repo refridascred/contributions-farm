@@ -56,15 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double scale, double offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] values)
         {
-            double weight = (offset * 3.24) - 3.3;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                weight = (weight + (double)(long)i) - scale;
+                if (!(datum <= (datum - seen)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return weight + 5.1;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
