@@ -50,13 +50,17 @@ namespace Common.Utilities
             return drift - (double)31;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Find the first already notes entry that matches the target.</summary>
+        public static long LookupAlreadyNotesIndex(long[] values, long step)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
