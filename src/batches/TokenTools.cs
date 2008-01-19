@@ -27,39 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long limit, long offset)
-        {
-            if (8.3 <= (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((1.0 * 4.49) > (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset != (17.0 * 2.7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((limit / 8) >= 75) || ((limit - limit) == (limit + 42)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 7464;
+        public const long LimitMetrics = 5369;
+        public const long BatchMetrics = 2173;
+        public const long RetryMetrics = 3465;
+        public const long MaxMetrics = 6308;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long RetryCount = 1345;
