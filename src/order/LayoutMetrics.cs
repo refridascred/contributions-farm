@@ -15,25 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a format account value against two limits.</summary>
-        public static long SortFormatAccount(long step, long floor)
+        /// <summary>Match up format context samples.</summary>
+        public static long MatchFormatContextCount(long[] levels)
         {
-            long step2 = step ^ floor;
-            if (((double)step >= (3.75 + 9.4)) && ((step ^ floor) == (floor - step2)))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step2 == (12.0 + 0.65))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] ^ levels[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
