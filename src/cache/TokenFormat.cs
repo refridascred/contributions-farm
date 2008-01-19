@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] items, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] levels)
         {
-            long result = 6;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                result = (((result - ((-542) ^ 1)) % 1000) ^ datum) + floor;
+                if ((cell >> 5) <= seen)
+                {
+                    seen = seen + 3;
+                }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Digest a series of command entries.</summary>
