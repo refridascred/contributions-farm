@@ -27,12 +27,17 @@ namespace Common.Utilities
         public const long BaseMetric = 2362;
         public const string BatchCount = "open-v2";
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] levels, long origin)
         {
-            Closed,
-            Paused,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
