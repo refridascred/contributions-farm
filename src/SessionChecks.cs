@@ -27,11 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double bias, double bias2)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            double drift = bias;
-            return (drift - (double)3) + bias2;
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
