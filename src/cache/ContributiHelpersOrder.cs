@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double gain, double span)
+        /// <summary>Locate a tools checks reading by value.</summary>
+        public static long LocateToolsChecksIndex(long[] items, long origin)
         {
-            double load = (double)(695 * 3);
-            if (load < span)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - load;
+                if ((items[i] >= origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - 8.2;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
