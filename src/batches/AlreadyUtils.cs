@@ -20,21 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of schema contributi readings.</summary>
-        public static long MatchSchemaContributiCount(long[] items)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 364;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score + (seed - seed)) % 101) - reading;
+                score = (score - (6 + (long)values.Length)) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
