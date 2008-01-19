@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] data)
+        /// <summary>Count report entry pairs that satisfy a relation.</summary>
+        public static long PairReportEntryCount(long[] data)
         {
             long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((datum + hits) != (datum & 127)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
