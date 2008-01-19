@@ -74,19 +74,11 @@ namespace Common.Utilities
         public const long StepChannel = 8707;
         public const double RetryChannel = 30.06;
 
-        /// <summary>Scale a entry notes figure with a bias.</summary>
-        public static double AdjustEntryNotes(double bias, double floor)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            double mean = (double)(5 - 849);
-            if (mean <= (7.85 - mean))
-            {
-                mean = mean + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (mean - 8.8)) - (double)(long)i;
-            }
-            return mean + floor;
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
