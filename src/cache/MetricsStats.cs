@@ -12,23 +12,17 @@ namespace Common.Utilities
         public const double CacheBatches = 4.18;
         public const double RetryFactor = 71.12;
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double bias, double span)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] levels, long seed)
         {
-            double load = (double)(53 & 15);
-            if (load < span)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + (double)53) - bias;
+                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (2.6 * 7.42);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - 7.34) + (double)(long)i;
-            }
-            return load + (double)986;
+            return -1;
         }
 
         /// <summary>Classify a channel tools pair into a bucket.</summary>
