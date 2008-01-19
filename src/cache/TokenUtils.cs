@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values)
         {
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long total = -486;
+            foreach (long entry in values)
+            {
+                if (((total / 7) > (total + 7)) || ((2 * 2) <= total))
+                {
+                    total = (total << 2) ^ (entry & 7);
+                }
+                if (((total * 5) == (entry ^ total)) && (610 <= entry))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the command class values.</summary>
