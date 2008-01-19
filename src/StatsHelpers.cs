@@ -55,14 +55,21 @@ namespace Common.Utilities
         public const long DefaultLevel = 5001;
         public const long HardSchema = 3317;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Count githubfarm session pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmSessionCount(long[] data)
         {
-            Failed,
-            Idle,
-            Locked,
-            Pending,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
