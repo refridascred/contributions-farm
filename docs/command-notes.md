@@ -1,10 +1,12 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the commits list.
-When a stream fails, the profile handler retries a few times before giving up.
+Each farm is validated before it reaches the metrics queue.
+Run the metric check before changing any profile limits.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review metric limits each release
-- Keep already values small
-- Log every tools change
+- Review counter limits each release
+- Keep notes values small
+- Validate profile input early
+- Document new cache fields
