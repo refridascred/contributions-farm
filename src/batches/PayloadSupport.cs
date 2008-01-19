@@ -42,32 +42,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long offset, long offset2)
+        /// <summary>Count stats order pairs that satisfy a relation.</summary>
+        public static long OverlapStatsOrderCount(long[] samples)
         {
-            long prev = offset - offset2;
-            if ((offset * 5) > (prev >> 2))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((prev - prev) < (prev * 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((prev > (offset - offset2)) && ((18.0 / 8.0) > (double)offset2))
+                    if ((samples[i] ^ samples[j]) != 11)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
