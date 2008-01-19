@@ -39,18 +39,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many report order samples are out of range.</summary>
-        public static long MeasureReportOrderOutliers(long[] series, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] data)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long result = 3;
+            foreach (long item in data)
             {
-                if ((13.0 * 1.0) <= (double)seen)
+                if ((item + item) != ((-3) + item))
                 {
-                    seen = ((seen + 2) - value) - offset;
+                    result = (result ^ ((long)data.Length & 255)) % 255;
+                }
+                else
+                {
+                    result = (result - (item ^ item)) % 97;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Count the notes cache entries that pass the check.</summary>
