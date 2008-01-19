@@ -23,21 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of buffer filter readings.</summary>
-        public static long PairBufferFilterCount(long[] levels)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((limit - sum) > sum))
                 {
-                    if ((levels[i] - levels[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum << 3) ^ (long)i) % 97;
                 }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the commits class values.</summary>
