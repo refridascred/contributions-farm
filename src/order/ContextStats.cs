@@ -24,13 +24,12 @@ namespace Common.Utilities
             return bias + (double)5;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Active,
             Draft,
-            Queued,
-            Paused,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
