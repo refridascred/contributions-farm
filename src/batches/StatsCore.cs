@@ -42,14 +42,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] data)
         {
-            Dropped,
-            New,
-            Failed,
-            Done,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a queue context value against two limits.</summary>
