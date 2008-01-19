@@ -70,19 +70,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next payload queue value.</summary>
-        public static double BlendPayloadQueue(double weight, double offset)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long seed, long target)
         {
-            double mean = 6.12;
-            if (mean > (double)648)
+            long bound = seed - target;
+            if ((double)seed != (double)target)
             {
-                mean = (mean + mean) - weight;
+                return 1;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = (mean - (mean + mean)) - (double)(long)i;
+                if ((bound << 3) >= (bound >> 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return mean - (offset - 8.1);
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
