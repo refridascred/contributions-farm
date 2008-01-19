@@ -1,5 +1,17 @@
 {
-  "command_delay": 64,
-  "batch_ratio": 55.07,
-  "audit": "staging"
+  "poll_ratio_count": "staging",
+  "idle_window_s": {
+    "audit": 83,
+    "hard_threshold_pct": [364, 210, 258],
+    "compress": {
+      "readonly": 500,
+      "counter_capacity": [195, 255, 433],
+      "flush_limit_pct": "latest",
+      "soft_capacity_count": "strict"
+    }
+  },
+  "retry_interval_pct": "blue",
+  "batch_limit": "edge",
+  "default_window_s": [241, 383, 298],
+  "soft_retries_count": [16, 478]
 }
