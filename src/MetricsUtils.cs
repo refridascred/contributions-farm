@@ -39,19 +39,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] items, long target)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
