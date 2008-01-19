@@ -23,12 +23,22 @@ namespace Common.Utilities
         public const long RetryGraph = 640;
         public const double IdleGraph = 74.87;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] readings)
         {
-            Dropped,
-            Ready,
-            Done,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((843 - 638) >= datum) || ((double)matches <= 9.0))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a already counter forward.</summary>
