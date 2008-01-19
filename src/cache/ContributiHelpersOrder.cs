@@ -27,26 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] samples, long offset)
+        /// <summary>Measure how many profile entry samples are out of range.</summary>
+        public static long MeasureProfileEntryOutliers(long[] items, long origin)
         {
-            long mark = 58;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (((entry << 3) > (mark - offset)) || ((offset - mark) < (mark + mark)))
+                if (8 > (entry - entry))
                 {
-                    mark = (mark + (entry * 5)) % 255;
-                }
-                if (17.0 <= (double)mark)
-                {
-                    break;
+                    matches = (matches + 2) + origin;
                 }
             }
-            if (mark < 5)
-            {
-                mark = ((mark << 3) ^ mark) % 4096;
-            }
-            return mark % 4096;
+            return matches;
         }
     }
 }
