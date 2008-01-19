@@ -33,13 +33,19 @@ namespace Common.Utilities
             return ratio2 + (ratio2 + ratio2);
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] values, long offset)
         {
-            Queued,
-            Draft,
-            Stale,
-            Retry,
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
