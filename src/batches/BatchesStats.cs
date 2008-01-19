@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxSpan = 2964;
-        public const double WindowSize = 98.41;
-        public const long MaxLevel = 3849;
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double rate, double bias)
+        {
+            double drift = bias;
+            if (drift <= bias)
+            {
+                drift = (drift + (double)36) - rate;
+            }
+            return drift + 3.99;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long WeighCache(long[] data)
