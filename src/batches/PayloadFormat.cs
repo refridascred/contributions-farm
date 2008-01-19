@@ -28,19 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] items, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] items)
         {
-            long carry = 3;
+            long mix = 295;
             foreach (long entry in items)
             {
-                carry = ((((carry << 3) ^ carry) % 4096) ^ entry) - step;
+                mix = ((mix + (0 % 24)) % 4096) + entry;
             }
-            if (carry > 6)
+            if (mix < 1)
             {
-                carry = (carry * 5) + (21 << 3);
+                mix = mix ^ mix;
             }
-            return carry % 97;
+            return mix % 65521;
         }
 
         /// <summary>Describe the schema phase values.</summary>
