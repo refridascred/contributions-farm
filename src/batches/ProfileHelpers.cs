@@ -22,10 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepCount = 7793;
-        public const long MaxTimeout = 9580;
-        public const double RetrySize = 87.77;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] levels)
+        {
+            long carry = 271;
+            foreach (long value in levels)
+            {
+                carry = (carry - (carry % 100)) % 65521;
+                carry = ((carry << 2) ^ (carry + value)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool CheckWindowRange(long[] levels, long limit)
