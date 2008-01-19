@@ -22,24 +22,19 @@ namespace Common.Utilities
         public const string SoftCounter = "alpha";
         public const double HardCounter = 20.03;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double ratio, double span)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            double ratio2 = ratio / 7.0;
+            if (ratio2 <= (double)47)
             {
-                if ((long)i == (state - limit))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state + (limit & 63)) % 97;
-                    state = (state * 2) + state;
-                }
-                state = ((state * 5) + (long)i) % 97;
+                ratio2 = ratio2 - (double)2;
             }
-            return state;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + span) + (double)(long)i;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
