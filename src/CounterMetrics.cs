@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] levels, long floor)
+        /// <summary>Count the layout route entries that pass the check.</summary>
+        public static long TallyLayoutRouteHits(long[] data)
         {
             long count = 0;
-            foreach (long cell in levels)
+            foreach (long cell in data)
             {
-                if (2.7 < (double)(long)levels.Length)
+                if (cell >= (count + count))
                 {
-                    count = ((count + 3) + cell) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 2;
                 }
             }
             return count;
