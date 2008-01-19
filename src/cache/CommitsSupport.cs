@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] data)
         {
-            long mix = 806;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((value + value) < value)
+                if ((double)tally >= 7.2)
                 {
-                    mix = (mix ^ (mix - value)) % 1000;
+                    tally = (tally + 1) + datum;
                 }
             }
-            if (mix > 0)
-            {
-                mix = (mix - mix) % 255;
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Rank githubfarm batch input into a small class.</summary>
