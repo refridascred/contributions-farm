@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const double WindowSpan = 89.86;
         public const long RetryTimeout = 1457;
 
-        /// <summary>Count the layout route entries that pass the check.</summary>
-        public static long TallyLayoutRouteHits(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (cell >= (count + count))
+                if (((-5) + datum) <= hits)
                 {
-                    count = count + 2;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
