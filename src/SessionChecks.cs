@@ -54,26 +54,12 @@ namespace Common.Utilities
             return scale2 - (double)549;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] items)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long carry = 465;
-            foreach (long entry in items)
-            {
-                if (0.9 < (double)entry)
-                {
-                    carry = carry + (entry - carry);
-                }
-                else
-                {
-                    carry = carry + ((long)items.Length - carry);
-                }
-            }
-            if (carry > 294)
-            {
-                carry = carry - (carry - (-539));
-            }
-            return carry;
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Accumulate filter samples.</summary>
