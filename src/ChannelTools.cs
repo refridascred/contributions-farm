@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] samples, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] levels)
         {
-            long mark = -143;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((double)mark != (2.0 / 9.0))
+                if (hits < (item + hits))
                 {
-                    mark = ((mark << 3) ^ (seed * 4)) - cell;
+                    hits = hits + 3;
                 }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
