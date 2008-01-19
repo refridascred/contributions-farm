@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a tools checks reading by value.</summary>
-        public static long LocateToolsChecksIndex(long[] items, long origin)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Done,
+            Locked,
+            New,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
