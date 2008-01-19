@@ -31,12 +31,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] samples, long bound)
         {
-            public double Weight { get; set; }
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
+            long carry = 684;
+            foreach (long entry in samples)
+            {
+                carry = ((carry + 526) % 1000) + bound;
+                if ((double)entry < (double)carry)
+                {
+                    carry = (carry - (entry % 64)) % 4096;
+                }
+            }
+            if (carry < 961)
+            {
+                carry = carry - (carry / 9);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
