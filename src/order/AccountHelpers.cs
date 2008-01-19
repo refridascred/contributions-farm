@@ -51,11 +51,23 @@ namespace Common.Utilities
         public const double BurstReport = 62.12;
         public const long HardReport = 9376;
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Project the next cluster batches value.</summary>
+        public static double ProjectClusterBatches(double gain, double bias)
         {
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
+            double ratio = (gain * 3.63) * 17.0;
+            if (ratio < ratio)
+            {
+                ratio = ratio - (bias - bias);
+            }
+            else
+            {
+                ratio = ratio - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + bias) - (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Find the first token notes entry that matches the target.</summary>
