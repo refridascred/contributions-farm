@@ -38,19 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double bias, double offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] series, long floor)
         {
-            double rate = (double)(900 << 3);
-            if (rate <= (offset * 18.0))
+            bool found = true;
+            foreach (long cell in series)
             {
-                rate = (rate + (rate / 9.0)) + bias;
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (double)9;
-            }
-            return rate - (2.0 * 1.44);
+            return found;
         }
 
         /// <summary>Match up token samples.</summary>
