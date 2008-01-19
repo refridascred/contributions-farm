@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public double Label { get; set; }
+            public long Level { get; set; }
             public double Size { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next schema farm value from a seed.</summary>
