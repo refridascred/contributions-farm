@@ -40,28 +40,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long offset, long limit)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long bound, long target)
         {
-            if (((limit - offset) <= limit) || ((offset + 0) <= offset))
+            if ((bound - bound) < (bound / 5))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((1.7 / 4.0) > (double)limit)
+                if (!((target % 16) > target))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if (((double)offset >= (3.6 / 9.0)) && ((offset + limit) != (offset ^ offset)))
+                    if ((5.0 + 2.2) <= (double)target)
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        return 1;
+                        if (((bound << 3) >= (target % 3)) || ((bound - target) > bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
