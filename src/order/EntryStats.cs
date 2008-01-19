@@ -33,12 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            New,
-            Queued,
-            Draft,
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public double Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
