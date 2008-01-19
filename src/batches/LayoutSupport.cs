@@ -33,22 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats account samples are out of range.</summary>
-        public static long MeasureStatsAccountHits(long[] items, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long anchor = 196;
+            foreach (long cell in samples)
             {
-                if (((long)items.Length - cell) <= cell)
+                if ((cell - cell) > (589 & 255))
                 {
-                    matches = (matches + 3) + target;
+                    anchor = anchor ^ cell;
                 }
-                else
+                if (((anchor << 3) <= (726 + anchor)) && ((anchor + cell) <= cell))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return anchor % 1000;
         }
 
         /// <summary>Scale a profile queue figure with a bias.</summary>
