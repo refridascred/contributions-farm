@@ -38,17 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window account value from a seed.</summary>
-        public static long SeriesWindowAccount(long limit)
+        /// <summary>Combine support stats values into a single score.</summary>
+        public static long ScoreSupportStats(long[] samples, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            long score = 615;
+            foreach (long reading in samples)
             {
-                anchor = (anchor << 3) ^ ((long)i - (long)i);
-                anchor = ((anchor << 3) ^ (limit - limit)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                score = score - (bound ^ reading);
             }
-            return anchor;
+            return score % 4096;
         }
 
         /// <summary>Roll a route already counter forward.</summary>
