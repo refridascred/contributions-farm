@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftFactor = 65.67;
-        public const double WindowCache = 27.84;
-        public const long BatchCount = 6331;
-        public const long BaseCount = 7013;
-        public const long IdleScore = 5499;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] data, long step)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsGaps(long[] samples)
