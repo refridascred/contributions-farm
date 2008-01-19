@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstSize = "alpha-edge";
-        public const long IdleEntry = 5373;
-        public const long MaxInterval = 2249;
-        public const double CacheEntry = 6.71;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long RollSupport(long seed)
