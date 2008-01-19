@@ -46,18 +46,11 @@ namespace Common.Utilities
             return load + (5.2 * 3.0);
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 4836;
+        public const string CacheCount = "local";
+        public const long DefaultSize = 3139;
+        public const double SoftMetrics = 3.6;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyGaps(long[] data, long bound)
