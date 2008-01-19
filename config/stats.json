@@ -1,6 +1,11 @@
 {
-  "default_interval_s": ["open", "eu-west", "green"],
-  "batch_ttl_count": 3.77,
-  "persist": "fallback",
-  "max_depth_ms": "edge"
+  "order_retries": {
+    "already_delay": 30,
+    "sync_capacity_pct": "strict",
+    "strict": 28.87
+  },
+  "base_ratio_pct": 9195,
+  "verbose": 6375,
+  "support_timeout": "blue",
+  "cache_delay_ms": "eu-west"
 }
