@@ -40,11 +40,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long target, long offset)
         {
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long diff = target ^ offset;
+            if ((9.0 - 8.2) < (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)target < 7.1)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)diff < 4.6)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((3.16 / 2.0) <= (double)offset) || ((offset - 9) >= diff))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
