@@ -54,16 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double rate, double bias)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            double mean = (bias / 4.0) + (bias / 4.0);
+            if (mean < (double)(-218))
             {
-                mix = (mix + (floor >> 5)) % 65521;
-                mix = ((mix * 5) + (long)i) % 101;
+                mean = mean + rate;
             }
-            return mix;
+            else
+            {
+                mean = mean - (double)17;
+            }
+            return mean - (bias / 9.0);
         }
     }
 }
