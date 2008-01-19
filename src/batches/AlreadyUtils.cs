@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] series, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                carry = (carry ^ carry) % 101;
-                carry = ((carry * 2) + (long)i) % 97;
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Compare every pair of schema contributi readings.</summary>
