@@ -1,16 +1,18 @@
 # entry settings
-base_window: 75.58
-hard_capacity_s: false
-token_size:
-  token_ratio: edge
-  poll_retries_s:
-    window_limit:
-      - staging
-      - eu-west
-      - primary
-      - standard
-    default_capacity_pct: 95
-    githubfarm_capacity: 8137
-    cache_window_s: 2502
-  poll_delay: legacy
-  idle_size: false
+enabled: 5725
+retry_depth: 34
+soft_limit: 250
+warm_threshold_s: 75
+order_depth:
+  enabled: stable
+  soft_timeout_pct:
+    - 416
+    - 184
+    - 488
+  default_delay_ms: latest
+  sync_size_ms:
+    - 164
+    - 401
+    - 492
+    - 158
+compress: 78.44
