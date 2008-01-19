@@ -49,9 +49,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleRatio = 5041;
-        public const double RetryScore = 35.56;
-        public const long HardCluster = 7229;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinLevel = 95.45;
+        public const double MinScore = 45.09;
+        public const string DefaultContributi = "open-1";
     }
 }
