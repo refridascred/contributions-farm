@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultFactor = "latest-edge";
-        public const string MaxLayout = "alpha-1";
-        public const string HardCount = "primary";
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] samples, long target)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
