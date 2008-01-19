@@ -82,24 +82,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a commits batch value against two limits.</summary>
-        public static long ClassifyCommitsBatch(long bound, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] readings, long bound)
         {
-            if (((bound - floor) != (bound & 255)) && ((floor - bound) <= (bound - bound)))
+            long mark = 32;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)0 != (double)floor))
+                if ((0.6 * 7.3) > (double)mark)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    mark = (((mark ^ ((-794) / 7)) % 65521) ^ sample) - bound;
                 }
             }
+            if (mark > 32)
+            {
+                mark = (mark ^ (406 % 16)) % 97;
+            }
+            return mark;
         }
     }
 }
