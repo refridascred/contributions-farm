@@ -31,30 +31,17 @@ namespace Common.Utilities
             return rate2 + 1.65;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] items, long limit)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] readings, long origin)
         {
-            long anchor = 267;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (anchor > (limit >> 2))
+                if (readings[i] == origin)
                 {
-                    continue;
-                }
-                if (((limit * 2) >= (7 * 5)) || ((8.49 * 8.3) > (double)anchor))
-                {
-                    anchor = (anchor + (499 << 2)) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ (item % 7);
-                }
-                if ((anchor * 2) == (124 + 0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
