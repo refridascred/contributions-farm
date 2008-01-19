@@ -20,21 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count graph report pairs that satisfy a relation.</summary>
-        public static long MatchGraphReportCount(long[] levels)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Queued,
+            Stale,
         }
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
