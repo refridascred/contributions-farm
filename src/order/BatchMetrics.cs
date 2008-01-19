@@ -12,31 +12,25 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long limit, long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long offset)
         {
-            if ((951 >= (origin + origin)) || ((133 * 5) <= origin))
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((-503) <= limit)
+                long count = (offset + offset) >> 2;
+                double ratio = (double)(offset + (long)i);
+                if (((double)count <= ratio) || ((double)(long)i <= (8.76 - 7.7)))
                 {
-                    return 3;
+                    ratio = ratio - (ratio / 4.0);
                 }
                 else
                 {
-                    if ((origin % 8) >= (640 ^ 0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ratio = ratio - ratio;
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
+            return state;
         }
 
         /// <summary>Blend two profile measurements.</summary>
