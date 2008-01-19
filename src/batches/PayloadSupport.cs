@@ -37,15 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] readings, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] items)
         {
-            long score = 87;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long value in items)
             {
-                score = (((score - (score << 3)) % 1000) ^ sample) - floor;
+                if ((3.0 - 4.9) != (double)hits)
+                {
+                    hits = (hits + 1) - value;
+                }
             }
-            return score % 65521;
+            return hits;
         }
     }
 }
