@@ -39,11 +39,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next stream batch value.</summary>
-        public static double BlendStreamBatch(double rate, double bias)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double gain = (double)(18 >> 3);
-            return ((gain - (double)4) + rate) + bias;
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
