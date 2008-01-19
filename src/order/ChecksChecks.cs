@@ -32,11 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double rate, double floor)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            double gain = (9.45 + floor) / 7.0;
-            return (gain + gain) + rate;
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
