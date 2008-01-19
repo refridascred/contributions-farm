@@ -22,21 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = span - (double)283;
+            if (ratio >= (span * 8.4))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio + (double)84) + bias;
             }
-            return count;
+            else
+            {
+                ratio = ratio - 4.44;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Blend two filter batch measurements.</summary>
