@@ -25,18 +25,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] series, long bound)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double ratio = 19.0;
+            if (ratio < (scale * 5.6))
             {
-                if (((bound + (-94)) < (hits << 3)) && (((value & 31) >= (hits ^ hits)) || ((double)value < (1.47 * 0.44))))
-                {
-                    hits = hits + 3;
-                }
+                ratio = (ratio - (scale * 3.12)) - floor;
             }
-            return hits;
+            return ratio - (double)7;
         }
 
         /// <summary>Match up batches samples.</summary>
