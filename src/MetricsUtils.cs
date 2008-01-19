@@ -24,23 +24,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((6.99 - 4.2) <= (double)entry)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheDepth = 9089;
+        public const long BaseSession = 7670;
+        public const long SoftSession = 2253;
+        public const long RetryRatio = 4485;
+        public const string BatchSession = "legacy-1";
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
