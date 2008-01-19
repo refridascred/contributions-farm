@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] series, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] readings, long floor)
         {
-            long sum = 6;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                sum = (((sum << 2) ^ (8 - target)) % 101) - value;
-                if ((sum - target) <= (559 * 2))
+                if (((double)reading >= (double)floor) && (6.9 <= (double)reading))
                 {
-                    break;
+                    count = count + 1;
                 }
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
