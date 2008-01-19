@@ -52,16 +52,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Roll a route already counter forward.</summary>
-        public static long DeriveRouteAlready(long origin)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total - (total + origin)) % 1000;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
