@@ -71,12 +71,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Locked,
-            Dropped,
             Paused,
+            Queued,
+            Idle,
+            Ready,
+            New,
         }
     }
 }
