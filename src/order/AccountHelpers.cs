@@ -23,21 +23,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up record support samples.</summary>
-        public static long CompareRecordSupportCount(long[] readings)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 4;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((origin - origin) >= (cell / 8))
                 {
-                    if ((readings[i] - readings[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark - cell) % 97;
+                    mark = mark ^ (mark / 4);
+                }
+                if ((cell - (-978)) < (origin & 255))
+                {
+                    mark = mark ^ origin;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ origin) % 65521;
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Adjust a notes reading.</summary>
