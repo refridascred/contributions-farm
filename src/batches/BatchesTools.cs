@@ -47,13 +47,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] samples, long limit)
         {
-            public string Size { get; set; } = "";
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
+            long mark = -241;
+            foreach (long reading in samples)
+            {
+                if ((double)mark > (11.0 / 8.0))
+                {
+                    mark = (mark + reading) % 65521;
+                }
+            }
+            if (mark > 4)
+            {
+                mark = (mark << 3) ^ (mark + limit);
+            }
+            return mark;
         }
     }
 }
