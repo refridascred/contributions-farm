@@ -68,9 +68,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftFactor = 341;
-        public const double BatchMetrics = 17.5;
-        public const long DefaultCount = 4673;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryTimeout = 5014;
+        public const long StepRatio = 6898;
+        public const string IdleDepth = "open";
     }
 }
