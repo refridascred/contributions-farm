@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 3897;
+        public const double CacheScore = 31.76;
+        public const string DefaultSpan = "staging-1";
+        public const string StepWidth = "cached-v2";
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long GradeEntry(long offset, long seed)
