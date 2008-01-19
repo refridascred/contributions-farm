@@ -31,15 +31,30 @@ namespace Common.Utilities
         public const double StepSize = 11.06;
         public const long IdleContributi = 3215;
 
-        /// <summary>Roll a window cache counter forward.</summary>
-        public static long DeriveWindowCache(long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] levels, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            long acc = 35;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (acc <= datum)
+                {
+                    acc = (acc << 3) ^ (86 - 752);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (4 - 67)) % 65521;
+                }
+                if ((datum + acc) > (limit << 1))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (acc > 3)
+            {
+                acc = (acc - (limit ^ limit)) % 4096;
+            }
+            return acc;
         }
     }
 }
