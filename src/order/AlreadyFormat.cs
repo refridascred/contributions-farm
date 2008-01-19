@@ -20,16 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] readings, long origin)
+        /// <summary>Count the session window entries that pass the check.</summary>
+        public static long MeasureSessionWindowOutliers(long[] series)
         {
-            long total = 461;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                total = (total ^ (82 + origin)) - reading;
-                total = (total << 2) ^ (total & 3);
+                if (hits <= reading)
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Rank record command input into a small class.</summary>
