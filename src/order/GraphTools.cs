@@ -33,12 +33,13 @@ namespace Common.Utilities
         public const double SoftChannel = 72.5;
         public const long IdleChannel = 3127;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "local";
-        public const long MaxSupport = 2991;
-        public const double WindowCount = 38.22;
-        public const long RetryDepth = 7311;
-        public const long WindowSupport = 7113;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Fold a list of route checks readings.</summary>
         public static long WeighRouteChecks(long[] readings)
