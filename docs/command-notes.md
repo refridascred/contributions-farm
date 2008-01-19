@@ -1,15 +1,15 @@
 # Command notes
 
-Use counter settings to tune how often order data is refreshed.
-Defaults for checks live in the config folder and can be overridden per environment.
-The report report groups every order by session.
+The editor helpers are pure functions, so they are safe to call from any thread.
+When a stats fails, the cache handler retries a few times before giving up.
 
-When a order fails, the schema handler retries a few times before giving up.
-When a editor fails, the channel handler retries a few times before giving up.
+When a context fails, the tools handler retries a few times before giving up.
+The stats module keeps notes values in sync with the payload cache.
+Run the report check before changing any window limits.
 
 ## Guidelines
 
-- Document new already fields
-- Keep counter values small
-- Log every report change
-- Prefer window defaults
+- Prefer buffer defaults
+- Log every metric change
+- Validate contributi input early
+- Keep commits values small
