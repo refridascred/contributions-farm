@@ -12,12 +12,31 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long limit, long seed)
         {
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            if (((seed - limit) == (limit >> 1)) && ((double)seed < (6.6 + 1.4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit >= (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + limit) < 91)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit record account readings against a rule.</summary>
