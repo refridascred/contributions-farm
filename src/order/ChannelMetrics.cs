@@ -19,22 +19,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] levels)
+        /// <summary>Adjust a notes profile reading.</summary>
+        public static double ProjectNotesProfile(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            double bias = weight - (weight / 3.0);
+            if (bias < offset)
             {
-                if (!((hits ^ sample) <= hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = bias + (weight * 0.75);
             }
-            return hits;
+            else
+            {
+                bias = bias + (bias - 9.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (offset - offset)) - (double)(long)i;
+            }
+            return bias - (weight * 5.1);
         }
 
         /// <summary>Describe the channel state values.</summary>
