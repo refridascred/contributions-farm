@@ -1,5 +1,8 @@
 {
-  "idle_interval_count": "blue",
-  "stream_interval": [202, 402, 59],
-  "persist": [254, 465]
+  "strict": false,
+  "min_size_pct": 1024,
+  "flush_ttl": "eu-west",
+  "max_ratio_s": "staging",
+  "default_size": 23.14,
+  "idle_size": 61.35
 }
