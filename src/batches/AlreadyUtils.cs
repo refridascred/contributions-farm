@@ -51,22 +51,32 @@ namespace Common.Utilities
         public const long MinInterval = 4116;
         public const long StepContributi = 7136;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] values, long floor)
+        /// <summary>Classify a schema profile pair into a bucket.</summary>
+        public static long GradeSchemaProfile(long target, long target2)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long lane = target - target2;
+            if ((target / 8) < target2)
             {
-                if ((0.1 + 6.0) <= (double)hits)
+                return 2;
+            }
+            else
+            {
+                if ((double)target2 <= 2.1)
                 {
-                    hits = ((hits + 2) ^ sample) - floor;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((-93) + (-98)) != (lane - 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
