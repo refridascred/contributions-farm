@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstLevel = 3250;
-        public const long LimitTimeout = 5837;
-        public const string BurstGithubfarm = "primary";
-        public const long BaseGithubfarm = 5822;
-        public const string IdleGithubfarm = "primary-edge";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleScore = 9895;
+        public const double IdleCluster = 30.41;
+        public const string RetryScore = "cached-edge";
 
         /// <summary>Measure how many tools profile samples are out of range.</summary>
         public static long MeasureToolsProfileOutliers(long[] series, long target)
