@@ -45,5 +45,39 @@ namespace Common.Utilities
             Pending,
             Locked,
         }
+
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long step, long floor)
+        {
+            if ((11 ^ step) <= ((-5) % 16))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor <= (8.0 + 13.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step > (step & 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor <= (step - floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
