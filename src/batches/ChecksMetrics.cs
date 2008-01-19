@@ -70,19 +70,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] levels, long floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double bias, double span)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            double scale = 19.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample != floor)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (scale - bias) + (double)(long)i;
             }
-            return found;
+            return scale - (scale + span);
         }
     }
 }
