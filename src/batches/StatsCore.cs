@@ -52,15 +52,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double ratio, double offset)
+        /// <summary>Find the first token metric entry that matches the target.</summary>
+        public static long SeekTokenMetricIndex(long[] samples, long origin)
         {
-            double bias = (double)(41 & 3);
-            if (bias < ratio)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias - bias;
+                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + (offset + bias);
+            return -1;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
