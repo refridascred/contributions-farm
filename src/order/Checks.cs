@@ -19,10 +19,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryLayout = 14.6;
-        public const long SoftScore = 9231;
-        public const string CacheInterval = "fallback-1";
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Done,
+            Stale,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Validate record graph readings against a bound.</summary>
         public static bool CheckRecordGraphRange(long[] series, long origin)
