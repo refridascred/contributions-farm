@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many format farm samples are out of range.</summary>
-        public static long TallyFormatFarmMatches(long[] series, long step)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((8.22 + 7.8) < (double)matches) && (matches < (47 - datum)))
-                {
-                    matches = (matches + 3) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Digest a series of already entries.</summary>
