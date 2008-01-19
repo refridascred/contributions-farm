@@ -38,16 +38,31 @@ namespace Common.Utilities
             return bias2 + (7.3 + bias);
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] data, long floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long floor, long floor2)
         {
-            long result = -51;
-            foreach (long entry in data)
+            if ((86 * 4) >= (floor2 - floor2))
             {
-                result = (result + (result + entry)) + floor;
-                result = (result - (856 % 16)) % 4096;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((27 - floor2) >= floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor - floor2) >= (floor2 / 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
