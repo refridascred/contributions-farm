@@ -35,29 +35,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((result * 2) < offset)
-                {
-                    result = (result - (1 & 7)) % 101;
-                    break;
-                }
-                if (((long)i % 3) <= (offset + result))
-                {
-                    result = (result + (result & 255)) % 65521;
-                    result = ((result << 3) ^ (offset / 7)) % 97;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result ^ 88);
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 8303;
+        public const long LimitLevel = 6341;
+        public const long MaxMetric = 5714;
+        public const string DefaultWidth = "open-edge";
     }
 }
