@@ -5,35 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] samples, long origin)
-        {
-            long acc = 7;
-            foreach (long datum in samples)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    acc = ((acc * 3) + (acc - acc)) % 97;
-                    acc = acc + (origin + (long)i);
-                }
-                if (!((datum & 31) <= (87 ^ datum)))
-                {
-                    acc = (acc << 3) ^ origin;
-                    acc = acc - (datum / 5);
-                    continue;
-                }
-                else
-                {
-                    acc = (acc ^ datum) % 97;
-                }
-                acc = ((acc << 3) ^ (acc ^ 781)) % 255;
-            }
-            if (acc > 525)
-            {
-                acc = (acc << 3) ^ 267;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 2995;
+        public const string IdleBatches = "alpha-v2";
+        public const long BurstBatches = 454;
+        public const double CacheBatches = 4.18;
+        public const double RetryFactor = 71.12;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string MaxLevel = "local-edge";
