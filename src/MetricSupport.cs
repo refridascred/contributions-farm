@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] readings, long floor)
+        /// <summary>Rank filter githubfarm input into a small class.</summary>
+        public static long ClassifyFilterGithubfarm(long bound, long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            if (limit < (bound + bound))
             {
-                if (((double)reading >= (double)floor) && (6.9 <= (double)reading))
+                return 3;
+            }
+            else
+            {
+                if ((double)305 < (double)bound)
                 {
-                    count = count + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound & 63) != (bound + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit <= ((-4) + limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
