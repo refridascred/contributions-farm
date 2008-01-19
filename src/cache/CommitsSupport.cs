@@ -48,18 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long carry = 66;
+            foreach (long value in data)
             {
-                if (((count - reading) > reading) && !((double)reading < (11.0 / 8.0)))
-                {
-                    count = count + 2;
-                }
+                carry = ((carry ^ (carry - 52)) % 255) ^ value;
+                carry = (carry ^ (limit & 3)) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
