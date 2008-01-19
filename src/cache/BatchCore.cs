@@ -45,18 +45,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] data, long target)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count ^ value) > value)
                 {
-                    if ((items[i] - items[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) - target;
                 }
             }
             return count;
