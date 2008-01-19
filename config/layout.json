@@ -1,24 +1,5 @@
 {
-  "layout_ttl": 1024,
-  "base_delay_s": {
-    "min_threshold": 6867,
-    "account_window": "primary",
-    "verbose": 10,
-    "account_retries": {
-      "max_size": 79.41,
-      "audit": "fallback",
-      "enabled": 77.65
-    },
-    "notes_interval": "local"
-  },
-  "audit": {
-    "dry_run": "latest",
-    "already_capacity": 81.43,
-    "verbose": [500, 58, 441, 114],
-    "batch_ttl_count": false,
-    "compress": "eu-west"
-  },
-  "idle_interval_ms": "blue",
-  "verbose": "primary",
-  "metric_capacity": "standard"
+  "command_delay": 64,
+  "batch_ratio": 55.07,
+  "audit": "staging"
 }
