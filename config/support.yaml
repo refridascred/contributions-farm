@@ -1,4 +1,5 @@
 # support settings
-token_window: 60
-idle_ratio: legacy
-order_interval: false
+sync_ratio: 34.39
+poll_ratio_count: 86
+format_limit: false
+strict: 66
