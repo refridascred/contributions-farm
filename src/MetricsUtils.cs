@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheDepth = 9089;
-        public const long BaseSession = 7670;
-        public const long SoftSession = 2253;
-        public const long RetryRatio = 4485;
-        public const string BatchSession = "legacy-1";
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Pending,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
