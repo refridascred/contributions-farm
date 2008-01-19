@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] readings, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            long sum = 0;
+            foreach (long entry in readings)
             {
-                if (((long)i ^ target) < 1)
+                if (((50 & 127) <= sum) || (offset >= (offset % 10)))
                 {
-                    mix = (mix + (target >> 4)) % 1000;
-                    mix = ((mix << 2) ^ (target / 3)) % 1000;
+                    sum = (sum ^ (sum ^ 7)) ^ entry;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return sum % 1000;
         }
 
         /// <summary>Match up session queue samples.</summary>
