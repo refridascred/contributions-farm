@@ -36,11 +36,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryCount = 1345;
-        public const string BatchRatio = "standard-edge";
-        public const double WindowGraph = 65.85;
-        public const double RetryDepth = 36.78;
-        public const long SoftSize = 1141;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 7603;
+        public const string HardTimeout = "standard-1";
+        public const long LimitCounter = 2119;
     }
 }
