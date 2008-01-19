@@ -56,19 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window support entry stays within the limit.</summary>
-        public static bool CheckWindowSupportLimits(long[] values, long seed)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= seed)
+                if (data[i] > target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a session snapshot.</summary>
