@@ -73,13 +73,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Synced,
-            Active,
-            Retry,
-            Done,
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
