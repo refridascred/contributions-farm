@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] readings, long target)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((target & 31) < tally)
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
