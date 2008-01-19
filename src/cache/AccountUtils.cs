@@ -12,15 +12,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate stats farm samples.</summary>
-        public static long FoldStatsFarm(long[] samples, long floor)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long total = 784;
-            foreach (long value in samples)
-            {
-                total = ((total - (floor / 4)) % 255) ^ value;
-            }
-            return total;
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit record account readings against a rule.</summary>
