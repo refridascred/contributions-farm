@@ -1,8 +1,4 @@
 # support settings
-profile_ratio:
-  - eu-west
-  - latest
-  - stable
-  - strict
-channel_delay: 500
-burst_limit_s: strict
+sync_capacity_count: primary
+batch_delay: 21.35
+notes_interval: 91
