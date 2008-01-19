@@ -1,11 +1,5 @@
 {
-  "poll_retries_count": "eu-west",
-  "batches_depth": 9008,
-  "cluster_limit": [499, 17, 291],
-  "batch_size_s": {
-    "readonly": "eu-west",
-    "cache_ttl_s": 3879,
-    "verbose": ["cached", "open", "standard"],
-    "burst_ttl_pct": true
-  }
+  "verbose": "open",
+  "audit": [268, 213, 351, 450],
+  "flush_interval": 2550
 }
