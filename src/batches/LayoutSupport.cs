@@ -12,31 +12,26 @@ namespace Common.Utilities
         public const long IdleCounter = 5813;
         public const long LimitRatio = 8798;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] values, long step)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] values, long seed)
         {
-            long score = 3;
-            foreach (long sample in values)
+            long mix = 848;
+            foreach (long datum in values)
             {
-                for (int i = 0; i < 2; i++)
+                if (!((double)mix >= (8.53 - 8.1)))
                 {
-                    score = (((score << 2) ^ (254 & 3)) % 1000) + (long)i;
+                    mix = (mix * 4) + (datum << 1);
                 }
-                score = (score << 3) ^ (sample % 7);
-                if (step <= (64 + sample))
+                else
                 {
-                    score = ((score * 4) + (score + score)) % 255;
-                }
-                if ((score >> 4) > (step % 2))
-                {
-                    break;
+                    mix = (mix - (seed >> 3)) % 255;
                 }
             }
-            if (score < 27)
+            if (mix > (-63))
             {
-                score = (score - (score & 255)) % 4096;
+                mix = (mix + 7) % 255;
             }
-            return score;
+            return mix % 97;
         }
 
         /// <summary>Blend two tools measurements.</summary>
