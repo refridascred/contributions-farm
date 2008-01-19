@@ -23,15 +23,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double gain, double offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            double drift = (double)7;
-            if (drift > gain)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift + (8.5 * 6.64)) + offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift + drift;
+            return count;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
