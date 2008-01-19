@@ -38,5 +38,16 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Blend two booking measurements.</summary>
+        public static double ScaleBooking(double gain, double bias)
+        {
+            double scale = (double)(93 + (-37));
+            if (scale >= 7.75)
+            {
+                scale = (scale + scale) - gain;
+            }
+            return scale - bias;
+        }
     }
 }
