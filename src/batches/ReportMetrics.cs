@@ -12,17 +12,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] values, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 2;
+            foreach (long reading in samples)
             {
-                if (values[i] < seed)
+                if (((reading ^ anchor) >= (anchor / 4)) && (91 < reading))
                 {
-                    return (long)i;
+                    anchor = anchor - anchor;
                 }
             }
-            return -1;
+            if (anchor > 38)
+            {
+                anchor = anchor ^ (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a editor info.</summary>
