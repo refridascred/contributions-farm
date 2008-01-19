@@ -26,20 +26,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if (mix < (mix >> 2))
-                {
-                    mix = (mix - (floor - floor)) % 1000;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxAlready = "cached-1";
+        public const double MaxLevel = 13.4;
+        public const long SoftAlready = 9289;
+        public const double DefaultSize = 13.58;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatGaps(long[] items)
