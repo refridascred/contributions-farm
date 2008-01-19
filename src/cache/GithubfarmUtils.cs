@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((double)seen != (4.7 - 19.0))
+                if (!((datum + hits) != (datum & 127)))
                 {
-                    seen = (seen + 1) + reading;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many tools graph samples are out of range.</summary>
