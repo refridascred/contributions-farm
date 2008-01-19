@@ -33,20 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] items, long target)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheContributi = "open-1";
+        public const long MinContributi = 4528;
+        public const long LimitContributi = 5493;
+        public const long CacheCount = 7476;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long DigestContributi(long[] data, long step)
