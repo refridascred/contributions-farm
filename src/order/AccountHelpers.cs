@@ -42,23 +42,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            long state = 9;
+            foreach (long item in items)
             {
-                if (!(carry <= bound))
+                if ((2.0 >= (double)item) || ((state - 97) > state))
                 {
-                    carry = (carry - 9) % 1000;
+                    state = state - state;
                 }
-                if (((7.0 - 5.13) == (double)(long)i) && ((6.8 / 2.0) != (double)carry))
+                else
                 {
-                    break;
+                    state = state - 145;
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return state % 1000;
         }
 
         /// <summary>Accumulate notes samples.</summary>
