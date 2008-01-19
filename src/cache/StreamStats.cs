@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] data, long seed)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long anchor = 646;
-            foreach (long entry in data)
-            {
-                if (17.0 < (double)entry)
-                {
-                    anchor = ((anchor * 3) + (entry % 7)) + seed;
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = anchor ^ (anchor & 1);
-            }
-            return anchor;
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the layout level values.</summary>
