@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxDepth = "legacy-edge";
-        public const long BurstContributi = 4244;
-        public const string SoftContributi = "standard-1";
-        public const long MinBudget = 6245;
+        /// <summary>Check that every command githubfarm entry stays within the limit.</summary>
+        public static bool ValidateCommandGithubfarmRange(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long FoldChannel(long[] data)
