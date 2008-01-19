@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string BurstCache = "standard-edge";
         public const long LimitCache = 5072;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] levels)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell ^ 8) < (cell - seen)) && ((5 - 7) == (seen - cell)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
