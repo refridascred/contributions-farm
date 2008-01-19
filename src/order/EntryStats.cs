@@ -44,19 +44,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] values, long origin)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a farm tools value against two limits.</summary>
