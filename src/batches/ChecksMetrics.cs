@@ -32,19 +32,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every metric payload entry stays within the limit.</summary>
-        public static bool CheckMetricPayloadLimits(long[] series, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] items)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long mark = 86;
+            foreach (long datum in items)
             {
-                if (reading <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark * 3) + (mark << 3)) + datum;
             }
-            return found;
+            if (mark < 651)
+            {
+                mark = mark - (mark ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a account stats.</summary>
