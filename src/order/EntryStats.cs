@@ -23,27 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] samples, long target)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            long acc = 7;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((long)samples.Length - acc) == (acc / 7)) && ((double)acc > 0.76))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (((acc * 5) + acc) % 4096) ^ cell;
-                    continue;
-                }
-                if (acc <= (target % 100))
-                {
-                    acc = ((acc * 4) + acc) % 65521;
-                }
-                else
-                {
-                    acc = (acc - (target + target)) % 1000;
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
