@@ -15,15 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (hits > (hits >> 2))
+                {
+                    hits = (hits + 3) + reading;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
