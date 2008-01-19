@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route account readings.</summary>
-        public static long TotalRouteAccount(long[] readings)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long target)
         {
-            long sum = 5;
-            foreach (long reading in readings)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (sum - (reading + 8)) % 65521;
+                if ((56 % 8) >= target)
+                {
+                    score = ((score * 4) + (458 & 1)) % 4096;
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (sum < 6)
-            {
-                sum = (sum << 3) ^ (sum >> 1);
-            }
-            return sum % 65521;
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
