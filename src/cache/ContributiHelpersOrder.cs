@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheBudget = 8986;
-        public const long BaseLayout = 9395;
-        public const string StepRatio = "cached";
-        public const long MinFactor = 8281;
-        public const string LimitLayout = "fallback";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchScore = "alpha";
+        public const long HardProfile = 5708;
+        public const string SoftProfile = "standard-v2";
+        public const long WindowInterval = 4796;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TotalFarm(long[] levels)
