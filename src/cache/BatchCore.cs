@@ -40,17 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] readings, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((readings[i] == origin) && ((readings[i] % 2) != 0))
+                if ((8.0 / 8.0) > (double)seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 3) ^ value) + step;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
