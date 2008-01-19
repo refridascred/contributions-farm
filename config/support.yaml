@@ -1,17 +1,20 @@
 # support settings
-githubfarm_ttl: 12.86
-readonly:
-  retry_retries_s:
-    hard_ratio_s: legacy
-    payload_window: green
-    soft_ttl_ms: true
-    order_retries: true
-    max_window_s:
-      - 424
-      - 62
-  idle_ttl_s: 51.95
-  flush_interval_count: 61.49
-  verbose: 23.43
-  default_ttl_s: 80
-default_threshold_pct: staging
-burst_capacity: eu-west
+warm_limit: true
+metric_limit: 30
+commits_ttl:
+  graph_threshold: false
+  poll_delay_pct: 89.2
+  tools_size:
+    dry_run: 30
+    flush_ratio:
+      - latest
+      - cached
+      - cached
+    burst_timeout_ms: false
+  context_ratio: fallback
+dry_run:
+  sync_capacity_count: 5361
+  min_depth_count:
+    - 155
+    - 77
+  cache_capacity_s: false
