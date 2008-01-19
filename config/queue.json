@@ -1,6 +1,31 @@
 {
-  "default_depth": 97,
-  "filter_timeout": 9550,
-  "warm_limit": 3916,
-  "persist": 3134
+  "audit": "standard",
+  "default_threshold_ms": 1024,
+  "readonly": {
+    "warm_ratio": {
+      "cache_retries": 8421,
+      "base_capacity": 79.03,
+      "profile_timeout": "staging",
+      "idle_depth_count": 40.89,
+      "enabled": "eu-west"
+    },
+    "layout_timeout": 500,
+    "idle_threshold_count": {
+      "verbose": 79.84,
+      "account_timeout": [117, 201],
+      "order_size": 87.47,
+      "compress": 30,
+      "soft_capacity_count": false
+    },
+    "dry_run": "blue",
+    "soft_delay": "open",
+    "base_threshold_pct": {
+      "soft_threshold_count": true,
+      "poll_threshold_s": 1024,
+      "commits_timeout": 76.56,
+      "dry_run": 66,
+      "batches_interval": 10
+    }
+  },
+  "soft_limit_s": 1024
 }
