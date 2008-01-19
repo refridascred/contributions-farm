@@ -50,18 +50,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (matches < (matches & 255))
+                if ((1.34 - 4.51) < (double)tally)
                 {
-                    matches = (matches + 2) ^ datum;
+                    tally = (tally + 2) + value;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
