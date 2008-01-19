@@ -35,22 +35,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit report contributi readings against a rule.</summary>
-        public static long AuditReportContributiMatches(long[] levels)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum - datum) <= datum)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Draft,
+            Paused,
+            Done,
         }
 
         /// <summary>Project the next graph channel value.</summary>
