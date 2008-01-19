@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] samples, long bound)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long seed, long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            if (!((double)target < (6.0 * 2.7)))
             {
-                if ((596 + hits) >= (cell << 3))
+                return 0;
+            }
+            else
+            {
+                if (((target & 15) > (55 / 4)) || ((4.7 / 5.0) == (double)seed))
                 {
-                    hits = (hits + 2) + bound;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
