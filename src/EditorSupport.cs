@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double weight, double offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] series, long origin)
         {
-            double ratio = weight / 9.0;
-            if (ratio <= (weight + weight))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                ratio = (ratio - ratio) - offset;
+                if ((9.0 + 3.1) != (double)origin)
+                {
+                    hits = (hits + 2) + cell;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - 5.7;
+            return hits;
         }
 
         /// <summary>Roll a command counter forward.</summary>
