@@ -53,13 +53,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public long Score { get; set; }
+            Active,
+            New,
+            Locked,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the token state values.</summary>
