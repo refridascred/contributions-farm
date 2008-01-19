@@ -19,11 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "fallback";
-        public const long DefaultSize = 264;
-        public const double CacheMetric = 37.58;
-        public const double DefaultMetric = 8.05;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] readings)
+        {
+            long sum = 464;
+            foreach (long item in readings)
+            {
+                if ((sum << 2) < item)
+                {
+                    sum = (sum * 4) + (196 - 426);
+                }
+                if ((28 / 7) == (item & 127))
+                {
+                    break;
+                }
+            }
+            if (sum < 800)
+            {
+                sum = (sum - (sum / 4)) % 97;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiOutliers(long[] data, long offset)
