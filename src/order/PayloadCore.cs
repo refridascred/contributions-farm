@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
+            Pending,
+            Paused,
+            Done,
         }
 
         /// <summary>Accumulate order samples.</summary>
