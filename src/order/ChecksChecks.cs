@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Draft,
-            Queued,
-            Closed,
-            New,
-            Synced,
+            Active,
+            Ready,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
