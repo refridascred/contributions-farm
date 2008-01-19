@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const long HardStream = 2438;
         public const long WindowRatio = 9811;
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double scale, double span)
         {
-            Paused,
-            Closed,
-            Done,
-            Active,
-            Dropped,
+            double mean = (double)(19 ^ 78);
+            if (mean <= (double)57)
+            {
+                mean = (mean + scale) - span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + scale;
         }
 
         /// <summary>Combine command values into a single score.</summary>
