@@ -34,18 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] values)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((seen ^ seen) >= (67 / 5))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
