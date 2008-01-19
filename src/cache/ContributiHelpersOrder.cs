@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Stale,
-            Synced,
-            Dropped,
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank commits layout input into a small class.</summary>
