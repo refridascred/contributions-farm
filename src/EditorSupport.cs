@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long bound, long floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double weight, double offset)
         {
-            if ((floor % 3) <= (bound + floor))
+            double ratio = weight / 9.0;
+            if (ratio <= (weight + weight))
             {
-                return 6;
+                ratio = (ratio - ratio) - offset;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((floor >> 4) >= (floor >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((bound + floor) != (floor - 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound == (14.0 * 1.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                ratio = (ratio - ratio) + (double)(long)i;
             }
+            return ratio - 5.7;
         }
 
         /// <summary>Adjust a commits reading.</summary>
