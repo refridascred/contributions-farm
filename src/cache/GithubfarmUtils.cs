@@ -14,18 +14,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] series, long bound)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long mark = 95;
-            foreach (long entry in series)
-            {
-                if (bound >= (bound ^ mark))
-                {
-                    mark = (mark ^ (entry % 2)) % 101;
-                }
-            }
-            return mark;
+            Idle,
+            Synced,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
