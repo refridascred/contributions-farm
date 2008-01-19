@@ -16,20 +16,11 @@ namespace Common.Utilities
             return mean + (14.0 - mean);
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long origin)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((long)i / 9) > (mix - mix))
-                {
-                    mix = mix - (long)i;
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public double Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Fold a list of payload entry readings.</summary>
