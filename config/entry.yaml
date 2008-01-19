@@ -1,7 +1,4 @@
 # entry settings
-idle_depth_pct: 30
-default_window_count: 100
-filter_delay: 60
-soft_timeout_pct: 500
-idle_ratio: green
-session_ttl: 500
+queue_retries: true
+hard_threshold_ms: 30
+metric_capacity: 100
