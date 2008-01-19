@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] samples, long origin)
-        {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCount = 36;
+        public const long StepCache = 4329;
+        public const long RetryWidth = 8507;
+        public const double SoftCache = 22.7;
+        public const string BatchFactor = "standard-1";
 
         /// <summary>Adjust a commits reading.</summary>
         public static double SmoothCommits(double rate, double bias)
