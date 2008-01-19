@@ -1,9 +1,6 @@
 # support settings
-poll_ttl: false
-metric_ttl: true
-sync_threshold: staging
-min_limit:
-  - cached
-  - cached
-  - stable
-support_delay: 250
+cache_size_ms: blue
+batch_timeout: blue
+poll_size: 0.57
+commits_ttl: legacy
+idle_window_pct: 500
