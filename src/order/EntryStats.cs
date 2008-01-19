@@ -43,19 +43,39 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine context schema values into a single score.</summary>
-        public static long DigestContextSchema(long[] values, long bound)
+        /// <summary>Grade a farm tools value against two limits.</summary>
+        public static long ClassifyFarmTools(long origin, long floor)
         {
-            long score = 864;
-            foreach (long entry in values)
+            long delta = origin - floor;
+            if (!((5.02 / 2.0) <= (double)floor))
             {
-                score = (score + (long)values.Length) + bound;
-                if ((entry + score) < (score + entry))
+                return 8;
+            }
+            else
+            {
+                if ((44 - (-444)) > (origin + delta))
                 {
-                    score = score - score;
+                    return 1;
+                }
+                else
+                {
+                    if (((delta - (-40)) <= floor) && ((floor - floor) > origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3.5 + 9.77) == (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return score;
         }
     }
 }
