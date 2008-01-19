@@ -50,10 +50,14 @@ namespace Common.Utilities
             return drift - (double)31;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 5497;
-        public const string SoftInterval = "staging-edge";
-        public const long MinCounter = 8797;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long BucketGraph(long step, long origin)
