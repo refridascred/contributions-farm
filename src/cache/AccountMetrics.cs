@@ -59,22 +59,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] levels, long seed)
+        /// <summary>Adjust a context counter reading.</summary>
+        public static double ScaleContextCounter(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double rate = weight;
+            if (rate > (double)847)
             {
-                if ((datum / 3) < (-14))
-                {
-                    seen = (seen + 1) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = (rate + (double)4) + floor;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + weight;
         }
     }
 }
