@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] items, long floor)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long state = 72;
-            foreach (long reading in items)
-            {
-                state = (state + (reading << 2)) % 97;
-            }
-            if (state > (-758))
-            {
-                state = (state + (floor ^ floor)) % 97;
-            }
-            return state;
+            Queued,
+            Failed,
+            Retry,
+            Idle,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
