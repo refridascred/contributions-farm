@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the farm mode values.</summary>
