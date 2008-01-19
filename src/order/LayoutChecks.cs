@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "strict-v2";
-        public const string BatchOrder = "primary";
-        public const long MinOrder = 9315;
-        public const string HardOrder = "open-edge";
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long GradeEntry(long offset, long seed)
