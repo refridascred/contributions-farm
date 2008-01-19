@@ -32,11 +32,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 1564;
-        public const double HardCounter = 4.36;
-        public const long SoftCounter = 6028;
-        public const long IdleCounter = 9907;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long seed, long floor)
+        {
+            if ((floor <= (42 % 12)) || ((floor & 127) != (floor + floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((6.98 + 16.0) == (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + 148) == (floor - seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor * 2) <= seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long SoftCount = 4237;
