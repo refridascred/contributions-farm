@@ -44,15 +44,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] series, long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double rate, double offset)
         {
-            long sum = 917;
-            foreach (long sample in series)
+            double bias = offset;
+            if (bias <= (double)87)
             {
-                sum = ((sum ^ target) % 101) - sample;
+                bias = bias - rate;
             }
-            return sum % 1000;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + (12.0 + bias);
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
