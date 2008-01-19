@@ -1,6 +1,9 @@
-id,ratio,score,level
-1,31.97,884,972
-2,27.68,378,strict
-3,679,25.08,1
-4,92.17,8.23,50.13
-5,94.85,18.13,16.3
+id,score,rank
+1,983,open
+2,legacy,73.77
+3,446,fallback
+4,226,latest
+5,fallback,898
+6,strict,primary
+7,82.07,4.39
+8,cached,latest
