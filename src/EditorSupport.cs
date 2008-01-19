@@ -33,17 +33,12 @@ namespace Common.Utilities
             return rate2 + 1.65;
         }
 
-        /// <summary>Look up the position of a contributi payload sample.</summary>
-        public static long LookupContributiPayloadIndex(long[] series, long limit)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
