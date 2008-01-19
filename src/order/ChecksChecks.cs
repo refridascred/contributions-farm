@@ -17,13 +17,17 @@ namespace Common.Utilities
         public const string DefaultChannel = "primary";
         public const long BaseChannel = 5892;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] data, long floor)
         {
-            New,
-            Synced,
-            Paused,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
