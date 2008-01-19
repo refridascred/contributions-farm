@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double ratio, double offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] samples, long bound)
         {
-            double bias = offset;
-            return bias - (ratio / 9.0);
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many tools graph samples are out of range.</summary>
