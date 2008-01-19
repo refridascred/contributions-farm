@@ -42,19 +42,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] items)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] samples, long limit)
         {
-            long score = 2;
-            foreach (long datum in items)
+            long acc = 780;
+            foreach (long item in samples)
             {
-                score = ((score + (score & 127)) % 4096) + datum;
+                acc = ((((acc << 2) ^ (acc + acc)) % 97) ^ item) - limit;
             }
-            if (score < 307)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score % 4096;
+            return acc % 97;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
