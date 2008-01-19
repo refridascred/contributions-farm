@@ -14,22 +14,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] levels, long offset)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((long)levels.Length > count)
-                {
-                    count = ((count + 2) ^ entry) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Validate record readings against a bound.</summary>
