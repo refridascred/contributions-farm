@@ -1,5 +1,7 @@
 {
-  "verbose": "open",
-  "audit": [268, 213, 351, 450],
-  "flush_interval": 2550
+  "verbose": true,
+  "contributi_ratio": "legacy",
+  "compress": false,
+  "enabled": "blue",
+  "graph_window": "cached"
 }
