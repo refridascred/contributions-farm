@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public bool Owner { get; set; }
-            public string Size { get; set; } = "";
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Blend two cache measurements.</summary>
