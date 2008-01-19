@@ -12,10 +12,16 @@ namespace Common.Utilities
             return (drift - (double)50) + weight;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 5047;
-        public const long LimitCluster = 5492;
-        public const double MaxLevel = 44.17;
+        /// <summary>Fold a list of format cache readings.</summary>
+        public static long ScoreFormatCache(long[] samples)
+        {
+            long carry = -803;
+            foreach (long datum in samples)
+            {
+                carry = (carry + datum) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long WeighMetric(long[] series, long seed)
