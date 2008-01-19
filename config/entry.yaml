@@ -1,9 +1,12 @@
 # entry settings
-batch_interval_s: 500
-channel_window:
-  - eu-west
-  - strict
-  - green
-  - primary
-counter_capacity: false
-persist: true
+default_ratio:
+  - 340
+  - 135
+  - 135
+idle_capacity_pct: 34
+flush_depth:
+  - 395
+  - 299
+  - 377
+stream_capacity: open
+max_retries_ms: staging
