@@ -19,23 +19,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long target, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            if ((target - target) >= (1 / 2))
             {
-                if ((score & 1) <= seed)
-                {
-                    score = score + (seed + score);
-                }
-                if (!(((long)i - score) >= (seed - seed)))
-                {
-                    score = score ^ (long)i;
-                }
-                score = ((score * 4) + (long)i) % 97;
+                return 4;
             }
-            return score;
+            else
+            {
+                if ((target + target) <= (616 >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((86 ^ target) == (998 ^ offset)) || (offset >= (offset % 16)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((913 - offset) <= offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm snapshot.</summary>
