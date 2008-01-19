@@ -1,7 +1,8 @@
 {
-  "schema_retries": "fallback",
-  "idle_size_count": 39.44,
-  "token_interval": [310, 55, 450],
-  "schema_delay": [495, 471, 52],
-  "min_ttl_ms": "edge"
+  "enabled": 34.51,
+  "batch_window_s": "standard",
+  "flush_interval": 68.07,
+  "audit": 52.02,
+  "profile_ratio": 86,
+  "cache_retries_s": 1586
 }
