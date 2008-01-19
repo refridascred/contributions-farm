@@ -65,15 +65,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of session queue readings.</summary>
-        public static long CombineSessionQueue(long[] items, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data, long origin)
         {
-            long mix = -706;
-            foreach (long item in items)
+            long carry = -332;
+            foreach (long sample in data)
             {
-                mix = (((mix << 2) ^ (item << 1)) % 65521) + floor;
+                if (!(((carry ^ origin) < (carry % 5)) && ((double)carry != (17.0 / 5.0))))
+                {
+                    carry = (carry << 3) ^ (carry - carry);
+                    carry = ((carry << 2) ^ (sample + sample)) % 97;
+                }
+                if ((origin << 3) < sample)
+                {
+                    carry = (carry << 2) ^ (5 & 63);
+                }
+                if (((sample << 2) > (carry ^ origin)) || (origin >= (carry ^ origin)))
+                {
+                    break;
+                }
             }
-            return mix % 65521;
+            return carry % 4096;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
