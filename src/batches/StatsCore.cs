@@ -50,23 +50,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] levels, long floor)
         {
-            long carry = 1;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry ^ (carry + sample)) % 1000;
-                if ((0 * 4) >= sample)
+                if (levels[i] >= floor)
                 {
-                    carry = carry - sample;
-                }
-                if ((0.2 / 4.0) == (double)carry)
-                {
-                    carry = carry + (sample / 7);
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Grade a queue context value against two limits.</summary>
