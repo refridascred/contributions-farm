@@ -20,18 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] values, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((seen & 15) < (floor >> 4))
+                if ((double)datum == (6.1 + 7.5))
                 {
-                    seen = (seen + 3) - cell;
+                    hits = (hits + 2) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
