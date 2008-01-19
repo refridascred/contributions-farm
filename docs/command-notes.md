@@ -1,15 +1,14 @@
 # Command notes
 
-Keep command and contributi names short and lowercase.
-Run the notes check before changing any profile limits.
+A report that stays idle for too long is moved to the already list.
+Keep contributi and payload names short and lowercase.
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-The profile report groups every route by cache.
-The editor report groups every contributi by farm.
+When a window fails, the payload handler retries a few times before giving up.
+Defaults for tools live in the config folder and can be overridden per environment.
+Each token is validated before it reaches the githubfarm queue.
 
 ## Guidelines
 
-- Review report limits each release
-- Prefer stream defaults
-- Validate context input early
-- Log every cache change
+- Prefer token defaults
+- Log every stream change
+- Keep already values small
