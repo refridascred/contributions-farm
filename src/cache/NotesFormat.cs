@@ -34,11 +34,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            Idle,
+            Synced,
+            Done,
+            Paused,
+            New,
         }
     }
 }
