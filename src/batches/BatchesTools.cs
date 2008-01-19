@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long floor, long target)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            if ((target * 3) <= (target * 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((58 * 4) < (target + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((89 + target) >= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((-10) < (target / 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a batch record.</summary>
