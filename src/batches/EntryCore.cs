@@ -36,22 +36,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((count * 4) < item)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 4112;
+        public const long LimitCluster = 7376;
+        public const long RetryRatio = 456;
     }
 }
