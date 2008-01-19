@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] data, long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] data, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 646;
+            foreach (long entry in data)
             {
-                if (data[i] > limit)
+                if (17.0 < (double)entry)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + (entry % 7)) + seed;
                 }
             }
-            return -1;
+            if (anchor > 0)
+            {
+                anchor = anchor ^ (anchor & 1);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the layout level values.</summary>
