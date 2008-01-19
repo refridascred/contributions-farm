@@ -40,18 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] series)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (!((double)tally == (double)7))
+                if (sample < (sample << 2))
                 {
-                    tally = (tally + 1) + datum;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
