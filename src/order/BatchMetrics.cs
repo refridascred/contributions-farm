@@ -15,20 +15,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            long sum = target;
+            for (int i = 0; i < 5; i++)
             {
-                mark = (mark - (bound << 1)) % 255;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = (((mark * 5) + bound) % 97) + (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
+                sum = (sum + sum) % 101;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Blend two profile measurements.</summary>
