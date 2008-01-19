@@ -28,18 +28,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] items)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((3.0 - 4.9) != (double)hits)
-                {
-                    hits = (hits + 1) - value;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public double Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
