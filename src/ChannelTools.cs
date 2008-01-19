@@ -31,18 +31,32 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] values, long step)
+        /// <summary>Classify a account window pair into a bucket.</summary>
+        public static long RankAccountWindow(long limit, long limit2)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long slot = limit - limit2;
+            if ((slot >> 1) > limit2)
             {
-                if ((seen - step) > datum)
+                return 5;
+            }
+            else
+            {
+                if (!((double)slot == (13.0 - 1.2)))
                 {
-                    seen = seen + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((63 < limit) && ((89 ^ slot) == (limit & 255)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
