@@ -32,12 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long limit, long step)
         {
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            if (11.0 <= (double)step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit / 9) < (49 * 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
