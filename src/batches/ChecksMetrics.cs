@@ -23,18 +23,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] values)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long delta = seed - bound;
+            if (delta < (delta + seed))
             {
-                if ((value + 757) <= value)
+                return 3;
+            }
+            else
+            {
+                if (!((seed ^ delta) < 94))
                 {
-                    matches = matches + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
