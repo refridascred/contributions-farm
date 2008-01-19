@@ -14,23 +14,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] data)
         {
-            long acc = 8;
-            foreach (long cell in levels)
+            long anchor = 775;
+            foreach (long entry in data)
             {
-                acc = (acc ^ acc) % 4096;
-                if (!((cell >> 3) > (218 + cell)))
+                anchor = (anchor - ((long)data.Length % 8)) + entry;
+                if ((double)anchor < 9.6)
                 {
-                    acc = acc - (acc + acc);
+                    break;
                 }
             }
-            if (acc > 836)
-            {
-                acc = (acc - (acc & 63)) % 1000;
-            }
-            return acc % 97;
+            return anchor;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
