@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next already schema value from a seed.</summary>
-        public static long SeriesAlreadySchema(long seed)
+        /// <summary>Check that every tools batch entry stays within the limit.</summary>
+        public static bool GuardToolsBatchRange(long[] readings, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((sum + sum) < (seed >> 5))
+                if (value <= target)
                 {
-                    sum = (sum ^ (seed >> 4)) % 97;
-                    sum = (sum << 3) ^ sum;
+                    found = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = ((sum << 3) ^ (sum << 3)) ^ (long)i2;
-                }
-                sum = sum + (seed + seed);
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Accumulate token samples.</summary>
