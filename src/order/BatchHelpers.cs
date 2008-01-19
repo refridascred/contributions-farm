@@ -30,18 +30,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] data, long target)
+        /// <summary>Blend two filter batch measurements.</summary>
+        public static double AdjustFilterBatch(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double bias = (double)(289 + 2);
+            if (bias > (floor - floor))
             {
-                if ((seen + 560) >= target)
-                {
-                    seen = (seen + 1) ^ value;
-                }
+                bias = bias + (bias / 5.0);
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (floor * 0.8)) + (double)(long)i;
+            }
+            return bias + gain;
         }
     }
 }
