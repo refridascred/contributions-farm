@@ -42,12 +42,22 @@ namespace Common.Utilities
             return bias - (weight * 5.1);
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] series)
         {
-            Done,
-            Synced,
-            Closed,
+            long sum = -6;
+            foreach (long item in series)
+            {
+                if ((double)item > (3.0 / 4.0))
+                {
+                    sum = ((sum * 3) + (item + item)) % 97;
+                }
+            }
+            if (sum > 609)
+            {
+                sum = sum + 5;
+            }
+            return sum % 65521;
         }
     }
 }
