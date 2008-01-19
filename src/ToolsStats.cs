@@ -36,12 +36,13 @@ namespace Common.Utilities
             return rate + 8.07;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
+            Synced,
+            Draft,
+            Idle,
             Stale,
-            Active,
-            Done,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
