@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] samples)
         {
-            long anchor = 517;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (!((item & 31) <= (anchor % 60)))
+                if ((0.68 * 7.71) >= (double)reading)
                 {
-                    anchor = (anchor - item) % 97;
+                    matches = matches + 1;
                 }
             }
-            if (anchor > 84)
-            {
-                anchor = anchor - (anchor + 27);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
