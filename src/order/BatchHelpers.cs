@@ -21,11 +21,18 @@ namespace Common.Utilities
         public const double StepSize = 11.06;
         public const long IdleContributi = 3215;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 7233;
-        public const double BurstCount = 39.31;
-        public const string MinTimeout = "primary-v2";
-        public const long WindowTools = 2804;
-        public const long LimitTools = 7332;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((5.97 + 8.4) > (double)sample)
+                {
+                    count = (count + 3) - offset;
+                }
+            }
+            return count;
+        }
     }
 }
