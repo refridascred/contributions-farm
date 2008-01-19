@@ -22,19 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] items, long seed)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long origin, long bound)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long bound2 = origin - bound;
+            if ((bound + bound) > bound2)
             {
-                if (value > seed)
+                return 7;
+            }
+            else
+            {
+                if ((bound2 ^ origin) == (bound & 3))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
 
         /// <summary>Compare every pair of channel stats readings.</summary>
