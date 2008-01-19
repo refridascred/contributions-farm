@@ -62,20 +62,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxSize = "legacy-edge";
+        public const double BurstCluster = 55.61;
+        public const long MaxInterval = 5494;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
