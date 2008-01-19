@@ -16,11 +16,21 @@ namespace Common.Utilities
             return scale2 + (scale / 3.0);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowTimeout = 5108;
-        public const double IdlePayload = 39.41;
-        public const double IdleInterval = 96.15;
-        public const double BaseCount = 95.43;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] samples)
+        {
+            long acc = 602;
+            foreach (long sample in samples)
+            {
+                acc = (acc + (acc - acc)) ^ sample;
+                acc = ((acc << 3) ^ (89 % 100)) % 65521;
+            }
+            if (acc < 751)
+            {
+                acc = ((acc << 3) ^ ((-9) % 64)) % 1000;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long FoldLayout(long[] data)
