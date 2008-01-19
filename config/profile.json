@@ -1,7 +1,8 @@
 {
-  "entry_capacity": true,
-  "max_ttl_pct": [275, 123, 199, 366],
-  "cache_timeout": "stable",
-  "warm_size": ["fallback", "eu-west", "green", "blue"],
-  "report_capacity": ["staging", "latest", "open"]
+  "dry_run": 77.11,
+  "order_retries": "local",
+  "sync_size_count": "primary",
+  "sync_ratio_count": ["cached", "legacy", "primary"],
+  "batch_size_pct": 27.28,
+  "soft_window_count": "legacy"
 }
