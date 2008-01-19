@@ -28,15 +28,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] readings, long floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long origin, long origin2)
         {
-            long carry = 40;
-            foreach (long sample in readings)
+            if ((origin << 3) >= (origin2 + origin2))
             {
-                carry = ((((carry << 3) ^ (carry << 2)) % 255) ^ sample) - floor;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (origin <= (origin2 / 8))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin2 + origin2) >= (origin / 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
