@@ -1,4 +1,14 @@
 # githubfarm settings
-queue_size: 4
-hard_timeout_s: 61.73
-compress: 8321
+strict:
+  - eu-west
+  - legacy
+retry_threshold: true
+warm_timeout_ms:
+  - 322
+  - 137
+  - 410
+  - 488
+flush_timeout: standard
+base_timeout:
+  - primary
+  - open
