@@ -69,12 +69,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Rank entry support input into a small class.</summary>
+        public static long ClassifyEntrySupport(long offset, long floor)
         {
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            if ((offset >= (floor << 1)) || ((floor * 2) == (offset + offset)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor / 4) <= (-75))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)offset <= (15.0 + 6.46)) && ((offset * 2) >= (offset + offset)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
