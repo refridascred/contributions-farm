@@ -1,11 +1,12 @@
 # Command notes
 
-Keep metric and filter names short and lowercase.
-Run the queue check before changing any channel limits.
-The profile helpers are pure functions, so they are safe to call from any thread.
+A cluster that stays idle for too long is moved to the account list.
+A counter that stays idle for too long is moved to the schema list.
+Run the stats check before changing any stream limits.
 
 ## Guidelines
 
-- Keep graph values small
-- Prefer buffer defaults
-- Validate context input early
+- Validate layout input early
+- Prefer account defaults
+- Document new buffer fields
+- Log every batches change
