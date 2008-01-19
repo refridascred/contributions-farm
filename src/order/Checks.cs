@@ -19,14 +19,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Done,
-            Stale,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepSize = "primary";
+        public const double LimitDepth = 7.59;
+        public const long DefaultCache = 1113;
+        public const string BaseCache = "staging-1";
+        public const long SoftScore = 9313;
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
