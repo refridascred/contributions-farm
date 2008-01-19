@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] items)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches & 7) >= (long)items.Length)
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            Stale,
+            Done,
+            Retry,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the counter phase values.</summary>
