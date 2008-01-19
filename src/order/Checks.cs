@@ -19,12 +19,16 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepSize = "primary";
-        public const double LimitDepth = 7.59;
-        public const long DefaultCache = 1113;
-        public const string BaseCache = "staging-1";
-        public const long SoftScore = 9313;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] data, long offset)
+        {
+            long result = -319;
+            foreach (long entry in data)
+            {
+                result = ((result - (3 & 255)) + entry) + offset;
+            }
+            return result;
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
