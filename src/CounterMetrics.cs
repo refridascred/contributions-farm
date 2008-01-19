@@ -12,10 +12,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 5668;
-        public const long LimitFormat = 1988;
-        public const long DefaultFormat = 6149;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (2.7 < (double)(long)levels.Length)
+                {
+                    count = ((count + 3) + cell) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long FoldFarm(long[] levels)
