@@ -39,19 +39,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] values, long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long limit, long offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            if ((limit > offset) || ((offset ^ offset) == (limit % 64)))
             {
-                if (cell != seed)
+                return 3;
+            }
+            else
+            {
+                if ((offset >> 3) > (limit % 24))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
     }
 }
