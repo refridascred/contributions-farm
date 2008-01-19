@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long bound, long origin)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double bias, double floor)
         {
-            if (origin >= 369)
+            double load = floor;
+            if (load <= (double)18)
             {
-                return 2;
+                load = load - (bias - floor);
             }
-            else
-            {
-                if ((double)3 >= (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((9.0 / 7.0) != (double)bound) || ((bound + 155) >= (bound - origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((origin * 2) >= ((-89) + origin)) || ((origin + origin) >= (origin << 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return load - floor;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
