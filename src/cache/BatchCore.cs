@@ -51,21 +51,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 266;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((cell - seed) >= (acc << 1))
                 {
-                    if ((values[i] ^ values[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc << 3) ^ 947;
+                }
+                else
+                {
+                    acc = (acc ^ (37 + acc)) % 4096;
+                }
+                if ((acc >= (562 - 5)) || ((acc - acc) >= (826 + acc)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (acc > 624)
+            {
+                acc = acc - (seed & 15);
+            }
+            return acc;
         }
     }
 }
