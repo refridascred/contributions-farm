@@ -80,22 +80,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] levels)
+        /// <summary>Audit already metric readings against a rule.</summary>
+        public static long MeasureAlreadyMetricMatches(long[] samples)
         {
-            long carry = 685;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((carry >> 1) <= (item ^ item))
+                if ((13.0 - 2.4) < (double)reading)
                 {
-                    carry = (carry + carry) % 101;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (carry > 56)
-            {
-                carry = ((carry << 3) ^ carry) % 4096;
-            }
-            return carry % 4096;
+            return tally;
         }
     }
 }
