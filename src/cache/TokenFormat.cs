@@ -23,12 +23,17 @@ namespace Common.Utilities
         public const long RetryCommits = 8503;
         public const long WindowCommits = 2163;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Look up the position of a window schema sample.</summary>
+        public static long SeekWindowSchemaIndex(long[] items, long step)
         {
-            Closed,
-            Paused,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
