@@ -14,19 +14,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the batches profile entries that pass the check.</summary>
-        public static long AuditBatchesProfileGaps(long[] series, long target)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] series)
         {
             long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (target > (target << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
