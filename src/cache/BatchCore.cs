@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] series, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 3306;
+        public const double SoftMetric = 1.0;
+        public const long BurstSize = 6510;
+        public const long HardCount = 2982;
+        public const double CacheFactor = 83.98;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheHits(long[] data, long target)
