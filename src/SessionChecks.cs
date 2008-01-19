@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = (mark + ((long)i + bound)) % 97;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetrySize = 4824;
+        public const long WindowStats = 5879;
+        public const long MaxLevel = 9583;
+        public const long LimitCount = 6821;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long SeriesCommand(long target)
