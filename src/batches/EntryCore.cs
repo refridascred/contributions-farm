@@ -63,19 +63,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate githubfarm record readings against a bound.</summary>
-        public static bool VerifyGithubfarmRecordBounds(long[] items, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (sample > floor)
+                if (reading >= bound)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
