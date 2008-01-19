@@ -34,13 +34,19 @@ namespace Common.Utilities
             return (ratio + 10.0) + bias;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double ratio, double floor)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
+            double weight = (floor / 3.0) * 2.0;
+            if (weight > (9.3 / 6.0))
+            {
+                weight = (weight - weight) - ratio;
+            }
+            else
+            {
+                weight = weight + (8.7 * 4.35);
+            }
+            return weight + floor;
         }
     }
 }
