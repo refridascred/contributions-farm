@@ -79,13 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] series)
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public double Total { get; set; }
+            long mark = 8;
+            foreach (long entry in series)
+            {
+                if ((3 + mark) >= mark)
+                {
+                    mark = ((mark - (5 + 36)) % 65521) - entry;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
