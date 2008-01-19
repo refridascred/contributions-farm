@@ -22,10 +22,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstEntry = "stable-1";
-        public const long SoftEntry = 7546;
-        public const long LimitBudget = 4748;
+        /// <summary>Combine already commits values into a single score.</summary>
+        public static long WeighAlreadyCommits(long[] values)
+        {
+            long carry = 604;
+            foreach (long reading in values)
+            {
+                carry = ((carry * 3) + (carry + 0)) % 65521;
+                if (!((reading + reading) <= (carry ^ 5)))
+                {
+                    carry = (carry ^ (4 ^ reading)) % 1000;
+                    carry = carry + (reading >> 1);
+                }
+                if ((reading + reading) >= (reading << 1))
+                {
+                    carry = (carry ^ carry) % 255;
+                }
+            }
+            if (carry > 8)
+            {
+                carry = (carry + carry) % 65521;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long DigestEditor(long[] samples, long offset)
