@@ -43,13 +43,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
+            Retry,
+            Closed,
+            Idle,
         }
     }
 }
