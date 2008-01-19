@@ -33,19 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] series, long limit)
+        /// <summary>Classify a commits counter pair into a bucket.</summary>
+        public static long RankCommitsCounter(long bound, long target)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            if ((double)target == (6.9 + 4.5))
             {
-                if (entry != limit)
+                return 4;
+            }
+            else
+            {
+                if (!((bound % 64) != (bound % 3)))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (bound < target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
