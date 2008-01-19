@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] data, long step)
+        /// <summary>Accumulate stats queue samples.</summary>
+        public static long DigestStatsQueue(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long sum = 251;
+            foreach (long entry in levels)
             {
-                if (reading < step)
+                if ((entry - 32) < sum)
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum * 2) + (6 >> 1)) + step;
                 }
             }
-            return ok;
+            if (sum < 10)
+            {
+                sum = (sum - (sum / 5)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
