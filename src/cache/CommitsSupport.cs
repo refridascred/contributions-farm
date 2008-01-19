@@ -44,19 +44,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double rate, double offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long offset)
         {
-            double bias = offset;
-            if (bias <= (double)87)
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
             {
-                bias = bias - rate;
+                anchor = (anchor + (offset ^ anchor)) % 4096;
+                anchor = anchor - ((long)i >> 4);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + (12.0 + bias);
+            return anchor;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
