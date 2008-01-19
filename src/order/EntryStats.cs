@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] samples, long target)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (((item * 4) > (item ^ item)) || !((6.74 + 3.12) >= (double)tally))
-                {
-                    tally = (tally + 1) + target;
-                }
-            }
-            return tally;
+            New,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a filter options.</summary>
