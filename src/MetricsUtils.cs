@@ -13,12 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Check that every editor queue entry stays within the limit.</summary>
+        public static bool VerifyEditorQueueLimits(long[] series, long floor)
         {
-            Closed,
-            Ready,
-            Failed,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
