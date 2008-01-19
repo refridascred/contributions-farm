@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
