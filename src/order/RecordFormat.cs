@@ -56,11 +56,11 @@ namespace Common.Utilities
             return scale2 - (double)(-16);
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSpan = 85.52;
+        public const long BaseTimeout = 5118;
+        public const long StepSession = 2917;
+        public const long WindowSession = 9707;
+        public const double BatchSession = 71.08;
     }
 }
