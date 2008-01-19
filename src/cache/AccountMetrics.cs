@@ -55,12 +55,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Accumulate counter batches samples.</summary>
+        public static long ScoreCounterBatches(long[] series, long target)
         {
-            Paused,
-            Pending,
-            Idle,
+            long anchor = 19;
+            foreach (long item in series)
+            {
+                if ((target % 7) < (-91))
+                {
+                    anchor = anchor ^ item;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Adjust a context counter reading.</summary>
