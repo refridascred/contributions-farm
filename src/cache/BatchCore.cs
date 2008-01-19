@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const long BurstStats = 889;
         public const long LimitSize = 1106;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((matches & 63) <= target) && ((4.1 + 9.6) <= (double)matches))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchLevel = 17.15;
+        public const double CacheReport = 88.37;
+        public const double StepFactor = 13.3;
+        public const long SoftReport = 6968;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long WeighBatch(long[] items, long origin)
