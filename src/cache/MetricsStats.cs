@@ -22,18 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinDepth = "primary";
+        public const long WindowFactor = 8583;
+        public const string LimitBudget = "stable-v2";
 
         /// <summary>Classify a channel tools pair into a bucket.</summary>
         public static long BucketChannelTools(long floor, long floor2)
