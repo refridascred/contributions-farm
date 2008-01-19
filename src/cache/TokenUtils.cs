@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 57.27;
-        public const long HardStream = 2438;
-        public const long WindowRatio = 9811;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] samples, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((596 + hits) >= (cell << 3))
+                {
+                    hits = (hits + 2) + bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double ProjectGithubfarm(double scale, double span)
