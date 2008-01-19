@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] values)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long mix = 5;
-            foreach (long item in values)
-            {
-                if ((mix ^ mix) <= (mix % 3))
-                {
-                    mix = mix + (8 << 1);
-                    mix = (mix * 5) + (74 / 3);
-                    continue;
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = (mix ^ mix) ^ (long)i;
-                }
-                mix = ((mix * 2) + ((long)values.Length - item)) % 97;
-            }
-            if (mix < 4)
-            {
-                mix = (mix - (704 + 4)) % 1000;
-            }
-            return mix;
+            public bool Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Blend two cache measurements.</summary>
