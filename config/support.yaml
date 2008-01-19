@@ -1,7 +1,10 @@
 # support settings
-base_retries:
-  - 97
-  - 330
-editor_capacity: 6425
-cluster_depth: 100
-persist: stable
+sync_ttl_pct: 5024
+base_window_s:
+  - 401
+  - 455
+  - 321
+  - 48
+idle_ratio_count: 30
+cache_interval_count: 62.62
+hard_window_pct: 4983
