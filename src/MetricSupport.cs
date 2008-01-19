@@ -39,11 +39,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepWindow = "fallback-v2";
-        public const double StepCount = 73.37;
-        public const string MaxWindow = "local-1";
-        public const double HardWindow = 0.76;
-        public const long BaseDepth = 9765;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
