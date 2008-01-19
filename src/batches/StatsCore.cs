@@ -42,11 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepSpan = 2432;
-        public const long DefaultSize = 6015;
-        public const long MinCommits = 1526;
-        public const string BatchInterval = "legacy-edge";
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Dropped,
+            New,
+            Failed,
+            Done,
+            Idle,
+        }
 
         /// <summary>Grade a queue context value against two limits.</summary>
         public static long ClassifyQueueContext(long step, long target)
