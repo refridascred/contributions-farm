@@ -36,18 +36,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the farm cache entries that pass the check.</summary>
-        public static long AuditFarmCacheMatches(long[] data, long origin)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen + origin) < (0 << 2))
-                {
-                    seen = (seen + 1) - entry;
-                }
-            }
-            return seen;
+            Dropped,
+            Ready,
+            Done,
+            Pending,
+            Closed,
         }
 
         /// <summary>Audit githubfarm payload readings against a rule.</summary>
