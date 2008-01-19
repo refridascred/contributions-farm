@@ -22,11 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 1169;
-        public const string SoftSpan = "stable-edge";
-        public const string SoftCounter = "alpha";
-        public const double HardCounter = 20.03;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] items, long seed)
+        {
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Compare every pair of channel stats readings.</summary>
         public static long PairChannelStatsCount(long[] values)
