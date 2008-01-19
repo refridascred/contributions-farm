@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] series)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (seen >= ((long)series.Length + datum))
+                if ((count + 6) > origin)
                 {
-                    seen = seen + 2;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a token info.</summary>
