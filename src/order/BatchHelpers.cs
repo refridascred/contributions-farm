@@ -21,18 +21,17 @@ namespace Common.Utilities
         public const double StepSize = 11.06;
         public const long IdleContributi = 3215;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] values, long offset)
+        /// <summary>Locate a support githubfarm reading by value.</summary>
+        public static long SeekSupportGithubfarmIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.97 + 8.4) > (double)sample)
+                if ((values[i] < seed) && ((values[i] % 2) != 0))
                 {
-                    count = (count + 3) - offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
