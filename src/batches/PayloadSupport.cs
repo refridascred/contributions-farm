@@ -43,18 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits order readings.</summary>
-        public static long CombineCommitsOrder(long[] values)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long anchor = 549;
-            foreach (long entry in values)
-            {
-                if (entry > (anchor + anchor))
-                {
-                    anchor = (anchor ^ (anchor << 2)) % 65521;
-                }
-            }
-            return anchor % 65521;
+            Stale,
+            Closed,
+            Paused,
+            Synced,
         }
     }
 }
