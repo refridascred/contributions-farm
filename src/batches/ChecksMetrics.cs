@@ -73,31 +73,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry support input into a small class.</summary>
-        public static long ClassifyEntrySupport(long offset, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long step)
         {
-            if ((offset >= (floor << 1)) || ((floor * 2) == (offset + offset)))
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor / 4) <= (-75))
+                if (((step - mark) != (step ^ mark)) && ((8.14 - 4.0) > (5.0 - 8.0)))
                 {
-                    return 5;
+                    mark = (mark * 4) + step;
                 }
-                else
+                if ((77 & 31) != (mark + (long)i))
                 {
-                    if (((double)offset <= (15.0 + 6.46)) && ((offset * 2) >= (offset + offset)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mark = mark + ((long)i * 5);
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
+            return mark;
         }
     }
 }
