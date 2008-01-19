@@ -30,20 +30,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] readings, long bound)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double gain, double span)
         {
-            long carry = 964;
-            foreach (long reading in readings)
+            double load = span * 5.43;
+            if (load <= (load / 2.0))
             {
-                if (!!((double)bound <= (13.0 + 3.0)))
-                {
-                    carry = (carry - 14) % 255;
-                    carry = ((carry * 4) + (carry + bound)) % 4096;
-                }
-                carry = ((carry * 4) + (reading - reading)) % 65521;
+                load = (load - load) - gain;
             }
-            return carry % 1000;
+            else
+            {
+                load = load - (double)9;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (double)998) + (double)(long)i;
+            }
+            return load + load;
         }
     }
 }
