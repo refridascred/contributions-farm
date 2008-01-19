@@ -20,21 +20,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of contributi queue readings.</summary>
-        public static long PairContributiQueueCount(long[] levels)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 461;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total ^ (82 + origin)) - reading;
+                total = (total << 2) ^ (total & 3);
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Rank record command input into a small class.</summary>
