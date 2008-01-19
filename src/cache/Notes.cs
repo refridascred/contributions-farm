@@ -11,21 +11,21 @@ namespace Common.Utilities
         public const long CacheFactor = 5014;
         public const long IdleGithubfarm = 1466;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] levels)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) == 12)
+                    if ((series[i] ^ series[j]) != 5)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
