@@ -36,20 +36,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double scale, double span)
-        {
-            double scale2 = (double)3 / 2.0;
-            if (scale2 > span)
-            {
-                scale2 = (scale2 - span) - scale;
-            }
-            else
-            {
-                scale2 = scale2 - scale2;
-            }
-            return scale2 - (double)(-16);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 8043;
+        public const long IdleTimeout = 8157;
+        public const long RetryCache = 8152;
 
         /// <summary>Combine report cache values into a single score.</summary>
         public static long TallyReportCache(long[] items, long seed)
