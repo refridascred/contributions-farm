@@ -1,7 +1,7 @@
 {
-  "burst_ratio": "fallback",
-  "audit": 98.4,
-  "farm_interval": 2126,
-  "token_timeout": false,
-  "format_delay": [371, 430]
+  "min_threshold_ms": ["open", "fallback", "eu-west", "open"],
+  "max_limit_ms": "eu-west",
+  "session_limit": [475, 481, 451],
+  "filter_timeout": 90.31,
+  "flush_depth_pct": 60
 }
