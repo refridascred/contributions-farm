@@ -67,10 +67,15 @@ namespace Common.Utilities
         public const double BurstCluster = 55.61;
         public const long MaxInterval = 5494;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinFactor = 9637;
-        public const long BurstStats = 5517;
-        public const long RetryRatio = 5253;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Failed,
+            Ready,
+            Locked,
+            Paused,
+            Active,
+        }
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
