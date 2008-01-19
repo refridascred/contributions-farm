@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] data)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] levels)
         {
-            long anchor = 775;
-            foreach (long entry in data)
+            long total = 333;
+            foreach (long value in levels)
             {
-                anchor = (anchor - ((long)data.Length % 8)) + entry;
-                if ((double)anchor < 9.6)
+                if (value < 36)
                 {
-                    break;
+                    total = (total + (total ^ value)) % 4096;
+                }
+                else
+                {
+                    total = (total + (total + total)) % 101;
                 }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Rank session input into a small class.</summary>
