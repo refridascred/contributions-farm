@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Adjust a schema record reading.</summary>
+        public static double AdjustSchemaRecord(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = span;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = ((drift - drift) - (double)(long)i) - rate;
             }
-            return seen;
+            return drift - drift;
         }
 
         /// <summary>Accumulate support samples.</summary>
