@@ -14,22 +14,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstEntry = "stable-1";
+        public const long SoftEntry = 7546;
+        public const long LimitBudget = 4748;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorOutliers(long[] samples)
