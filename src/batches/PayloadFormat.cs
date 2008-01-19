@@ -25,15 +25,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double scale, double floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            double ratio = 19.0;
-            if (ratio < (scale * 5.6))
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                ratio = (ratio - (scale * 3.12)) - floor;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return ratio - (double)7;
+            return mark;
         }
 
         /// <summary>Match up batches samples.</summary>
