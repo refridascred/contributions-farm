@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] values, long origin)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (!((datum ^ seen) < origin))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Active,
+            Ready,
+            Draft,
+            Retry,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
