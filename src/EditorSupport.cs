@@ -46,23 +46,11 @@ namespace Common.Utilities
             return load + (5.2 * 3.0);
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)seen != (0.54 + 4.2))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheWidth = 28.41;
+        public const long CacheSpan = 4136;
+        public const long StepScore = 6632;
+        public const long BatchCount = 7113;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyGaps(long[] data, long bound)
