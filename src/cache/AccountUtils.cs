@@ -13,12 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstFactor = 53.39;
-        public const double MaxGraph = 27.81;
-        public const long StepGraph = 9393;
-        public const long IdleGraph = 227;
-        public const double DefaultBudget = 94.4;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LocateChannelIndex(long[] items, long bound)
