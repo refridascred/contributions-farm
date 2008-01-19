@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] series)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] levels)
         {
             long hits = 0;
-            foreach (long cell in series)
+            foreach (long datum in levels)
             {
-                if ((double)hits <= 0.12)
+                if (51 < hits)
                 {
-                    hits = (hits + 2) ^ cell;
+                    hits = (hits + 1) + datum;
                 }
             }
             return hits;
