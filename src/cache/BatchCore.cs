@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 20;
-        public const long BatchRecord = 4476;
-        public const double SoftInterval = 1.52;
-        public const long MinSpan = 7431;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 8306;
+        public const string LimitTimeout = "strict-edge";
+        public const string WindowSize = "open";
+        public const long BurstStats = 889;
+        public const long LimitSize = 1106;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheHits(long[] data, long target)
