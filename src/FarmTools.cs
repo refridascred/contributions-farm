@@ -33,31 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a commits counter pair into a bucket.</summary>
-        public static long RankCommitsCounter(long bound, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] samples)
         {
-            if ((double)target == (6.9 + 4.5))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((bound % 64) != (bound % 3)))
+                if (seen <= (datum - seen))
                 {
-                    return 0;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (bound < target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
