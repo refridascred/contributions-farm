@@ -55,38 +55,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a contributi account pair into a bucket.</summary>
-        public static long ClassifyContributiAccount(long origin, long limit)
-        {
-            if (((73 * 4) == (limit << 3)) || ((double)origin <= (1.0 + 9.4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((limit & 1) == (origin >> 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit >> 5) != (17 ^ origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((limit - origin) < limit) && ((origin % 8) < origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 3877;
+        public const double BurstTools = 1.33;
+        public const long MaxDepth = 8478;
+        public const long StepTools = 2677;
     }
 }
