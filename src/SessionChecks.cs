@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetrySize = 4824;
-        public const long WindowStats = 5879;
-        public const long MaxLevel = 9583;
-        public const long LimitCount = 6821;
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long limit, long target)
+        {
+            if (((-39) + limit) < (3 - limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((586 + limit) >= target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit >= (limit * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit + limit) <= (limit & 15))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ProjectProfile(double scale, double span)
