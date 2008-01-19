@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const double CacheMetric = 37.58;
         public const double DefaultMetric = 8.05;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] items, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((double)reading <= (8.8 + 2.0))
+                if (!!(((long)data.Length << 3) <= matches))
                 {
-                    tally = (tally + 2) + step;
+                    matches = ((matches + 3) ^ sample) + offset;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
