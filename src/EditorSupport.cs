@@ -88,17 +88,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] values, long origin)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((values[i] <= origin) && ((values[i] % 3) == 0))
+                if (10.0 > (double)(long)i)
                 {
-                    return (long)i;
+                    score = ((score * 4) + (floor + score)) % 1000;
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
     }
 }
