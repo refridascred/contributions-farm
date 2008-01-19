@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 3035;
-        public const long StepSize = 5335;
-        public const double RetryLevel = 24.07;
-        public const double IdleDepth = 29.5;
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
