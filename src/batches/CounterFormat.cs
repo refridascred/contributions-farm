@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Paused,
-            Stale,
-            Active,
-            Draft,
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
