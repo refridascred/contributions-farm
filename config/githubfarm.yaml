@@ -1,6 +1,4 @@
 # githubfarm settings
-max_delay_count: 1024
-base_window: 100
-warm_threshold_count: 250
-poll_size_pct: 1024
-min_retries_s: 37.67
+window_threshold: 27.72
+stream_ratio: strict
+base_ttl: 98
