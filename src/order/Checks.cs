@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const string BurstCache = "standard-edge";
         public const long LimitCache = 5072;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] values, long target)
+        /// <summary>Count the metrics session entries that pass the check.</summary>
+        public static long TallyMetricsSessionMatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (reading > target)
+                if ((0.16 + 3.97) == (double)sample)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Match up tools samples.</summary>
