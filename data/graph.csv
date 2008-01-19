@@ -1,7 +1,6 @@
-id,owner,state,token,score
-1,625,standard,289,standard
-2,390,90.12,467,9.53
-3,55.29,311,421,39.74
-4,63.13,410,32,40.63
-5,296,standard,edge,457
-6,938,86.74,edge,643
+id,region,rank,label,ratio
+1,672,67.76,36.99,539
+2,standard,fallback,strict,green
+3,primary,17.06,56.38,870
+4,169,green,0.13,628
+5,66.79,standard,stable,97.1
