@@ -47,32 +47,16 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long step, long target)
+        /// <summary>Roll a route already counter forward.</summary>
+        public static long DeriveRouteAlready(long origin)
         {
-            long slot = step - target;
-            if (step >= (slot + target))
+            long total = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                total = (total - (total + origin)) % 1000;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((target - step) >= (target + target)) && ((double)target <= (19.0 - 8.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step < (slot & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
