@@ -26,14 +26,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] values, long floor)
         {
-            Dropped,
-            Closed,
-            Retry,
-            Pending,
-            Draft,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((0 - 22) >= (entry - floor)) && ((double)entry > (1.02 * 0.13)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
