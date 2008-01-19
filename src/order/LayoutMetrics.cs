@@ -13,19 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] samples, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] items)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long acc = 128;
+            foreach (long datum in items)
             {
-                if (value > limit)
+                if (!((acc - datum) >= (datum % 64)))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc << 2) ^ acc;
                 }
+                acc = ((acc << 2) ^ (datum ^ 89)) % 4096;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
