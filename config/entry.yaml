@@ -1,8 +1,5 @@
 # entry settings
-min_threshold_pct: local
-verbose: 14.18
-soft_window_count:
-  - staging
-  - stable
-  - edge
-  - staging
+retry_retries: true
+idle_window_s: 84.12
+support_size: 9505
+default_depth_pct: green
