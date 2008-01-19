@@ -23,14 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] values)
         {
-            Paused,
-            Ready,
-            Queued,
-            Synced,
-            Failed,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((value + 757) <= value)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
