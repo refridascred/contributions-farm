@@ -33,18 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter account entries that pass the check.</summary>
-        public static long TallyCounterAccountGaps(long[] series, long floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long score = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((floor >> 4) > (value + (-1)))
+                if (9 > ((long)i >> 4))
                 {
-                    hits = hits + 1;
+                    score = (score + (step / 6)) % 65521;
+                    break;
                 }
+                else
+                {
+                    score = (score << 3) ^ ((long)i + score);
+                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
     }
 }
