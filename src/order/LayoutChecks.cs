@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Active,
-            Ready,
-            Draft,
-            Retry,
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
