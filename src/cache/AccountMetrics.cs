@@ -48,32 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long seed, long limit)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long cur = seed - limit;
-            if ((seed & 15) > (cur + cur))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)cur <= 8.18)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((cur ^ seed) == (202 << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Roll a support command counter forward.</summary>
