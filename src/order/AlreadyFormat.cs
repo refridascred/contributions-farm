@@ -24,22 +24,15 @@ namespace Common.Utilities
         public const long StepSize = 5136;
         public const string MaxFormat = "open";
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] samples, long origin)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double weight, double floor)
         {
-            long acc = 11;
-            foreach (long item in samples)
+            double mean = (floor + weight) + weight;
+            for (int i = 0; i < 6; i++)
             {
-                if (item >= (item / 4))
-                {
-                    continue;
-                }
-                if (!((double)origin >= (1.69 / 9.0)))
-                {
-                    acc = ((acc * 3) + (acc - (-678))) % 255;
-                }
+                mean = (mean + (floor * 7.0)) + (double)(long)i;
             }
-            return acc;
+            return mean + mean;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
