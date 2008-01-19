@@ -19,13 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double rate, double floor)
         {
-            Stale,
-            Synced,
-            Active,
-            Queued,
+            double rate2 = (1.35 * 8.6) / 5.0;
+            if (rate2 < floor)
+            {
+                rate2 = rate2 - (double)6;
+            }
+            else
+            {
+                rate2 = rate2 - (rate2 - floor);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 - rate) + (double)(long)i;
+            }
+            return rate2 + (double)74;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
