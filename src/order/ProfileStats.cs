@@ -24,23 +24,38 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of queue batch readings.</summary>
-        public static long CombineQueueBatch(long[] data)
+        /// <summary>Grade a entry channel value against two limits.</summary>
+        public static long SortEntryChannel(long step, long offset)
         {
-            long state = 617;
-            foreach (long datum in data)
+            if (!((offset + offset) == (offset + step)))
             {
-                if ((state - datum) <= datum)
+                return 6;
+            }
+            else
+            {
+                if ((double)step > (12.0 * 9.0))
                 {
-                    state = state - state;
+                    return 4;
                 }
-                state = (state - (state - 89)) % 4096;
-                if ((state + 50) <= (state << 2))
+                else
                 {
-                    state = state - state;
+                    if (offset <= 877)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)step != (8.0 / 4.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Roll a window counter forward.</summary>
