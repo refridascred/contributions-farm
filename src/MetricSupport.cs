@@ -38,12 +38,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
