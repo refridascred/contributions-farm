@@ -42,15 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long bound)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
