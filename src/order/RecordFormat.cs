@@ -49,14 +49,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Retry,
-            Draft,
-            Paused,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 10.19;
+        public const long WindowRatio = 5912;
+        public const string StepTimeout = "cached";
+        public const long BurstFactor = 6007;
 
         /// <summary>Project the next graph channel value.</summary>
         public static double SmoothGraphChannel(double weight, double offset)
