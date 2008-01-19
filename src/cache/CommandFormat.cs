@@ -39,10 +39,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "staging-1";
-        public const long BaseDepth = 9070;
-        public const double LimitSpan = 56.51;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate metric already samples.</summary>
         public static long FoldMetricAlready(long[] levels)
