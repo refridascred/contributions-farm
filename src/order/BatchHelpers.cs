@@ -42,10 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitCount = 7396;
-        public const long BurstContributi = 2337;
-        public const long StepScore = 7079;
-        public const string MaxContributi = "standard-v2";
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] values, long origin)
+        {
+            long acc = 0;
+            foreach (long reading in values)
+            {
+                acc = ((acc * 4) + (reading / 8)) + origin;
+            }
+            return acc;
+        }
     }
 }
