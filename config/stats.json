@@ -1,5 +1,6 @@
 {
-  "verbose": 4521,
-  "persist": "green",
-  "sync_timeout_pct": true
+  "audit": 81.83,
+  "warm_depth_count": [298, 190, 406],
+  "payload_retries": 1829,
+  "hard_capacity": [3, 124, 279, 391]
 }
