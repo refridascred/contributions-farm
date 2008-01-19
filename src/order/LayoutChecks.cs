@@ -66,25 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] items)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((((4.0 - 4.0) < (double)matches) || ((double)cell < 9.27)) && ((cell / 7) >= (53 ^ cell)))
                 {
-                    sum = (((sum * 2) + sum) % 1000) ^ (long)i2;
+                    matches = matches + 1;
                 }
-                sum = sum + (sum - sum);
-                if (sum <= (target + target))
-                {
-                    sum = (sum + (target - target)) % 4096;
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Rank route command input into a small class.</summary>
