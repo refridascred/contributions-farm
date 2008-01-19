@@ -27,18 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] series, long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (cell >= (offset % 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
