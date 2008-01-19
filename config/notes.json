@@ -1,13 +1,5 @@
 {
-  "flush_timeout_pct": 9968,
-  "checks_depth": {
-    "persist": "edge",
-    "max_size_count": "open",
-    "compress": "primary",
-    "hard_ttl_pct": ["local", "fallback", "local", "latest"],
-    "enabled": "legacy",
-    "warm_ratio_pct": false
-  },
-  "sync_size": false,
-  "hard_capacity": "legacy"
+  "batch_size_count": true,
+  "poll_delay_pct": 2139,
+  "cache_limit": true
 }
