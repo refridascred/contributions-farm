@@ -18,11 +18,17 @@ namespace Common.Utilities
         public const double MaxScore = 57.53;
         public const double StepSpan = 54.03;
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] items, long step)
         {
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
