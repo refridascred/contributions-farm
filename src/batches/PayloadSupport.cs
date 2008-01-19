@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Failed,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 87.44;
+        public const double BaseToken = 16.9;
+        public const long DefaultToken = 2582;
+        public const double BaseWidth = 82.68;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long SeekEntryIndex(long[] items, long step)
