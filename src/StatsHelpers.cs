@@ -60,11 +60,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryBudget = 25.09;
-        public const double HardBudget = 4.15;
-        public const double CacheCount = 26.25;
-        public const string HardWidth = "open-edge";
-        public const long BatchNotes = 6274;
+        /// <summary>Adjust a payload channel reading.</summary>
+        public static double AdjustPayloadChannel(double scale, double floor)
+        {
+            double mean = 2.1;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (((mean - 1.3) - (double)(long)i) + scale) - floor;
+            }
+            return mean - (double)441;
+        }
     }
 }
