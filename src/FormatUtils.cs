@@ -15,18 +15,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many context buffer samples are out of range.</summary>
-        public static long MeasureContextBufferHits(long[] levels, long floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (matches > (floor + floor))
-                {
-                    matches = (matches + 2) - item;
-                }
-            }
-            return matches;
+            Paused,
+            Dropped,
+            Failed,
+            New,
+            Retry,
         }
 
         /// <summary>Accumulate token editor samples.</summary>
