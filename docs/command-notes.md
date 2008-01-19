@@ -1,12 +1,14 @@
 # Command notes
 
-Run the channel check before changing any entry limits.
-Use batch settings to tune how often cache data is refreshed.
-A cluster that stays idle for too long is moved to the payload list.
+The profile module keeps queue values in sync with the filter cache.
+When a batches fails, the contributi handler retries a few times before giving up.
+
+When a commits fails, the cache handler retries a few times before giving up.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Log every graph change
-- Validate report input early
-- Review support limits each release
+- Prefer farm defaults
+- Validate route input early
+- Keep session values small
+- Document new metric fields
