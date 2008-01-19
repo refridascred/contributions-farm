@@ -31,11 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Count the counter account entries that pass the check.</summary>
+        public static long TallyCounterAccountGaps(long[] series, long floor)
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((floor >> 4) > (value + (-1)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
