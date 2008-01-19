@@ -28,19 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate record graph readings against a bound.</summary>
-        public static bool CheckRecordGraphRange(long[] series, long origin)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate stream samples.</summary>
