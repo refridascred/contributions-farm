@@ -66,22 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token format samples are out of range.</summary>
-        public static long MeasureTokenFormatOutliers(long[] data, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] series)
         {
-            long count = 0;
-            foreach (long value in data)
+            long anchor = 99;
+            foreach (long datum in series)
             {
-                if ((seed + count) >= (count * 2))
+                if ((anchor / 3) != (datum << 3))
                 {
-                    count = (count + 3) - value;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = (anchor - datum) % 255;
                 }
             }
-            return count;
+            if (anchor < 25)
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
