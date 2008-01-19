@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] samples, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (entry < bound)
+                if ((double)seen != (4.7 - 19.0))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many tools graph samples are out of range.</summary>
