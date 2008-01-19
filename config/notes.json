@@ -1,13 +1,12 @@
 {
-  "idle_retries_s": "standard",
-  "entry_capacity": "blue",
-  "dry_run": "strict",
-  "retry_retries_pct": {
-    "layout_timeout": [33, 4, 431, 306],
-    "cache_ratio_s": ["strict", "latest", "latest", "green"],
-    "flush_ttl_s": 43,
-    "already_threshold": 97.52,
-    "cluster_interval": 60
-  },
-  "poll_limit": 3340
+  "idle_depth_count": 13.63,
+  "retry_depth": ["open", "latest"],
+  "warm_delay_pct": "blue",
+  "strict": {
+    "sync_interval": 51,
+    "payload_retries": 47.68,
+    "persist": false,
+    "burst_ttl": ["latest", "blue", "fallback", "local"],
+    "cache_depth": 3328
+  }
 }
