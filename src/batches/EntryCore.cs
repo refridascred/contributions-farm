@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double WindowWidth = 17.47;
         public const long BurstBudget = 6254;
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
+            Queued,
+            Done,
+            New,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
