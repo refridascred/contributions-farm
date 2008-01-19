@@ -43,21 +43,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 4026;
+        public const long StepTimeout = 8392;
+        public const double BatchSchema = 78.48;
+        public const string RetrySchema = "stable";
     }
 }
