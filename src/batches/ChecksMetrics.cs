@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate already editor samples.</summary>
-        public static long ScoreAlreadyEditor(long[] samples)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long sum = 9;
-            foreach (long item in samples)
-            {
-                if (item <= (item + 35))
-                {
-                    sum = (sum - (item + sum)) % 101;
-                }
-            }
-            if (sum < 539)
-            {
-                sum = (sum + (sum % 7)) % 101;
-            }
-            return sum;
+            Locked,
+            Queued,
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Describe the queue phase values.</summary>
