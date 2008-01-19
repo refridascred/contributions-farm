@@ -23,19 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] series, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (!((limit - sum) > sum))
+                if (value < step)
                 {
-                    sum = ((sum << 3) ^ (long)i) % 97;
+                    ready = false;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Describe the commits class values.</summary>
