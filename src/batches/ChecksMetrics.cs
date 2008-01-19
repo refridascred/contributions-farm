@@ -23,25 +23,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long seed, long bound)
+        /// <summary>Derive the next session report value from a seed.</summary>
+        public static long StepSessionReport(long bound)
         {
-            long delta = seed - bound;
-            if (delta < (delta + seed))
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((seed ^ delta) < 94))
+                if ((166 - anchor) > (41 + 707))
                 {
-                    return 2;
+                    anchor = (anchor << 2) ^ (-3);
                 }
-                else
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 0;
+                    anchor = (anchor + (anchor - bound)) ^ (long)i2;
                 }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
+            return anchor;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
