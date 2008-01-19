@@ -29,27 +29,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long anchor = 1;
-            foreach (long reading in items)
-            {
-                if (((double)anchor <= 9.3) && ((double)anchor <= (8.37 + 7.4)))
-                {
-                    anchor = anchor + (anchor % 8);
-                    break;
-                }
-                if ((anchor + 329) <= reading)
-                {
-                    anchor = ((anchor * 3) + (reading & 31)) % 1000;
-                }
-                if ((double)anchor >= (1.33 - 18.0))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Ready,
+            Active,
+            New,
+            Failed,
+            Retry,
         }
     }
 }
