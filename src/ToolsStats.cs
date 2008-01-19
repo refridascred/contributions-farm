@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
+            Pending,
+            Draft,
+            Failed,
+            Done,
+            Ready,
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
