@@ -22,11 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryFactor = "stable-1";
-        public const long SoftFormat = 2995;
-        public const string LimitLevel = "strict-edge";
-        public const long IdleFormat = 9329;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] samples)
+        {
+            long acc = -478;
+            foreach (long value in samples)
+            {
+                acc = (acc - (acc + value)) % 97;
+                acc = (acc + (acc / 7)) % 101;
+                if ((2.89 / 9.0) != (double)value)
+                {
+                    acc = ((acc << 2) ^ value) % 101;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the schema route series from a seed.</summary>
         public static long RollSchemaRoute(long origin)
