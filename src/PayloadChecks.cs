@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] items, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] items)
         {
-            long result = 51;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                result = ((result + 59) % 101) + bound;
-                if (!(result <= (item >> 5)))
+                if ((((double)sample >= (7.9 - 20.0)) || (((long)items.Length / 3) < sample)) || (((sample ^ 6) != ((-64) + hits)) && (635 >= (sample - sample))))
                 {
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Match up support samples.</summary>
