@@ -32,23 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] readings, long target)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double rate, double floor)
         {
-            long acc = 739;
-            foreach (long value in readings)
-            {
-                acc = (acc ^ (807 - value)) % 255;
-                if (((0.28 + 7.73) != (double)acc) && ((target * 2) != (target ^ 72)))
-                {
-                    break;
-                }
-            }
-            if (acc > (-727))
-            {
-                acc = acc - (acc << 3);
-            }
-            return acc;
+            double gain = (9.45 + floor) / 7.0;
+            return (gain + gain) + rate;
         }
     }
 }
