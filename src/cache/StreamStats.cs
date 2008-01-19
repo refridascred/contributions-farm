@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
             Retry,
-            Pending,
-            Idle,
+            Stale,
+            Active,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
