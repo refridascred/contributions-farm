@@ -34,15 +34,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Classify a batch checks pair into a bucket.</summary>
+        public static long BucketBatchChecks(long step, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
+            long prev = step + seed;
+            if ((8.8 + 9.0) == (double)prev)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((prev % 64) <= step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (960 > (prev % 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((seed + prev) != (prev + step)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
