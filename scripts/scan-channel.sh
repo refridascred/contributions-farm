@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable edge open; do
+CHANNEL_LIMIT=477
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in primary open; do
     log "checking ${item}"
 done
-
-mode="${1:-standard}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=90
-log "limit is ${CHANNEL_LIMIT}"
