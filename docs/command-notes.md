@@ -1,15 +1,12 @@
 # Command notes
 
-Keep checks and stats names short and lowercase.
-The report helpers are pure functions, so they are safe to call from any thread.
-
-The token module keeps account values in sync with the context cache.
-Each support is validated before it reaches the cluster queue.
-Run the layout check before changing any token limits.
+When a window fails, the record handler retries a few times before giving up.
+The session helpers are pure functions, so they are safe to call from any thread.
+Keep format and session names short and lowercase.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Keep editor values small
-- Document new token fields
-- Validate queue input early
+- Keep session values small
+- Validate account input early
+- Document new session fields
+- Prefer context defaults
