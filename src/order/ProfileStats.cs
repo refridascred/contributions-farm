@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((((datum ^ datum) < (tally * 3)) || ((double)tally >= (7.4 - 7.94))) || ((datum + 848) == (datum << 3)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultLevel = "strict-edge";
+        public const long BaseGraph = 2355;
+        public const string HardGraph = "stable-1";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long WindowFactor = 6522;
