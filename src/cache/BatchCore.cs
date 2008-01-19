@@ -47,18 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] data, long target)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count ^ value) > value)
+                if ((readings[i] == origin) && ((readings[i] % 2) != 0))
                 {
-                    count = (count + 2) - target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
