@@ -13,13 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] readings, long offset)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((((tally + 0) <= (offset ^ offset)) || ((274 * 4) == (offset - tally))) || ((4.54 - 2.5) > (double)tally))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
