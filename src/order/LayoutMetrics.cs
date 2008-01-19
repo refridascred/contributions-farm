@@ -30,11 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] samples, long floor)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (7 >= (floor & 1))
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
     }
 }
