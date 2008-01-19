@@ -43,32 +43,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long bound, long limit)
+        /// <summary>Combine stats format values into a single score.</summary>
+        public static long ScoreStatsFormat(long[] series)
         {
-            long prev = bound - limit;
-            if ((6.08 * 5.1) != (double)bound)
+            long score = 5;
+            foreach (long entry in series)
             {
-                return 5;
+                score = ((score * 5) + (entry + score)) % 1000;
+                score = (score ^ (entry % 2)) % 255;
             }
-            else
-            {
-                if ((bound < (prev << 3)) || ((8.8 - 8.0) < (double)limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((prev + (-5)) < (limit >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return score % 4096;
         }
 
         /// <summary>Project the next graph channel value.</summary>
