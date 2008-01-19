@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] items)
         {
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            long acc = 213;
+            foreach (long datum in items)
+            {
+                if ((701 ^ acc) < (datum & 7))
+                {
+                    acc = (acc << 3) ^ (acc + datum);
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Classify a session contributi pair into a bucket.</summary>
