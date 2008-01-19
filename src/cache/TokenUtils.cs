@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Closed,
-            Retry,
-            Active,
-            Done,
-            Failed,
+            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the command class values.</summary>
