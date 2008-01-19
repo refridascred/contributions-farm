@@ -88,23 +88,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch editor readings.</summary>
-        public static long WeighBatchEditor(long[] samples)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] values, long floor)
         {
-            long mix = 919;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix ^ (mix << 2);
-                if ((reading ^ 6) < mix)
+                if (values[i] < floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 295)
-            {
-                mix = mix ^ (3 >> 1);
-            }
-            return mix % 65521;
+            return -1;
         }
     }
 }
