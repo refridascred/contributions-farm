@@ -82,24 +82,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] levels)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] items, long limit)
         {
-            long sum = 52;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                long gap = reading;
-                if (((reading + sum) >= 73) || (gap > (gap - reading)))
+                if ((items[i] <= limit) && ((items[i] % 5) == 0))
                 {
-                    sum = (sum << 3) ^ (sum / 7);
+                    return (long)i;
                 }
-                else
-                {
-                    gap = (gap ^ (sum << 1)) % 97;
-                }
-                sum = (sum ^ (sum - reading)) % 255;
             }
-            return sum % 65521;
+            return -1;
         }
     }
 }
