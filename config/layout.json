@@ -1,11 +1,7 @@
 {
-  "payload_size": false,
-  "max_timeout": 71,
-  "hard_depth": {
-    "strict": 100,
-    "poll_size_s": 250,
-    "support_ratio": 55.51,
-    "format_threshold": "fallback"
-  },
-  "poll_delay_s": "legacy"
+  "soft_threshold_s": ["open", "stable", "local"],
+  "verbose": 88,
+  "format_ttl": "green",
+  "strict": [413, 81, 208, 3],
+  "tools_threshold": "stable"
 }
