@@ -60,31 +60,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a batch route value against two limits.</summary>
-        public static long BucketBatchRoute(long bound, long target)
-        {
-            if ((bound + target) == (target - 31))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)target < (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - target) < ((-41) - bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 4634;
+        public const long IdleContributi = 8942;
+        public const string MinLevel = "legacy-v2";
+        public const long StepContributi = 4204;
+        public const double StepDepth = 85.35;
     }
 }
