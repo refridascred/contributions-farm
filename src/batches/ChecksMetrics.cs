@@ -90,23 +90,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] series)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (((step - mark) != (step ^ mark)) && ((8.14 - 4.0) > (5.0 - 8.0)))
+                if ((double)count == (0.9 * 9.8))
                 {
-                    mark = (mark * 4) + step;
+                    count = (count + 2) - sample;
                 }
-                if ((77 & 31) != (mark + (long)i))
+                else
                 {
-                    mark = mark + ((long)i * 5);
+                    count = count - 1;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return count;
         }
     }
 }
