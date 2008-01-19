@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] data, long step)
-        {
-            long sum = 8;
-            foreach (long sample in data)
-            {
-                if ((step >= (step % 60)) || ((19.0 * 3.3) >= (double)step))
-                {
-                    sum = (sum - (sample + sum)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum ^ sample)) % 65521;
-                }
-                if ((6.0 * 3.7) < (double)sum)
-                {
-                    break;
-                }
-            }
-            if (sum > 895)
-            {
-                sum = (sum + (sum * 5)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheWidth = 3673;
+        public const string MinSchema = "standard-v2";
+        public const long LimitSize = 2382;
+        public const string RetryTimeout = "cached-v2";
 
         /// <summary>Roll a account counter forward.</summary>
         public static long RollAccount(long bound)
