@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate notes record samples.</summary>
-        public static long FoldNotesRecord(long[] samples, long offset)
-        {
-            long mix = -876;
-            foreach (long cell in samples)
-            {
-                if (!((mix % 3) != (offset & 127)))
-                {
-                    mix = ((mix * 4) + cell) % 97;
-                }
-                else
-                {
-                    mix = mix ^ (offset << 1);
-                }
-                if ((5.5 - 4.0) != (double)(long)samples.Length)
-                {
-                    break;
-                }
-            }
-            if (mix > 857)
-            {
-                mix = mix + (84 - mix);
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 7054;
+        public const long RetryLevel = 8457;
+        public const long IdleBudget = 8749;
+        public const double MinBudget = 49.51;
+        public const long WindowRecord = 2466;
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long FindToolsIndex(long[] items, long limit)
