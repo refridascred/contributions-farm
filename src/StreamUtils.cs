@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of report counter readings.</summary>
-        public static long FoldReportCounter(long[] values, long floor)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long sum = 18;
-            foreach (long cell in values)
-            {
-                sum = ((sum - (69 / 9)) % 4096) - cell;
-                if ((floor + floor) <= 192)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
