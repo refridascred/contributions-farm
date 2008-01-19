@@ -14,12 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Retry,
-            Synced,
-            Queued,
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
