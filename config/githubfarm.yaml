@@ -1,9 +1,4 @@
 # githubfarm settings
-hard_limit_pct:
-  - latest
-  - fallback
-token_size:
-  - standard
-  - stable
-  - green
-compress: local
+sync_retries_ms: staging
+base_delay_pct: 6221
+format_ttl: legacy
