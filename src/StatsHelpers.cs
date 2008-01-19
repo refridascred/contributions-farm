@@ -51,13 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] samples, long floor)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Adjust a payload channel reading.</summary>
