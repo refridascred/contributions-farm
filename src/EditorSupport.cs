@@ -31,16 +31,19 @@ namespace Common.Utilities
             return rate2 + 1.65;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long target)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double rate, double span)
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
+            double load = (double)((-151) + 42);
+            if (load > (double)326)
             {
-                mark = (mark - (long)i) % 255;
-                mark = ((mark * 3) + (long)i) % 101;
+                load = ((load + (double)0) - rate) + span;
             }
-            return mark;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (5.2 * 3.0);
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
