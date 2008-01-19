@@ -22,16 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            long carry = 271;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry - (carry % 100)) % 65521;
-                carry = ((carry << 2) ^ (carry + value)) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
