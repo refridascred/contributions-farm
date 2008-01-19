@@ -26,10 +26,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCache = "latest-v2";
-        public const long MinCache = 4201;
-        public const string BatchInterval = "strict-v2";
-        public const string LimitCache = "strict-edge";
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] series, long bound)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (matches >= (bound - 7))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
+        }
     }
 }
