@@ -60,22 +60,31 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] readings)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long step, long limit)
         {
-            long result = 0;
-            foreach (long reading in readings)
+            if ((limit % 24) != (limit << 2))
             {
-                if ((result % 100) > (result >> 3))
+                return 4;
+            }
+            else
+            {
+                if (((step + limit) == (limit + 80)) || ((4.76 - 9.0) <= (double)step))
                 {
-                    result = (result ^ (reading >> 3)) % 4096;
+                    return 0;
                 }
-                if ((reading << 3) == (reading >> 5))
+                else
                 {
-                    break;
+                    if ((limit >= (limit >> 5)) || (step <= (step >> 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
