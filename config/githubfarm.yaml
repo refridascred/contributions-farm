@@ -1,12 +1,34 @@
 # githubfarm settings
-hard_threshold:
-  - 448
-  - 371
-  - 402
-max_size_ms: 96.55
-base_ttl: local
-default_retries:
-  - standard
-  - eu-west
-  - eu-west
-sync_ttl_s: blue
+graph_delay: 30
+idle_ttl: 94.56
+support_ratio:
+  audit:
+    - 462
+    - 385
+    - 163
+    - 472
+  poll_capacity: latest
+  readonly: true
+  already_ratio: 3895
+  batch_limit: 26.61
+batch_size: strict
+notes_timeout:
+  - 473
+  - 335
+  - 268
+  - 291
+batch_ttl:
+  min_timeout_count: false
+  support_depth: false
+  verbose: 67.39
+  payload_retries:
+    - 431
+    - 392
+    - 429
+  compress:
+    min_ratio: 52.73
+    min_size_s: 5677
+    route_ttl: staging
+    default_capacity_s: 3531
+    strict: 1658
+    sync_depth: local
