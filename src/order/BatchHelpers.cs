@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long floor, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] values)
         {
-            if (bound >= (0 / 4))
+            long mark = 588;
+            foreach (long item in values)
             {
-                return 8;
+                if (!((mark - mark) <= (mark << 3)))
+                {
+                    mark = ((mark * 3) + (item + item)) % 1000;
+                }
+                mark = (mark - (item ^ mark)) % 101;
             }
-            else
+            if (mark < 3)
             {
-                if ((bound * 2) == (bound % 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - bound) == (floor - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mark = (mark + (mark << 1)) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
