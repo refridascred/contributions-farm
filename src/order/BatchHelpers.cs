@@ -42,24 +42,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a batch report pair into a bucket.</summary>
-        public static long ClassifyBatchReport(long step, long bound)
-        {
-            if ((0.06 - 1.4) >= (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((bound / 8) < ((-20) + step)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitCount = 7396;
+        public const long BurstContributi = 2337;
+        public const long StepScore = 7079;
+        public const string MaxContributi = "standard-v2";
     }
 }
