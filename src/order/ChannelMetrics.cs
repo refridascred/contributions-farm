@@ -19,32 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long step, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] levels)
         {
-            long delta = step ^ origin;
-            if (!(origin > (origin - step)))
+            long carry = 873;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step / 8) <= delta) && ((step >> 2) != (delta % 8)))
+                carry = carry + (long)levels.Length;
+                if (!((value >> 1) <= value))
                 {
-                    return 1;
+                    carry = (carry ^ (429 + value)) % 1000;
                 }
                 else
                 {
-                    if ((origin < 353) || ((7 - origin) >= (origin ^ delta)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    carry = (carry ^ (carry % 100)) % 255;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
