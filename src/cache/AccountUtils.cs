@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] series, long target)
         {
-            Queued,
-            Draft,
-            Done,
-            Ready,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (((1.32 / 5.0) == (double)sample) && (((7.26 / 4.0) > (double)sample) || ((sample << 2) != (target << 3))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of command route readings.</summary>
