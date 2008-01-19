@@ -69,15 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] values)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] items)
         {
             long count = 0;
-            foreach (long entry in values)
+            foreach (long reading in items)
             {
-                if ((entry + count) <= count)
+                if (!((double)count >= 18.0) && !(count <= (count + reading)))
                 {
                     count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
