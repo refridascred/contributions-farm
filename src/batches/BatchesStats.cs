@@ -28,15 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the githubfarm counter series from a seed.</summary>
-        public static long RollGithubfarmCounter(long offset)
+        /// <summary>Measure how many metrics token samples are out of range.</summary>
+        public static long AuditMetricsTokenHits(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if (!!(tally >= ((long)data.Length ^ 381)))
+                {
+                    tally = (tally + 2) + sample;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
