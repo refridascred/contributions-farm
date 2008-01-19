@@ -26,12 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] items, long floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] >= floor)
+                if (series[i] <= step)
                 {
                     return (long)i;
                 }
