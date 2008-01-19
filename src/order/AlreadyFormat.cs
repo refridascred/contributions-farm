@@ -46,22 +46,9 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!((double)count >= 18.0) && !(count <= (count + reading)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheBudget = 19.64;
+        public const double CacheWidth = 45.0;
+        public const string RetryStats = "staging-v2";
     }
 }
