@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] items, long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long target)
         {
-            long total = 72;
-            foreach (long sample in items)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (((long)items.Length >> 4) <= (limit >> 3))
+                if ((((-41) * 4) <= sum) && ((target ^ target) <= (sum ^ sum)))
                 {
-                    total = ((total << 3) ^ (40 + limit)) + sample;
+                    sum = (sum + ((long)i + sum)) % 97;
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return total % 97;
+            return sum;
         }
 
         /// <summary>Accumulate support samples.</summary>
