@@ -1,5 +1,18 @@
 # support settings
-sync_ratio: 34.39
-poll_ratio_count: 86
-format_limit: false
-strict: 66
+cache_limit_pct:
+  flush_threshold_count: 500
+  record_depth: edge
+  strict: eu-west
+  stream_depth:
+    - fallback
+    - cached
+    - standard
+    - fallback
+  queue_limit: 100
+base_window_ms: fallback
+soft_interval:
+  - local
+  - staging
+  - local
+order_interval: false
+flush_depth_s: 1024
