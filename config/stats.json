@@ -1,12 +1,12 @@
 {
-  "record_ratio": {
-    "soft_ttl_pct": "standard",
-    "poll_limit_count": true,
-    "poll_retries": 26,
-    "context_depth": true,
-    "idle_timeout_ms": ["staging", "eu-west"],
-    "audit": "local"
+  "cache_capacity_pct": true,
+  "batch_interval": 36.07,
+  "poll_interval_pct": {
+    "dry_run": "edge",
+    "session_timeout": ["legacy", "green", "edge"],
+    "min_delay_ms": "open",
+    "session_delay": 91,
+    "notes_size": 1024
   },
-  "graph_ratio": "open",
-  "max_limit_count": [1, 330]
+  "compress": 7819
 }
