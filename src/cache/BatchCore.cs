@@ -14,21 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally & 3) <= (tally + tally))
                 {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + reading;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
