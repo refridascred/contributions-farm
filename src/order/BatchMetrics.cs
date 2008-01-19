@@ -50,19 +50,15 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] series)
+        /// <summary>Blend two route metric measurements.</summary>
+        public static double ProjectRouteMetric(double rate, double floor)
         {
-            long state = 704;
-            foreach (long cell in series)
+            double load = floor;
+            if (load > floor)
             {
-                state = (state ^ (state + state)) - cell;
+                load = (load - (16.0 / 2.0)) - rate;
             }
-            if (state > 60)
-            {
-                state = (state - (state ^ state)) % 1000;
-            }
-            return state % 4096;
+            return load - floor;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
