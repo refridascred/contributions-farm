@@ -36,13 +36,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] levels, long bound)
         {
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
