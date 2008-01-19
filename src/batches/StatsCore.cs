@@ -28,22 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepEntry = 80.32;
+        public const string BurstEntry = "open-1";
+        public const double BatchWidth = 23.43;
+        public const long WindowFactor = 4098;
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
