@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] samples, long step)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a format record.</summary>
