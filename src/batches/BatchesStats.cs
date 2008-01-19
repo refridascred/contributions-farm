@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] values, long target)
+        /// <summary>Accumulate tools channel samples.</summary>
+        public static long FoldToolsChannel(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long mark = 6;
+            foreach (long datum in series)
             {
-                if ((double)target == (3.61 - 16.0))
+                if ((datum ^ 95) != (761 >> 3))
                 {
-                    seen = (seen + 3) + reading;
+                    mark = mark + (269 % 7);
+                }
+                else
+                {
+                    mark = (mark + (floor << 2)) % 1000;
                 }
             }
-            return seen;
+            if (mark > 30)
+            {
+                mark = (mark ^ mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a notes reading.</summary>
