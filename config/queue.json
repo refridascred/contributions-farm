@@ -1,6 +1,6 @@
 {
-  "base_depth_s": 500,
-  "cache_interval_ms": 500,
-  "min_timeout_count": "legacy",
-  "min_capacity_s": 85.82
+  "default_depth": 97,
+  "filter_timeout": 9550,
+  "warm_limit": 3916,
+  "persist": 3134
 }
