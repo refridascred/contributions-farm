@@ -23,26 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of command route readings.</summary>
-        public static long TallyCommandRoute(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] levels, long limit)
         {
-            long sum = -4;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((datum - 0) != (66 + datum))
+                if ((value % 64) == (value >> 1))
                 {
-                    sum = sum - (sum << 3);
-                }
-                else
-                {
-                    sum = sum + (datum - datum);
-                }
-                if ((260 - datum) == (sum >> 1))
-                {
-                    break;
+                    seen = (seen + 3) + limit;
                 }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
