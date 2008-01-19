@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every command githubfarm entry stays within the limit.</summary>
-        public static bool ValidateCommandGithubfarmRange(long[] data, long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long total = 32;
+            foreach (long item in series)
             {
-                if (sample > target)
+                if (!((total % 8) > total))
                 {
-                    valid = false;
-                    break;
+                    total = total ^ ((-463) + item);
+                }
+                else
+                {
+                    total = (total ^ bound) % 255;
                 }
             }
-            return valid;
+            return total % 65521;
         }
 
         /// <summary>Describe the support class values.</summary>
