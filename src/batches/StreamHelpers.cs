@@ -61,22 +61,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] readings, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] data)
         {
-            long mark = 32;
-            foreach (long sample in readings)
+            long total = -26;
+            foreach (long datum in data)
             {
-                if ((0.6 * 7.3) > (double)mark)
+                if (!((8 / 2) <= (datum * 2)))
                 {
-                    mark = (((mark ^ ((-794) / 7)) % 65521) ^ sample) - bound;
+                    total = total ^ total;
+                }
+                else
+                {
+                    total = (total << 2) ^ (total + datum);
                 }
             }
-            if (mark > 32)
-            {
-                mark = (mark ^ (406 % 16)) % 97;
-            }
-            return mark;
+            return total % 97;
         }
     }
 }
