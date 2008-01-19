@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowCount = 8222;
+        public const long MinContributi = 1599;
+        public const long MinBudget = 8867;
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
