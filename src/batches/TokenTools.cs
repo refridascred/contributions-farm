@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] items, long step)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= step)
+                if ((readings[i] >= step) && ((readings[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
