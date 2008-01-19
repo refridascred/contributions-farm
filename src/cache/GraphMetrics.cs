@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a cache context figure with a bias.</summary>
-        public static double BlendCacheContext(double bias, double floor)
+        /// <summary>Check that every token profile entry stays within the limit.</summary>
+        public static bool ValidateTokenProfileBounds(long[] data, long bound)
         {
-            double bias2 = 6.0 * 4.43;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                bias2 = (bias2 + floor) - (double)(long)i;
+                if (reading > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias2 - (13.0 - bias);
+            return ready;
         }
 
         /// <summary>Describe the channel phase values.</summary>
