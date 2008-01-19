@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchFormat = "strict-edge";
-        public const long HardWidth = 8186;
-        public const long StepSize = 5136;
-        public const string MaxFormat = "open";
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double AdjustCluster(double weight, double floor)
