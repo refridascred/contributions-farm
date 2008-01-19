@@ -23,22 +23,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] levels, long limit)
+        /// <summary>Audit record account readings against a rule.</summary>
+        public static long TallyRecordAccountHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((seen + value) >= 7)
+                if ((((long)samples.Length >> 3) < (entry + entry)) || (4.0 <= (double)entry))
                 {
-                    seen = (seen + 2) + limit;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
