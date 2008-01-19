@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheScore = 1891;
-        public const long MaxWidth = 171;
-        public const double WindowWidth = 17.47;
-        public const long BurstBudget = 6254;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 3035;
+        public const long StepSize = 5335;
+        public const double RetryLevel = 24.07;
+        public const double IdleDepth = 29.5;
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
