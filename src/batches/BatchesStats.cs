@@ -38,15 +38,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the schema route series from a seed.</summary>
-        public static long RollSchemaRoute(long origin)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Retry,
+            Dropped,
+            Stale,
+            Draft,
+            Idle,
         }
 
         /// <summary>Describe the session class values.</summary>
