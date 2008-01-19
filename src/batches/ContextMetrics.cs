@@ -34,14 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Queued,
-            Closed,
-            Retry,
-            Done,
+            Draft,
+            Locked,
             Failed,
+            Done,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
