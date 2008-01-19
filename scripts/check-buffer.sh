@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback eu-west stable open; do
+for item in open latest eu-west; do
     log "checking ${item}"
 done
 
-mode="${1:-stable}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=406
+log "limit is ${BUFFER_LIMIT}"
