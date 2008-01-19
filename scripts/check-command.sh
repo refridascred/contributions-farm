@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=100
+COMMAND_LIMIT=421
 log "limit is ${COMMAND_LIMIT}"
 
-for item in primary fallback strict edge; do
+for item in green local fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
+mode="${1:-green}"
 case "${mode}" in
-    local)
+    edge)
         log "fast path"
         ;;
     *)
