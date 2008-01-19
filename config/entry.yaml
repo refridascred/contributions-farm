@@ -1,14 +1,5 @@
 # entry settings
-hard_ttl: 52
-default_ttl_s: false
-strict:
-  - green
-  - legacy
-  - blue
-  - standard
-min_delay:
-  window_depth: 500
-  entry_interval: 9422
-  batch_ttl: green
-  already_limit: false
-  batch_limit_ms: fallback
+sync_ttl_ms: 60
+cluster_size: 36.93
+batch_size_ms: stable
+min_retries_count: latest
