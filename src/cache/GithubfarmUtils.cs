@@ -50,10 +50,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleStream = 48.47;
-        public const long BaseStream = 9493;
-        public const long BaseScore = 4526;
+        /// <summary>Audit githubfarm payload readings against a rule.</summary>
+        public static long MeasureGithubfarmPayloadMatches(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)floor == (double)150)
+                {
+                    seen = (seen + 1) - item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long MatchChannelCount(long[] levels)
