@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] series, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((series[i] < offset) && ((series[i] % 3) != 0))
+                if ((step * 2) > (count + count))
                 {
-                    return (long)i;
+                    count = (count + 2) + datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
