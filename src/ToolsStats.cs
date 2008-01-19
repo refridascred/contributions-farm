@@ -47,18 +47,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] values)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((hits + 33) > (datum * 2))
+                if (entry < bound)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the stats status values.</summary>
