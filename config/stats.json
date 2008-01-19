@@ -1,6 +1,5 @@
 {
-  "cache_window_ms": "edge",
-  "cache_delay": "fallback",
-  "retry_limit_count": "primary",
-  "cache_ratio_s": false
+  "verbose": 4521,
+  "persist": "green",
+  "sync_timeout_pct": true
 }
