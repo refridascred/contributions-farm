@@ -1,12 +1,14 @@
 # support settings
-readonly:
-  - blue
+base_threshold_count: false
+soft_timeout_count: true
+min_ratio:
   - staging
-enabled: 2.47
-metric_depth: true
-schema_depth: eu-west
-entry_depth:
-  tools_capacity: 3261
-  audit: open
-  support_size: local
-payload_timeout: strict
+  - cached
+  - staging
+idle_threshold_s: 250
+hard_threshold_s:
+  - 382
+  - 165
+  - 302
+  - 325
+soft_capacity: 100
