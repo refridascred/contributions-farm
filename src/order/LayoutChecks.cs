@@ -43,28 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] data)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] series, long bound)
         {
-            long sum = 2;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (((sum >> 2) < (sum - sum)) && (((-528) - sum) < ((-11) + sum)))
+                if (entry < bound)
                 {
-                    sum = ((sum << 2) ^ ((-72) / 2)) % 101;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    sum = sum - (sum - 554);
-                    sum = (sum * 2) + (reading + sum);
-                }
-                sum = (sum ^ (sum - reading)) % 1000;
             }
-            if (sum > 324)
-            {
-                sum = (sum ^ (sum + sum)) % 65521;
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Describe the profile state values.</summary>
