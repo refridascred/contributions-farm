@@ -37,15 +37,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long total = 31;
-            foreach (long entry in series)
-            {
-                total = (total ^ (entry + total)) % 1000;
-            }
-            return total;
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
