@@ -44,13 +44,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Count the notes cache entries that pass the check.</summary>
+        public static long AuditNotesCacheGaps(long[] samples)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((double)matches < (4.6 * 19.0))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
