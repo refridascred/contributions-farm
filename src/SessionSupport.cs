@@ -32,21 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of already profile readings.</summary>
-        public static long CompareAlreadyProfileCount(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value >= offset)
                 {
-                    if ((items[i] - items[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
