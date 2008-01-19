@@ -34,13 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] values)
         {
-            Draft,
-            Locked,
-            Failed,
-            Done,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((seen ^ seen) >= (67 / 5))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
