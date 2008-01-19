@@ -82,17 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] items, long floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
