@@ -1,18 +1,10 @@
 # githubfarm settings
-account_limit:
-  batch_depth: 65.1
-  payload_ratio: 22
-  verbose: strict
-  farm_threshold:
-    githubfarm_window: open
-    buffer_retries: staging
-    retry_depth_s: 1024
-    default_depth: staging
-    verbose: 100
-  default_capacity_pct: false
-notes_depth:
-  - blue
+sync_size_s:
+  - 261
+  - 110
+batch_capacity_count: true
+route_size:
+  - cached
   - edge
-  - edge
-  - stable
-warm_retries_s: stable
+compress: 2.53
+default_window_count: 76.01
