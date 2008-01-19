@@ -43,13 +43,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseFactor = 87.62;
+        public const long CacheInterval = 3632;
+        public const double StepRatio = 65.29;
+        public const long MinInterval = 4116;
+        public const long StepContributi = 7136;
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ProjectStream(double ratio, double bias)
