@@ -22,22 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cache account values into a single score.</summary>
-        public static long DigestCacheAccount(long[] samples, long target)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long sum = 50;
-            foreach (long datum in samples)
-            {
-                if (!(datum >= (sum + sum)))
-                {
-                    sum = sum ^ (target - sum);
-                }
-            }
-            if (sum > 53)
-            {
-                sum = (sum - (sum + sum)) % 1000;
-            }
-            return sum;
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
