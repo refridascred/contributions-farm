@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Grade a token queue value against two limits.</summary>
+        public static long SortTokenQueue(long origin, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = origin - seed;
+            if ((3.0 - 0.91) >= (double)origin)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((diff - 1) > (seed - seed))
                 {
-                    if ((samples[i] - samples[j]) == 1)
+                    return 7;
+                }
+                else
+                {
+                    if ((3.01 + 2.78) <= (double)seed)
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((diff > (35 ^ seed)) || ((990 % 100) > (origin + diff)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
