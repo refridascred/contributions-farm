@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double gain, double offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] samples, long seed)
         {
-            double weight = offset * 0.62;
-            if (weight > (gain + offset))
+            long mark = -143;
+            foreach (long cell in samples)
             {
-                weight = weight + offset;
+                if ((double)mark != (2.0 / 9.0))
+                {
+                    mark = ((mark << 3) ^ (seed * 4)) - cell;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (offset - offset)) - (double)(long)i;
-            }
-            return weight - (8.94 + gain);
+            return mark % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
