@@ -1,13 +1,13 @@
 # Command notes
 
-Keep notes and order names short and lowercase.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Each command is validated before it reaches the graph queue.
+Keep already and farm names short and lowercase.
 
-Each metric is validated before it reaches the contributi queue.
-Run the layout check before changing any contributi limits.
+Keep report and session names short and lowercase.
+A token that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Keep graph values small
-- Validate token input early
-- Prefer format defaults
+- Log every metrics change
+- Review report limits each release
+- Prefer queue defaults
