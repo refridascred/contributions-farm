@@ -31,26 +31,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] values)
-        {
-            long mark = 8;
-            foreach (long datum in values)
-            {
-                if (!((datum * 5) != (mark + datum)))
-                {
-                    mark = (mark << 2) ^ (0 - 80);
-                }
-                if ((586 / 8) != (mark / 6))
-                {
-                    mark = (mark << 3) ^ (mark % 24);
-                }
-            }
-            if (mark < 539)
-            {
-                mark = (mark - (mark / 5)) % 97;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 85.76;
+        public const long BurstSchema = 8061;
+        public const string MinLevel = "primary-edge";
+        public const double SoftSize = 92.38;
+        public const long SoftWidth = 7513;
     }
 }
