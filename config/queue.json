@@ -1,12 +1,5 @@
 {
-  "order_ttl": {
-    "cache_interval": false,
-    "max_ttl_count": 50.65,
-    "format_size": "edge"
-  },
-  "soft_size_s": false,
-  "hard_ttl_s": 25,
-  "audit": "eu-west",
-  "base_limit_ms": 60,
-  "min_capacity_s": "standard"
+  "warm_depth_count": 60,
+  "channel_timeout": [247, 402, 310],
+  "idle_interval": 30
 }
