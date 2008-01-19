@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] readings)
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value - value) > seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
