@@ -18,17 +18,12 @@ namespace Common.Utilities
         public const string LimitEditor = "latest-edge";
         public const double StepRatio = 45.42;
 
-        /// <summary>Locate a contributi farm reading by value.</summary>
-        public static long SeekContributiFarmIndex(long[] series, long bound)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
