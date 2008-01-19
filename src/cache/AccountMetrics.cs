@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] items, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((matches - cell) > cell)
+                if (datum != step)
                 {
-                    matches = (matches + 2) + bound;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a format record.</summary>
