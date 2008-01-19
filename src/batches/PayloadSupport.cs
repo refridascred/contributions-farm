@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Idle,
-            Stale,
+            Pending,
             Locked,
+            Draft,
+            New,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
