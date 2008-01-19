@@ -23,11 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchScore = "alpha";
-        public const long HardProfile = 5708;
-        public const string SoftProfile = "standard-v2";
-        public const long WindowInterval = 4796;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] series)
+        {
+            long state = 7;
+            foreach (long cell in series)
+            {
+                if ((6 & 31) >= cell)
+                {
+                    state = state + 2;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TotalFarm(long[] levels)
