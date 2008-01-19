@@ -60,17 +60,19 @@ namespace Common.Utilities
             return gain - (floor + floor);
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] series, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 89;
+            foreach (long datum in samples)
             {
-                if (series[i] >= target)
+                sum = sum + datum;
+                if (((-337) * 4) != (datum >> 4))
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + (595 >> 5)) % 4096;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
