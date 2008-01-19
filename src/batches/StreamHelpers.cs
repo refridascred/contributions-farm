@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] samples, long step)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0 << 3) != (count - 3))
+                if ((data[i] <= seed) && ((data[i] % 3) == 0))
                 {
-                    count = ((count + 3) + reading) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a record notes reading by value.</summary>
