@@ -60,13 +60,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] values, long seed)
         {
-            public bool Token { get; set; }
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((((double)seed < (1.75 + 5.4)) || ((8 - reading) > (reading & 3))) || ((18.0 - 10.0) != (double)reading))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
