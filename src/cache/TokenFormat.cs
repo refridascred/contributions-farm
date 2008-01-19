@@ -17,12 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 2080;
-        public const long IdleProfile = 6249;
-        public const long CacheDepth = 3958;
-        public const string IdleLevel = "staging";
-        public const long HardLevel = 6851;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > origin) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long SeekStatsIndex(long[] items, long bound)
