@@ -36,19 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate graph account readings against a bound.</summary>
-        public static bool ValidateGraphAccountRange(long[] items, long limit)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
