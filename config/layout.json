@@ -1,19 +1,12 @@
 {
-  "default_limit": "local",
-  "max_interval": 7721,
-  "layout_capacity": "blue",
-  "verbose": {
-    "poll_timeout_count": "local",
-    "poll_size_s": 31,
-    "contributi_delay": "cached",
-    "audit": false,
-    "profile_delay": {
-      "sync_window_s": 84.96,
-      "record_ttl": 500,
-      "notes_threshold": [265, 260, 137],
-      "sync_interval": "staging"
-    }
+  "schema_timeout": {
+    "session_ratio": [8, 20, 371],
+    "default_depth_s": [297, 1, 461],
+    "githubfarm_threshold": 78,
+    "enabled": "primary",
+    "stream_limit": "staging",
+    "queue_interval": 60
   },
-  "default_capacity": 9533,
-  "flush_interval": [483, 78, 302]
+  "enabled": 22.64,
+  "strict": "staging"
 }
