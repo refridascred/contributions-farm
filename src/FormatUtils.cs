@@ -92,18 +92,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] items)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] items)
         {
-            long count = 0;
-            foreach (long value in items)
+            long anchor = 3;
+            foreach (long reading in items)
             {
-                if (59 >= (value / 4))
+                if ((reading * 2) <= (anchor - reading))
                 {
-                    count = count + 3;
+                    anchor = (anchor - (reading ^ reading)) % 65521;
+                }
+                if (!((4 / 3) >= (reading % 16)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (anchor > (-382))
+            {
+                anchor = ((anchor * 5) + (anchor + anchor)) % 1000;
+            }
+            return anchor;
         }
     }
 }
