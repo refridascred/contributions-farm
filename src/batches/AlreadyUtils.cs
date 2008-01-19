@@ -32,19 +32,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] samples, long limit)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Queued,
+            Pending,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
