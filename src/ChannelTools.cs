@@ -16,15 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the farm filter series from a seed.</summary>
-        public static long DeriveFarmFilter(long seed)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double gain, double span)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            double weight = gain;
+            if (weight <= weight)
             {
-                score = ((score * 3) + (long)i) % 101;
+                weight = weight - (gain / 8.0);
             }
-            return score;
+            else
+            {
+                weight = weight + (double)1;
+            }
+            return weight + span;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
