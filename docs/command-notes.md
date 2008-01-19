@@ -1,14 +1,15 @@
 # Command notes
 
-Each record is validated before it reaches the notes queue.
-The report helpers are pure functions, so they are safe to call from any thread.
-When a cluster fails, the counter handler retries a few times before giving up.
+Defaults for account live in the config folder and can be overridden per environment.
+Defaults for cache live in the config folder and can be overridden per environment.
+Use commits settings to tune how often githubfarm data is refreshed.
 
-When a githubfarm fails, the cluster handler retries a few times before giving up.
-Each window is validated before it reaches the cluster queue.
+Keep support and metrics names short and lowercase.
+Defaults for command live in the config folder and can be overridden per environment.
+Each session is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Keep commits values small
-- Validate farm input early
-- Document new token fields
+- Validate metrics input early
+- Document new session fields
+- Log every command change
