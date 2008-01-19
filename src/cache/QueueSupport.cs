@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public bool Limit { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstInterval = 5417;
+        public const double SoftTimeout = 31.47;
+        public const long CacheLevel = 6550;
+        public const double LimitToken = 50.43;
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
