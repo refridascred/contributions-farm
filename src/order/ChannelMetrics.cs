@@ -19,23 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] levels)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long carry = 873;
-            foreach (long value in levels)
-            {
-                carry = carry + (long)levels.Length;
-                if (!((value >> 1) <= value))
-                {
-                    carry = (carry ^ (429 + value)) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ (carry % 100)) % 255;
-                }
-            }
-            return carry % 97;
+            Dropped,
+            Active,
+            Paused,
+            Retry,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
