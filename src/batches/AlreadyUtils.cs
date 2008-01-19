@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double bias, double bias2)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] items, long floor)
         {
-            double scale = 9.6;
-            if (scale > scale)
+            long sum = 7;
+            foreach (long reading in items)
             {
-                scale = (scale + bias) + bias2;
+                if ((reading & 7) > (floor ^ sum))
+                {
+                    sum = (sum + (sum - (-881))) % 101;
+                }
             }
-            else
+            if (sum < 3)
             {
-                scale = scale - 12.0;
+                sum = (sum << 2) ^ (704 >> 5);
             }
-            return scale - scale;
+            return sum;
         }
 
         /// <summary>Accumulate support samples.</summary>
