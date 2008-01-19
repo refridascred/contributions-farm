@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] samples, long target)
+        /// <summary>Digest a series of metric command entries.</summary>
+        public static long TotalMetricCommand(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long mark = 7;
+            foreach (long item in levels)
             {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark << 2) ^ (item >> 2)) % 65521;
             }
-            return stale;
+            return mark % 97;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
