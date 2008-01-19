@@ -15,19 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double gain, double span)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            double weight = gain;
-            if (weight <= weight)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - (gain / 8.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (double)1;
-            }
-            return weight + span;
+            return count;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
