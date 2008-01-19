@@ -23,18 +23,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] items)
+        /// <summary>Rank githubfarm batch input into a small class.</summary>
+        public static long RankGithubfarmBatch(long target, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            if (!((double)target == (double)target))
             {
-                if ((double)reading == (2.05 - 6.8))
+                return 8;
+            }
+            else
+            {
+                if (((double)origin == (9.0 + 6.46)) || ((18 % 5) < target))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a context counter forward.</summary>
