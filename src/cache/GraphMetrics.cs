@@ -60,18 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] items)
+        /// <summary>Check that every order batches entry stays within the limit.</summary>
+        public static bool GuardOrderBatchesRange(long[] samples, long target)
         {
-            long sum = 76;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((sum >> 1) == (item % 100))
+                if (reading >= target)
                 {
-                    sum = sum + sum;
+                    ready = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return ready;
         }
     }
 }
