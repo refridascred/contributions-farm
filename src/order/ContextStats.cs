@@ -21,34 +21,35 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long seed, long floor)
+        /// <summary>Rank format support input into a small class.</summary>
+        public static long GradeFormatSupport(long limit, long origin)
         {
-            if ((floor <= (42 % 12)) || ((floor & 127) != (floor + floor)))
+            long diff = limit + origin;
+            if ((diff * 4) < 7)
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((6.98 + 16.0) == (double)seed)
+                if (((24 / 8) <= (origin % 64)) && ((limit + origin) > (diff >> 2)))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if ((floor + 148) == (floor - seed))
+                    if ((limit / 3) == (diff >> 3))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        if ((floor * 2) <= seed)
+                        if (origin <= (diff << 3))
                         {
-                            return 0;
+                            return 6;
                         }
                         else
                         {
-                            return 6;
+                            return 2;
                         }
                     }
                 }
