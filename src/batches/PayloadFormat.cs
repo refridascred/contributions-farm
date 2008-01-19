@@ -28,12 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] items, long step)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            long carry = 3;
+            foreach (long entry in items)
+            {
+                carry = ((((carry << 3) ^ carry) % 4096) ^ entry) - step;
+            }
+            if (carry > 6)
+            {
+                carry = (carry * 5) + (21 << 3);
+            }
+            return carry % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
