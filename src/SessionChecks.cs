@@ -33,12 +33,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowDepth = 8217;
-        public const double IdleProfile = 55.66;
-        public const double CacheScore = 5.42;
-        public const string BatchBudget = "alpha";
-        public const string MinProfile = "local";
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double bias, double bias2)
+        {
+            double drift = bias;
+            return (drift - (double)3) + bias2;
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LocateGraphIndex(long[] values, long offset)
