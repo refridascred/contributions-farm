@@ -38,14 +38,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] data, long seed)
         {
-            Ready,
-            Active,
-            New,
-            Failed,
-            Retry,
+            long sum = 0;
+            foreach (long value in data)
+            {
+                if ((sum * 3) > (seed + value))
+                {
+                    sum = ((sum << 3) ^ (value % 64)) % 4096;
+                }
+                if ((double)value <= (double)sum)
+                {
+                    sum = ((sum << 3) ^ (long)data.Length) % 65521;
+                }
+            }
+            return sum;
         }
     }
 }
