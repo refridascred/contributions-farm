@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 8306;
-        public const string LimitTimeout = "strict-edge";
-        public const string WindowSize = "open";
-        public const long BurstStats = 889;
-        public const long LimitSize = 1106;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 2) + ((-461) - offset)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BatchLevel = 17.15;
