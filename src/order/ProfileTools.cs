@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 6757;
-        public const double WindowRatio = 83.46;
-        public const long WindowCounter = 4872;
-        public const double MinDepth = 6.27;
-        public const long SoftCounter = 2272;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double bias, double bias2)
+        {
+            double weight = 3.5;
+            if (weight > bias2)
+            {
+                weight = (weight + 1.7) - bias;
+            }
+            return weight - (bias2 * 9.49);
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long GradeChecks(long origin, long limit)
