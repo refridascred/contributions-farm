@@ -1,12 +1,5 @@
 # entry settings
-default_ratio:
-  - 340
-  - 135
-  - 135
-idle_capacity_pct: 34
-flush_depth:
-  - 395
-  - 299
-  - 377
-stream_capacity: open
-max_retries_ms: staging
+retry_interval_pct: 50
+metric_timeout: fallback
+retry_limit: green
+warm_window_ms: edge
