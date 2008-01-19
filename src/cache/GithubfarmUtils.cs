@@ -26,18 +26,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] values, long origin)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((double)cell == (4.81 * 0.3)) && (origin <= ((long)values.Length + cell)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Describe the stats phase values.</summary>
