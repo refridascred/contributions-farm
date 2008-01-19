@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] values, long limit)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long seed, long limit)
         {
-            long result = 81;
-            foreach (long value in values)
+            if ((double)seed < (double)limit)
             {
-                if ((53 ^ result) >= (result << 3))
+                return 4;
+            }
+            else
+            {
+                if ((2.0 * 18.0) <= (double)seed)
                 {
-                    result = (result * 3) + 7;
+                    return 1;
                 }
-                if (!(limit >= (value ^ result)))
+                else
                 {
-                    break;
+                    return 7;
                 }
             }
-            return result % 65521;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
