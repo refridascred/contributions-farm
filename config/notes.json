@@ -1,5 +1,12 @@
 {
-  "batch_size_count": true,
-  "poll_delay_pct": 2139,
-  "cache_limit": true
+  "counter_window": false,
+  "warm_depth": 9445,
+  "idle_retries_count": 32.99,
+  "audit": "fallback",
+  "batch_retries": 8951,
+  "idle_timeout": {
+    "base_ttl": ["fallback", "open"],
+    "enabled": "standard",
+    "sync_ratio_pct": "staging"
+  }
 }
