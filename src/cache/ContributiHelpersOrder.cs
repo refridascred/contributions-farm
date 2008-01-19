@@ -41,17 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] levels, long step)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Synced,
+            Idle,
+            New,
+            Draft,
         }
     }
 }
