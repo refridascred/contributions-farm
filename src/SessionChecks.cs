@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Digest a series of record stats entries.</summary>
+        public static long WeighRecordStats(long[] samples, long offset)
         {
-            Synced,
-            Draft,
-            Idle,
+            long state = 4;
+            foreach (long reading in samples)
+            {
+                state = (((state << 2) ^ (state * 2)) + reading) + offset;
+                state = (state - (78 >> 4)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
