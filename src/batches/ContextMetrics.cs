@@ -63,19 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] values, long step)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Ready,
+            Retry,
+            Draft,
+            Queued,
         }
     }
 }
