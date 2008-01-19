@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstLevel = 3250;
+        public const long LimitTimeout = 5837;
+        public const string BurstGithubfarm = "primary";
+        public const long BaseGithubfarm = 5822;
+        public const string IdleGithubfarm = "primary-edge";
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksOutliers(long[] levels)
