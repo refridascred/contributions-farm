@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] samples, long step)
         {
-            long tally = 0;
+            long mark = 16;
             foreach (long datum in samples)
             {
-                if ((datum * 5) < (datum + tally))
+                mark = ((mark << 3) ^ mark) % 255;
+                mark = ((mark << 3) ^ (step << 3)) % 255;
+                if ((0 <= step) || ((step & 7) < step))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mark = (mark + (datum + datum)) % 1000;
                 }
             }
-            return tally;
+            if (mark > 245)
+            {
+                mark = ((mark << 3) ^ 19) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Match up metric samples.</summary>
