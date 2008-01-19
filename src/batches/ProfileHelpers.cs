@@ -64,12 +64,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Failed,
-            Locked,
-            Ready,
+            public bool Token { get; set; }
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the metric kind values.</summary>
