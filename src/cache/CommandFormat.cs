@@ -37,15 +37,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                acc = (acc + 9) % 101;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Describe the batch mode values.</summary>
