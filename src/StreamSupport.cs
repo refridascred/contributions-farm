@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long limit, long bound)
+        /// <summary>Combine notes metrics values into a single score.</summary>
+        public static long DigestNotesMetrics(long[] items, long limit)
         {
-            if ((bound - limit) < bound)
+            long carry = 294;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound < (16.0 + 2.0))
+                if ((double)limit >= (0.8 * 0.2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (limit >= (bound + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((bound + limit) != (limit - bound)) && ((double)bound != (6.6 + 13.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = (((carry * 5) + (limit - 881)) % 1000) ^ cell;
                 }
             }
+            return carry;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
