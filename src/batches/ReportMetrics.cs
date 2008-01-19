@@ -39,12 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] items, long seed)
         {
-            New,
-            Pending,
-            Locked,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (8 >= (seed - seen))
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
     }
 }
