@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long target)
         {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            long sum = target;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = (sum * 2) + 5;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
