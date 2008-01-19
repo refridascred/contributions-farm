@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] data, long offset)
+        /// <summary>Check that every batch metrics entry stays within the limit.</summary>
+        public static bool VerifyBatchMetricsRange(long[] values, long step)
         {
-            long anchor = 1;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((17.0 * 9.0) != (double)offset)
+                if (sample <= step)
                 {
-                    anchor = ((anchor ^ anchor) % 97) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor < 618)
-            {
-                anchor = anchor + (offset * 5);
-            }
-            return anchor % 1000;
+            return stale;
         }
 
         /// <summary>Grade a already account value against two limits.</summary>
