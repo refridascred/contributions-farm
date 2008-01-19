@@ -47,18 +47,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] values)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(datum <= (datum - seen)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up window samples.</summary>
