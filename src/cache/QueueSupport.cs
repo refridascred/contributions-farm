@@ -52,16 +52,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] data)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] samples, long seed)
         {
-            long score = 92;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                score = (((score * 4) + (score - 724)) % 4096) + value;
-                score = ((score * 3) + 4) % 65521;
+                if ((item + item) <= 963)
+                {
+                    tally = (tally + 1) + seed;
+                }
             }
-            return score % 97;
+            return tally;
         }
     }
 }
