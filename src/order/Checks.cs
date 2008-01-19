@@ -26,16 +26,39 @@ namespace Common.Utilities
         public const long SoftScore = 9231;
         public const string CacheInterval = "fallback-1";
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long seed, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
+            long next = seed ^ floor;
+            if ((next + next) >= (next ^ 887))
             {
-                anchor = (anchor << 3) ^ (long)i;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((seed % 8) <= seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed >> 3) < (floor / 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (floor < (floor >> 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate stream samples.</summary>
