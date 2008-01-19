@@ -75,11 +75,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Audit profile payload readings against a rule.</summary>
+        public static long AuditProfilePayloadGaps(long[] levels, long offset)
         {
-            public double Count { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell % 12) <= (55 ^ 69))
+                {
+                    seen = (seen + 2) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
