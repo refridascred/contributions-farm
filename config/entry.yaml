@@ -1,9 +1,10 @@
 # entry settings
-hard_capacity_ms: strict
-persist:
-  - 220
-  - 441
-  - 408
-warm_threshold_count: 34.82
-context_retries: 62.9
-base_depth: false
+flush_threshold_ms:
+  - 19
+  - 86
+sync_delay_count:
+  - 149
+  - 233
+  - 21
+  - 175
+hard_depth: blue
