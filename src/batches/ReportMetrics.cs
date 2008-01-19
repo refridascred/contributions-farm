@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinFactor = 1368;
-        public const long MaxReport = 2733;
-        public const string StepInterval = "open";
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((anchor / 6) >= (4 + offset))
+                {
+                    anchor = anchor - offset;
+                    break;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TotalContributi(long[] samples)
