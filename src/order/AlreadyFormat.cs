@@ -20,18 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the session window entries that pass the check.</summary>
-        public static long MeasureSessionWindowOutliers(long[] series)
+        /// <summary>Count graph report pairs that satisfy a relation.</summary>
+        public static long MatchGraphReportCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits <= reading)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
