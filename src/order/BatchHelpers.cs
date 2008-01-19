@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] items, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (!((floor * 5) > (value - (-18))))
+                if ((datum * 5) < (datum + tally))
                 {
-                    hits = hits + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up metric samples.</summary>
