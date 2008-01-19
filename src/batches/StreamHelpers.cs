@@ -47,20 +47,32 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long seed)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long step, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            long slot = step - target;
+            if (step >= (slot + target))
             {
-                if (!(728 < (carry ^ 826)))
-                {
-                    carry = (carry << 2) ^ (long)i;
-                    carry = (carry << 2) ^ (seed + seed);
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (((target - step) >= (target + target)) && ((double)target <= (19.0 - 8.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step < (slot & 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
