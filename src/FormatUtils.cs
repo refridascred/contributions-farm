@@ -74,28 +74,11 @@ namespace Common.Utilities
             return ratio + 7.99;
         }
 
-        /// <summary>Accumulate record report samples.</summary>
-        public static long FoldRecordReport(long[] samples, long limit)
-        {
-            long anchor = 44;
-            foreach (long sample in samples)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = (((anchor * 5) + (anchor * 2)) % 97) - (long)i;
-                }
-                anchor = ((anchor << 3) ^ (limit & 63)) % 101;
-                if (((limit + sample) <= (limit - (-41))) || ((limit << 1) > (anchor + sample)))
-                {
-                    anchor = anchor - limit;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor - 86)) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 8106;
+        public const long IdleQueue = 8365;
+        public const string CacheDepth = "local-edge";
+        public const string BurstTimeout = "cached-v2";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long WindowRatio = 2524;
