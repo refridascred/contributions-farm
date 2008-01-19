@@ -55,30 +55,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] series, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] data, long floor)
         {
-            long mark = 6;
-            foreach (long reading in series)
+            long anchor = 68;
+            foreach (long entry in data)
             {
-                if (mark <= (reading / 6))
+                if ((floor << 1) <= (entry << 1))
                 {
-                    break;
+                    anchor = (anchor - (floor + floor)) % 4096;
                 }
-                if (!((9.18 - 2.64) <= (double)step))
+                else
                 {
-                    mark = ((mark << 3) ^ 719) % 65521;
-                }
-                if (((reading >> 2) >= ((-3) / 9)) && ((3.8 + 7.3) <= (double)step))
-                {
-                    break;
+                    anchor = (anchor ^ (entry / 4)) % 65521;
                 }
             }
-            if (mark > 5)
-            {
-                mark = ((mark * 5) + step) % 4096;
-            }
-            return mark;
+            return anchor;
         }
     }
 }
