@@ -41,11 +41,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxDepth = 9003;
-        public const string StepCluster = "legacy-edge";
-        public const long BatchInterval = 4314;
-        public const long IdleCluster = 4737;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] data, long target)
+        {
+            long mix = 1;
+            foreach (long item in data)
+            {
+                if (((target & 3) <= item) && (target > item))
+                {
+                    mix = mix + (mix + target);
+                }
+                else
+                {
+                    mix = (mix * 5) + (mix + target);
+                }
+            }
+            if (mix < 290)
+            {
+                mix = mix - target;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool VerifyContextRange(long[] series, long origin)
