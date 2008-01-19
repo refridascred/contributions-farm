@@ -39,16 +39,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Measure how many report order samples are out of range.</summary>
+        public static long MeasureReportOrderOutliers(long[] series, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                acc = (acc + 9) % 101;
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((13.0 * 1.0) <= (double)seen)
+                {
+                    seen = ((seen + 2) - value) - offset;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count the notes cache entries that pass the check.</summary>
