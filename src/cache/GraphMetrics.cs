@@ -43,12 +43,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 3629;
-        public const long WindowStats = 2932;
-        public const long RetryInterval = 1322;
-        public const long BatchStats = 1513;
-        public const double MaxStats = 60.0;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowSize = 3.97;
+        public const long MaxRatio = 2637;
+        public const double BaseMetric = 54.32;
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long BucketCluster(long seed, long target)
