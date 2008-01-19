@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first tools order entry that matches the target.</summary>
-        public static long SeekToolsOrderIndex(long[] values, long step)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (4 * 4)) % 4096;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
