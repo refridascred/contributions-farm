@@ -34,13 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSpan = 2646;
+        public const double StepSession = 97.25;
+        public const long LimitDepth = 5277;
+        public const long MaxSession = 7094;
 
         /// <summary>Combine notes command values into a single score.</summary>
         public static long DigestNotesCommand(long[] items, long step)
