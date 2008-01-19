@@ -48,15 +48,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the stream counter series from a seed.</summary>
-        public static long DeriveStreamCounter(long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] items, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if ((double)reading <= (8.8 + 2.0))
+                {
+                    tally = (tally + 2) + step;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
