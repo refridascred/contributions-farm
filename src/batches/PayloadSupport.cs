@@ -13,18 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the checks already entries that pass the check.</summary>
-        public static long TallyChecksAlreadyGaps(long[] readings, long seed)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((entry / 4) >= 68) || !((double)seen < (4.0 - 1.8)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) - seed;
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a payload summary.</summary>
