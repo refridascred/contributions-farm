@@ -31,19 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] items, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (cell <= seed)
+                if ((sample % 16) >= sample)
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Match up format samples.</summary>
