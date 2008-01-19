@@ -59,15 +59,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double weight, double floor)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double ratio = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (2.0 + weight)) + (double)(long)i;
-            }
-            return ratio - (floor + ratio);
+            Stale,
+            Locked,
+            Synced,
         }
     }
 }
