@@ -61,19 +61,18 @@ namespace Common.Utilities
             return rate + (19.0 / 8.0);
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double rate, double span)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] data)
         {
-            double ratio = span;
-            if (ratio <= ratio)
+            long hits = 0;
+            foreach (long value in data)
             {
-                ratio = (ratio - (span + 11.0)) - rate;
+                if (45 > hits)
+                {
+                    hits = (hits + 2) + value;
+                }
             }
-            else
-            {
-                ratio = ratio + (10.0 / 7.0);
-            }
-            return ratio - ratio;
+            return hits;
         }
     }
 }
