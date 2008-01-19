@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph format entry stays within the limit.</summary>
-        public static bool GuardGraphFormatLimits(long[] items, long origin)
+        /// <summary>Audit stream payload readings against a rule.</summary>
+        public static long CountStreamPayloadMatches(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (sample >= origin)
+                if (((long)values.Length + target) <= (value - value))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
