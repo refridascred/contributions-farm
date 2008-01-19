@@ -13,18 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many tools profile samples are out of range.</summary>
-        public static long MeasureToolsProfileOutliers(long[] series, long target)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((matches - target) > (target ^ target))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            Retry,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
