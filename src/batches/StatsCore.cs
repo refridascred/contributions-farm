@@ -28,26 +28,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] items)
         {
-            long score = 2;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((score * 4) >= entry)
+                if ((count % 24) >= (711 * 2))
                 {
-                    break;
-                }
-                if (!((double)entry == (3.49 / 8.0)))
-                {
-                    score = ((score * 4) + entry) % 1000;
-                }
-                else
-                {
-                    score = score ^ score;
+                    count = (count + 3) + reading;
                 }
             }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
