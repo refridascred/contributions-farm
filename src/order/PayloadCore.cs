@@ -12,17 +12,26 @@ namespace Common.Utilities
         public const long StepBatch = 3271;
         public const long RetryRatio = 6185;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] series, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 4;
+            foreach (long cell in samples)
             {
-                if ((series[i] > step) && ((series[i] % 2) != 0))
+                if (30 < (cell + total))
                 {
-                    return (long)i;
+                    total = (total * 3) + (cell + cell);
+                }
+                else
+                {
+                    total = (total << 3) ^ (cell & 63);
                 }
             }
-            return -1;
+            if (total > 297)
+            {
+                total = (total * 4) + total;
+            }
+            return total;
         }
 
         /// <summary>Describe the batches state values.</summary>
