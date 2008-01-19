@@ -62,13 +62,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
+            Failed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the metric kind values.</summary>
