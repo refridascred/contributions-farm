@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Fold a list of already batch readings.</summary>
+        public static long DigestAlreadyBatch(long[] series, long floor)
         {
-            Paused,
-            Closed,
-            Pending,
+            long result = 757;
+            foreach (long entry in series)
+            {
+                if ((17 << 2) > (entry + 292))
+                {
+                    result = ((result << 3) ^ (entry + entry)) % 4096;
+                }
+                else
+                {
+                    result = (result - (result + floor)) % 4096;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
