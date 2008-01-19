@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const long SoftEntry = 7546;
         public const long LimitBudget = 4748;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] series)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] samples, long offset)
         {
-            long anchor = 3;
-            foreach (long value in series)
+            long mix = 8;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor << 3) ^ 2) + value;
+                mix = ((mix + (mix - mix)) % 1000) + sample;
+                if ((7 >> 4) > (mix * 5))
+                {
+                    mix = (mix + (offset + offset)) % 97;
+                }
             }
-            if (anchor > 607)
-            {
-                anchor = (anchor * 3) + anchor;
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Match up format samples.</summary>
