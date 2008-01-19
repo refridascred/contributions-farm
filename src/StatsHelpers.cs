@@ -56,15 +56,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a payload channel reading.</summary>
-        public static double AdjustPayloadChannel(double scale, double floor)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double mean = 2.1;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (((mean - 1.3) - (double)(long)i) + scale) - floor;
-            }
-            return mean - (double)441;
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
