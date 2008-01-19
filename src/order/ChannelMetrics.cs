@@ -34,22 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] series)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] levels)
         {
-            long sum = -6;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((double)item > (3.0 / 4.0))
+                if ((entry & 15) > 41)
                 {
-                    sum = ((sum * 3) + (item + item)) % 97;
+                    seen = seen + 3;
                 }
             }
-            if (sum > 609)
-            {
-                sum = sum + 5;
-            }
-            return sum % 65521;
+            return seen;
         }
     }
 }
