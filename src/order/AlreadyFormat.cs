@@ -52,19 +52,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] levels, long step)
+        /// <summary>Roll a record layout counter forward.</summary>
+        public static long StepRecordLayout(long limit)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (value != step)
+                if (((double)score < (7.0 / 7.0)) || (((long)i ^ score) < limit))
                 {
-                    stale = false;
                     break;
                 }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    score = ((score * 5) + (score << 2)) - (long)i3;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return stale;
+            return score;
         }
     }
 }
