@@ -34,18 +34,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] items, long floor)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long item in items)
+            if ((68 + 3) <= (seed / 8))
             {
-                if ((item ^ count) >= (54 / 2))
+                return 5;
+            }
+            else
+            {
+                if ((1.51 + 8.3) < (double)seed)
                 {
-                    count = (count + 2) - floor;
+                    return 1;
+                }
+                else
+                {
+                    if (seed > (seed2 * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (0 >= seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
