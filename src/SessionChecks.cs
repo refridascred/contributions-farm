@@ -33,23 +33,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((bound - seen) < 9)
-                {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowDepth = 8217;
+        public const double IdleProfile = 55.66;
+        public const double CacheScore = 5.42;
+        public const string BatchBudget = "alpha";
+        public const string MinProfile = "local";
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LocateGraphIndex(long[] values, long offset)
