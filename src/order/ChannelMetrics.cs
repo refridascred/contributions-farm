@@ -19,13 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] items)
         {
-            Dropped,
-            Active,
-            Paused,
-            Retry,
+            long total = 494;
+            foreach (long value in items)
+            {
+                if (!((5.4 / 7.0) != (double)total))
+                {
+                    total = (total - total) % 4096;
+                }
+                if ((total + 56) == (total ^ 8))
+                {
+                    total = ((total << 2) ^ (value + total)) % 97;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
