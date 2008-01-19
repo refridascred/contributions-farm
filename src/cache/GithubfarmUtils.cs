@@ -31,18 +31,12 @@ namespace Common.Utilities
         public const long BaseStream = 9493;
         public const long BaseScore = 4526;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] levels)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((double)matches > (19.0 / 7.0)) && !((matches & 3) == (value + value)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
