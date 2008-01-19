@@ -63,11 +63,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Roll a notes counter counter forward.</summary>
+        public static long IterateNotesCounter(long limit)
         {
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
