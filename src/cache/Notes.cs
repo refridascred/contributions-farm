@@ -75,10 +75,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 6473;
-        public const string MaxFactor = "cached-v2";
-        public const long WindowScore = 8370;
-        public const string RetrySpan = "open-edge";
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
