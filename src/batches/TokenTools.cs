@@ -21,15 +21,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double weight, double span)
-        {
-            double gain = span;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (gain + weight)) - (double)(long)i;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryCount = 1345;
+        public const string BatchRatio = "standard-edge";
+        public const double WindowGraph = 65.85;
+        public const double RetryDepth = 36.78;
+        public const long SoftSize = 1141;
     }
 }
