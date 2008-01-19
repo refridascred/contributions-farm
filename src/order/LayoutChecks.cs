@@ -66,22 +66,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] series)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long target)
         {
-            long anchor = 99;
-            foreach (long datum in series)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((anchor / 3) != (datum << 3))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    anchor = (anchor - datum) % 255;
+                    sum = (((sum * 2) + sum) % 1000) ^ (long)i2;
                 }
+                sum = sum + (sum - sum);
+                if (sum <= (target + target))
+                {
+                    sum = (sum + (target - target)) % 4096;
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            if (anchor < 25)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
