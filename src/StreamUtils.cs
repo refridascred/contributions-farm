@@ -33,11 +33,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheInterval = 7656;
-        public const double MaxContributi = 3.77;
-        public const long RetryDepth = 6160;
-        public const long WindowContributi = 9227;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((seed - seed) > (carry & 255)) || ((double)24 != (double)carry))
+                {
+                    carry = (carry + seed) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long DefaultRatio = 5094;
