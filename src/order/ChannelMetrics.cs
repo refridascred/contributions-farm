@@ -38,24 +38,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long target, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] items, long seed)
         {
-            if ((target * 4) >= target)
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (target > limit)
+                if (value <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
