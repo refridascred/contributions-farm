@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] values, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a metric options.</summary>
