@@ -1,8 +1,6 @@
-id,rank,count
-1,staging,103
-2,84.22,98.62
-3,37.92,latest
-4,fallback,strict
-5,legacy,blue
-6,347,cached
-7,30.7,180
+id,token
+1,legacy
+2,local
+3,230
+4,38.08
+5,655
