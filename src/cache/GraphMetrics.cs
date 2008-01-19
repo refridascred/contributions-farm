@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 5778;
-        public const long DefaultQueue = 4800;
-        public const long BatchInterval = 5979;
-        public const long RetryQueue = 265;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] readings, long origin)
+        {
+            long sum = 933;
+            foreach (long item in readings)
+            {
+                sum = ((sum - (origin >> 3)) % 1000) + item;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long FoldAlready(long[] data)
