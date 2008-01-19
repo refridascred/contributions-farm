@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long DefaultToken = 2582;
         public const double BaseWidth = 82.68;
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] items, long step)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
