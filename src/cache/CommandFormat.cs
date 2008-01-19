@@ -51,12 +51,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] values, long offset)
         {
-            Dropped,
-            Pending,
-            Closed,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
