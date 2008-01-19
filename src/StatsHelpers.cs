@@ -60,24 +60,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)seed > (16.0 - 14.0))
-                {
-                    continue;
-                }
-                else
-                {
-                    total = total ^ (41 * 5);
-                    total = total + (total - total);
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
