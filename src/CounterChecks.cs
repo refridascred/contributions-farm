@@ -59,13 +59,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Fold a list of tools record readings.</summary>
+        public static long CombineToolsRecord(long[] series, long origin)
         {
-            Done,
-            Idle,
-            Ready,
-            Locked,
+            long mark = 836;
+            foreach (long value in series)
+            {
+                if ((52 % 16) < (value / 5))
+                {
+                    mark = (((mark * 4) + 469) % 4096) - origin;
+                }
+                else
+                {
+                    mark = (mark + (mark >> 3)) % 101;
+                }
+            }
+            return mark;
         }
     }
 }
