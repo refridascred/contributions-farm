@@ -1,4 +1,4 @@
 # githubfarm settings
-sync_retries_ms: staging
-base_delay_pct: 6221
-format_ttl: legacy
+queue_size: 4
+hard_timeout_s: 61.73
+compress: 8321
