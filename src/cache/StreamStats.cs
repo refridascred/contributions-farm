@@ -50,19 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] series)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (total > (offset % 5))
+                if ((cell * 4) < (cell + 54))
                 {
-                    total = (total ^ 24) % 65521;
+                    count = count + 3;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
     }
 }
