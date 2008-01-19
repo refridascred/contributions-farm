@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a profile queue pair into a bucket.</summary>
-        public static long BucketProfileQueue(long floor, long offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long slot = floor - offset;
-            if ((slot * 3) >= (offset - floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (slot > (slot + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the cluster class values.</summary>
