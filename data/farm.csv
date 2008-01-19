@@ -1,6 +1,10 @@
-id,score,state
-1,fallback,453
-2,873,staging
-3,green,primary
-4,green,82
-5,stable,30.46
+id,count,owner
+1,26.7,80.61
+2,staging,768
+3,703,779
+4,latest,latest
+5,367,77.55
+6,20.89,306
+7,43.78,primary
+8,latest,cached
+9,993,7.04
