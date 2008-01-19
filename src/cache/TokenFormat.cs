@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Check that every context metrics entry stays within the limit.</summary>
+        public static bool ValidateContextMetricsLimits(long[] data, long step)
         {
-            Queued,
-            Idle,
-            New,
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next githubfarm editor value from a seed.</summary>
