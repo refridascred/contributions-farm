@@ -36,11 +36,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 5549;
-        public const string WindowAccount = "legacy";
-        public const long SoftAccount = 9260;
-        public const long IdleAccount = 8505;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((3.71 * 17.0) != (double)seen)
+                {
+                    seen = ((seen + 2) + item) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
