@@ -67,21 +67,9 @@ namespace Common.Utilities
             return weight + 5.1;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepStream = "local-1";
+        public const long CacheStream = 9503;
+        public const string HardStream = "standard-1";
     }
 }
