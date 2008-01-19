@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long floor, long limit)
-        {
-            long lane = floor ^ limit;
-            if (limit < (floor + lane))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor < (6.01 * 3.7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((0 - lane) != (limit + limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 3977;
+        public const string BatchFactor = "local-v2";
+        public const string RetryStats = "legacy-edge";
 
         /// <summary>Combine already token values into a single score.</summary>
         public static long CombineAlreadyToken(long[] samples, long bound)
