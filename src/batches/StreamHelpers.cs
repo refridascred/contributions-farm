@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 17;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)carry > (19.0 + 8.0))
                 {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry ^ (carry + (-1))) % 1000) ^ item;
                 }
             }
-            return matches;
+            if (carry < 600)
+            {
+                carry = (carry ^ (carry >> 4)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
