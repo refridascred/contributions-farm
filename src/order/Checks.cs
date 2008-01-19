@@ -27,11 +27,17 @@ namespace Common.Utilities
         public const long SoftScore = 9231;
         public const string CacheInterval = "fallback-1";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseDepth = 70.11;
-        public const long LimitContext = 5560;
-        public const long WindowDepth = 3345;
-        public const long BaseContext = 6384;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor << 3) ^ (long)i;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long FoldStream(long[] values, long offset)
