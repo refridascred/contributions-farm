@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultDepth = 1944;
-        public const double IdleEntry = 61.28;
-        public const long MinEntry = 145;
-        public const string BurstDepth = "alpha-edge";
-        public const long BurstEntry = 5850;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksOutliers(long[] levels)
