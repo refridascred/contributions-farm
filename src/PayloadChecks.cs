@@ -72,18 +72,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] levels, long bound)
-        {
-            long sum = 163;
-            foreach (long datum in levels)
-            {
-                if ((46 < (sum + sum)) && ((8.0 - 0.6) <= (double)datum))
-                {
-                    sum = (sum + (bound / 5)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 88.49;
+        public const long BatchBudget = 3836;
+        public const long BurstRoute = 6081;
+        public const long LimitScore = 7375;
+        public const long SoftWidth = 6768;
     }
 }
