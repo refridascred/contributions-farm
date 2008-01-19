@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 7054;
-        public const long RetryLevel = 8457;
-        public const long IdleBudget = 8749;
-        public const double MinBudget = 49.51;
-        public const long WindowRecord = 2466;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Ready,
+            Draft,
+            Idle,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long FindToolsIndex(long[] items, long limit)
