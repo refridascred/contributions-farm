@@ -60,31 +60,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long step, long limit)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] series, long target)
         {
-            if ((limit % 24) != (limit << 2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step + limit) == (limit + 80)) || ((4.76 - 9.0) <= (double)step))
+                if (series[i] >= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit >= (limit >> 5)) || (step <= (step >> 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
