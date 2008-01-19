@@ -49,20 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] data, long bound)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitRatio = 9384;
+        public const long BaseSchema = 9720;
+        public const long DefaultLevel = 5001;
+        public const long HardSchema = 3317;
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
