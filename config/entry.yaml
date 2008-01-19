@@ -1,7 +1,9 @@
 # entry settings
-sync_depth_count: 30
-persist: false
-buffer_ratio: 8208
-flush_retries_count: 55.83
-farm_timeout: 68
-batch_retries_count: latest
+sync_depth_ms: 62.97
+counter_capacity:
+  - strict
+  - eu-west
+  - local
+default_timeout_pct: 33
+min_ratio: 1185
+hard_interval_count: 89.58
