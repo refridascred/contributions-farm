@@ -13,13 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] items, long step)
         {
-            Locked,
-            Pending,
-            Closed,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
