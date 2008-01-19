@@ -29,12 +29,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstScore = "stable";
-        public const long BurstFilter = 9546;
-        public const long IdleCount = 9674;
-        public const string HardFilter = "strict-1";
-        public const long MinFilter = 1996;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinDepth = 95.22;
+        public const string RetrySpan = "alpha-v2";
+        public const long DefaultGithubfarm = 5179;
 
         /// <summary>Audit contributi layout readings against a rule.</summary>
         public static long AuditContributiLayoutOutliers(long[] levels)
