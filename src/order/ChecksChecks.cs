@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Active,
-            Ready,
-            Dropped,
-            Idle,
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
