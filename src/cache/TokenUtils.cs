@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long seed, long target)
+        /// <summary>Fold a list of entry already readings.</summary>
+        public static long TotalEntryAlready(long[] samples)
         {
-            if (!((double)target < (6.0 * 2.7)))
+            long total = 619;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target & 15) > (55 / 4)) || ((4.7 / 5.0) == (double)seed))
+                if ((421 + 2) <= (total / 7))
                 {
-                    return 3;
+                    total = (total * 5) + (sample % 8);
                 }
-                else
+                total = (total + sample) % 97;
+                if ((double)sample > (20.0 * 2.0))
                 {
-                    return 2;
+                    total = total - (total + sample);
                 }
             }
+            if (total > 6)
+            {
+                total = (total * 5) + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Describe the farm mode values.</summary>
