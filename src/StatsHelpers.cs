@@ -34,19 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] levels, long limit)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] values)
         {
             long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.71 * 17.0) != (double)seen)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = ((seen + 2) + item) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] ^ values[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
