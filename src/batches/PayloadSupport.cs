@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
+            Failed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
