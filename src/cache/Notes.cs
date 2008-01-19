@@ -64,15 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] readings, long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            long state = -1;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                state = (state + (step & 255)) ^ entry;
             }
-            return acc;
+            return state % 65521;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
