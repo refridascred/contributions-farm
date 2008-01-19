@@ -1,9 +1,7 @@
-id,token,score,active
-1,cached,green,35.23
-2,blue,21.92,staging
-3,352,staging,22.35
-4,local,67.73,eu-west
-5,local,stable,69.25
-6,10.73,23.81,57.51
-7,76.22,open,663
-8,97.74,local,41.1
+id,ratio,count,level,score
+1,fallback,21.83,6.75,616
+2,480,66.55,legacy,917
+3,21.91,861,37.45,55.32
+4,57.69,fallback,30,74.93
+5,stable,918,stable,open
+6,open,latest,95.78,96.18
