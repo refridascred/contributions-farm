@@ -51,5 +51,17 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 2) + (state / 5)) % 1000;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
