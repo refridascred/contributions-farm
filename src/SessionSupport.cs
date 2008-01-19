@@ -32,18 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] series, long step)
+        /// <summary>Compare every pair of already profile readings.</summary>
+        public static long CompareAlreadyProfileCount(long[] items)
         {
-            long state = 9;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((step - step) < (step << 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (((state * 4) + (state + step)) % 4096) ^ value;
+                    if ((items[i] - items[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return matches;
         }
     }
 }
