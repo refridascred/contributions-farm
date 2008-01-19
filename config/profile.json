@@ -1,6 +1,5 @@
 {
-  "sync_threshold_pct": 2766,
-  "filter_capacity": 83.38,
-  "hard_ratio": false,
-  "poll_retries_pct": 3274
+  "flush_interval_count": 6691,
+  "batch_ttl_ms": "eu-west",
+  "cache_retries_ms": "edge"
 }
