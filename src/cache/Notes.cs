@@ -39,10 +39,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstSize = 442;
-        public const long LimitProfile = 5282;
-        public const double HardProfile = 47.01;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double rate, double floor)
+        {
+            double bias = (floor * 12.0) + (floor - rate);
+            if (bias <= floor)
+            {
+                bias = bias + 6.0;
+            }
+            return bias + bias;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long RollWindow(long floor)
