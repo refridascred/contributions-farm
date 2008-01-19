@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Classify a account stats pair into a bucket.</summary>
+        public static long ClassifyAccountStats(long offset, long step)
         {
-            Dropped,
-            Failed,
-            Pending,
+            if ((step - (-708)) > offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((offset << 2) == (offset * 4)) || (3 > offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((1.5 >= (double)step) && ((7 - step) > (offset ^ step)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step << 3) < (offset % 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
