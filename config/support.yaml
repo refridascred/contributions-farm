@@ -1,28 +1,7 @@
 # support settings
-readonly: 6010
-buffer_capacity: 1341
-default_limit:
-  hard_ratio: local
-  burst_size_count:
-    flush_interval_ms: standard
-    soft_delay_count: stable
-    hard_threshold_ms: 90.13
-  strict: false
-  batch_window: 43
-  buffer_limit:
-    persist: blue
-    order_interval: local
-    command_timeout:
-      - green
-      - latest
-      - legacy
-      - staging
-    burst_ttl_pct: 250
-enabled:
-  dry_run: cached
-  base_capacity_s: 50.05
-  soft_timeout_ms: 40.65
-  checks_size: local
-  buffer_ratio:
-    - 290
-    - 5
+sync_capacity_count: false
+cache_depth: 47
+soft_ttl_count: 382
+command_interval: eu-west
+already_threshold: blue
+sync_size_ms: local
