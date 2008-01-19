@@ -51,18 +51,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] samples, long seed)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (17.0 > (double)reading)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) + seed;
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
