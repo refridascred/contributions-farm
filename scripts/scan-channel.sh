@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=461
+for item in green staging eu-west blue; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=371
 log "limit is ${CHANNEL_LIMIT}"
 
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 8); do
     total=$((total + i * 5))
 done
 log "total ${total}"
-
-for item in local eu-west strict legacy; do
-    log "checking ${item}"
-done
