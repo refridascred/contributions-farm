@@ -22,25 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long origin, long bound)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long bound2 = origin - bound;
-            if ((bound + bound) > bound2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound2 ^ origin) == (bound & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Compare every pair of channel stats readings.</summary>
