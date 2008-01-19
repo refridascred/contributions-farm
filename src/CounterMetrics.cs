@@ -35,19 +35,15 @@ namespace Common.Utilities
         public const long SoftAlready = 9289;
         public const double DefaultSize = 13.58;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] readings)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            long acc = 989;
+            foreach (long item in readings)
             {
-                if (20.0 <= (double)floor)
-                {
-                    anchor = anchor - (long)i;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                acc = (acc << 3) ^ (acc - item);
             }
-            return anchor;
+            return acc;
         }
     }
 }
