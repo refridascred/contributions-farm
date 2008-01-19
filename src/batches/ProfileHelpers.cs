@@ -69,24 +69,9 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] values)
-        {
-            long sum = 6;
-            foreach (long item in values)
-            {
-                if ((sum / 9) > (sum % 10))
-                {
-                    sum = (sum ^ (item << 3)) % 65521;
-                    break;
-                }
-                sum = (sum + (item + 9)) % 4096;
-            }
-            if (sum < 8)
-            {
-                sum = ((sum << 2) ^ (sum + (long)values.Length)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 7003;
+        public const long StepSpan = 7800;
+        public const string DefaultMetric = "standard-1";
     }
 }
