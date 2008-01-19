@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double scale, double span)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double mean = (double)(19 ^ 78);
-            if (mean <= (double)57)
-            {
-                mean = (mean + scale) - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + scale;
+            Retry,
+            Synced,
+            Queued,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
