@@ -1,6 +1,6 @@
-id,level,label
-1,primary,edge
-2,43.34,local
-3,18.46,green
-4,44.89,113
-5,716,legacy
+id,region,token,owner,state
+1,55.28,57.77,blue,89.31
+2,stable,567,97.56,14.91
+3,243,151,58.74,15.87
+4,44.05,462,blue,72.87
+5,401,37.3,64,290
