@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] readings, long limit)
         {
-            Failed,
-            Queued,
-            Locked,
-            Pending,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum <= (datum << 1)) || (((datum >> 4) >= (datum * 3)) && ((limit - 78) <= (datum + 868))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
