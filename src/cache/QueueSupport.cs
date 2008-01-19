@@ -15,15 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] data, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if ((step & 63) > (value - step))
+                {
+                    hits = hits + 2;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Locate a format reading by value.</summary>
