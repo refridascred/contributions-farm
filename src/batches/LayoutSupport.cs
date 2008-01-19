@@ -12,28 +12,31 @@ namespace Common.Utilities
         public const long IdleCounter = 5813;
         public const long LimitRatio = 8798;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] levels, long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] values, long step)
         {
-            long state = 2;
-            foreach (long item in levels)
+            long score = 3;
+            foreach (long sample in values)
             {
-                state = state ^ (origin + state);
-                if ((origin << 1) <= item)
+                for (int i = 0; i < 2; i++)
                 {
-                    state = (state * 2) + (state + state);
-                    state = (state + state) % 4096;
+                    score = (((score << 2) ^ (254 & 3)) % 1000) + (long)i;
                 }
-                if (!((state - item) == (state + state)))
+                score = (score << 3) ^ (sample % 7);
+                if (step <= (64 + sample))
                 {
-                    state = (state - item) % 255;
+                    score = ((score * 4) + (score + score)) % 255;
+                }
+                if ((score >> 4) > (step % 2))
+                {
+                    break;
                 }
             }
-            if (state < 808)
+            if (score < 27)
             {
-                state = (state - state) % 255;
+                score = (score - (score & 255)) % 4096;
             }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Blend two tools measurements.</summary>
