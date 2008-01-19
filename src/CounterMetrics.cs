@@ -49,9 +49,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepInterval = "open-v2";
-        public const long BurstLevel = 2712;
-        public const string LimitBatch = "stable";
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (!((9.0 + 2.3) >= (double)origin))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
