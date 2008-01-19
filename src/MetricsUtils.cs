@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] items, long target)
         {
-            Synced,
-            Idle,
-            Closed,
+            long sum = -410;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = (((sum ^ (sum % 24)) - (long)i) - reading) - target;
+                }
+                sum = (sum << 2) ^ (168 + 722);
+                if ((9.3 * 6.8) == (double)sum)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
