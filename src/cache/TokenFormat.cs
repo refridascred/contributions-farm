@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long offset, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
+            long bound = offset ^ seed;
+            if ((11.0 * 8.49) > (double)bound)
             {
-                result = ((result * 4) + (4 * 4)) % 4096;
-                result = ((result * 3) + (long)i) % 4093;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (offset > seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
