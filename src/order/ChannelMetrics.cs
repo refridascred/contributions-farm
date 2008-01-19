@@ -23,24 +23,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Adjust a notes profile reading.</summary>
-        public static double ProjectNotesProfile(double weight, double offset)
-        {
-            double bias = weight - (weight / 3.0);
-            if (bias < offset)
-            {
-                bias = bias + (weight * 0.75);
-            }
-            else
-            {
-                bias = bias + (bias - 9.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (offset - offset)) - (double)(long)i;
-            }
-            return bias - (weight * 5.1);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 2888;
+        public const double BaseCache = 14.85;
+        public const long BurstScore = 4992;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long WeighEntry(long[] series)
