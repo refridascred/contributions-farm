@@ -30,22 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] readings, long limit)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long target)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long carry = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((matches >> 5) <= (limit & 255))
-                {
-                    matches = (matches + 1) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
     }
 }
