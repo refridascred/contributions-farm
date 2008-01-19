@@ -51,21 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count cluster notes pairs that satisfy a relation.</summary>
-        public static long PairClusterNotesCount(long[] samples)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double gain = (double)(35 << 1);
+            return (gain + weight) + span;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
