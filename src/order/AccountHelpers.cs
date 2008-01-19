@@ -70,17 +70,28 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Find the first token notes entry that matches the target.</summary>
-        public static long SeekTokenNotesIndex(long[] series, long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 795;
+            foreach (long item in data)
             {
-                if (series[i] == bound)
+                if (!((((long)data.Length ^ 8) > (item & 3)) || (acc <= (47 & 255))))
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + (offset / 6)) % 65521;
+                    acc = ((acc << 3) ^ (offset >> 5)) % 4096;
+                }
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = ((acc * 4) + 997) + (long)i;
+                }
+                acc = (acc - acc) % 255;
+                if ((6.82 - 13.0) >= (double)offset)
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
     }
 }
