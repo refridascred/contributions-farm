@@ -36,22 +36,19 @@ namespace Common.Utilities
         public const long SoftAlready = 9289;
         public const double DefaultSize = 13.58;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] items)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)datum > (7.0 - 3.0))
+                if (20.0 <= (double)floor)
                 {
-                    tally = tally + 3;
+                    anchor = anchor - (long)i;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
     }
 }
