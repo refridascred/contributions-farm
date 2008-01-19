@@ -19,31 +19,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long step, long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] levels, long bound)
         {
-            if ((step < (step - seed)) && ((step << 2) > seed))
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (2.94 > (double)seed)
+                if (datum <= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((313 & 3) < (step + seed)) && ((double)seed != (1.3 - 13.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a token options.</summary>
