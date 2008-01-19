@@ -23,25 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] series, long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] items)
         {
-            long score = 18;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                score = (score - (score << 3)) % 1000;
-                score = ((score * 2) + (limit + (long)series.Length)) % 65521;
-                score = score + (sample - limit);
-                if ((limit + score) < score)
+                if ((double)reading == (2.05 - 6.8))
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            if (score > 2)
-            {
-                score = (score ^ (limit % 2)) % 65521;
-            }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Roll a context counter forward.</summary>
