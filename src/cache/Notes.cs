@@ -92,15 +92,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] readings, long step)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long state = -1;
-            foreach (long entry in readings)
-            {
-                state = (state + (step & 255)) ^ entry;
-            }
-            return state % 65521;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
