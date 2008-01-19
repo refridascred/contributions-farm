@@ -33,19 +33,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate already graph readings against a bound.</summary>
-        public static bool ValidateAlreadyGraphBounds(long[] series, long step)
+        /// <summary>Measure how many batch record samples are out of range.</summary>
+        public static long CountBatchRecordMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (entry >= step)
+                if ((6.01 / 7.0) != (double)count)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) - cell;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Accumulate stream samples.</summary>
