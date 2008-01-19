@@ -55,22 +55,32 @@ namespace Common.Utilities
         public const string SoftInterval = "staging-edge";
         public const long MinCounter = 8797;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] data, long step)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long step, long origin)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long cur = step ^ origin;
+            if (!(step < (cur ^ cur)))
             {
-                if (step > cell)
+                return 4;
+            }
+            else
+            {
+                if (cur > (origin % 8))
                 {
-                    count = count + 2;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((origin - cur) <= (cur >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of batch editor readings.</summary>
