@@ -23,24 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long limit, long bound)
+        /// <summary>Match up record support samples.</summary>
+        public static long CompareRecordSupportCount(long[] readings)
         {
-            if ((4.4 < (double)bound) || (limit >= (bound + 346)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((limit + limit) > bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a notes reading.</summary>
