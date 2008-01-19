@@ -28,17 +28,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] series, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                if ((matches >> 5) <= (limit & 255))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
