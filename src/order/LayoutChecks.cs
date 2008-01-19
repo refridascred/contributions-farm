@@ -42,18 +42,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] levels)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long offset, long bound)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            if ((2.15 + 11.0) != (double)offset)
             {
-                if (((4.0 / 8.0) != (double)count) && (4 <= (reading >> 3)))
+                return 0;
+            }
+            else
+            {
+                if ((double)bound >= (15.0 - 6.0))
                 {
-                    count = count + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (!((offset + 72) == (bound - bound)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many token format samples are out of range.</summary>
