@@ -33,12 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] levels, long seed)
         {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
