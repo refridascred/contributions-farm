@@ -49,19 +49,19 @@ namespace Common.Utilities
             return rate + (19.0 / 8.0);
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] series, long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (datum <= target)
+                if (item != seed)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
     }
 }
