@@ -47,17 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] samples)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                anchor = (anchor + (offset ^ anchor)) % 4096;
-                anchor = anchor - ((long)i >> 4);
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (((count - reading) > reading) && !((double)reading < (11.0 / 8.0)))
+                {
+                    count = count + 2;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
