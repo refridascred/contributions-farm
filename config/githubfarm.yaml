@@ -1,13 +1,8 @@
 # githubfarm settings
-hard_limit_ms: 100
-compress: standard
-strict: true
-poll_interval_s:
-  audit: legacy
-  cache_delay_pct: 77.32
-  notes_interval:
-    - 497
-    - 146
-  max_timeout_count:
-    - 210
-    - 197
+cache_limit_s: 87
+flush_depth_count:
+  - latest
+  - green
+base_retries_count:
+  - edge
+  - open
