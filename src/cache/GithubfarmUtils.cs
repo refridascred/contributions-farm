@@ -60,19 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] data, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (value <= bound)
+                if (!((double)seen > 1.4))
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 3) + value) - bound;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
