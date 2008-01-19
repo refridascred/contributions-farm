@@ -60,17 +60,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] items, long limit)
+        /// <summary>Grade a batch route value against two limits.</summary>
+        public static long BucketBatchRoute(long bound, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((bound + target) == (target - 31))
             {
-                if ((items[i] <= limit) && ((items[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)target < (double)bound)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - target) < ((-41) - bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
