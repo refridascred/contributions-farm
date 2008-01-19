@@ -47,18 +47,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] data, long offset)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (!!(((long)data.Length << 3) <= matches))
-                {
-                    matches = ((matches + 3) ^ sample) + offset;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
