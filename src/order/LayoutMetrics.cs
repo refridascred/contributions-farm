@@ -11,21 +11,21 @@ namespace Common.Utilities
         public const long BaseStream = 7740;
         public const long SoftStream = 6834;
 
-        /// <summary>Match up format context samples.</summary>
-        public static long MatchFormatContextCount(long[] levels)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            long tally = 0;
+            long hits = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) < 17)
+                    if ((levels[i] ^ levels[j]) != 3)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a filter summary.</summary>
