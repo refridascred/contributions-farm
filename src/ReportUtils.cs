@@ -39,19 +39,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] items, long target)
+        /// <summary>Project the next stream batch value.</summary>
+        public static double BlendStreamBatch(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double gain = (double)(18 >> 3);
+            return ((gain - (double)4) + rate) + bias;
         }
 
         /// <summary>Digest a series of record entries.</summary>
