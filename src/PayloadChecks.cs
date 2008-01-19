@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((((double)sample >= (7.9 - 20.0)) || (((long)items.Length / 3) < sample)) || (((sample ^ 6) != ((-64) + hits)) && (635 >= (sample - sample))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryScore = 35.23;
+        public const long MaxChecks = 8778;
+        public const long WindowChecks = 9840;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchGaps(long[] levels)
