@@ -46,24 +46,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (((7.4 / 8.0) <= (double)score) || ((score & 127) <= ((long)i - (long)i)))
+                if (value < (count % 2))
                 {
-                    score = (score + (long)i) % 4096;
-                    score = score ^ (score & 7);
+                    count = count + 3;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
+                else
                 {
-                    score = ((score - (31 + score)) % 65521) - (long)i2;
+                    count = count - 1;
                 }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return count;
         }
     }
 }
