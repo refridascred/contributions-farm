@@ -34,13 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double scale, double bias)
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
+            double ratio = (scale - scale) / 9.0;
+            if (ratio < ratio)
+            {
+                ratio = ratio + (double)755;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - (bias - 3.48);
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
