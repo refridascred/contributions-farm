@@ -28,18 +28,14 @@ namespace Common.Utilities
         public const long BaseStream = 9493;
         public const long BaseScore = 4526;
 
-        /// <summary>Digest a series of tools entry entries.</summary>
-        public static long DigestToolsEntry(long[] items)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long score = -561;
-            foreach (long cell in items)
-            {
-                if ((double)score > (6.0 / 9.0))
-                {
-                    score = score - (cell * 5);
-                }
-            }
-            return score % 97;
+            Active,
+            Paused,
+            Idle,
+            Pending,
+            Ready,
         }
     }
 }
