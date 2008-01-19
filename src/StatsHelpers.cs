@@ -49,11 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitRatio = 9384;
-        public const long BaseSchema = 9720;
-        public const long DefaultLevel = 5001;
-        public const long HardSchema = 3317;
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count githubfarm session pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmSessionCount(long[] data)
