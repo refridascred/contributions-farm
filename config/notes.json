@@ -1,7 +1,20 @@
 {
-  "enabled": "legacy",
-  "min_window": "primary",
-  "base_depth": 41.16,
-  "verbose": false,
-  "record_interval": "green"
+  "githubfarm_depth": {
+    "strict": "latest",
+    "record_size": 24.86,
+    "flush_timeout_ms": true,
+    "readonly": {
+      "burst_ratio": [323, 395, 250, 59],
+      "soft_capacity_count": false,
+      "hard_ratio_pct": 64.71,
+      "batch_size_s": "eu-west",
+      "poll_window_ms": "edge",
+      "warm_retries_pct": 11.59
+    },
+    "idle_capacity": 24,
+    "warm_threshold": 14
+  },
+  "readonly": 500,
+  "stream_capacity": true,
+  "poll_window_count": "strict"
 }
