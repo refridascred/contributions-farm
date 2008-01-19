@@ -30,19 +30,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cache context entry stays within the limit.</summary>
-        public static bool ValidateCacheContextLimits(long[] items, long limit)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a token record.</summary>
