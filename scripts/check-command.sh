@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=105
+COMMAND_LIMIT=26
 log "limit is ${COMMAND_LIMIT}"
 
-for item in legacy green local fallback; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
