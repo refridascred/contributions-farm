@@ -127,22 +127,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already metric readings against a rule.</summary>
-        public static long MeasureAlreadyMetricMatches(long[] samples)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((13.0 - 2.4) < (double)reading)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Locked,
+            Closed,
+            Retry,
         }
     }
 }
