@@ -54,23 +54,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double gain, double floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long floor)
         {
-            double bias = (double)(9 * 4);
-            if (bias >= bias)
-            {
-                bias = (bias + (double)8) + floor;
-            }
-            else
-            {
-                bias = bias + (bias * 0.98);
-            }
+            long mix = floor;
             for (int i = 0; i < 7; i++)
             {
-                bias = (bias - gain) - (double)(long)i;
+                mix = (mix + (floor >> 5)) % 65521;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return bias + 8.0;
+            return mix;
         }
     }
 }
