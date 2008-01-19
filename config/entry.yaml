@@ -1,4 +1,15 @@
 # entry settings
-queue_retries: true
-hard_threshold_ms: 30
-metric_capacity: 100
+min_interval_count: 30
+compress: true
+poll_window:
+  - open
+  - staging
+enabled: true
+audit:
+  - staging
+  - standard
+window_retries:
+  poll_timeout: primary
+  hard_interval_pct: staging
+  already_retries: 3135
+  default_ratio_s: 9784
