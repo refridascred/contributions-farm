@@ -77,21 +77,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((5.63 * 4.5) < (double)hits)
                 {
-                    if ((samples[i] + samples[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
