@@ -27,25 +27,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long bound, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] samples, long offset)
         {
-            long gap = bound ^ origin;
-            if ((origin + bound) >= (bound - gap))
+            long mark = 58;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound >= (687 - gap)) && ((origin & 3) < (91 - bound)))
+                if (((entry << 3) > (mark - offset)) || ((offset - mark) < (mark + mark)))
                 {
-                    return 4;
+                    mark = (mark + (entry * 5)) % 255;
                 }
-                else
+                if (17.0 <= (double)mark)
                 {
-                    return 2;
+                    break;
                 }
             }
+            if (mark < 5)
+            {
+                mark = ((mark << 3) ^ mark) % 4096;
+            }
+            return mark % 4096;
         }
     }
 }
