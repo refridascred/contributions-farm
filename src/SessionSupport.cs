@@ -5,34 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] samples, long target)
+        /// <summary>Find the first schema layout entry that matches the target.</summary>
+        public static long SeekSchemaLayoutIndex(long[] items, long seed)
         {
-            long carry = 834;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (target >= (cell & 15))
+                if ((items[i] >= seed) && ((items[i] % 2) != 0))
                 {
-                    break;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-                if (cell <= carry)
-                {
-                    carry = carry - 7;
-                }
-                if (!((target ^ cell) <= carry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 0)
-            {
-                carry = ((carry << 2) ^ (34 / 9)) % 1000;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the token level values.</summary>
