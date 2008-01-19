@@ -1,23 +1,6 @@
 {
-  "cache_interval_ms": "latest",
-  "command_delay": "staging",
-  "readonly": {
-    "queue_size": true,
-    "hard_retries_pct": false,
-    "batch_ratio": 2
-  },
-  "enabled": {
-    "farm_timeout": {
-      "compress": 24.12,
-      "format_depth": true,
-      "batches_delay": 5659,
-      "soft_window_ms": "strict",
-      "audit": "staging"
-    },
-    "poll_window_ms": ["latest", "staging"],
-    "warm_ratio_ms": "standard",
-    "max_retries": 35,
-    "strict": false
-  },
-  "hard_timeout": ["edge", "blue", "local", "cached"]
+  "retry_timeout": 14.44,
+  "flush_ttl_ms": "strict",
+  "support_retries": "open",
+  "soft_timeout_pct": 27.76
 }
