@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] items, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] data)
         {
-            long sum = -410;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 4; i++)
+                if ((reading * 4) <= (reading + matches))
                 {
-                    sum = (((sum ^ (sum % 24)) - (long)i) - reading) - target;
-                }
-                sum = (sum << 2) ^ (168 + 722);
-                if ((9.3 * 6.8) == (double)sum)
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
