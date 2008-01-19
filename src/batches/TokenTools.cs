@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many channel contributi samples are out of range.</summary>
-        public static long AuditChannelContributiOutliers(long[] levels)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (((tally + value) > (22 * 3)) || (value >= (value + tally)))
+                if (reading <= step)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
