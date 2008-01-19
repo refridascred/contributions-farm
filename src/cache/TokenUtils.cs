@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheSpan = 5245;
-        public const long DefaultScore = 6719;
-        public const long SoftFilter = 6095;
-        public const long StepFilter = 5200;
-        public const long HardFactor = 5395;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Closed,
+            Retry,
+            Active,
+            Done,
+            Failed,
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamHits(long[] samples, long seed)
