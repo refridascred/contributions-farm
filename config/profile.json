@@ -1,5 +1,7 @@
 {
-  "compress": ["standard", "legacy", "stable"],
-  "hard_ttl_ms": ["strict", "strict", "green", "open"],
-  "soft_delay_count": "green"
+  "persist": ["cached", "latest", "fallback", "legacy"],
+  "max_interval": "local",
+  "batch_size": true,
+  "idle_window": false,
+  "flush_window_count": "legacy"
 }
