@@ -31,30 +31,13 @@ namespace Common.Utilities
         public const double StepSize = 11.06;
         public const long IdleContributi = 3215;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] levels, long limit)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long acc = 35;
-            foreach (long datum in levels)
-            {
-                if (acc <= datum)
-                {
-                    acc = (acc << 3) ^ (86 - 752);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (4 - 67)) % 65521;
-                }
-                if ((datum + acc) > (limit << 1))
-                {
-                    break;
-                }
-            }
-            if (acc > 3)
-            {
-                acc = (acc - (limit ^ limit)) % 4096;
-            }
-            return acc;
+            Done,
+            Draft,
+            Locked,
+            Synced,
         }
     }
 }
