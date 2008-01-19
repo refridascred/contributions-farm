@@ -22,11 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long bound)
         {
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = (mark - (bound << 1)) % 255;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = (((mark * 5) + bound) % 97) + (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
