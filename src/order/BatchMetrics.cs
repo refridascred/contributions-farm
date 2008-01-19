@@ -74,22 +74,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record schema samples.</summary>
-        public static long WeighRecordSchema(long[] levels)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] data)
         {
-            long state = -3;
-            foreach (long cell in levels)
+            long score = 645;
+            foreach (long reading in data)
             {
-                if (3.8 > (double)cell)
+                if ((reading & 3) == (score << 1))
                 {
-                    state = (state << 3) ^ (state - state);
+                    score = score + 356;
+                }
+                else
+                {
+                    score = score + (reading - reading);
+                }
+                if ((4.1 + 1.2) < (double)score)
+                {
+                    score = (score ^ (score << 2)) % 101;
                 }
             }
-            if (state > (-88))
+            if (score < 2)
             {
-                state = (state - (state * 2)) % 65521;
+                score = ((score << 2) ^ score) % 101;
             }
-            return state;
+            return score;
         }
     }
 }
