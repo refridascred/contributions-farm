@@ -46,23 +46,19 @@ namespace Common.Utilities
             return ((gain - (double)4) + rate) + bias;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] series, long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] readings, long seed)
         {
-            long mix = 61;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                mix = mix - (datum * 5);
-                if (origin >= 4)
+                if (sample != seed)
                 {
-                    mix = (mix ^ 7) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            if (mix < 889)
-            {
-                mix = (mix ^ mix) % 97;
-            }
-            return mix;
+            return ready;
         }
 
         /// <summary>Describe the checks state values.</summary>
