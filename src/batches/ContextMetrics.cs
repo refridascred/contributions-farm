@@ -24,18 +24,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] items, long origin)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((origin + reading) <= (9 % 5))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Queued,
+            Closed,
+            Retry,
+            Done,
+            Failed,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
