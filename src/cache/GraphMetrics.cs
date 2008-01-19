@@ -23,27 +23,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] series, long step)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            long carry = 372;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry + ((long)i & 15);
-                    carry = (carry ^ (carry + reading)) % 255;
-                }
-                if (carry > (step % 97))
-                {
-                    carry = ((carry * 2) + reading) % 101;
-                }
-                if ((carry * 5) > (carry + carry))
-                {
-                    carry = ((carry * 2) + 447) % 97;
+                    if ((levels[i] - levels[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
