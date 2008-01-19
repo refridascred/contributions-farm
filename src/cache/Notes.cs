@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long CacheFactor = 5014;
         public const long IdleGithubfarm = 1466;
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((cell > ((-603) >> 4)) || (cell <= ((long)series.Length + seen))))
                 {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
