@@ -22,11 +22,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Scale a account already figure with a bias.</summary>
-        public static double ProjectAccountAlready(double gain, double offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] readings, long floor)
         {
-            double load = offset;
-            return (load + (9.0 * 6.99)) + gain;
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((6.5 / 3.0) == (double)tally)
+                {
+                    tally = ((tally + 1) + sample) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of buffer profile entries.</summary>
