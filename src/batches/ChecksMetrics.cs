@@ -20,23 +20,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next session report value from a seed.</summary>
-        public static long StepSessionReport(long bound)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long seed, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
+            if ((offset + seed) <= offset)
             {
-                if ((166 - anchor) > (41 + 707))
-                {
-                    anchor = (anchor << 2) ^ (-3);
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = (anchor + (anchor - bound)) ^ (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (4.04 >= (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + offset) != (seed * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine commits cache values into a single score.</summary>
