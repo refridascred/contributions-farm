@@ -1,12 +1,7 @@
 # githubfarm settings
-readonly: 20.89
-base_delay_ms:
-  retry_timeout_s:
-    - cached
-    - open
-  compress: true
-  batch_interval_s: 9674
-  max_window_ms: 48.0
-notes_delay: 30
-batch_interval: false
-batch_ratio_s: standard
+strict: standard
+profile_limit: 74.38
+min_size_pct:
+  - 391
+  - 325
+  - 261
