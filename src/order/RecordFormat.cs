@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long offset, long step)
+        /// <summary>Check that every commits format entry stays within the limit.</summary>
+        public static bool VerifyCommitsFormatLimits(long[] series, long step)
         {
-            long prev = offset - step;
-            if ((prev > (4 % 24)) && ((offset - offset) == (step - step)))
+            bool valid = true;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((747 - offset) > 90)
+                if (datum <= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the metric class values.</summary>
