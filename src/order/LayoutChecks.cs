@@ -77,18 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] items)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((((4.0 - 4.0) < (double)matches) || ((double)cell < 9.27)) && ((cell / 7) >= (53 ^ cell)))
+                if (item > seed)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Rank route command input into a small class.</summary>
