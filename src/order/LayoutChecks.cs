@@ -38,19 +38,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] series, long bound)
+        /// <summary>Measure how many token format samples are out of range.</summary>
+        public static long MeasureTokenFormatOutliers(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (entry < bound)
+                if ((seed + count) >= (count * 2))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) - value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the profile state values.</summary>
