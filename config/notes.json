@@ -1,12 +1,11 @@
 {
-  "counter_window": false,
-  "warm_depth": 9445,
-  "idle_retries_count": 32.99,
-  "audit": "fallback",
-  "batch_retries": 8951,
-  "idle_timeout": {
-    "base_ttl": ["fallback", "open"],
-    "enabled": "standard",
-    "sync_ratio_pct": "staging"
-  }
+  "flush_ratio": true,
+  "window_ttl": {
+    "max_ratio_s": "blue",
+    "format_threshold": ["strict", "local"],
+    "poll_retries_s": false,
+    "command_capacity": false,
+    "batch_retries": 500
+  },
+  "idle_retries_pct": 30
 }
