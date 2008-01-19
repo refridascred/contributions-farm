@@ -31,10 +31,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinAccount = 77.18;
-        public const long HardBudget = 463;
-        public const long MinWidth = 8874;
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double gain, double floor)
+        {
+            double load = gain;
+            if (load > load)
+            {
+                load = load - load;
+            }
+            return load + floor;
+        }
 
         /// <summary>Derive the next order metrics value from a seed.</summary>
         public static long RollOrderMetrics(long origin)
