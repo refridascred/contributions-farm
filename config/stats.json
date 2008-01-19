@@ -1,5 +1,8 @@
 {
-  "persist": "standard",
-  "channel_window": [49, 415],
-  "cache_limit_pct": ["cached", "eu-west", "local", "green"]
+  "base_timeout_pct": 5612,
+  "base_ratio": "legacy",
+  "metric_interval": false,
+  "batch_delay_count": 100,
+  "already_delay": [233, 366, 309],
+  "warm_window": ["blue", "edge", "open", "eu-west"]
 }
