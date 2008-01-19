@@ -1,5 +1,13 @@
 # entry settings
-sync_ttl_ms: 60
-cluster_size: 36.93
-batch_size_ms: stable
-min_retries_count: latest
+batches_interval: 250
+command_threshold: primary
+burst_limit_pct: 1024
+compress: 94.74
+sync_window_count: true
+account_delay:
+  warm_size: 2351
+  hard_capacity: legacy
+  min_threshold_count:
+    - primary
+    - open
+    - edge
