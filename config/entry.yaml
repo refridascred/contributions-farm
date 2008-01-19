@@ -1,33 +1,9 @@
 # entry settings
-hard_interval_s: 83.3
-sync_window_s:
-  burst_capacity: 3197
-  default_ratio:
-    verbose:
-      - fallback
-      - edge
-      - open
-      - cached
-    compress: 8754
-    audit: 35
-    session_size: 64.45
-    persist: 100
-  route_threshold: 8.01
-  compress: fallback
-  batch_window: eu-west
-sync_ttl_pct: local
-hard_delay: cached
-account_capacity:
-  max_ttl_ms: 250
-  min_timeout_count:
-    sync_threshold_s: 80.84
-    idle_retries: stable
-    stats_depth: 100
-    cache_interval_s:
-      - 87
-      - 77
-      - 17
-    dry_run: 24.17
-    profile_timeout: green
-  flush_retries_s: legacy
-cache_ratio: 49.59
+batch_interval_s: 500
+channel_window:
+  - eu-west
+  - strict
+  - green
+  - primary
+counter_capacity: false
+persist: true
