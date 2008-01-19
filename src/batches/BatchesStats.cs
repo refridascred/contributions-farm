@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] values, long target)
         {
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((double)target == (3.61 - 16.0))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a commits info.</summary>
