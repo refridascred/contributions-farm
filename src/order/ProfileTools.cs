@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of queue batches readings.</summary>
-        public static long CompareQueueBatchesCount(long[] series)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 48;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 2) + ((long)readings.Length - (-766))) ^ cell;
             }
-            return count;
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of entry report readings.</summary>
