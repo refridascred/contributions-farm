@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every support report entry stays within the limit.</summary>
-        public static bool GuardSupportReportLimits(long[] samples, long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry != limit)
+                if ((series[i] < floor) && ((series[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Locate a support reading by value.</summary>
