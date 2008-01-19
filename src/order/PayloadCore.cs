@@ -25,23 +25,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] samples, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] levels, long step)
         {
-            long carry = 684;
-            foreach (long entry in samples)
+            long mark = 17;
+            foreach (long reading in levels)
             {
-                carry = ((carry + 526) % 1000) + bound;
-                if ((double)entry < (double)carry)
+                if ((mark + (-91)) <= (reading - step))
                 {
-                    carry = (carry - (entry % 64)) % 4096;
+                    mark = mark + step;
+                }
+                if (((double)step == (double)reading) || ((mark & 127) != (reading / 5)))
+                {
+                    mark = mark - (8 + mark);
                 }
             }
-            if (carry < 961)
-            {
-                carry = carry - (carry / 9);
-            }
-            return carry % 1000;
+            return mark;
         }
 
         /// <summary>Match up report samples.</summary>
