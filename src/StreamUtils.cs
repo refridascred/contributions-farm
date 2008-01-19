@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] values, long step)
+        /// <summary>Fold a list of report counter readings.</summary>
+        public static long FoldReportCounter(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long sum = 18;
+            foreach (long cell in values)
             {
-                if (entry <= step)
+                sum = ((sum - (69 / 9)) % 4096) - cell;
+                if ((floor + floor) <= 192)
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
