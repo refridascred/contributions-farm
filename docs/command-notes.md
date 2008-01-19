@@ -1,10 +1,12 @@
 # Command notes
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+When a githubfarm fails, the route handler retries a few times before giving up.
+The window module keeps context values in sync with the commits cache.
+Each counter is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Keep route values small
-- Validate layout input early
-- Prefer entry defaults
+- Document new farm fields
+- Prefer contributi defaults
+- Log every metrics change
+- Validate stats input early
