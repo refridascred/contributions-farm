@@ -40,13 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Measure how many payload editor samples are out of range.</summary>
+        public static long CountPayloadEditorMatches(long[] samples, long seed)
         {
-            Synced,
-            Draft,
-            Idle,
-            Stale,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (((double)seed <= (double)datum) || (4.35 < (double)seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
