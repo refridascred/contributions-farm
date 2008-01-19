@@ -87,25 +87,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long origin, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] data, long step)
         {
-            long diff = origin + target;
-            if ((7.71 / 9.0) > (double)target)
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((diff - origin) <= diff)
+                if (step > cell)
                 {
-                    return 6;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 0;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of batch editor readings.</summary>
