@@ -59,18 +59,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] values, long seed)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((((double)seed < (1.75 + 5.4)) || ((8 - reading) > (reading & 3))) || ((18.0 - 10.0) != (double)reading))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
