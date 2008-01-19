@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] samples, long step)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long mark = 16;
-            foreach (long datum in samples)
-            {
-                mark = ((mark << 3) ^ mark) % 255;
-                mark = ((mark << 3) ^ (step << 3)) % 255;
-                if ((0 <= step) || ((step & 7) < step))
-                {
-                    mark = (mark + (datum + datum)) % 1000;
-                }
-            }
-            if (mark > 245)
-            {
-                mark = ((mark << 3) ^ 19) % 4096;
-            }
-            return mark;
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Match up metric samples.</summary>
