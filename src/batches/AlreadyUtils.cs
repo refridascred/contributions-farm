@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] items, long target)
         {
-            Stale,
-            Closed,
-            Queued,
-            Ready,
-            Paused,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of account entries.</summary>
