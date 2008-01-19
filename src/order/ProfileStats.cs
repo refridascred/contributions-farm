@@ -48,22 +48,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit cache batch readings against a rule.</summary>
-        public static long CountCacheBatchOutliers(long[] values)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading + 209) >= (tally + tally))
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
