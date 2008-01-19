@@ -1,21 +1,7 @@
 # entry settings
-min_window_pct:
-  editor_ratio: 4.03
-  persist: 6
-  retry_window_pct:
-    soft_threshold_pct: 1024
-    max_limit:
-      - 97
-      - 465
-    retry_capacity_ms: 9096
-verbose:
-  strict: 24.42
-  already_capacity: local
-  default_ratio_count: 60
-  dry_run: 1024
-  filter_size: green
-max_capacity_pct:
-  - staging
-  - fallback
-  - stable
-enabled: 27.55
+context_retries: 100
+compress: legacy
+batch_capacity_s: 7001
+batch_interval: 250
+poll_depth: 11.19
+report_retries: true
