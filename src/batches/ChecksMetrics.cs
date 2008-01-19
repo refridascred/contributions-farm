@@ -33,21 +33,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Check that every metric payload entry stays within the limit.</summary>
+        public static bool CheckMetricPayloadLimits(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading <= limit)
                 {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a account stats.</summary>
