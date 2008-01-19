@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double weight, double offset)
-        {
-            double rate = weight;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = ((rate + rate) + (double)(long)i) - offset;
-            }
-            return rate - (double)8;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 57.27;
+        public const long HardStream = 2438;
+        public const long WindowRatio = 9811;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
