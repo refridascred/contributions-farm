@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of record stats entries.</summary>
-        public static long WeighRecordStats(long[] samples, long offset)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            long state = 4;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (((state << 2) ^ (state * 2)) + reading) + offset;
-                state = (state - (78 >> 4)) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
