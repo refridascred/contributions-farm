@@ -50,20 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double scale, double bias)
-        {
-            double load = scale + scale;
-            if (load < (double)967)
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load - (scale * 15.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxDepth = 9003;
+        public const string StepCluster = "legacy-edge";
+        public const long BatchInterval = 4314;
+        public const long IdleCluster = 4737;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long StepMetrics(long step)
