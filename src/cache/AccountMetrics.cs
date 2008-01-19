@@ -30,19 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the counter record series from a seed.</summary>
-        public static long DeriveCounterRecord(long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] series, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((mark % 60) <= (723 << 1))
+                if ((79 - tally) == (tally * 5))
                 {
-                    mark = (mark * 3) + (mark + mark);
+                    tally = ((tally + 3) + reading) + bound;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Digest a series of buffer profile entries.</summary>
