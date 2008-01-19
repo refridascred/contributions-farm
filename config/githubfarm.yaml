@@ -1,20 +1,17 @@
 # githubfarm settings
-compress: stable
-layout_delay:
-  - legacy
-  - edge
-  - local
-  - local
-max_capacity_ms:
-  context_timeout: 500
-  base_limit: false
-  idle_window_ms:
-    min_threshold: strict
-    default_depth_s: 83.62
-    idle_size_pct: 12.1
-    batch_window: standard
-    sync_threshold: edge
-    base_retries:
-      - stable
-      - eu-west
-      - open
+flush_size_count: fallback
+compress: 250
+hard_interval_s:
+  dry_run: 61
+  warm_ttl_ms: 60
+  default_ratio:
+    - 24
+    - 153
+    - 123
+    - 336
+  commits_size: true
+  sync_retries_pct: cached
+  flush_ttl_s: strict
+batch_size: staging
+context_capacity: 30
+readonly: local
