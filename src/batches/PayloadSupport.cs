@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Retry,
-            Closed,
-            Stale,
-            Active,
-            Draft,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchCount = 3678;
+        public const long LimitSize = 2572;
+        public const long MaxChannel = 7967;
+        public const double RetryBudget = 28.57;
+        public const long BaseFactor = 9710;
 
         /// <summary>Count the checks already entries that pass the check.</summary>
         public static long TallyChecksAlreadyGaps(long[] readings, long seed)
