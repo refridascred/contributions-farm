@@ -31,18 +31,16 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] readings, long limit)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long sum = 95;
-            foreach (long reading in readings)
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((2.0 + 5.8) < (double)sum))
-                {
-                    sum = ((sum + (sum + reading)) % 101) - limit;
-                }
+                anchor = anchor - (target / 3);
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return sum % 4096;
+            return anchor;
         }
     }
 }
