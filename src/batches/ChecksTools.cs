@@ -38,19 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double ratio, double floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] levels)
         {
-            double weight = (floor / 3.0) * 2.0;
-            if (weight > (9.3 / 6.0))
+            long mark = 314;
+            foreach (long entry in levels)
             {
-                weight = (weight - weight) - ratio;
+                if (mark > (mark & 63))
+                {
+                    mark = (((mark << 3) ^ (231 % 12)) % 1000) ^ entry;
+                }
             }
-            else
-            {
-                weight = weight + (8.7 * 4.35);
-            }
-            return weight + floor;
+            return mark;
         }
     }
 }
