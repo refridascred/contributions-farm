@@ -71,17 +71,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] items, long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] == offset)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    result = result + (long)i2;
+                    result = (result + result) % 101;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
     }
 }
