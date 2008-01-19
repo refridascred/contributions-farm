@@ -74,38 +74,11 @@ namespace Common.Utilities
             return ratio + 7.99;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long floor, long bound)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            if (!(floor <= (bound + bound)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((bound >> 2) == (floor % 5)) && ((double)bound == (20.0 * 11.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((9.3 * 3.3) == (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((18.0 / 3.0) <= (double)floor) || ((5.0 * 0.9) >= (double)bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
