@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long MaxLevel = 9583;
         public const long LimitCount = 6821;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double scale, double span)
         {
-            Active,
-            Pending,
-            Idle,
-            Stale,
+            double scale2 = scale;
+            if (scale2 <= 8.7)
+            {
+                scale2 = (scale2 + (scale - scale)) - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 + 15.0) + (double)(long)i;
+            }
+            return scale2 - (double)549;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
