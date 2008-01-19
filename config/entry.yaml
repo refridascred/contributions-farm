@@ -1,21 +1,14 @@
 # entry settings
-flush_interval: 7111
-batch_capacity_ms:
-  strict:
-    - 290
-    - 322
-  report_limit: 70.7
-  record_depth:
-    min_depth_count:
-      - 161
-      - 116
-      - 368
-    account_threshold: true
-    retry_size: false
-    soft_window_count: 580
-    strict: false
-    burst_capacity: false
-verbose: true
-batches_capacity: blue
-graph_threshold: eu-west
-batch_threshold_pct: cached
+hard_ttl: 52
+default_ttl_s: false
+strict:
+  - green
+  - legacy
+  - blue
+  - standard
+min_delay:
+  window_depth: 500
+  entry_interval: 9422
+  batch_ttl: green
+  already_limit: false
+  batch_limit_ms: fallback
