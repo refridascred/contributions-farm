@@ -42,26 +42,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Classify a batch report pair into a bucket.</summary>
+        public static long ClassifyBatchReport(long step, long bound)
         {
-            long state = 3;
-            foreach (long sample in samples)
+            if ((0.06 - 1.4) >= (double)bound)
             {
-                if (state < (state - sample))
+                return 8;
+            }
+            else
+            {
+                if (!((bound / 8) < ((-20) + step)))
                 {
-                    state = (state + (sample >> 3)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    state = (state + (state << 2)) % 101;
+                    return 0;
                 }
             }
-            if (state > (-45))
-            {
-                state = (state << 3) ^ (2 + state);
-            }
-            return state;
         }
     }
 }
