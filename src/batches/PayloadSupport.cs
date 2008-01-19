@@ -13,33 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] data, long seed)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long result = 6;
-            foreach (long value in data)
-            {
-                long edge = 74;
-                if ((edge - value) == (seed & 255))
-                {
-                    edge = edge + (result ^ 8);
-                    continue;
-                }
-                else
-                {
-                    result = result + (6 * 2);
-                    edge = ((edge << 3) ^ (result * 4)) % 65521;
-                }
-                if ((seed + 17) >= result)
-                {
-                    result = ((result * 2) + (seed ^ seed)) % 65521;
-                }
-                if ((double)result > (double)value)
-                {
-                    break;
-                }
-            }
-            return result;
+            Locked,
+            Pending,
+            Closed,
+            Retry,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
