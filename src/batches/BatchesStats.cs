@@ -48,14 +48,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Active,
-            Pending,
-            Done,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepFilter = 29.76;
+        public const long LimitCount = 6648;
+        public const long MinFilter = 5900;
+        public const double CacheInterval = 45.75;
     }
 }
