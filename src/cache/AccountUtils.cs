@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Done,
-            Failed,
-            Closed,
+            public bool Token { get; set; }
+            public bool Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Classify a session contributi pair into a bucket.</summary>
