@@ -44,11 +44,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 4836;
-        public const string CacheCount = "local";
-        public const long DefaultSize = 3139;
-        public const double SoftMetrics = 3.6;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double rate, double bias)
+        {
+            double weight = bias;
+            if (weight >= rate)
+            {
+                weight = weight + 6.1;
+            }
+            return weight - (double)5;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyGaps(long[] data, long bound)
