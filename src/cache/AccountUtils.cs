@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double weight, double span)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double scale = span;
-            if (scale >= (scale + scale))
-            {
-                scale = (scale + (double)(-92)) - weight;
-            }
-            else
-            {
-                scale = scale - (double)29;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (scale * 8.9);
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a session contributi pair into a bucket.</summary>
