@@ -37,11 +37,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double weight, double offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] items, long seed)
         {
-            double weight2 = weight;
-            return (weight2 + (double)2) + offset;
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((1.21 - 6.0) > (double)seed)
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
