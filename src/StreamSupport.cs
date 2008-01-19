@@ -32,13 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            long mix = 123;
+            foreach (long cell in readings)
+            {
+                mix = (((mix * 4) + (44 >> 3)) % 97) ^ cell;
+            }
+            return mix;
         }
     }
 }
