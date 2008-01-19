@@ -43,11 +43,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheWidth = "open-1";
-        public const long SoftSize = 611;
-        public const string DefaultScore = "stable";
-        public const long RetrySize = 1239;
-        public const long BaseFormat = 4902;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
