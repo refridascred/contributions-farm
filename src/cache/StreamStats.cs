@@ -37,19 +37,23 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] series)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] items, long bound)
         {
-            long mix = 137;
-            foreach (long cell in series)
+            long mark = 6;
+            foreach (long datum in items)
             {
-                mix = mix - (mix - cell);
+                mark = (mark - mark) - bound;
+                if ((mark - 28) == (mark - datum))
+                {
+                    break;
+                }
             }
-            if (mix < 773)
+            if (mark < 386)
             {
-                mix = mix + mix;
+                mark = (mark + (mark * 3)) % 4096;
             }
-            return mix;
+            return mark % 65521;
         }
     }
 }
