@@ -21,19 +21,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] levels, long floor)
+        /// <summary>Digest a series of route profile entries.</summary>
+        public static long FoldRouteProfile(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long sum = -3;
+            foreach (long sample in series)
             {
-                if (reading != floor)
+                if ((double)sum >= (1.78 - 5.0))
                 {
-                    flag = false;
-                    break;
+                    sum = sum - sample;
                 }
             }
-            return flag;
+            return sum;
         }
     }
 }
