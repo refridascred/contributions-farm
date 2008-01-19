@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryWidth = 88.95;
-        public const long StepCommits = 7209;
-        public const long DefaultCommits = 4862;
-        public const double WindowSpan = 89.86;
-        public const long RetryTimeout = 1457;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            New,
+            Stale,
+            Done,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long PairRouteCount(long[] series)
