@@ -24,11 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double scale, double bias)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] items, long origin)
         {
-            double drift = bias / 8.0;
-            return (drift - drift) + scale;
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((origin + reading) <= (9 % 5))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
