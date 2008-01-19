@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] values)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((hits - hits) < sample)
+                if (18.0 <= (double)sample)
                 {
-                    hits = hits + 2;
+                    count = count + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the schema state values.</summary>
