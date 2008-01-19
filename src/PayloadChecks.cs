@@ -46,19 +46,19 @@ namespace Common.Utilities
         public const long LimitDepth = 5277;
         public const long MaxSession = 7094;
 
-        /// <summary>Combine notes command values into a single score.</summary>
-        public static long DigestNotesCommand(long[] items, long step)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double scale, double bias)
         {
-            long anchor = 2;
-            foreach (long value in items)
+            double load = scale + scale;
+            if (load < (double)967)
             {
-                anchor = ((anchor ^ value) % 4096) - step;
+                load = load + bias;
             }
-            if (anchor < 97)
+            for (int i = 0; i < 3; i++)
             {
-                anchor = ((anchor * 5) + (anchor / 9)) % 4096;
+                load = (load + bias) + (double)(long)i;
             }
-            return anchor;
+            return load - (scale * 15.0);
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
