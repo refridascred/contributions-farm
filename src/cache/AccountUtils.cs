@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate stats farm samples.</summary>
