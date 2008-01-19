@@ -40,23 +40,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Accumulate context counter samples.</summary>
+        public static long WeighContextCounter(long[] readings)
         {
-            long mix = 95;
-            foreach (long value in data)
+            long mark = 5;
+            foreach (long cell in readings)
             {
-                mix = ((mix * 5) + (63 ^ mix)) % 1000;
-                if ((double)value < (double)220)
+                for (int i = 0; i < 3; i++)
                 {
-                    mix = ((mix << 2) ^ (value - value)) % 255;
+                    mark = (mark + ((long)i >> 1)) % 4096;
+                }
+                if (!((1 % 100) > (cell / 7)))
+                {
+                    mark = (mark * 5) + (mark ^ mark);
                 }
                 else
                 {
-                    mix = ((mix * 4) + (value << 2)) % 255;
+                    mark = (mark ^ (mark % 24)) % 4096;
                 }
             }
-            return mix;
+            return mark;
         }
     }
 }
