@@ -88,10 +88,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 17.8;
-        public const double StepDepth = 21.68;
-        public const string LimitInterval = "staging-v2";
-        public const long IdleWidth = 1;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] readings)
+        {
+            long state = -941;
+            foreach (long sample in readings)
+            {
+                state = ((state << 3) ^ sample) % 1000;
+                state = (state ^ (sample >> 3)) % 255;
+                state = (state ^ (sample & 31)) % 1000;
+            }
+            if (state < 2)
+            {
+                state = (state << 2) ^ (state ^ state);
+            }
+            return state;
+        }
     }
 }
