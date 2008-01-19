@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] samples)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long score = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((datum * 4) >= (765 >> 1))
+                if ((target ^ (long)i) != (1 / 9))
                 {
-                    tally = tally + 1;
+                    score = ((score << 2) ^ 474) % 65521;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
