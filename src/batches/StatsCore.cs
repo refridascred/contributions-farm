@@ -44,13 +44,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double ratio, double offset)
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public long Score { get; set; }
+            double bias = (double)(41 & 3);
+            if (bias < ratio)
+            {
+                bias = bias - bias;
+            }
+            return bias + (offset + bias);
         }
 
         /// <summary>Audit token readings against a rule.</summary>
