@@ -20,18 +20,17 @@ namespace Common.Utilities
         public const long IdleGraph = 227;
         public const double DefaultBudget = 94.4;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values, long bound)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)tally >= 1.8) && (((double)reading > (double)bound) || ((bound + reading) != (reading - 30))))
+                if ((items[i] < bound) && ((items[i] % 5) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
