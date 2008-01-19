@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached eu-west; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=480
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-open}"
+mode="${1:-legacy}"
 case "${mode}" in
-    standard)
+    staging)
         log "fast path"
         ;;
     *)
