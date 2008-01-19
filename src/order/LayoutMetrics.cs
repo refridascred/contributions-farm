@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 6214;
-        public const long BurstStream = 5170;
-        public const long BaseStream = 7740;
-        public const long SoftStream = 6834;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)seen < (double)sample)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long PairGraphCount(long[] levels)
