@@ -34,9 +34,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftCounter = "strict-v2";
-        public const double DefaultCounter = 86.07;
-        public const string CacheWidth = "primary-1";
+        public const long RetryCounter = 1564;
+        public const double HardCounter = 4.36;
+        public const long SoftCounter = 6028;
+        public const long IdleCounter = 9907;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long DigestProfile(long[] levels, long floor)
