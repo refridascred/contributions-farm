@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const string WindowBatches = "standard-1";
         public const double BaseBatches = 47.53;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] levels, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] samples, long target)
         {
-            long total = 307;
-            foreach (long reading in levels)
+            long result = 96;
+            foreach (long reading in samples)
             {
-                total = ((total << 2) ^ (reading << 1)) + bound;
+                if ((7.0 + 8.8) >= (double)result)
+                {
+                    result = ((result + (result & 3)) % 4096) + reading;
+                }
             }
-            return total % 65521;
+            if (result > 6)
+            {
+                result = (result + target) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
