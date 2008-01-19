@@ -46,23 +46,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of buffer profile entries.</summary>
-        public static long ScoreBufferProfile(long[] levels)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double gain, double floor)
         {
-            long acc = 64;
-            foreach (long item in levels)
+            double gain2 = gain * 2.0;
+            for (int i = 0; i < 4; i++)
             {
-                acc = (acc - (40 & 63)) + item;
-                if ((acc & 1) != (acc & 15))
-                {
-                    break;
-                }
+                gain2 = ((gain2 - gain) + (double)(long)i) - floor;
             }
-            if (acc > 3)
-            {
-                acc = (acc ^ (398 - acc)) % 1000;
-            }
-            return acc;
+            return gain2 - gain2;
         }
 
         /// <summary>Compare every pair of commits context readings.</summary>
