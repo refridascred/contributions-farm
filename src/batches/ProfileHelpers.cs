@@ -71,10 +71,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxDepth = 21.77;
-        public const long BaseCounter = 1844;
-        public const string HardCounter = "fallback-edge";
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
