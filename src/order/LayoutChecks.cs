@@ -66,20 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardTimeout = 3540;
+        public const long DefaultFarm = 4582;
+        public const string BaseScore = "strict";
+        public const long IdleCount = 9579;
 
         /// <summary>Rank route command input into a small class.</summary>
         public static long GradeRouteCommand(long step, long seed)
