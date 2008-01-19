@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Accumulate filter profile samples.</summary>
+        public static long FoldFilterProfile(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 318;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((acc % 8) == (reading + acc))
                 {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc ^ acc) % 255;
                 }
             }
-            return hits;
+            if (acc > 636)
+            {
+                acc = acc + 6;
+            }
+            return acc;
         }
 
         /// <summary>Describe the queue phase values.</summary>
