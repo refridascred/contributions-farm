@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of record cache readings.</summary>
-        public static long PairRecordCacheCount(long[] samples)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 45;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)state < (19.0 - 14.0)) || ((double)item == (3.72 / 8.0)))
                 {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state + state) % 97;
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Describe the stream phase values.</summary>
