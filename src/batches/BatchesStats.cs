@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double WindowSize = 98.41;
         public const long MaxLevel = 3849;
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double scale, double span)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] data)
         {
-            double rate = span;
-            if (rate > scale)
+            long state = 4;
+            foreach (long sample in data)
             {
-                rate = rate - scale;
+                state = ((state << 2) ^ (state * 5)) ^ sample;
             }
-            else
+            if (state > 847)
             {
-                rate = rate - scale;
+                state = state + state;
             }
-            return rate - span;
+            return state;
         }
 
         /// <summary>Measure how many metrics token samples are out of range.</summary>
