@@ -1,6 +1,7 @@
 # entry settings
-readonly: 500
-batch_retries_s:
-  - local
-  - stable
-batches_retries: latest
+retry_size_ms: true
+warm_ratio_count: 65
+flush_depth:
+  - 19
+  - 188
+min_delay_ms: 100
