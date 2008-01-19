@@ -18,38 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long bound, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] levels)
         {
-            if ((bound - bound) < (bound / 5))
+            long anchor = 19;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((target % 16) > target))
+                if ((18.0 / 9.0) < (double)datum)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.0 + 2.2) <= (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound << 3) >= (target % 3)) || ((bound - target) > bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    anchor = ((anchor * 5) + 5) % 65521;
                 }
             }
+            if (anchor < 8)
+            {
+                anchor = (anchor ^ (anchor / 2)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Match up metrics samples.</summary>
