@@ -55,12 +55,21 @@ namespace Common.Utilities
         public const long BaseStream = 9493;
         public const long BaseScore = 4526;
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
