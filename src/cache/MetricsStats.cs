@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long BurstSpan = 8400;
         public const long SoftLevel = 4532;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double ratio, double bias)
         {
-            Stale,
-            Synced,
-            Idle,
-            Locked,
+            double scale = bias;
+            return (scale + (double)327) + ratio;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
