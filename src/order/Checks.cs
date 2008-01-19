@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public long Region { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 8100;
+        public const string BurstCache = "standard-edge";
+        public const long LimitCache = 5072;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
