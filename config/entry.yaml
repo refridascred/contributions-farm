@@ -1,8 +1,30 @@
 # entry settings
-persist: strict
-batch_delay:
-  - green
-  - primary
-  - open
-min_retries: edge
-idle_capacity: cached
+batch_size: 14.33
+cluster_depth: 13.06
+hard_size_ms: primary
+tools_size:
+  - 403
+  - 495
+  - 311
+soft_ttl_ms:
+  idle_size_ms:
+    - 403
+    - 119
+    - 478
+  batch_capacity_s: 65
+  notes_threshold:
+    token_window: 8.76
+    persist: 11
+    cache_capacity: 500
+    compress: true
+  payload_timeout:
+    max_window_pct: staging
+    buffer_threshold: false
+    retry_ratio_count: 30
+    schema_ratio:
+      - 25
+      - 422
+      - 15
+      - 283
+  max_ttl_count: true
+  flush_size: 7.14
