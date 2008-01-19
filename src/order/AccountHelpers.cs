@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double gain, double floor)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double scale = (double)(26 * 4);
-            if (scale > (scale - scale))
-            {
-                scale = (scale - gain) - floor;
-            }
-            return scale + gain;
+            Retry,
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
