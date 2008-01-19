@@ -22,21 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio2 = bias;
+            if (ratio2 <= (bias + 12.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio2 = (ratio2 - (double)485) - ratio;
             }
-            return tally;
+            else
+            {
+                ratio2 = ratio2 - (double)54;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 + (double)7;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
