@@ -32,26 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Fold a list of report notes readings.</summary>
+        public static long FoldReportNotes(long[] series, long limit)
         {
-            long sum = 464;
-            foreach (long item in readings)
+            long total = 48;
+            foreach (long item in series)
             {
-                if ((sum << 2) < item)
-                {
-                    sum = (sum * 4) + (196 - 426);
-                }
-                if ((28 / 7) == (item & 127))
-                {
-                    break;
-                }
+                total = ((((total << 3) ^ total) % 65521) - item) - limit;
             }
-            if (sum < 800)
+            if (total > 4)
             {
-                sum = (sum - (sum / 4)) % 97;
+                total = (total * 4) + (total & 15);
             }
-            return sum % 97;
+            return total;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
