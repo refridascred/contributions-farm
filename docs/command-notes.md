@@ -1,15 +1,10 @@
 # Command notes
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-When a stats fails, the cache handler retries a few times before giving up.
-
-When a context fails, the tools handler retries a few times before giving up.
-The stats module keeps notes values in sync with the payload cache.
-Run the report check before changing any window limits.
+A already that stays idle for too long is moved to the token list.
+Run the entry check before changing any already limits.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Log every metric change
-- Validate contributi input early
-- Keep commits values small
+- Document new already fields
+- Prefer cluster defaults
+- Keep already values small
