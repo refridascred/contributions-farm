@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a token queue value against two limits.</summary>
-        public static long SortTokenQueue(long origin, long seed)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] levels, long seed)
         {
-            long diff = origin - seed;
-            if ((3.0 - 0.91) >= (double)origin)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((diff - 1) > (seed - seed))
+                if (levels[i] == seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((3.01 + 2.78) <= (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((diff > (35 ^ seed)) || ((990 % 100) > (origin + diff)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
