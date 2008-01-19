@@ -13,21 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (!!((5.3 * 7.68) < (double)cell))
                 {
-                    acc = ((acc ^ (step - step)) % 97) - (long)i2;
-                    acc = ((acc << 2) ^ 956) % 101;
+                    matches = matches + 2;
                 }
-                acc = (acc ^ (22 ^ (long)i)) % 4096;
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Iterate the counter record series from a seed.</summary>
