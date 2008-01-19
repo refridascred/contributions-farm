@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] series, long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Accumulate support samples.</summary>
