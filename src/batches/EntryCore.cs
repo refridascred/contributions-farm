@@ -25,11 +25,16 @@ namespace Common.Utilities
         public const string MaxRatio = "fallback";
         public const string IdleTimeout = "local";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTimeout = 5936;
-        public const long BatchRatio = 6995;
-        public const long IdleTools = 3689;
-        public const string BaseScore = "fallback-1";
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LocatePayloadIndex(long[] values, long limit)
