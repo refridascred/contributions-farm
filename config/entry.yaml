@@ -1,20 +1,8 @@
 # entry settings
-session_threshold: staging
-warm_delay_pct:
-  notes_delay:
-    - eu-west
-    - green
-  tools_size: strict
-  session_interval:
-    - 233
-    - 433
-    - 110
-    - 168
-  poll_window_pct: green
-idle_timeout_ms: 66.28
-soft_retries: 2047
-audit: fallback
-graph_limit:
-  warm_threshold_s: fallback
-  min_window_ms: 250
-  layout_size: 67
+sync_delay_pct:
+  - 301
+  - 437
+  - 264
+default_depth_s: 61
+persist: 11.72
+default_depth: eu-west
