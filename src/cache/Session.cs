@@ -40,21 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel stats readings.</summary>
-        public static long PairChannelStatsCount(long[] values)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Grade a token stats value against two limits.</summary>
