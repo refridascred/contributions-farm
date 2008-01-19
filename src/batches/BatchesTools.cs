@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count token stream pairs that satisfy a relation.</summary>
-        public static long MatchTokenStreamCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardPayload = "standard-edge";
+        public const long DefaultPayload = 1408;
+        public const double CachePayload = 47.81;
+        public const string LimitLevel = "alpha-1";
+        public const long MinPayload = 437;
 
         /// <summary>Project the next notes value.</summary>
         public static double BlendNotes(double scale, double span)
