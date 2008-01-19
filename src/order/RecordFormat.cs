@@ -51,15 +51,18 @@ namespace Common.Utilities
             return scale2 - (double)(-16);
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double scale, double bias)
+        /// <summary>Combine report cache values into a single score.</summary>
+        public static long TallyReportCache(long[] items, long seed)
         {
-            double scale2 = bias / 5.0;
-            if (scale2 < (scale + scale))
+            long carry = 8;
+            foreach (long cell in items)
             {
-                scale2 = scale2 - bias;
+                if (!((76 ^ (-36)) < (cell + cell)))
+                {
+                    carry = ((carry << 3) ^ (carry - seed)) % 97;
+                }
             }
-            return scale2 + 8.0;
+            return carry;
         }
     }
 }
