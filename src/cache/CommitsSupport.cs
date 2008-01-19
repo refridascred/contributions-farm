@@ -68,16 +68,13 @@ namespace Common.Utilities
             return weight - (gain + floor);
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long acc = step;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = (acc ^ (long)i) % 97;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
