@@ -28,10 +28,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowFactor = 6522;
-        public const string RetryWindow = "strict-v2";
-        public const long BaseCount = 5016;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Failed,
+            Active,
+            Draft,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long StepFilter = 2566;
