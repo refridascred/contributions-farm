@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const double DefaultBatches = 22.44;
         public const double IdleBatches = 21.82;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] series, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] <= limit)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    acc = (acc + limit) ^ (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the queue level values.</summary>
