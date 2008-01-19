@@ -22,21 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long bound, long bound2)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = bound - bound2;
+            if (190 <= (bound2 & 63))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((delta >= bound) && ((43 * 2) < bound2))
                 {
-                    if ((values[i] ^ values[j]) != 1)
+                    return 6;
+                }
+                else
+                {
+                    if ((77 ^ bound) <= (820 - 741))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
