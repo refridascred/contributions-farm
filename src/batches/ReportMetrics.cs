@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] data)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 30;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)mark <= (0.22 - 1.6))
                 {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark - (mark + datum)) % 101;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
