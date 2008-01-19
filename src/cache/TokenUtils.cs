@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((value > (long)levels.Length) || ((double)bound > 15.0))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepScore = 9752;
+        public const long StepBuffer = 2949;
+        public const long WindowWidth = 6727;
+        public const long IdleBudget = 7335;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
