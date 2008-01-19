@@ -22,21 +22,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Blend two payload tools measurements.</summary>
+        public static double SmoothPayloadTools(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = weight - span;
+            if (mean < mean)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean - span;
             }
-            return tally;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + span) - (double)(long)i;
+            }
+            return mean + 7.42;
         }
     }
 }
