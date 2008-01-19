@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const double IdleGraph = 96.29;
         public const double BurstGraph = 78.85;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 3956;
-        public const string MinFactor = "fallback-v2";
-        public const double DefaultFarm = 14.59;
-        public const string RetryDepth = "local-v2";
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsHits(long[] values, long floor)
