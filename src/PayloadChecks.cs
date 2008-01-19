@@ -20,15 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many account already samples are out of range.</summary>
-        public static long MeasureAccountAlreadyGaps(long[] values)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] values)
         {
             long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (count > (item << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
+                    if ((values[i] - values[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
