@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
+            Retry,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a filter header.</summary>
