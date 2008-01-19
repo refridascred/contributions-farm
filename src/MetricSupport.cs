@@ -39,24 +39,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long limit, long offset)
+        /// <summary>Roll a notes batch counter forward.</summary>
+        public static long SeriesNotesBatch(long offset)
         {
-            if ((limit > offset) || ((offset ^ offset) == (limit % 64)))
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                return 3;
+                long cur = (1 + offset) + (945 << 1);
+                sum = (sum ^ cur) % 4096;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((offset >> 3) > (limit % 24))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return sum;
         }
     }
 }
