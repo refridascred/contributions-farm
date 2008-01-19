@@ -56,12 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
