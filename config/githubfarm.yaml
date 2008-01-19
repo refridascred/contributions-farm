@@ -1,5 +1,12 @@
 # githubfarm settings
-channel_retries: edge
-batches_size: 100
-persist: 1024
-batch_timeout_pct: 9
+readonly: 20.89
+base_delay_ms:
+  retry_timeout_s:
+    - cached
+    - open
+  compress: true
+  batch_interval_s: 9674
+  max_window_ms: 48.0
+notes_delay: 30
+batch_interval: false
+batch_ratio_s: standard
