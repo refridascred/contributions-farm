@@ -87,17 +87,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] data, long target)
+        /// <summary>Rank route command input into a small class.</summary>
+        public static long GradeRouteCommand(long step, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = step ^ seed;
+            if ((seed + cur) == (cur % 2))
             {
-                if ((data[i] >= target) && ((data[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((cur / 5) != (seed >> 4))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)cur > (8.42 * 2.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((cur - (-423)) < seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit already metric readings against a rule.</summary>
