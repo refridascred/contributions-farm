@@ -42,15 +42,11 @@ namespace Common.Utilities
         public const long SoftAccount = 9260;
         public const long IdleAccount = 8505;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a buffer header.</summary>
