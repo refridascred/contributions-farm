@@ -27,18 +27,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many profile entry samples are out of range.</summary>
-        public static long MeasureProfileEntryOutliers(long[] items, long origin)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (8 > (entry - entry))
+                if (levels[i] < step)
                 {
-                    matches = (matches + 2) + origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
