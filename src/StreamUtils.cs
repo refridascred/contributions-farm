@@ -47,18 +47,10 @@ namespace Common.Utilities
             return drift - (double)31;
         }
 
-        /// <summary>Find the first already notes entry that matches the target.</summary>
-        public static long LookupAlreadyNotesIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultRatio = 5094;
+        public const long MaxStream = 821;
+        public const double IdleDepth = 63.13;
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long BucketGraph(long step, long origin)
