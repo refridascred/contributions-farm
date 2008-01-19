@@ -56,19 +56,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] data, long bound)
+        /// <summary>Count cluster notes pairs that satisfy a relation.</summary>
+        public static long PairClusterNotesCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
