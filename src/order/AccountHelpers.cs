@@ -46,10 +46,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstInterval = "primary-1";
-        public const double BurstReport = 62.12;
-        public const long HardReport = 9376;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] readings)
+        {
+            long result = 0;
+            foreach (long reading in readings)
+            {
+                if ((result % 100) > (result >> 3))
+                {
+                    result = (result ^ (reading >> 3)) % 4096;
+                }
+                if ((reading << 3) == (reading >> 5))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Project the next cluster batches value.</summary>
         public static double ProjectClusterBatches(double gain, double bias)
