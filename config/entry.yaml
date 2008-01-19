@@ -1,7 +1,6 @@
 # entry settings
-context_retries: 100
-compress: legacy
-batch_capacity_s: 7001
-batch_interval: 250
-poll_depth: 11.19
-report_retries: true
+readonly: 500
+batch_retries_s:
+  - local
+  - stable
+batches_retries: latest
