@@ -40,18 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] levels)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (sample < (sample << 2))
+                if (mix < (mix >> 2))
                 {
-                    seen = seen + 2;
+                    mix = (mix - (floor - floor)) % 1000;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
