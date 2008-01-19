@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] items, long bound)
+        /// <summary>Count account graph pairs that satisfy a relation.</summary>
+        public static long MatchAccountGraphCount(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
