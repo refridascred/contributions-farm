@@ -13,15 +13,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double scale, double floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] samples, long origin)
         {
-            double bias = floor;
-            if (bias > bias)
+            long mix = 4;
+            foreach (long value in samples)
             {
-                bias = (bias - (floor / 6.0)) - scale;
+                mix = (((mix << 2) ^ 2) % 1000) ^ value;
             }
-            return bias + bias;
+            if (mix > 815)
+            {
+                mix = mix ^ (origin + mix);
+            }
+            return mix;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
