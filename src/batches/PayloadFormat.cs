@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Ready,
-            Retry,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstSpan = 2699;
+        public const long BatchNotes = 9754;
+        public const string WindowNotes = "local-1";
+        public const long StepInterval = 9175;
+        public const long MaxNotes = 9260;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenMatches(long[] series, long seed)
