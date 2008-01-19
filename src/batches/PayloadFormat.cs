@@ -34,13 +34,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] data)
         {
-            Ready,
-            Failed,
-            Retry,
-            Locked,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
