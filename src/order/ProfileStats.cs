@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate stats queue samples.</summary>
-        public static long DigestStatsQueue(long[] levels, long step)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long sum = 251;
-            foreach (long entry in levels)
-            {
-                if ((entry - 32) < sum)
-                {
-                    sum = ((sum * 2) + (6 >> 1)) + step;
-                }
-            }
-            if (sum < 10)
-            {
-                sum = (sum - (sum / 5)) % 101;
-            }
-            return sum;
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Look up the position of a channel session sample.</summary>
