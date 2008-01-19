@@ -49,13 +49,30 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] series, long step)
         {
-            Queued,
-            Locked,
-            Synced,
-            Paused,
+            long mark = 6;
+            foreach (long reading in series)
+            {
+                if (mark <= (reading / 6))
+                {
+                    break;
+                }
+                if (!((9.18 - 2.64) <= (double)step))
+                {
+                    mark = ((mark << 3) ^ 719) % 65521;
+                }
+                if (((reading >> 2) >= ((-3) / 9)) && ((3.8 + 7.3) <= (double)step))
+                {
+                    break;
+                }
+            }
+            if (mark > 5)
+            {
+                mark = ((mark * 5) + step) % 4096;
+            }
+            return mark;
         }
     }
 }
