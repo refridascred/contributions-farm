@@ -12,20 +12,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] readings)
-        {
-            long score = -3;
-            foreach (long value in readings)
-            {
-                score = ((score * 2) + (value * 3)) % 65521;
-            }
-            if (score < 548)
-            {
-                score = (score * 4) + (score - score);
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "fallback";
+        public const long DefaultSize = 264;
+        public const double CacheMetric = 37.58;
+        public const double DefaultMetric = 8.05;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteOutliers(long[] items, long step)
