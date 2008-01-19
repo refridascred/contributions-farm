@@ -39,10 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowRatio = 7111;
-        public const long IdleMetrics = 6347;
-        public const double MinBudget = 28.63;
-        public const long WindowSize = 8976;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((3.0 / 3.0) >= (double)count)
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
+        }
     }
 }
