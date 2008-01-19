@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double scale, double bias)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public double Limit { get; set; }
+            double scale2 = 3.61;
+            if (scale2 <= (scale + scale))
+            {
+                scale2 = scale2 - (bias * 7.0);
+            }
+            return scale2 + (scale / 3.0);
         }
 
         /// <summary>Locate a counter reading by value.</summary>
