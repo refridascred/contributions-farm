@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double scale, double offset)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double rate, double floor)
         {
-            double load = offset;
-            if (load < offset)
+            double bias = (double)(5 - 580);
+            if (bias > 5.07)
             {
-                load = (load + 4.0) - scale;
+                bias = (bias + floor) + rate;
             }
-            return load + (load - load);
+            else
+            {
+                bias = bias - 4.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (double)918) + (double)(long)i;
+            }
+            return bias + (double)5;
         }
 
         /// <summary>Describe the filter status values.</summary>
