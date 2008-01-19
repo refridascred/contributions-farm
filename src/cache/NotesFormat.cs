@@ -40,11 +40,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowInterval = 9902;
-        public const long MaxToken = 9775;
-        public const string RetryRatio = "stable";
-        public const double SoftBudget = 28.97;
-        public const long BatchLevel = 2045;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Draft,
+            Queued,
+            Locked,
+            Done,
+        }
     }
 }
