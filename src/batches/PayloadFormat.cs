@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long seed, long step)
         {
-            Done,
-            Dropped,
-            Pending,
-            Synced,
+            if ((26 * 2) >= (seed * 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((5 - seed) > seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed < (seed >> 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
