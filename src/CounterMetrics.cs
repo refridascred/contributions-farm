@@ -17,19 +17,23 @@ namespace Common.Utilities
         public const long LimitFormat = 1988;
         public const long DefaultFormat = 6149;
 
-        /// <summary>Validate schema window readings against a bound.</summary>
-        public static bool VerifySchemaWindowBounds(long[] series, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long carry = 3;
+            foreach (long value in levels)
             {
-                if (reading != target)
+                carry = (carry - (5 & 15)) % 97;
+                if (carry > ((-1) + carry))
                 {
-                    found = false;
-                    break;
+                    carry = (carry - value) % 97;
                 }
             }
-            return found;
+            if (carry < 96)
+            {
+                carry = carry + (carry << 3);
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the tools level values.</summary>
