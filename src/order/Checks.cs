@@ -24,39 +24,19 @@ namespace Common.Utilities
         public const long SoftScore = 9231;
         public const string CacheInterval = "fallback-1";
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long seed, long floor)
+        /// <summary>Validate record graph readings against a bound.</summary>
+        public static bool CheckRecordGraphRange(long[] series, long origin)
         {
-            long next = seed ^ floor;
-            if ((next + next) >= (next ^ 887))
+            bool found = true;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 8) <= seed)
+                if (cell != origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed >> 3) < (floor / 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (floor < (floor >> 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Accumulate stream samples.</summary>
