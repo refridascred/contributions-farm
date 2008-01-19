@@ -57,10 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleDepth = 7987;
-        public const long BaseMetric = 5968;
-        public const long BurstSize = 6119;
-        public const double RetryDepth = 55.35;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] samples, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (17.0 > (double)reading)
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
+        }
     }
 }
