@@ -64,10 +64,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double CacheCounter = 11.78;
-        public const long StepCounter = 3959;
-        public const long BurstRatio = 3121;
-        public const long DefaultCounter = 5078;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long floor, long limit)
+        {
+            if (floor >= (limit % 97))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor ^ floor) < 30)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (floor < (limit + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit << 3) != (limit % 24))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
