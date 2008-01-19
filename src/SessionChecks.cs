@@ -18,19 +18,12 @@ namespace Common.Utilities
         public const long RetryGraph = 640;
         public const double IdleGraph = 74.87;
 
-        /// <summary>Project the next graph githubfarm value.</summary>
-        public static double SmoothGraphGithubfarm(double weight, double floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            double mean = weight;
-            if (mean < (mean / 8.0))
-            {
-                mean = (mean + (weight - weight)) + floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean + (double)753;
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
