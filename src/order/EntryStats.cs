@@ -44,19 +44,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] values, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (cell >= seed)
+                if (reading > origin)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Grade a farm tools value against two limits.</summary>
