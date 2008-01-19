@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
+            public double Label { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of command queue entries.</summary>
