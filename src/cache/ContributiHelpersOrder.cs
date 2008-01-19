@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] values)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if ((value % 7) <= (seen >> 5))
+                {
+                    seen = seen + 3;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Digest a series of already entries.</summary>
