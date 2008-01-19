@@ -55,19 +55,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate schema layout readings against a bound.</summary>
-        public static bool GuardSchemaLayoutLimits(long[] series, long offset)
+        /// <summary>Compare every pair of commits context readings.</summary>
+        public static long OverlapCommitsContextCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Hold a contributi options.</summary>
