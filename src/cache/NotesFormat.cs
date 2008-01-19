@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two command stream measurements.</summary>
-        public static double ScaleCommandStream(double rate, double span)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] samples)
         {
-            double weight = (rate / 5.0) + (0.65 / 4.0);
-            if (weight < weight)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + rate;
-            }
-            return weight + (rate - span);
+            return tally;
         }
 
         /// <summary>Adjust a metrics session reading.</summary>
