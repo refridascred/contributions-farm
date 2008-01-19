@@ -31,17 +31,16 @@ namespace Common.Utilities
             return rate2 + 1.65;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] readings, long origin)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
+                mark = (mark - (long)i) % 255;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
