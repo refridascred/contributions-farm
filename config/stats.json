@@ -1,6 +1,11 @@
 {
-  "audit": 81.83,
-  "warm_depth_count": [298, 190, 406],
-  "payload_retries": 1829,
-  "hard_capacity": [3, 124, 279, 391]
+  "poll_retries_count": "eu-west",
+  "batches_depth": 9008,
+  "cluster_limit": [499, 17, 291],
+  "batch_size_s": {
+    "readonly": "eu-west",
+    "cache_ttl_s": 3879,
+    "verbose": ["cached", "open", "standard"],
+    "burst_ttl_pct": true
+  }
 }
