@@ -58,22 +58,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of tools record readings.</summary>
-        public static long CombineToolsRecord(long[] series, long origin)
+        /// <summary>Derive the next channel batches value from a seed.</summary>
+        public static long IterateChannelBatches(long seed)
         {
-            long mark = 836;
-            foreach (long value in series)
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((52 % 16) < (value / 5))
+                sum = ((sum * 3) + (seed >> 1)) % 101;
+                if (((long)i ^ (long)i) <= sum)
                 {
-                    mark = (((mark * 4) + 469) % 4096) - origin;
+                    sum = (sum - (seed - sum)) % 4096;
                 }
                 else
                 {
-                    mark = (mark + (mark >> 3)) % 101;
+                    sum = (sum ^ (sum >> 2)) % 97;
                 }
+                sum = ((sum << 3) ^ (sum + (long)i)) % 255;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return mark;
+            return sum;
         }
     }
 }
