@@ -1,7 +1,18 @@
 # entry settings
-idle_limit: 91
-retry_limit_count:
-  - 82
-  - 495
-cache_retries_s: strict
-hard_limit_pct: 60
+strict: 48
+flush_size_s:
+  - 267
+  - 132
+  - 370
+  - 265
+batch_ttl_count: 3538
+retry_limit_ms:
+  verbose: green
+  readonly: 100
+  soft_interval_s:
+    cluster_timeout: true
+    entry_capacity: true
+    batch_window_pct: 11
+    metrics_window: open
+    session_depth: eu-west
+    enabled: 6089
