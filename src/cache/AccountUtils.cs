@@ -13,21 +13,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] samples)
+        /// <summary>Classify a session contributi pair into a bucket.</summary>
+        public static long BucketSessionContributi(long origin, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((0.63 / 6.0) >= (double)floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (floor <= (44 << 2))
                 {
-                    if ((samples[i] ^ samples[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
