@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next contributi metric value from a seed.</summary>
-        public static long IterateContributiMetric(long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long bound, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            if ((floor % 3) <= (bound + floor))
             {
-                sum = (sum ^ (sum - 28)) % 4096;
-                sum = (sum + (655 ^ step)) % 65521;
-                if (2.0 <= (double)step)
-                {
-                    sum = (sum + sum) % 1000;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((floor >> 4) >= (floor >> 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound + floor) != (floor - 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound == (14.0 * 1.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a commits reading.</summary>
