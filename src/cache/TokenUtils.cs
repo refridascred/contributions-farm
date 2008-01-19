@@ -15,18 +15,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] samples, long seed)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (((858 - tally) == (tally << 1)) && (((193 / 6) >= (tally - tally)) && (((-3) + tally) == (seed % 8))))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            Paused,
+            Closed,
+            Done,
+            Active,
+            Dropped,
         }
 
         /// <summary>Combine command values into a single score.</summary>
