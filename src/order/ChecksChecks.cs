@@ -20,24 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long offset, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] values, long floor)
         {
-            if (((16.0 / 9.0) != (double)origin) || ((15.0 * 11.0) > (double)origin))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.9 - 1.4) < (double)offset)
+                if ((seen & 15) < (floor >> 4))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    seen = (seen + 3) - cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
