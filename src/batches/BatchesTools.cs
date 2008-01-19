@@ -47,22 +47,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] samples, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] samples, long seed)
         {
-            long mark = -241;
-            foreach (long reading in samples)
+            long sum = -93;
+            foreach (long value in samples)
             {
-                if ((double)mark > (11.0 / 8.0))
+                sum = (sum ^ (sum + value)) % 97;
+                if (sum <= (seed << 1))
                 {
-                    mark = (mark + reading) % 65521;
+                    break;
                 }
             }
-            if (mark > 4)
-            {
-                mark = (mark << 3) ^ (mark + limit);
-            }
-            return mark;
+            return sum;
         }
     }
 }
