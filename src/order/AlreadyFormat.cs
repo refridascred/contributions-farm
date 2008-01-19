@@ -28,10 +28,22 @@ namespace Common.Utilities
         public const long StepSize = 5136;
         public const string MaxFormat = "open";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstInterval = 4908;
-        public const long SoftGithubfarm = 1295;
-        public const double BatchGithubfarm = 24.64;
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long SoftBatches = 9255;
