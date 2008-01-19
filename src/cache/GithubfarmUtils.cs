@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const string WindowBatches = "standard-1";
         public const double BaseBatches = 47.53;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] samples, long target)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long result = 96;
-            foreach (long reading in samples)
-            {
-                if ((7.0 + 8.8) >= (double)result)
-                {
-                    result = ((result + (result & 3)) % 4096) + reading;
-                }
-            }
-            if (result > 6)
-            {
-                result = (result + target) % 1000;
-            }
-            return result;
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public double Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
