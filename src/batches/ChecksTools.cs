@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double weight, double span)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            double mean = weight + (span / 9.0);
-            if (mean < (double)165)
-            {
-                mean = mean + (double)689;
-            }
-            return mean + (14.0 - mean);
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
