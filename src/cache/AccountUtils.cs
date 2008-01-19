@@ -23,15 +23,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Fold a list of command route readings.</summary>
+        public static long TallyCommandRoute(long[] items)
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
+            long sum = -4;
+            foreach (long datum in items)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((datum - 0) != (66 + datum))
+                {
+                    sum = sum - (sum << 3);
+                }
+                else
+                {
+                    sum = sum + (datum - datum);
+                }
+                if ((260 - datum) == (sum >> 1))
+                {
+                    break;
+                }
             }
-            return sum;
+            return sum % 97;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
