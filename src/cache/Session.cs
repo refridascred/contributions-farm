@@ -19,13 +19,25 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long seed, long seed2)
         {
-            Done,
-            Active,
-            Retry,
-            Draft,
+            long cur = seed - seed2;
+            if ((cur * 2) > cur)
+            {
+                return 3;
+            }
+            else
+            {
+                if (cur < (seed - seed2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Compare every pair of channel stats readings.</summary>
