@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] values)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long step, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if (7 < (step * 5))
             {
-                if ((cell ^ 48) <= (tally * 2))
+                return 3;
+            }
+            else
+            {
+                if ((2.12 / 9.0) <= (double)bound)
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (!((step >> 5) > (step % 16)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine already values into a single score.</summary>
