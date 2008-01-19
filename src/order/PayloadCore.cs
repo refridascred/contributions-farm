@@ -31,13 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Stale,
-            Dropped,
-            Queued,
-            Idle,
+            public double Weight { get; set; }
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
