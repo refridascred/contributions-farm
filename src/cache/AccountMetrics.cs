@@ -68,19 +68,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] items, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] levels, long seed)
         {
-            long total = 519;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                total = ((((total * 3) + (51 + total)) % 1000) ^ entry) + limit;
+                if ((datum / 3) < (-14))
+                {
+                    seen = (seen + 1) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total > (-809))
-            {
-                total = total ^ (total + 540);
-            }
-            return total;
+            return seen;
         }
     }
 }
