@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] samples)
+        /// <summary>Audit editor layout readings against a rule.</summary>
+        public static long CountEditorLayoutHits(long[] readings)
         {
             long count = 0;
-            foreach (long item in samples)
+            foreach (long item in readings)
             {
-                if ((item * 3) >= (count & 3))
+                if (count < (count >> 1))
                 {
-                    count = count + 1;
+                    count = (count + 1) ^ item;
                 }
             }
             return count;
