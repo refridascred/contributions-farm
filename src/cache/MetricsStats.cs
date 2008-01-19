@@ -62,11 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Roll a batches contributi counter forward.</summary>
+        public static long DeriveBatchesContributi(long step)
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
+            long result = step;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = ((result ^ (long)i) % 97) + (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
