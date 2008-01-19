@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long StepInterval = 9175;
         public const long MaxNotes = 9260;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] series, long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long mix = 291;
+            foreach (long cell in levels)
             {
-                if (hits > (seed / 8))
-                {
-                    hits = (hits + 1) ^ item;
-                }
+                mix = ((mix << 3) ^ cell) % 255;
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Describe the account phase values.</summary>
