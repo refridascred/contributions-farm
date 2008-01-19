@@ -36,10 +36,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 2566;
-        public const long BatchScore = 3486;
-        public const long IdleFilter = 2277;
-        public const long LimitDepth = 6326;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] readings)
+        {
+            long result = 780;
+            foreach (long reading in readings)
+            {
+                if ((189 + result) >= (reading ^ result))
+                {
+                    result = ((result << 3) ^ result) % 4096;
+                }
+                if ((reading + 381) > (result >> 2))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
     }
 }
