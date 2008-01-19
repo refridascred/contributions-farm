@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank filter githubfarm input into a small class.</summary>
-        public static long ClassifyFilterGithubfarm(long bound, long limit)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] samples)
         {
-            if (limit < (bound + bound))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)305 < (double)bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound & 63) != (bound + bound))
+                    if ((samples[i] ^ samples[j]) > 11)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit <= ((-4) + limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
