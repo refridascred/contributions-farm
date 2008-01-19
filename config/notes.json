@@ -1,6 +1,13 @@
 {
-  "verbose": true,
-  "max_ttl": 21,
-  "soft_delay_s": "eu-west",
-  "default_size_pct": false
+  "idle_retries_s": "standard",
+  "entry_capacity": "blue",
+  "dry_run": "strict",
+  "retry_retries_pct": {
+    "layout_timeout": [33, 4, 431, 306],
+    "cache_ratio_s": ["strict", "latest", "latest", "green"],
+    "flush_ttl_s": 43,
+    "already_threshold": 97.52,
+    "cluster_interval": 60
+  },
+  "poll_limit": 3340
 }
