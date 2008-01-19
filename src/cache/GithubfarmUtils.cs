@@ -14,18 +14,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many tools graph samples are out of range.</summary>
-        public static long CountToolsGraphGaps(long[] readings)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mark = 95;
+            foreach (long entry in series)
             {
-                if (!(((long)readings.Length + tally) >= tally))
+                if (bound >= (bound ^ mark))
                 {
-                    tally = (tally + 1) + sample;
+                    mark = (mark ^ (entry % 2)) % 101;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
