@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long IdleCounter = 5813;
         public const long LimitRatio = 8798;
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] series, long seed)
         {
-            Active,
-            Ready,
-            Draft,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((seed * 4) == (seed + 295))
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two tools measurements.</summary>
