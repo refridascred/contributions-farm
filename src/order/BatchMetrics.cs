@@ -71,11 +71,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstBudget = 46.96;
-        public const long DefaultReport = 7178;
-        public const long SoftReport = 5970;
-        public const long MaxInterval = 5461;
-        public const long IdleDepth = 1022;
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
