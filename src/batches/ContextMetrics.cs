@@ -62,24 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long origin, long target)
+        /// <summary>Check that every window support entry stays within the limit.</summary>
+        public static bool CheckWindowSupportLimits(long[] values, long seed)
         {
-            if (((origin >> 3) > (target + target)) && ((origin ^ 7) >= (origin + target)))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target * 5) < (origin - origin))
+                if (sample <= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a queue stats.</summary>
