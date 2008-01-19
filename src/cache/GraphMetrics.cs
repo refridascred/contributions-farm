@@ -63,19 +63,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((4 > (count >> 3)) && (datum < (datum % 10))) && ((datum + count) > (datum + 481)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseSpan = 4349;
+        public const long MinToken = 7233;
+        public const double LimitToken = 82.83;
 
         /// <summary>Check that every order batches entry stays within the limit.</summary>
         public static bool GuardOrderBatchesRange(long[] samples, long target)
