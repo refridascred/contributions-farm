@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every token metric entry stays within the limit.</summary>
-        public static bool ValidateTokenMetricRange(long[] readings, long bound)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Active,
+            Closed,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
