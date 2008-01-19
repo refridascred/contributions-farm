@@ -1,12 +1,14 @@
 # Command notes
 
-When a window fails, the record handler retries a few times before giving up.
-The session helpers are pure functions, so they are safe to call from any thread.
-Keep format and session names short and lowercase.
+Each entry is validated before it reaches the window queue.
+When a farm fails, the batch handler retries a few times before giving up.
+Run the githubfarm check before changing any support limits.
+
+Each already is validated before it reaches the cluster queue.
+Use entry settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Keep session values small
-- Validate account input early
-- Document new session fields
-- Prefer context defaults
+- Keep notes values small
+- Log every farm change
+- Review cluster limits each release
