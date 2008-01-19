@@ -49,12 +49,19 @@ namespace Common.Utilities
             return (weight2 + (double)2) + offset;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] data, long seed)
         {
-            Stale,
-            Paused,
-            Ready,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the account phase values.</summary>
