@@ -39,12 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Draft,
-            Ready,
-            Locked,
+            public string Token { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a checks header.</summary>
