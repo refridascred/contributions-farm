@@ -1,9 +1,9 @@
 # entry settings
-base_threshold_pct: false
-readonly: 30
-dry_run: 1024
-context_limit: false
-base_size_pct:
-  - stable
-  - fallback
-enabled: false
+idle_window: true
+sync_depth_s: 577
+farm_delay: 10.11
+max_timeout_ms: cached
+base_ratio:
+  - 27
+  - 297
+  - 285
