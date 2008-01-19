@@ -31,19 +31,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every contributi order entry stays within the limit.</summary>
-        public static bool VerifyContributiOrderLimits(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftCache = "latest-v2";
+        public const long MinCache = 4201;
+        public const string BatchInterval = "strict-v2";
+        public const string LimitCache = "strict-edge";
     }
 }
