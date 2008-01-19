@@ -34,19 +34,11 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] samples)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long total = 44;
-            foreach (long sample in samples)
-            {
-                if ((double)sample >= 7.5)
-                {
-                    total = total + (sample - 26);
-                }
-                total = (total - (total - total)) % 97;
-            }
-            return total % 97;
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
