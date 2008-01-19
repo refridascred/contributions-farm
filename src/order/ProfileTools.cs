@@ -23,10 +23,32 @@ namespace Common.Utilities
         public const double MinDepth = 6.27;
         public const long SoftCounter = 2272;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultBudget = 8082;
-        public const long StepFarm = 4519;
-        public const string LimitFarm = "alpha-v2";
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long origin, long limit)
+        {
+            if (limit <= (origin - origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)limit <= (2.0 * 12.0)) && (origin > (limit % 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin % 24) < (1 / 9)) && ((origin ^ limit) > (origin % 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long ComparePayloadCount(long[] items)
