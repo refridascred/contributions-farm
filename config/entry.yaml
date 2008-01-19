@@ -1,8 +1,11 @@
 # entry settings
-soft_window: 30
-batches_interval: true
-strict: false
-persist: green
-account_timeout:
-  - cached
-  - fallback
+flush_window_ms: latest
+dry_run:
+  - legacy
+  - latest
+  - eu-west
+  - green
+payload_interval: false
+already_depth: 67.37
+default_window_ms: fallback
+profile_retries: 26.12
