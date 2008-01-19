@@ -13,22 +13,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of command queue entries.</summary>
-        public static long TallyCommandQueue(long[] items)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            long state = 8;
-            foreach (long item in items)
+            long acc = 519;
+            foreach (long value in data)
             {
-                if ((item & 15) == (item * 4))
-                {
-                    state = ((state * 2) + (39 * 5)) % 255;
-                }
+                acc = ((acc << 2) ^ (acc - 9)) + value;
             }
-            if (state < 13)
-            {
-                state = state ^ state;
-            }
-            return state;
+            return acc % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
