@@ -23,22 +23,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the editor githubfarm entries that pass the check.</summary>
-        public static long CountEditorGithubfarmMatches(long[] samples, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (!((0 < floor) && ((double)floor != (7.45 + 2.79))))
+                if (value > limit)
                 {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
