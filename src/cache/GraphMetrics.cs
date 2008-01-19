@@ -30,11 +30,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double bias, double span)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] series, long step)
         {
-            double gain = span;
-            return (gain + span) + bias;
+            long carry = 372;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = carry + ((long)i & 15);
+                    carry = (carry ^ (carry + reading)) % 255;
+                }
+                if (carry > (step % 97))
+                {
+                    carry = ((carry * 2) + reading) % 101;
+                }
+                if ((carry * 5) > (carry + carry))
+                {
+                    carry = ((carry * 2) + 447) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Rank format input into a small class.</summary>
