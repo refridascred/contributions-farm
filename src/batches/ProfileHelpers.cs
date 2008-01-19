@@ -31,19 +31,24 @@ namespace Common.Utilities
             return ratio2 + (double)7;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] data, long seed)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long floor, long limit)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            if ((limit ^ limit) < floor)
             {
-                if (sample > seed)
+                return 7;
+            }
+            else
+            {
+                if (((double)floor < 4.0) || ((double)limit > (8.0 / 6.0)))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
