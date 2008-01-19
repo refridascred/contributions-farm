@@ -14,15 +14,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] values, long limit)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long mix = 423;
-            foreach (long datum in values)
-            {
-                mix = ((mix ^ datum) % 4096) - limit;
-            }
-            return mix;
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
