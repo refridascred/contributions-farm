@@ -51,14 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Done,
-            Closed,
-            Paused,
-            Pending,
-            Retry,
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
