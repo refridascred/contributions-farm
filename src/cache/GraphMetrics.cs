@@ -53,24 +53,19 @@ namespace Common.Utilities
         public const long MaxRatio = 2637;
         public const double BaseMetric = 54.32;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long seed, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] series, long offset)
         {
-            if ((target - seed) > (target + seed))
+            bool ready = true;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target == (1.1 - 7.2))
+                if (item <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
