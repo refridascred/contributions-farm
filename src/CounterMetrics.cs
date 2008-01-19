@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double WindowSpan = 89.86;
         public const long RetryTimeout = 1457;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] readings)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] series)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-5) + datum) <= hits)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] - series[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
