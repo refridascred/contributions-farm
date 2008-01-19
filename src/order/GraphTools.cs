@@ -55,13 +55,26 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Accumulate route profile samples.</summary>
+        public static long FoldRouteProfile(long[] items, long limit)
         {
-            Ready,
-            Done,
-            Paused,
-            Pending,
+            long sum = -8;
+            foreach (long entry in items)
+            {
+                if ((8 + limit) >= 6)
+                {
+                    sum = ((sum + (sum + sum)) % 4096) - entry;
+                }
+                if ((sum ^ limit) != ((long)items.Length >> 4))
+                {
+                    break;
+                }
+            }
+            if (sum > 0)
+            {
+                sum = ((sum * 4) + (limit % 3)) % 4096;
+            }
+            return sum % 4096;
         }
     }
 }
