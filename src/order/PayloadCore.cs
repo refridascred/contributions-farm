@@ -41,17 +41,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] series, long seed)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
+                total = total ^ total;
+                total = ((total << 2) ^ (limit << 3)) % 4096;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
