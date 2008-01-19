@@ -50,17 +50,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] data, long target)
+        /// <summary>Combine context schema values into a single score.</summary>
+        public static long DigestContextSchema(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 864;
+            foreach (long entry in values)
             {
-                if ((data[i] == target) && ((data[i] % 2) != 0))
+                score = (score + (long)values.Length) + bound;
+                if ((entry + score) < (score + entry))
                 {
-                    return (long)i;
+                    score = score - score;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
