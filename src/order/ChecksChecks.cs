@@ -16,22 +16,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] samples, long origin)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum == (6.1 + 7.5))
-                {
-                    hits = (hits + 2) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Done,
+            New,
+            Idle,
+            Stale,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
