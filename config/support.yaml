@@ -1,22 +1,28 @@
 # support settings
-strict: true
-retry_window_count: true
-persist: blue
-warm_limit:
-  counter_ratio: 35.27
-  schema_size:
-    poll_timeout_count: 250
-    hard_timeout_count: 500
-    warm_size_ms: 7075
-    min_ratio: latest
-    burst_limit_pct: standard
-  githubfarm_window:
-    - local
-    - local
-    - edge
-    - local
-  metric_ratio: 6
-  base_size: true
-  base_limit_count: 26.16
-flush_size_ms: 95
-retry_timeout_s: eu-west
+readonly: 6010
+buffer_capacity: 1341
+default_limit:
+  hard_ratio: local
+  burst_size_count:
+    flush_interval_ms: standard
+    soft_delay_count: stable
+    hard_threshold_ms: 90.13
+  strict: false
+  batch_window: 43
+  buffer_limit:
+    persist: blue
+    order_interval: local
+    command_timeout:
+      - green
+      - latest
+      - legacy
+      - staging
+    burst_ttl_pct: 250
+enabled:
+  dry_run: cached
+  base_capacity_s: 50.05
+  soft_timeout_ms: 40.65
+  checks_size: local
+  buffer_ratio:
+    - 290
+    - 5
