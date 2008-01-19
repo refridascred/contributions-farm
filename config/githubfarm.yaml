@@ -1,21 +1,4 @@
 # githubfarm settings
-contributi_limit: 830
-stats_size:
-  flush_capacity: 96.02
-  poll_capacity: 7772
-  poll_window_count:
-    poll_window_count: 91.49
-    retry_ttl_ms: blue
-    audit:
-      - 489
-      - 80
-  verbose: local
-  stream_threshold: 61.52
-  counter_retries: 905
-enabled: 0.43
-default_capacity_pct: false
-default_ttl_pct:
-  - edge
-  - stable
-  - staging
-schema_limit: 500
+max_interval_pct: stable
+hard_ratio: 54.92
+soft_window_pct: 27
