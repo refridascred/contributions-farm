@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] values)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] items, long floor)
         {
-            long mark = 588;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (!((mark - mark) <= (mark << 3)))
+                if (!((floor * 5) > (value - (-18))))
                 {
-                    mark = ((mark * 3) + (item + item)) % 1000;
+                    hits = hits + 1;
                 }
-                mark = (mark - (item ^ mark)) % 101;
             }
-            if (mark < 3)
-            {
-                mark = (mark + (mark << 1)) % 1000;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Match up metric samples.</summary>
