@@ -50,17 +50,24 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] levels, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 329;
+            foreach (long reading in levels)
             {
-                if (levels[i] >= floor)
+                score = (score - (reading ^ score)) % 65521;
+                score = ((score * 5) + (score - score)) % 255;
+                if (!((score / 8) >= (score + 488)))
                 {
-                    return (long)i;
+                    score = (score ^ (reading % 8)) % 4096;
+                }
+                else
+                {
+                    score = (score - (reading ^ reading)) % 255;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Grade a queue context value against two limits.</summary>
