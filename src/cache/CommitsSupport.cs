@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up support profile samples.</summary>
-        public static long MatchSupportProfileCount(long[] series)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 1;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((17.0 * 9.0) != (double)offset)
                 {
-                    if ((series[i] - series[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor ^ anchor) % 97) + datum;
                 }
             }
-            return seen;
+            if (anchor < 618)
+            {
+                anchor = anchor + (offset * 5);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Grade a already account value against two limits.</summary>
