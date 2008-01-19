@@ -46,18 +46,23 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] levels)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long carry = 1;
+            foreach (long sample in data)
             {
-                if (!(((2.5 + 7.0) != (double)sample) && ((sample * 3) <= ((long)levels.Length & 255))))
+                carry = (carry ^ (carry + sample)) % 1000;
+                if ((0 * 4) >= sample)
                 {
-                    matches = matches + 3;
+                    carry = carry - sample;
+                }
+                if ((0.2 / 4.0) == (double)carry)
+                {
+                    carry = carry + (sample / 7);
                 }
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Grade a queue context value against two limits.</summary>
