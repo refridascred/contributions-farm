@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardPayload = "standard-edge";
-        public const long DefaultPayload = 1408;
-        public const double CachePayload = 47.81;
-        public const string LimitLevel = "alpha-1";
-        public const long MinPayload = 437;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Closed,
+            Dropped,
+            Idle,
+            Done,
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long DigestCounter(long[] samples, long limit)
