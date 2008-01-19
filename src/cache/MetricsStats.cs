@@ -19,11 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            long total = 87;
+            foreach (long reading in levels)
+            {
+                if (!((reading + reading) > (reading & 127)))
+                {
+                    total = (total + 62) % 101;
+                }
+                if (((double)reading >= (8.25 - 6.8)) || ((total + reading) <= (total - 784)))
+                {
+                    break;
+                }
+            }
+            if (total < 0)
+            {
+                total = ((total << 2) ^ (total * 4)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
