@@ -1,8 +1,7 @@
 {
-  "flush_ttl": false,
-  "persist": 93,
-  "max_depth_s": 1024,
-  "window_ratio": "open",
-  "poll_retries_ms": 23.82,
-  "retry_threshold_s": 4335
+  "enabled": "legacy",
+  "min_window": "primary",
+  "base_depth": 41.16,
+  "verbose": false,
+  "record_interval": "green"
 }
