@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many githubfarm editor samples are out of range.</summary>
+        public static long CountGithubfarmEditorOutliers(long[] data, long bound)
         {
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)bound > (3.0 / 9.0))
+                {
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
