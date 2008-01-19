@@ -1,5 +1,9 @@
 # support settings
-max_timeout_pct: true
-burst_depth_pct: latest
-min_limit_ms: 67.14
-sync_window: false
+window_capacity: staging
+max_capacity: edge
+default_limit:
+  idle_interval_count: true
+  min_depth_ms:
+    - 452
+    - 355
+  min_size_count: eu-west
