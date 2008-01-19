@@ -50,10 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 8043;
-        public const long IdleTimeout = 8157;
-        public const long RetryCache = 8152;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine report cache values into a single score.</summary>
         public static long TallyReportCache(long[] items, long seed)
