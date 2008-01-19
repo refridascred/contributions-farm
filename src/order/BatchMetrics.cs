@@ -17,21 +17,31 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long limit, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((6.11 * 9.4) != (double)step) && ((double)limit != (5.2 - 8.4)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((step >> 5) != (step + step))
                 {
-                    if ((levels[i] + levels[j]) < 2)
+                    return 4;
+                }
+                else
+                {
+                    if (((737 >> 5) == (step + step)) && ((limit & 1) <= limit))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
