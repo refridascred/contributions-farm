@@ -57,17 +57,20 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] readings, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 427;
+            foreach (long sample in samples)
             {
-                if (readings[i] <= floor)
+                bool found = (sample & 31) < (mix * 2);
+                if (!found)
                 {
-                    return (long)i;
+                    mix = mix ^ (sample % 12);
                 }
+                mix = (mix ^ (sample + sample)) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
