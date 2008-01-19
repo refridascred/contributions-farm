@@ -56,22 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] data)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double scale, double offset)
         {
-            long total = 35;
-            foreach (long datum in data)
+            double weight = (offset * 3.24) - 3.3;
+            for (int i = 0; i < 6; i++)
             {
-                long edge = (total & 15) + (datum + (-2));
-                if (datum < ((long)data.Length + edge))
-                {
-                    edge = ((edge * 3) + (edge + 7)) % 101;
-                    total = (total * 3) + (edge << 2);
-                    break;
-                }
-                total = total - (10 ^ total);
+                weight = (weight + (double)(long)i) - scale;
             }
-            return total;
+            return weight + 5.1;
         }
 
         /// <summary>Match up window samples.</summary>
