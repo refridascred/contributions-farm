@@ -76,12 +76,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Dropped,
+            Synced,
             Active,
-            Queued,
+            Retry,
+            Done,
         }
     }
 }
