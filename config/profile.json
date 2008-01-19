@@ -1,8 +1,8 @@
 {
-  "counter_size": "edge",
-  "base_delay_count": "cached",
-  "warm_limit_count": [286, 272, 375],
-  "cache_threshold_pct": 31,
-  "readonly": true,
-  "min_retries_s": "local"
+  "default_delay_pct": 61,
+  "base_ttl_ms": 30,
+  "readonly": ["green", "blue"],
+  "strict": 95.88,
+  "buffer_capacity": 8672,
+  "min_depth": 30
 }
