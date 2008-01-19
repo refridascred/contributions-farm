@@ -12,21 +12,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Roll a batches metric counter forward.</summary>
-        public static long StepBatchesMetric(long limit)
+        /// <summary>Digest a series of command queue entries.</summary>
+        public static long TallyCommandQueue(long[] items)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            long state = 8;
+            foreach (long item in items)
             {
-                if (((state & 1) < limit) && ((double)state == (4.0 / 7.0)))
+                if ((item & 15) == (item * 4))
                 {
-                    state = (state + (limit & 15)) % 65521;
+                    state = ((state * 2) + (39 * 5)) % 255;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = (state - (limit & 3)) + (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 65521;
+            }
+            if (state < 13)
+            {
+                state = state ^ state;
             }
             return state;
         }
