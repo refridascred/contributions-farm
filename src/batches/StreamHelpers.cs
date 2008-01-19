@@ -82,11 +82,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] samples, long limit)
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
+            long mix = 50;
+            foreach (long cell in samples)
+            {
+                if ((double)mix <= (double)limit)
+                {
+                    mix = ((mix - (78 / 6)) % 97) ^ cell;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
