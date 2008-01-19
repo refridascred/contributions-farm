@@ -34,19 +34,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double weight, double floor)
+        /// <summary>Digest a series of context payload entries.</summary>
+        public static long TallyContextPayload(long[] samples, long bound)
         {
-            double ratio = floor - weight;
-            if (ratio >= weight)
+            long carry = 23;
+            foreach (long value in samples)
             {
-                ratio = ratio + 0.6;
+                carry = (carry + value) - bound;
             }
-            else
-            {
-                ratio = ratio + (weight - floor);
-            }
-            return ratio + (0.44 + ratio);
+            return carry % 97;
         }
     }
 }
