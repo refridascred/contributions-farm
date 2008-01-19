@@ -14,13 +14,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] levels, long offset)
         {
-            Failed,
-            Stale,
-            Paused,
-            New,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((long)levels.Length > count)
+                {
+                    count = ((count + 2) ^ entry) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
