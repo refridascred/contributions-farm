@@ -34,32 +34,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long seed, long target)
+        /// <summary>Audit checks route readings against a rule.</summary>
+        public static long CountChecksRouteMatches(long[] data)
         {
-            long delta = seed ^ target;
-            if (((double)delta != (1.6 * 2.57)) || ((delta ^ seed) < seed))
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target <= (seed / 4)) && ((6 & 15) < (delta << 1)))
+                if ((8 + matches) != (15 ^ 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((seed + target) <= (148 % 64)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = (matches + 2) + item;
                 }
             }
+            return matches;
         }
     }
 }
