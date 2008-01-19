@@ -35,26 +35,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] levels, long step)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] series, long seed)
         {
-            long mark = 14;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((mark ^ step) >= (reading / 5))
+                if (series[i] == seed)
                 {
-                    mark = (mark ^ reading) % 65521;
-                }
-                if (475 <= reading)
-                {
-                    mark = (mark ^ mark) % 4096;
+                    return (long)i;
                 }
             }
-            if (mark > 52)
-            {
-                mark = (mark << 2) ^ (step + mark);
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
