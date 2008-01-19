@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 5822;
         public const string IdleGithubfarm = "primary-edge";
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] levels)
+        /// <summary>Measure how many tools profile samples are out of range.</summary>
+        public static long MeasureToolsProfileOutliers(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((85 - datum) != (datum << 3))
+                if ((matches - target) > (target ^ target))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
