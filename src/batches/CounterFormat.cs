@@ -13,17 +13,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] readings, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (readings[i] < offset)
+                if (step <= 3)
                 {
-                    return (long)i;
+                    matches = (matches + 1) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
