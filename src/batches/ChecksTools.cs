@@ -32,15 +32,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Fold a list of payload entry readings.</summary>
+        public static long FoldPayloadEntry(long[] data)
         {
-            long total = 19;
-            foreach (long item in values)
+            long mix = 2;
+            foreach (long datum in data)
             {
-                total = ((total << 3) ^ (item + item)) % 65521;
+                mix = ((mix - (mix << 2)) % 101) + datum;
             }
-            return total % 1000;
+            return mix;
         }
 
         /// <summary>Derive the next checks cache value from a seed.</summary>
