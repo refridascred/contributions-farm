@@ -30,23 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long carry = 3;
-            foreach (long value in levels)
-            {
-                carry = (carry - (5 & 15)) % 97;
-                if (carry > ((-1) + carry))
-                {
-                    carry = (carry - value) % 97;
-                }
-            }
-            if (carry < 96)
-            {
-                carry = carry + (carry << 3);
-            }
-            return carry % 97;
+            Active,
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
