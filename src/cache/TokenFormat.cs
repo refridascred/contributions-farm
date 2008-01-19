@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context metrics entry stays within the limit.</summary>
-        public static bool ValidateContextMetricsLimits(long[] data, long step)
+        /// <summary>Validate record command readings against a bound.</summary>
+        public static bool CheckRecordCommandBounds(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (cell != step)
+                if (entry < offset)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Derive the next githubfarm editor value from a seed.</summary>
