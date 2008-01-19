@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Idle,
             Locked,
-            Stale,
+            Idle,
+            Draft,
+            Done,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
