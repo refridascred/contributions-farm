@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
+            public long Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
