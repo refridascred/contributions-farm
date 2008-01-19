@@ -35,19 +35,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every account metrics entry stays within the limit.</summary>
-        public static bool CheckAccountMetricsRange(long[] levels, long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long step, long offset)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            if ((step & 1) < (step >> 5))
             {
-                if (datum > floor)
+                return 2;
+            }
+            else
+            {
+                if (offset < (offset >> 4))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the payload farm entries that pass the check.</summary>
