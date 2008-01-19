@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryWidth = 88.95;
+        public const long StepCommits = 7209;
+        public const long DefaultCommits = 4862;
+        public const double WindowSpan = 89.86;
+        public const long RetryTimeout = 1457;
 
         /// <summary>Count the layout route entries that pass the check.</summary>
         public static long TallyLayoutRouteHits(long[] data)
