@@ -17,31 +17,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long limit, long step)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            if (((6.11 * 9.4) != (double)step) && ((double)limit != (5.2 - 8.4)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step >> 5) != (step + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((737 >> 5) == (step + step)) && ((limit & 1) <= limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
