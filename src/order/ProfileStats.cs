@@ -43,11 +43,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public bool Total { get; set; }
-            public bool Label { get; set; }
+            public bool Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
