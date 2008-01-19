@@ -26,18 +26,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many githubfarm notes samples are out of range.</summary>
-        public static long TallyGithubfarmNotesGaps(long[] readings, long limit)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((count + value) == ((-47) + value)) && ((limit / 7) != (limit % 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of commits order readings.</summary>
