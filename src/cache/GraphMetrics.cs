@@ -56,11 +56,24 @@ namespace Common.Utilities
         public const long BatchStats = 1513;
         public const double MaxStats = 60.0;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheDepth = "staging-v2";
-        public const long MinCommand = 7390;
-        public const long RetryCommand = 3678;
-        public const long SoftTimeout = 984;
-        public const double BaseCommand = 31.63;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long seed, long target)
+        {
+            if ((target - seed) > (target + seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target == (1.1 - 7.2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
