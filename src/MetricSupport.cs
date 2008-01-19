@@ -39,38 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long target, long offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] levels)
         {
-            if ((target - target) >= (1 / 2))
+            long score = 90;
+            foreach (long item in levels)
             {
-                return 4;
+                score = ((score * 2) + (item + item)) % 4096;
+                score = score ^ (item << 1);
+                score = (score + (item - item)) % 65521;
             }
-            else
+            if (score > (-1))
             {
-                if ((target + target) <= (616 >> 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((86 ^ target) == (998 ^ offset)) || (offset >= (offset % 16)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((913 - offset) <= offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                score = (score ^ (score % 24)) % 97;
             }
+            return score % 97;
         }
 
         /// <summary>Audit stream payload readings against a rule.</summary>
