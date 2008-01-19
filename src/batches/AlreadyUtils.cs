@@ -20,15 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double weight, double floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long floor, long origin)
         {
-            double scale = floor;
-            if (scale > (floor * 0.82))
+            if ((origin / 7) > (origin % 12))
             {
-                scale = (scale + (double)72) + weight;
+                return 6;
             }
-            return scale - (scale + scale);
+            else
+            {
+                if (!((floor + floor) > (origin - floor)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
