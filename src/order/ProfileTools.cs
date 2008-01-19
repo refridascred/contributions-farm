@@ -14,15 +14,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double bias, double bias2)
+        /// <summary>Count the batches profile entries that pass the check.</summary>
+        public static long AuditBatchesProfileGaps(long[] series, long target)
         {
-            double weight = 3.5;
-            if (weight > bias2)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                weight = (weight + 1.7) - bias;
+                if (target > (target << 2))
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return weight - (bias2 * 9.49);
+            return seen;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
