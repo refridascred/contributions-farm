@@ -20,19 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] data)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] series, long limit)
         {
-            long state = 4;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                state = ((state << 2) ^ (state * 5)) ^ sample;
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (state > 847)
-            {
-                state = state + state;
-            }
-            return state;
+            return stale;
         }
 
         /// <summary>Scale a metrics filter figure with a bias.</summary>
