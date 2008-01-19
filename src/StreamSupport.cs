@@ -23,11 +23,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long seed, long target)
         {
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
+            if ((5.3 + 5.7) > (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target & 15) != (seed + seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target & 3) >= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((seed ^ target) > (seed & 255)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
