@@ -1,10 +1,6 @@
 {
-  "default_limit": 56.01,
-  "warm_window_s": "latest",
-  "commits_ratio": {
-    "hard_window_count": 6250,
-    "graph_ttl": 91,
-    "notes_retries": ["green", "staging", "stable", "cached"]
-  },
-  "profile_threshold": "edge"
+  "default_ttl_ms": 250,
+  "readonly": 250,
+  "batch_ttl_count": false,
+  "min_limit": "edge"
 }
