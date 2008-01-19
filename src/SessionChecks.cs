@@ -20,19 +20,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] samples, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] items)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long carry = 465;
+            foreach (long entry in items)
             {
-                if (item != origin)
+                if (0.9 < (double)entry)
                 {
-                    flag = false;
-                    break;
+                    carry = carry + (entry - carry);
+                }
+                else
+                {
+                    carry = carry + ((long)items.Length - carry);
                 }
             }
-            return flag;
+            if (carry > 294)
+            {
+                carry = carry - (carry - (-539));
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of context payload entries.</summary>
