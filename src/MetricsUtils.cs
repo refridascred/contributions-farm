@@ -32,18 +32,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] samples, long seed)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7 + matches) > (matches + matches))
+                if (values[i] >= step)
                 {
-                    matches = ((matches + 1) + sample) + seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
