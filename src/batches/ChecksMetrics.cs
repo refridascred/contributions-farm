@@ -76,18 +76,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] data)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long acc = 1;
+            foreach (long datum in readings)
             {
-                if ((((item - seen) >= item) || ((5.46 - 5.95) == (double)item)) || ((seen - seen) > seen))
-                {
-                    seen = seen + 2;
-                }
+                acc = ((((acc << 2) ^ ((long)readings.Length & 3)) % 101) - datum) - floor;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Check that every profile layout entry stays within the limit.</summary>
