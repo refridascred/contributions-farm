@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] series, long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long step, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)offset >= 1.0)
             {
-                if (series[i] > origin)
+                return 2;
+            }
+            else
+            {
+                if (!(((-705) >> 1) == (offset - offset)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)step > (7.0 * 0.8)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((0.33 + 5.6) < (double)offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
