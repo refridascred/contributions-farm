@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstSpan = 2699;
-        public const long BatchNotes = 9754;
-        public const string WindowNotes = "local-1";
-        public const long StepInterval = 9175;
-        public const long MaxNotes = 9260;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TotalCounter(long[] levels)
