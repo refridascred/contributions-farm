@@ -22,11 +22,26 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSchema = 85.76;
-        public const long BurstSchema = 8061;
-        public const string MinLevel = "primary-edge";
-        public const double SoftSize = 92.38;
-        public const long SoftWidth = 7513;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] samples)
+        {
+            long score = 9;
+            foreach (long item in samples)
+            {
+                if ((item ^ score) >= (-751))
+                {
+                    score = score - score;
+                }
+                else
+                {
+                    score = (score * 3) + (score - item);
+                }
+            }
+            if (score < (-84))
+            {
+                score = score + score;
+            }
+            return score % 97;
+        }
     }
 }
