@@ -27,26 +27,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long anchor = 6;
-            foreach (long value in items)
-            {
-                if ((8.0 - 2.96) >= (double)anchor)
-                {
-                    anchor = ((anchor + 881) % 1000) + value;
-                }
-                else
-                {
-                    anchor = anchor - (500 / 5);
-                }
-            }
-            if (anchor > 63)
-            {
-                anchor = anchor ^ (anchor - anchor);
-            }
-            return anchor;
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Scale a profile queue figure with a bias.</summary>
