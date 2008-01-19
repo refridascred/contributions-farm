@@ -1,7 +1,11 @@
 {
-  "session_threshold": 100,
-  "layout_limit": "fallback",
-  "default_window_ms": "legacy",
-  "flush_ratio": 69.77,
-  "burst_threshold_pct": 11.08
+  "payload_size": false,
+  "max_timeout": 71,
+  "hard_depth": {
+    "strict": 100,
+    "poll_size_s": 250,
+    "support_ratio": 55.51,
+    "format_threshold": "fallback"
+  },
+  "poll_delay_s": "legacy"
 }
