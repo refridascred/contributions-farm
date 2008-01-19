@@ -58,18 +58,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] readings, long offset)
+        /// <summary>Derive the next already tools value from a seed.</summary>
+        public static long StepAlreadyTools(long bound)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (((value >> 3) >= (value + seen)) && ((double)(long)readings.Length >= (6.13 * 6.51)))
-                {
-                    seen = (seen + 2) + offset;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
