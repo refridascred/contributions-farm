@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Ready,
-            New,
-            Pending,
-            Stale,
-            Idle,
+            public double Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
