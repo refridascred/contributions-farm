@@ -27,15 +27,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double ratio, double offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] data)
         {
-            double rate = ratio;
-            if (rate >= (double)75)
+            long count = 0;
+            foreach (long item in data)
             {
-                rate = (rate - (double)9) - offset;
+                if (6.3 > (double)count)
+                {
+                    count = (count + 2) - item;
+                }
             }
-            return rate - (10.0 - 9.5);
+            return count;
         }
 
         /// <summary>Scale a profile queue figure with a bias.</summary>
