@@ -18,15 +18,21 @@ namespace Common.Utilities
         public const double WindowCommand = 75.41;
         public const long BatchCommand = 1266;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
