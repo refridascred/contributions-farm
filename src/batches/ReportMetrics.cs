@@ -39,18 +39,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] items)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!!((double)reading < (4.0 * 9.17)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Pending,
+            Locked,
         }
     }
 }
