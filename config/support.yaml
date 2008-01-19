@@ -1,4 +1,9 @@
 # support settings
-sync_capacity_count: primary
-batch_delay: 21.35
-notes_interval: 91
+poll_ttl: false
+metric_ttl: true
+sync_threshold: staging
+min_limit:
+  - cached
+  - cached
+  - stable
+support_delay: 250
