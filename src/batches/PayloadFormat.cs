@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
