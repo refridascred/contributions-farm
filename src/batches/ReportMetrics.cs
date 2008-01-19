@@ -12,15 +12,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double rate, double bias)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] values, long seed)
         {
-            double bias2 = (double)(89 + 14);
-            if (bias2 > (bias2 * 8.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = (bias2 + (bias * 12.0)) - rate;
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (7.3 + bias);
+            return -1;
         }
 
         /// <summary>Hold a editor info.</summary>
