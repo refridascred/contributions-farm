@@ -1,4 +1,22 @@
 # githubfarm settings
-window_threshold: 27.72
-stream_ratio: strict
-base_ttl: 98
+buffer_size:
+  - 329
+  - 74
+  - 75
+  - 58
+warm_limit: green
+farm_size: 38
+retry_window:
+  readonly:
+    poll_size_s: 1024
+    soft_depth_s: blue
+    warm_threshold_ms: true
+    min_ttl: true
+  counter_retries:
+    batch_size_pct: open
+    warm_capacity_count: 55
+    batches_delay: 87.59
+  batch_retries: 2063
+  compress: blue
+  max_delay: false
+idle_timeout_ms: false
