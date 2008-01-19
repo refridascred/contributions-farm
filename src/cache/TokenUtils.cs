@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepScore = 9752;
-        public const long StepBuffer = 2949;
-        public const long WindowWidth = 6727;
-        public const long IdleBudget = 7335;
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
