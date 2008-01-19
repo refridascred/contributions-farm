@@ -36,18 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 5549;
+        public const string WindowAccount = "legacy";
+        public const long SoftAccount = 9260;
+        public const long IdleAccount = 8505;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long SeriesPayload(long step)
