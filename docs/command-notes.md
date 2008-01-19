@@ -1,11 +1,15 @@
 # Command notes
 
-The batch report groups every record by contributi.
-Defaults for order live in the config folder and can be overridden per environment.
-Keep editor and format names short and lowercase.
+Keep command and contributi names short and lowercase.
+Run the notes check before changing any profile limits.
+
+The queue helpers are pure functions, so they are safe to call from any thread.
+The profile report groups every route by cache.
+The editor report groups every contributi by farm.
 
 ## Guidelines
 
-- Review counter limits each release
-- Document new format fields
-- Log every filter change
+- Review report limits each release
+- Prefer stream defaults
+- Validate context input early
+- Log every cache change
