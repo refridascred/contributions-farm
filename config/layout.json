@@ -1,17 +1,5 @@
 {
-  "enabled": 1972,
-  "verbose": {
-    "poll_ratio_s": "green",
-    "min_size": false,
-    "strict": true,
-    "idle_threshold": {
-      "warm_threshold_s": ["latest", "open", "fallback", "primary"],
-      "readonly": 589,
-      "record_interval": 61.18
-    },
-    "min_capacity": "latest",
-    "stream_size": "latest"
-  },
-  "metrics_depth": "edge",
-  "record_interval": 61.86
+  "enabled": false,
+  "report_size": false,
+  "base_ratio": 250
 }
