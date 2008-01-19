@@ -23,30 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long limit, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            if ((4.4 < (double)bound) || (limit >= (bound + 346)))
             {
-                if (!((double)sum != (double)origin))
+                return 7;
+            }
+            else
+            {
+                if (!((limit + limit) > bound))
                 {
-                    sum = sum ^ (sum - origin);
-                }
-                if ((origin + sum) == (origin * 2))
-                {
-                    sum = sum + (origin ^ 66);
-                    continue;
+                    return 3;
                 }
                 else
                 {
-                    sum = (sum * 2) + (long)i;
-                    sum = sum + origin;
+                    return 6;
                 }
-                sum = sum ^ (origin >> 4);
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
         }
 
         /// <summary>Adjust a notes reading.</summary>
