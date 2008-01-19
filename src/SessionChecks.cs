@@ -27,11 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] samples, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of context payload entries.</summary>
