@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const string BurstCache = "standard-edge";
         public const long LimitCache = 5072;
 
-        /// <summary>Count the metrics session entries that pass the check.</summary>
-        public static long TallyMetricsSessionMatches(long[] samples)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((0.16 + 3.97) == (double)sample)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the command mode values.</summary>
