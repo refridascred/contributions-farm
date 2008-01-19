@@ -55,22 +55,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] data, long floor)
+        /// <summary>Count the githubfarm account entries that pass the check.</summary>
+        public static long CountGithubfarmAccountGaps(long[] values, long floor)
         {
-            long anchor = 68;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((floor << 1) <= (entry << 1))
+                if ((2 << 2) <= (entry + 88))
                 {
-                    anchor = (anchor - (floor + floor)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ (entry / 4)) % 65521;
+                    count = (count + 1) - floor;
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
