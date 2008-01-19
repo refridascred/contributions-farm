@@ -39,12 +39,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleRatio = 5041;
+        public const double RetryScore = 35.56;
+        public const long HardCluster = 7229;
     }
 }
