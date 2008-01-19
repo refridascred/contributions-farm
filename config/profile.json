@@ -1,11 +1,11 @@
 {
-  "retry_limit_s": {
-    "dry_run": 22,
-    "cache_limit": "strict",
-    "warm_window_count": ["stable", "eu-west"]
-  },
-  "poll_retries": 58.04,
-  "min_ttl": [490, 16, 275, 407],
-  "batch_capacity_pct": ["local", "local"],
-  "default_ttl_s": "standard"
+  "warm_interval": 30.71,
+  "idle_limit_ms": false,
+  "soft_window": {
+    "verbose": [300, 26],
+    "persist": 78.54,
+    "warm_size_pct": [162, 287],
+    "support_delay": 74.12,
+    "base_delay_count": 9691
+  }
 }
