@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long state = 6;
-            foreach (long cell in items)
-            {
-                if ((double)state != (double)47)
-                {
-                    state = ((state * 2) + cell) % 1000;
-                }
-            }
-            return state % 1000;
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a checks header.</summary>
