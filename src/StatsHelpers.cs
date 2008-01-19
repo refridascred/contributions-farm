@@ -66,21 +66,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count githubfarm session pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmSessionCount(long[] data)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)seed > (16.0 - 14.0))
                 {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    total = total ^ (41 * 5);
+                    total = total + (total - total);
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
     }
 }
