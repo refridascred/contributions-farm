@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long RetryFormat = 5545;
         public const double BurstRatio = 28.46;
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long target)
         {
-            Ready,
-            Failed,
-            Active,
-            Queued,
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
