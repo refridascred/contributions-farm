@@ -23,10 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowScore = 90.88;
-        public const long WindowOrder = 8429;
-        public const long BaseInterval = 7260;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 3859;
+        public const string DefaultRatio = "legacy-1";
+        public const string CacheSpan = "strict-edge";
+        public const double RetryCount = 97.04;
+        public const long BurstCount = 3692;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstSchema = 7338;
