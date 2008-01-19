@@ -76,18 +76,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up channel farm samples.</summary>
-        public static long CompareChannelFarmCount(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry + count) <= count)
                 {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
