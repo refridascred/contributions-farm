@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Closed,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultTimeout = 63.21;
+        public const long HardContributi = 4511;
+        public const double StepWidth = 5.53;
+        public const long StepContributi = 2872;
+        public const long CacheCount = 2753;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatHits(long[] levels, long target)
