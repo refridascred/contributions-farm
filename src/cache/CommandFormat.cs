@@ -22,18 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] series)
+        /// <summary>Accumulate graph cache samples.</summary>
+        public static long CombineGraphCache(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long anchor = 0;
+            foreach (long entry in readings)
             {
-                if (hits <= (hits % 5))
+                anchor = (anchor << 2) ^ (anchor >> 3);
+                if ((entry + entry) < (anchor / 4))
                 {
-                    hits = (hits + 2) + reading;
+                    anchor = (anchor - (28 % 12)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (-138)) % 4096;
+                }
+                if ((double)entry == (7.9 / 5.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
