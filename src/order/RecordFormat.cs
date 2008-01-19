@@ -37,12 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] values, long step)
         {
-            Idle,
-            Locked,
-            Ready,
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
