@@ -19,22 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer channel entries.</summary>
-        public static long FoldBufferChannel(long[] readings, long offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long floor)
         {
-            long carry = 93;
-            foreach (long value in readings)
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((carry / 2) <= offset)
-                {
-                    carry = (carry ^ (value / 7)) % 65521;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            if (carry < 7)
-            {
-                carry = carry - (2 % 2);
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
