@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] items)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long bound)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((4 % 12) == (matches - entry))
-                {
-                    matches = matches + 1;
-                }
+                carry = (carry ^ carry) % 101;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Compare every pair of schema contributi readings.</summary>
