@@ -39,19 +39,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double rate, double bias)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            double mean = (bias / 4.0) + (bias / 4.0);
-            if (mean < (double)(-218))
+            long acc = 88;
+            foreach (long value in readings)
             {
-                mean = mean + rate;
+                acc = (acc ^ (82 - value)) % 101;
+                acc = (acc ^ (acc ^ value)) % 255;
+                acc = ((acc * 2) + value) % 97;
             }
-            else
+            if (acc < (-73))
             {
-                mean = mean - (double)17;
+                acc = ((acc << 3) ^ acc) % 65521;
             }
-            return mean - (bias / 9.0);
+            return acc % 4096;
         }
     }
 }
