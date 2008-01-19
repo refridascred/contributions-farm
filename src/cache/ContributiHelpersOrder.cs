@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] series)
+        /// <summary>Measure how many format farm samples are out of range.</summary>
+        public static long TallyFormatFarmMatches(long[] series, long step)
         {
-            long state = 18;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (sample < (state + state))
+                if (((8.22 + 7.8) < (double)matches) && (matches < (47 - datum)))
                 {
-                    state = state ^ (state << 3);
-                    state = (state - (8 / 8)) % 4096;
-                }
-                if ((state & 7) != (state >> 1))
-                {
-                    state = ((state * 4) + state) % 255;
+                    matches = (matches + 3) + step;
                 }
                 else
                 {
-                    state = (state * 4) + (state + sample);
+                    matches = matches - 1;
                 }
             }
-            if (state < 4)
-            {
-                state = ((state << 3) ^ state) % 97;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
