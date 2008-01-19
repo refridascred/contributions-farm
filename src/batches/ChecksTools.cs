@@ -54,18 +54,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the command batch entries that pass the check.</summary>
-        public static long TallyCommandBatchMatches(long[] samples)
+        /// <summary>Derive the next checks cache value from a seed.</summary>
+        public static long DeriveChecksCache(long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample <= (sample << 2))
-                {
-                    count = count + 2;
-                }
+                acc = (acc << 3) ^ (acc << 2);
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
     }
 }
