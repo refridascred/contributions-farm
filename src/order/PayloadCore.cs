@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Count the tools command entries that pass the check.</summary>
+        public static long AuditToolsCommandOutliers(long[] series)
         {
-            Pending,
-            Paused,
-            Done,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (!((9 << 1) < (649 + count)))
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate order samples.</summary>
