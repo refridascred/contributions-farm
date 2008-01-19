@@ -53,11 +53,19 @@ namespace Common.Utilities
         public const long MinInterval = 4116;
         public const long StepContributi = 7136;
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double ratio, double bias)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long seed)
         {
-            double bias2 = bias;
-            return (bias2 + 9.0) + ratio;
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((long)i & 255) > seed)
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
