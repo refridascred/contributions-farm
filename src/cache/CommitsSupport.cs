@@ -79,12 +79,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 514;
-        public const long RetryLevel = 6089;
-        public const double WindowSupport = 4.85;
-        public const string WindowLevel = "open-1";
-        public const string CacheSupport = "legacy";
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Closed,
+            New,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool VerifyOrderBounds(long[] items, long target)
