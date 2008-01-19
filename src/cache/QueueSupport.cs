@@ -33,19 +33,18 @@ namespace Common.Utilities
             return ratio2 + (ratio2 + ratio2);
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] values, long offset)
+        /// <summary>Count the stats support entries that pass the check.</summary>
+        public static long AuditStatsSupportHits(long[] data)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (value < offset)
+                if ((11.0 - 4.76) > (double)entry)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
