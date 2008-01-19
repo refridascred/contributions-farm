@@ -1,5 +1,6 @@
 {
-  "githubfarm_retries": [198, 398, 370, 46],
-  "base_ratio_pct": "strict",
-  "min_depth_ms": 100
+  "retry_ttl_ms": "legacy",
+  "default_threshold_count": 903,
+  "idle_limit": ["cached", "legacy", "strict"],
+  "verbose": "strict"
 }
