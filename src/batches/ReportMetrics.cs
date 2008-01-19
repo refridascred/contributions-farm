@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] levels, long step)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum - datum) > datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) + step;
+                    if ((data[i] ^ data[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
