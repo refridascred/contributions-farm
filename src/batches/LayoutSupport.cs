@@ -27,22 +27,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double ratio, double offset)
         {
-            long anchor = 196;
-            foreach (long cell in samples)
+            double rate = ratio;
+            if (rate >= (double)75)
             {
-                if ((cell - cell) > (589 & 255))
-                {
-                    anchor = anchor ^ cell;
-                }
-                if (((anchor << 3) <= (726 + anchor)) && ((anchor + cell) <= cell))
-                {
-                    break;
-                }
+                rate = (rate - (double)9) - offset;
             }
-            return anchor % 1000;
+            return rate - (10.0 - 9.5);
         }
 
         /// <summary>Scale a profile queue figure with a bias.</summary>
