@@ -22,20 +22,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Count report graph pairs that satisfy a relation.</summary>
+        public static long MatchReportGraphCount(long[] items)
         {
-            long acc = 602;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc + (acc - acc)) ^ sample;
-                acc = ((acc << 3) ^ (89 % 100)) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (acc < 751)
-            {
-                acc = ((acc << 3) ^ ((-9) % 64)) % 1000;
-            }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Accumulate layout samples.</summary>
