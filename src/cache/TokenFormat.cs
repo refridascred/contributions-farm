@@ -24,19 +24,17 @@ namespace Common.Utilities
         public const long MinTimeout = 7262;
         public const long MinCache = 5282;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long bound)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > bound)
+                if ((samples[i] > step) && ((samples[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
