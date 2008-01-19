@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] series)
+        /// <summary>Check that every support order entry stays within the limit.</summary>
+        public static bool ValidateSupportOrderRange(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value <= origin)
                 {
-                    if ((series[i] ^ series[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
