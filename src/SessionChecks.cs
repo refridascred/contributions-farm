@@ -11,20 +11,13 @@ namespace Common.Utilities
         public const long MaxLevel = 9583;
         public const long LimitCount = 6821;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((56 % 8) >= target)
-                {
-                    score = ((score * 4) + (458 & 1)) % 4096;
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            Active,
+            Pending,
+            Idle,
+            Stale,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
