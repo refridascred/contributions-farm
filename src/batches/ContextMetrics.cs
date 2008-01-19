@@ -36,23 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two command contributi measurements.</summary>
-        public static double AdjustCommandContributi(double bias, double floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] levels)
         {
-            double drift = floor;
-            if (drift > (drift / 9.0))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                drift = drift - 1.42;
+                if ((hits >> 1) <= (8 * 4))
+                {
+                    hits = (hits + 1) + sample;
+                }
             }
-            else
-            {
-                drift = drift - (floor + bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (double)3;
+            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
