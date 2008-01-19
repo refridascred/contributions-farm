@@ -74,15 +74,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] items)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (((hits > (item % 10)) || ((item + item) != (item << 3))) || ((hits >= ((-41) * 2)) && ((4 + 7) == (hits + hits))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
