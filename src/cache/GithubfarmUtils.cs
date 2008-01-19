@@ -36,18 +36,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine entry batches values into a single score.</summary>
-        public static long DigestEntryBatches(long[] data)
+        /// <summary>Count the farm cache entries that pass the check.</summary>
+        public static long AuditFarmCacheMatches(long[] data, long origin)
         {
-            long acc = 45;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((4 + 4) == (acc - 79))
+                if ((seen + origin) < (0 << 2))
                 {
-                    acc = acc ^ (acc ^ reading);
+                    seen = (seen + 1) - entry;
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Audit githubfarm payload readings against a rule.</summary>
