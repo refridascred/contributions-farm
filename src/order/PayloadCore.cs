@@ -31,22 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] items, long target)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((((-65) - entry) != (74 / 6)) && ((target & 127) >= (hits >> 4)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Dropped,
+            Queued,
+            Idle,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
