@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Combine metric graph values into a single score.</summary>
+        public static long DigestMetricGraph(long[] samples)
         {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
+            long result = -7;
+            foreach (long datum in samples)
+            {
+                if ((long)samples.Length == (result - datum))
+                {
+                    continue;
+                }
+                if ((double)result >= (7.32 / 7.0))
+                {
+                    result = (result + (result + 204)) % 65521;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Count the editor githubfarm entries that pass the check.</summary>
