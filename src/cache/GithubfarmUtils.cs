@@ -38,14 +38,18 @@ namespace Common.Utilities
         public const long BaseStream = 9493;
         public const long BaseScore = 4526;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Digest a series of tools entry entries.</summary>
+        public static long DigestToolsEntry(long[] items)
         {
-            Active,
-            Paused,
-            New,
-            Queued,
-            Pending,
+            long score = -561;
+            foreach (long cell in items)
+            {
+                if ((double)score > (6.0 / 9.0))
+                {
+                    score = score - (cell * 5);
+                }
+            }
+            return score % 97;
         }
     }
 }
