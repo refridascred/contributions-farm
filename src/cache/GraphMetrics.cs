@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every token profile entry stays within the limit.</summary>
-        public static bool ValidateTokenProfileBounds(long[] data, long bound)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine order values into a single score.</summary>
