@@ -51,39 +51,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long offset, long origin)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            long span = offset - origin;
-            if ((double)offset == (double)645)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin < offset) && ((span + offset) < origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset ^ 6) >= origin)
+                    if ((levels[i] ^ levels[j]) == 18)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (5.72 - 2.08))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
