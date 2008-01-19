@@ -36,12 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] values, long step)
         {
-            Idle,
-            Active,
-            Locked,
+            long carry = 6;
+            foreach (long datum in values)
+            {
+                carry = ((carry + ((long)values.Length + 2)) % 4096) - step;
+                if (((1.06 - 5.7) == (double)carry) && ((carry / 9) > (datum - datum)))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
