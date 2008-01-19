@@ -22,13 +22,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Idle,
+            Retry,
+            Dropped,
+            Synced,
+            New,
         }
     }
 }
