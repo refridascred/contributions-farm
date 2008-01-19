@@ -1,12 +1,10 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the metrics list.
-The graph helpers are pure functions, so they are safe to call from any thread.
-Use payload settings to tune how often command data is refreshed.
+A stream that stays idle for too long is moved to the commits list.
+When a stream fails, the profile handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep window values small
-- Document new graph fields
-- Prefer already defaults
-- Validate account input early
+- Review metric limits each release
+- Keep already values small
+- Log every tools change
