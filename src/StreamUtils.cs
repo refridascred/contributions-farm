@@ -69,39 +69,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a command counter value against two limits.</summary>
-        public static long GradeCommandCounter(long step, long offset)
-        {
-            if ((double)559 == (double)step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step + offset) != (step * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step >> 1) != (step - offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step * 4) >= (8 - step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 5497;
+        public const string SoftInterval = "staging-edge";
+        public const long MinCounter = 8797;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphHits(long[] data, long step)
