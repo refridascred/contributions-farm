@@ -82,21 +82,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] readings)
-        {
-            long state = -941;
-            foreach (long sample in readings)
-            {
-                state = ((state << 3) ^ sample) % 1000;
-                state = (state ^ (sample >> 3)) % 255;
-                state = (state ^ (sample & 31)) % 1000;
-            }
-            if (state < 2)
-            {
-                state = (state << 2) ^ (state ^ state);
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleOrder = "cached-edge";
+        public const string MinRatio = "stable-v2";
+        public const double WindowTimeout = 75.11;
+        public const double SoftLevel = 85.2;
+        public const long WindowOrder = 3373;
     }
 }
