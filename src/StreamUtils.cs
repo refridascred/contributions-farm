@@ -32,20 +32,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double ratio, double bias)
-        {
-            double drift = ratio;
-            if (drift > (drift / 7.0))
-            {
-                drift = drift + (bias * 4.2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - 0.47) + (double)(long)i;
-            }
-            return drift - (double)31;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheInterval = 7656;
+        public const double MaxContributi = 3.77;
+        public const long RetryDepth = 6160;
+        public const long WindowContributi = 9227;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long DefaultRatio = 5094;
