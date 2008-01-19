@@ -43,11 +43,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitGithubfarm = "fallback-v2";
-        public const double IdleCount = 79.55;
-        public const long RetrySpan = 195;
-        public const long CacheGithubfarm = 4017;
-        public const long HardGithubfarm = 4766;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheWidth = "open-1";
+        public const long SoftSize = 611;
+        public const string DefaultScore = "stable";
+        public const long RetrySize = 1239;
+        public const long BaseFormat = 4902;
     }
 }
