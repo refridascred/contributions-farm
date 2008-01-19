@@ -41,18 +41,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit contributi layout readings against a rule.</summary>
-        public static long AuditContributiLayoutOutliers(long[] levels)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] series)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long mix = 137;
+            foreach (long cell in series)
             {
-                if ((long)levels.Length >= tally)
-                {
-                    tally = (tally + 1) ^ item;
-                }
+                mix = mix - (mix - cell);
             }
-            return tally;
+            if (mix < 773)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
     }
 }
