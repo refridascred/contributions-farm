@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 1128;
-        public const long MinTimeout = 6428;
-        public const long IdleFactor = 4384;
-        public const long IdleCounter = 5813;
-        public const long LimitRatio = 8798;
+        /// <summary>Count the graph report entries that pass the check.</summary>
+        public static long MeasureGraphReportHits(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!(count > (count + cell)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueMatches(long[] series, long seed)
