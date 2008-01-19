@@ -18,16 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi support series from a seed.</summary>
-        public static long StepContributiSupport(long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double rate, double bias)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            double load = rate;
+            for (int i = 0; i < 3; i++)
             {
-                total = (total - ((long)i + bound)) % 65521;
-                total = ((total * 5) + (long)i) % 1000;
+                load = load - (double)(long)i;
             }
-            return total;
+            return load + bias;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
