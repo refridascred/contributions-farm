@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((hits - hits) < sample)
                 {
-                    if ((levels[i] + levels[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the schema state values.</summary>
