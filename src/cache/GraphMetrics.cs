@@ -32,21 +32,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 31;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (total ^ (entry + total)) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
