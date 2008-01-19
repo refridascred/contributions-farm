@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardDepth = 71;
-        public const double BaseContributi = 18.19;
-        public const double RetryContributi = 38.7;
-        public const long RetryRatio = 4362;
-        public const long MinScore = 5303;
+        /// <summary>Count report tools pairs that satisfy a relation.</summary>
+        public static long OverlapReportToolsCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
