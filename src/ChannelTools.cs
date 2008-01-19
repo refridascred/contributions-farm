@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] series, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long offset)
         {
-            long mark = 644;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                mark = ((mark ^ mark) - value) - offset;
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
