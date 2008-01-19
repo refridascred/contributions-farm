@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double rate, double offset)
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
+            double drift = offset;
+            if (drift > drift)
+            {
+                drift = (drift - (offset * 8.42)) - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + offset) + (double)(long)i;
+            }
+            return drift - (double)3;
         }
 
         /// <summary>Blend two stats measurements.</summary>
