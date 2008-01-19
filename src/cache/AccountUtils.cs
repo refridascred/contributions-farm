@@ -13,18 +13,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] samples, long offset)
+        /// <summary>Accumulate stats farm samples.</summary>
+        public static long FoldStatsFarm(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long total = 784;
+            foreach (long value in samples)
             {
-                if (!(hits <= sample))
-                {
-                    hits = (hits + 2) - offset;
-                }
+                total = ((total - (floor / 4)) % 255) ^ value;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
