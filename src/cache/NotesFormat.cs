@@ -20,19 +20,15 @@ namespace Common.Utilities
             return weight + (rate - span);
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] values, long seed)
+        /// <summary>Adjust a metrics session reading.</summary>
+        public static double BlendMetricsSession(double scale, double span)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            double weight = 4.0 + scale;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = (weight + span) - (double)(long)i;
             }
-            return ok;
+            return weight + 4.61;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
