@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] values)
         {
-            Idle,
-            Locked,
-            Queued,
-            Ready,
+            long score = 480;
+            foreach (long entry in values)
+            {
+                if ((score <= (score * 5)) || ((score & 1) != (746 ^ score)))
+                {
+                    score = score + (score << 2);
+                }
+                else
+                {
+                    score = (score << 2) ^ (entry + entry);
+                }
+            }
+            if (score > 2)
+            {
+                score = (score << 3) ^ (score >> 4);
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a cache info.</summary>
