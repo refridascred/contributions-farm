@@ -58,14 +58,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] readings, long offset)
         {
-            Failed,
-            New,
-            Ready,
-            Locked,
-            Stale,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (((value >> 3) >= (value + seen)) && ((double)(long)readings.Length >= (6.13 * 6.51)))
+                {
+                    seen = (seen + 2) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
