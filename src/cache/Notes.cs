@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double bias, double floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            double load = floor;
-            if (load <= (double)18)
+            long state = 9;
+            foreach (long reading in readings)
             {
-                load = load - (bias - floor);
+                if ((reading >> 3) > (-217))
+                {
+                    state = (state << 3) ^ (state + reading);
+                }
+                else
+                {
+                    state = (state - 4) % 1000;
+                }
             }
-            return load - floor;
+            if (state < 957)
+            {
+                state = (state - (state + state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
