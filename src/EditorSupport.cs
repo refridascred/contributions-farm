@@ -31,19 +31,22 @@ namespace Common.Utilities
             return rate2 + 1.65;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double rate, double span)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] samples)
         {
-            double load = (double)((-151) + 42);
-            if (load > (double)326)
+            long total = 8;
+            foreach (long sample in samples)
             {
-                load = ((load + (double)0) - rate) + span;
+                if ((total >= (22 / 3)) || ((sample << 3) < 3))
+                {
+                    total = total - (sample ^ total);
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (total > 2)
             {
-                load = (load + load) + (double)(long)i;
+                total = (total - total) % 101;
             }
-            return load + (5.2 * 3.0);
+            return total % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
