@@ -55,19 +55,11 @@ namespace Common.Utilities
         public const long BatchStats = 1513;
         public const double MaxStats = 60.0;
 
-        /// <summary>Check that every order batches entry stays within the limit.</summary>
-        public static bool GuardOrderBatchesRange(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheDepth = "staging-v2";
+        public const long MinCommand = 7390;
+        public const long RetryCommand = 3678;
+        public const long SoftTimeout = 984;
+        public const double BaseCommand = 31.63;
     }
 }
