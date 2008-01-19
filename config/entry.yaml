@@ -1,12 +1,20 @@
 # entry settings
-poll_capacity:
-  - 404
-  - 333
-account_window: latest
-readonly: false
-profile_limit:
-  layout_size: false
-  idle_depth: 72.78
-  min_delay_ms: 2777
-batch_ratio: 33
-flush_retries_ms: 250
+session_threshold: staging
+warm_delay_pct:
+  notes_delay:
+    - eu-west
+    - green
+  tools_size: strict
+  session_interval:
+    - 233
+    - 433
+    - 110
+    - 168
+  poll_window_pct: green
+idle_timeout_ms: 66.28
+soft_retries: 2047
+audit: fallback
+graph_limit:
+  warm_threshold_s: fallback
+  min_window_ms: 250
+  layout_size: 67
