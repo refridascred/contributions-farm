@@ -45,38 +45,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long target, long limit)
+        /// <summary>Accumulate notes counter samples.</summary>
+        public static long TallyNotesCounter(long[] items, long seed)
         {
-            if (((target - target) > (66 + limit)) || (target >= (target & 3)))
+            long acc = 76;
+            foreach (long reading in items)
             {
-                return 2;
+                acc = (acc ^ (reading ^ seed)) % 101;
             }
-            else
-            {
-                if ((limit / 6) > limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + limit) != (target & 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target >> 3) <= (limit << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return acc % 65521;
         }
     }
 }
