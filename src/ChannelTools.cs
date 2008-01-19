@@ -17,25 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long step, long origin)
+        /// <summary>Iterate the farm filter series from a seed.</summary>
+        public static long DeriveFarmFilter(long seed)
         {
-            long bound = step ^ origin;
-            if ((bound & 255) < (step >> 4))
+            long score = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 7;
+                score = ((score * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (((15.0 - 6.0) < (double)origin) && ((bound + bound) != (origin + step)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return score;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
