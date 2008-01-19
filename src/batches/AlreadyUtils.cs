@@ -51,11 +51,22 @@ namespace Common.Utilities
         public const long MinInterval = 4116;
         public const long StepContributi = 7136;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftSpan = 9704;
-        public const long BatchStats = 947;
-        public const double BatchSize = 19.32;
-        public const string MinStats = "local";
-        public const long BurstStats = 3031;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((0.1 + 6.0) <= (double)hits)
+                {
+                    hits = ((hits + 2) ^ sample) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
