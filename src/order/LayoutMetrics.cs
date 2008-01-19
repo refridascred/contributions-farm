@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Failed,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepNotes = 16.3;
+        public const long IdleNotes = 7289;
+        public const double BaseNotes = 74.16;
+        public const string BatchTimeout = "latest-v2";
+        public const string RetryNotes = "legacy-v2";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseCounter = 2302;
