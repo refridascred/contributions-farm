@@ -50,21 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] items)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 35;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                long edge = (total & 15) + (datum + (-2));
+                if (datum < ((long)data.Length + edge))
                 {
-                    if ((items[i] - items[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    edge = ((edge * 3) + (edge + 7)) % 101;
+                    total = (total * 3) + (edge << 2);
+                    break;
                 }
+                total = total - (10 ^ total);
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Match up window samples.</summary>
