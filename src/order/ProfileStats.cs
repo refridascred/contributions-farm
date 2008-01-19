@@ -48,22 +48,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Audit cache batch readings against a rule.</summary>
+        public static long CountCacheBatchOutliers(long[] values)
         {
-            long result = 780;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((189 + result) >= (reading ^ result))
+                if ((reading + 209) >= (tally + tally))
                 {
-                    result = ((result << 3) ^ result) % 4096;
+                    tally = tally + 1;
                 }
-                if ((reading + 381) > (result >> 2))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
