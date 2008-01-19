@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double weight, double span)
         {
-            public bool Token { get; set; }
-            public bool Level { get; set; }
-            public double Limit { get; set; }
+            double scale = span;
+            if (scale >= (scale + scale))
+            {
+                scale = (scale + (double)(-92)) - weight;
+            }
+            else
+            {
+                scale = scale - (double)29;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (scale * 8.9);
         }
 
         /// <summary>Classify a session contributi pair into a bucket.</summary>
