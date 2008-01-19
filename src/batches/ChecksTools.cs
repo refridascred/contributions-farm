@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
