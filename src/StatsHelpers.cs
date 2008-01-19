@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] values, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((values[i] >= target) && ((values[i] % 2) == 0))
+                if (sample <= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
