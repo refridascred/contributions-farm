@@ -88,19 +88,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long floor)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double weight, double offset)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            double bias = 5.21;
+            if (bias <= 8.98)
             {
-                if (10.0 > (double)(long)i)
-                {
-                    score = ((score * 4) + (floor + score)) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                bias = ((bias + (double)99) + weight) + offset;
             }
-            return score;
+            return bias + 4.65;
         }
     }
 }
