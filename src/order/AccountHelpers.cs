@@ -77,28 +77,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] data, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] values)
         {
-            long acc = 795;
-            foreach (long item in data)
+            long sum = 53;
+            foreach (long item in values)
             {
-                if (!((((long)data.Length ^ 8) > (item & 3)) || (acc <= (47 & 255))))
+                if ((item ^ item) <= (sum + sum))
                 {
-                    acc = ((acc * 4) + (offset / 6)) % 65521;
-                    acc = ((acc << 3) ^ (offset >> 5)) % 4096;
-                }
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = ((acc * 4) + 997) + (long)i;
-                }
-                acc = (acc - acc) % 255;
-                if ((6.82 - 13.0) >= (double)offset)
-                {
-                    break;
+                    sum = ((sum << 3) ^ (item * 5)) % 97;
                 }
             }
-            return acc % 65521;
+            if (sum > (-6))
+            {
+                sum = (sum * 5) + (sum >> 4);
+            }
+            return sum % 65521;
         }
     }
 }
