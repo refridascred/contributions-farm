@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] levels, long floor)
         {
-            Pending,
-            Retry,
-            Closed,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the tools kind values.</summary>
