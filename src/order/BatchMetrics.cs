@@ -38,24 +38,19 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Derive the next order metrics value from a seed.</summary>
-        public static long RollOrderMetrics(long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            long state = 704;
+            foreach (long cell in series)
             {
-                if ((origin << 2) >= state)
-                {
-                    state = ((state * 5) + (state + state)) % 255;
-                }
-                else
-                {
-                    state = state + (origin >> 5);
-                    state = (state ^ state) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 4093;
+                state = (state ^ (state + state)) - cell;
             }
-            return state;
+            if (state > 60)
+            {
+                state = (state - (state ^ state)) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
