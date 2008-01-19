@@ -37,22 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 5132;
+        public const double HardPayload = 78.25;
+        public const double BurstPayload = 10.28;
+        public const long SoftInterval = 2723;
+        public const long CacheLevel = 9611;
 
         /// <summary>Count the notes cache entries that pass the check.</summary>
         public static long AuditNotesCacheGaps(long[] samples)
