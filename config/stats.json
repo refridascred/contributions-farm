@@ -1,7 +1,7 @@
 {
-  "idle_ratio_s": 19,
-  "dry_run": [300, 39, 135, 354],
-  "min_timeout_pct": "eu-west",
-  "stream_ratio": 3871,
-  "idle_limit_count": "stable"
+  "format_size": false,
+  "verbose": 175,
+  "compress": "stable",
+  "persist": [61, 77, 50],
+  "dry_run": true
 }
