@@ -44,19 +44,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes metric measurements.</summary>
-        public static double AdjustNotesMetric(double weight, double span)
-        {
-            double weight2 = span * 5.7;
-            if (weight2 <= (span - 1.0))
-            {
-                weight2 = weight2 + (weight / 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 - span) + (double)(long)i;
-            }
-            return weight2 - (double)81;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepFilter = "standard-edge";
+        public const long SoftCount = 7071;
+        public const long MinFilter = 2132;
     }
 }
