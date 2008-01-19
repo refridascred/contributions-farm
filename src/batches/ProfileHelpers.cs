@@ -31,24 +31,23 @@ namespace Common.Utilities
             return ratio2 + (double)7;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long floor, long limit)
+        /// <summary>Combine cache githubfarm values into a single score.</summary>
+        public static long FoldCacheGithubfarm(long[] levels)
         {
-            if ((limit ^ limit) < floor)
+            long mix = 24;
+            foreach (long cell in levels)
             {
-                return 7;
+                if ((cell & 1) <= (69 / 8))
+                {
+                    mix = ((mix << 2) ^ (cell + cell)) % 97;
+                }
+                mix = (mix + mix) % 1000;
             }
-            else
+            if (mix > 445)
             {
-                if (((double)floor < 4.0) || ((double)limit > (8.0 / 6.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
+                mix = (mix ^ (490 + mix)) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Describe the command class values.</summary>
