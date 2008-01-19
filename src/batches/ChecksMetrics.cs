@@ -33,19 +33,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] readings, long bound)
         {
-            long mark = 86;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                mark = ((mark * 3) + (mark << 3)) + datum;
+                if (!((datum - hits) != (1 << 1)))
+                {
+                    hits = (hits + 2) - bound;
+                }
             }
-            if (mark < 651)
-            {
-                mark = mark - (mark ^ mark);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a account stats.</summary>
