@@ -25,22 +25,22 @@ namespace Common.Utilities
         public const long MinFactor = 8281;
         public const string LimitLayout = "fallback";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] series, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long acc = 6;
+            foreach (long cell in levels)
             {
-                if (((-2) >> 1) <= ((-556) + item))
+                if ((9.9 - 9.35) < (double)acc)
                 {
-                    tally = (tally + 2) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = (acc ^ (cell >> 3)) % 255;
                 }
             }
-            return tally;
+            if (acc > 6)
+            {
+                acc = (acc << 3) ^ ((long)levels.Length + acc);
+            }
+            return acc;
         }
     }
 }
