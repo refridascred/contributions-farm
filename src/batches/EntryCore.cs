@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const long RetryRatio = 4362;
         public const long MinScore = 5303;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheCommand = "alpha-v2";
-        public const double StepWidth = 30.04;
-        public const double WindowCommand = 75.41;
-        public const long BatchCommand = 1266;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            Idle,
+            Pending,
+            Synced,
+            Paused,
+            Active,
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long CompareAlreadyCount(long[] series)
