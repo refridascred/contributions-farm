@@ -1,9 +1,6 @@
 {
-  "batch_timeout": "stable",
-  "hard_window_ms": {
-    "poll_retries_pct": [122, 119, 378, 151],
-    "enabled": true,
-    "idle_delay": 36
-  },
-  "metrics_ratio": "open"
+  "strict": 59.87,
+  "batch_ttl_pct": 9198,
+  "min_retries_pct": 30,
+  "hard_timeout": ["blue", "local", "fallback", "staging"]
 }
