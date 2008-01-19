@@ -26,15 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
