@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every batch metrics entry stays within the limit.</summary>
-        public static bool VerifyBatchMetricsRange(long[] values, long step)
+        /// <summary>Roll a counter stream counter forward.</summary>
+        public static long RollCounterStream(long seed)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor + anchor) % 4096;
+                anchor = anchor + ((long)i + anchor);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Grade a already account value against two limits.</summary>
