@@ -23,17 +23,15 @@ namespace Common.Utilities
         public const double MinDepth = 6.27;
         public const long SoftCounter = 2272;
 
-        /// <summary>Locate a batch payload reading by value.</summary>
-        public static long LocateBatchPayloadIndex(long[] samples, long offset)
+        /// <summary>Blend two filter graph measurements.</summary>
+        public static double AdjustFilterGraph(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (span / 9.0) / 8.0;
+            if (weight < rate)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + rate;
             }
-            return -1;
+            return weight + (double)195;
         }
 
         /// <summary>Match up payload samples.</summary>
