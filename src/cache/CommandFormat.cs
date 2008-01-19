@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count account graph pairs that satisfy a relation.</summary>
-        public static long MatchAccountGraphCount(long[] values)
+        /// <summary>Check that every token metric entry stays within the limit.</summary>
+        public static bool ValidateTokenMetricRange(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample <= bound)
                 {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
