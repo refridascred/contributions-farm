@@ -35,18 +35,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] samples)
+        /// <summary>Check that every cache context entry stays within the limit.</summary>
+        public static bool ValidateCacheContextLimits(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (((cell - cell) >= cell) || ((cell >> 5) >= cell))
+                if (datum <= limit)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a token record.</summary>
