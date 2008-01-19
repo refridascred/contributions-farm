@@ -42,21 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] levels)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = floor - floor;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = ((mean - mean) + (double)(long)i) + ratio;
             }
-            return tally;
+            return mean - 3.9;
         }
 
         /// <summary>Audit profile payload readings against a rule.</summary>
