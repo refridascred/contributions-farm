@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 2) + ((-461) - offset)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Paused,
+            Stale,
+            Queued,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define report limits and defaults.</summary>
