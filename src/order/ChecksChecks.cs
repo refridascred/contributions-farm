@@ -27,10 +27,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstInterval = 4909;
-        public const long BatchInterval = 9350;
-        public const long CacheContext = 8625;
-        public const string HardTimeout = "local-v2";
+        /// <summary>Count the editor route entries that pass the check.</summary>
+        public static long MeasureEditorRouteMatches(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!(item < (floor << 1)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
