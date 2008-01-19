@@ -20,24 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long step, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] samples, long offset)
         {
-            if (!((seed - step) <= 531))
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step >> 3) <= (seed & 31))
+                if (datum != offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many filter schema samples are out of range.</summary>
