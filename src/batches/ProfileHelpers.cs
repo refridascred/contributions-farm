@@ -53,21 +53,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a payload options.</summary>
