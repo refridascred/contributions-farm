@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits & 15) == (hits / 5))
+                {
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
