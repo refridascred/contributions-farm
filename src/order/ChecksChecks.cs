@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] data, long limit)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((reading - reading) <= (limit + 64))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
