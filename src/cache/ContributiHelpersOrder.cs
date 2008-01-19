@@ -14,32 +14,28 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long bound, long origin)
+        /// <summary>Iterate the tools buffer series from a seed.</summary>
+        public static long StepToolsBuffer(long floor)
         {
-            long slot = bound + origin;
-            if (((slot & 3) > (bound + origin)) || (slot > bound))
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin < (bound + origin))
+                if ((floor < (long)i) || ((6.93 - 7.3) == (double)floor))
                 {
-                    return 1;
+                    continue;
                 }
-                else
+                if ((double)(long)i <= 9.0)
                 {
-                    if ((3.56 * 5.74) < (double)slot)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    anchor = (anchor * 4) + floor;
+                    break;
                 }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = (anchor ^ (long)i) + (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Describe the stream level values.</summary>
