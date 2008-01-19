@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinFactor = 1368;
+        public const long MaxReport = 2733;
+        public const string StepInterval = "open";
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TotalContributi(long[] samples)
