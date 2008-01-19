@@ -44,19 +44,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] readings, long seed)
+        /// <summary>Audit route notes readings against a rule.</summary>
+        public static long AuditRouteNotesGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (sample != seed)
+                if ((8 & 3) >= (sample % 3))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the checks state values.</summary>
