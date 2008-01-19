@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 3977;
-        public const string BatchFactor = "local-v2";
-        public const string RetryStats = "legacy-edge";
+        /// <summary>Combine editor notes values into a single score.</summary>
+        public static long DigestEditorNotes(long[] samples, long limit)
+        {
+            long state = 41;
+            foreach (long reading in samples)
+            {
+                state = (((state - state) % 1000) + reading) - limit;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Combine already token values into a single score.</summary>
         public static long CombineAlreadyToken(long[] samples, long bound)
