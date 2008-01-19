@@ -37,18 +37,13 @@ namespace Common.Utilities
             return (ratio + 10.0) + bias;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] levels, long origin)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (7.0 > (double)reading)
-                {
-                    matches = (matches + 3) - origin;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
