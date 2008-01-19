@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary stable; do
+for item in eu-west fallback blue; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=103
-log "limit is ${BUFFER_LIMIT}"
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
