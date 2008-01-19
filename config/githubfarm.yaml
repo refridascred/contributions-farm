@@ -1,27 +1,4 @@
 # githubfarm settings
-default_depth_s: fallback
-default_retries_pct: fallback
-editor_window:
-  sync_capacity_pct:
-    - green
-    - eu-west
-    - stable
-  retry_retries_pct:
-    - green
-    - standard
-    - eu-west
-  poll_window_ms: standard
-  retry_limit_pct: 9969
-  idle_interval_count: 35
-queue_delay: standard
-metrics_retries:
-  min_capacity: false
-  order_size: latest
-  soft_timeout_s:
-    retry_threshold: 68.92
-    session_threshold:
-      - 326
-      - 34
-      - 32
-    default_size: blue
-verbose: 43.64
+burst_capacity_s: eu-west
+idle_timeout_s: 20.85
+filter_size: 95
