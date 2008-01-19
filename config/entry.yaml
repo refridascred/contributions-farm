@@ -1,11 +1,4 @@
 # entry settings
-idle_ratio_s: 93
-verbose:
-  warm_limit:
-    - 185
-    - 381
-  format_delay: blue
-  verbose: fallback
-  compress: false
-  default_timeout_ms: strict
-checks_limit: true
+sync_threshold_count: 33.89
+batch_ratio_pct: true
+max_limit_pct: 58.78
