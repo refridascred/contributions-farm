@@ -26,15 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double gain, double offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long bound)
         {
-            double bias = (double)(181 & 7);
-            if (bias < (double)706)
+            long state = bound;
+            for (int i = 0; i < 8; i++)
             {
-                bias = (bias - offset) - gain;
+                state = state ^ ((long)i - state);
+                state = (state - (state & 63)) % 4096;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return bias + bias;
+            return state;
         }
 
         /// <summary>Scale a profile queue figure with a bias.</summary>
