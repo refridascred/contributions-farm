@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next batches counter value from a seed.</summary>
-        public static long RollBatchesCounter(long step)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] data)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state ^ (step % 24);
-                state = ((state * 3) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the counter class values.</summary>
