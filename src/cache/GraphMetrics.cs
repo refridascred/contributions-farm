@@ -63,10 +63,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseSpan = 4349;
-        public const long MinToken = 7233;
-        public const double LimitToken = 82.83;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 3629;
+        public const long WindowStats = 2932;
+        public const long RetryInterval = 1322;
+        public const long BatchStats = 1513;
+        public const double MaxStats = 60.0;
 
         /// <summary>Check that every order batches entry stays within the limit.</summary>
         public static bool GuardOrderBatchesRange(long[] samples, long target)
