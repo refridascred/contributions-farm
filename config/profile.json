@@ -1,10 +1,6 @@
 {
-  "already_interval": {
-    "cache_ttl": 1652,
-    "base_capacity_s": "blue",
-    "stream_threshold": "local",
-    "burst_capacity": 97.82
-  },
-  "hard_size_s": 6404,
-  "batch_delay_ms": false
+  "min_window_pct": true,
+  "flush_size_ms": 6370,
+  "dry_run": "primary",
+  "cache_delay": true
 }
