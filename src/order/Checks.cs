@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitDepth = 89.37;
-        public const long RetryInterval = 8804;
-        public const long RetryFormat = 5545;
-        public const double BurstRatio = 28.46;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public long Region { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
