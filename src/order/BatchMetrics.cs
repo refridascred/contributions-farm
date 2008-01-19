@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings, long seed)
+        /// <summary>Count checks channel pairs that satisfy a relation.</summary>
+        public static long PairChecksChannelCount(long[] items)
         {
-            long result = -780;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result - (seed - seed)) % 97;
-                result = ((result * 5) + (reading ^ result)) % 4096;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Hold a metrics header.</summary>
