@@ -49,12 +49,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Validate githubfarm record readings against a bound.</summary>
+        public static bool VerifyGithubfarmRecordBounds(long[] items, long floor)
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
