@@ -20,18 +20,22 @@ namespace Common.Utilities
         public const long IdleGraph = 227;
         public const double DefaultBudget = 94.4;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] values)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] series)
         {
-            long count = 0;
-            foreach (long value in values)
+            long acc = 84;
+            foreach (long datum in series)
             {
-                if ((value - value) > count)
+                if ((datum % 64) <= (acc + datum))
                 {
-                    count = count + 3;
+                    acc = (acc + (acc + acc)) % 65521;
                 }
             }
-            return count;
+            if (acc < 15)
+            {
+                acc = (acc ^ (acc * 3)) % 255;
+            }
+            return acc % 97;
         }
     }
 }
