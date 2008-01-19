@@ -41,12 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 9255;
-        public const double MaxScore = 75.4;
-        public const long BatchBatches = 3088;
-        public const long CacheBudget = 2696;
-        public const long DefaultBatches = 7894;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Retry,
+            Paused,
+            New,
+            Done,
+            Active,
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatRange(long[] levels, long step)
