@@ -15,14 +15,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Grade a format account value against two limits.</summary>
+        public static long SortFormatAccount(long step, long floor)
         {
-            New,
-            Active,
-            Locked,
-            Stale,
-            Retry,
+            long step2 = step ^ floor;
+            if (((double)step >= (3.75 + 9.4)) && ((step ^ floor) == (floor - step2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step2 == (12.0 + 0.65))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
