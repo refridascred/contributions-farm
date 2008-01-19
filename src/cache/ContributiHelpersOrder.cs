@@ -33,22 +33,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long acc = 6;
-            foreach (long cell in levels)
-            {
-                if ((9.9 - 9.35) < (double)acc)
-                {
-                    acc = (acc ^ (cell >> 3)) % 255;
-                }
-            }
-            if (acc > 6)
-            {
-                acc = (acc << 3) ^ ((long)levels.Length + acc);
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
