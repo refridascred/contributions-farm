@@ -50,13 +50,23 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double ratio, double offset)
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            double drift = (double)(0 >> 2);
+            if (drift <= (double)79)
+            {
+                drift = (drift + 5.39) + offset;
+            }
+            else
+            {
+                drift = drift - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)(-775)) + (double)(long)i;
+            }
+            return drift - (double)13;
         }
     }
 }
