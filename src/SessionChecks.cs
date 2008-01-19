@@ -34,17 +34,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] values, long offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = floor - weight;
+            if (ratio >= weight)
             {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + 0.6;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (weight - floor);
+            }
+            return ratio + (0.44 + ratio);
         }
     }
 }
