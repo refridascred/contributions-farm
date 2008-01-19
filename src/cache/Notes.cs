@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] series, long origin)
         {
-            long state = 9;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading >> 3) > (-217))
+                if (series[i] > origin)
                 {
-                    state = (state << 3) ^ (state + reading);
-                }
-                else
-                {
-                    state = (state - 4) % 1000;
+                    return (long)i;
                 }
             }
-            if (state < 957)
-            {
-                state = (state - (state + state)) % 101;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
