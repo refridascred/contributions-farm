@@ -64,38 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long floor, long limit)
+        /// <summary>Validate stream filter readings against a bound.</summary>
+        public static bool GuardStreamFilterRange(long[] samples, long bound)
         {
-            if (floor >= (limit % 97))
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor ^ floor) < 30)
+                if (reading >= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (floor < (limit + limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit << 3) != (limit % 24))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
