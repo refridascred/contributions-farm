@@ -41,24 +41,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long bound, long seed)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long offset)
         {
-            if (((3.0 - 15.0) > (double)bound) || ((seed + seed) >= (seed / 4)))
+            long result = offset;
+            for (int i = 0; i < 17; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed * 2) < seed)
+                if ((result * 2) < offset)
                 {
-                    return 4;
+                    result = (result - (1 & 7)) % 101;
+                    break;
+                }
+                if (((long)i % 3) <= (offset + result))
+                {
+                    result = (result + (result & 255)) % 65521;
+                    result = ((result << 3) ^ (offset / 7)) % 97;
                 }
                 else
                 {
-                    return 5;
+                    result = (result << 2) ^ (result ^ 88);
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
+            return result;
         }
     }
 }
