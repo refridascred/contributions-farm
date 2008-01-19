@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] levels)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((item >> 5) >= count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Done,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the channel level values.</summary>
