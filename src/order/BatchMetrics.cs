@@ -22,11 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Combine cache account values into a single score.</summary>
+        public static long DigestCacheAccount(long[] samples, long target)
         {
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
+            long sum = 50;
+            foreach (long datum in samples)
+            {
+                if (!(datum >= (sum + sum)))
+                {
+                    sum = sum ^ (target - sum);
+                }
+            }
+            if (sum > 53)
+            {
+                sum = (sum - (sum + sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
