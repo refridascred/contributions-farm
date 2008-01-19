@@ -27,15 +27,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the editor route entries that pass the check.</summary>
-        public static long MeasureEditorRouteMatches(long[] samples, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] readings)
         {
             long hits = 0;
-            foreach (long item in samples)
+            foreach (long datum in readings)
             {
-                if (!(item < (floor << 1)))
+                if (((8.0 * 5.0) >= (double)hits) || !((829 - hits) != (datum ^ hits)))
                 {
                     hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
