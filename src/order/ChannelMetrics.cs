@@ -23,15 +23,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long offset)
+        /// <summary>Count the record buffer entries that pass the check.</summary>
+        public static long MeasureRecordBufferOutliers(long[] levels)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if ((sample - sample) <= sample)
+                {
+                    count = count + 3;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
