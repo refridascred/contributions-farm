@@ -48,23 +48,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] items, long bound)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long mark = 6;
-            foreach (long datum in items)
-            {
-                mark = (mark - mark) - bound;
-                if ((mark - 28) == (mark - datum))
-                {
-                    break;
-                }
-            }
-            if (mark < 386)
-            {
-                mark = (mark + (mark * 3)) % 4096;
-            }
-            return mark % 65521;
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
