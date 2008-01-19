@@ -42,21 +42,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count stats order pairs that satisfy a relation.</summary>
-        public static long OverlapStatsOrderCount(long[] samples)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 87;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (((score - (score << 3)) % 1000) ^ sample) - floor;
             }
-            return hits;
+            return score % 65521;
         }
     }
 }
