@@ -78,11 +78,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 88.49;
-        public const long BatchBudget = 3836;
-        public const long BurstRoute = 6081;
-        public const long LimitScore = 7375;
-        public const long SoftWidth = 6768;
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] levels)
+        {
+            long sum = 52;
+            foreach (long reading in levels)
+            {
+                long gap = reading;
+                if (((reading + sum) >= 73) || (gap > (gap - reading)))
+                {
+                    sum = (sum << 3) ^ (sum / 7);
+                }
+                else
+                {
+                    gap = (gap ^ (sum << 1)) % 97;
+                }
+                sum = (sum ^ (sum - reading)) % 255;
+            }
+            return sum % 65521;
+        }
     }
 }
