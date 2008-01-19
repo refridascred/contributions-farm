@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepDepth = 3480;
+        public const long RetryWidth = 6087;
+        public const long RetryFilter = 6253;
+        public const long LimitFilter = 7564;
+        public const long StepSpan = 309;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string MinDepth = "primary";
