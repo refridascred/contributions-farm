@@ -46,19 +46,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] samples, long origin)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((origin - 24) <= (-8))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleInterval = 83.76;
+        public const long SoftLevel = 7044;
+        public const long StepCommand = 7405;
+        public const long MaxFactor = 6877;
+        public const long IdleDepth = 4873;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
