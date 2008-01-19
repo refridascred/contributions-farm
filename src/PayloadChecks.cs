@@ -23,10 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardCount = 6473;
-        public const long LimitGraph = 8158;
-        public const double IdleBudget = 17.83;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell <= hits) || ((cell & 31) > (hits % 97)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] series, long floor)
