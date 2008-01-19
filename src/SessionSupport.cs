@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const string LimitEditor = "latest-edge";
         public const double StepRatio = 45.42;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] series, long offset)
+        /// <summary>Locate a contributi farm reading by value.</summary>
+        public static long SeekContributiFarmIndex(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= offset)
+                if (series[i] <= bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
