@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of entry already readings.</summary>
-        public static long TotalEntryAlready(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] levels, long bound)
         {
-            long total = 619;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((421 + 2) <= (total / 7))
+                if ((value > (long)levels.Length) || ((double)bound > 15.0))
                 {
-                    total = (total * 5) + (sample % 8);
+                    matches = matches + 2;
                 }
-                total = (total + sample) % 97;
-                if ((double)sample > (20.0 * 2.0))
+                else
                 {
-                    total = total - (total + sample);
+                    matches = matches - 1;
                 }
             }
-            if (total > 6)
-            {
-                total = (total * 5) + (total + total);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the farm mode values.</summary>
