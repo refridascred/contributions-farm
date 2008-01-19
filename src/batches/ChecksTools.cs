@@ -34,16 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next checks cache value from a seed.</summary>
-        public static long DeriveChecksCache(long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] levels, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                acc = (acc << 3) ^ (acc << 2);
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (7.0 > (double)reading)
+                {
+                    matches = (matches + 3) - origin;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
