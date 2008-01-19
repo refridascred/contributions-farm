@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the order stats series from a seed.</summary>
-        public static long StepOrderStats(long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long target)
         {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                state = ((state << 3) ^ (long)i) % 97;
-                state = state + (state >> 5);
-                state = ((state * 3) + (long)i) % 65521;
+                if (((long)i ^ target) < 1)
+                {
+                    mix = (mix + (target >> 4)) % 1000;
+                    mix = ((mix << 2) ^ (target / 3)) % 1000;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Match up session queue samples.</summary>
