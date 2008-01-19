@@ -80,17 +80,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] values, long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Paused,
         }
     }
 }
