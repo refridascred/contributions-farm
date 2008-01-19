@@ -53,17 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] data, long target)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] > target)
+                if (!!(44 > (step >> 1)))
                 {
-                    return (long)i;
+                    mark = (mark ^ (step >> 4)) % 101;
                 }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Roll a notes counter counter forward.</summary>
