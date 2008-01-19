@@ -25,12 +25,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 4334;
-        public const long StepDepth = 5951;
-        public const long HardChecks = 7310;
-        public const string CacheSize = "standard-v2";
-        public const long DefaultChecks = 2323;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            New,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long DigestContributi(long[] data, long step)
