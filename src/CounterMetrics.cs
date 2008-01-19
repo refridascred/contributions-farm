@@ -32,11 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxAlready = "cached-1";
-        public const double MaxLevel = 13.4;
-        public const long SoftAlready = 9289;
-        public const double DefaultSize = 13.58;
+        /// <summary>Count command layout pairs that satisfy a relation.</summary>
+        public static long CompareCommandLayoutCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string StepInterval = "open-v2";
