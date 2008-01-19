@@ -33,19 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks command readings against a rule.</summary>
-        public static long AuditChecksCommandMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((count ^ count) >= (entry % 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleStream = 48.47;
+        public const long BaseStream = 9493;
+        public const long BaseScore = 4526;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
