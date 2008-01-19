@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 53.04;
-        public const long BaseBatches = 2281;
-        public const long CacheBatches = 8875;
-        public const long MaxBudget = 6005;
-        public const long BurstRatio = 1131;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchDepth = 6.19;
+        public const long DefaultCount = 9990;
+        public const long BatchMetrics = 2797;
+        public const long IdleMetrics = 2666;
+        public const long HardMetrics = 1323;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
