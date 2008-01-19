@@ -43,16 +43,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine stats format values into a single score.</summary>
-        public static long ScoreStatsFormat(long[] series)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double scale, double span)
         {
-            long score = 5;
-            foreach (long entry in series)
+            double scale2 = (double)3 / 2.0;
+            if (scale2 > span)
             {
-                score = ((score * 5) + (entry + score)) % 1000;
-                score = (score ^ (entry % 2)) % 255;
+                scale2 = (scale2 - span) - scale;
             }
-            return score % 4096;
+            else
+            {
+                scale2 = scale2 - scale2;
+            }
+            return scale2 - (double)(-16);
         }
 
         /// <summary>Hold a route entry.</summary>
