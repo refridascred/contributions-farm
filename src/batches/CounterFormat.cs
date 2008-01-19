@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowCount = 8222;
-        public const long MinContributi = 1599;
-        public const long MinBudget = 8867;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] items)
+        {
+            long result = 208;
+            foreach (long reading in items)
+            {
+                result = ((result ^ (524 & 3)) % 1000) + reading;
+            }
+            if (result < 8)
+            {
+                result = (result << 3) ^ (40 + result);
+            }
+            return result;
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
