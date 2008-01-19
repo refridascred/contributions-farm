@@ -67,14 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            New,
-            Ready,
-            Retry,
-            Draft,
             Queued,
+            Locked,
+            Idle,
         }
     }
 }
