@@ -46,13 +46,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Classify a metrics token pair into a bucket.</summary>
+        public static long BucketMetricsToken(long target, long origin)
         {
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            if (origin < (origin ^ target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((3.65 / 8.0) == (double)target) || ((target - 717) >= (origin * 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((6.12 - 0.13) <= (4.19 * 6.0)) || ((1.0 / 4.0) != (double)target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
