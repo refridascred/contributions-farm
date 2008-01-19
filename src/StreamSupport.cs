@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine notes metrics values into a single score.</summary>
-        public static long DigestNotesMetrics(long[] items, long limit)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long carry = 294;
-            foreach (long cell in items)
-            {
-                if ((double)limit >= (0.8 * 0.2))
-                {
-                    carry = (((carry * 5) + (limit - 881)) % 1000) ^ cell;
-                }
-            }
-            return carry;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
