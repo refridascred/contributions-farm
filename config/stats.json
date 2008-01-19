@@ -1,10 +1,6 @@
 {
-  "strict": 1718,
-  "batch_size_pct": "fallback",
-  "tools_interval": {
-    "readonly": [400, 223, 466],
-    "batch_threshold_count": true,
-    "retry_timeout_ms": 68
-  },
-  "context_size": "strict"
+  "cache_window_ms": "edge",
+  "cache_delay": "fallback",
+  "retry_limit_count": "primary",
+  "cache_ratio_s": false
 }
