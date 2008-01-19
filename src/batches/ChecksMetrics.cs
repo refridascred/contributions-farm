@@ -54,18 +54,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] values)
         {
-            long mark = 8;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((3 + mark) >= mark)
+                if (6.7 >= (double)matches)
                 {
-                    mark = ((mark - (5 + 36)) % 65521) - entry;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
