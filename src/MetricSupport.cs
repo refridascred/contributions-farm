@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] levels, long floor)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a support counter forward.</summary>
