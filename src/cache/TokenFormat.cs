@@ -17,18 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 6817;
+        public const double WindowDepth = 51.99;
+        public const long MinSize = 853;
+        public const long MinTimeout = 7262;
+        public const long MinCache = 5282;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowLimits(long[] levels, long bound)
