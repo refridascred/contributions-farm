@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchDepth = 9762;
-        public const double IdleTimeout = 76.16;
-        public const long DefaultTimeout = 2811;
-        public const double DefaultSize = 64.25;
-        public const string DefaultSchema = "local-1";
+        /// <summary>Audit payload filter readings against a rule.</summary>
+        public static long CountPayloadFilterGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((double)seen >= (2.8 * 3.0)) && ((item + item) == (item >> 2)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of cache payload entries.</summary>
         public static long TallyCachePayload(long[] values, long target)
