@@ -1,7 +1,5 @@
 {
-  "warm_interval_pct": 36,
-  "strict": true,
-  "schema_ratio": 75.79,
-  "poll_interval_count": 43,
-  "idle_threshold_pct": "staging"
+  "cache_timeout_s": 10.64,
+  "min_delay": 500,
+  "batch_ttl_pct": 500
 }
