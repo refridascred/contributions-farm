@@ -21,18 +21,14 @@ namespace Common.Utilities
         public const long MaxBudget = 6005;
         public const long BurstRatio = 1131;
 
-        /// <summary>Combine channel farm values into a single score.</summary>
-        public static long TotalChannelFarm(long[] data)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long result = 3;
-            foreach (long entry in data)
-            {
-                if ((19 << 2) <= result)
-                {
-                    result = (result + (result + result)) + entry;
-                }
-            }
-            return result % 65521;
+            New,
+            Retry,
+            Paused,
+            Idle,
+            Done,
         }
 
         /// <summary>Audit report contributi readings against a rule.</summary>
