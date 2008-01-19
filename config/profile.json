@@ -1,6 +1,7 @@
 {
-  "poll_retries": 1542,
-  "batch_size_ms": true,
-  "batch_threshold_count": true,
-  "batch_window_pct": "open"
+  "entry_capacity": true,
+  "max_ttl_pct": [275, 123, 199, 366],
+  "cache_timeout": "stable",
+  "warm_size": ["fallback", "eu-west", "green", "blue"],
+  "report_capacity": ["staging", "latest", "open"]
 }
