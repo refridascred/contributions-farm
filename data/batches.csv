@@ -1,7 +1,6 @@
-id,score,count,rank,level
-1,856,957,edge,71.31
-2,886,93,167,93.43
-3,570,45.74,888,cached
-4,517,open,local,stable
-5,237,963,open,local
-6,205,cached,stable,green
+id,owner,count
+1,36,green
+2,26.3,green
+3,89.55,92.73
+4,945,94.93
+5,cached,green
