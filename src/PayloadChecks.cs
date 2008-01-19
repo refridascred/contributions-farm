@@ -41,11 +41,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSpan = 2646;
-        public const double StepSession = 97.25;
-        public const long LimitDepth = 5277;
-        public const long MaxSession = 7094;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double BlendGraph(double scale, double bias)
