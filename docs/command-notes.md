@@ -1,12 +1,11 @@
 # Command notes
 
-Use format settings to tune how often record data is refreshed.
-Each counter is validated before it reaches the commits queue.
-Each stats is validated before it reaches the contributi queue.
+The batch report groups every record by contributi.
+Defaults for order live in the config folder and can be overridden per environment.
+Keep editor and format names short and lowercase.
 
 ## Guidelines
 
-- Document new order fields
-- Log every profile change
-- Keep stats values small
-- Prefer cache defaults
+- Review counter limits each release
+- Document new format fields
+- Log every filter change
