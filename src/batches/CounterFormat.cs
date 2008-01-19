@@ -16,12 +16,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public long Stamp { get; set; }
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
+            Ready,
+            Retry,
+            Idle,
+            Queued,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
