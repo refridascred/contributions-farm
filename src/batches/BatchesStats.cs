@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double rate, double bias)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long limit)
         {
-            double drift = bias;
-            if (drift <= bias)
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
             {
-                drift = (drift + (double)36) - rate;
+                if (carry >= (limit - limit))
+                {
+                    carry = (carry + carry) % 1000;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return drift + 3.99;
+            return carry;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
