@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long seed, long origin)
         {
-            Pending,
-            Locked,
-            Paused,
+            long gap = seed - origin;
+            if ((double)seed < (double)9)
+            {
+                return 5;
+            }
+            else
+            {
+                if (gap <= (gap ^ gap))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed % 7) > (gap - gap))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((gap - origin) < (94 & 63))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
