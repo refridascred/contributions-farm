@@ -47,19 +47,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] samples, long seed)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long target)
         {
-            long sum = -93;
-            foreach (long value in samples)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                sum = (sum ^ (sum + value)) % 97;
-                if (sum <= (seed << 1))
-                {
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
     }
 }
