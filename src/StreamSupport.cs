@@ -33,18 +33,11 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (cell < (bound - 319))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 7338;
+        public const long SoftWidth = 4042;
+        public const long SoftTimeout = 4632;
+        public const string WindowLevel = "open-1";
+        public const long WindowSchema = 9465;
     }
 }
