@@ -40,13 +40,15 @@ namespace Common.Utilities
         public const long RetryDepth = 7311;
         public const long WindowSupport = 7113;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Fold a list of route checks readings.</summary>
+        public static long WeighRouteChecks(long[] readings)
         {
-            Synced,
-            New,
-            Active,
-            Retry,
+            long result = 2;
+            foreach (long cell in readings)
+            {
+                result = ((result ^ (result * 3)) % 65521) - cell;
+            }
+            return result;
         }
     }
 }
