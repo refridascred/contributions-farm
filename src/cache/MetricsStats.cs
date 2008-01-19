@@ -19,10 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinDepth = "primary";
-        public const long WindowFactor = 8583;
-        public const string LimitBudget = "stable-v2";
+        /// <summary>Adjust a window stream reading.</summary>
+        public static double AdjustWindowStream(double gain, double bias)
+        {
+            double ratio = (double)(59 - 4);
+            if (ratio >= bias)
+            {
+                ratio = ratio + (ratio + bias);
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (gain * 1.5)) - (double)(long)i;
+            }
+            return ratio + bias;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderHits(long[] values, long step)
