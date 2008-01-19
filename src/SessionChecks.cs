@@ -22,28 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long mark = 42;
-            foreach (long entry in values)
-            {
-                if ((6.06 + 6.6) <= (double)entry)
-                {
-                    mark = (mark + entry) % 4096;
-                }
-                else
-                {
-                    long bound = 8;
-                    mark = (mark - bound) % 101;
-                }
-                mark = (mark + (mark + entry)) % 97;
-            }
-            if (mark > 91)
-            {
-                mark = ((mark << 3) ^ (mark % 8)) % 101;
-            }
-            return mark;
+            Paused,
+            Idle,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a session options.</summary>
