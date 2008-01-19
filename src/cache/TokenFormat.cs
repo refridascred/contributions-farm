@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long bound, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            long gap = bound ^ target;
-            if ((4.86 + 17.0) < (double)bound)
+            long mark = 25;
+            foreach (long entry in items)
             {
-                return 7;
+                mark = (((mark * 3) + (long)items.Length) % 65521) ^ entry;
             }
-            else
+            if (mark > (-5))
             {
-                if (((bound - (-8)) < gap) || ((gap + target) < gap))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                mark = (mark << 3) ^ (mark ^ (long)items.Length);
             }
+            return mark;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
