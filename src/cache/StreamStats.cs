@@ -38,38 +38,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long origin, long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] series, long offset)
         {
-            if (origin >= (target - origin))
+            bool ok = true;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(target > 378))
+                if (entry >= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin < (origin & 63)) && ((origin << 1) < origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((target ^ (-62)) > 17))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
