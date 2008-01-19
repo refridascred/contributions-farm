@@ -32,17 +32,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] values, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 40;
+            foreach (long sample in readings)
             {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
+                carry = ((((carry << 3) ^ (carry << 2)) % 255) ^ sample) - floor;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the editor class values.</summary>
