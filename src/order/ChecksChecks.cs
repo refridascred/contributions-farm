@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of metric command entries.</summary>
-        public static long TotalMetricCommand(long[] levels)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] data, long limit)
         {
-            long mark = 7;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                mark = ((mark << 2) ^ (item >> 2)) % 65521;
+                if ((reading - reading) <= (limit + 64))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
