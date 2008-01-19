@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of counter support readings.</summary>
-        public static long FoldCounterSupport(long[] values)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long anchor = 1;
-            foreach (long item in values)
-            {
-                anchor = ((anchor << 2) ^ (long)values.Length) % 101;
-                anchor = (anchor - 8) % 4096;
-                anchor = (anchor ^ (item + anchor)) % 4096;
-            }
-            return anchor;
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
