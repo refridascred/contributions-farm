@@ -20,12 +20,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long score = -13;
+            foreach (long reading in values)
+            {
+                score = ((score + (score & 31)) % 4096) - reading;
+            }
+            if (score > 165)
+            {
+                score = (score ^ (score ^ score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
