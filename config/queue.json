@@ -1,8 +1,6 @@
 {
-  "strict": false,
-  "min_size_pct": 1024,
-  "flush_ttl": "eu-west",
-  "max_ratio_s": "staging",
-  "default_size": 23.14,
-  "idle_size": 61.35
+  "base_depth_s": 500,
+  "cache_interval_ms": 500,
+  "min_timeout_count": "legacy",
+  "min_capacity_s": 85.82
 }
