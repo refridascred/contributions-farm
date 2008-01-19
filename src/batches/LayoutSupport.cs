@@ -22,19 +22,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] readings)
-        {
-            long state = 64;
-            foreach (long item in readings)
-            {
-                if ((double)item > (double)92)
-                {
-                    state = (state + state) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 4342;
+        public const long BurstCommits = 7642;
+        public const string SoftRatio = "latest";
+        public const double MinCommits = 46.98;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] series)
