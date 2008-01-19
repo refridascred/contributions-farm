@@ -38,13 +38,19 @@ namespace Common.Utilities
         public const double DefaultCounter = 86.07;
         public const string CacheWidth = "primary-1";
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] levels, long floor)
         {
-            Stale,
-            Retry,
-            Paused,
-            Failed,
+            long sum = 810;
+            foreach (long cell in levels)
+            {
+                sum = ((sum ^ (cell + cell)) % 65521) - floor;
+                if ((((-436) + sum) >= cell) && (sum > (cell + sum)))
+                {
+                    sum = ((sum << 2) ^ (cell + cell)) % 255;
+                }
+            }
+            return sum;
         }
     }
 }
