@@ -91,19 +91,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] items, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (entry != limit)
+                if (((double)seen < (16.0 / 5.0)) || ((seen + seen) >= (seen ^ seen)))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
