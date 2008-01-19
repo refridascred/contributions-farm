@@ -1,11 +1,10 @@
 # Command notes
 
-Keep tools and githubfarm names short and lowercase.
-Run the commits check before changing any already limits.
-Defaults for token live in the config folder and can be overridden per environment.
+Run the githubfarm check before changing any record limits.
+When a editor fails, the profile handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review filter limits each release
-- Document new entry fields
-- Keep route values small
+- Validate profile input early
+- Keep channel values small
+- Log every stats change
