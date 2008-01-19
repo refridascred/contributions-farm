@@ -1,11 +1,6 @@
 {
-  "warm_interval": 30.71,
-  "idle_limit_ms": false,
-  "soft_window": {
-    "verbose": [300, 26],
-    "persist": 78.54,
-    "warm_size_pct": [162, 287],
-    "support_delay": 74.12,
-    "base_delay_count": 9691
-  }
+  "poll_retries": 1542,
+  "batch_size_ms": true,
+  "batch_threshold_count": true,
+  "batch_window_pct": "open"
 }
