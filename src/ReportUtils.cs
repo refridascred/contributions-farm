@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine editor notes values into a single score.</summary>
-        public static long DigestEditorNotes(long[] samples, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] levels, long target)
         {
-            long state = 41;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                state = (((state - state) % 1000) + reading) - limit;
+                if ((double)count < (7.45 + 3.0))
+                {
+                    count = ((count + 2) + reading) + target;
+                }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Combine already token values into a single score.</summary>
