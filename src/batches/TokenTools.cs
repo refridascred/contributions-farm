@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many metric cache samples are out of range.</summary>
-        public static long MeasureMetricCacheMatches(long[] levels, long bound)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry / 6) <= (seen & 255))
+                if ((items[i] >= seed) && ((items[i] % 2) == 0))
                 {
-                    seen = (seen + 3) - bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a payload record.</summary>
