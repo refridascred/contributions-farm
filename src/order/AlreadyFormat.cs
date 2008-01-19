@@ -42,14 +42,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long step, long offset)
         {
-            Retry,
-            Paused,
-            New,
-            Done,
-            Active,
+            if ((step + offset) < (offset / 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((offset - offset) == (6 ^ step)) && ((10 * 2) != (step + (-9))))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset <= (offset + (-144)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step + step) != (813 + step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a record layout counter forward.</summary>
