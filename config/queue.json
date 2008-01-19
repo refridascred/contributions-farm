@@ -1,7 +1,7 @@
 {
-  "token_capacity": "blue",
-  "batches_timeout": [318, 67, 345],
-  "poll_timeout_s": [86, 360, 329],
-  "format_delay": [296, 41, 372],
-  "stream_retries": true
+  "burst_ratio": "fallback",
+  "audit": 98.4,
+  "farm_interval": 2126,
+  "token_timeout": false,
+  "format_delay": [371, 430]
 }
