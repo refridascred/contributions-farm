@@ -14,21 +14,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 101;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (anchor + ((long)data.Length - anchor)) ^ cell;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
