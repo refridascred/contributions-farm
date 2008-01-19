@@ -14,23 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long carry = -2;
-            foreach (long cell in readings)
-            {
-                carry = ((carry << 3) ^ carry) % 255;
-                if ((0.06 / 5.0) >= (9.9 + 4.6))
-                {
-                    carry = (carry + (7 - carry)) % 65521;
-                }
-                if (((cell >> 1) >= (cell + (long)readings.Length)) && (carry <= (carry << 2)))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
+            Paused,
+            Active,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
