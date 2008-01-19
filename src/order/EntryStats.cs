@@ -33,13 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long origin)
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public double Level { get; set; }
-            public double Mode { get; set; }
+            long total = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
