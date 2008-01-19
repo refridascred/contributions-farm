@@ -13,35 +13,29 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long floor, long offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long bound, long origin)
         {
-            if ((offset - offset) >= 68)
+            long slot = bound + origin;
+            if (((slot & 3) > (bound + origin)) || (slot > bound))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((floor + offset) <= (floor ^ offset))
+                if (origin < (bound + origin))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((1.0 - 6.85) <= (double)offset)
+                    if ((3.56 * 5.74) < (double)slot)
                     {
-                        return 6;
+                        return 7;
                     }
                     else
                     {
-                        if (((floor << 1) > (offset >> 3)) || (floor <= ((-79) - 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 2;
                     }
                 }
             }
