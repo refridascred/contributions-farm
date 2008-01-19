@@ -26,17 +26,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] samples, long step)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = span;
+            return (gain + span) + bias;
         }
 
         /// <summary>Rank format input into a small class.</summary>
