@@ -52,5 +52,20 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((score << 3) != (score >> 4))
+                {
+                    score = ((score * 4) + ((long)i * 4)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
