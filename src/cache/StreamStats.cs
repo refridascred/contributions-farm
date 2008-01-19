@@ -38,19 +38,38 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate commits editor samples.</summary>
-        public static long TotalCommitsEditor(long[] readings)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long origin, long target)
         {
-            long score = 655;
-            foreach (long sample in readings)
+            if (origin >= (target - origin))
             {
-                score = score + (sample - score);
-                if (((double)score < (9.7 / 4.0)) || ((double)score > (double)sample))
+                return 1;
+            }
+            else
+            {
+                if (!(target > 378))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin < (origin & 63)) && ((origin << 1) < origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((target ^ (-62)) > 17))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return score;
         }
     }
 }
