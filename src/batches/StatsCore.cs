@@ -30,11 +30,18 @@ namespace Common.Utilities
         public const double BatchWidth = 23.43;
         public const long WindowFactor = 4098;
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] levels)
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (!(((2.5 + 7.0) != (double)sample) && ((sample * 3) <= ((long)levels.Length & 255))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a account reading by value.</summary>
