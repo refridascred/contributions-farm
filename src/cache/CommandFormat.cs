@@ -22,27 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate graph cache samples.</summary>
-        public static long CombineGraphCache(long[] readings)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] data, long step)
         {
-            long anchor = 0;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                anchor = (anchor << 2) ^ (anchor >> 3);
-                if ((entry + entry) < (anchor / 4))
+                if (reading >= step)
                 {
-                    anchor = (anchor - (28 % 12)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (-138)) % 4096;
-                }
-                if ((double)entry == (7.9 / 5.0))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return anchor % 1000;
+            return ready;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
