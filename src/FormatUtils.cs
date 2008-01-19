@@ -27,18 +27,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] series, long offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (((offset + offset) > (sample << 1)) || ((sample & 127) >= count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Synced,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Hold a tools header.</summary>
