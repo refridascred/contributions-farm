@@ -42,15 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] values, long origin)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double rate, double floor)
         {
-            long acc = 0;
-            foreach (long reading in values)
+            double bias = floor;
+            if (bias >= bias)
             {
-                acc = ((acc * 4) + (reading / 8)) + origin;
+                bias = bias + (rate - floor);
             }
-            return acc;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (bias * 7.93)) + (double)(long)i;
+            }
+            return bias - 6.0;
         }
     }
 }
