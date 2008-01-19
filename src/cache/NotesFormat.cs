@@ -40,39 +40,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long target, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] readings, long bound)
         {
-            long diff = target ^ offset;
-            if ((9.0 - 8.2) < (double)offset)
+            long carry = 964;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target < 7.1)
+                if (!!((double)bound <= (13.0 + 3.0)))
                 {
-                    return 3;
+                    carry = (carry - 14) % 255;
+                    carry = ((carry * 4) + (carry + bound)) % 4096;
                 }
-                else
-                {
-                    if ((double)diff < 4.6)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((3.16 / 2.0) <= (double)offset) || ((offset - 9) >= diff))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                carry = ((carry * 4) + (reading - reading)) % 65521;
             }
+            return carry % 1000;
         }
     }
 }
