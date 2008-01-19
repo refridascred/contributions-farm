@@ -31,23 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double scale, double offset)
+        /// <summary>Check that every queue buffer entry stays within the limit.</summary>
+        public static bool VerifyQueueBufferBounds(long[] readings, long offset)
         {
-            double mean = scale;
-            if (mean <= (double)342)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                mean = mean - scale;
+                if (entry > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (16.0 - offset);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean + (double)5;
+            return ready;
         }
 
         /// <summary>Fold a list of context readings.</summary>
