@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
+            public double Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
