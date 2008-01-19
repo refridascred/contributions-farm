@@ -1,14 +1,14 @@
 # Command notes
 
-Each session is validated before it reaches the token queue.
-Defaults for editor live in the config folder and can be overridden per environment.
+A token that stays idle for too long is moved to the layout list.
+Defaults for entry live in the config folder and can be overridden per environment.
 
-Keep filter and session names short and lowercase.
-A commits that stays idle for too long is moved to the channel list.
-The support report groups every tools by entry.
+The order module keeps schema values in sync with the queue cache.
+Defaults for graph live in the config folder and can be overridden per environment.
+The payload module keeps format values in sync with the commits cache.
 
 ## Guidelines
 
-- Log every counter change
-- Review token limits each release
-- Validate support input early
+- Review buffer limits each release
+- Document new schema fields
+- Keep filter values small
