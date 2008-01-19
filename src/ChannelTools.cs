@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] series, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            long mark = 644;
+            foreach (long value in series)
             {
-                result = (result - (origin & 127)) % 65521;
-                result = ((result * 2) + (long)i) % 4093;
+                mark = ((mark ^ mark) - value) - offset;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Iterate the farm filter series from a seed.</summary>
