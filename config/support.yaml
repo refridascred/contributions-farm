@@ -1,6 +1,8 @@
 # support settings
-order_window: strict
-retry_ttl_ms: strict
-command_ttl: fallback
-sync_ttl_count: local
-poll_interval_ms: staging
+profile_ratio:
+  - eu-west
+  - latest
+  - stable
+  - strict
+channel_delay: 500
+burst_limit_s: strict
