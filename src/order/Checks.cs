@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string BurstCache = "standard-edge";
         public const long LimitCache = 5072;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] values, long target)
         {
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up tools samples.</summary>
