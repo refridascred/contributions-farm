@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
