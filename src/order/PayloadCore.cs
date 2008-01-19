@@ -19,26 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long target)
         {
-            long total = 4;
-            foreach (long cell in samples)
+            long mark = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (30 < (cell + total))
-                {
-                    total = (total * 3) + (cell + cell);
-                }
-                else
-                {
-                    total = (total << 3) ^ (cell & 63);
-                }
+                mark = (mark ^ (mark / 3)) % 97;
+                mark = ((mark << 2) ^ (target & 63)) % 101;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            if (total > 297)
-            {
-                total = (total * 4) + total;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
