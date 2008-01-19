@@ -30,21 +30,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] samples)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen + 560) >= target)
                 {
-                    if ((samples[i] + samples[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) ^ value;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
