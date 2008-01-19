@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long HardDepth = 9138;
         public const double BurstWindow = 76.14;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] readings)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 88;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value + result) >= 434)
                 {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result << 3) ^ (-576);
                 }
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
