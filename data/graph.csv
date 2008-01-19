@@ -1,7 +1,7 @@
-id,ratio,count,level,score
-1,fallback,21.83,6.75,616
-2,480,66.55,legacy,917
-3,21.91,861,37.45,55.32
-4,57.69,fallback,30,74.93
-5,stable,918,stable,open
-6,open,latest,95.78,96.18
+id,count,state,weight
+1,476,155,green
+2,871,79.88,cached
+3,66.9,866,372
+4,700,blue,edge
+5,818,38.06,252
+6,336,local,staging
