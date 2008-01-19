@@ -1,5 +1,11 @@
 {
-  "enabled": false,
-  "report_size": false,
-  "base_ratio": 250
+  "enabled": [98, 58],
+  "persist": false,
+  "max_interval_count": {
+    "min_size_s": "staging",
+    "metrics_capacity": 74.99,
+    "persist": false,
+    "graph_interval": [211, 15, 357, 352]
+  },
+  "batch_delay_s": 48.62
 }
