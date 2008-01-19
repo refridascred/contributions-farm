@@ -53,15 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double ratio, double span)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] series, long limit)
         {
-            double bias = span;
-            if (bias <= (4.0 / 7.0))
+            bool valid = true;
+            foreach (long value in series)
             {
-                bias = (bias - span) - ratio;
+                if (value <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias + (span * 3.79);
+            return valid;
         }
     }
 }
