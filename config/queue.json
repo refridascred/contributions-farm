@@ -1,7 +1,19 @@
 {
-  "cache_limit_ms": ["cached", "eu-west"],
-  "audit": 15.46,
-  "batch_depth_s": "latest",
-  "batch_threshold": "strict",
-  "flush_limit_s": 28.45
+  "poll_ratio": 30,
+  "stats_interval": {
+    "sync_size": 1327,
+    "cache_window": "standard",
+    "route_size": 7719,
+    "already_timeout": {
+      "persist": 500,
+      "burst_window_s": "fallback",
+      "profile_retries": 87.1,
+      "cache_window": "primary",
+      "batch_ttl_count": "eu-west"
+    },
+    "min_interval": 6555,
+    "batch_interval_pct": 1027
+  },
+  "cache_ttl_ms": false,
+  "sync_capacity": 1024
 }
