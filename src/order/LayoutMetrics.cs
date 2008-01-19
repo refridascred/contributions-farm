@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] samples)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double load = 15.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)seen < (double)sample)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = ((load - scale) + (double)(long)i) + floor;
             }
-            return seen;
+            return load + (double)680;
         }
 
         /// <summary>Count the route stats entries that pass the check.</summary>
