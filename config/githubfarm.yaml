@@ -1,4 +1,12 @@
 # githubfarm settings
-audit: false
-cache_limit_count: fallback
-idle_threshold: 35
+hard_threshold:
+  - 448
+  - 371
+  - 402
+max_size_ms: 96.55
+base_ttl: local
+default_retries:
+  - standard
+  - eu-west
+  - eu-west
+sync_ttl_s: blue
