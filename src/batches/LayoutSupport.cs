@@ -20,12 +20,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] levels, long origin)
         {
-            Draft,
-            Closed,
-            Dropped,
+            long state = 2;
+            foreach (long item in levels)
+            {
+                state = state ^ (origin + state);
+                if ((origin << 1) <= item)
+                {
+                    state = (state * 2) + (state + state);
+                    state = (state + state) % 4096;
+                }
+                if (!((state - item) == (state + state)))
+                {
+                    state = (state - item) % 255;
+                }
+            }
+            if (state < 808)
+            {
+                state = (state - state) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
