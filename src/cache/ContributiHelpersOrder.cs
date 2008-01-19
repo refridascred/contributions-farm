@@ -21,12 +21,22 @@ namespace Common.Utilities
         public const long MinFactor = 8281;
         public const string LimitLayout = "fallback";
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] series, long seed)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (((-2) >> 1) <= ((-556) + item))
+                {
+                    tally = (tally + 2) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
