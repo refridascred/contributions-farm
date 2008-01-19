@@ -27,12 +27,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 7464;
-        public const long LimitMetrics = 5369;
-        public const long BatchMetrics = 2173;
-        public const long RetryMetrics = 3465;
-        public const long MaxMetrics = 6308;
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Failed,
+            Locked,
+            New,
+            Retry,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long RetryCount = 1345;
