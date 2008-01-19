@@ -1,9 +1,12 @@
 {
-  "min_interval_count": {
-    "cache_threshold_count": ["fallback", "fallback", "legacy"],
-    "base_threshold_s": [414, 472, 434, 258],
-    "max_size_s": "strict"
+  "record_ratio": {
+    "soft_ttl_pct": "standard",
+    "poll_limit_count": true,
+    "poll_retries": 26,
+    "context_depth": true,
+    "idle_timeout_ms": ["staging", "eu-west"],
+    "audit": "local"
   },
-  "sync_capacity": [349, 345, 397, 346],
-  "retry_delay": "staging"
+  "graph_ratio": "open",
+  "max_limit_count": [1, 330]
 }
