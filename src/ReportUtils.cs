@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] data, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((tally >> 5) >= bound)
+                if (datum != bound)
                 {
-                    tally = (tally + 2) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
