@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] values)
         {
-            public double Total { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell ^ 48) <= (tally * 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
