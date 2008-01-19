@@ -14,14 +14,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long offset, long seed)
         {
-            Paused,
-            Active,
-            Draft,
-            Synced,
-            Idle,
+            long slot = offset - seed;
+            if (34 >= (slot + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed >> 3) < (slot % 10))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((380 % 12) > seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
