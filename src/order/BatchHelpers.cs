@@ -39,19 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double rate, double floor)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] samples)
         {
-            double bias = floor;
-            if (bias >= bias)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + (rate - floor);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (bias * 7.93)) + (double)(long)i;
-            }
-            return bias - 6.0;
+            return count;
         }
     }
 }
