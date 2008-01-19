@@ -58,17 +58,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a tools token reading by value.</summary>
-        public static long SeekToolsTokenIndex(long[] readings, long target)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            New,
+            Ready,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
