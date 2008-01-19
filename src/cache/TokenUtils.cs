@@ -29,9 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 1422;
-        public const long RetrySpan = 2853;
-        public const long BurstCommits = 1506;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] samples)
+        {
+            long total = 44;
+            foreach (long sample in samples)
+            {
+                if ((double)sample >= 7.5)
+                {
+                    total = total + (sample - 26);
+                }
+                total = (total - (total - total)) % 97;
+            }
+            return total % 97;
+        }
     }
 }
