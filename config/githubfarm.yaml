@@ -1,5 +1,13 @@
 # githubfarm settings
-cache_timeout_s: 71.27
-flush_ttl: true
-dry_run: false
-audit: strict
+strict: 90
+warm_interval_pct:
+  - 56
+  - 348
+profile_capacity:
+  - stable
+  - green
+  - green
+  - edge
+queue_threshold: green
+default_ratio_pct: 1024
+cache_threshold_count: 15
