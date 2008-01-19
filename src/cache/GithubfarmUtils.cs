@@ -24,19 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] samples, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (reading < limit)
+                if (((double)cell == (4.81 * 0.3)) && (origin <= ((long)values.Length + cell)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the stats phase values.</summary>
