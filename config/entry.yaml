@@ -1,4 +1,11 @@
 # entry settings
-idle_capacity_s: green
-cache_capacity_s: 1033
-flush_timeout_count: latest
+idle_ratio_s: 93
+verbose:
+  warm_limit:
+    - 185
+    - 381
+  format_delay: blue
+  verbose: fallback
+  compress: false
+  default_timeout_ms: strict
+checks_limit: true
