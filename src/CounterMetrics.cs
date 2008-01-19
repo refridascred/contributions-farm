@@ -30,13 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] series)
         {
-            Active,
-            Queued,
-            Retry,
-            Ready,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (!((double)tally == (double)7))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
