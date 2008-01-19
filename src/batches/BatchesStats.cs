@@ -48,10 +48,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepFilter = 29.76;
-        public const long LimitCount = 6648;
-        public const long MinFilter = 5900;
-        public const double CacheInterval = 45.75;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
