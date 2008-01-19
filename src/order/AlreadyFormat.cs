@@ -29,14 +29,25 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Rank record command input into a small class.</summary>
+        public static long GradeRecordCommand(long target, long floor)
         {
-            Draft,
-            New,
-            Ready,
-            Done,
-            Stale,
+            long gap = target + floor;
+            if ((double)floor != (9.0 - 11.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((gap - gap) > target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the buffer status values.</summary>
