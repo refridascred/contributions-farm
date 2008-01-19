@@ -27,10 +27,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinDepth = 95.22;
-        public const string RetrySpan = "alpha-v2";
-        public const long DefaultGithubfarm = 5179;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Audit contributi layout readings against a rule.</summary>
         public static long AuditContributiLayoutOutliers(long[] levels)
