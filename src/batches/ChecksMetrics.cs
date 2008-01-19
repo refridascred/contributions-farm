@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] data, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] samples, long floor)
         {
             bool ok = true;
-            foreach (long reading in data)
+            foreach (long sample in samples)
             {
-                if (reading >= limit)
+                if (sample <= floor)
                 {
                     ok = false;
                     break;
