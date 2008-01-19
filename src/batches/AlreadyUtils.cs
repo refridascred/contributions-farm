@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] items, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] items, long limit)
         {
-            long sum = 7;
-            foreach (long reading in items)
+            long total = 72;
+            foreach (long sample in items)
             {
-                if ((reading & 7) > (floor ^ sum))
+                if (((long)items.Length >> 4) <= (limit >> 3))
                 {
-                    sum = (sum + (sum - (-881))) % 101;
+                    total = ((total << 3) ^ (40 + limit)) + sample;
                 }
             }
-            if (sum < 3)
-            {
-                sum = (sum << 2) ^ (704 >> 5);
-            }
-            return sum;
+            return total % 97;
         }
 
         /// <summary>Accumulate support samples.</summary>
