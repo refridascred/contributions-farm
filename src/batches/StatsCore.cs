@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit payload filter readings against a rule.</summary>
-        public static long CountPayloadFilterGaps(long[] items)
+        /// <summary>Audit token queue readings against a rule.</summary>
+        public static long MeasureTokenQueueOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (((double)seen >= (2.8 * 3.0)) && ((item + item) == (item >> 2)))
+                if ((double)hits >= (9.8 + 3.45))
                 {
-                    seen = seen + 2;
+                    hits = (hits + 3) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of cache payload entries.</summary>
