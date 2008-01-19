@@ -1,8 +1,5 @@
 {
-  "dry_run": 77.11,
-  "order_retries": "local",
-  "sync_size_count": "primary",
-  "sync_ratio_count": ["cached", "legacy", "primary"],
-  "batch_size_pct": 27.28,
-  "soft_window_count": "legacy"
+  "compress": ["standard", "legacy", "stable"],
+  "hard_ttl_ms": ["strict", "strict", "green", "open"],
+  "soft_delay_count": "green"
 }
