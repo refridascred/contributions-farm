@@ -50,31 +50,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] levels)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long mix = 71;
-            foreach (long item in levels)
-            {
-                if (11.0 >= (4.3 * 7.0))
-                {
-                    long prev = mix;
-                    mix = ((mix * 3) + prev) % 4096;
-                }
-                if (item > (mix - (-793)))
-                {
-                    mix = (mix * 2) + (mix & 3);
-                }
-                if ((double)item == (double)mix)
-                {
-                    mix = ((mix << 3) ^ (mix / 7)) % 101;
-                }
-            }
-            if (mix < 4)
-            {
-                mix = ((mix * 4) + (mix << 3)) % 65521;
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the stream state values.</summary>
