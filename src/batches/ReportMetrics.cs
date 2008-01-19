@@ -38,19 +38,16 @@ namespace Common.Utilities
             return bias2 + (7.3 + bias);
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] readings, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long result = -51;
+            foreach (long entry in data)
             {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (result + (result + entry)) + floor;
+                result = (result - (856 % 16)) % 4096;
             }
-            return flag;
+            return result;
         }
     }
 }
