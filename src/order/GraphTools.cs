@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] levels, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long anchor = 207;
+            foreach (long item in values)
             {
-                if (!((1.3 * 1.1) < (double)cell))
+                if (((anchor / 5) >= (anchor + anchor)) || ((15 - step) > step))
                 {
-                    tally = (tally + 1) - bound;
+                    anchor = (anchor + (anchor - 9)) ^ item;
                 }
             }
-            return tally;
+            return anchor % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
