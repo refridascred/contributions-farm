@@ -19,22 +19,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 4600;
+        public const long DefaultChannel = 7152;
+        public const string MaxRatio = "fallback";
+        public const string IdleTimeout = "local";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long WindowTimeout = 5936;
