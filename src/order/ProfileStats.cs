@@ -12,17 +12,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Look up the position of a channel session sample.</summary>
-        public static long LookupChannelSessionIndex(long[] data, long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((data[i] <= target) && ((data[i] % 2) == 0))
+                if (item > bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
