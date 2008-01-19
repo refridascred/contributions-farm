@@ -47,21 +47,19 @@ namespace Common.Utilities
         public const long BatchInterval = 4314;
         public const long IdleCluster = 4737;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] series, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                total = total + (step << 2);
-                if (total <= (step & 255))
+                if (value <= origin)
                 {
-                    total = total + total;
+                    ready = false;
+                    break;
                 }
-                total = (total * 4) + (long)i;
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
