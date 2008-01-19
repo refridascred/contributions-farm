@@ -27,17 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (values[i] <= origin)
+                if (cell < offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
