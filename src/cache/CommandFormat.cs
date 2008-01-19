@@ -36,19 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] readings, long bound)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long floor)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Describe the batch mode values.</summary>
