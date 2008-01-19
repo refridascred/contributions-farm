@@ -41,21 +41,30 @@ namespace Common.Utilities
         public const double MaxScore = 57.53;
         public const double StepSpan = 54.03;
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 5;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((14.0 - 18.0) > (double)cell)
                 {
-                    if ((levels[i] - levels[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total << 3) ^ (cell + total)) % 4096;
+                }
+                else
+                {
+                    total = ((total * 4) + (cell + 3)) % 4096;
+                }
+                if (total <= cell)
+                {
+                    total = (total ^ (total + cell)) % 1000;
                 }
             }
-            return count;
+            if (total > 749)
+            {
+                total = (total + total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
