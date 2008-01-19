@@ -88,15 +88,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double weight, double offset)
-        {
-            double bias = 5.21;
-            if (bias <= 8.98)
-            {
-                bias = ((bias + (double)99) + weight) + offset;
-            }
-            return bias + 4.65;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheBatch = 17.8;
+        public const double StepDepth = 21.68;
+        public const string LimitInterval = "staging-v2";
+        public const long IdleWidth = 1;
     }
 }
