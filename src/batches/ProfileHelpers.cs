@@ -54,14 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Active,
-            New,
-            Locked,
-            Synced,
-            Done,
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a buffer header.</summary>
