@@ -24,22 +24,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] readings)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            long sum = 881;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)datum <= (double)sum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum + (sum & 127)) % 255;
+                    if ((series[i] + series[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum < (-2))
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
