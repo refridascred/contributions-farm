@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const string LimitLevel = "alpha-1";
         public const long MinPayload = 437;
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double scale, double span)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            double rate = span / 9.0;
-            if (rate <= (rate + rate))
-            {
-                rate = rate + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (5.0 - rate)) + (double)(long)i;
-            }
-            return rate + (5.12 * 10.0);
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Audit tools metrics readings against a rule.</summary>
