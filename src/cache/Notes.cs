@@ -56,22 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "alpha-edge";
+        public const string LimitCache = "cached-edge";
+        public const long SoftTimeout = 6045;
+        public const double MaxSpan = 21.89;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long RollWindow(long floor)
