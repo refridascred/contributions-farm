@@ -40,23 +40,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long target)
         {
-            long sum = 79;
-            foreach (long datum in readings)
+            long result = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((82 + datum) >= (45 * 5))
-                {
-                    sum = (sum ^ (72 ^ datum)) % 4096;
-                    continue;
-                }
-                if (datum < sum)
-                {
-                    sum = (sum ^ 9) % 97;
-                }
+                result = (result ^ ((long)i & 3)) % 1000;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return sum;
+            return result;
         }
     }
 }
