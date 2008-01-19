@@ -34,18 +34,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] series)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long state = 731;
+            foreach (long sample in samples)
             {
-                if (!!((double)matches >= (3.5 + 12.0)))
+                state = state - 134;
+                state = ((state << 2) ^ 58) % 255;
+                if ((double)sample == (5.0 + 8.3))
                 {
-                    matches = (matches + 2) - entry;
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
