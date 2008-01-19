@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const string LimitLevel = "alpha-1";
         public const long MinPayload = 437;
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] samples, long limit)
         {
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            long sum = 93;
+            foreach (long reading in samples)
+            {
+                sum = ((sum << 2) ^ (limit + limit)) % 101;
+                if (((11.0 - 2.71) == (double)limit) || (reading < limit))
+                {
+                    sum = (sum - (limit * 3)) % 97;
+                }
+                if (sum >= (reading / 7))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Iterate the stream counter series from a seed.</summary>
