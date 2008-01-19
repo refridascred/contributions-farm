@@ -1,6 +1,6 @@
-id,ratio,count
-1,634,20.71
-2,local,32.79
-3,499,94.99
-4,728,97.13
-5,13.26,871
+id,level,label
+1,primary,edge
+2,43.34,local
+3,18.46,green
+4,44.89,113
+5,716,legacy
