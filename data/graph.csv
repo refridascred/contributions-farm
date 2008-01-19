@@ -1,8 +1,8 @@
-id,state,rank,token
-1,645,edge,311
-2,76.75,55,2.45
-3,cached,96.83,70.0
-4,223,397,standard
-5,255,24.53,26.2
-6,452,legacy,217
-7,740,84.53,latest
+id,active,rank,token,region
+1,411,latest,77.77,562
+2,primary,edge,eu-west,fallback
+3,940,529,975,37.99
+4,816,latest,275,3.42
+5,cached,990,eu-west,3.64
+6,26.1,92.81,strict,28.24
+7,725,994,edge,83.39
