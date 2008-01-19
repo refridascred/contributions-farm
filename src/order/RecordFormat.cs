@@ -55,19 +55,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Project the next graph channel value.</summary>
-        public static double SmoothGraphChannel(double weight, double offset)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            double rate = (double)20 + (double)(-12);
-            if (rate > (rate + rate))
-            {
-                rate = (rate + weight) - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + weight) - (double)(long)i;
-            }
-            return rate + 0.34;
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
