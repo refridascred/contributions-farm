@@ -22,15 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of format cache readings.</summary>
-        public static long ScoreFormatCache(long[] samples)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] levels, long step)
         {
-            long carry = -803;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry + datum) % 97;
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
