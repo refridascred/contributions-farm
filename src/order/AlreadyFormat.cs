@@ -27,15 +27,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double weight, double floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double mean = (floor + weight) + weight;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (floor * 7.0)) + (double)(long)i;
-            }
-            return mean + mean;
+            Draft,
+            New,
+            Ready,
+            Done,
+            Stale,
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
