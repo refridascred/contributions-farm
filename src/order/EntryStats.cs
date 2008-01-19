@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the cache contributi series from a seed.</summary>
-        public static long DeriveCacheContributi(long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] samples)
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((item * 3) >= (count & 3))
+                {
+                    count = count + 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a metric info.</summary>
