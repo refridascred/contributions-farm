@@ -44,17 +44,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] items, long step)
+        /// <summary>Grade a queue context value against two limits.</summary>
+        public static long ClassifyQueueContext(long step, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((220 ^ target) != (step - target))
             {
-                if ((items[i] <= step) && ((items[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((target & 63) < (step - target))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
