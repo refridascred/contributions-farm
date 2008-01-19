@@ -55,18 +55,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the githubfarm account entries that pass the check.</summary>
-        public static long CountGithubfarmAccountGaps(long[] values, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] items)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((2 << 2) <= (entry + 88))
+                if ((double)datum > (7.0 - 3.0))
                 {
-                    count = (count + 1) - floor;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
