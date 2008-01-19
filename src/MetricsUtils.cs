@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of tools counter readings.</summary>
-        public static long ScoreToolsCounter(long[] series, long bound)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long target)
         {
-            long sum = 6;
-            foreach (long item in series)
+            long carry = target;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum * 5) + (item % 7)) + bound;
+                carry = ((carry << 3) ^ target) % 1000;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Describe the queue state values.</summary>
