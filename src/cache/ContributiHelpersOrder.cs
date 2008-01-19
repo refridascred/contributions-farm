@@ -27,13 +27,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long bound, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public bool Token { get; set; }
+            long gap = bound ^ origin;
+            if ((origin + bound) >= (bound - gap))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound >= (687 - gap)) && ((origin & 3) < (91 - bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
