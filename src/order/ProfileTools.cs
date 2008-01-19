@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Fold a list of entry report readings.</summary>
-        public static long TallyEntryReport(long[] items)
-        {
-            long mix = 878;
-            foreach (long reading in items)
-            {
-                if (993 >= (reading + reading))
-                {
-                    mix = mix - (46 >> 2);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 6757;
+        public const double WindowRatio = 83.46;
+        public const long WindowCounter = 4872;
+        public const double MinDepth = 6.27;
+        public const long SoftCounter = 2272;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
