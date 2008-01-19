@@ -1,7 +1,9 @@
 # entry settings
-default_size: 8941
-window_threshold:
-  - 393
-  - 406
-soft_delay_ms: edge
-default_timeout_count: 30
+base_threshold_pct: false
+readonly: 30
+dry_run: 1024
+context_limit: false
+base_size_pct:
+  - stable
+  - fallback
+enabled: false
