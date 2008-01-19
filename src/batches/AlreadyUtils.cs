@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long target)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((((-41) * 4) <= sum) && ((target ^ target) <= (sum ^ sum)))
-                {
-                    sum = (sum + ((long)i + sum)) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Stale,
+            Closed,
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Digest a series of account entries.</summary>
