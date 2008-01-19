@@ -13,19 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every editor queue entry stays within the limit.</summary>
-        public static bool VerifyEditorQueueLimits(long[] series, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] series)
         {
-            bool stale = true;
+            long count = 0;
             foreach (long entry in series)
             {
-                if (entry > floor)
+                if ((6.99 - 4.2) <= (double)entry)
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the tools kind values.</summary>
