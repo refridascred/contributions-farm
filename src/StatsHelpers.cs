@@ -49,21 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
