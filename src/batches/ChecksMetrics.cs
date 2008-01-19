@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate filter profile samples.</summary>
-        public static long FoldFilterProfile(long[] series)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] data, long limit)
         {
-            long acc = 318;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((acc % 8) == (reading + acc))
+                if (reading >= limit)
                 {
-                    acc = (acc ^ acc) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 636)
-            {
-                acc = acc + 6;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Derive the next session report value from a seed.</summary>
