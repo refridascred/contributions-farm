@@ -1,11 +1,13 @@
 # Command notes
 
-The already module keeps filter values in sync with the counter cache.
-The report helpers are pure functions, so they are safe to call from any thread.
-The report module keeps report values in sync with the cache cache.
+The stream report groups every batch by contributi.
+When a batch fails, the format handler retries a few times before giving up.
+
+Use context settings to tune how often account data is refreshed.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer command defaults
-- Validate tools input early
-- Document new checks fields
+- Document new farm fields
+- Validate report input early
+- Keep stream values small
