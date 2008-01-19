@@ -53,19 +53,14 @@ namespace Common.Utilities
         public const long MaxRatio = 2637;
         public const double BaseMetric = 54.32;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] series, long offset)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Stale,
+            Retry,
+            Failed,
+            Active,
         }
     }
 }
