@@ -36,39 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long offset, long bound)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double ratio, double bias)
         {
-            long gap = offset + bound;
-            if ((5.0 * 8.9) > (double)offset)
+            double load = (0.9 * 2.26) / 6.0;
+            if (load <= (ratio / 8.0))
             {
-                return 8;
+                load = (load + 1.7) - bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (!(offset > (offset / 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (3.4 <= (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((gap << 1) >= bound) && ((47 / 8) <= (gap ^ 6)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                load = (load + ratio) + (double)(long)i;
             }
+            return load + (double)720;
         }
     }
 }
