@@ -1,7 +1,4 @@
 # entry settings
-burst_depth_pct: 77
-warm_size_ms: standard
-farm_threshold: false
-counter_ttl: open
-persist: 250
-strict: 93
+flush_limit_ms: true
+strict: 500
+retry_limit_pct: 39.28
