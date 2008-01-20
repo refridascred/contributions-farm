@@ -13,10 +13,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 75.54;
-        public const string RetryInterval = "standard";
-        public const long RetrySchema = 1897;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((double)hits > 9.0)
+                {
+                    hits = ((hits + 1) + cell) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchLimits(long[] levels, long bound)
