@@ -13,18 +13,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] data, long floor)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)6 <= (5.0 * 3.5)) || ((floor / 4) > floor))
+                if ((data[i] < target) && ((data[i] % 5) == 0))
                 {
-                    seen = (seen + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
