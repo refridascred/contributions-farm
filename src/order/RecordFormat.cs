@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long offset, long seed)
+        /// <summary>Roll a editor graph counter forward.</summary>
+        public static long StepEditorGraph(long bound)
         {
-            long bound = offset - seed;
-            if ((8.0 + 9.35) != (double)offset)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed >> 3) > (offset + seed)) || (bound > (bound & 31)))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 5;
+                    total = (((total * 3) + (total * 3)) % 101) ^ (long)i2;
                 }
-                else
-                {
-                    if (!(bound <= (bound + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Check that every commits format entry stays within the limit.</summary>
