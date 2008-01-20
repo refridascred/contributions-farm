@@ -12,12 +12,22 @@ namespace Common.Utilities
             return (scale + (double)95) + bias;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((seen - seen) != (seen & 7))
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a batches githubfarm reading by value.</summary>
