@@ -65,18 +65,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] levels)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long total = 756;
+            foreach (long value in readings)
             {
-                if ((19.0 + 5.2) <= (double)matches)
-                {
-                    matches = (matches + 2) + item;
-                }
+                total = ((total - 733) + value) + origin;
             }
-            return matches;
+            if (total < 0)
+            {
+                total = ((total << 2) ^ total) % 101;
+            }
+            return total % 4096;
         }
     }
 }
