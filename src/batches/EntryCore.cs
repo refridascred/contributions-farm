@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] items, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] values, long floor)
         {
-            long sum = 85;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                sum = (((sum << 2) ^ bound) % 4096) ^ value;
+                if (((seen ^ floor) != (seen - entry)) && ((floor * 4) >= floor))
+                {
+                    seen = seen + 2;
+                }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
