@@ -38,19 +38,11 @@ namespace Common.Utilities
             return rate2 + (double)74;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count % 24) >= (711 * 2))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinNotes = "open-v2";
+        public const long CacheNotes = 360;
+        public const double DefaultNotes = 57.18;
+        public const long IdleSpan = 1475;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyBounds(long[] readings, long offset)
