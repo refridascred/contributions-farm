@@ -1,5 +1,13 @@
 {
-  "cache_timeout_s": 10.64,
-  "min_delay": 500,
-  "batch_ttl_pct": 500
+  "editor_threshold": {
+    "burst_delay_count": [497, 100, 118],
+    "soft_ttl": 585,
+    "contributi_delay": true,
+    "already_interval": 31
+  },
+  "verbose": 44,
+  "metric_threshold": 9868,
+  "idle_delay": "cached",
+  "default_size": "green",
+  "poll_retries_pct": false
 }
