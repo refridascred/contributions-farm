@@ -38,18 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] series, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (matches >= (bound - 7))
+                if (step <= (value * 4))
                 {
-                    matches = (matches + 3) ^ item;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
