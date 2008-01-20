@@ -1,17 +1,8 @@
 # support settings
-hard_ttl_s: 41.44
-default_interval: 30
-format_threshold:
-  poll_timeout_s:
-    - 442
-    - 378
-    - 177
-  batch_limit: 60
-  cache_timeout: 500
-retry_depth_pct: 14.53
-flush_retries_s:
-  - green
-  - open
-  - blue
-  - strict
-burst_ttl_pct: true
+retry_ratio_s:
+  - 301
+  - 47
+  - 382
+window_delay: 161
+burst_size_count: 18
+support_capacity: edge
