@@ -13,18 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate notes schema samples.</summary>
-        public static long TallyNotesSchema(long[] data)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] values)
         {
-            long carry = 367;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < carry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry ^ (reading + reading)) % 65521;
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
