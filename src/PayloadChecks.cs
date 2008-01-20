@@ -59,11 +59,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 4634;
-        public const long IdleContributi = 8942;
-        public const string MinLevel = "legacy-v2";
-        public const long StepContributi = 4204;
-        public const double StepDepth = 85.35;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
