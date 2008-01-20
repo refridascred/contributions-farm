@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Paused,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 1257;
+        public const double RetryLayout = 94.41;
+        public const long MinLayout = 8311;
+        public const double BurstCount = 10.99;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LocateContributiIndex(long[] readings, long offset)
