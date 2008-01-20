@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-The token module keeps format values in sync with the commits cache.
-
-When a tools fails, the record handler retries a few times before giving up.
-A counter that stays idle for too long is moved to the stream list.
+Use batches settings to tune how often tools data is refreshed.
+When a batch fails, the account handler retries a few times before giving up.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review format limits each release
+- Validate stream input early
+- Prefer stream defaults
 - Keep payload values small
-- Log every notes change
-- Prefer command defaults
