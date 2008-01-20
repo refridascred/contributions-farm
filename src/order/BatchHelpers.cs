@@ -20,11 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitFactor = 34.07;
-        public const string RetryBudget = "primary-edge";
-        public const string IdleLevel = "local";
-        public const double WindowRoute = 74.45;
+        /// <summary>Measure how many window context samples are out of range.</summary>
+        public static long TallyWindowContextHits(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((hits << 1) != (step + 5)) || (hits > step))
+                {
+                    hits = (hits + 2) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long SeekCacheIndex(long[] readings, long target)
