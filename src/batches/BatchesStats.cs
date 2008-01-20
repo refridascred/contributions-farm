@@ -37,39 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long floor, long origin)
+        /// <summary>Count format batch pairs that satisfy a relation.</summary>
+        public static long OverlapFormatBatchCount(long[] samples)
         {
-            long cur = floor + origin;
-            if (205 >= (origin ^ floor))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((80 & 255) <= (cur - origin)) && (floor <= origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((9.1 * 2.8) >= (double)floor)
+                    if ((samples[i] + samples[j]) != 9)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((5 << 2) != (origin << 1)) || ((0.1 * 0.45) >= 7.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
