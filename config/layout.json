@@ -1,5 +1,13 @@
 {
-  "cluster_retries": ["legacy", "green"],
-  "readonly": ["fallback", "standard", "eu-west", "fallback"],
-  "burst_retries_count": 28.44
+  "retry_retries": 30,
+  "commits_ratio": 35.34,
+  "command_window": 23,
+  "readonly": 75.11,
+  "burst_retries_count": {
+    "githubfarm_timeout": "eu-west",
+    "batch_limit_ms": "cached",
+    "channel_size": "edge",
+    "idle_retries_ms": 64.06,
+    "warm_depth_pct": true
+  }
 }
