@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            long result = 648;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((result < (result + item)) && ((result - item) < 516))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result * 5) + (item * 4);
-                }
-                else
-                {
-                    result = (result * 2) + (item << 3);
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
