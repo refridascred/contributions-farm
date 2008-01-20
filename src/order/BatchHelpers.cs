@@ -22,20 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxTimeout = 90.07;
+        public const string SoftLevel = "standard-v2";
+        public const double CacheBatches = 96.97;
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
