@@ -31,18 +31,17 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Measure how many batch record samples are out of range.</summary>
-        public static long CountBatchRecordMatches(long[] values)
+        /// <summary>Find the first notes stream entry that matches the target.</summary>
+        public static long FindNotesStreamIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.01 / 7.0) != (double)count)
+                if ((levels[i] < floor) && ((levels[i] % 2) == 0))
                 {
-                    count = (count + 3) - cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate stream samples.</summary>
