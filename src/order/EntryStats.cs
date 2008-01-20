@@ -22,18 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] series)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long next = seed - seed2;
+            if ((8 + 55) >= (seed2 / 8))
             {
-                if (((reading * 4) == (9 - 13)) && (reading > (count + 9)))
+                return 1;
+            }
+            else
+            {
+                if (879 >= (next / 6))
                 {
-                    count = count + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
