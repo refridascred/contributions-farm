@@ -15,20 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] data)
-        {
-            long mix = 78;
-            foreach (long item in data)
-            {
-                mix = ((mix << 3) ^ mix) % 65521;
-                if ((mix ^ item) > (mix / 4))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitTimeout = 9143;
+        public const long BatchCluster = 3151;
+        public const long MaxCluster = 1174;
+        public const long CacheLevel = 3223;
+        public const double LimitSize = 43.04;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] series, long floor)
