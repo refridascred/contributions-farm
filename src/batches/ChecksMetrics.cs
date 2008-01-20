@@ -41,12 +41,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long target)
         {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public bool Level { get; set; }
+            long carry = target;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = carry ^ carry;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate order samples.</summary>
