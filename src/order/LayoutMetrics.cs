@@ -17,24 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long floor, long seed)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            if ((double)floor <= (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor < (3.0 - 1.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Owner { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
