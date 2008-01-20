@@ -36,15 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double gain, double floor)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            double gain2 = gain * 2.0;
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = ((gain2 - gain) + (double)(long)i) - floor;
-            }
-            return gain2 - gain2;
+            Stale,
+            Draft,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Compare every pair of commits context readings.</summary>
