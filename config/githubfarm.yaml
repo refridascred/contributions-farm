@@ -1,5 +1,10 @@
 # githubfarm settings
-retry_threshold_s: cached
-cache_window: fallback
-account_delay: eu-west
-cache_depth: 17
+sync_ttl_ms:
+  - cached
+  - latest
+metric_size: 1024
+default_limit_s:
+  - 499
+  - 210
+  - 463
+hard_window_ms: true
