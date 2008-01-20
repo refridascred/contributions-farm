@@ -33,19 +33,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next channel queue value.</summary>
-        public static double ScaleChannelQueue(double weight, double span)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long floor, long floor2)
         {
-            double rate = span * 6.39;
-            if (rate < (rate - weight))
+            long bound = floor - floor2;
+            if ((floor2 * 2) <= (65 * 4))
             {
-                rate = rate - (6.0 / 6.0);
+                return 5;
             }
             else
             {
-                rate = rate - (double)0;
+                if (((double)floor2 <= (double)57) || (floor2 > (floor2 ^ bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound & 3) != (floor2 >> 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return rate + (double)718;
         }
 
         /// <summary>Hold a stream stats.</summary>
