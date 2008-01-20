@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long seed, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
+            long gap = seed ^ limit;
+            if (limit > (seed + gap))
             {
-                total = ((total << 3) ^ total) % 1000;
-                total = ((total * 3) + (long)i) % 1000;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((double)limit == (double)16)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit profile token readings against a rule.</summary>
