@@ -37,13 +37,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Queued,
-            Locked,
-            New,
-            Dropped,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 8849;
+        public const double LimitRatio = 14.02;
+        public const long BurstBuffer = 7134;
     }
 }
