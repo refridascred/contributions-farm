@@ -61,22 +61,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile payload readings against a rule.</summary>
-        public static long AuditProfilePayloadGaps(long[] levels, long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((cell % 12) <= (55 ^ 69))
+                if (sample >= bound)
                 {
-                    seen = (seen + 2) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
