@@ -1,9 +1,17 @@
 # support settings
-compress: true
-layout_retries: 34
-batch_size:
-  - strict
-  - fallback
-  - standard
-  - cached
-hard_window_ms: latest
+report_interval: primary
+soft_threshold_ms:
+  cluster_capacity: staging
+  stats_ttl: true
+  strict: open
+  soft_capacity_s: 14.38
+  verbose: fallback
+  commits_size: 5222
+contributi_threshold:
+  - 472
+  - 371
+  - 32
+  - 153
+soft_size: 62
+token_delay: primary
+poll_size_pct: 7247
