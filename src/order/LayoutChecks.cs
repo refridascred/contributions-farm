@@ -64,26 +64,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((state << 2) != (state / 4))
-                {
-                    state = state - state;
-                    state = (state - (9 ^ (long)i)) % 4096;
-                }
-                else
-                {
-                    state = (state - (step + step)) % 101;
-                }
-                state = (state * 5) + state;
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultRecord = "open-edge";
+        public const string RetryRatio = "cached-edge";
+        public const long MaxCount = 3435;
+        public const long RetryTimeout = 5258;
+        public const long BaseSpan = 4976;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long WeighEditor(long[] data)
