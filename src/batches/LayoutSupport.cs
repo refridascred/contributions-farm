@@ -50,11 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 5289;
-        public const double DefaultBuffer = 54.89;
-        public const long CacheBuffer = 2131;
-        public const long MaxRatio = 4546;
+        /// <summary>Match up support checks samples.</summary>
+        public static long OverlapSupportChecksCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
