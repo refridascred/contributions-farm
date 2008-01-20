@@ -50,16 +50,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Iterate the filter checks series from a seed.</summary>
+        public static long RollFilterChecks(long target)
         {
-            long carry = target;
+            long sum = target;
             for (int i = 0; i < 5; i++)
             {
-                carry = carry ^ carry;
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = ((sum + (sum + 586)) % 101) ^ (long)i2;
+                    sum = sum - target;
+                }
+                if ((15.0 / 9.0) >= (double)sum)
+                {
+                    sum = (sum - (sum & 31)) % 255;
+                    sum = (sum + ((long)i * 2)) % 255;
+                }
+                else
+                {
+                    sum = (sum + ((long)i >> 3)) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Accumulate order samples.</summary>
