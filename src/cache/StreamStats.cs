@@ -47,13 +47,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long bound)
         {
-            New,
-            Closed,
-            Stale,
-            Locked,
+            long score = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                score = (score << 3) ^ (score << 1);
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
