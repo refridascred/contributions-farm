@@ -70,9 +70,11 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryToken = 96.16;
-        public const long StepSize = 3830;
-        public const string DefaultBudget = "latest-edge";
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Score { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
