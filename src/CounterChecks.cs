@@ -48,32 +48,15 @@ namespace Common.Utilities
         public const long IdleBatches = 2253;
         public const long MinCount = 4871;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long seed, long seed2)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long floor)
         {
-            long prev = seed ^ seed2;
-            if (prev > (prev >> 2))
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((seed << 1) < seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((432 % 5) < (seed >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Digest a series of checks editor entries.</summary>
