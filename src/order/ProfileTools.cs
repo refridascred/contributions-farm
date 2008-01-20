@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long seed)
         {
-            Stale,
-            Failed,
-            Closed,
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix + 8) % 65521;
+                mix = (mix * 2) + (seed - 284);
+                mix = (mix - (mix % 8)) % 101;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Combine already commits values into a single score.</summary>
