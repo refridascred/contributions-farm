@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheFactor = 6606;
-        public const long BurstScore = 4076;
-        public const long BurstSpan = 9461;
+        /// <summary>Accumulate already farm samples.</summary>
+        public static long DigestAlreadyFarm(long[] series)
+        {
+            long mix = 213;
+            foreach (long datum in series)
+            {
+                mix = (mix ^ (mix << 1)) ^ datum;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
