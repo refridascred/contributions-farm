@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=147
-log "limit is ${BUFFER_LIMIT}"
+for item in open stable blue; do
+    log "checking ${item}"
+done
 
-mode="${1:-green}"
+mode="${1:-open}"
 case "${mode}" in
-    fallback)
+    green)
         log "fast path"
         ;;
     *)
