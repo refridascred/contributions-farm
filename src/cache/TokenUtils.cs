@@ -23,16 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long target)
         {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
+            long acc = target;
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark << 2) ^ (long)i) % 4096;
-                mark = ((mark * 2) + (long)i) % 4093;
+                acc = (acc ^ (4 >> 2)) % 101;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
