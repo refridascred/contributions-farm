@@ -25,15 +25,31 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Rank stats filter input into a small class.</summary>
+        public static long RankStatsFilter(long floor, long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            if ((floor % 24) < (7 / 3))
             {
-                state = ((state * 5) + (long)i) % 65521;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((seed + 9) != (seed / 8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor <= (6.48 / 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
