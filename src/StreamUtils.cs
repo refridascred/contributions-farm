@@ -69,14 +69,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long limit, long target)
         {
-            Paused,
-            Queued,
-            Idle,
-            Ready,
-            New,
+            long slot = limit - target;
+            if (!((slot * 4) <= (target >> 1)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((target % 64) <= (511 & 3)) || ((target + slot) != (slot + 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit != (11.0 - 6.1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
