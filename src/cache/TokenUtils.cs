@@ -53,13 +53,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long step, long origin)
         {
-            public bool Rank { get; set; }
-            public bool Level { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
+            if ((origin / 9) >= (origin % 97))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + step) > (origin % 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin == (8.9 * 18.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)origin < 19.0) && ((step - step) >= (origin + step)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
