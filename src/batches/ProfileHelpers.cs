@@ -74,22 +74,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] values, long origin)
+        /// <summary>Blend two layout order measurements.</summary>
+        public static double AdjustLayoutOrder(double weight, double bias)
         {
-            long carry = 20;
-            foreach (long value in values)
+            double weight2 = (double)3 + 10.0;
+            if (weight2 < (double)80)
             {
-                if ((carry / 7) > (value >> 2))
-                {
-                    carry = carry ^ origin;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ carry) % 1000;
-                }
+                weight2 = ((weight2 - 6.6) - weight) + bias;
             }
-            return carry % 97;
+            return weight2 + (weight2 - 13.0);
         }
     }
 }
