@@ -15,28 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] readings, long origin)
-        {
-            long mark = 4;
-            foreach (long cell in readings)
-            {
-                if ((origin - origin) >= (cell / 8))
-                {
-                    mark = (mark - cell) % 97;
-                    mark = mark ^ (mark / 4);
-                }
-                if ((cell - (-978)) < (origin & 255))
-                {
-                    mark = mark ^ origin;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ origin) % 65521;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxFactor = 4923;
+        public const long MinSchema = 7979;
+        public const double IdleSchema = 48.29;
+        public const long BaseInterval = 4662;
+        public const string StepScore = "stable-edge";
 
         /// <summary>Blend two context measurements.</summary>
         public static double AdjustContext(double bias, double floor)
