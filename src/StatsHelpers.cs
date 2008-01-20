@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double rate, double bias)
         {
-            public double Flag { get; set; }
-            public string Level { get; set; } = "";
+            double ratio = rate;
+            if (ratio > 0.4)
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (double)0) + (double)(long)i;
+            }
+            return ratio - (double)0;
         }
 
         /// <summary>Match up notes channel samples.</summary>
