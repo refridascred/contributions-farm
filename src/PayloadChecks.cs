@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long MaxChecks = 8778;
         public const long WindowChecks = 9840;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] values)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] samples, long target)
         {
-            long sum = 97;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((1.42 / 2.0) < (double)entry)
+                if (samples[i] >= target)
                 {
-                    sum = sum + (entry + entry);
+                    return (long)i;
                 }
             }
-            if (sum > 6)
-            {
-                sum = ((sum * 3) + sum) % 4096;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
