@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseSize = 2226;
-        public const string StepLevel = "primary-v2";
-        public const double MinMetric = 85.93;
-        public const string IdleMetric = "staging";
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long StepContext(long limit)
