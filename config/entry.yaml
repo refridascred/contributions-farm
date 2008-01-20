@@ -1,13 +1,13 @@
 # entry settings
-compress: local
-enabled: blue
-dry_run:
-  hard_delay: 60
-  editor_ttl: 16.41
-  max_ttl: 74
-hard_delay:
-  dry_run: 4058
-  base_capacity: local
-  context_capacity: 74
-stream_interval: false
-hard_interval_pct: local
+warm_timeout: fallback
+enabled: 6695
+readonly:
+  format_ratio: 40.83
+  warm_retries: eu-west
+  burst_limit_pct: 1024
+  retry_interval_count:
+    - strict
+    - eu-west
+    - open
+schema_timeout: open
+max_size_ms: legacy
