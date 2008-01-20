@@ -1,10 +1,17 @@
 # entry settings
-idle_capacity_count: open
-enabled: blue
-sync_delay_s: strict
-command_ratio: true
-format_interval:
-  - legacy
-  - green
-  - green
-  - cached
+burst_ratio_count: 80
+record_size:
+  - 362
+  - 205
+  - 158
+report_ratio: primary
+dry_run: 100
+min_interval_pct:
+  idle_ratio: 100
+  retry_interval_count: 30
+  hard_ttl:
+    - 428
+    - 462
+  max_threshold: blue
+  compress: 2530
+sync_timeout: 98
