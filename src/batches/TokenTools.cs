@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftFactor = 5410;
-        public const double MaxEditor = 96.75;
-        public const double LimitInterval = 75.85;
-        public const long HardLevel = 9521;
-        public const string BatchEditor = "stable-1";
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public bool Count { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Adjust a report cache reading.</summary>
         public static double BlendReportCache(double rate, double floor)
