@@ -50,15 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long step)
+        /// <summary>Compare every pair of metric schema readings.</summary>
+        public static long CompareMetricSchemaCount(long[] readings)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the layout state values.</summary>
