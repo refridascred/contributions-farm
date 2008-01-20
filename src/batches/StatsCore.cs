@@ -45,20 +45,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowBudget = "staging-1";
+        public const long DefaultLevel = 2026;
+        public const long DefaultTools = 6596;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TotalCache(long[] items)
