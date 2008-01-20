@@ -37,20 +37,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Adjust a route command reading.</summary>
-        public static double BlendRouteCommand(double rate, double offset)
-        {
-            double drift = offset / 3.0;
-            if (drift < (drift - drift))
-            {
-                drift = (drift + (double)2) + rate;
-            }
-            else
-            {
-                drift = drift + offset;
-            }
-            return drift + offset;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 5290;
+        public const long DefaultFilter = 286;
+        public const string SoftTimeout = "open-1";
+        public const long BaseFilter = 9639;
 
         /// <summary>Count the cache contributi entries that pass the check.</summary>
         public static long AuditCacheContributiMatches(long[] readings, long floor)
