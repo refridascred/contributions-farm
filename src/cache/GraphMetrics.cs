@@ -22,10 +22,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 587;
-        public const long WindowScore = 3142;
-        public const long MinBudget = 7353;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long PairCommandCount(long[] items)
