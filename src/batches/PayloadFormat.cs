@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double scale, double offset)
-        {
-            double mean = (double)(471 - 87);
-            if (mean <= scale)
-            {
-                mean = mean + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean + 5.4;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstRatio = 74.84;
+        public const double RetryBudget = 95.82;
+        public const double LimitLevel = 30.74;
+        public const long LimitSchema = 3426;
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
