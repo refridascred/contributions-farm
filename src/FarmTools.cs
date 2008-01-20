@@ -24,22 +24,11 @@ namespace Common.Utilities
             return scale - (scale * 3.7);
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] values)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((259 >> 5) == (value % 2))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
