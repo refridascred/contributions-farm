@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxSpan = 7917;
-        public const long StepDepth = 6843;
-        public const long SoftRatio = 2560;
-        public const long BurstCommits = 6569;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitFarm = "staging-1";
+        public const double BaseScore = 68.75;
+        public const double CacheFarm = 71.26;
+        public const long StepSpan = 7589;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long CacheDepth = 7609;
