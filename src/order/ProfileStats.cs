@@ -36,20 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] samples, long floor)
-        {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleBudget = 61.72;
+        public const string MaxEditor = "open";
+        public const double LimitEditor = 78.69;
+        public const long BaseEditor = 7713;
+        public const long CacheEditor = 8451;
 
         /// <summary>Validate tools session readings against a bound.</summary>
         public static bool CheckToolsSessionLimits(long[] samples, long origin)
