@@ -1,9 +1,11 @@
 {
-  "window_depth": "stable",
-  "base_ratio": 4940,
-  "batch_retries_s": {
-    "buffer_timeout": ["local", "eu-west"],
-    "already_delay": "local",
-    "batch_limit": 2345
-  }
+  "dry_run": {
+    "sync_limit": 36,
+    "retry_depth": 61,
+    "compress": 60
+  },
+  "audit": true,
+  "session_threshold": true,
+  "soft_ratio": "edge",
+  "poll_threshold": 1024
 }
