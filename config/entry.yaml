@@ -1,13 +1,7 @@
 # entry settings
-profile_window: 80.66
-graph_ttl:
-  support_depth: stable
-  default_timeout_s: 37.29
-  burst_depth:
-    - 405
-    - 400
+persist: false
+hard_interval_ms: false
+hard_interval_s: 50
 readonly:
-  poll_ratio: 100
-  batch_interval: 82
-  max_window_pct: fallback
-  window_limit: edge
+  - standard
+  - eu-west
