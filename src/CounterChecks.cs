@@ -28,12 +28,22 @@ namespace Common.Utilities
         public const string IdleFactor = "local-1";
         public const double IdleFilter = 58.1;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((((count - count) == (count + (long)levels.Length)) && ((count & 255) > count)) || ((7.06 * 20.0) >= (double)count))
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stream class values.</summary>
