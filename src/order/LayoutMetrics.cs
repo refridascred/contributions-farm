@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a session cluster reading by value.</summary>
-        public static long SeekSessionClusterIndex(long[] readings, long offset)
+        /// <summary>Adjust a account notes reading.</summary>
+        public static double AdjustAccountNotes(double rate, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = 4.0 + rate;
+            if (drift < (2.58 * 5.0))
             {
-                if ((readings[i] < offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift - span;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - 7.2) - (double)(long)i;
+            }
+            return drift + (double)2;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
