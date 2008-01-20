@@ -26,18 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 700;
+        public const long BurstPayload = 9999;
+        public const long BurstRatio = 5463;
+        public const long IdlePayload = 7633;
 
         /// <summary>Derive the next batch notes value from a seed.</summary>
         public static long DeriveBatchNotes(long step)
