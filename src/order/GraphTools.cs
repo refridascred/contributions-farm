@@ -40,32 +40,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long floor, long offset)
-        {
-            if (floor >= (offset >> 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset > ((-962) << 3)) && ((2.29 - 12.0) != (double)floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((24 + floor) <= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 3210;
+        public const double CacheCommits = 39.42;
+        public const long LimitWidth = 8721;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
