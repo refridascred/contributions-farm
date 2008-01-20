@@ -33,39 +33,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a farm support pair into a bucket.</summary>
-        public static long RankFarmSupport(long bound, long floor)
-        {
-            long lane = bound - floor;
-            if ((double)floor <= (19.0 + 7.02))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)lane == (2.53 / 3.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (683 <= lane)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((bound ^ floor) < floor) || ((double)floor <= (double)lane))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardTimeout = 1119;
+        public const long RetryNotes = 5070;
+        public const long BurstNotes = 1033;
     }
 }
