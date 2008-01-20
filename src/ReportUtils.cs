@@ -64,14 +64,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Locked,
-            Queued,
-            Idle,
             Ready,
-            Draft,
+            Closed,
+            Paused,
+            Pending,
         }
     }
 }
