@@ -39,11 +39,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public double Token { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 8277;
+        public const long BurstCount = 9275;
+        public const double MinTimeout = 6.12;
     }
 }
