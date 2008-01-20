@@ -11,23 +11,22 @@ namespace Common.Utilities
         public const long SoftChannel = 9295;
         public const long WindowInterval = 2581;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] values)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] readings, long bound)
         {
-            long mark = 6;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                mark = (mark - value) % 255;
-                if ((mark >> 4) <= (mark << 3))
+                if (((((long)readings.Length >> 5) == (seen * 2)) && ((datum % 3) < (900 >> 4))) && ((bound * 2) != (long)readings.Length))
                 {
-                    mark = (mark ^ (value + value)) % 65521;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (mark > 971)
-            {
-                mark = (mark + (mark - mark)) % 255;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the editor mode values.</summary>
