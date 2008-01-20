@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] series)
-        {
-            long sum = 31;
-            foreach (long reading in series)
-            {
-                if (!!(sum < (reading ^ sum)))
-                {
-                    sum = (sum ^ sum) % 101;
-                }
-                sum = sum ^ 8;
-            }
-            if (sum > 51)
-            {
-                sum = ((sum * 3) + (sum / 6)) % 4096;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinDepth = 84.2;
+        public const string HardInterval = "stable";
+        public const string BatchContributi = "standard-v2";
+        public const double HardContributi = 58.6;
+        public const long StepTimeout = 7831;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TallyTools(long[] values, long seed)
