@@ -26,24 +26,16 @@ namespace Common.Utilities
         public const string RetryMetrics = "fallback-1";
         public const long IdleSize = 656;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long offset, long step)
+        /// <summary>Roll a commits cluster counter forward.</summary>
+        public static long SeriesCommitsCluster(long seed)
         {
-            if ((offset ^ step) != (step % 8))
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 5;
+                mark = ((mark << 2) ^ ((long)i ^ (long)i)) % 255;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)step == (9.2 + 4.1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mark;
         }
     }
 }
