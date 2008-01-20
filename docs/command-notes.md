@@ -1,15 +1,11 @@
 # Command notes
 
-When a batches fails, the notes handler retries a few times before giving up.
-Defaults for channel live in the config folder and can be overridden per environment.
-The cache helpers are pure functions, so they are safe to call from any thread.
-
-The farm report groups every contributi by stats.
-The githubfarm report groups every stats by token.
-The metrics report groups every context by editor.
+Keep record and token names short and lowercase.
+Use counter settings to tune how often stream data is refreshed.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate checks input early
-- Prefer channel defaults
-- Document new command fields
+- Keep notes values small
+- Validate window input early
+- Log every metrics change
