@@ -46,13 +46,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Roll a layout graph counter forward.</summary>
+        public static long StepLayoutGraph(long seed)
         {
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long total = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((long)i * 2) >= (seed >> 1))
+                {
+                    total = ((total << 3) ^ total) % 4096;
+                }
+                if (!(((long)i ^ total) > total))
+                {
+                    total = total ^ (total >> 2);
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
