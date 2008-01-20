@@ -57,21 +57,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 4;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = ((mix << 3) ^ (mix >> 5)) ^ value;
+                if ((4 + mix) >= (mix ^ 3))
                 {
-                    if ((levels[i] ^ levels[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix << 3) ^ (mix % 24)) % 65521;
+                }
+                else
+                {
+                    mix = (mix * 4) + (23 + mix);
                 }
             }
-            return count;
+            return mix % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
