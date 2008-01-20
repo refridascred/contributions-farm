@@ -31,26 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] data, long floor)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long offset)
         {
-            long state = 9;
-            foreach (long value in data)
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)(long)data.Length != (5.2 * 1.88))
-                {
-                    state = (state - value) % 1000;
-                }
-                if (value > floor)
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            if (state < 298)
-            {
-                state = (state ^ (346 ^ state)) % 255;
-            }
-            return state;
+            return mix;
         }
 
         /// <summary>Hold a contributi options.</summary>
