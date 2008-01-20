@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] series, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] items)
         {
-            long total = 32;
-            foreach (long item in series)
+            long state = 64;
+            foreach (long datum in items)
             {
-                if (!((total % 8) > total))
+                if ((datum << 1) >= state)
                 {
-                    total = total ^ ((-463) + item);
-                }
-                else
-                {
-                    total = (total ^ bound) % 255;
+                    state = (state + (6 - 5)) % 255;
                 }
             }
-            return total % 65521;
+            return state;
         }
 
         /// <summary>Describe the support class values.</summary>
