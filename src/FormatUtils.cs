@@ -63,15 +63,39 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] data, long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long floor, long step)
         {
-            long anchor = 1;
-            foreach (long value in data)
+            long offset = floor ^ step;
+            if ((floor + 4) >= (offset + (-208)))
             {
-                anchor = ((((anchor * 5) + (24 - anchor)) % 4096) ^ value) - seed;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((offset * 5) < (29 ^ offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9.0 * 9.71) == (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((9.7 - 6.1) != (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
