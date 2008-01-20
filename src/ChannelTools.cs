@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 4011;
-        public const long BurstTimeout = 1439;
-        public const string IdleDepth = "standard-v2";
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every filter format entry stays within the limit.</summary>
         public static bool GuardFilterFormatRange(long[] samples, long bound)
