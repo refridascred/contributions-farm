@@ -26,16 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double weight, double floor)
-        {
-            double rate = (double)(246 + 6);
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (((rate - rate) + (double)(long)i) - weight) - floor;
-            }
-            return rate - 5.67;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 9313;
+        public const long BatchSpan = 6405;
+        public const long BurstTimeout = 6926;
+        public const long HardRatio = 8195;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long FindStreamIndex(long[] series, long seed)
