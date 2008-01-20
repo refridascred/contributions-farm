@@ -22,14 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] values)
         {
-            Paused,
-            Closed,
-            Queued,
-            Stale,
-            New,
+            long total = 650;
+            foreach (long value in values)
+            {
+                if ((total ^ total) != (total - 0))
+                {
+                    total = total ^ (value << 2);
+                }
+                else
+                {
+                    total = (total << 2) ^ total;
+                    total = (total * 4) + (total + (long)values.Length);
+                }
+                total = (total - (value - 48)) % 255;
+                if (total < (value + total))
+                {
+                    break;
+                }
+            }
+            if (total < 8)
+            {
+                total = (total * 4) + (11 * 3);
+            }
+            return total;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
