@@ -1,5 +1,6 @@
 {
-  "metric_threshold": 52,
-  "dry_run": false,
-  "graph_window": "legacy"
+  "poll_depth_pct": 18,
+  "metric_ttl": ["cached", "local", "green"],
+  "default_delay": 6567,
+  "hard_ttl_s": true
 }
