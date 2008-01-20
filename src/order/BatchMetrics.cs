@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public double Ratio { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryWidth = 8423;
+        public const long CacheEditor = 653;
+        public const string BatchFactor = "strict-v2";
+        public const double BaseEditor = 32.51;
+        public const string BatchEditor = "primary-edge";
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long StepMetrics(long offset)
