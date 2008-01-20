@@ -19,13 +19,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Scale a batch counter figure with a bias.</summary>
+        public static double ProjectBatchCounter(double rate, double floor)
         {
-            Active,
-            New,
-            Closed,
-            Locked,
+            double load = floor;
+            if (load <= floor)
+            {
+                load = (load + (0.5 * 5.3)) - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load - 1.0;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
