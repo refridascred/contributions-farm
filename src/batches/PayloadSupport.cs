@@ -16,12 +16,24 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] levels, long origin)
         {
-            Locked,
-            Ready,
-            Closed,
+            long score = 207;
+            foreach (long cell in levels)
+            {
+                score = (score - (cell ^ cell)) % 4096;
+                score = ((score << 3) ^ (origin ^ origin)) % 97;
+                if (!(((-5) >> 4) == (score % 100)))
+                {
+                    break;
+                }
+            }
+            if (score > 4)
+            {
+                score = (score + origin) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
