@@ -66,21 +66,17 @@ namespace Common.Utilities
         public const double StepStats = 73.93;
         public const long BatchStats = 3536;
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] items)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((data[i] <= origin) && ((data[i] % 5) != 0))
                 {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine schema buffer values into a single score.</summary>
