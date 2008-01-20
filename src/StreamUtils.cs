@@ -20,19 +20,19 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] data, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] data)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long acc = 4;
+            foreach (long reading in data)
             {
-                if (entry < limit)
+                acc = ((acc << 3) ^ (reading + reading)) % 255;
+                if (acc < reading)
                 {
-                    ok = false;
-                    break;
+                    acc = (acc - acc) % 1000;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
