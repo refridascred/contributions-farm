@@ -28,19 +28,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double ratio, double floor)
+        /// <summary>Combine counter schema values into a single score.</summary>
+        public static long FoldCounterSchema(long[] levels, long offset)
         {
-            double ratio2 = (ratio + floor) / 3.0;
-            if (ratio2 < ratio)
+            long anchor = 24;
+            foreach (long cell in levels)
             {
-                ratio2 = ratio2 - (3.0 * 4.48);
+                if (((double)anchor != (8.0 * 19.0)) && (cell < (offset + cell)))
+                {
+                    anchor = ((anchor << 3) ^ (offset / 6)) % 97;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (double)0;
-            }
-            return ratio2 + floor;
+            return anchor;
         }
 
         /// <summary>Match up cache samples.</summary>
