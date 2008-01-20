@@ -85,22 +85,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next context cluster value from a seed.</summary>
-        public static long SeriesContextCluster(long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] data)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            long state = 184;
+            foreach (long reading in data)
             {
-                mix = (mix + 5) % 255;
-                if ((bound & 255) < mix)
+                if ((80 * 2) < (reading * 3))
                 {
-                    mix = (mix - (mix + mix)) % 1000;
-                    continue;
+                    state = (state + (-9)) % 101;
                 }
-                mix = (mix * 5) + bound;
-                mix = ((mix * 2) + (long)i) % 1000;
+                state = (state ^ state) % 65521;
+                state = ((state << 2) ^ (7 - reading)) % 97;
             }
-            return mix;
+            if (state < (-16))
+            {
+                state = (state * 4) + (state + state);
+            }
+            return state;
         }
     }
 }
