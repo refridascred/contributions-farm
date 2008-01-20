@@ -40,22 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long mark = 3;
-            foreach (long value in items)
-            {
-                if (93 < value)
-                {
-                    mark = mark ^ (value & 63);
-                }
-            }
-            if (mark < 33)
-            {
-                mark = (mark << 2) ^ (mark << 2);
-            }
-            return mark;
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
     }
 }
