@@ -37,18 +37,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] readings)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((2.0 + 0.83) < (double)sample)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
