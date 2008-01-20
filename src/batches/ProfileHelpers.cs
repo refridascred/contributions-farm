@@ -30,20 +30,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if (seed <= (seed + seed))
-                {
-                    score = (score - 0) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleDepth = "staging-v2";
+        public const long BatchFormat = 5278;
+        public const long IdleFormat = 5915;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long IdleBatches = 2651;
