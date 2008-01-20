@@ -24,30 +24,22 @@ namespace Common.Utilities
             return scale - (scale * 3.7);
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] values)
         {
-            long total = 52;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (39 < total)
+                if ((259 >> 5) == (value % 2))
                 {
-                    total = total ^ datum;
-                }
-                if ((total + datum) >= total)
-                {
-                    total = ((total * 5) + (total & 1)) % 255;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    total = (total << 2) ^ (total << 2);
+                    seen = seen - 1;
                 }
             }
-            if (total < 136)
-            {
-                total = (total * 5) + (64 + total);
-            }
-            return total;
+            return seen;
         }
     }
 }
