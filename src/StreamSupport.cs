@@ -20,31 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long offset, long limit)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            if ((offset % 60) == (457 << 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((offset & 1) > (offset & 3)) || (offset < (offset % 64)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset == (0.72 + 3.93))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Blend two batch checks measurements.</summary>
