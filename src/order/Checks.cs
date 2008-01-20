@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] levels)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.43 * 6.8) >= (double)hits)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the editor level values.</summary>
