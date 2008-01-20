@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long CacheSpan = 9838;
         public const long BatchBatches = 5043;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            long total = 38;
+            foreach (long entry in levels)
+            {
+                total = ((total * 2) + (entry ^ total)) % 4096;
+                if ((43 <= entry) || ((7.6 / 6.0) >= (double)total))
+                {
+                    total = (total ^ (entry & 1)) % 1000;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the cache level values.</summary>
