@@ -1,5 +1,6 @@
 # githubfarm settings
-persist: 14.9
-retry_threshold: 250
-already_ttl: fallback
-commits_limit: 28.74
+compress: 75.49
+sync_interval: false
+max_window_count: staging
+route_limit: true
+base_capacity_pct: strict
