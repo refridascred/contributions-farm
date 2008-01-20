@@ -51,38 +51,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a channel cache value against two limits.</summary>
-        public static long SortChannelCache(long step, long origin)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double gain, double bias)
         {
-            if ((8.2 * 9.0) <= (double)origin)
+            double ratio = (double)534 - (double)41;
+            if (ratio <= (gain - bias))
             {
-                return 0;
+                ratio = ratio + bias;
             }
             else
             {
-                if ((((-49) & 31) < (origin * 5)) || ((origin * 4) < (origin - origin)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((93 + origin) >= 901)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + step) < step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                ratio = ratio + bias;
             }
+            return ratio + (double)1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
