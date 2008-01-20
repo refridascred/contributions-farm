@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
+            Draft,
+            Idle,
+            Paused,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the already phase values.</summary>
