@@ -39,9 +39,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryStream = "primary-1";
-        public const double SoftDepth = 72.31;
-        public const long BaseStream = 1938;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Stale,
+            Retry,
+            Queued,
+        }
     }
 }
