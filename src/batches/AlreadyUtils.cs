@@ -47,22 +47,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] levels, long step)
+        /// <summary>Digest a series of cluster commits entries.</summary>
+        public static long FoldClusterCommits(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long carry = 44;
+            foreach (long sample in values)
             {
-                if (!(sample > (step ^ sample)))
+                if (((15.0 / 8.0) <= (double)sample) || (7.62 >= (double)origin))
                 {
-                    matches = matches + 2;
+                    carry = (carry ^ carry) % 101;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry << 3) ^ (carry * 4)) % 1000;
             }
-            return matches;
+            return carry;
         }
     }
 }
