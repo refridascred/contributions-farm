@@ -16,18 +16,22 @@ namespace Common.Utilities
             return scale - (scale * 10.0);
         }
 
-        /// <summary>Measure how many entry batch samples are out of range.</summary>
-        public static long CountEntryBatchMatches(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (value > (matches >> 2))
+                if ((count - (long)items.Length) >= (value - 984))
                 {
-                    matches = matches + 2;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
