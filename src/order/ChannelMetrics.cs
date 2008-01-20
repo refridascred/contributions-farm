@@ -24,24 +24,18 @@ namespace Common.Utilities
         public const string RetryNotes = "open";
         public const long SoftSpan = 1850;
 
-        /// <summary>Grade a token metric value against two limits.</summary>
-        public static long ClassifyTokenMetric(long floor, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] samples, long limit)
         {
-            if (!((double)offset <= 1.5))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor / 3) <= (floor + floor))
+                if (9.0 > (double)cell)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    hits = (hits + 3) - limit;
                 }
             }
+            return hits;
         }
     }
 }
