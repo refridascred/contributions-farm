@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long IdleLevel = 2619;
         public const long WindowRatio = 411;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] samples, long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (reading <= offset)
+                if ((count + seed) <= (count << 2))
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) + datum;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Locate a window support reading by value.</summary>
