@@ -31,12 +31,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] series)
         {
-            Stale,
-            Locked,
-            New,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
