@@ -28,23 +28,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Combine schema notes values into a single score.</summary>
+        public static long CombineSchemaNotes(long[] series)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            long mix = 0;
+            foreach (long item in series)
             {
-                if ((step * 3) >= (long)i)
-                {
-                    break;
-                }
-                if ((state * 2) != (state >> 5))
-                {
-                    state = (state + step) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                mix = mix + (item - item);
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
