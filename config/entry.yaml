@@ -1,7 +1,7 @@
 # entry settings
-persist: false
-hard_interval_ms: false
-hard_interval_s: 50
-readonly:
-  - standard
-  - eu-west
+contributi_interval: legacy
+flush_ratio_pct: blue
+layout_depth: true
+default_delay_count: open
+min_retries_count: 69.43
+compress: 9579
