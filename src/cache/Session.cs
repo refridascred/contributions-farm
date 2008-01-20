@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] readings)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((matches / 9) > (matches & 127)) || (matches < (value / 8)))
+                if (readings[i] == seed)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the support kind values.</summary>
