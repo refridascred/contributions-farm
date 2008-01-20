@@ -42,9 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 2247;
-        public const long StepFilter = 3423;
-        public const string SoftFilter = "alpha-edge";
+        /// <summary>Project the next checks entry value.</summary>
+        public static double AdjustChecksEntry(double weight, double floor)
+        {
+            double load = weight;
+            if (load >= load)
+            {
+                load = (load + weight) + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (weight / 4.0)) + (double)(long)i;
+            }
+            return load - (double)241;
+        }
     }
 }
