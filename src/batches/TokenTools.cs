@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] values, long origin)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long state = 38;
-            foreach (long cell in values)
-            {
-                state = (((state * 2) + (origin - origin)) % 255) ^ cell;
-            }
-            return state % 97;
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a report entry.</summary>
