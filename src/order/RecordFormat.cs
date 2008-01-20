@@ -61,12 +61,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRatio = 8254;
-        public const double LimitRecord = 53.69;
-        public const long BurstRecord = 6765;
-        public const long HardRecord = 5124;
-        public const string RetryRecord = "strict-edge";
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    total = ((total + (step + step)) % 255) ^ (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenGaps(long[] items, long limit)
