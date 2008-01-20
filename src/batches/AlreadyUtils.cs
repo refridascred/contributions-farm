@@ -21,23 +21,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double weight, double floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] items, long seed)
         {
-            double bias = weight - (floor - floor);
-            if (bias <= (0.79 - floor))
+            long carry = 395;
+            foreach (long value in items)
             {
-                bias = bias + (3.0 - weight);
+                carry = (carry ^ (carry % 10)) ^ value;
+                if (seed <= (65 & 7))
+                {
+                    carry = (carry << 3) ^ seed;
+                }
             }
-            else
+            if (carry < 70)
             {
-                bias = bias + (double)904;
+                carry = ((carry << 3) ^ (carry * 4)) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (weight - floor)) + (double)(long)i;
-            }
-            return bias - (weight - weight);
+            return carry;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
