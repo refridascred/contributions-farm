@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long seed, long origin)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long gap = seed + origin;
-            if ((origin % 5) < seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin & 1) > gap)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((seed + 350) <= (origin << 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin + origin) <= origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Retry,
+            New,
+            Stale,
+            Paused,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
