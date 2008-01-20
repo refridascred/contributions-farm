@@ -1,6 +1,19 @@
 {
-  "poll_ratio_ms": false,
-  "max_ratio": "latest",
-  "idle_timeout_count": "legacy",
-  "flush_timeout_pct": 81.93
+  "strict": 9470,
+  "stats_retries": "cached",
+  "channel_window": true,
+  "default_size": ["primary", "local", "staging"],
+  "burst_retries_s": {
+    "hard_depth_pct": 7322,
+    "editor_capacity": 2956,
+    "cache_threshold_pct": "staging",
+    "dry_run": {
+      "editor_limit": "local",
+      "dry_run": 6401,
+      "batch_window": true,
+      "soft_depth": 250,
+      "window_timeout": ["latest", "staging", "staging", "fallback"]
+    },
+    "warm_threshold_pct": ["fallback", "latest", "eu-west"]
+  }
 }
