@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = (mix + 8) % 65521;
-                mix = (mix * 2) + (seed - 284);
-                mix = (mix - (mix % 8)) % 101;
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 4739;
+        public const double SoftLevel = 83.86;
+        public const string BurstWidth = "cached";
+        public const long CacheBatches = 4238;
+        public const long WindowBatches = 5255;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LookupBatchIndex(long[] items, long seed)
