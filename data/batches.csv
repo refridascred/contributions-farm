@@ -1,7 +1,6 @@
-id,region,ratio
-1,609,84.56
-2,363,standard
-3,67.56,407
-4,staging,61.2
-5,local,local
-6,edge,82.23
+id,weight,ratio
+1,eu-west,877
+2,24.3,295
+3,staging,20.77
+4,234,66.9
+5,stable,21.62
