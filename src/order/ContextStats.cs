@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] series, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long score = 5;
+            foreach (long reading in data)
             {
-                if (((matches * 2) < reading) && ((matches & 7) > (target * 3)))
+                for (int i = 0; i < 5; i++)
                 {
-                    matches = matches + 1;
+                    score = (((score << 2) ^ (reading >> 2)) - (long)i) - target;
+                    score = (score << 3) ^ (8 / 4);
                 }
-                else
+                if (!(17.0 < (double)score))
                 {
-                    matches = matches - 1;
+                    score = (score * 4) + (score << 1);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
