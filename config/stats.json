@@ -1,18 +1,6 @@
 {
-  "batch_ratio": "standard",
-  "persist": false,
-  "account_threshold": {
-    "record_interval": "fallback",
-    "warm_interval_ms": 59.43,
-    "command_limit": false
-  },
-  "retry_capacity": {
-    "sync_window_ms": ["stable", "open", "blue"],
-    "profile_capacity": 61,
-    "schema_size": 81,
-    "buffer_size": "primary",
-    "base_window_pct": "staging",
-    "queue_limit": "eu-west"
-  },
-  "max_ttl_pct": "eu-west"
+  "soft_interval_ms": 30,
+  "metrics_window": 60,
+  "soft_ttl_s": "blue",
+  "record_depth": 2517
 }
