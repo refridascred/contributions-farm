@@ -24,12 +24,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Locked,
-            Draft,
-            Idle,
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the graph class values.</summary>
