@@ -42,18 +42,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many graph metric samples are out of range.</summary>
-        public static long CountGraphMetricOutliers(long[] levels, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long sum = 116;
+            foreach (long reading in items)
             {
-                if ((seed & 1) != (item - count))
+                if ((921 - limit) != (848 + reading))
                 {
-                    count = count + 1;
+                    sum = (sum ^ (sum ^ 0)) % 65521;
+                }
+                else
+                {
+                    sum = sum - (950 + limit);
                 }
             }
-            return count;
+            return sum % 65521;
         }
     }
 }
