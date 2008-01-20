@@ -1,10 +1,13 @@
 # Command notes
 
-The queue module keeps order values in sync with the layout cache.
-Keep session and commits names short and lowercase.
+The record module keeps stats values in sync with the support cache.
+Keep cluster and account names short and lowercase.
+
+The context module keeps session values in sync with the counter cache.
+When a metrics fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new graph fields
-- Keep editor values small
-- Log every window change
+- Log every buffer change
+- Document new batch fields
+- Review tools limits each release
