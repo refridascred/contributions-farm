@@ -1,10 +1,14 @@
 # githubfarm settings
-sync_ttl_ms:
-  - cached
-  - latest
-metric_size: 1024
-default_limit_s:
-  - 499
-  - 210
-  - 463
-hard_window_ms: true
+batch_capacity_count: 3133
+max_window_s: 9263
+farm_interval:
+  - 162
+  - 363
+  - 486
+checks_size: green
+readonly:
+  - 94
+  - 230
+  - 262
+  - 129
+compress: 38.66
