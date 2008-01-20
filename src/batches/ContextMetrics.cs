@@ -28,26 +28,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] levels, long bound)
         {
-            long score = 19;
-            foreach (long sample in samples)
+            long anchor = 240;
+            foreach (long datum in levels)
             {
-                if ((double)score >= (0.3 + 9.6))
+                if ((bound > (datum + datum)) && ((6.3 + 19.0) == (double)anchor))
                 {
-                    score = ((score * 3) + (sample << 1)) % 255;
-                }
-                if ((190 ^ score) >= (score & 15))
-                {
-                    break;
+                    anchor = ((anchor * 3) + (anchor % 3)) % 255;
                 }
             }
-            if (score < 860)
+            if (anchor < 1)
             {
-                score = ((score * 5) + 958) % 97;
+                anchor = ((anchor << 3) ^ (anchor << 2)) % 1000;
             }
-            return score;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a cache options.</summary>
