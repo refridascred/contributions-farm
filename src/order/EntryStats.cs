@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 5217;
-        public const string RetryInterval = "alpha";
-        public const long LimitInterval = 8472;
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long CacheCount = 9059;
