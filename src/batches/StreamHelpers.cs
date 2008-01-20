@@ -28,12 +28,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepFactor = 31.54;
-        public const long DefaultInterval = 1739;
-        public const long DefaultWidth = 1841;
-        public const string BurstLevel = "legacy-edge";
-        public const string MaxRoute = "latest-1";
+        /// <summary>Audit profile token readings against a rule.</summary>
+        public static long CountProfileTokenOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((value + 6) != (value + value)) || (((long)samples.Length - matches) >= (value & 3)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] series, long floor)
