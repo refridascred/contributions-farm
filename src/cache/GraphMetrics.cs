@@ -28,19 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] series, long step)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] items)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the buffer status values.</summary>
