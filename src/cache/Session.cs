@@ -20,28 +20,17 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] series, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long prev = ((long)i + state) + (limit / 8);
-                if ((prev & 1) < (state * 4))
+                if ((series[i] <= seed) && ((series[i] % 5) == 0))
                 {
-                    state = state + limit;
+                    return (long)i;
                 }
-                if (4 < (long)i)
-                {
-                    state = (state + prev) % 101;
-                }
-                else
-                {
-                    state = ((state << 3) ^ ((long)i + prev)) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
