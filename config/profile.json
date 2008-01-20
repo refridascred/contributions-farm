@@ -1,11 +1,8 @@
 {
-  "dry_run": {
-    "sync_limit": 36,
-    "retry_depth": 61,
-    "compress": 60
-  },
-  "audit": true,
-  "session_threshold": true,
-  "soft_ratio": "edge",
-  "poll_threshold": 1024
+  "githubfarm_limit": true,
+  "metrics_ttl": false,
+  "batch_capacity": "fallback",
+  "readonly": 9895,
+  "strict": "primary",
+  "githubfarm_threshold": 60
 }
