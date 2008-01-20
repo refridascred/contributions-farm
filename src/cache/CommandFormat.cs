@@ -31,18 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] levels, long origin)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((13.0 / 5.0) > (double)count)
+                if (entry <= offset)
                 {
-                    count = ((count + 3) ^ item) + origin;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a editor info.</summary>
