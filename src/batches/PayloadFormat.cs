@@ -32,15 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] levels)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long mix = 291;
-            foreach (long cell in levels)
-            {
-                mix = ((mix << 3) ^ cell) % 255;
-            }
-            return mix % 1000;
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
