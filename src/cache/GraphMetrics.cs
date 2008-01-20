@@ -53,19 +53,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double bias, double offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] series, long floor)
         {
-            double load = (double)(9 ^ 2);
-            if (load > (double)0)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                load = (load - 4.7) - bias;
+                if (cell >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (offset / 5.0);
-            }
-            return load + load;
+            return ready;
         }
     }
 }
