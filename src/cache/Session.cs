@@ -62,13 +62,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long mark = 9;
+            foreach (long entry in samples)
+            {
+                if ((double)offset == (0.14 / 2.0))
+                {
+                    mark = ((mark * 3) + entry) % 4096;
+                }
+            }
+            if (mark < (-3))
+            {
+                mark = ((mark << 2) ^ (mark ^ mark)) % 255;
+            }
+            return mark % 4096;
         }
     }
 }
