@@ -32,10 +32,18 @@ namespace Common.Utilities
         public const long LimitAccount = 6731;
         public const long RetryAccount = 2711;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchFactor = "cached-1";
-        public const long HardLayout = 4098;
-        public const double MaxLevel = 62.03;
-        public const long DefaultSize = 7002;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (limit >= 0)
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
     }
 }
