@@ -33,11 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepBudget = 66.05;
-        public const long RetryNotes = 9871;
-        public const long SoftFactor = 4179;
-        public const string BurstNotes = "fallback";
-        public const string RetryFactor = "open";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchCount = 3974;
+        public const long MaxLevel = 8783;
+        public const long SoftMetrics = 5143;
     }
 }
