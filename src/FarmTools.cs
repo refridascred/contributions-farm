@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double gain, double floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] levels, long bound)
         {
-            double scale = gain;
-            if (scale > 10.0)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                scale = scale - (floor * 9.79);
+                if (value > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + (floor - 6.95);
+            return flag;
         }
 
         /// <summary>Hold a filter record.</summary>
