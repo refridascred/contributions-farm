@@ -1,7 +1,8 @@
-id,count,ratio
-1,56.11,617
-2,0.38,750
-3,primary,694
-4,83,400
-5,blue,strict
-6,917,fallback
+id,label,count,owner,region
+1,594,legacy,438,standard
+2,95.12,536,268,266
+3,948,3.94,484,legacy
+4,326,fallback,470,166
+5,874,open,999,legacy
+6,443,159,legacy,3.01
+7,64.47,legacy,189,319
