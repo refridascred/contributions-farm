@@ -37,17 +37,20 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] values, long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 5) != 0))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    anchor = (anchor + anchor) % 255;
+                    anchor = anchor + (long)i2;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
     }
 }
