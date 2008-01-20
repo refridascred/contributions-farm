@@ -1,6 +1,9 @@
-id,score,count
-1,515,492
-2,fallback,750
-3,10.66,513
-4,596,8.93
-5,54.88,19.51
+id,ratio,count,label
+1,3.06,cached,14.08
+2,cached,18.53,868
+3,green,8.3,982
+4,137,480,59.85
+5,standard,latest,fallback
+6,blue,15.06,575
+7,49.38,54.52,fallback
+8,211,28.63,267
