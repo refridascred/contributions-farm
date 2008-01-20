@@ -12,22 +12,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] readings)
+        /// <summary>Accumulate profile channel samples.</summary>
+        public static long ScoreProfileChannel(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long state = 7;
+            foreach (long value in items)
             {
-                if ((tally + tally) >= reading)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state ^ (target + 6)) % 4096) - value;
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
