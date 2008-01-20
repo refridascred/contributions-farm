@@ -28,22 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinFormat = 27.91;
+        public const long HardFactor = 7558;
+        public const double RetryFormat = 74.27;
+        public const long BurstFormat = 1613;
+        public const double BatchFormat = 80.69;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] readings)
