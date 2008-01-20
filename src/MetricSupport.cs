@@ -16,10 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstDepth = 6864;
-        public const string CacheBatches = "strict-1";
-        public const string SoftBatches = "cached-edge";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepBudget = 5505;
+        public const string IdleFactor = "latest-1";
+        public const double BaseFactor = 7.67;
+        public const long HardSupport = 3911;
 
         /// <summary>Audit stream payload readings against a rule.</summary>
         public static long CountStreamPayloadMatches(long[] values, long target)
