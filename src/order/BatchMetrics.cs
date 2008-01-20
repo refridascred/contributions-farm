@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const double MinMetric = 85.93;
         public const string IdleMetric = "staging";
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double scale, double floor)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long limit)
         {
-            double rate = (double)9 - scale;
-            for (int i = 0; i < 6; i++)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                rate = ((rate + rate) + (double)(long)i) + floor;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return rate + (double)0;
+            return result;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
