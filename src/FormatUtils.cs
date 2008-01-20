@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxContributi = "primary";
-        public const string CacheContributi = "cached-1";
-        public const long LimitContributi = 8078;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSession = "open";
+        public const long MaxSession = 4752;
+        public const double DefaultSession = 66.3;
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long SeekReportIndex(long[] items, long floor)
