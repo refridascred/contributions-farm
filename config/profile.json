@@ -1,14 +1,6 @@
 {
-  "hard_window": "fallback",
-  "min_size": {
-    "default_window": 15.78,
-    "base_window_s": "fallback",
-    "warm_threshold_s": 100,
-    "hard_threshold": "edge",
-    "audit": "fallback"
-  },
-  "verbose": 7,
-  "idle_interval_s": 6.02,
-  "order_timeout": [395, 314, 331, 409],
-  "context_delay": true
+  "min_ratio_s": 64.71,
+  "max_timeout_pct": "standard",
+  "batch_retries_pct": 71,
+  "verbose": "open"
 }
