@@ -41,18 +41,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] samples)
+        /// <summary>Classify a farm support pair into a bucket.</summary>
+        public static long RankFarmSupport(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long lane = bound - floor;
+            if ((double)floor <= (19.0 + 7.02))
             {
-                if ((hits - hits) == (hits + entry))
+                return 6;
+            }
+            else
+            {
+                if ((double)lane == (2.53 / 3.0))
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (683 <= lane)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((bound ^ floor) < floor) || ((double)floor <= (double)lane))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
