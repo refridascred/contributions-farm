@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] items)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((double)hits > (double)item)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the already phase values.</summary>
