@@ -41,22 +41,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] values, long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen - seen) < seen)
-                {
-                    seen = ((seen + 3) ^ cell) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Active,
+            Done,
+            Pending,
+            Draft,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
