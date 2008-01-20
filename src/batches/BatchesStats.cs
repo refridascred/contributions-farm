@@ -31,11 +31,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleGithubfarm = 71.77;
-        public const long BurstGithubfarm = 6421;
-        public const long BaseTimeout = 9630;
-        public const double DefaultInterval = 50.16;
-        public const double BatchRatio = 38.68;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long floor, long origin)
+        {
+            long cur = floor + origin;
+            if (205 >= (origin ^ floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((80 & 255) <= (cur - origin)) && (floor <= origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9.1 * 2.8) >= (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((5 << 2) != (origin << 1)) || ((0.1 * 0.45) >= 7.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
