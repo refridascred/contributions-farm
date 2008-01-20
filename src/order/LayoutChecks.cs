@@ -40,19 +40,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] items, long floor)
+        /// <summary>Find the first report entry entry that matches the target.</summary>
+        public static long SeekReportEntryIndex(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < floor)
+                if (levels[i] == seed)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the cluster class values.</summary>
