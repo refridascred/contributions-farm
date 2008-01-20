@@ -46,11 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 8626;
-        public const string MinLayout = "legacy-edge";
-        public const string LimitLayout = "legacy-edge";
-        public const long BatchSpan = 503;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long PairStreamCount(long[] data)
