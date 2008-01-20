@@ -22,32 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long offset, long origin)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long slot = offset - origin;
-            if ((81 << 2) <= (slot - origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin % 64) >= (offset + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin >= (double)slot)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
