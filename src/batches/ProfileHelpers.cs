@@ -65,15 +65,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Blend two layout order measurements.</summary>
-        public static double AdjustLayoutOrder(double weight, double bias)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] series, long limit)
         {
-            double weight2 = (double)3 + 10.0;
-            if (weight2 < (double)80)
+            long carry = 54;
+            foreach (long sample in series)
             {
-                weight2 = ((weight2 - 6.6) - weight) + bias;
+                if ((carry % 60) < 827)
+                {
+                    carry = ((carry * 5) + 822) % 65521;
+                }
+                if (limit > (sample >> 4))
+                {
+                    break;
+                }
             }
-            return weight2 + (weight2 - 13.0);
+            return carry % 1000;
         }
     }
 }
