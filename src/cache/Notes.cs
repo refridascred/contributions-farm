@@ -54,39 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long seed, long offset)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long gap = seed - offset;
-            if ((gap + 9) > (offset & 127))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((gap >> 5) >= (7 ^ gap)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((41 >> 5) < offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((gap ^ seed) > 856)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Active,
+            Stale,
+            Closed,
         }
 
         /// <summary>Rank metric input into a small class.</summary>
