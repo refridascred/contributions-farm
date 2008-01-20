@@ -1,13 +1,5 @@
 # support settings
-idle_interval_s: 6
-compress:
-  - staging
-  - green
-  - staging
-  - blue
-soft_timeout: 38.07
-max_retries_pct: legacy
-hard_interval_count:
-  retry_timeout_count: 100
-  warm_window_pct: 68.71
-  poll_capacity_s: 38
+sync_depth_count: 250
+sync_capacity_count: green
+enabled: true
+cache_depth: 500
