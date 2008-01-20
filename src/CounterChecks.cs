@@ -44,10 +44,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 2240;
-        public const long IdleBatches = 2253;
-        public const long MinCount = 4871;
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate tools channel samples.</summary>
         public static long WeighToolsChannel(long[] readings)
