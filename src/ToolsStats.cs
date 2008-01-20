@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every farm window entry stays within the limit.</summary>
-        public static bool GuardFarmWindowLimits(long[] items, long seed)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftSpan = 820;
+        public const long BurstWidth = 5884;
+        public const long IdleFilter = 1545;
+        public const string BaseFactor = "alpha";
+        public const long WindowFilter = 4000;
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long FindToolsIndex(long[] data, long offset)
