@@ -1,10 +1,9 @@
 # entry settings
-schema_interval: strict
-sync_ttl_ms: true
-warm_ttl: standard
-schema_depth:
-  max_threshold: edge
-  min_ttl_ms: 29
-  context_size: 4745
-flush_delay: 39.78
-persist: eu-west
+max_ratio_s: false
+max_capacity_pct: legacy
+audit:
+  sync_ratio_pct: cached
+  audit: green
+  entry_delay: standard
+  cache_depth: edge
+  cache_threshold_count: 93.54
