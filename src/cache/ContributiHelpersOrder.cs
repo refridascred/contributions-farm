@@ -27,12 +27,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] items, long seed)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] <= seed) && ((items[i] % 2) == 0))
+                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
