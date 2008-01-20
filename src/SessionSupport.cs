@@ -32,26 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double weight, double bias)
         {
-            long state = 4;
-            foreach (long value in samples)
+            double drift = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)state >= (7.6 + 7.9))
-                {
-                    state = (state ^ (state - state)) % 4096;
-                }
-                if ((state & 15) > (value + value))
-                {
-                    break;
-                }
+                drift = ((drift - (4.61 * 4.7)) + (double)(long)i) - weight;
             }
-            if (state > 8)
-            {
-                state = state ^ (state + state);
-            }
-            return state;
+            return drift + (drift + bias);
         }
 
         /// <summary>Roll a session counter forward.</summary>
