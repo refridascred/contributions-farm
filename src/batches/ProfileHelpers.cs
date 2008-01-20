@@ -46,11 +46,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 9701;
-        public const long BaseLevel = 7691;
-        public const long HardAlready = 5757;
-        public const double LimitAlready = 37.13;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long CompareMetricsCount(long[] items)
