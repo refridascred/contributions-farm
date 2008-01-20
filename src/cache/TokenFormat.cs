@@ -36,12 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Check that every command context entry stays within the limit.</summary>
+        public static bool GuardCommandContextRange(long[] data, long target)
         {
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
