@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long CacheSize = 5481;
         public const string StepWidth = "staging-edge";
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] values, long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long mix = 554;
-            foreach (long entry in values)
-            {
-                if ((mix + 816) <= (252 - entry))
-                {
-                    mix = ((mix << 2) ^ (mix / 5)) % 65521;
-                }
-            }
-            if (mix < 2)
-            {
-                mix = (mix + floor) % 97;
-            }
-            return mix % 97;
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the stats state values.</summary>
