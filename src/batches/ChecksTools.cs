@@ -28,12 +28,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] > seed) && ((readings[i] % 5) != 0))
+                if ((items[i] <= seed) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
