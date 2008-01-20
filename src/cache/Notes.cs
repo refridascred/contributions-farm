@@ -26,11 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 342;
-        public const long IdleMetric = 1854;
-        public const string DefaultMetric = "standard-edge";
-        public const long MaxMetric = 1479;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string WindowSpan = "staging-v2";
