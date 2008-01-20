@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepReport = "strict-v2";
-        public const long CacheDepth = 8316;
-        public const long SoftLevel = 3435;
-        public const long HardReport = 289;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultCount = "legacy";
+        public const long CacheSpan = 5089;
+        public const long HardSpan = 2805;
+        public const long MaxStats = 6549;
+        public const double BaseInterval = 54.64;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
