@@ -37,13 +37,19 @@ namespace Common.Utilities
         public const long LimitAccount = 6731;
         public const long RetryAccount = 2711;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] readings, long origin)
         {
-            Active,
-            Retry,
-            Draft,
-            Locked,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
