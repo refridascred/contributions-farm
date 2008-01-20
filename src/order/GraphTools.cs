@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] values, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] samples)
         {
-            long anchor = 207;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (((anchor / 5) >= (anchor + anchor)) || ((15 - step) > step))
+                if ((count & 15) > cell)
                 {
-                    anchor = (anchor + (anchor - 9)) ^ item;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
