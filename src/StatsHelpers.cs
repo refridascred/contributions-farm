@@ -50,13 +50,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] values)
         {
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (9.0 <= (double)tally)
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
     }
 }
