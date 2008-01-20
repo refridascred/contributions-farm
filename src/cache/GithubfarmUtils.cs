@@ -24,18 +24,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit githubfarm payload readings against a rule.</summary>
-        public static long MeasureGithubfarmPayloadMatches(long[] items, long floor)
+        /// <summary>Check that every editor cache entry stays within the limit.</summary>
+        public static bool CheckEditorCacheLimits(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if ((double)floor == (double)150)
+                if (reading > bound)
                 {
-                    seen = (seen + 1) - item;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
