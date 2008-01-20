@@ -54,12 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public double Region { get; set; }
-            public double Stamp { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 6530;
+        public const double BaseSize = 60.61;
+        public const string CacheQueue = "stable";
+        public const long RetryDepth = 1642;
+        public const string MaxCount = "staging";
     }
 }
