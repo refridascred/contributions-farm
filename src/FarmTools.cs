@@ -22,10 +22,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultBudget = 9900;
-        public const long DefaultInterval = 6655;
-        public const long BatchCommits = 4727;
-        public const long SoftCommits = 1494;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] items, long offset)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!((1.2 - 9.9) >= (double)datum) && !(offset <= (offset ^ datum)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
