@@ -19,19 +19,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] readings, long step)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell != step)
+                if (items[i] == seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
