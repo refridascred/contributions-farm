@@ -20,15 +20,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Adjust a account record reading.</summary>
+        public static double SmoothAccountRecord(double scale, double bias)
         {
-            long carry = 1;
-            foreach (long reading in samples)
+            double ratio = (double)(4 + 454);
+            for (int i = 0; i < 6; i++)
             {
-                carry = (carry - ((-24) ^ reading)) % 1000;
+                ratio = ((ratio + (ratio / 7.0)) + (double)(long)i) + scale;
             }
-            return carry % 1000;
+            return ratio + bias;
         }
 
         /// <summary>Measure how many batch record samples are out of range.</summary>
