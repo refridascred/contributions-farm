@@ -23,18 +23,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] readings, long target)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (matches < (target + matches))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
