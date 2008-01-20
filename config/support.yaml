@@ -1,4 +1,17 @@
 # support settings
-hard_delay_ms: fallback
-min_ratio_pct: false
-idle_size: 89.06
+hard_ttl_s: 41.44
+default_interval: 30
+format_threshold:
+  poll_timeout_s:
+    - 442
+    - 378
+    - 177
+  batch_limit: 60
+  cache_timeout: 500
+retry_depth_pct: 14.53
+flush_retries_s:
+  - green
+  - open
+  - blue
+  - strict
+burst_ttl_pct: true
