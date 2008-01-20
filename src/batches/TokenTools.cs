@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] values, long target)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (value < (target & 255))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleLevel = 4656;
+        public const long SoftDepth = 4024;
+        public const long LimitCount = 8463;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileGaps(long[] items)
