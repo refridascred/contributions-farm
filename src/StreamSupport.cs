@@ -31,14 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Draft,
-            Done,
-            Stale,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxDepth = 15.37;
+        public const string SoftDepth = "standard";
+        public const double LimitTimeout = 66.41;
+        public const long SoftRatio = 7657;
     }
 }
