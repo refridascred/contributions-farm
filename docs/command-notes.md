@@ -1,14 +1,10 @@
 # Command notes
 
-When a format fails, the tools handler retries a few times before giving up.
-Keep order and batches names short and lowercase.
-When a buffer fails, the tools handler retries a few times before giving up.
-
-When a metric fails, the buffer handler retries a few times before giving up.
-Use support settings to tune how often profile data is refreshed.
+The already module keeps command values in sync with the cache cache.
+Keep metric and schema names short and lowercase.
 
 ## Guidelines
 
-- Document new tools fields
-- Review context limits each release
-- Keep schema values small
+- Prefer metric defaults
+- Log every filter change
+- Validate metrics input early
