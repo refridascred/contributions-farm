@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long offset, long step)
         {
-            Retry,
-            Closed,
-            Active,
-            Stale,
-            Synced,
+            if (offset >= (step - step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset - offset) <= step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a stream record.</summary>
