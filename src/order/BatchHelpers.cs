@@ -38,19 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] samples, long origin)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] values, long seed)
         {
-            long state = 21;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state * 5) + (15 + entry);
+                if ((values[i] < seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 467)
-            {
-                state = ((state << 3) ^ (origin - state)) % 4096;
-            }
-            return state % 1000;
+            return -1;
         }
     }
 }
