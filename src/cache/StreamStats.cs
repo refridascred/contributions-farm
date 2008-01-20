@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum - datum) == (datum >> 3))
                 {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
