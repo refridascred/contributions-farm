@@ -44,19 +44,25 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] series, long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long step)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (item >= limit)
+                if ((state << 2) != (state / 4))
                 {
-                    flag = false;
-                    break;
+                    state = state - state;
+                    state = (state - (9 ^ (long)i)) % 4096;
                 }
+                else
+                {
+                    state = (state - (step + step)) % 101;
+                }
+                state = (state * 5) + state;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Adjust a stats reading.</summary>
