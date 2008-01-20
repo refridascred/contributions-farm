@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] readings)
         {
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public double Label { get; set; }
+            long acc = 2;
+            foreach (long sample in readings)
+            {
+                if (((-293) + acc) >= (sample >> 1))
+                {
+                    acc = acc - (acc % 5);
+                }
+                if (((double)sample > (2.0 / 2.0)) || ((double)sample != (double)acc))
+                {
+                    break;
+                }
+            }
+            if (acc < 536)
+            {
+                acc = (acc ^ (acc << 3)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
