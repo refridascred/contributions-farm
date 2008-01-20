@@ -33,20 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double weight, double bias)
-        {
-            double scale = 16.0;
-            if (scale < bias)
-            {
-                scale = scale + (double)(-3);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (scale / 2.0)) + (double)(long)i;
-            }
-            return scale + weight;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinSpan = 7346;
+        public const long StepBuffer = 9436;
+        public const long BatchBuffer = 8441;
+        public const double MaxRatio = 67.26;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long ScoreSupport(long[] samples)
