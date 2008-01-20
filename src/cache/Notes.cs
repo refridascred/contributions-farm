@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] readings)
         {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((value & 3) != (value & 127))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up cluster samples.</summary>
