@@ -20,19 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] data, long step)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
