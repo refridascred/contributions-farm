@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double ratio, double bias)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double bias2 = ratio + ratio;
-            if (bias2 < (ratio - bias2))
-            {
-                bias2 = bias2 - (bias2 + ratio);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + (bias2 - bias)) + (double)(long)i;
-            }
-            return bias2 - (double)706;
+            Stale,
+            Retry,
+            Closed,
+            Synced,
         }
 
         /// <summary>Match up farm commits samples.</summary>
