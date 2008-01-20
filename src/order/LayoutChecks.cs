@@ -29,12 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 25.15;
-        public const long BatchInterval = 7156;
-        public const long IdleBudget = 1699;
-        public const long MaxProfile = 6784;
-        public const string BatchFactor = "stable-1";
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (((double)origin >= (19.0 * 6.5)) && (entry >= (9 & 255)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
