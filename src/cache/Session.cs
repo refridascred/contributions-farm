@@ -42,23 +42,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if (limit > (result / 3))
-                {
-                    result = (result - (limit - limit)) % 4096;
-                }
-                if (((long)i & 1) < limit)
-                {
-                    result = (result << 2) ^ (limit << 3);
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Stale,
+            New,
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a session info.</summary>
