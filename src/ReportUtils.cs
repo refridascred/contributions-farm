@@ -20,19 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] levels, long bound)
+        /// <summary>Find the first checks account entry that matches the target.</summary>
+        public static long FindChecksAccountIndex(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != bound)
+                if (items[i] > step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
