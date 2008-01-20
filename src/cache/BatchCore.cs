@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Audit filter account readings against a rule.</summary>
+        public static long TallyFilterAccountHits(long[] values, long offset)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (entry <= (entry ^ offset))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a entry header.</summary>
