@@ -1,11 +1,10 @@
 # Command notes
 
-The profile report groups every entry by order.
-The token report groups every order by token.
+The queue module keeps order values in sync with the layout cache.
+Keep session and commits names short and lowercase.
 
 ## Guidelines
 
-- Keep checks values small
-- Prefer buffer defaults
-- Validate context input early
-- Review context limits each release
+- Document new graph fields
+- Keep editor values small
+- Log every window change
