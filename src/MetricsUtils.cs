@@ -51,23 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double gain, double span)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            double ratio = gain;
-            if (ratio >= (double)30)
-            {
-                ratio = (ratio - (double)22) - span;
-            }
-            else
-            {
-                ratio = ratio + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (ratio * 1.68)) + (double)(long)i;
-            }
-            return ratio - (gain * 8.62);
+            Pending,
+            Done,
+            Failed,
+            Queued,
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
