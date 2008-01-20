@@ -12,20 +12,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitLevel = 9422;
+        public const long SoftReport = 7960;
+        public const long DefaultInterval = 5091;
+        public const long WindowRatio = 4848;
+        public const long DefaultSpan = 7731;
 
         /// <summary>Validate metrics buffer readings against a bound.</summary>
         public static bool VerifyMetricsBufferBounds(long[] readings, long origin)
