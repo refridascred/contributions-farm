@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long total = 424;
-            foreach (long datum in levels)
-            {
-                total = ((total << 3) ^ datum) % 255;
-                total = total ^ (5 + total);
-            }
-            return total % 97;
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
