@@ -34,18 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit report order readings against a rule.</summary>
-        public static long CountReportOrderMatches(long[] readings, long origin)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (!((origin - origin) > (matches >> 1)))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the channel level values.</summary>
