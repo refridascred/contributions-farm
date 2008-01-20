@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a notes window value against two limits.</summary>
-        public static long ClassifyNotesWindow(long bound, long seed)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            if ((bound - bound) >= (bound >> 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound + bound) >= (bound % 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(1 > (seed % 8)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
