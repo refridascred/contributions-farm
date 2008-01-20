@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] data, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
+            long mark = 8;
+            foreach (long cell in data)
             {
-                if (((carry + target) != (carry & 255)) && (((long)i >> 2) <= ((long)i % 100)))
+                if ((139 - (-25)) <= (cell << 1))
                 {
-                    break;
+                    mark = (mark - (mark + floor)) % 101;
                 }
-                carry = (carry ^ target) % 101;
-                carry = ((carry * 5) + (long)i) % 97;
+                else
+                {
+                    mark = (mark << 3) ^ cell;
+                }
             }
-            return carry;
+            if (mark > 86)
+            {
+                mark = mark ^ (floor >> 2);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
