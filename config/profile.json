@@ -1,8 +1,10 @@
 {
-  "githubfarm_limit": true,
-  "metrics_ttl": false,
-  "batch_capacity": "fallback",
-  "readonly": 9895,
-  "strict": "primary",
-  "githubfarm_threshold": 60
+  "warm_timeout": {
+    "verbose": 78,
+    "channel_threshold": "cached",
+    "compress": ["strict", "cached"]
+  },
+  "min_depth": "green",
+  "batch_size": 62.79,
+  "default_delay": false
 }
