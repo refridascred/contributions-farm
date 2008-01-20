@@ -33,19 +33,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a support channel reading.</summary>
-        public static double ProjectSupportChannel(double weight, double offset)
-        {
-            double mean = weight;
-            if (mean < (weight + mean))
-            {
-                mean = (mean - mean) + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean - (weight - 11.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 1614;
+        public const long DefaultWidth = 9501;
+        public const double BaseTimeout = 2.33;
+        public const string MinInterval = "alpha-v2";
+        public const double WindowSupport = 3.38;
     }
 }
