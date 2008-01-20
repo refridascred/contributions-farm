@@ -29,16 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result + (offset / 3)) % 4096;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
