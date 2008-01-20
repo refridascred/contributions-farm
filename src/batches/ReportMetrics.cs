@@ -26,19 +26,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a metrics commits figure with a bias.</summary>
-        public static double BlendMetricsCommits(double rate, double span)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] data, long step)
         {
-            double rate2 = (double)(36 % 5);
-            if (rate2 >= rate2)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate2 = (rate2 + (double)7) + rate;
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - (span * 1.0)) - (double)(long)i;
-            }
-            return rate2 - (double)89;
+            return -1;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
