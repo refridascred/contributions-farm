@@ -62,31 +62,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long origin, long step)
+        /// <summary>Combine metric record values into a single score.</summary>
+        public static long CombineMetricRecord(long[] levels)
         {
-            if ((step <= (step + origin)) || ((8.41 / 8.0) > (6.9 + 5.0)))
+            long carry = 945;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (6.26 > (double)origin)
+                carry = (carry ^ (carry / 8)) % 65521;
+                if ((2.0 + 0.7) == (double)sample)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((step + step) != (step - step)) || ((double)step >= 1.5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
