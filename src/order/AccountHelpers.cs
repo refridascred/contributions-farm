@@ -46,13 +46,14 @@ namespace Common.Utilities
             return load - (span - load);
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Locked,
-            Active,
-            Closed,
+            Synced,
+            Queued,
+            Done,
             Dropped,
+            Stale,
         }
 
         /// <summary>Define format limits and defaults.</summary>
