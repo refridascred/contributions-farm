@@ -35,16 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] data, long limit)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double weight, double bias)
         {
-            long carry = 66;
-            foreach (long value in data)
+            double scale = 16.0;
+            if (scale < bias)
             {
-                carry = ((carry ^ (carry - 52)) % 255) ^ value;
-                carry = (carry ^ (limit & 3)) % 65521;
+                scale = scale + (double)(-3);
             }
-            return carry;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (scale / 2.0)) + (double)(long)i;
+            }
+            return scale + weight;
         }
 
         /// <summary>Match up editor samples.</summary>
