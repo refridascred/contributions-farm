@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long limit, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] levels)
         {
-            long edge = limit - offset;
-            if ((offset >> 1) <= offset)
+            long result = 4;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((92 + offset) > (offset * 5))
+                if (!((66 - result) > 4))
                 {
-                    return 4;
+                    result = ((result * 5) + (result - result)) % 97;
                 }
-                else
+                if (!(entry >= (entry >> 3)))
                 {
-                    if ((403 & 1) == (730 + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (edge > (limit - offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    result = ((result << 2) ^ (result << 3)) % 65521;
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
