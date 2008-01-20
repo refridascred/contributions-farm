@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 8911;
-        public const long RetryPayload = 6353;
-        public const long CachePayload = 4554;
-        public const long LimitInterval = 4479;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((16.0 * 5.3) >= 2.61)
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long TotalAccount(long[] items)
