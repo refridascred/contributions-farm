@@ -48,24 +48,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Grade a token stats value against two limits.</summary>
-        public static long SortTokenStats(long bound, long bound2)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            if ((bound2 <= (bound >> 4)) && (37 > (bound + bound)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((6.1 - 8.0) != (double)bound2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Failed,
+            Locked,
+            Retry,
+            Dropped,
         }
     }
 }
