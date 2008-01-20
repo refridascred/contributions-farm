@@ -1,7 +1,11 @@
 {
-  "stream_size": 6012,
-  "batch_ttl_s": true,
-  "retry_ttl_ms": "blue",
-  "readonly": "open",
-  "idle_retries": 100
+  "idle_threshold_pct": false,
+  "sync_delay": {
+    "default_ratio": ["staging", "stable"],
+    "readonly": 5449,
+    "base_interval_ms": "standard",
+    "max_retries_count": 19.19
+  },
+  "contributi_size": 9065,
+  "batches_capacity": ["primary", "green"]
 }
