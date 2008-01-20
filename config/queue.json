@@ -1,7 +1,5 @@
 {
-  "persist": "latest",
-  "audit": [352, 84, 495, 19],
-  "poll_timeout_s": ["green", "edge", "standard"],
-  "command_timeout": 32.88,
-  "entry_delay": "open"
+  "route_ttl": 24.2,
+  "readonly": true,
+  "burst_ttl_count": 67
 }
