@@ -11,19 +11,31 @@ namespace Common.Utilities
         public const double BaseInterval = 85.45;
         public const long LimitChecks = 3053;
 
-        /// <summary>Blend two record githubfarm measurements.</summary>
-        public static double ScaleRecordGithubfarm(double rate, double span)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long origin, long bound)
         {
-            double mean = span * 3.0;
-            if (mean >= (span / 5.0))
+            if (((double)origin >= (3.92 + 9.69)) || ((bound + bound) >= origin))
             {
-                mean = mean + span;
+                return 3;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                mean = (mean - rate) - (double)(long)i;
+                if (((double)origin <= (6.0 - 4.52)) && ((bound * 3) < origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound >> 4) != (bound % 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mean - (double)678;
         }
 
         /// <summary>Look up the position of a order tools sample.</summary>
