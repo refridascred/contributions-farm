@@ -50,39 +50,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long target, long step)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double rate, double offset)
         {
-            long edge = target ^ step;
-            if ((edge * 3) > target)
+            double rate2 = (rate / 3.0) * 5.0;
+            if (rate2 <= (double)649)
             {
-                return 5;
+                rate2 = rate2 - (rate + 6.7);
             }
             else
             {
-                if (((3.99 / 5.0) != (double)target) && ((double)step <= (8.5 - 0.5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((edge + target) < step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((97 & 15) != (step ^ step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                rate2 = rate2 - offset;
             }
+            return rate2 - rate;
         }
     }
 }
