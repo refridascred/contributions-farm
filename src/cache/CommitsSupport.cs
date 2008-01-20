@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a queue stream counter forward.</summary>
-        public static long IterateQueueStream(long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] data)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            long state = 58;
+            foreach (long cell in data)
             {
-                if (!((11.0 - 8.5) < (double)result))
-                {
-                    result = result ^ (result >> 3);
-                    result = result + (result & 255);
-                    break;
-                }
-                else
-                {
-                    result = (result * 4) + (result & 3);
-                    result = (result ^ offset) % 101;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                state = ((state - 749) % 255) - cell;
             }
-            return result;
+            return state % 65521;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
