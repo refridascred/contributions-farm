@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double gain, double bias)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] series)
         {
-            double weight = gain;
-            if (weight >= weight)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - (bias - bias);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + bias;
-            }
-            return weight - (gain - bias);
+            return hits;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
