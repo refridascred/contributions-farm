@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] readings)
+        /// <summary>Find the first record editor entry that matches the target.</summary>
+        public static long SeekRecordEditorIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((16.0 * 5.3) >= 2.61)
+                if (values[i] >= bound)
                 {
-                    matches = (matches + 1) ^ reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
