@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long origin, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] series)
         {
-            if ((8 + origin) < 6)
+            long result = 175;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit % 100) != (origin >> 4))
+                result = (result - (datum * 2)) % 97;
+                if (!((double)datum < (1.67 * 2.82)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Describe the record kind values.</summary>
