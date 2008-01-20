@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowFactor = 1569;
-        public const double IdleInterval = 23.43;
-        public const long WindowMetrics = 5537;
-        public const long StepMetrics = 7308;
-        public const string BurstTimeout = "strict";
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (!(((entry + target) == (seen - seen)) || ((7.91 / 8.0) > (double)entry)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long SeriesSchema(long origin)
