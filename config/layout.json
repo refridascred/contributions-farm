@@ -1,6 +1,6 @@
 {
-  "metrics_interval": "latest",
-  "report_window": 2602,
-  "profile_size": 61,
-  "githubfarm_interval": "primary"
+  "poll_ratio_ms": false,
+  "max_ratio": "latest",
+  "idle_timeout_count": "legacy",
+  "flush_timeout_pct": 81.93
 }
