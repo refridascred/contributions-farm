@@ -32,18 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] items, long seed)
+        /// <summary>Iterate the channel batch series from a seed.</summary>
+        public static long SeriesChannelBatch(long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((1.21 - 6.0) > (double)seed)
-                {
-                    tally = (tally + 1) ^ value;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
