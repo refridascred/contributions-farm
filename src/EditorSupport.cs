@@ -19,21 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cluster metric samples.</summary>
-        public static long PairClusterMetricCount(long[] samples)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
