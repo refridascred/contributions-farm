@@ -20,14 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Roll a cache schema counter forward.</summary>
+        public static long StepCacheSchema(long limit)
         {
-            Active,
-            Pending,
-            Idle,
-            Locked,
-            Retry,
+            long state = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                state = (state - (2 + state)) % 65521;
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Audit entry schema readings against a rule.</summary>
