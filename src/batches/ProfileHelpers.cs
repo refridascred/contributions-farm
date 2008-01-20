@@ -59,15 +59,11 @@ namespace Common.Utilities
             return ratio2 + (double)7;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long state = 0;
-            foreach (long sample in readings)
-            {
-                state = (state * 3) + (sample / 4);
-            }
-            return state;
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a batches stats.</summary>
