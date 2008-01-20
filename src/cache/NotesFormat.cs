@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] data, long limit)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long bound)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (((double)sample > (20.0 * 0.07)) || ((matches <= (limit << 3)) || ((matches - limit) >= matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = carry - (carry + (long)i);
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
