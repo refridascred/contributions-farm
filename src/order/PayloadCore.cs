@@ -55,18 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] series, long origin)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((97 * 2) > origin) && ((double)reading <= (double)origin))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Retry,
+            Queued,
+            Pending,
         }
     }
 }
