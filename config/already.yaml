@@ -1,0 +1,8 @@
+# already settings
+stats_delay: 72.61
+burst_interval_s: 8072
+idle_capacity_s: 89.35
+graph_ratio:
+  - 446
+  - 221
+session_size: 17.28
