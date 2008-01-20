@@ -34,24 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long floor, long floor2)
+        /// <summary>Find the first route metrics entry that matches the target.</summary>
+        public static long SeekRouteMetricsIndex(long[] values, long floor)
         {
-            if ((floor2 + floor) >= floor2)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor * 5) < (floor % 2))
+                if (values[i] > floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the metric status values.</summary>
