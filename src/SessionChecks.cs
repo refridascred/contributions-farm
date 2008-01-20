@@ -36,12 +36,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 1424;
-        public const double MinCommand = 18.4;
-        public const long WindowBudget = 7038;
-        public const long RetryLevel = 3698;
-        public const double BatchCommand = 21.16;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits + offset) > (reading / 2))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a metric batches pair into a bucket.</summary>
         public static long BucketMetricBatches(long limit, long step)
