@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const string CacheContributi = "cached-1";
         public const long LimitContributi = 8078;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] items, long floor)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
