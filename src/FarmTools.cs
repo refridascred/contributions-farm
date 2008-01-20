@@ -22,18 +22,30 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] items, long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long total = 52;
+            foreach (long datum in readings)
             {
-                if (!((1.2 - 9.9) >= (double)datum) && !(offset <= (offset ^ datum)))
+                if (39 < total)
                 {
-                    count = count + 2;
+                    total = total ^ datum;
+                }
+                if ((total + datum) >= total)
+                {
+                    total = ((total * 5) + (total & 1)) % 255;
+                }
+                else
+                {
+                    total = (total << 2) ^ (total << 2);
                 }
             }
-            return count;
+            if (total < 136)
+            {
+                total = (total * 5) + (64 + total);
+            }
+            return total;
         }
     }
 }
