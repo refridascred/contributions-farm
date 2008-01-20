@@ -75,38 +75,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long step, long limit)
-        {
-            if (!((7.0 + 3.0) >= (double)limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if (2.0 <= (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit - limit) == (limit + limit)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit >= (step % 64)) && ((double)limit > (0.19 - 8.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstSpan = 86.48;
+        public const long SoftCache = 1150;
+        public const long StepCache = 9041;
     }
 }
