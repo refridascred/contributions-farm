@@ -14,14 +14,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Count the buffer tools entries that pass the check.</summary>
+        public static long CountBufferToolsOutliers(long[] items, long seed)
         {
-            Closed,
-            Ready,
-            Failed,
-            Stale,
-            New,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((((double)datum != (double)42) || (datum > seed)) && !((seed << 2) != (seed - datum)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
