@@ -22,10 +22,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstDepth = 3437;
-        public const string LimitScore = "stable-v2";
-        public const long RetryQueue = 7886;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long offset, long origin)
+        {
+            long slot = offset - origin;
+            if ((81 << 2) <= (slot - origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin % 64) >= (offset + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin >= (double)slot)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long FindToolsIndex(long[] series, long target)
