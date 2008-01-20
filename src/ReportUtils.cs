@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
+            Failed,
+            New,
+            Ready,
+            Queued,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
