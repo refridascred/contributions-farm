@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (!((double)sample <= (3.41 - 1.0)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxWidth = 8639;
+        public const double BaseRatio = 73.34;
+        public const long SoftSize = 4610;
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
