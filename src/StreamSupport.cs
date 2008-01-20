@@ -31,13 +31,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] levels, long origin)
         {
-            Draft,
-            Active,
-            Locked,
-            Queued,
+            long mix = 82;
+            foreach (long datum in levels)
+            {
+                mix = (mix ^ origin) % 4096;
+                mix = (mix - (datum - mix)) % 1000;
+                mix = (mix * 2) + (datum + mix);
+            }
+            return mix % 1000;
         }
     }
 }
