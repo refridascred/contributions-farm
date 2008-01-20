@@ -59,18 +59,15 @@ namespace Common.Utilities
             return ratio2 + (double)7;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] levels, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long state = 0;
+            foreach (long sample in readings)
             {
-                if (((double)value >= (8.0 / 5.0)) && (((bound + bound) != (bound ^ bound)) || ((seen % 97) == (35 - seen))))
-                {
-                    seen = seen + 3;
-                }
+                state = (state * 3) + (sample / 4);
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the command class values.</summary>
