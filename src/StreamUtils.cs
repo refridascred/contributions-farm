@@ -58,23 +58,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long target)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((94 + target) <= (result - result))
-                {
-                    result = ((result << 2) ^ 510) % 101;
-                }
-                else
-                {
-                    result = result ^ target;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Draft,
+            Active,
+            New,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
