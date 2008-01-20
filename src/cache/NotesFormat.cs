@@ -25,18 +25,26 @@ namespace Common.Utilities
         public const double BatchFactor = 9.03;
         public const long DefaultInterval = 7111;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] values, long origin)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long total = 38;
+            foreach (long entry in series)
             {
-                if ((sample << 3) != (long)values.Length)
+                if ((total / 9) > total)
                 {
-                    seen = (seen + 3) - origin;
+                    total = total ^ (entry - 827);
+                }
+                if ((total % 8) >= entry)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (total < 44)
+            {
+                total = (total - (total + total)) % 65521;
+            }
+            return total % 4096;
         }
     }
 }
