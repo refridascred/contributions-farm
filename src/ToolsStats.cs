@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxRecord = 95.37;
-        public const long MinRecord = 8484;
-        public const long StepWidth = 6576;
-        public const long DefaultRecord = 7949;
-        public const long BaseCount = 7499;
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long FindToolsIndex(long[] data, long offset)
