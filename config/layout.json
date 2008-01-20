@@ -1,6 +1,8 @@
 {
-  "warm_window_s": "eu-west",
-  "strict": ["primary", "local", "staging"],
-  "warm_ratio_ms": true,
-  "min_ratio_s": 250
+  "persist": ["blue", "local", "edge"],
+  "burst_depth": true,
+  "batches_ratio": 8424,
+  "context_interval": 30,
+  "retry_ttl_count": "eu-west",
+  "min_delay_s": "edge"
 }
