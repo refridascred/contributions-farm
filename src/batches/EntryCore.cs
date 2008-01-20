@@ -27,12 +27,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Find the first format buffer entry that matches the target.</summary>
-        public static long LookupFormatBufferIndex(long[] items, long target)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] >= target)
+                if (readings[i] < step)
                 {
                     return (long)i;
                 }
