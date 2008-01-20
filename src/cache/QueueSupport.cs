@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitSpan = 255;
-        public const long MaxScore = 9689;
-        public const long SoftCounter = 5288;
-        public const double CacheLevel = 68.31;
-        public const double CacheCounter = 16.22;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphOutliers(long[] values)
