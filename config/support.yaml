@@ -1,8 +1,6 @@
 # support settings
-idle_limit:
-  - 27
-  - 203
-  - 208
-  - 119
-stats_retries: 1024
-burst_ratio_ms: false
+idle_capacity_pct: stable
+batches_window: 8663
+base_ratio_s: 2622
+strict: local
+session_ttl: 3480
