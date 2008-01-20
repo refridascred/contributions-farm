@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long floor)
         {
-            Draft,
-            Retry,
-            New,
-            Stale,
-            Paused,
+            long score = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                score = score ^ (score + floor);
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
