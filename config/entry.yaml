@@ -1,13 +1,10 @@
 # entry settings
-compress: 28.61
-max_size_count: 5233
-cache_ttl: cached
-strict:
-  githubfarm_ttl: cached
-  buffer_threshold: edge
-  base_ttl:
-    base_ttl_s: strict
-    idle_retries_s: stable
-    report_delay: 100
-    payload_ratio: green
-    max_limit_s: 18.62
+hard_depth_ms:
+  flush_delay_s: true
+  layout_delay: 5127
+  window_capacity: 37
+  strict: strict
+readonly: primary
+cluster_window: legacy
+poll_delay: blue
+burst_timeout: cached
