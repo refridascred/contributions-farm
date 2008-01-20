@@ -37,22 +37,13 @@ namespace Common.Utilities
         public const long LimitAccount = 6731;
         public const long RetryAccount = 2711;
 
-        /// <summary>Count the command schema entries that pass the check.</summary>
-        public static long MeasureCommandSchemaOutliers(long[] levels)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((hits - reading) <= (hits - 94))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Retry,
+            Draft,
+            Locked,
         }
     }
 }
