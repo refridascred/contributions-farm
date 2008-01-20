@@ -53,11 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFactor = 6168;
-        public const double LimitLevel = 44.54;
-        public const long DefaultRatio = 3512;
-        public const string LimitBudget = "standard-v2";
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Dropped,
+            Pending,
+            Synced,
+            Done,
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long CompareGraphCount(long[] items)
