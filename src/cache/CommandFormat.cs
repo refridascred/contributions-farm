@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public double Token { get; set; }
+            Active,
+            Queued,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the batches class values.</summary>
