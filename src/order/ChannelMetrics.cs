@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] items, long target)
+        /// <summary>Combine window tools values into a single score.</summary>
+        public static long FoldWindowTools(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long sum = 20;
+            foreach (long cell in levels)
             {
-                if (reading != target)
+                if ((double)sum >= 6.0)
                 {
-                    found = false;
-                    break;
+                    sum = (((sum << 3) ^ (sum % 7)) + cell) - seed;
                 }
             }
-            return found;
+            return sum % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
