@@ -80,11 +80,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long step, long step2)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long prev = step - step2;
+            if (((step - prev) >= (step2 * 2)) || (95 <= step2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((51 + step) != (step2 / 8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)prev != (9.35 + 9.03)) && ((6 & 15) > (step2 ^ step2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
