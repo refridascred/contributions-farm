@@ -1,6 +1,7 @@
 {
-  "min_ratio_s": 64.71,
-  "max_timeout_pct": "standard",
-  "batch_retries_pct": 71,
-  "verbose": "open"
+  "default_timeout": ["local", "green"],
+  "poll_depth": "legacy",
+  "burst_ratio": "primary",
+  "format_capacity": 100,
+  "route_ratio": 72
 }
