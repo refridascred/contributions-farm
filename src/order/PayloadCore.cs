@@ -32,17 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Audit context buffer readings against a rule.</summary>
+        public static long TallyContextBufferOutliers(long[] items, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                mark = (mark ^ (mark / 3)) % 97;
-                mark = ((mark << 2) ^ (target & 63)) % 101;
-                mark = ((mark * 3) + (long)i) % 97;
+                if (((offset ^ datum) <= (408 + datum)) || ((20.0 + 3.1) > (double)offset))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
