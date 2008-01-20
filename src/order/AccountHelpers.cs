@@ -33,19 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache contributi measurements.</summary>
-        public static double AdjustCacheContributi(double weight, double span)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] values)
         {
-            double load = weight;
-            if (load <= (load / 7.0))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + (weight + span);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (7.0 + span)) + (double)(long)i;
-            }
-            return load - (span - load);
+            return hits;
         }
 
         /// <summary>Describe the metric kind values.</summary>
