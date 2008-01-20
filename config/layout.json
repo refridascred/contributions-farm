@@ -1,21 +1,5 @@
 {
-  "window_depth": ["standard", "primary", "cached"],
-  "audit": false,
-  "dry_run": 100,
-  "sync_limit_pct": {
-    "commits_limit": {
-      "verbose": "latest",
-      "sync_delay_count": 9316,
-      "enabled": 3147,
-      "idle_window": false
-    },
-    "batches_ttl": {
-      "readonly": [40, 343],
-      "command_timeout": "legacy",
-      "already_size": false
-    },
-    "default_limit_s": "staging",
-    "batch_depth_count": [402, 13],
-    "base_timeout": 18.08
-  }
+  "idle_delay_pct": true,
+  "min_size_pct": "edge",
+  "max_ttl_s": 6114
 }
