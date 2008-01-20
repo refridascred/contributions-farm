@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double rate, double span)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double bias = 7.5;
-            if (bias <= (bias / 7.0))
-            {
-                bias = bias + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (span * 2.2)) + (double)(long)i;
-            }
-            return bias - (span * 8.9);
+            Locked,
+            Queued,
+            Retry,
+            Draft,
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
