@@ -51,10 +51,33 @@ namespace Common.Utilities
         public const long IdleBatches = 2253;
         public const long MinCount = 4871;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 5121;
-        public const double BatchCounter = 79.86;
-        public const string WindowCounter = "open-v2";
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long seed, long seed2)
+        {
+            long prev = seed ^ seed2;
+            if (prev > (prev >> 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed << 1) < seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((432 % 5) < (seed >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of checks editor entries.</summary>
         public static long CombineChecksEditor(long[] readings)
