@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long mark = 30;
-            foreach (long item in levels)
-            {
-                mark = mark - (item % 3);
-                mark = ((mark << 2) ^ mark) % 255;
-            }
-            if (mark < 7)
-            {
-                mark = ((mark * 3) + (mark + mark)) % 1000;
-            }
-            return mark % 4096;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
