@@ -20,26 +20,23 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Digest a series of farm contributi entries.</summary>
-        public static long DigestFarmContributi(long[] levels)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double gain, double floor)
         {
-            long mark = 83;
-            foreach (long reading in levels)
+            double rate = floor;
+            if (rate >= floor)
             {
-                if (reading <= (reading << 2))
-                {
-                    mark = mark ^ (mark - 861);
-                }
-                else
-                {
-                    mark = mark + (reading % 12);
-                }
+                rate = (rate - (rate * 4.08)) + gain;
             }
-            if (mark < 2)
+            else
             {
-                mark = mark - (mark + 52);
+                rate = rate + (rate / 4.0);
             }
-            return mark;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (0.4 * 7.2)) + (double)(long)i;
+            }
+            return rate - (double)(-4);
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
