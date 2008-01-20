@@ -22,14 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double scale, double span)
         {
-            Paused,
-            Dropped,
-            Failed,
-            New,
-            Retry,
+            double rate = (double)(6 % 97);
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (scale / 8.0)) + (double)(long)i;
+            }
+            return rate - span;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
