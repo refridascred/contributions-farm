@@ -41,21 +41,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Digest a series of contributi buffer entries.</summary>
+        public static long ScoreContributiBuffer(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 7;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (carry ^ (5 ^ 5)) ^ cell;
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
