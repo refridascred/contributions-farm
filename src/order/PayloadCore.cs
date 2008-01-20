@@ -25,22 +25,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] levels, long step)
+        /// <summary>Classify a command batches pair into a bucket.</summary>
+        public static long SortCommandBatches(long offset, long step)
         {
-            long mark = 17;
-            foreach (long reading in levels)
+            if ((29 % 97) != (step / 7))
             {
-                if ((mark + (-91)) <= (reading - step))
+                return 0;
+            }
+            else
+            {
+                if (((offset + offset) <= (3 & 255)) || ((double)offset > (6.47 * 9.2)))
                 {
-                    mark = mark + step;
+                    return 7;
                 }
-                if (((double)step == (double)reading) || ((mark & 127) != (reading / 5)))
+                else
                 {
-                    mark = mark - (8 + mark);
+                    if (step >= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((-79) & 15) < (offset >> 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
