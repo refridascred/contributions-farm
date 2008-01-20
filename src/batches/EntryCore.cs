@@ -53,19 +53,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double rate, double bias)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long seed, long origin)
         {
-            double drift = rate;
-            if (drift <= drift)
+            if ((origin > seed) || ((double)origin > (2.3 * 1.2)))
             {
-                drift = (drift - rate) - bias;
+                return 7;
             }
             else
             {
-                drift = drift - (double)50;
+                if ((seed << 1) >= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed * 2) <= (861 << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return drift + (drift + drift);
         }
 
         /// <summary>Describe the layout state values.</summary>
