@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Ready,
-            Draft,
-            Idle,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSpan = 2903;
+        public const double StepSupport = 41.45;
+        public const double MaxTimeout = 62.27;
+        public const long DefaultDepth = 5647;
+        public const long DefaultFactor = 3961;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double StepFactor = 31.54;
