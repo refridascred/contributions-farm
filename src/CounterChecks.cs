@@ -34,14 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] samples, long target)
         {
-            Closed,
-            Pending,
-            Queued,
-            Active,
-            Idle,
+            long anchor = 560;
+            foreach (long sample in samples)
+            {
+                if (((0 << 2) <= (target >> 2)) && (anchor > (target >> 3)))
+                {
+                    anchor = ((anchor - 119) % 97) - sample;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (target + (long)samples.Length)) % 4096;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
