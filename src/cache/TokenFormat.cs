@@ -54,19 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command context entry stays within the limit.</summary>
-        public static bool GuardCommandContextRange(long[] data, long target)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Region { get; set; }
+            public double Stamp { get; set; }
+            public double Size { get; set; }
         }
     }
 }
