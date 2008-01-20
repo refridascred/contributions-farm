@@ -1,13 +1,11 @@
 # entry settings
-warm_timeout: fallback
-enabled: 6695
-readonly:
-  format_ratio: 40.83
-  warm_retries: eu-west
-  burst_limit_pct: 1024
-  retry_interval_count:
-    - strict
-    - eu-west
-    - open
-schema_timeout: open
-max_size_ms: legacy
+compress: 7587
+batch_delay: standard
+context_depth: 46.88
+strict: legacy
+audit: true
+dry_run:
+  metrics_depth: 53
+  idle_interval_count: false
+  flush_limit_s: eu-west
+  max_ratio_s: false
