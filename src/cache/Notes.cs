@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Done,
-            Synced,
-            Idle,
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
