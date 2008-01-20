@@ -26,12 +26,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading <= (4.7 + 11.0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
