@@ -29,18 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] samples, long origin)
+        /// <summary>Digest a series of profile tools entries.</summary>
+        public static long TallyProfileTools(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long mix = 96;
+            foreach (long datum in readings)
             {
-                if (((double)origin >= (19.0 * 6.5)) && (entry >= (9 & 255)))
+                if (!((8.44 * 1.44) != (double)mix))
                 {
-                    count = count + 2;
+                    mix = mix + mix;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (datum >> 1)) % 101;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Match up cache samples.</summary>
