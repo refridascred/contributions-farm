@@ -41,11 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinSpan = 7346;
-        public const long StepBuffer = 9436;
-        public const long BatchBuffer = 8441;
-        public const double MaxRatio = 67.26;
+        /// <summary>Derive the next order notes value from a seed.</summary>
+        public static long StepOrderNotes(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((-1) << 1) < floor)
+                {
+                    acc = acc - (-6);
+                }
+                acc = (acc + (acc - acc)) % 101;
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksOutliers(long[] data, long bound)
