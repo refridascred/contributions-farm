@@ -64,23 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long step)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] readings, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((0.55 * 2.5) <= (double)anchor))
+                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
                 {
-                    anchor = (anchor ^ (4 + step)) % 65521;
+                    return (long)i;
                 }
-                if (!(((double)step > (8.9 * 2.1)) && ((long)i != (anchor << 1))))
-                {
-                    anchor = anchor + (400 % 8);
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
     }
 }
