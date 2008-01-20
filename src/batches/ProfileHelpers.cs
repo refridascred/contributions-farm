@@ -15,14 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] readings, long floor)
         {
-            Locked,
-            Active,
-            Done,
-            Paused,
-            Pending,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((660 > (reading % 10)) || ((floor >= matches) && ((double)19 != (double)reading)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the notes status values.</summary>
