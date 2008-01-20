@@ -18,12 +18,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Pending,
-            Failed,
-            New,
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
