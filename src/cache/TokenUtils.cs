@@ -10,21 +10,16 @@ namespace Common.Utilities
         public const long RetryStats = 3712;
         public const long StepStats = 260;
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark << 2) ^ (long)i) % 4096;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Audit payload already readings against a rule.</summary>
