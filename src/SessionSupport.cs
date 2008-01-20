@@ -28,19 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double gain, double span)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            double load = span;
-            if (load <= (double)716)
-            {
-                load = (load + span) + gain;
-            }
-            else
-            {
-                load = load + span;
-            }
-            return load + (load - 9.0);
+            Retry,
+            Paused,
+            Idle,
         }
     }
 }
