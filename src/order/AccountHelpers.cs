@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate already farm samples.</summary>
-        public static long DigestAlreadyFarm(long[] series)
-        {
-            long mix = 213;
-            foreach (long datum in series)
-            {
-                mix = (mix ^ (mix << 1)) ^ datum;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxInterval = 6905;
+        public const long StepChannel = 7053;
+        public const long SoftChannel = 9295;
+        public const long WindowInterval = 2581;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] values)
