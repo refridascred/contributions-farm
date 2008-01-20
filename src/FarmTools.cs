@@ -20,17 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] values, long origin)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = (rate - rate) - (6.1 + floor);
+            if (rate2 >= floor)
             {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 - (rate + floor);
             }
-            return -1;
+            return rate2 - floor;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
