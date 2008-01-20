@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const double HardLevel = 41.87;
         public const long MaxScore = 9939;
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] levels, long bound)
         {
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((694 << 1) <= bound)
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
