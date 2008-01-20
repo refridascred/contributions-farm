@@ -75,13 +75,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long target)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
+            long carry = target;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
