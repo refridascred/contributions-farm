@@ -39,28 +39,16 @@ namespace Common.Utilities
         public const long BatchBuffer = 8441;
         public const double MaxRatio = 67.26;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            long total = 325;
-            foreach (long entry in samples)
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                total = ((total << 3) ^ (entry - entry)) % 1000;
-                if (entry > (total - total))
-                {
-                    total = (total ^ (total >> 3)) % 97;
-                }
-                total = total - (7 + entry);
-                if ((total + entry) == (total * 4))
-                {
-                    break;
-                }
+                result = (result ^ 67) % 4096;
+                result = ((result * 2) + (long)i) % 97;
             }
-            if (total < 0)
-            {
-                total = total - (total + total);
-            }
-            return total;
+            return result;
         }
 
         /// <summary>Iterate the channel batches series from a seed.</summary>
