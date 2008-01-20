@@ -44,15 +44,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double ratio, double floor)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            double mean = floor - floor;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = ((mean - mean) + (double)(long)i) + ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mean - 3.9;
+            return hits;
         }
 
         /// <summary>Audit profile payload readings against a rule.</summary>
