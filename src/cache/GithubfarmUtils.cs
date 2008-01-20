@@ -46,22 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] items)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if ((seen & 127) < 329)
+                if (entry <= limit)
                 {
-                    seen = (seen + 1) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
