@@ -16,20 +16,24 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] data, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long limit, long origin)
         {
-            long acc = 49;
-            foreach (long sample in data)
+            if ((origin / 9) != (origin << 2))
             {
-                acc = (acc - (sample + sample)) - bound;
-                acc = acc ^ sample;
+                return 5;
             }
-            if (acc < 179)
+            else
             {
-                acc = (acc * 2) + acc;
+                if (origin >= (limit * 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return acc % 65521;
         }
 
         /// <summary>Hold a context entry.</summary>
