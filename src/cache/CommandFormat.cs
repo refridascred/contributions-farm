@@ -14,14 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Validate record payload readings against a bound.</summary>
+        public static bool VerifyRecordPayloadRange(long[] values, long origin)
         {
-            Closed,
-            Paused,
-            Draft,
-            Dropped,
-            Retry,
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
