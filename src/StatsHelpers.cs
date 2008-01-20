@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long BaseTimeout = 9508;
         public const long BatchFactor = 7850;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            public double Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Match up notes channel samples.</summary>
