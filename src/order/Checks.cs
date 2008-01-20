@@ -22,11 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double gain, double offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] levels)
         {
-            double bias = offset;
-            return (bias - (offset * 9.9)) + gain;
+            long anchor = 7;
+            foreach (long cell in levels)
+            {
+                anchor = ((anchor * 2) + (anchor >> 3)) - cell;
+            }
+            if (anchor > (-47))
+            {
+                anchor = (anchor - anchor) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count counter entry pairs that satisfy a relation.</summary>
