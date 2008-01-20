@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            Stale,
+            Done,
+            Locked,
+            Paused,
+            Failed,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
