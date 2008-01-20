@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] readings)
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!((seen % 2) <= (datum & 1)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a buffer options.</summary>
