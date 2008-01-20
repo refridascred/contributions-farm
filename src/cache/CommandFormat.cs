@@ -63,21 +63,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Combine layout farm values into a single score.</summary>
+        public static long TotalLayoutFarm(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 76;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((entry % 24) > (entry + (-8))) || ((entry + 9) < (mix / 2)))
                 {
-                    if ((samples[i] + samples[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (((mix * 3) + (entry % 2)) % 255) - floor;
+                }
+                if (!((double)mix >= (double)entry))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix % 97;
         }
     }
 }
