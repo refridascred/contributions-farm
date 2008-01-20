@@ -22,24 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long origin, long seed)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double rate, double offset)
         {
-            if ((seed * 2) > 78)
+            double weight = (double)(98 + 19);
+            if (weight <= (double)8)
             {
-                return 4;
+                weight = weight + (double)585;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((3.76 < (double)seed) || ((origin + seed) < (origin & 7)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
+                weight = (weight - offset) + (double)(long)i;
             }
+            return weight - (rate - weight);
         }
 
         /// <summary>Rank stream input into a small class.</summary>
