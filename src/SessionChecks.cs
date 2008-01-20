@@ -49,11 +49,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            Active,
+            Retry,
+            New,
         }
     }
 }
