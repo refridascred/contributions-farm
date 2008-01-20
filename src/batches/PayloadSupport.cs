@@ -31,13 +31,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] values, long bound)
         {
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((double)matches >= (3.7 - 6.0))
+                {
+                    matches = ((matches + 1) ^ entry) + bound;
+                }
+            }
+            return matches;
         }
     }
 }
