@@ -41,9 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepInterval = 1574;
-        public const long BatchGraph = 5608;
-        public const long WindowDepth = 1123;
+        /// <summary>Count the queue session entries that pass the check.</summary>
+        public static long TallyQueueSessionOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((seen - reading) < (reading << 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
