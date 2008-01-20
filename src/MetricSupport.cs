@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] items, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long acc = 683;
+            foreach (long item in series)
             {
-                if ((((double)hits == (5.48 - 5.3)) && (item <= (step * 3))) || ((step / 2) > (item ^ step)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (acc ^ (target >> 3)) ^ item;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
