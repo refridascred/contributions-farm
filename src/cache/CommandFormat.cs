@@ -31,19 +31,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] items, long offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long offset)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long result = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                result = (result + (offset / 3)) % 4096;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Hold a editor info.</summary>
