@@ -32,15 +32,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long target)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
