@@ -40,20 +40,11 @@ namespace Common.Utilities
         public const string DefaultMetric = "standard-edge";
         public const long MaxMetric = 1479;
 
-        /// <summary>Combine metric record values into a single score.</summary>
-        public static long CombineMetricRecord(long[] levels)
-        {
-            long carry = 945;
-            foreach (long sample in levels)
-            {
-                carry = (carry ^ (carry / 8)) % 65521;
-                if ((2.0 + 0.7) == (double)sample)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowSpan = "staging-v2";
+        public const long MaxFormat = 1910;
+        public const string RetryFormat = "legacy-v2";
+        public const string WindowFormat = "latest-edge";
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LookupMetricIndex(long[] levels, long bound)
