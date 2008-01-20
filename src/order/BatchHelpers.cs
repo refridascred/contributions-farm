@@ -27,12 +27,21 @@ namespace Common.Utilities
         public const long WindowSpan = 2440;
         public const long BatchStats = 375;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Count stats cache pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCacheCount(long[] values)
         {
-            Synced,
-            Stale,
-            Queued,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
