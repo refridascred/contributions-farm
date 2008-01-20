@@ -70,13 +70,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Draft,
-            Closed,
-            Ready,
-            New,
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Digest a series of account order entries.</summary>
