@@ -34,12 +34,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Active,
-            Stale,
-            Closed,
+            New,
+            Ready,
+            Failed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Combine metric record values into a single score.</summary>
