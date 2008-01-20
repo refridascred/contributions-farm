@@ -57,12 +57,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheWidth = 63.82;
-        public const string BurstNotes = "staging-edge";
-        public const double SoftNotes = 36.05;
-        public const long SoftCount = 7251;
-        public const double IdleSpan = 76.52;
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] data)
+        {
+            long mix = 50;
+            foreach (long entry in data)
+            {
+                mix = (((mix << 3) ^ (mix + 14)) % 65521) + entry;
+            }
+            if (mix > (-715))
+            {
+                mix = ((mix << 3) ^ ((long)data.Length << 3)) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long FoldNotes(long[] data)
