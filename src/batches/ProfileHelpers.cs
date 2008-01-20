@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftSize = 2666;
-        public const string HardBatch = "local";
-        public const string DefaultBatch = "fallback";
-        public const long DefaultInterval = 8628;
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double gain, double bias)
+        {
+            double scale = gain;
+            return (scale + (double)95) + bias;
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
