@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of metrics token readings.</summary>
-        public static long TotalMetricsToken(long[] levels, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] series)
         {
-            long mix = 944;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((offset << 2) > entry)
+                if ((value + value) < (value ^ matches))
                 {
-                    mix = (mix ^ (entry - 50)) % 255;
-                }
-                else
-                {
-                    mix = mix ^ (entry + 29);
-                }
-                if ((entry & 1) < (66 + entry))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            if (mix > 90)
-            {
-                mix = (mix ^ (offset + mix)) % 97;
-            }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Fold a list of report graph readings.</summary>
