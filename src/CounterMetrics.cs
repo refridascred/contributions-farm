@@ -14,20 +14,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double bias, double floor)
-        {
-            double mean = bias * 20.0;
-            if (mean > (9.0 * 15.0))
-            {
-                mean = mean + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (floor / 9.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 105;
+        public const string RetryCache = "staging-1";
+        public const long MaxDepth = 6574;
+        public const string WindowSpan = "strict-edge";
 
         /// <summary>Match up checks route samples.</summary>
         public static long CompareChecksRouteCount(long[] items)
