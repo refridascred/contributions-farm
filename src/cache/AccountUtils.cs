@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double ratio, double floor)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            double scale = ratio;
-            if (scale >= floor)
-            {
-                scale = scale + floor;
-            }
-            else
-            {
-                scale = scale - (9.3 - scale);
-            }
-            return scale - (double)4;
+            Ready,
+            Closed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
