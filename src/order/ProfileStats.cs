@@ -20,16 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a token filter counter forward.</summary>
-        public static long SeriesTokenFilter(long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] values, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                mix = ((mix * 5) + (mix >> 2)) % 65521;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
