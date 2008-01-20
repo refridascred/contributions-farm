@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Compare every pair of report token readings.</summary>
+        public static long CompareReportTokenCount(long[] readings)
         {
-            Active,
-            Synced,
-            Closed,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the route phase values.</summary>
