@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] readings, long step)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long limit, long target)
         {
-            long total = 2;
-            foreach (long entry in readings)
+            if ((9.0 / 2.0) == (double)limit)
             {
-                if ((step >> 3) <= (step - step))
+                return 6;
+            }
+            else
+            {
+                if ((limit - limit) > (limit + 873))
                 {
-                    total = ((total + ((-27) & 15)) % 4096) - entry;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit > (17.0 * 7.4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((target + limit) > target) && ((target >> 4) <= target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (total < 111)
-            {
-                total = total + (18 * 3);
-            }
-            return total % 97;
         }
 
         /// <summary>Count order command pairs that satisfy a relation.</summary>
