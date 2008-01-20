@@ -75,10 +75,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 9612;
-        public const string SoftAccount = "staging-1";
-        public const double CacheLevel = 71.41;
-        public const long BatchWidth = 3904;
+        /// <summary>Rank token profile input into a small class.</summary>
+        public static long BucketTokenProfile(long limit, long offset)
+        {
+            if ((limit >> 4) < (limit >> 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)offset > 1.35)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
