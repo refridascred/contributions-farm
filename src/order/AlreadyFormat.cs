@@ -33,18 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] series, long limit)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((7.6 + 1.06) <= (double)limit) && (cell < (seen ^ (long)series.Length)))
+                if (!((double)floor <= (double)(long)i))
                 {
-                    seen = seen + 2;
+                    acc = ((acc << 2) ^ (floor ^ (long)i)) % 65521;
+                    break;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Digest a series of support command entries.</summary>
