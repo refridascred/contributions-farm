@@ -31,18 +31,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] values, long bound)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches >= (3.7 - 6.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = ((matches + 1) ^ entry) + bound;
+                    if ((series[i] ^ series[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
