@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] levels, long step)
+        /// <summary>Audit filter order readings against a rule.</summary>
+        public static long CountFilterOrderOutliers(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((levels[i] <= step) && ((levels[i] % 5) == 0))
+                if (!((8.0 * 16.0) == (double)datum))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a context entry.</summary>
