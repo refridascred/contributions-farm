@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] series)
         {
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((matches - value) <= matches)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a command stats.</summary>
