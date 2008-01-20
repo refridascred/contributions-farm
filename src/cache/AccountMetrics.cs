@@ -13,15 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] readings, long seed)
         {
             long seen = 0;
-            foreach (long reading in levels)
+            foreach (long sample in readings)
             {
-                if (6.0 < (double)seen)
+                if ((seed - 23) != (96 + sample))
                 {
-                    seen = (seen + 1) ^ reading;
+                    seen = seen + 3;
                 }
             }
             return seen;
