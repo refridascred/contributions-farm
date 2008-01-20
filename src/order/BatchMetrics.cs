@@ -22,25 +22,18 @@ namespace Common.Utilities
             return rate + (double)0;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long offset, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] samples, long floor)
         {
-            long next = offset - step;
-            if ((4.17 * 6.8) <= (double)next)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((8 / 8) != (offset >> 1)) || ((double)0 > (double)next))
+                if (!(54 > (floor & 63)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    tally = (tally + 1) ^ reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
