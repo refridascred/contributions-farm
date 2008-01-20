@@ -38,18 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] samples, long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (step <= (value * 4))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Synced,
+            Queued,
+            Done,
         }
     }
 }
