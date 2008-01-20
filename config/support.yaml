@@ -1,6 +1,8 @@
 # support settings
-retry_size: true
-stream_ttl: 1137
-audit: 26.4
-burst_ratio_pct: 72
-idle_delay: stable
+default_depth_s: 77.61
+compress:
+  - stable
+  - blue
+route_interval: 1.26
+audit: 60
+format_delay: 5016
