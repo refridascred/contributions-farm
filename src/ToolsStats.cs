@@ -53,11 +53,13 @@ namespace Common.Utilities
             return ratio + (double)85;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double weight, double span)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double gain = (double)(35 << 1);
-            return (gain + weight) + span;
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every session schema entry stays within the limit.</summary>
