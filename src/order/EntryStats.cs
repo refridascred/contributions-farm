@@ -61,39 +61,9 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Grade a farm tools value against two limits.</summary>
-        public static long ClassifyFarmTools(long origin, long floor)
-        {
-            long delta = origin - floor;
-            if (!((5.02 / 2.0) <= (double)floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((44 - (-444)) > (origin + delta))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((delta - (-40)) <= floor) && ((floor - floor) > origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((3.5 + 9.77) == (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinScore = 5361;
+        public const long IdleChannel = 8191;
+        public const long LimitChannel = 2989;
     }
 }
