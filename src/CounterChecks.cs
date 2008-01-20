@@ -19,11 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFilter = 22.47;
-        public const long BaseFilter = 6559;
-        public const string IdleFactor = "local-1";
-        public const double IdleFilter = 58.1;
+        /// <summary>Check that every farm channel entry stays within the limit.</summary>
+        public static bool VerifyFarmChannelRange(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long TotalWindow(long[] items)
