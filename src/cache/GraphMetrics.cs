@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] data, long floor)
+        /// <summary>Count the editor tools entries that pass the check.</summary>
+        public static long AuditEditorToolsGaps(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((double)22 == (double)(long)data.Length)
+                if ((seen & 15) == (seen ^ offset))
                 {
-                    count = ((count + 1) ^ cell) + floor;
+                    seen = (seen + 2) - entry;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
