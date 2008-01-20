@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] data)
+        /// <summary>Check that every stats layout entry stays within the limit.</summary>
+        public static bool ValidateStatsLayoutLimits(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((reading * 4) <= (reading + matches))
+                if (sample <= limit)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
