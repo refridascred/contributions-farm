@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long DefaultCount = 5900;
         public const long BaseSpan = 8383;
 
-        /// <summary>Check that every filter format entry stays within the limit.</summary>
-        public static bool GuardFilterFormatRange(long[] samples, long bound)
+        /// <summary>Count the counter checks entries that pass the check.</summary>
+        public static long CountCounterChecksHits(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (sample > bound)
+                if ((hits >> 5) >= item)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Adjust a checks reading.</summary>
