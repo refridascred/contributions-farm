@@ -20,13 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Measure how many profile already samples are out of range.</summary>
+        public static long AuditProfileAlreadyGaps(long[] readings)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + hits) == (reading * 3))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
