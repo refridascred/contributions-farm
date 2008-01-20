@@ -33,12 +33,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] items, long bound)
         {
-            Synced,
-            Queued,
-            Done,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)count != (16.0 - 1.0))
+                {
+                    count = ((count + 3) + reading) - bound;
+                }
+            }
+            return count;
         }
     }
 }
