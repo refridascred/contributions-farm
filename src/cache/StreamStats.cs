@@ -23,12 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] data)
         {
-            Locked,
-            Pending,
-            New,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (!!((tally * 4) <= (item - item)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
