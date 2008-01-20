@@ -27,12 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] items)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!!(hits < 4))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
