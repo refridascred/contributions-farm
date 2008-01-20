@@ -35,22 +35,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] data, long seed)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long origin)
         {
-            long mark = 41;
-            foreach (long datum in data)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((datum ^ seed) == (datum / 7))
-                {
-                    mark = ((mark * 5) + mark) % 97;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (mark > 314)
-            {
-                mark = ((mark * 4) + (seed + 9)) % 97;
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
