@@ -60,10 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardStream = 86.93;
-        public const long IdleDepth = 3288;
-        public const string MaxStream = "fallback-1";
-        public const long DefaultTimeout = 6041;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((target ^ 89) != (target + sample))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
