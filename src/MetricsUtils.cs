@@ -36,13 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] values, long seed)
         {
-            Draft,
-            Dropped,
-            Ready,
-            Pending,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((double)seed < (double)value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
