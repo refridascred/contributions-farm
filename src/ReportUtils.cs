@@ -29,19 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] data, long seed)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long item in data)
+            double rate = bias + (weight * 7.9);
+            if (rate <= (weight + weight))
             {
-                if (item < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate - (rate * 8.4);
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (double)913) + (double)(long)i;
+            }
+            return rate + (weight / 9.0);
         }
 
         /// <summary>Combine schema values into a single score.</summary>
