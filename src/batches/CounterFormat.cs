@@ -37,25 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long step, long step2)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] samples)
         {
-            long delta = step - step2;
-            if (step >= (step - step2))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((step * 5) >= delta))
+                if ((double)38 != (double)tally)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    tally = (tally + 3) + cell;
                 }
             }
+            return tally;
         }
     }
 }
