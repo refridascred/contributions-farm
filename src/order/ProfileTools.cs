@@ -37,11 +37,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 5290;
-        public const long DefaultFilter = 286;
-        public const string SoftTimeout = "open-1";
-        public const long BaseFilter = 9639;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the cache contributi entries that pass the check.</summary>
         public static long AuditCacheContributiMatches(long[] readings, long floor)
