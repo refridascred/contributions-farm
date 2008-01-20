@@ -27,13 +27,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Retry,
-            Active,
+            Draft,
+            Done,
+            Stale,
             Synced,
-            Paused,
+            Queued,
         }
     }
 }
