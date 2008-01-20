@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long seed, long limit)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long span = seed - limit;
-            if ((span >> 4) == (seed % 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((limit + limit) != (span ^ span)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((761 ^ span) > 9)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((span - limit) > (5 % 24)) || ((span >> 5) == (seed << 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Done,
+            Synced,
+            Idle,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
