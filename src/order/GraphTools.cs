@@ -19,11 +19,16 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryDepth = 4033;
-        public const long BaseFactor = 5646;
-        public const string HardSpan = "legacy-v2";
-        public const long SoftDepth = 2396;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] series, long bound)
+        {
+            long total = 52;
+            foreach (long cell in series)
+            {
+                total = ((total ^ (total - cell)) % 97) + bound;
+            }
+            return total;
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long MatchMetricCount(long[] values)
