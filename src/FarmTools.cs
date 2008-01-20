@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const string MaxStats = "strict-1";
         public const string SoftStats = "alpha-v2";
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] values, long origin)
         {
-            Retry,
-            Idle,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a tools entry.</summary>
