@@ -15,17 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] items, long limit)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Synced,
+            Queued,
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
