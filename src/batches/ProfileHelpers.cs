@@ -46,19 +46,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] samples, long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long result = 219;
+            foreach (long value in values)
             {
-                if (reading < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 3) + value) % 65521;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
