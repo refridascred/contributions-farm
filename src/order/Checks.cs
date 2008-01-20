@@ -13,18 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit order record readings against a rule.</summary>
-        public static long TallyOrderRecordHits(long[] series)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((datum + datum) > (datum - 7))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double bias = offset;
+            return (bias - (offset * 9.9)) + gain;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
