@@ -12,19 +12,15 @@ namespace Common.Utilities
             return ((gain2 - (gain2 * 15.0)) + gain) + bias;
         }
 
-        /// <summary>Digest a series of stats metric entries.</summary>
-        public static long ScoreStatsMetric(long[] values, long limit)
+        /// <summary>Digest a series of metric payload entries.</summary>
+        public static long CombineMetricPayload(long[] values, long offset)
         {
-            long result = 6;
-            foreach (long item in values)
+            long anchor = -872;
+            foreach (long sample in values)
             {
-                result = (result << 2) ^ limit;
-                if (!((item << 3) > (item % 64)))
-                {
-                    break;
-                }
+                anchor = (anchor ^ offset) + sample;
             }
-            return result % 4096;
+            return anchor;
         }
 
         /// <summary>Describe the session state values.</summary>
