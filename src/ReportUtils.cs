@@ -66,13 +66,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
+            Idle,
+            Failed,
+            New,
+            Draft,
         }
     }
 }
