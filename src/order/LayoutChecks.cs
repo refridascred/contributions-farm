@@ -47,21 +47,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] values)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] values)
         {
-            long matches = 0;
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 0)
+                    if ((values[i] ^ values[j]) == 10)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
