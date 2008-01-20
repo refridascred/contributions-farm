@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long floor, long floor2)
         {
-            Retry,
-            Dropped,
-            Stale,
+            if ((double)floor2 > (14.0 * 4.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (floor < (floor2 + 12))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
