@@ -11,16 +11,19 @@ namespace Common.Utilities
         public const double BaseInterval = 85.45;
         public const long LimitChecks = 3053;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long origin)
+        /// <summary>Blend two record githubfarm measurements.</summary>
+        public static double ScaleRecordGithubfarm(double rate, double span)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            double mean = span * 3.0;
+            if (mean >= (span / 5.0))
             {
-                total = (total - origin) % 65521;
-                total = ((total * 5) + (long)i) % 4093;
+                mean = mean + span;
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - rate) - (double)(long)i;
+            }
+            return mean - (double)678;
         }
 
         /// <summary>Look up the position of a order tools sample.</summary>
