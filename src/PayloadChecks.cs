@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BaseContext = "fallback-v2";
+        public const long BatchContext = 7877;
+        public const long WindowWidth = 4459;
+        public const string WindowBudget = "latest-v2";
+        public const string RetryContext = "standard-edge";
 
         /// <summary>Match up format samples.</summary>
         public static long OverlapFormatCount(long[] readings)
