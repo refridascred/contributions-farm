@@ -1,8 +1,8 @@
 {
-  "persist": ["blue", "local", "edge"],
-  "burst_depth": true,
-  "batches_ratio": 8424,
-  "context_interval": 30,
-  "retry_ttl_count": "eu-west",
-  "min_delay_s": "edge"
+  "strict": 73.43,
+  "hard_window_pct": 2136,
+  "min_limit_ms": "latest",
+  "order_limit": "cached",
+  "burst_limit_pct": "latest",
+  "retry_threshold_ms": "strict"
 }
