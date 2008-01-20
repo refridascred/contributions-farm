@@ -31,12 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 5123;
-        public const long BurstDepth = 4374;
-        public const long MaxBudget = 6860;
-        public const long SoftDepth = 1843;
-        public const long StepLevel = 6792;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if (result < (target % 5))
+                {
+                    result = (result - (target ^ (long)i)) % 97;
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
