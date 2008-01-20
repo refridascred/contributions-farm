@@ -33,11 +33,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitTimeout = 2559;
-        public const long LimitContext = 8436;
-        public const double MaxContext = 80.21;
-        public const long WindowDepth = 4370;
+        /// <summary>Iterate the account record series from a seed.</summary>
+        public static long SeriesAccountRecord(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
