@@ -17,22 +17,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] readings, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((73 >= (cell * 2)) || ((double)count != (19.0 * 4.29)))
+                if (((double)seen > (3.39 - 3.0)) && (seen <= reading))
                 {
-                    count = (count + 3) - bound;
+                    seen = (seen + 1) - offset;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
