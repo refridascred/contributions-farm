@@ -35,17 +35,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first support editor entry that matches the target.</summary>
-        public static long FindSupportEditorIndex(long[] data, long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 4;
+            foreach (long cell in series)
             {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
+                state = (state ^ 675) ^ cell;
             }
-            return -1;
+            return state % 65521;
         }
     }
 }
