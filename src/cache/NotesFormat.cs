@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = carry - (carry + (long)i);
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
