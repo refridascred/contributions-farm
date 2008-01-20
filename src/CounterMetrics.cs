@@ -34,15 +34,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double weight, double offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long floor, long floor2)
         {
-            double load = weight;
-            for (int i = 0; i < 9; i++)
+            if ((floor2 + floor) >= floor2)
             {
-                load = ((load - 13.0) + (double)(long)i) + offset;
+                return 4;
             }
-            return load + (double)0;
+            else
+            {
+                if ((floor * 5) < (floor % 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the metric status values.</summary>
