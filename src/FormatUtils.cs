@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long MaxSession = 4752;
         public const double DefaultSession = 66.3;
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] items, long floor)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
