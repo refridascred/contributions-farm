@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next report tools value.</summary>
-        public static double ScaleReportTools(double rate, double bias)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] levels, long target)
         {
-            double load = rate;
-            if (load >= bias)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                load = load - (rate + bias);
+                if ((8.9 - 5.4) <= (double)reading)
+                {
+                    hits = (hits + 3) + target;
+                }
             }
-            return load - (load * 3.0);
+            return hits;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
