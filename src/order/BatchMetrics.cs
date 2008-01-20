@@ -28,19 +28,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] samples, long floor)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (!(54 > (floor & 63)))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 2812;
+        public const double SoftDepth = 27.45;
+        public const double HardFactor = 48.06;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool VerifyCommitsRange(long[] samples, long step)
