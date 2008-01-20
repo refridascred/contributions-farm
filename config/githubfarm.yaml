@@ -1,5 +1,5 @@
 # githubfarm settings
-flush_interval_pct: green
-max_depth: 92.83
-retry_interval_ms: standard
-base_ratio_s: false
+flush_size: staging
+retry_size_ms: stable
+persist: false
+cache_size: 250
