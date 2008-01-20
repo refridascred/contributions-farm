@@ -1,18 +1,20 @@
 # entry settings
-strict: primary
-dry_run:
-  - 296
-  - 155
-  - 61
-  - 430
-cache_retries_pct: 18
-farm_limit: local
-retry_ratio:
-  compress: latest
-  enabled:
-    - 184
-    - 287
-    - 395
-    - 482
-  retry_ratio: eu-west
-  cache_capacity_ms: open
+min_ttl:
+  audit: false
+  idle_ratio: 3782
+  poll_capacity_count:
+    retry_retries_count: open
+    counter_timeout: 16.83
+    min_window_pct: fallback
+    verbose: false
+    sync_timeout_pct:
+      - cached
+      - fallback
+      - stable
+      - eu-west
+    retry_size_pct: local
+  metrics_ttl: 2
+hard_timeout_s: latest
+default_ratio_ms: edge
+min_size_pct: primary
+poll_ratio_ms: 500
