@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] series)
         {
-            long acc = 683;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in series)
             {
-                acc = (acc ^ (target >> 3)) ^ item;
+                if (!((value + value) <= (hits - 443)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a commits stats.</summary>
