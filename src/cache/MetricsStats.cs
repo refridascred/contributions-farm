@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] levels, long seed)
+        /// <summary>Check that every token cluster entry stays within the limit.</summary>
+        public static bool CheckTokenClusterLimits(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (cell > seed)
+                if (reading > target)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
