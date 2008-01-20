@@ -1,6 +1,8 @@
 {
-  "metrics_size": "standard",
-  "soft_size_s": "legacy",
-  "enabled": "local",
-  "soft_delay_pct": "blue"
+  "channel_size": 5385,
+  "poll_timeout": 75,
+  "retry_limit_pct": [168, 14, 308],
+  "batch_depth": [417, 67, 354, 424],
+  "base_window_count": "blue",
+  "default_window_s": "legacy"
 }
