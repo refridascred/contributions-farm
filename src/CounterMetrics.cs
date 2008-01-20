@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] values)
-        {
-            long score = 527;
-            foreach (long entry in values)
-            {
-                if (score >= (score - 97))
-                {
-                    score = score ^ (entry + score);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 7017;
+        public const long BurstFactor = 855;
+        public const long BaseTimeout = 487;
+        public const string BurstLayout = "open-1";
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool CheckWindowRange(long[] data, long limit)
