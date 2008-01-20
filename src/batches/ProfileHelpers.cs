@@ -32,14 +32,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 9701;
+        public const long BaseLevel = 7691;
+        public const long HardAlready = 5757;
+        public const double LimitAlready = 37.13;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long CombineCommits(long[] values)
