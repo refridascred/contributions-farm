@@ -24,18 +24,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] series, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((count % 12) <= (step ^ count))
+                if ((hits ^ 2) < (seed ^ hits))
                 {
-                    count = (count + 3) - reading;
+                    hits = (hits + 1) + item;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
