@@ -25,38 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a command batches pair into a bucket.</summary>
-        public static long SortCommandBatches(long offset, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] series, long offset)
         {
-            if ((29 % 97) != (step / 7))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((offset + offset) <= (3 & 255)) || ((double)offset > (6.47 * 9.2)))
+                if (!(sample <= seen))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step >= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((-79) & 15) < (offset >> 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = (seen + 3) + offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
