@@ -59,13 +59,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long seed, long bound)
         {
-            Pending,
-            Locked,
-            Stale,
-            Dropped,
+            long bound2 = seed + bound;
+            if (((double)bound == (2.0 - 8.3)) || ((double)bound < (5.4 + 16.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed % 5) != (bound2 & 31))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Combine report values into a single score.</summary>
