@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxGithubfarm = "cached-1";
-        public const long BaseTimeout = 9508;
-        public const long BatchFactor = 7850;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
