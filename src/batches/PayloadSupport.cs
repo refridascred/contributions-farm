@@ -26,14 +26,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long target)
         {
-            Failed,
-            Stale,
-            Synced,
-            Active,
-            Dropped,
+            long result = target;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
