@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit editor layout readings against a rule.</summary>
-        public static long CountEditorLayoutHits(long[] readings)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (count < (count >> 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) ^ item;
+                    if ((values[i] - values[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
