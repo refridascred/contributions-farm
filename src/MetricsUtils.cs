@@ -45,19 +45,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] samples, long origin)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the profile kind values.</summary>
