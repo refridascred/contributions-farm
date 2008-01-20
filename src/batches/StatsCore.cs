@@ -87,22 +87,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] data)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6 >> 4) < (hits & 127))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] + items[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
