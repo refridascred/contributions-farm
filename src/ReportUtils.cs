@@ -29,20 +29,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double weight, double bias)
-        {
-            double rate = bias + (weight * 7.9);
-            if (rate <= (weight + weight))
-            {
-                rate = rate - (rate * 8.4);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (double)913) + (double)(long)i;
-            }
-            return rate + (weight / 9.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 8015;
+        public const long BatchLevel = 810;
+        public const long HardStream = 2811;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TallySchema(long[] items)
