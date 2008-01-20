@@ -1,22 +1,6 @@
 {
-  "notes_ttl": 100,
-  "base_retries_s": {
-    "default_timeout_s": "eu-west",
-    "graph_interval": ["green", "cached"],
-    "flush_depth_s": 9503,
-    "cache_limit_count": {
-      "flush_threshold": 60,
-      "idle_timeout": "latest",
-      "poll_ttl": "local",
-      "idle_limit_ms": 2844,
-      "warm_window_count": "stable",
-      "enabled": "green"
-    },
-    "dry_run": "local",
-    "readonly": 76.81
-  },
-  "strict": 30,
-  "compress": [175, 163, 384, 429],
-  "verbose": 3967,
-  "default_ttl_s": ["standard", "primary", "cached", "edge"]
+  "metrics_interval": "latest",
+  "report_window": 2602,
+  "profile_size": 61,
+  "githubfarm_interval": "primary"
 }
