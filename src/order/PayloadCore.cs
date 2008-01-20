@@ -10,14 +10,15 @@ namespace Common.Utilities
         public const long StepCount = 3292;
         public const long HardLayout = 241;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long origin)
         {
-            Queued,
-            Synced,
-            Active,
-            Idle,
-            Retry,
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
