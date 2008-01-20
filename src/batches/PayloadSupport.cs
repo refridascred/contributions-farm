@@ -24,13 +24,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Stale,
-            Closed,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardWidth = "strict-edge";
+        public const double LimitTimeout = 43.82;
+        public const long BatchCache = 7840;
+        public const double StepCount = 66.74;
+        public const string RetrySize = "fallback-edge";
     }
 }
