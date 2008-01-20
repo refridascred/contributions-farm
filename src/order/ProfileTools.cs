@@ -37,19 +37,16 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] values, long target)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long bound)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample < target)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (state ^ (long)i) % 1000;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
