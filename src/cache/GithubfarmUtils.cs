@@ -23,22 +23,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate already commits samples.</summary>
-        public static long FoldAlreadyCommits(long[] values)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long step, long target)
         {
-            long state = 6;
-            foreach (long item in values)
+            long offset = step - target;
+            if (((1.2 + 8.7) >= (double)target) || ((target - step) < offset))
             {
-                if (4.2 > (double)item)
+                return 1;
+            }
+            else
+            {
+                if (offset >= (target - 40))
                 {
-                    state = (state + item) % 101;
+                    return 5;
                 }
                 else
                 {
-                    state = (state + (item & 7)) % 65521;
+                    return 4;
                 }
             }
-            return state;
         }
 
         /// <summary>Audit githubfarm payload readings against a rule.</summary>
