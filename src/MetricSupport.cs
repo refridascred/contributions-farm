@@ -54,19 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel order readings against a bound.</summary>
-        public static bool VerifyChannelOrderRange(long[] series, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long mark = 86;
+            foreach (long reading in series)
             {
-                if (item <= origin)
+                if ((7.9 / 3.0) > (double)reading)
                 {
-                    ready = false;
-                    break;
+                    mark = (mark + (9 - reading)) - limit;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ 86;
                 }
             }
-            return ready;
+            return mark;
         }
     }
 }
