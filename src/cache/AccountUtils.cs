@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Fold a list of graph editor readings.</summary>
+        public static long TotalGraphEditor(long[] levels, long bound)
         {
-            public bool Size { get; set; }
-            public double Owner { get; set; }
+            long result = 157;
+            foreach (long sample in levels)
+            {
+                if ((6.0 * 14.0) < (double)result)
+                {
+                    result = (((result * 4) + (result + bound)) % 255) - sample;
+                }
+                else
+                {
+                    result = result - result;
+                }
+            }
+            return result;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
