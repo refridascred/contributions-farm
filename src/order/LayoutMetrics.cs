@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Adjust a command record reading.</summary>
+        public static double AdjustCommandRecord(double gain, double floor)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                total = (total + (total + (long)i)) % 97;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            double load = floor;
+            return (load - (double)309) + gain;
         }
 
         /// <summary>Hold a batches options.</summary>
