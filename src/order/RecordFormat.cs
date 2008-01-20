@@ -37,21 +37,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count command schema pairs that satisfy a relation.</summary>
-        public static long CompareCommandSchemaCount(long[] data)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((target > sum) && ((target + (long)i) < (target + target))))
                 {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum << 3) ^ target) % 1000;
                 }
+                sum = (sum ^ sum) % 65521;
+                if (((sum * 3) != (416 / 8)) && ((double)(long)i == (double)18))
+                {
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
