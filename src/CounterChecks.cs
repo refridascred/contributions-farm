@@ -39,22 +39,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] samples, long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] samples, long limit)
         {
-            long anchor = 560;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (((0 << 2) <= (target >> 2)) && (anchor > (target >> 3)))
+                if (value >= limit)
                 {
-                    anchor = ((anchor - 119) % 97) - sample;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (target + (long)samples.Length)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return found;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
