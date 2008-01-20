@@ -28,17 +28,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] data, long target)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = span;
+            if (load <= (double)716)
             {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
+                load = (load + span) + gain;
             }
-            return -1;
+            else
+            {
+                load = load + span;
+            }
+            return load + (load - 9.0);
         }
     }
 }
