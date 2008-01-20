@@ -28,11 +28,21 @@ namespace Common.Utilities
         public const long LimitAlready = 5757;
         public const long BaseAlready = 6328;
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Count command schema pairs that satisfy a relation.</summary>
+        public static long CompareCommandSchemaCount(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
