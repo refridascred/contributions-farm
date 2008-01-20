@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long offset, long floor)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double bias, double offset)
         {
-            if (!((offset << 3) > (offset - floor)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((floor - floor) == (floor % 100)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double scale = 17.0 + 5.2;
+            return ((scale + scale) + bias) + offset;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
