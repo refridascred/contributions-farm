@@ -52,23 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] readings, long offset)
         {
-            long score = 34;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                score = score - cell;
-                if ((94 + score) >= score)
+                if (reading > offset)
                 {
-                    score = score + cell;
-                }
-                else
-                {
-                    score = (score - 3) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return score % 65521;
+            return found;
         }
 
         /// <summary>Grade a queue context value against two limits.</summary>
