@@ -54,11 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 1143;
-        public const long BurstCache = 1787;
-        public const double MaxInterval = 44.46;
-        public const double StepCache = 89.06;
-        public const long RetryCache = 1118;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "open-1";
+        public const long RetryFilter = 1785;
+        public const long WindowCount = 3324;
+        public const string BurstFilter = "strict-edge";
+        public const long MinScore = 4332;
     }
 }
