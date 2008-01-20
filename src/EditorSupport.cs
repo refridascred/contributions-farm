@@ -19,15 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double bias, double floor)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            double mean = (double)793 / 2.0;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = ((mean + (double)183) + (double)(long)i) + floor;
-            }
-            return mean + bias;
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
