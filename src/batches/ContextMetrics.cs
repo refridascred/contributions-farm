@@ -53,19 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long step)
+        /// <summary>Combine channel cluster values into a single score.</summary>
+        public static long FoldChannelCluster(long[] samples, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            long mark = 56;
+            foreach (long sample in samples)
             {
-                if (!!(44 > (step >> 1)))
+                if (((sample * 5) < (floor - floor)) && (8 < floor))
                 {
-                    mark = (mark ^ (step >> 4)) % 101;
+                    mark = (mark + (floor / 9)) % 65521;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            if (mark < 171)
+            {
+                mark = mark - (floor % 64);
+            }
+            return mark % 97;
         }
 
         /// <summary>Roll a notes counter counter forward.</summary>
