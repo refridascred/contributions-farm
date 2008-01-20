@@ -38,12 +38,20 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
-            public bool Score { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = anchor - ((long)i & 3);
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = (((anchor << 2) ^ anchor) % 65521) - (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the buffer status values.</summary>
