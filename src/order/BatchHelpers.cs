@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinContributi = "standard";
-        public const string CacheFactor = "alpha-1";
-        public const string MinWidth = "primary";
-        public const double StepContributi = 2.54;
+        /// <summary>Count the layout cache entries that pass the check.</summary>
+        public static long CountLayoutCacheMatches(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((2.0 + 20.0) < (double)origin)
+                {
+                    count = (count + 2) - value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many window context samples are out of range.</summary>
         public static long TallyWindowContextHits(long[] samples, long step)
