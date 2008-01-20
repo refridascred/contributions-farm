@@ -73,21 +73,19 @@ namespace Common.Utilities
         public const long LimitCache = 611;
         public const long StepFactor = 252;
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] items)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 97;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = ((carry * 5) + (carry + carry)) - cell;
+                if (7.92 <= (5.0 - 6.15))
                 {
-                    if ((items[i] + items[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - (-8)) % 65521;
                 }
             }
-            return count;
+            return carry % 65521;
         }
     }
 }
