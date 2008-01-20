@@ -46,23 +46,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of account order entries.</summary>
-        public static long TotalAccountOrder(long[] series, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] samples, long offset)
         {
-            long carry = 489;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                long seen = (carry & 15) + (5 >> 5);
-                if ((6 >> 3) >= (seen + carry))
+                if (reading < offset)
                 {
-                    seen = ((seen * 3) + (value & 255)) % 65521;
-                }
-                if (origin >= (carry << 3))
-                {
-                    carry = ((carry << 3) ^ carry) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
