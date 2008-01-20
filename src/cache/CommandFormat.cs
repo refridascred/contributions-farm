@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] values, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if (((9.2 - 12.0) < (double)count) && (value <= offset))
+                {
+                    count = count + 2;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
