@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] series, long seed)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] values)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count + seed) <= (count << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) + datum;
+                    if ((values[i] + values[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
