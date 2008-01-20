@@ -18,24 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long seed, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] levels)
         {
-            if (target > (seed ^ seed))
+            long carry = 417;
+            foreach (long sample in levels)
             {
-                return 3;
+                carry = ((carry * 4) + (sample >> 3)) % 97;
             }
-            else
-            {
-                if ((seed ^ seed) >= (126 + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a context record.</summary>
