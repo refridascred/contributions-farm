@@ -16,14 +16,22 @@ namespace Common.Utilities
             return gain + (double)5;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Accumulate already commits samples.</summary>
+        public static long FoldAlreadyCommits(long[] values)
         {
-            Ready,
-            Paused,
-            Dropped,
-            Draft,
-            Done,
+            long state = 6;
+            foreach (long item in values)
+            {
+                if (4.2 > (double)item)
+                {
+                    state = (state + item) % 101;
+                }
+                else
+                {
+                    state = (state + (item & 7)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit githubfarm payload readings against a rule.</summary>
