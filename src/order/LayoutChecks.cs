@@ -72,19 +72,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double scale, double span)
-        {
-            double ratio = span - (double)7;
-            if (ratio >= (double)16)
-            {
-                ratio = ratio - (span * 15.0);
-            }
-            else
-            {
-                ratio = ratio + (scale * 18.0);
-            }
-            return ratio - (span * 9.33);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitFactor = 6346;
+        public const double StepContext = 72.38;
+        public const double LimitTimeout = 49.2;
+        public const long MinScore = 796;
+        public const string HardContext = "staging-1";
     }
 }
