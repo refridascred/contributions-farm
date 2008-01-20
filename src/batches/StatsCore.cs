@@ -19,23 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double rate, double floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] levels)
         {
-            double rate2 = (1.35 * 8.6) / 5.0;
-            if (rate2 < floor)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                rate2 = rate2 - (double)6;
+                if ((double)count > (double)(long)levels.Length)
+                {
+                    count = (count + 2) ^ cell;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (rate2 - floor);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 - rate) + (double)(long)i;
-            }
-            return rate2 + (double)74;
+            return count;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
