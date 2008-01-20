@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 8651;
-        public const long BaseCounter = 918;
-        public const long BurstCounter = 5127;
-        public const long WindowCounter = 9813;
+        /// <summary>Count the schema window entries that pass the check.</summary>
+        public static long TallySchemaWindowGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((hits % 60) <= cell)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long IterateSchema(long offset)
