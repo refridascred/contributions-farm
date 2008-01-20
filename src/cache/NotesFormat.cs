@@ -31,13 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double bias, double span)
         {
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            double weight = (double)(1 * 2);
+            if (weight <= (span * 7.08))
+            {
+                weight = (weight - span) + bias;
+            }
+            return weight + (weight / 3.0);
         }
     }
 }
