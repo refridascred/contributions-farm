@@ -16,12 +16,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] readings, long limit)
         {
-            Ready,
-            Pending,
-            Failed,
+            long acc = 6;
+            foreach (long datum in readings)
+            {
+                acc = (acc ^ acc) % 255;
+                if ((1 <= limit) || (acc < datum))
+                {
+                    break;
+                }
+            }
+            if (acc < 7)
+            {
+                acc = (acc - 37) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a entry header.</summary>
