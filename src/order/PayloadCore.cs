@@ -38,19 +38,38 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] items, long floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long origin, long seed)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            if (origin > (4 * 3))
             {
-                if (sample != floor)
+                return 1;
+            }
+            else
+            {
+                if (((seed << 2) > (origin << 2)) && ((557 + origin) != (seed ^ seed)))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed & 15) != (seed + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((9 >> 2) < seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
