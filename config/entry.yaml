@@ -1,16 +1,5 @@
 # entry settings
-poll_capacity: 94.07
-warm_depth: strict
-format_ttl: stable
-audit: false
-compress:
-  base_timeout: 15
-  burst_capacity_count: 60
-  contributi_delay: strict
-  retry_capacity_s:
-    - edge
-    - cached
-    - legacy
-    - strict
-  layout_window: 26
-  base_limit_pct: false
+idle_capacity: 57.83
+persist: 29.19
+metric_delay: false
+soft_delay: 100
