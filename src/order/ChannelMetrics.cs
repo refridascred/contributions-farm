@@ -33,17 +33,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] items, long offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (double)(93 ^ 6);
+            return ((rate + (16.0 + 7.7)) + scale) + bias;
         }
 
         /// <summary>Describe the queue mode values.</summary>
