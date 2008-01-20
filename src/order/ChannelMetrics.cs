@@ -31,21 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] series)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)18;
+            if (bias <= (span + span))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias - (12.0 + rate);
             }
-            return hits;
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias + bias;
         }
     }
 }
