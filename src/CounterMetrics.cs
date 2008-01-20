@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] levels, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] values)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long score = 527;
+            foreach (long entry in values)
             {
-                if (84 <= (matches + limit))
+                if (score >= (score - 97))
                 {
-                    matches = (matches + 3) ^ item;
+                    score = score ^ (entry + score);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
