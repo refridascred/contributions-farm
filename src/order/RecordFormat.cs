@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            Ready,
+            Queued,
+            Active,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Accumulate stats samples.</summary>
