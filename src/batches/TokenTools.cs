@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepTimeout = 8313;
-        public const long BatchGithubfarm = 8378;
-        public const long BatchInterval = 1816;
-        public const long WindowFactor = 811;
-        public const long SoftSize = 1930;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a report cache reading.</summary>
         public static double BlendReportCache(double rate, double floor)
