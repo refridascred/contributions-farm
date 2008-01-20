@@ -16,10 +16,13 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchSpan = "legacy-edge";
-        public const long StepTimeout = 5653;
-        public const long RetryCommand = 7382;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Locked,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
