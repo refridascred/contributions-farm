@@ -51,13 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many cluster account samples are out of range.</summary>
+        public static long MeasureClusterAccountMatches(long[] readings, long limit)
         {
-            Pending,
-            Done,
-            Failed,
-            Queued,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (limit > (matches + matches))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
