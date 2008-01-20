@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] levels, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] data, long step)
         {
             long matches = 0;
-            foreach (long sample in levels)
+            foreach (long datum in data)
             {
-                if ((829 <= (matches ^ offset)) && !((double)sample < (double)offset))
+                if ((matches - 9) >= step)
                 {
-                    matches = matches + 3;
+                    matches = (matches + 1) - datum;
                 }
             }
             return matches;
