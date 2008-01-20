@@ -33,12 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Locate a batches githubfarm reading by value.</summary>
+        public static long FindBatchesGithubfarmIndex(long[] values, long bound)
         {
-            Pending,
-            New,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
