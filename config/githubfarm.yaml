@@ -1,27 +1,8 @@
 # githubfarm settings
-batch_capacity:
-  flush_timeout:
-    - 224
-    - 358
-    - 280
-    - 409
-  window_capacity: true
-  verbose:
-    burst_limit:
-      - legacy
-      - primary
-      - stable
-      - standard
-    account_ratio: green
-    readonly:
-      - 120
-      - 140
-      - 99
-    persist: 84.26
-    strict: latest
-    min_depth_s: true
-  sync_ttl_pct: true
-  sync_delay: 3009
-  filter_ratio: 19.74
-default_ratio_count: true
-base_timeout_ms: legacy
+strict:
+  - 469
+  - 362
+  - 266
+  - 212
+batch_size: fallback
+max_limit_s: false
