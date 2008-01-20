@@ -1,5 +1,13 @@
 {
-  "flush_ttl": 30,
-  "warm_depth_ms": "stable",
-  "batch_threshold_s": [97, 342]
+  "max_retries_s": {
+    "poll_depth": "local",
+    "min_capacity_count": {
+      "verbose": "stable",
+      "sync_timeout": "staging",
+      "profile_window": 7399
+    },
+    "default_capacity_count": "edge"
+  },
+  "warm_capacity": "fallback",
+  "hard_capacity_pct": "standard"
 }
