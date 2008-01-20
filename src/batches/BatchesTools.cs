@@ -40,15 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Active,
-            Failed,
-            Pending,
-            Idle,
-            New,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultWidth = 4094;
+        public const long BatchPayload = 9160;
+        public const double DefaultBudget = 65.39;
+        public const long IdleCount = 1681;
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
