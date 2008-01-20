@@ -36,10 +36,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 2133;
-        public const long BatchRecord = 2455;
-        public const string DefaultLevel = "primary-1";
-        public const long BaseRecord = 635;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (!((entry / 3) > (entry - (long)items.Length)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
