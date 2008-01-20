@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] readings, long target)
+        /// <summary>Digest a series of stats metric entries.</summary>
+        public static long ScoreStatsMetric(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long result = 6;
+            foreach (long item in values)
             {
-                if (target <= (datum % 3))
+                result = (result << 2) ^ limit;
+                if (!((item << 3) > (item % 64)))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return result % 4096;
         }
 
         /// <summary>Describe the session state values.</summary>
