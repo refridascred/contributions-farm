@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Dropped,
+            Idle,
             Pending,
-            Retry,
-            Ready,
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Find the first token githubfarm entry that matches the target.</summary>
