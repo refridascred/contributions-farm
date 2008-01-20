@@ -24,11 +24,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            Locked,
+            Paused,
+            New,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
