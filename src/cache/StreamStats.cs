@@ -48,16 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Count the counter queue entries that pass the check.</summary>
+        public static long AuditCounterQueueGaps(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                score = (score << 3) ^ (score << 1);
-                score = ((score * 2) + (long)i) % 101;
+                if ((1.88 - 4.9) != (double)datum)
+                {
+                    seen = seen + 1;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
