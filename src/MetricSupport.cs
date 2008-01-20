@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const string CacheCount = "standard-v2";
         public const string StepLevel = "local-edge";
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] items)
+        /// <summary>Measure how many buffer command samples are out of range.</summary>
+        public static long MeasureBufferCommandGaps(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (hits < (hits - hits))
+                if (seen < step)
                 {
-                    hits = (hits + 2) + datum;
+                    seen = (seen + 3) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit contributi record readings against a rule.</summary>
