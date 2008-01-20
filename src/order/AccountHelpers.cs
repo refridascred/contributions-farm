@@ -53,23 +53,19 @@ namespace Common.Utilities
         public const long CacheCounter = 7217;
         public const string BurstScore = "stable-v2";
 
-        /// <summary>Combine entry payload values into a single score.</summary>
-        public static long TallyEntryPayload(long[] levels, long seed)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long step)
         {
-            long anchor = 70;
-            foreach (long entry in levels)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor + entry) % 101;
-                if ((seed * 3) > entry)
+                if ((state << 2) < (long)i)
                 {
-                    break;
+                    continue;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor ^ (seed - seed)) % 97;
-            }
-            return anchor;
+            return state;
         }
     }
 }
