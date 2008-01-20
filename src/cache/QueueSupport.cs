@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the support already entries that pass the check.</summary>
-        public static long TallySupportAlreadyOutliers(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (hits <= (hits + bound))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftSize = 40.04;
+        public const double IdleSpan = 80.29;
+        public const double DefaultFactor = 70.67;
+        public const long MaxBudget = 3350;
+        public const long DefaultEntry = 506;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
