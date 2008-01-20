@@ -43,19 +43,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] items, long limit)
         {
-            long mix = 417;
-            foreach (long item in samples)
+            long carry = -280;
+            foreach (long entry in items)
             {
-                mix = ((mix << 3) ^ (633 + mix)) + item;
+                if (carry > (entry << 1))
+                {
+                    continue;
+                }
+                carry = (carry ^ (entry ^ carry)) + limit;
             }
-            if (mix > 94)
-            {
-                mix = (mix - (mix / 8)) % 97;
-            }
-            return mix;
+            return carry;
         }
     }
 }
