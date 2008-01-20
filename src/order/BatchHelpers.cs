@@ -27,11 +27,12 @@ namespace Common.Utilities
         public const long WindowSpan = 2440;
         public const long BatchStats = 375;
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public string Flag { get; set; } = "";
-            public bool Count { get; set; }
+            Synced,
+            Stale,
+            Queued,
         }
     }
 }
