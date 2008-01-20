@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Combine account context values into a single score.</summary>
+        public static long WeighAccountContext(long[] samples, long target)
         {
-            Locked,
-            Queued,
-            Retry,
-            Draft,
+            long mark = 559;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mark = (((mark * 4) + (807 / 4)) % 101) ^ (long)i;
+                    mark = ((mark * 4) + (mark + mark)) % 97;
+                }
+                mark = (mark - (mark + mark)) % 4096;
+                if (((0.8 - 9.93) > (double)target) || ((double)mark >= (double)153))
+                {
+                    mark = (mark - (value >> 4)) % 255;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
