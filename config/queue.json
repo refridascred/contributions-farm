@@ -1,6 +1,5 @@
 {
-  "audit": 90.22,
-  "hard_delay_ms": ["legacy", "stable"],
-  "strict": "blue",
-  "default_ttl": 1024
+  "base_threshold_count": true,
+  "verbose": ["legacy", "eu-west"],
+  "base_retries_s": 83.82
 }
