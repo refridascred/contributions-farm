@@ -75,13 +75,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Ready,
-            Closed,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinWidth = 8220;
+        public const string IdleLevel = "fallback";
+        public const long DefaultLevel = 4117;
     }
 }
