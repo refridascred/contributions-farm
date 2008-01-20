@@ -21,22 +21,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine profile already values into a single score.</summary>
-        public static long CombineProfileAlready(long[] levels)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long anchor = -19;
-            foreach (long reading in levels)
-            {
-                if (!((anchor % 16) > (reading % 7)))
-                {
-                    anchor = (anchor << 3) ^ (anchor / 9);
-                }
-            }
-            if (anchor < 169)
-            {
-                anchor = (anchor - anchor) % 97;
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
