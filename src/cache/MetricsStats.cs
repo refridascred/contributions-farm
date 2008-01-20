@@ -44,17 +44,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] items, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long step, long step2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((0 * 3) <= step) && ((step2 / 8) < (step + step)))
             {
-                if (items[i] <= seed)
+                return 1;
+            }
+            else
+            {
+                if ((step2 << 1) < 68)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
