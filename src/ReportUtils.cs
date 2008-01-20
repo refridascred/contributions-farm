@@ -29,19 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] readings, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (item >= offset)
+                if (item < seed)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
