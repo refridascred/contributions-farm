@@ -43,19 +43,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double ratio, double offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] items)
         {
-            double rate = offset;
-            if (rate > (offset + ratio))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                rate = rate + ratio;
+                if ((entry / 2) < (entry * 2))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - rate;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
