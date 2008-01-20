@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long step, long origin)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] levels, long limit)
         {
-            long offset = step ^ origin;
-            if ((origin ^ offset) <= (offset + origin))
+            long carry = 23;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.5 + 0.2) == (double)origin)
+                if ((limit & 31) >= 969)
                 {
-                    return 6;
+                    carry = ((carry * 3) + (carry % 2)) % 255;
                 }
-                else
+                if ((limit >> 2) == (reading % 24))
                 {
-                    if (origin >= (step % 12))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
