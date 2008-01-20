@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of command commits readings.</summary>
-        public static long TallyCommandCommits(long[] series, long step)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double scale, double bias)
         {
-            long result = 88;
-            foreach (long item in series)
+            double load = scale - (bias - scale);
+            for (int i = 0; i < 7; i++)
             {
-                if (((long)series.Length <= (step - (-1))) || ((6 - step) > (step >> 2)))
-                {
-                    result = result - (item - step);
-                }
-                if ((item + (long)series.Length) <= (item + item))
-                {
-                    break;
-                }
+                load = (load + load) + (double)(long)i;
             }
-            return result % 4096;
+            return load + load;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
