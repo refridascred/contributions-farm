@@ -79,5 +79,16 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double rate, double bias)
+        {
+            double bias2 = (double)(67 - 67);
+            if (bias2 < 8.67)
+            {
+                bias2 = ((bias2 - (double)915) - rate) - bias;
+            }
+            return bias2 + (double)651;
+        }
     }
 }
