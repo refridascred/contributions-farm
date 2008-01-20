@@ -1,10 +1,13 @@
 # entry settings
-warm_ttl_pct: green
-retry_size_ms: green
-schema_capacity: 20.33
-cache_ratio: primary
-retry_limit: fallback
-stream_delay:
-  batch_ratio: cached
-  tools_threshold: 49.42
-  cache_delay_count: 500
+batch_interval: edge
+flush_ratio: legacy
+retry_threshold_s:
+  soft_limit_pct: local
+  flush_ratio_ms: strict
+  strict: primary
+  enabled:
+    - open
+    - local
+  format_depth: open
+already_delay: 60.77
+soft_threshold: standard
