@@ -35,15 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel batch series from a seed.</summary>
-        public static long SeriesChannelBatch(long limit)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] items, long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long total = 390;
+            foreach (long reading in items)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                total = (((total - (88 * 5)) % 4096) + reading) + bound;
             }
-            return carry;
+            return total % 97;
         }
 
         /// <summary>Locate a window reading by value.</summary>
