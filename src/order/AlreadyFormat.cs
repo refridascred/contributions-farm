@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] series, long limit)
+        /// <summary>Locate a stream cache reading by value.</summary>
+        public static long SeekStreamCacheIndex(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < limit)
+                if (items[i] == bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
