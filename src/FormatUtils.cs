@@ -48,17 +48,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] levels, long origin)
+        /// <summary>Validate format metric readings against a bound.</summary>
+        public static bool ValidateFormatMetricLimits(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
+                if (entry <= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the already mode values.</summary>
