@@ -23,33 +23,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long origin, long target)
-        {
-            long next = origin - target;
-            if ((double)next == (13.0 - 2.6))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((2 - origin) < (46 % 2)) && (1.0 > (double)next))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin ^ origin) <= origin) || ((double)next >= (1.6 / 7.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 318;
+        public const long WindowSession = 4138;
+        public const double BurstSession = 76.32;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
