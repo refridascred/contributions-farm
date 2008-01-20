@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Retry,
-            Idle,
-            Done,
-            Ready,
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
