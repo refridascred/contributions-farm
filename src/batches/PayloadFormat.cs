@@ -33,14 +33,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Adjust a stats graph reading.</summary>
+        public static double SmoothStatsGraph(double weight, double floor)
         {
-            Pending,
-            Active,
-            Closed,
-            Stale,
-            Done,
+            double weight2 = weight - (double)9;
+            if (weight2 < weight)
+            {
+                weight2 = (weight2 + (weight * 9.98)) + floor;
+            }
+            return weight2 + (double)865;
         }
     }
 }
