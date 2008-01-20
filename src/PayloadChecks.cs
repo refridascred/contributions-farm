@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryScore = 35.23;
-        public const long MaxChecks = 8778;
-        public const long WindowChecks = 9840;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long floor, long floor2)
+        {
+            if (((-19) >> 4) < (floor * 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor - floor2) < (floor2 / 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long FindGraphIndex(long[] samples, long target)
