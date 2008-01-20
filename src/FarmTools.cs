@@ -24,11 +24,13 @@ namespace Common.Utilities
             return scale + (floor - 6.95);
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
