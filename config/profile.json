@@ -1,6 +1,17 @@
 {
-  "batch_threshold_pct": false,
-  "metric_ratio": 86,
-  "base_window_count": 93.68,
-  "poll_interval_s": 100
+  "order_retries": false,
+  "idle_depth_s": false,
+  "max_depth_ms": {
+    "flush_size_count": 78.43,
+    "sync_window_count": {
+      "max_window_s": [233, 470, 393, 265],
+      "base_interval_ms": false,
+      "idle_ttl": 3698
+    },
+    "command_depth": "blue",
+    "dry_run": "cached",
+    "idle_depth_ms": false,
+    "soft_depth": false
+  },
+  "payload_timeout": 77.11
 }
