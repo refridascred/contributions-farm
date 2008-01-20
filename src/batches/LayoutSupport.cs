@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long floor, long limit)
-        {
-            long next = floor ^ limit;
-            if ((next << 1) > limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((next * 5) > ((-78) - limit)) && (limit <= (limit >> 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstInterval = 9550;
+        public const double BurstAccount = 41.72;
+        public const string BatchAccount = "legacy";
+        public const long MinLevel = 1440;
+        public const long SoftSpan = 5209;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long SoftReport = 9313;
