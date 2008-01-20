@@ -37,19 +37,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate payload profile readings against a bound.</summary>
-        public static bool GuardPayloadProfileRange(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 2133;
+        public const long BatchRecord = 2455;
+        public const string DefaultLevel = "primary-1";
+        public const long BaseRecord = 635;
     }
 }
