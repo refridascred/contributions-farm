@@ -1,10 +1,13 @@
 # entry settings
-hard_depth_ms:
-  flush_delay_s: true
-  layout_delay: 5127
-  window_capacity: 37
-  strict: strict
-readonly: primary
-cluster_window: legacy
-poll_delay: blue
-burst_timeout: cached
+compress: local
+enabled: blue
+dry_run:
+  hard_delay: 60
+  editor_ttl: 16.41
+  max_ttl: 74
+hard_delay:
+  dry_run: 4058
+  base_capacity: local
+  context_capacity: 74
+stream_interval: false
+hard_interval_pct: local
