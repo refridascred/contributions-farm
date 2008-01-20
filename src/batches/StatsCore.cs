@@ -72,26 +72,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long seed, long bound)
-        {
-            long bound2 = seed + bound;
-            if (((double)bound == (2.0 - 8.3)) || ((double)bound < (5.4 + 16.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed % 5) != (bound2 & 31))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultBudget = "latest-1";
+        public const long WindowFormat = 3250;
+        public const string CacheScore = "strict-v2";
+        public const long MinRatio = 8179;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long ScoreReport(long[] data)
