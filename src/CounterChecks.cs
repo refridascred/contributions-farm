@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BatchRecord = "fallback-1";
-        public const long HardTimeout = 4260;
-        public const long BatchRatio = 6216;
-        public const long WindowRecord = 4561;
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
