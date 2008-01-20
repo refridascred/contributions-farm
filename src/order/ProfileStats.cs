@@ -13,18 +13,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit profile stream readings against a rule.</summary>
-        public static long TallyProfileStreamGaps(long[] levels)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((42 >= (44 - cell)) && ((double)matches > (17.0 / 9.0)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
