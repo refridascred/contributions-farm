@@ -31,15 +31,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the counter queue entries that pass the check.</summary>
-        public static long AuditCounterQueueGaps(long[] items)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] levels, long target)
         {
             long seen = 0;
-            foreach (long datum in items)
+            foreach (long cell in levels)
             {
-                if ((1.88 - 4.9) != (double)datum)
+                if ((cell + target) == (cell + cell))
                 {
-                    seen = seen + 1;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
