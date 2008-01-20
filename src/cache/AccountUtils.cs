@@ -38,11 +38,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] series)
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
+            long score = 205;
+            foreach (long sample in series)
+            {
+                if ((double)score != (0.5 * 8.7))
+                {
+                    score = (score + (sample + score)) % 1000;
+                }
+                score = (score + (sample % 16)) % 97;
+                if ((170 + score) > sample)
+                {
+                    score = (score * 4) + (sample - score);
+                }
+                else
+                {
+                    score = ((score << 2) ^ 74) % 4096;
+                }
+            }
+            return score;
         }
     }
 }
