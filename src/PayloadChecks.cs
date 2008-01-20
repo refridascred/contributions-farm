@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseContext = "fallback-v2";
-        public const long BatchContext = 7877;
-        public const long WindowWidth = 4459;
-        public const string WindowBudget = "latest-v2";
-        public const string RetryContext = "standard-edge";
+        /// <summary>Rank profile schema input into a small class.</summary>
+        public static long BucketProfileSchema(long seed, long limit)
+        {
+            long next = seed + limit;
+            if (limit >= (next >> 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)next != (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((next % 5) == (next + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long FoldSchema(long[] values, long offset)
