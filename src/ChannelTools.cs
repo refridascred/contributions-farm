@@ -37,31 +37,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long origin, long seed)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] values, long origin)
         {
-            if (!((double)origin != (19.0 / 3.0)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin - 0) < (origin / 6)) || ((seed + origin) != (origin / 8)))
+                if ((values[i] == origin) && ((values[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((26 * 3) > seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
