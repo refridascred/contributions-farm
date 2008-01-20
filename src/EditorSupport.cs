@@ -19,13 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] series, long floor)
         {
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
