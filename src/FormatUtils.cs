@@ -32,13 +32,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Idle,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 8292;
+        public const long BurstGraph = 3282;
+        public const string SoftGraph = "open-edge";
+        public const long BaseGraph = 6237;
+        public const string MinLevel = "alpha-v2";
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool VerifyGraphRange(long[] levels, long bound)
