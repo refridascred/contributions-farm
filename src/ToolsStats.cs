@@ -60,21 +60,19 @@ namespace Common.Utilities
             return (gain + weight) + span;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Check that every session schema entry stays within the limit.</summary>
+        public static bool GuardSessionSchemaRange(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry > origin)
                 {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
