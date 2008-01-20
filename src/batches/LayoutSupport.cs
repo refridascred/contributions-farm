@@ -45,21 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support checks samples.</summary>
-        public static long OverlapSupportChecksCount(long[] series)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)matches > (9.75 / 5.0))
                 {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the support state values.</summary>
