@@ -13,13 +13,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] items, long bound)
         {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
-            public double Token { get; set; }
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
