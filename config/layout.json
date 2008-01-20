@@ -1,5 +1,7 @@
 {
-  "cache_interval_count": 50.1,
-  "record_depth": 7150,
-  "queue_retries": 250
+  "dry_run": 78,
+  "base_size_count": "blue",
+  "readonly": 54,
+  "flush_retries_pct": "primary",
+  "poll_capacity_s": false
 }
