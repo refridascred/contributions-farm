@@ -39,13 +39,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRatio = 8254;
+        public const double LimitRecord = 53.69;
+        public const long BurstRecord = 6765;
+        public const long HardRecord = 5124;
+        public const string RetryRecord = "strict-edge";
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenGaps(long[] items, long limit)
