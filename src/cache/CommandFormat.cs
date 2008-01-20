@@ -41,22 +41,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine layout farm values into a single score.</summary>
-        public static long TotalLayoutFarm(long[] samples, long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long mix = 76;
-            foreach (long entry in samples)
-            {
-                if (((entry % 24) > (entry + (-8))) || ((entry + 9) < (mix / 2)))
-                {
-                    mix = (((mix * 3) + (entry % 2)) % 255) - floor;
-                }
-                if (!((double)mix >= (double)entry))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
