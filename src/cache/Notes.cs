@@ -38,12 +38,10 @@ namespace Common.Utilities
         public const string RetryFormat = "legacy-v2";
         public const string WindowFormat = "latest-edge";
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftWidth = 1989;
+        public const double StepGithubfarm = 96.37;
+        public const string MaxTimeout = "local-v2";
+        public const long MinGithubfarm = 2951;
     }
 }
