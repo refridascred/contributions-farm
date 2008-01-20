@@ -33,10 +33,17 @@ namespace Common.Utilities
             return gain - (double)146;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxFactor = "alpha-v2";
-        public const long BaseSize = 5559;
-        public const long MinInterval = 5021;
-        public const long DefaultLevel = 9118;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
