@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 7850;
-        public const long DefaultDepth = 6753;
-        public const long BurstCount = 4643;
-        public const long RetryLayout = 6108;
-        public const long BurstLayout = 36;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (84 <= (matches + limit))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultCache = 105;
