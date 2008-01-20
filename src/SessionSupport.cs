@@ -13,10 +13,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 1212;
-        public const string LimitEditor = "latest-edge";
-        public const double StepRatio = 45.42;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Paused,
+            Dropped,
+            Active,
+            Idle,
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long PairSchemaCount(long[] values)
