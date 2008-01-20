@@ -29,23 +29,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] values, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] items)
         {
-            long carry = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((4.31 + 9.6) != (double)carry)
+                if ((hits << 3) <= (hits + hits))
                 {
-                    carry = (carry - (sample >> 4)) + floor;
-                    carry = ((carry << 2) ^ (sample >> 1)) % 65521;
+                    hits = (hits + 1) + entry;
                 }
-                if ((double)carry != (3.85 - 2.49))
+                else
                 {
-                    carry = ((carry * 2) + (carry & 1)) % 1000;
+                    hits = hits - 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
