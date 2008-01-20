@@ -63,17 +63,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first batch cache entry that matches the target.</summary>
-        public static long FindBatchCacheIndex(long[] data, long seed)
+        /// <summary>Blend two already layout measurements.</summary>
+        public static double BlendAlreadyLayout(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = offset;
+            if (mean >= (8.34 / 4.0))
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mean = (mean + offset) - weight;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (offset - mean)) + (double)(long)i;
+            }
+            return mean + (double)0;
         }
     }
 }
