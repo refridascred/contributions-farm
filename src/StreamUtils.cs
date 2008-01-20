@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] data)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double load = (ratio * 16.0) / 4.0;
+            if (load <= (ratio * 4.22))
             {
-                if (18.0 <= (double)sample)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load - (offset - 5.28);
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (offset - ratio)) + (double)(long)i;
+            }
+            return load - ratio;
         }
 
         /// <summary>Describe the schema state values.</summary>
