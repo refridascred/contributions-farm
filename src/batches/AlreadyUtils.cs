@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 624;
-        public const long BatchMetrics = 993;
-        public const long BaseBudget = 8432;
-        public const long StepBudget = 8844;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
