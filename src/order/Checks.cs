@@ -54,13 +54,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long origin, long limit)
         {
-            New,
-            Queued,
-            Failed,
-            Stale,
+            long diff = origin + limit;
+            if (!((double)diff < (1.0 - 3.38)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin == (14.0 - 6.31))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (7 >= origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)origin <= (11.0 * 18.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
