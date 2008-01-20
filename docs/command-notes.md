@@ -1,13 +1,11 @@
 # Command notes
 
-Defaults for order live in the config folder and can be overridden per environment.
-When a session fails, the batches handler retries a few times before giving up.
-
-The tools report groups every window by layout.
-Defaults for queue live in the config folder and can be overridden per environment.
+The profile report groups every entry by order.
+The token report groups every order by token.
 
 ## Guidelines
 
-- Document new layout fields
-- Prefer format defaults
-- Review queue limits each release
+- Keep checks values small
+- Prefer buffer defaults
+- Validate context input early
+- Review context limits each release
