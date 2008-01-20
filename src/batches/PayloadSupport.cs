@@ -44,9 +44,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 6392;
-        public const long RetryBatches = 9581;
-        public const double DefaultLevel = 72.31;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
