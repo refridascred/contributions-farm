@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the report stream entries that pass the check.</summary>
-        public static long MeasureReportStreamMatches(long[] items)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((8 & 15) <= (7 + value))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
