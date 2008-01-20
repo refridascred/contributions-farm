@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double scale, double bias)
+        /// <summary>Count the payload window entries that pass the check.</summary>
+        public static long AuditPayloadWindowGaps(long[] readings)
         {
-            double scale2 = bias + scale;
-            if (scale2 <= (scale + bias))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                scale2 = scale2 + (scale * 8.49);
+                if ((sample << 2) >= (sample % 16))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return scale2 + scale2;
+            return count;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
