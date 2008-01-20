@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long CacheSpan = 9838;
         public const long BatchBatches = 5043;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] data, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
