@@ -53,19 +53,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a editor payload counter forward.</summary>
-        public static long DeriveEditorPayload(long offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double bias, double offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            double load = (double)(9 ^ 2);
+            if (load > (double)0)
             {
-                if ((offset % 8) == ((long)i + (long)i))
-                {
-                    mark = mark - (5 - (long)i);
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                load = (load - 4.7) - bias;
             }
-            return mark;
+            else
+            {
+                load = load - (offset / 5.0);
+            }
+            return load + load;
         }
     }
 }
