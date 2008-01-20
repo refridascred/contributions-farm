@@ -1,11 +1,15 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the graph list.
-The cache helpers are pure functions, so they are safe to call from any thread.
-Each batches is validated before it reaches the farm queue.
+Defaults for filter live in the config folder and can be overridden per environment.
+Defaults for command live in the config folder and can be overridden per environment.
+The token module keeps format values in sync with the session cache.
+
+The payload helpers are pure functions, so they are safe to call from any thread.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every entry change
-- Prefer batch defaults
-- Review command limits each release
+- Keep tools values small
+- Document new schema fields
+- Prefer contributi defaults
+- Validate already input early
