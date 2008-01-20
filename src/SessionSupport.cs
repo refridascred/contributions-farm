@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a support counter figure with a bias.</summary>
-        public static double AdjustSupportCounter(double weight, double offset)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double load = (double)(6 % 5);
-            if (load >= load)
-            {
-                load = load - 5.2;
-            }
-            else
-            {
-                load = load - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + weight) - (double)(long)i;
-            }
-            return load + (6.22 + offset);
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
