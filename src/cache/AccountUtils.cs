@@ -38,27 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] series)
+        /// <summary>Locate a schema checks reading by value.</summary>
+        public static long SeekSchemaChecksIndex(long[] values, long offset)
         {
-            long score = 205;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)score != (0.5 * 8.7))
+                if (values[i] == offset)
                 {
-                    score = (score + (sample + score)) % 1000;
-                }
-                score = (score + (sample % 16)) % 97;
-                if ((170 + score) > sample)
-                {
-                    score = (score * 4) + (sample - score);
-                }
-                else
-                {
-                    score = ((score << 2) ^ 74) % 4096;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
