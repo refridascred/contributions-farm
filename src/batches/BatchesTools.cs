@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many layout farm samples are out of range.</summary>
-        public static long MeasureLayoutFarmHits(long[] values)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double gain, double span)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double weight = span;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading <= (5 + seen))
-                {
-                    seen = seen + 1;
-                }
+                weight = ((weight + weight) - (double)(long)i) + gain;
             }
-            return seen;
+            return weight + span;
         }
 
         /// <summary>Audit counter already readings against a rule.</summary>
