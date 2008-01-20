@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const long WindowEntry = 8866;
         public const long IdleInterval = 6875;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] readings, long step)
+        /// <summary>Validate context queue readings against a bound.</summary>
+        public static bool CheckContextQueueRange(long[] items, long limit)
         {
-            long total = -67;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((total & 1) < (total % 64))
+                if (sample != limit)
                 {
-                    total = ((total - step) % 101) ^ cell;
+                    ok = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return ok;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
