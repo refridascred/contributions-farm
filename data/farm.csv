@@ -1,8 +1,6 @@
-id,region,label,ratio
-1,blue,171,legacy
-2,standard,695,standard
-3,latest,51.47,86.54
-4,legacy,83.63,latest
-5,eu-west,62.15,513
-6,603,232,27.88
-7,795,182,830
+id,score,count
+1,515,492
+2,fallback,750
+3,10.66,513
+4,596,8.93
+5,54.88,19.51
