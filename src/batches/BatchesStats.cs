@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const long IdleLevel = 2619;
         public const long WindowRatio = 411;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((item - bound) <= (35 / 8)) && ((count + 166) < (long)samples.Length))
                 {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Locate a window support reading by value.</summary>
