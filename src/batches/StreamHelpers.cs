@@ -72,22 +72,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            long total = -26;
-            foreach (long datum in data)
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((8 / 2) <= (datum * 2)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    total = total ^ total;
+                    anchor = (anchor ^ (seed + (long)i2)) % 101;
+                    anchor = (anchor - (anchor ^ anchor)) % 255;
                 }
-                else
-                {
-                    total = (total << 2) ^ (total + datum);
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return total % 97;
+            return anchor;
         }
     }
 }
