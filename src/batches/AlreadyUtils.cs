@@ -54,19 +54,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two already layout measurements.</summary>
-        public static double BlendAlreadyLayout(double weight, double offset)
-        {
-            double mean = offset;
-            if (mean >= (8.34 / 4.0))
-            {
-                mean = (mean + offset) - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (offset - mean)) + (double)(long)i;
-            }
-            return mean + (double)0;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryRatio = 939;
+        public const long HardAlready = 5850;
+        public const long RetryAlready = 7262;
     }
 }
