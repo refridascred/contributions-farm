@@ -57,23 +57,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (count > bound)
-                {
-                    count = (count + 2) - item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowSize = 34.82;
+        public const double WindowOrder = 5.01;
+        public const long SoftOrder = 1604;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinBudget = 9213;
