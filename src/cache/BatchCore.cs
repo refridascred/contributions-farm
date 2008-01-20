@@ -63,18 +63,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] values)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell << 1) > (long)values.Length)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            New,
+            Paused,
+            Synced,
         }
     }
 }
