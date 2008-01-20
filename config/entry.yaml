@@ -1,5 +1,13 @@
 # entry settings
-idle_capacity: 57.83
-persist: 29.19
-metric_delay: false
-soft_delay: 100
+burst_window_count: standard
+flush_depth_s: 40
+githubfarm_limit: 71.5
+strict:
+  sync_delay:
+    - cached
+    - latest
+    - latest
+  sync_capacity: open
+  burst_ratio_ms: 100
+dry_run: 20.9
+default_capacity_ms: 94.39
