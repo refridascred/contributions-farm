@@ -17,21 +17,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] series)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 17;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                anchor = (anchor - (anchor - bound)) % 255;
+                if (2.0 <= (double)bound)
                 {
-                    if ((series[i] + series[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
+                }
+                if ((item % 7) < (item + anchor))
+                {
+                    anchor = anchor + (bound - 70);
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Locate a batches githubfarm reading by value.</summary>
