@@ -25,11 +25,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
+            Pending,
+            New,
+            Queued,
         }
 
         /// <summary>Define already limits and defaults.</summary>
