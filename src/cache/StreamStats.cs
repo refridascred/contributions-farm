@@ -31,22 +31,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + target) == (cell + cell))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseTimeout = 45.73;
+        public const long WindowFactor = 5120;
+        public const double DefaultDepth = 49.53;
+        public const long RetryBudget = 2360;
+        public const double MinOrder = 44.69;
     }
 }
