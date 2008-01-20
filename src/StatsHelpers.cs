@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleSpan = 313;
+        public const long IdleCounter = 4873;
+        public const long CacheScore = 786;
+        public const double BatchCount = 51.39;
+        public const long LimitCounter = 770;
 
         /// <summary>Match up notes channel samples.</summary>
         public static long OverlapNotesChannelCount(long[] series)
