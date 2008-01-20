@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const string MaxStats = "strict-1";
         public const string SoftStats = "alpha-v2";
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] values, long origin)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 155;
+            foreach (long entry in samples)
             {
-                if (values[i] > origin)
+                if ((entry <= (entry * 4)) || ((entry - entry) < (entry ^ 19)))
                 {
-                    return (long)i;
+                    anchor = ((anchor + (2 % 5)) % 4096) - target;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
