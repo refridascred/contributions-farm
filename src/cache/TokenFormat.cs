@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate account already readings against a bound.</summary>
-        public static bool CheckAccountAlreadyRange(long[] series, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long result = 648;
+            foreach (long item in values)
             {
-                if (entry <= origin)
+                if ((result < (result + item)) && ((result - item) < 516))
                 {
-                    ok = false;
-                    break;
+                    result = (result * 5) + (item * 4);
+                }
+                else
+                {
+                    result = (result * 2) + (item << 3);
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Hold a window entry.</summary>
