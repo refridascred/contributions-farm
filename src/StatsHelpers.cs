@@ -58,18 +58,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] values)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long bound2 = bound - floor;
+            if (!(15.0 > (double)floor))
             {
-                if (9.0 <= (double)tally)
+                return 3;
+            }
+            else
+            {
+                if ((0.1 <= (double)bound2) || ((bound & 1) > (bound % 24)))
                 {
-                    tally = (tally + 1) ^ cell;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound2 <= 6.4)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor / 7) > floor) && ((5.79 - 6.92) == (double)bound2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
