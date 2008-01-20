@@ -31,13 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] data)
         {
-            Idle,
-            Done,
-            Locked,
-            Stale,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((seen << 2) == (datum + seen)) && ((seen / 6) != (datum * 3)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
