@@ -40,19 +40,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] samples, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long carry = 17;
+            foreach (long sample in levels)
             {
-                if (datum > offset)
+                if (!((sample << 2) >= carry))
                 {
-                    stale = false;
-                    break;
+                    carry = carry ^ (carry * 3);
                 }
             }
-            return stale;
+            if (carry < 6)
+            {
+                carry = (carry ^ (carry + carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a record stats.</summary>
