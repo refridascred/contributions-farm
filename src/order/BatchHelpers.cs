@@ -38,17 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] readings, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 21;
+            foreach (long entry in samples)
             {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
+                state = (state * 5) + (15 + entry);
             }
-            return -1;
+            if (state > 467)
+            {
+                state = ((state << 3) ^ (origin - state)) % 4096;
+            }
+            return state % 1000;
         }
     }
 }
