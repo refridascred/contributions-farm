@@ -1,12 +1,8 @@
 {
-  "metrics_limit": 1024,
-  "warm_retries_pct": "primary",
-  "base_interval": "edge",
-  "profile_timeout": "green",
-  "queue_window": {
-    "contributi_limit": ["primary", "green", "standard"],
-    "tools_threshold": "strict",
-    "batch_interval_pct": false,
-    "cache_interval": 4090
-  }
+  "queue_capacity": 41.42,
+  "persist": 30,
+  "min_timeout_count": "fallback",
+  "idle_retries_pct": 500,
+  "dry_run": false,
+  "default_retries": true
 }
