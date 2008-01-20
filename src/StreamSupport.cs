@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many editor tools samples are out of range.</summary>
-        public static long AuditEditorToolsHits(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] items)
         {
             long tally = 0;
-            foreach (long reading in samples)
+            foreach (long entry in items)
             {
-                if ((tally << 2) >= reading)
+                if ((double)entry == (11.0 + 9.0))
                 {
                     tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
                 }
             }
             return tally;
