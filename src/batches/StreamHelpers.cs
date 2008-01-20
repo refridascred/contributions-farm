@@ -48,12 +48,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] series, long step)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] <= step) && ((series[i] % 5) != 0))
+                if ((samples[i] < limit) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
