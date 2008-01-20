@@ -20,17 +20,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first route support entry that matches the target.</summary>
-        public static long LocateRouteSupportIndex(long[] data, long origin)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > origin) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
