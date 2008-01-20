@@ -24,16 +24,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] data, long offset)
         {
-            long mix = 19;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                mix = ((mix << 2) ^ (180 % 2)) + entry;
-                mix = (mix << 3) ^ (mix >> 3);
+                if ((value * 2) <= hits)
+                {
+                    hits = (hits + 2) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Count notes editor pairs that satisfy a relation.</summary>
