@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] readings)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long carry = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (((long)readings.Length % 24) <= (3 + hits))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
+                carry = carry + 303;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define format limits and defaults.</summary>
