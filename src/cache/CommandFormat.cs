@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] values, long offset)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (((9.2 - 12.0) < (double)count) && (value <= offset))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
