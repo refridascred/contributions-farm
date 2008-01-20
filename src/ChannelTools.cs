@@ -37,22 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] levels, long step)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double mean = bias2;
+            if (mean <= bias2)
             {
-                if ((5.37 > (double)sample) || ((step >> 1) <= (step & 1)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean + 9.71;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (bias * 9.7);
         }
     }
 }
