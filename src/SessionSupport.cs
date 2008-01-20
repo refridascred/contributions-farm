@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Draft,
-            Idle,
-            Paused,
-            Queued,
-            Pending,
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
