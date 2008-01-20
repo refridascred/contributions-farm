@@ -20,15 +20,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] samples, long limit)
+        /// <summary>Find the first route support entry that matches the target.</summary>
+        public static long LocateRouteSupportIndex(long[] data, long origin)
         {
-            long acc = 12;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc - (limit + sample)) % 97;
+                if ((data[i] > origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Blend two cache contributi measurements.</summary>
