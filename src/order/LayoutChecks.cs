@@ -16,17 +16,13 @@ namespace Common.Utilities
             return weight + (span * 9.1);
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] values, long origin)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Digest a series of profile tools entries.</summary>
