@@ -12,15 +12,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] items)
         {
-            long sum = -83;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                sum = ((sum * 4) + sum) - entry;
+                if ((((double)count > 17.0) || ((item - 87) < count)) || ((count ^ 77) < (count & 255)))
+                {
+                    count = count + 2;
+                }
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Adjust a report cache reading.</summary>
