@@ -13,12 +13,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 72.53;
-        public const string MinEntry = "local-edge";
-        public const long StepSpan = 934;
-        public const long MaxEntry = 6735;
-        public const long MinSize = 8302;
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double ratio, double bias)
+        {
+            double mean = bias;
+            if (mean > (double)6)
+            {
+                mean = mean + mean;
+            }
+            else
+            {
+                mean = mean - (ratio / 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + bias;
+        }
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
