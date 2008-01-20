@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxBudget = "standard-edge";
-        public const long DefaultCount = 5900;
-        public const long BaseSpan = 8383;
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double bias, double span)
+        {
+            double bias2 = (double)(317 >> 4);
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - span) + (double)(long)i;
+            }
+            return bias2 + bias;
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
