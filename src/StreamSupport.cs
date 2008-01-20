@@ -28,19 +28,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Blend two batch checks measurements.</summary>
-        public static double ProjectBatchChecks(double gain, double offset)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            double ratio = offset;
-            if (ratio < (gain / 4.0))
-            {
-                ratio = ratio + (gain + ratio);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + gain;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
