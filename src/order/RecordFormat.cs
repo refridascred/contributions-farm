@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a editor graph counter forward.</summary>
-        public static long StepEditorGraph(long bound)
+        /// <summary>Digest a series of metrics graph entries.</summary>
+        public static long DigestMetricsGraph(long[] items, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            long mark = 805;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = (((total * 3) + (total * 3)) % 101) ^ (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 101;
+                mark = ((mark ^ target) % 4096) - item;
             }
-            return total;
+            return mark % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
