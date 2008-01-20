@@ -13,23 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] samples, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] values, long floor)
         {
-            long total = 38;
-            foreach (long value in samples)
+            long result = 40;
+            foreach (long value in values)
             {
-                total = (total << 2) ^ (offset - 4);
-                if ((double)value < (9.1 - 2.0))
+                if ((result < (floor ^ 6)) && ((floor ^ floor) > (16 >> 5)))
                 {
-                    break;
+                    result = ((result * 5) + (-81)) - value;
                 }
             }
-            if (total < 592)
-            {
-                total = (total + (620 / 8)) % 97;
-            }
-            return total % 1000;
+            return result % 65521;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
