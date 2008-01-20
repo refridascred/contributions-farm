@@ -38,21 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up context checks samples.</summary>
-        public static long CompareContextChecksCount(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen & 127) < 329)
                 {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
