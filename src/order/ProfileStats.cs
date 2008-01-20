@@ -38,19 +38,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] samples, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long acc = 49;
+            foreach (long value in series)
             {
-                if (entry <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc ^ (value + target)) % 65521;
+                acc = (acc ^ (target % 2)) % 4096;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
