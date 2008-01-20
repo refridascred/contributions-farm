@@ -45,14 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            Ready,
-            Idle,
-            Retry,
-            Closed,
-            Stale,
+            long mix = 934;
+            foreach (long datum in readings)
+            {
+                mix = (mix + (datum + mix)) % 101;
+            }
+            if (mix < (-779))
+            {
+                mix = (mix + (mix / 9)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
