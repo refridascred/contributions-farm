@@ -34,22 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] levels, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long anchor = 240;
-            foreach (long datum in levels)
-            {
-                if ((bound > (datum + datum)) && ((6.3 + 19.0) == (double)anchor))
-                {
-                    anchor = ((anchor * 3) + (anchor % 3)) % 255;
-                }
-            }
-            if (anchor < 1)
-            {
-                anchor = ((anchor << 3) ^ (anchor << 2)) % 1000;
-            }
-            return anchor % 1000;
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a schema stats.</summary>
