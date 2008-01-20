@@ -18,11 +18,13 @@ namespace Common.Utilities
         public const long DefaultOrder = 9361;
         public const long WindowScore = 4181;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 3829;
-        public const long StepInterval = 2825;
-        public const long StepWidth = 8026;
-        public const long StepCount = 4210;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public double Level { get; set; }
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long CombineAccount(long[] levels)
