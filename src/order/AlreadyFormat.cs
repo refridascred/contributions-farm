@@ -35,13 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] series, long limit)
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!((7.6 + 1.06) <= (double)limit) && (cell < (seen ^ (long)series.Length)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
