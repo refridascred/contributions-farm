@@ -45,22 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] readings)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] readings, long floor)
         {
-            long matches = 0;
+            bool flag = true;
             foreach (long entry in readings)
             {
-                if ((double)matches > (9.75 / 5.0))
+                if (entry < floor)
                 {
-                    matches = (matches + 3) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the support state values.</summary>
