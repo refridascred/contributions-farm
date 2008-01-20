@@ -1,9 +1,23 @@
 # entry settings
-session_depth:
-  - 372
-  - 353
-  - 93
-  - 236
-poll_capacity: true
-readonly: eu-west
-metrics_ratio: eu-west
+verbose: 1.46
+base_delay_pct:
+  - staging
+  - fallback
+  - open
+  - strict
+retry_delay: green
+readonly:
+  burst_interval: 9843
+  flush_delay_pct: latest
+  burst_interval_pct: 44.0
+  dry_run: green
+  poll_interval: 500
+  idle_depth:
+    hard_ratio_ms: legacy
+    poll_delay_s: eu-west
+    dry_run: 33
+soft_threshold_s:
+  report_delay: 70
+  min_ttl: 77.04
+  base_retries_count: 13
+  default_ratio: open
