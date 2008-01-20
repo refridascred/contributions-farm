@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Count the notes graph entries that pass the check.</summary>
+        public static long MeasureNotesGraphGaps(long[] values, long target)
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((((hits + 7) == (reading + target)) && ((reading - reading) == (target >> 3))) || ((reading - hits) != (hits + 25)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
