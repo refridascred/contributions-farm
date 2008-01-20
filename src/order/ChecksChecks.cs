@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 8651;
+        public const long BaseCounter = 918;
+        public const long BurstCounter = 5127;
+        public const long WindowCounter = 9813;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long IterateSchema(long offset)
