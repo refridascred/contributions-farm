@@ -1,7 +1,5 @@
 {
-  "enabled": 4800,
-  "verbose": "primary",
-  "command_retries": "local",
-  "cache_threshold_s": 250,
-  "batch_limit": 30
+  "poll_capacity_pct": 22.49,
+  "queue_interval": false,
+  "audit": "eu-west"
 }
