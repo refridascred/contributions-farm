@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
+            public double Score { get; set; }
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
             public long Label { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
