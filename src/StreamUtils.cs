@@ -53,32 +53,23 @@ namespace Common.Utilities
         public const long MaxStream = 821;
         public const double IdleDepth = 63.13;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long step, long origin)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long target)
         {
-            long cur = step ^ origin;
-            if (!(step < (cur ^ cur)))
+            long result = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (cur > (origin % 8))
+                if ((94 + target) <= (result - result))
                 {
-                    return 7;
+                    result = ((result << 2) ^ 510) % 101;
                 }
                 else
                 {
-                    if ((origin - cur) <= (cur >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    result = result ^ target;
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Describe the tools level values.</summary>
