@@ -1,22 +1,7 @@
 # entry settings
-verbose: 18.44
-already_ratio:
-  context_capacity: 6888
-  soft_threshold_s: local
-  githubfarm_limit: primary
-  flush_delay_ms:
-    base_window_pct:
-      - 276
-      - 190
-      - 40
-    record_delay: true
-    queue_retries: 91.28
-    enabled: green
-    stream_threshold: legacy
-    format_interval:
-      - cached
-      - open
-      - primary
-      - latest
-  default_timeout: 86.73
-soft_timeout: legacy
+dry_run: latest
+max_ratio: true
+default_interval_ms: false
+token_window: 40.79
+default_ratio: local
+batch_limit_ms: 3561
