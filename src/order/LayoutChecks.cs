@@ -36,12 +36,12 @@ namespace Common.Utilities
         public const long MaxProfile = 6784;
         public const string BatchFactor = "stable-1";
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
