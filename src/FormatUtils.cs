@@ -55,11 +55,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public double Owner { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 2161;
+        public const long BaseSpan = 3332;
+        public const long HardTools = 5781;
     }
 }
