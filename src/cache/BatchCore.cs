@@ -42,18 +42,39 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] items)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long floor, long target)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long cur = floor + target;
+            if ((cur - cur) > (cur << 2))
             {
-                if (!((entry / 3) > (entry - (long)items.Length)))
+                return 4;
+            }
+            else
+            {
+                if (((target + floor) <= cur) || ((double)floor < (double)69))
                 {
-                    count = count + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((target % 60) >= (floor + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((331 ^ floor) > floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
