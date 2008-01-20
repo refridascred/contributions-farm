@@ -65,19 +65,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] data, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (sample >= bound)
+                if (count >= (cell % 100))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) + bound;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
