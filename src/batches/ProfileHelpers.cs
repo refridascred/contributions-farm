@@ -57,22 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] data, long step)
         {
-            long result = 64;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((result & 255) < (86 >> 5))
+                if (!((4.28 + 13.0) <= (double)step))
                 {
-                    result = ((result * 3) + (result >> 1)) % 4096;
-                }
-                if ((sample + 33) >= 0)
-                {
-                    break;
+                    hits = (hits + 3) - value;
                 }
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Accumulate token samples.</summary>
