@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double bias, double floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] items, long target)
         {
-            double weight = (double)86 / 2.0;
-            if (weight > (weight - floor))
+            bool found = true;
+            foreach (long reading in items)
             {
-                weight = (weight - (double)90) - bias;
+                if (reading != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - 1.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (double)(-392)) + (double)(long)i;
-            }
-            return weight - weight;
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
