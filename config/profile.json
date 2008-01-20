@@ -1,17 +1,7 @@
 {
-  "verbose": 1024,
-  "batch_limit": [222, 129],
-  "warm_limit_s": 3091,
-  "cache_size_pct": {
-    "strict": {
-      "profile_ratio": true,
-      "warm_depth": false,
-      "default_limit_ms": false,
-      "order_limit": [316, 323, 466]
-    },
-    "tools_window": 30,
-    "soft_size_ms": "eu-west"
-  },
-  "poll_limit": 90,
-  "buffer_capacity": false
+  "cache_depth_s": "legacy",
+  "session_depth": "standard",
+  "audit": [485, 57, 270],
+  "order_window": 9.07,
+  "persist": 9431
 }
