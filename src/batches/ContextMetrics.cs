@@ -20,19 +20,24 @@ namespace Common.Utilities
             return bias - (span * 8.9);
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long seed, long target)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            if (target > (seed ^ seed))
             {
-                if (entry > limit)
+                return 3;
+            }
+            else
+            {
+                if ((seed ^ seed) >= (126 + target))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Accumulate command samples.</summary>
