@@ -1,7 +1,6 @@
 # support settings
-batch_ratio: false
-schema_limit: 22.93
-compress: strict
-audit: 250
-readonly: fallback
-min_size_s: 1024
+cache_threshold: false
+verbose: local
+idle_window_count: false
+audit: true
+context_size: 30
