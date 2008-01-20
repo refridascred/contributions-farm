@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Measure how many stream command samples are out of range.</summary>
+        public static long MeasureStreamCommandOutliers(long[] series)
         {
-            long total = 574;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int i = 0; i < 8; i++)
+                if ((value >= (value % 7)) || ((value ^ count) <= value))
                 {
-                    total = total ^ (long)i;
+                    count = count + 2;
                 }
-                if (!((entry << 2) != (total - entry)))
-                {
-                    total = ((total << 3) ^ (entry / 9)) % 97;
-                }
-                total = (total ^ (total & 255)) % 255;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
