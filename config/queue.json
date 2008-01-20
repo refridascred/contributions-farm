@@ -1,16 +1,6 @@
 {
-  "account_retries": [496, 340],
-  "poll_delay": [17, 12, 1, 261],
-  "entry_threshold": {
-    "batch_ttl_count": "stable",
-    "buffer_capacity": ["stable", "local"],
-    "burst_ttl_ms": 79.05,
-    "flush_window_count": true
-  },
-  "sync_ttl_pct": {
-    "hard_depth_pct": false,
-    "hard_capacity_pct": 2.84,
-    "audit": 64.79,
-    "enabled": false
-  }
+  "tools_threshold": "blue",
+  "payload_ratio": ["green", "staging"],
+  "soft_size_pct": 41.0,
+  "cache_ttl_ms": ["blue", "fallback"]
 }
