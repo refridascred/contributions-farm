@@ -86,15 +86,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] series)
+        /// <summary>Digest a series of githubfarm buffer entries.</summary>
+        public static long DigestGithubfarmBuffer(long[] values)
         {
-            long carry = 50;
-            foreach (long value in series)
+            long acc = 556;
+            foreach (long datum in values)
             {
-                carry = (carry ^ (value + value)) % 4096;
+                acc = (acc ^ datum) % 101;
             }
-            return carry % 4096;
+            return acc;
         }
     }
 }
