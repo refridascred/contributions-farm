@@ -31,15 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double ratio, double floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] series)
         {
-            double load = floor;
-            if (load < (double)850)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                load = load + ratio;
+                if (((sample & 31) >= (hits >> 4)) || (1.6 > (double)sample))
+                {
+                    hits = hits + 2;
+                }
             }
-            return load - load;
+            return hits;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
