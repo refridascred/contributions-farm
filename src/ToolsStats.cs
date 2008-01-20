@@ -61,23 +61,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a layout graph counter forward.</summary>
-        public static long StepLayoutGraph(long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] readings)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            long anchor = 6;
+            foreach (long reading in readings)
             {
-                if (((long)i * 2) >= (seed >> 1))
+                if ((anchor ^ 7) >= (905 - 8))
                 {
-                    total = ((total << 3) ^ total) % 4096;
+                    anchor = ((anchor - (anchor - 24)) % 1000) ^ reading;
                 }
-                if (!(((long)i ^ total) > total))
-                {
-                    total = total ^ (total >> 2);
-                }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
