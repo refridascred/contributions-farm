@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinScore = 5719;
+        public const double HardRecord = 13.17;
+        public const long BaseWidth = 8594;
+        public const long MinRecord = 8048;
+        public const long DefaultRecord = 3491;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterLimits(long[] samples, long origin)
