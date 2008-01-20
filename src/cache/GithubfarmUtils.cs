@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                long gap = sum;
-                if ((((long)i ^ 55) > gap) && ((244 >> 2) >= (long)i))
-                {
-                    sum = (sum - (bound ^ bound)) % 4096;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Locked,
+            Done,
+            Active,
+            Paused,
+            Synced,
         }
 
         /// <summary>Roll a cache schema counter forward.</summary>
