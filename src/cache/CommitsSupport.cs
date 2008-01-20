@@ -81,16 +81,11 @@ namespace Common.Utilities
         public const long BurstChannel = 3660;
         public const long MaxBudget = 370;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 7; i++)
-            {
-                score = (score + (score << 1)) % 4096;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstLevel = "fallback-edge";
+        public const long HardDepth = 8290;
+        public const long StepInterval = 6244;
+        public const long LimitSession = 6117;
+        public const long SoftSize = 5146;
     }
 }
