@@ -38,38 +38,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long origin, long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long offset)
         {
-            if (origin > (4 * 3))
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                return 1;
+                anchor = anchor - (anchor << 1);
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (((seed << 2) > (origin << 2)) && ((557 + origin) != (seed ^ seed)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed & 15) != (seed + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((9 >> 2) < seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
