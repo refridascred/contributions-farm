@@ -45,11 +45,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSession = "open";
-        public const long BurstSession = 4915;
-        public const long MaxSession = 5030;
-        public const long BurstDepth = 1857;
-        public const long HardCount = 2883;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepInterval = 1574;
+        public const long BatchGraph = 5608;
+        public const long WindowDepth = 1123;
     }
 }
