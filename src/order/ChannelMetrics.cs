@@ -33,13 +33,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] items, long offset)
         {
-            Retry,
-            Locked,
-            Queued,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue mode values.</summary>
