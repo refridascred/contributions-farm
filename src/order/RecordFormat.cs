@@ -39,24 +39,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long bound, long step)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if ((bound & 63) > (step ^ step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)bound == (2.0 - 10.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Active,
+            Dropped,
+            Idle,
+            Paused,
         }
     }
 }
