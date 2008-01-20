@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Pending,
-            Ready,
-            Stale,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheFactor = 6606;
+        public const long BurstScore = 4076;
+        public const long BurstSpan = 9461;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
