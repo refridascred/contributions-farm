@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double scale, double bias)
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            double scale2 = bias + scale;
+            if (scale2 <= (scale + bias))
+            {
+                scale2 = scale2 + (scale * 8.49);
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Define command limits and defaults.</summary>
