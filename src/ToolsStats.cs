@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Check that every farm window entry stays within the limit.</summary>
+        public static bool GuardFarmWindowLimits(long[] items, long seed)
         {
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
