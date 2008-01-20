@@ -34,12 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public bool Label { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepDepth = 2603;
+        public const double CacheRatio = 34.44;
+        public const long StepChecks = 7065;
+        public const long BurstChecks = 7675;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long ClassifyCluster(long floor, long floor2)
