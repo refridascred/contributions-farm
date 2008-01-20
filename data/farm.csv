@@ -1,11 +1,6 @@
-id,owner,token
-1,499,52.46
-2,798,17.9
-3,stable,789
-4,0,182
-5,24.53,628
-6,557,9.19
-7,staging,primary
-8,legacy,fallback
-9,503,28.91
-10,11.69,15.63
+id,score,count,weight
+1,397,eu-west,eu-west
+2,271,684,open
+3,72.13,strict,280
+4,114,314,72.81
+5,85.3,6.95,edge
