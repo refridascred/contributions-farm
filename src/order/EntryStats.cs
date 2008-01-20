@@ -27,15 +27,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] levels)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            long sum = 7;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum - (sum + sum)) - reading;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum % 97;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
