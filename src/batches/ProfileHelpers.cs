@@ -17,22 +17,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] readings, long floor)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((660 > (reading % 10)) || ((floor >= matches) && ((double)19 != (double)reading)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] + series[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a batches githubfarm reading by value.</summary>
