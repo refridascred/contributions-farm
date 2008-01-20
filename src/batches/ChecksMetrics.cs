@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] series)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen - 8) > (sample + seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a command stats.</summary>
