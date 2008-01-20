@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] series, long step)
         {
-            Stale,
-            Retry,
-            Closed,
-            Synced,
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the token mode values.</summary>
