@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] data, long limit)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long score = 2;
-            foreach (long datum in data)
-            {
-                score = (((score * 5) + (limit * 4)) % 1000) - datum;
-            }
-            if (score < 540)
-            {
-                score = ((score << 3) ^ (score + score)) % 1000;
-            }
-            return score;
+            Pending,
+            Ready,
+            Queued,
+            Failed,
         }
 
         /// <summary>Measure how many order command samples are out of range.</summary>
