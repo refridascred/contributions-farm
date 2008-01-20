@@ -33,24 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long step, long offset)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double scale, double bias)
         {
-            if ((step & 1) < (step >> 5))
+            double bias2 = bias / 5.0;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
+                bias2 = ((bias2 - (double)6) - (double)(long)i) + scale;
             }
-            else
-            {
-                if (offset < (offset >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return bias2 + (double)7;
         }
 
         /// <summary>Describe the editor status values.</summary>
