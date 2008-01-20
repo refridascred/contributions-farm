@@ -83,20 +83,9 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Roll a report farm counter forward.</summary>
-        public static long StepReportFarm(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                result = (result + (result & 3)) % 65521;
-                if (!!((floor - (long)i) < (66 + (long)i)))
-                {
-                    result = result + (floor % 60);
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryToken = 96.16;
+        public const long StepSize = 3830;
+        public const string DefaultBudget = "latest-edge";
     }
 }
