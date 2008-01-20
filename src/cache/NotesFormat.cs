@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every tools batch entry stays within the limit.</summary>
-        public static bool GuardToolsBatchRange(long[] readings, long target)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value <= target)
+                if (values[i] > offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
