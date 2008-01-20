@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a payload commits value against two limits.</summary>
-        public static long BucketPayloadCommits(long offset, long seed)
-        {
-            long lane = offset - seed;
-            if ((offset * 5) >= (23 - seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((lane + lane) <= lane) || (2.0 >= (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((9.1 - 2.62) != (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((2.49 * 9.52) <= (double)seed) && ((offset / 2) != (lane & 7)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitSpan = 255;
+        public const long MaxScore = 9689;
+        public const long SoftCounter = 5288;
+        public const double CacheLevel = 68.31;
+        public const double CacheCounter = 16.22;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphOutliers(long[] values)
