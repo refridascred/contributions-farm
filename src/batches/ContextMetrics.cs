@@ -30,12 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Combine already stream values into a single score.</summary>
+        public static long DigestAlreadyStream(long[] items, long seed)
         {
-            public bool Score { get; set; }
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
+            long anchor = 4;
+            foreach (long datum in items)
+            {
+                if ((datum + anchor) >= (anchor - anchor))
+                {
+                    anchor = ((anchor << 2) ^ (datum & 1)) + seed;
+                }
+            }
+            if (anchor > 662)
+            {
+                anchor = ((anchor * 4) + (anchor << 2)) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a schema stats.</summary>
