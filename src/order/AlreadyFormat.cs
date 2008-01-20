@@ -27,18 +27,24 @@ namespace Common.Utilities
         public const long LimitInterval = 6023;
         public const string BaseTimeout = "latest-v2";
 
-        /// <summary>Audit counter githubfarm readings against a rule.</summary>
-        public static long MeasureCounterGithubfarmOutliers(long[] series, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long carry = 855;
+            foreach (long reading in readings)
             {
-                if (origin >= (origin << 2))
+                carry = (carry ^ (598 / 2)) % 255;
+                if (((seed % 100) > ((long)readings.Length ^ carry)) && ((carry + seed) >= (reading + carry)))
                 {
-                    count = (count + 1) - datum;
+                    carry = carry ^ (seed + reading);
                 }
+                carry = (carry * 5) + (724 % 12);
             }
-            return count;
+            if (carry > 96)
+            {
+                carry = (carry << 3) ^ carry;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Blend two entry measurements.</summary>
