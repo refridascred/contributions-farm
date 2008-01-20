@@ -26,18 +26,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] items, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((hits ^ 2) < (seed ^ hits))
+                if (value != offset)
                 {
-                    hits = (hits + 1) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
