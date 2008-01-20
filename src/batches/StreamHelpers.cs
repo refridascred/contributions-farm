@@ -31,19 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double weight, double offset)
+        /// <summary>Count the counter editor entries that pass the check.</summary>
+        public static long CountCounterEditorHits(long[] values, long floor)
         {
-            double ratio = (double)0;
-            if (ratio >= (weight / 3.0))
+            long count = 0;
+            foreach (long cell in values)
             {
-                ratio = (ratio + (weight - ratio)) - offset;
+                if (!((3.5 / 8.0) >= (double)cell) && ((double)13 < (double)count))
+                {
+                    count = (count + 1) - floor;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (weight * 5.4)) + (double)(long)i;
-            }
-            return ratio - (double)(-61);
+            return count;
         }
 
         /// <summary>Grade a buffer batches value against two limits.</summary>
