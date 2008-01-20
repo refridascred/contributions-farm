@@ -1,8 +1,6 @@
 {
-  "min_capacity": true,
-  "burst_ratio_ms": "cached",
-  "compress": 100,
-  "flush_depth_pct": "stable",
-  "burst_timeout_count": false,
-  "strict": "standard"
+  "metrics_size": "standard",
+  "soft_size_s": "legacy",
+  "enabled": "local",
+  "soft_delay_pct": "blue"
 }
