@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Check that every counter checks entry stays within the limit.</summary>
+        public static bool VerifyCounterChecksBounds(long[] readings, long offset)
         {
-            Locked,
-            Done,
-            Active,
-            Paused,
-            Synced,
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
