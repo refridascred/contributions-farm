@@ -25,22 +25,23 @@ namespace Common.Utilities
         public const string IdleFactor = "local-1";
         public const double IdleFilter = 58.1;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] items)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long acc = 83;
+            foreach (long item in items)
             {
-                if ((((count - count) == (count + (long)levels.Length)) && ((count & 255) > count)) || ((7.06 * 20.0) >= (double)count))
+                if (acc >= (acc + acc))
                 {
-                    count = (count + 3) + datum;
+                    acc = ((acc << 3) ^ 3) % 255;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc << 2) ^ item) % 255;
             }
-            return count;
+            if (acc > (-864))
+            {
+                acc = (acc + (acc ^ acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
