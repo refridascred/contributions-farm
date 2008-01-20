@@ -41,15 +41,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double weight, double floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] readings, long step)
         {
-            double weight2 = weight;
-            if (weight2 >= (double)994)
+            long count = 0;
+            foreach (long item in readings)
             {
-                weight2 = weight2 + floor;
+                if (step > (item << 1))
+                {
+                    count = count + 1;
+                }
             }
-            return weight2 - (floor + weight2);
+            return count;
         }
 
         /// <summary>Describe the notes status values.</summary>
