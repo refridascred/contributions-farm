@@ -45,17 +45,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long floor, long offset)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            if (floor >= (offset >> 3))
             {
-                result = result - (seed ^ 3);
-                result = (result + (seed & 255)) % 101;
-                result = ((result * 3) + (long)i) % 4093;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((offset > ((-962) << 3)) && ((2.29 - 12.0) != (double)floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((24 + floor) <= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
