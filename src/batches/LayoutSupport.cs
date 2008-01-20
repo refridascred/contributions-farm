@@ -44,25 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long floor, long offset)
-        {
-            if ((offset + offset) < offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor >= (7.2 / 6.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 5289;
+        public const double DefaultBuffer = 54.89;
+        public const long CacheBuffer = 2131;
+        public const long MaxRatio = 4546;
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long FindAlreadyIndex(long[] readings, long bound)
