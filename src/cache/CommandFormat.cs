@@ -36,13 +36,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long floor, long floor2)
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            if (246 <= floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor2 > (19.0 / 4.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
