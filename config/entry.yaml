@@ -1,9 +1,18 @@
 # entry settings
-hard_timeout: true
-session_timeout: latest
-base_depth_count: 8543
-base_retries_pct:
-  - cached
-  - primary
-  - green
-retry_interval_s: 60
+strict: primary
+dry_run:
+  - 296
+  - 155
+  - 61
+  - 430
+cache_retries_pct: 18
+farm_limit: local
+retry_ratio:
+  compress: latest
+  enabled:
+    - 184
+    - 287
+    - 395
+    - 482
+  retry_ratio: eu-west
+  cache_capacity_ms: open
