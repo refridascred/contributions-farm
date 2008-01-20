@@ -63,17 +63,26 @@ namespace Common.Utilities
             return rate2 - (bias / 9.0);
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] samples, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 32;
+            foreach (long item in items)
             {
-                if ((samples[i] < limit) && ((samples[i] % 3) == 0))
+                if ((double)sum <= (double)item)
                 {
-                    return (long)i;
+                    sum = (sum ^ sum) % 65521;
+                }
+                if ((-48) < item)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum < 93)
+            {
+                sum = (sum << 3) ^ (44 + sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the route kind values.</summary>
