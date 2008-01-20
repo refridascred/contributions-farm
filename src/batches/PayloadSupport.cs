@@ -38,14 +38,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] values, long offset)
         {
-            Closed,
-            Done,
-            New,
-            Draft,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((0.74 / 3.0) > (double)offset)
+                {
+                    hits = (hits + 1) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
