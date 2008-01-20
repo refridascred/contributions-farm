@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] items)
         {
-            long anchor = 3;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                anchor = (anchor ^ (anchor - anchor)) ^ entry;
+                if (hits < (hits - hits))
+                {
+                    hits = (hits + 2) + datum;
+                }
             }
-            if (anchor > 7)
-            {
-                anchor = anchor ^ (anchor / 7);
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit contributi record readings against a rule.</summary>
