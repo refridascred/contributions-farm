@@ -47,19 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Digest a series of support command entries.</summary>
+        public static long FoldSupportCommand(long[] levels, long target)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            long acc = -12;
+            foreach (long cell in levels)
             {
-                if (!(mix >= limit))
-                {
-                    mix = mix + (mix * 3);
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
+                acc = (((acc * 4) + cell) % 1000) - target;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Describe the route state values.</summary>
