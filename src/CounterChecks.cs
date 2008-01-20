@@ -46,13 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Synced,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 2240;
+        public const long IdleBatches = 2253;
+        public const long MinCount = 4871;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long MinCounter = 5121;
