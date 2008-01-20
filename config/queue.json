@@ -1,5 +1,6 @@
 {
-  "batches_ttl": "fallback",
-  "persist": 17,
-  "session_timeout": "open"
+  "audit": 60,
+  "schema_retries": "primary",
+  "layout_ratio": 6559,
+  "poll_retries_ms": 8.09
 }
