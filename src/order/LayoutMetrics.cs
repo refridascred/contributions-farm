@@ -17,19 +17,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of counter queue entries.</summary>
-        public static long WeighCounterQueue(long[] data, long offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long floor, long seed)
         {
-            long result = 28;
-            foreach (long sample in data)
+            if ((double)floor <= (double)seed)
             {
-                if ((offset + sample) > (offset - result))
-                {
-                    result = (result * 5) + (offset >> 4);
-                }
-                result = result ^ (offset + result);
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((double)floor < (3.0 - 1.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
