@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order command samples are out of range.</summary>
-        public static long MeasureOrderCommandOutliers(long[] data)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally >> 4) >= ((long)data.Length >> 2))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
