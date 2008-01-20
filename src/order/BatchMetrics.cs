@@ -60,31 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long limit, long offset)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] series, long limit)
         {
-            if (((limit % 2) > (limit & 1)) || ((offset * 4) == (offset - limit)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset << 1) <= offset)
+                if (series[i] < limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit - 90) != (limit - limit)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
