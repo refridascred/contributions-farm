@@ -22,18 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes graph entries that pass the check.</summary>
-        public static long MeasureNotesGraphGaps(long[] values, long target)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long bound3 = bound + bound2;
+            if (bound3 <= (bound3 ^ bound3))
             {
-                if ((((hits + 7) == (reading + target)) && ((reading - reading) == (target >> 3))) || ((reading - hits) != (hits + 25)))
+                return 2;
+            }
+            else
+            {
+                if ((double)bound != (2.0 * 15.0))
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((2.73 * 8.6) > (8.5 / 2.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
