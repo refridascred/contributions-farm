@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] values, long target)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Idle,
+            Failed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Digest a series of profile tools entries.</summary>
