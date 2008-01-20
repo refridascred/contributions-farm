@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] samples)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] readings)
         {
-            long total = 15;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 9; i++)
+                if ((150 / 6) > cell)
                 {
-                    total = ((total ^ (total * 2)) ^ (long)i) ^ cell;
+                    tally = tally + 2;
                 }
-                total = (total << 2) ^ (977 + 2);
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
