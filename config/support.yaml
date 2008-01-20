@@ -1,8 +1,14 @@
 # support settings
-default_depth_s: 77.61
-compress:
-  - stable
-  - blue
-route_interval: 1.26
-audit: 60
-format_delay: 5016
+strict: false
+readonly: 2602
+token_delay:
+  verbose: stable
+  audit:
+    - 356
+    - 26
+    - 199
+    - 495
+  format_delay:
+    - 179
+    - 417
+  cluster_ratio: local
