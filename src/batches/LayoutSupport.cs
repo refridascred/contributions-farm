@@ -32,17 +32,21 @@ namespace Common.Utilities
         public const long BurstTimeout = 6926;
         public const long HardRatio = 8195;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] series, long seed)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] <= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
