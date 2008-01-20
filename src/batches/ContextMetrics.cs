@@ -13,12 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] readings, long offset)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a profile record.</summary>
