@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] values, long offset)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] > offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
