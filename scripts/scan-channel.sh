@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict legacy local edge; do
+CHANNEL_LIMIT=250
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in strict green latest stable; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=367
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
