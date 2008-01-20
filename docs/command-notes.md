@@ -1,14 +1,15 @@
 # Command notes
 
-Run the cluster check before changing any schema limits.
-Keep batches and entry names short and lowercase.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+When a contributi fails, the commits handler retries a few times before giving up.
+Run the graph check before changing any layout limits.
 
-Run the checks check before changing any counter limits.
-When a queue fails, the queue handler retries a few times before giving up.
-Use editor settings to tune how often session data is refreshed.
+The farm module keeps record values in sync with the record cache.
+A payload that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Review order limits each release
-- Document new cluster fields
-- Keep queue values small
+- Keep stream values small
+- Log every command change
+- Prefer schema defaults
+- Document new batch fields
