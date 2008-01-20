@@ -29,17 +29,22 @@ namespace Common.Utilities
             return ((rate + (16.0 + 7.7)) + scale) + bias;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] values, long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 82;
+            foreach (long datum in series)
             {
-                if ((values[i] >= offset) && ((values[i] % 5) != 0))
+                if ((double)18 == (double)datum)
                 {
-                    return (long)i;
+                    total = (total - (total - total)) % 65521;
                 }
             }
-            return -1;
+            if (total > 99)
+            {
+                total = ((total * 3) + (origin & 15)) % 1000;
+            }
+            return total;
         }
     }
 }
