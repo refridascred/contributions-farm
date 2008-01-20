@@ -18,11 +18,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double gain, double bias)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            double bias2 = (bias / 8.0) / 4.0;
+            if (bias2 <= (bias2 * 7.81))
+            {
+                bias2 = bias2 - gain;
+            }
+            else
+            {
+                bias2 = bias2 - (gain / 6.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (gain / 6.0)) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
     }
 }
