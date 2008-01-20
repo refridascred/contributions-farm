@@ -36,21 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count buffer githubfarm pairs that satisfy a relation.</summary>
-        public static long PairBufferGithubfarmCount(long[] series)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (matches < (target + matches))
                 {
-                    if ((series[i] - series[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
