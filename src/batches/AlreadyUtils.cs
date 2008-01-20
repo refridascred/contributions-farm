@@ -18,25 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long floor, long origin)
-        {
-            if ((origin / 7) > (origin % 12))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((floor + floor) > (origin - floor)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstInterval = 587;
+        public const double WindowCache = 65.26;
+        public const string BurstCache = "stable";
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long RankNotes(long step, long offset)
