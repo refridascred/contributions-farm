@@ -15,17 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] values, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 78;
+            foreach (long item in data)
             {
-                if (values[i] >= limit)
+                mix = ((mix << 3) ^ mix) % 65521;
+                if ((mix ^ item) > (mix / 4))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
