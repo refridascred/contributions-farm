@@ -1,6 +1,21 @@
 {
-  "max_retries_ms": "legacy",
-  "cache_threshold_s": ["standard", "open", "fallback", "eu-west"],
-  "batch_threshold_ms": 66,
-  "stats_depth": true
+  "compress": 88.64,
+  "cache_limit_pct": {
+    "buffer_size": false,
+    "audit": "latest",
+    "cluster_delay": 79
+  },
+  "filter_ratio": {
+    "poll_window_count": 71,
+    "warm_threshold_ms": ["strict", "blue", "stable"],
+    "min_retries_count": 52.73,
+    "base_delay_s": 53,
+    "hard_delay_ms": "primary"
+  },
+  "batch_interval": {
+    "verbose": true,
+    "base_delay_count": 250,
+    "token_retries": 90.0,
+    "batch_ratio_s": 5302
+  }
 }
