@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double gain, double span)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long limit, long offset)
         {
-            double weight = span;
-            for (int i = 0; i < 8; i++)
+            long edge = limit - offset;
+            if ((offset >> 1) <= offset)
             {
-                weight = ((weight + weight) - (double)(long)i) + gain;
+                return 2;
             }
-            return weight + span;
+            else
+            {
+                if ((92 + offset) > (offset * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((403 & 1) == (730 + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (edge > (limit - offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
