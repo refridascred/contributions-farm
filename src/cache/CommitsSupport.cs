@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a counter stream counter forward.</summary>
-        public static long RollCounterStream(long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] readings)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                anchor = (anchor + anchor) % 4096;
-                anchor = anchor + ((long)i + anchor);
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((reading + matches) != (matches % 60))
+                {
+                    matches = matches + 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
