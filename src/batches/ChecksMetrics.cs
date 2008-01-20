@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] series)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if ((matches - value) <= matches)
+                if (value != target)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Accumulate stats filter samples.</summary>
