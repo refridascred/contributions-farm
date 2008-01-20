@@ -42,19 +42,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] items, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleBuffer = 26.5;
+        public const string WindowInterval = "staging-edge";
+        public const double SoftBuffer = 92.98;
+        public const double LimitSpan = 45.73;
     }
 }
