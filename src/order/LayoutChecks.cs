@@ -16,13 +16,19 @@ namespace Common.Utilities
             return weight + (span * 9.1);
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] values, long target)
         {
-            public long Level { get; set; }
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-            public double Weight { get; set; }
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of profile tools entries.</summary>
