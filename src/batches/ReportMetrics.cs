@@ -25,19 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] levels, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (entry > target)
+                if (((count + limit) <= 782) || ((count + count) <= (limit - limit)))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) ^ datum;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
