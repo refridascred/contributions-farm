@@ -24,17 +24,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] levels, long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long mix = 82;
-            foreach (long datum in levels)
-            {
-                mix = (mix ^ origin) % 4096;
-                mix = (mix - (datum - mix)) % 1000;
-                mix = (mix * 2) + (datum + mix);
-            }
-            return mix % 1000;
+            Retry,
+            Active,
+            Synced,
+            Paused,
         }
     }
 }
