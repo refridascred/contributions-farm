@@ -1,5 +1,7 @@
 {
-  "command_ttl": "green",
-  "strict": "local",
-  "stats_depth": ["fallback", "staging", "open", "local"]
+  "enabled": 4800,
+  "verbose": "primary",
+  "command_retries": "local",
+  "cache_threshold_s": 250,
+  "batch_limit": 30
 }
