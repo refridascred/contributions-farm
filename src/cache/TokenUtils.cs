@@ -29,17 +29,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Locate a contributi record reading by value.</summary>
-        public static long LocateContributiRecordIndex(long[] series, long floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (series[i] < floor)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    score = (score ^ (long)i2) % 101;
                 }
+                if (!((double)score != (0.48 + 7.57)))
+                {
+                    score = (score - (long)i) % 97;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
     }
 }
