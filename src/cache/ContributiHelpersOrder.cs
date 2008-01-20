@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long target)
         {
-            Stale,
-            Idle,
-            Draft,
+            long result = target;
+            for (int i = 0; i < 6; i++)
+            {
+                double rate = (double)(576 >> 3);
+                if (rate > 9.72)
+                {
+                    rate = rate + (rate - rate);
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
