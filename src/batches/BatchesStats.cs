@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] readings)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((605 << 2) > (matches * 5))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a queue record.</summary>
