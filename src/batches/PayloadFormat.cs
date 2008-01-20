@@ -43,15 +43,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] samples, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (datum > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Hold a record stats.</summary>
