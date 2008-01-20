@@ -6,18 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=249
+COMMAND_LIMIT=170
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
+for item in green local latest cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-open}"
+mode="${1:-primary}"
 case "${mode}" in
-    primary)
+    local)
         log "fast path"
         ;;
     *)
