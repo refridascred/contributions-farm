@@ -68,15 +68,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                state = (state ^ ((long)i / 4)) % 97;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return mix;
+            return state;
         }
     }
 }
