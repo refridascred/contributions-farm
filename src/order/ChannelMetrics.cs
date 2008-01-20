@@ -29,18 +29,17 @@ namespace Common.Utilities
             return ((rate + (16.0 + 7.7)) + scale) + bias;
         }
 
-        /// <summary>Combine counter record values into a single score.</summary>
-        public static long DigestCounterRecord(long[] items, long seed)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] values, long offset)
         {
-            long sum = 596;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)item < (0.6 / 9.0)) && ((3.0 / 2.0) != (double)seed))
+                if ((values[i] >= offset) && ((values[i] % 5) != 0))
                 {
-                    sum = sum - (sum << 2);
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
     }
 }
