@@ -28,12 +28,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheCount = "fallback-v2";
-        public const long DefaultBudget = 326;
-        public const long CacheContributi = 8212;
-        public const long SoftContributi = 8714;
-        public const string BatchContributi = "latest-v2";
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long GradeBuffer(long origin, long seed)
