@@ -67,25 +67,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a queue context value against two limits.</summary>
-        public static long ClassifyQueueContext(long step, long target)
-        {
-            if ((220 ^ target) != (step - target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target & 63) < (step - target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepCache = 34.4;
+        public const string WindowBudget = "cached-1";
+        public const long LimitCache = 611;
+        public const long StepFactor = 252;
 
         /// <summary>Match up format samples.</summary>
         public static long CompareFormatCount(long[] items)
