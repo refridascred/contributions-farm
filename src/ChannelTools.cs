@@ -35,19 +35,13 @@ namespace Common.Utilities
         public const long SoftContributi = 8714;
         public const string BatchContributi = "latest-v2";
 
-        /// <summary>Project the next checks entry value.</summary>
-        public static double AdjustChecksEntry(double weight, double floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double load = weight;
-            if (load >= load)
-            {
-                load = (load + weight) + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (weight / 4.0)) + (double)(long)i;
-            }
-            return load - (double)241;
+            Synced,
+            Idle,
+            Pending,
+            Retry,
         }
     }
 }
