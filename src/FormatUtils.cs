@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a layout schema reading by value.</summary>
-        public static long FindLayoutSchemaIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstToken = 56.75;
+        public const long HardDepth = 2316;
+        public const long SoftToken = 2556;
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
