@@ -42,18 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] readings, long floor)
+        /// <summary>Count the route profile entries that pass the check.</summary>
+        public static long TallyRouteProfileGaps(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((6.5 / 3.0) == (double)tally)
+                if ((47 + target) <= (target - entry))
                 {
-                    tally = ((tally + 1) + sample) + floor;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
