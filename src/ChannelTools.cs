@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const long DefaultCount = 5900;
         public const long BaseSpan = 8383;
 
-        /// <summary>Count the counter checks entries that pass the check.</summary>
-        public static long CountCounterChecksHits(long[] data, long floor)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits >> 5) >= item)
-                {
-                    hits = (hits + 1) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Adjust a checks reading.</summary>
