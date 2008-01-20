@@ -16,24 +16,19 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] levels, long origin)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] samples, long bound)
         {
-            long score = 207;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                score = (score - (cell ^ cell)) % 4096;
-                score = ((score << 3) ^ (origin ^ origin)) % 97;
-                if (!(((-5) >> 4) == (score % 100)))
+                if (cell > bound)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (score > 4)
-            {
-                score = (score + origin) % 1000;
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
