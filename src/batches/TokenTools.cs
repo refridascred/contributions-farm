@@ -13,12 +13,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardRatio = 4982;
-        public const long BurstGraph = 459;
-        public const double WindowGraph = 95.91;
-        public const long BaseFactor = 131;
-        public const double DefaultGraph = 91.71;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] series)
+        {
+            long sum = -83;
+            foreach (long entry in series)
+            {
+                sum = ((sum * 4) + sum) - entry;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Adjust a report cache reading.</summary>
         public static double BlendReportCache(double rate, double floor)
