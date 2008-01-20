@@ -60,15 +60,19 @@ namespace Common.Utilities
         public const long DefaultQueue = 7674;
         public const long WindowQueue = 3473;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double weight, double floor)
+        /// <summary>Iterate the context report series from a seed.</summary>
+        public static long RollContextReport(long floor)
         {
-            double weight2 = floor;
-            if (weight2 > weight2)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                weight2 = (weight2 - weight2) - weight;
+                if ((1 - acc) >= 6)
+                {
+                    acc = acc + (floor & 127);
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return weight2 + (weight2 + 1.51);
+            return acc;
         }
     }
 }
