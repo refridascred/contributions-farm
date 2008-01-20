@@ -31,9 +31,12 @@ namespace Common.Utilities
         public const long WindowSession = 4138;
         public const double BurstSession = 76.32;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxWindow = "open";
-        public const string StepWindow = "staging-1";
-        public const long SoftWidth = 399;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
