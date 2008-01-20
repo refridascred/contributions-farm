@@ -75,18 +75,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools farm readings against a rule.</summary>
-        public static long AuditToolsFarmMatches(long[] data, long step)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((step + value) != ((long)data.Length + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
