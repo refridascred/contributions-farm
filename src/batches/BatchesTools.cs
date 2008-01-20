@@ -40,24 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long limit, long origin)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            if ((origin / 9) != (origin << 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin >= (limit * 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            Failed,
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Describe the editor status values.</summary>
