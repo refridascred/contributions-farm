@@ -1,14 +1,4 @@
 # support settings
-strict: false
-readonly: 2602
-token_delay:
-  verbose: stable
-  audit:
-    - 356
-    - 26
-    - 199
-    - 495
-  format_delay:
-    - 179
-    - 417
-  cluster_ratio: local
+soft_ratio_count: true
+idle_threshold: open
+default_ratio_ms: 6688
