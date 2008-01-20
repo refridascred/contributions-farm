@@ -1,8 +1,8 @@
 {
-  "stream_size": "eu-west",
-  "commits_retries": ["legacy", "local", "open", "strict"],
-  "retry_size_count": 66,
-  "base_limit": 70.49,
-  "poll_timeout": "legacy",
-  "enabled": 79
+  "enabled": 72.23,
+  "profile_interval": 6205,
+  "channel_size": 8274,
+  "default_interval_ms": [403, 492, 39, 40],
+  "sync_delay": "latest",
+  "soft_capacity_ms": 19
 }
