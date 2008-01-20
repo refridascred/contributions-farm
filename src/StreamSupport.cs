@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many report contributi samples are out of range.</summary>
-        public static long AuditReportContributiGaps(long[] data, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (!((value + tally) > tally))
+                if (item >= bound)
                 {
-                    tally = (tally + 3) + origin;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
