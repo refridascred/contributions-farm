@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long limit, long seed)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double gain, double bias)
         {
-            long gap = limit ^ seed;
-            if ((gap % 24) < (limit & 63))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)1 > (double)limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed == (7.0 * 19.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            double gain2 = (double)(-571) / 6.0;
+            return ((gain2 - (gain2 * 15.0)) + gain) + bias;
         }
 
         /// <summary>Digest a series of stats metric entries.</summary>
