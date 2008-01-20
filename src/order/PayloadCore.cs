@@ -26,16 +26,11 @@ namespace Common.Utilities
         public const string RetryMetrics = "fallback-1";
         public const long IdleSize = 656;
 
-        /// <summary>Roll a commits cluster counter forward.</summary>
-        public static long SeriesCommitsCluster(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark << 2) ^ ((long)i ^ (long)i)) % 255;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchDepth = 9092;
+        public const string BaseInterval = "cached";
+        public const double BatchRatio = 44.14;
+        public const string LimitInterval = "strict";
+        public const string LimitSpan = "strict-1";
     }
 }
