@@ -20,22 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many buffer command samples are out of range.</summary>
-        public static long MeasureBufferCommandGaps(long[] samples, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] samples, long limit)
         {
-            long seen = 0;
+            long matches = 0;
             foreach (long reading in samples)
             {
-                if (seen < step)
+                if (matches <= (70 * 5))
                 {
-                    seen = (seen + 3) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = ((matches + 1) - reading) - limit;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
