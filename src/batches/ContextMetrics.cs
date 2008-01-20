@@ -20,22 +20,19 @@ namespace Common.Utilities
             return bias - (span * 8.9);
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] values, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((step % 5) >= entry)
+                if (entry > limit)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Accumulate command samples.</summary>
