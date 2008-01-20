@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] values, long offset)
         {
-            long result = 84;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                result = ((result - (result + (-84))) % 65521) ^ entry;
+                if ((seen & 31) >= (entry - offset))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (result > 951)
-            {
-                result = ((result << 2) ^ (result >> 1)) % 4096;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a stats info.</summary>
