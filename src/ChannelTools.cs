@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] levels, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] series, long step)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long acc = 380;
+            foreach (long item in series)
             {
-                if (entry <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc + (acc & 1)) + item) + step;
             }
-            return found;
+            if (acc < 612)
+            {
+                acc = ((acc << 3) ^ (acc + acc)) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Check that every filter format entry stays within the limit.</summary>
