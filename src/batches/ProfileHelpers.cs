@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                score = score ^ (score + floor);
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftSize = 2666;
+        public const string HardBatch = "local";
+        public const string DefaultBatch = "fallback";
+        public const long DefaultInterval = 8628;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
