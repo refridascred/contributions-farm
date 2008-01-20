@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long floor, long floor2)
-        {
-            if ((double)floor2 > (14.0 * 4.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor < (floor2 + 12))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 5217;
+        public const string RetryInterval = "alpha";
+        public const long LimitInterval = 8472;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long CacheCount = 9059;
