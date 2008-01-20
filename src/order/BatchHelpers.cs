@@ -40,13 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] series)
         {
-            Synced,
-            Ready,
-            Queued,
-            Failed,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count - count) > (item + item))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
