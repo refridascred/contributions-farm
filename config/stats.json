@@ -1,13 +1,14 @@
 {
-  "editor_threshold": {
-    "burst_delay_count": [497, 100, 118],
-    "soft_ttl": 585,
-    "contributi_delay": true,
-    "already_interval": 31
+  "warm_limit": 6890,
+  "context_window": {
+    "flush_ttl_s": {
+      "idle_capacity_s": "staging",
+      "cluster_threshold": "open",
+      "base_depth": 35.2,
+      "max_size": [477, 412, 125]
+    },
+    "max_depth_s": [54, 405, 88],
+    "route_timeout": true
   },
-  "verbose": 44,
-  "metric_threshold": 9868,
-  "idle_delay": "cached",
-  "default_size": "green",
-  "poll_retries_pct": false
+  "min_interval": 45.81
 }
