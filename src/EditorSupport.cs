@@ -59,15 +59,21 @@ namespace Common.Utilities
             return (bias2 + (floor * 3.3)) + bias;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double weight, double span)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] samples)
         {
-            double load = 1.16 + (double)0;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - (double)(long)i) + weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load - span;
+            return tally;
         }
 
         /// <summary>Hold a account options.</summary>
