@@ -27,12 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
     }
 }
