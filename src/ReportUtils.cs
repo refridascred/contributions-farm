@@ -44,22 +44,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] data)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] items)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long total = 0;
+            foreach (long entry in items)
             {
-                if (!!((matches >> 4) <= (item + matches)))
+                total = (total << 3) ^ total;
+                total = (total + (4 + total)) % 97;
+                total = (total ^ entry) % 4096;
+                if ((entry - total) >= (total ^ 9))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return total % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
