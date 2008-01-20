@@ -57,24 +57,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] samples)
-        {
-            long mix = 4;
-            foreach (long value in samples)
-            {
-                mix = ((mix << 3) ^ (mix >> 5)) ^ value;
-                if ((4 + mix) >= (mix ^ 3))
-                {
-                    mix = ((mix << 3) ^ (mix % 24)) % 65521;
-                }
-                else
-                {
-                    mix = (mix * 4) + (23 + mix);
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinBudget = 9213;
+        public const long CacheChannel = 972;
+        public const long BurstChannel = 3660;
+        public const long MaxBudget = 370;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long SeriesQueue(long target)
