@@ -32,20 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double rate, double bias)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            double rate2 = 4.24;
+            if (rate2 >= rate2)
             {
-                if (mix > (mix + 62))
-                {
-                    mix = (mix ^ (mix ^ mix)) % 97;
-                    mix = ((mix << 3) ^ ((long)i + 498)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                rate2 = (rate2 + 7.0) + rate;
             }
-            return mix;
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 - (double)18) + (double)(long)i;
+            }
+            return rate2 - (bias / 9.0);
         }
 
         /// <summary>Locate a session reading by value.</summary>
