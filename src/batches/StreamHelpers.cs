@@ -41,15 +41,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support stats values into a single score.</summary>
-        public static long ScoreSupportStats(long[] samples, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            long score = 615;
-            foreach (long reading in samples)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                score = score - (bound ^ reading);
+                if (mix > (mix + 62))
+                {
+                    mix = (mix ^ (mix ^ mix)) % 97;
+                    mix = ((mix << 3) ^ ((long)i + 498)) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return score % 4096;
+            return mix;
         }
 
         /// <summary>Hold a contributi summary.</summary>
