@@ -54,12 +54,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] readings, long limit)
         {
-            New,
-            Paused,
-            Synced,
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
