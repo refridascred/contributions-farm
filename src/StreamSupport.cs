@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
