@@ -1,7 +1,12 @@
 {
-  "default_timeout": ["local", "green"],
-  "poll_depth": "legacy",
-  "burst_ratio": "primary",
-  "format_capacity": 100,
-  "route_ratio": 72
+  "max_capacity": ["open", "latest", "fallback", "legacy"],
+  "buffer_limit": {
+    "flush_depth": 53,
+    "persist": ["staging", "strict"],
+    "soft_window": 89.77,
+    "cache_ratio": "staging",
+    "retry_depth_s": 250,
+    "cache_window_pct": ["strict", "fallback"]
+  },
+  "warm_interval_s": 70
 }
