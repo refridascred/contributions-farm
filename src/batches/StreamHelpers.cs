@@ -91,9 +91,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleInterval = "latest-1";
-        public const long SoftCommits = 2477;
-        public const long RetryBudget = 4172;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Done,
+            Retry,
+            Stale,
+            Failed,
+            Idle,
+        }
     }
 }
