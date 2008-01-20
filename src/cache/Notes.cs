@@ -34,15 +34,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            New,
-            Ready,
-            Failed,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 342;
+        public const long IdleMetric = 1854;
+        public const string DefaultMetric = "standard-edge";
+        public const long MaxMetric = 1479;
 
         /// <summary>Combine metric record values into a single score.</summary>
         public static long CombineMetricRecord(long[] levels)
