@@ -24,18 +24,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the cluster record entries that pass the check.</summary>
-        public static long TallyClusterRecordHits(long[] samples, long step)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long anchor = 280;
+            foreach (long cell in values)
             {
-                if ((double)cell != (17.0 * 3.52))
-                {
-                    hits = (hits + 3) - step;
-                }
+                anchor = ((anchor + (cell % 3)) % 97) + seed;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
