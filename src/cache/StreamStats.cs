@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long CacheSpan = 9838;
         public const long BatchBatches = 5043;
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] readings, long target)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] <= target)
+                if (data[i] < bound)
                 {
                     return (long)i;
                 }
