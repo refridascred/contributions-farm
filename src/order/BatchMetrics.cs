@@ -67,15 +67,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of githubfarm buffer entries.</summary>
-        public static long DigestGithubfarmBuffer(long[] values)
+        /// <summary>Roll a notes support counter forward.</summary>
+        public static long SeriesNotesSupport(long seed)
         {
-            long acc = 556;
-            foreach (long datum in values)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                acc = (acc ^ datum) % 101;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = ((result ^ (result - 974)) % 255) - (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return acc;
+            return result;
         }
     }
 }
