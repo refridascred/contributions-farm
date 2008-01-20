@@ -1,11 +1,5 @@
 {
-  "audit": 97.58,
-  "min_depth_pct": 73.09,
-  "queue_capacity": 100,
-  "order_timeout": {
-    "enabled": 100,
-    "retry_ttl": "strict",
-    "format_delay": [195, 54, 306, 355]
-  },
-  "max_threshold": [11, 317, 338]
+  "cache_interval_count": 61,
+  "sync_interval": "blue",
+  "githubfarm_interval": "blue"
 }
