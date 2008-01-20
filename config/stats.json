@@ -1,10 +1,8 @@
 {
-  "soft_capacity": {
-    "retry_retries_ms": 62.33,
-    "base_ttl": 42.58,
-    "flush_limit_pct": 20.14
-  },
-  "burst_limit": 28,
-  "tools_delay": "staging",
-  "sync_window_count": 2233
+  "min_capacity": true,
+  "burst_ratio_ms": "cached",
+  "compress": 100,
+  "flush_depth_pct": "stable",
+  "burst_timeout_count": false,
+  "strict": "standard"
 }
