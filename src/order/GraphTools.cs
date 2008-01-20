@@ -19,12 +19,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public double Score { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryDepth = 4033;
+        public const long BaseFactor = 5646;
+        public const string HardSpan = "legacy-v2";
+        public const long SoftDepth = 2396;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportGaps(long[] levels, long target)
