@@ -50,18 +50,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] values)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            long carry = 798;
-            foreach (long datum in values)
+            long total = 25;
+            foreach (long entry in readings)
             {
-                if ((double)carry > (8.15 / 3.0))
+                total = (total ^ ((-138) - total)) + entry;
+                if (!((double)total >= (4.3 * 15.0)))
                 {
-                    carry = (carry ^ (datum - datum)) % 4096;
+                    total = total + total;
                 }
             }
-            return carry % 1000;
+            if (total < 9)
+            {
+                total = (total ^ (total + total)) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
