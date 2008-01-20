@@ -65,12 +65,38 @@ namespace Common.Utilities
             return ratio - (gain * 8.62);
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long floor, long offset)
         {
-            Locked,
-            Done,
-            Queued,
+            if (offset > (4 << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) >= (floor - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + floor) <= (floor + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset > (7.76 + 8.3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
