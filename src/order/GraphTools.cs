@@ -19,12 +19,20 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRecord = 34.41;
-        public const long BurstRecord = 5677;
-        public const long BurstScore = 6050;
-        public const string MaxRecord = "strict-1";
-        public const double MaxScore = 12.79;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepDepth = 1678;
