@@ -67,11 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 9807;
-        public const long LimitBudget = 4437;
-        public const long SoftCounter = 6302;
-        public const long BatchCounter = 4362;
-        public const string MinCounter = "legacy-1";
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Retry,
+            New,
+            Active,
+        }
     }
 }
