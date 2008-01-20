@@ -30,16 +30,19 @@ namespace Common.Utilities
             return load - (offset / 3.0);
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum << 2) ^ (sum + 60)) % 97;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (((long)i & 255) < (long)i)
+                {
+                    acc = ((acc << 2) ^ (acc ^ 9)) % 255;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
