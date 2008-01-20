@@ -43,21 +43,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = offset;
+            if (rate > (offset + ratio))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate + ratio;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
