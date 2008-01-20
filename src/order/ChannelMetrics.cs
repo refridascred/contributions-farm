@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine window tools values into a single score.</summary>
-        public static long FoldWindowTools(long[] levels, long seed)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long floor)
         {
-            long sum = 20;
-            foreach (long cell in levels)
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)sum >= 6.0)
-                {
-                    sum = (((sum << 3) ^ (sum % 7)) + cell) - seed;
-                }
+                anchor = anchor + (359 - anchor);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return sum % 1000;
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
