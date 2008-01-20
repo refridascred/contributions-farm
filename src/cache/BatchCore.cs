@@ -39,17 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context editor reading by value.</summary>
-        public static long SeekContextEditorIndex(long[] readings, long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 84;
+            foreach (long entry in series)
             {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
+                result = ((result - (result + (-84))) % 65521) ^ entry;
             }
-            return -1;
+            if (result > 951)
+            {
+                result = ((result << 2) ^ (result >> 1)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Hold a stats info.</summary>
