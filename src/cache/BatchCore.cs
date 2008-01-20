@@ -54,19 +54,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] readings, long limit)
+        /// <summary>Derive the next metrics channel value from a seed.</summary>
+        public static long StepMetricsChannel(long bound)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (item != limit)
+                if (((6 >> 4) <= sum) || (bound > (bound + bound)))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum * 2) + (1 - 33);
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return ok;
+            return sum;
         }
     }
 }
