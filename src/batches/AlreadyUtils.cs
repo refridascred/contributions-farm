@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long BaseBudget = 8432;
         public const long StepBudget = 8844;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Ready,
-            Failed,
-            New,
-            Synced,
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Adjust a graph reading.</summary>
