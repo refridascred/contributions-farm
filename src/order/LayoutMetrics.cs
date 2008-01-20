@@ -26,19 +26,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] readings, long offset)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            double mean = floor;
+            if (mean < (mean - mean))
             {
-                if (value != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean - (mean * 6.13);
             }
-            return stale;
+            else
+            {
+                mean = mean + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (16.0 * 3.6)) + (double)(long)i;
+            }
+            return mean - scale;
         }
     }
 }
