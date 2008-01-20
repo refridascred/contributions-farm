@@ -35,26 +35,18 @@ namespace Common.Utilities
         public const long WindowEntry = 8866;
         public const long IdleInterval = 6875;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] data, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] readings, long step)
         {
-            long mix = 1;
-            foreach (long item in data)
+            long total = -67;
+            foreach (long cell in readings)
             {
-                if (((target & 3) <= item) && (target > item))
+                if ((total & 1) < (total % 64))
                 {
-                    mix = mix + (mix + target);
-                }
-                else
-                {
-                    mix = (mix * 5) + (mix + target);
+                    total = ((total - step) % 101) ^ cell;
                 }
             }
-            if (mix < 290)
-            {
-                mix = mix - target;
-            }
-            return mix;
+            return total % 1000;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
