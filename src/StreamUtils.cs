@@ -34,19 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] values, long bound)
+        /// <summary>Audit report order readings against a rule.</summary>
+        public static long CountReportOrderMatches(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (datum > bound)
+                if (!((origin - origin) > (matches >> 1)))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the channel level values.</summary>
