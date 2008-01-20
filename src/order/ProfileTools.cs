@@ -85,18 +85,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] items)
-        {
-            long carry = 13;
-            foreach (long sample in items)
-            {
-                if ((64 - 0) >= carry)
-                {
-                    carry = ((carry - carry) % 101) - sample;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepTimeout = 5045;
+        public const long MinMetric = 9353;
+        public const double DefaultMetric = 64.12;
     }
 }
