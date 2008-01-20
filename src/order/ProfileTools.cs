@@ -46,17 +46,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] data, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (data[i] <= limit)
+                if ((2.0 + 0.83) < (double)sample)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up format samples.</summary>
