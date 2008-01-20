@@ -47,12 +47,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long target, long step)
         {
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            if (step <= (step - target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target - target) != (target ^ (-301)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target < (6.0 / 9.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
