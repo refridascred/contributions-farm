@@ -53,15 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm farm reading.</summary>
-        public static double ProjectGithubfarmFarm(double weight, double offset)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            double ratio = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - offset) - (double)(long)i;
-            }
-            return ratio - (ratio - weight);
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
