@@ -35,16 +35,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] series, long target)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long acc = 49;
-            foreach (long value in series)
-            {
-                acc = (acc ^ (value + target)) % 65521;
-                acc = (acc ^ (target % 2)) % 4096;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a metrics entry.</summary>
