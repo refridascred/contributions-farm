@@ -1,4 +1,8 @@
 # support settings
-soft_ratio_count: true
-idle_threshold: open
-default_ratio_ms: 6688
+warm_interval: edge
+default_window:
+  - 406
+  - 185
+  - 151
+  - 209
+default_capacity: legacy
