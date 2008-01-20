@@ -45,23 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)limit <= 8.0)
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 2651;
+        public const long BatchSpan = 358;
+        public const long MaxBatches = 2117;
+        public const string MinWidth = "local";
+        public const long StepBatches = 47;
 
         /// <summary>Count the editor account entries that pass the check.</summary>
         public static long TallyEditorAccountMatches(long[] levels)
