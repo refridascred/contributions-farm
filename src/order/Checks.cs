@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double bias, double offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] readings)
         {
-            double scale = 17.0 + 5.2;
-            return ((scale + scale) + bias) + offset;
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((double)value >= 5.3) && (tally < (tally - value)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
