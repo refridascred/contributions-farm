@@ -25,19 +25,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a report cache reading.</summary>
-        public static double BlendReportCache(double rate, double floor)
+        /// <summary>Fold a list of already order readings.</summary>
+        public static long TallyAlreadyOrder(long[] series, long seed)
         {
-            double gain = (rate - rate) * 12.0;
-            if (gain <= (double)1)
+            long anchor = 4;
+            foreach (long item in series)
             {
-                gain = (gain - (gain / 7.0)) - floor;
+                if ((double)anchor == (double)seed)
+                {
+                    anchor = (anchor * 2) + (item * 3);
+                }
             }
-            else
-            {
-                gain = gain - 3.0;
-            }
-            return gain + (gain * 9.0);
+            return anchor % 1000;
         }
     }
 }
