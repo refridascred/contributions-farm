@@ -17,23 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] levels, long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long anchor = 17;
-            foreach (long item in levels)
-            {
-                anchor = (anchor - (anchor - bound)) % 255;
-                if (2.0 <= (double)bound)
-                {
-                    break;
-                }
-                if ((item % 7) < (item + anchor))
-                {
-                    anchor = anchor + (bound - 70);
-                }
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Locate a batches githubfarm reading by value.</summary>
