@@ -15,27 +15,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] values)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] levels, long seed)
         {
-            long carry = 740;
-            foreach (long cell in values)
+            long mark = 46;
+            foreach (long value in levels)
             {
-                if (!((double)carry == (11.0 + 2.0)))
+                mark = ((mark - (913 + mark)) % 101) - value;
+                if ((16.0 + 6.4) == (double)(long)levels.Length)
                 {
-                    carry = (carry * 3) + (cell + carry);
+                    mark = ((mark * 3) + mark) % 101;
                 }
-                if (!((99 >> 5) > cell))
+                else
                 {
-                    carry = (carry * 4) + (cell * 2);
-                    carry = carry ^ (cell + carry);
-                }
-                if (!(cell > 82))
-                {
-                    carry = ((carry * 3) + (cell + carry)) % 1000;
+                    mark = (mark << 2) ^ seed;
                 }
             }
-            return carry;
+            if (mark < 30)
+            {
+                mark = ((mark * 5) + (mark + seed)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Combine counter profile values into a single score.</summary>
