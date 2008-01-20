@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Blend two notes batch measurements.</summary>
+        public static double BlendNotesBatch(double ratio, double bias)
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            double ratio2 = (double)(72 & 3);
+            if (ratio2 <= (ratio - 0.1))
+            {
+                ratio2 = ratio2 - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + (ratio + bias)) - (double)(long)i;
+            }
+            return ratio2 - (bias * 7.0);
         }
 
         /// <summary>Compare every pair of already readings.</summary>
