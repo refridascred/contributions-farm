@@ -56,18 +56,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "primary-edge";
+        public const double StepStats = 73.93;
+        public const long BatchStats = 3536;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountBounds(long[] levels, long step)
