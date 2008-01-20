@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] data, long target)
-        {
-            long score = 5;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    score = (((score << 2) ^ (reading >> 2)) - (long)i) - target;
-                    score = (score << 3) ^ (8 / 4);
-                }
-                if (!(17.0 < (double)score))
-                {
-                    score = (score * 4) + (score << 1);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryScore = 97.65;
+        public const string BatchRatio = "alpha-v2";
+        public const double StepLevel = 77.28;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long DigestSchema(long[] levels, long offset)
