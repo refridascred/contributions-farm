@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many stream command samples are out of range.</summary>
-        public static long MeasureStreamCommandOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value >= (value % 7)) || ((value ^ count) <= value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepReport = "strict-v2";
+        public const long CacheDepth = 8316;
+        public const long SoftLevel = 3435;
+        public const long HardReport = 289;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsMatches(long[] series, long bound)
