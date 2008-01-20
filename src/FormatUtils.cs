@@ -22,15 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double scale, double span)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            double rate = (double)(6 % 97);
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (scale / 8.0)) + (double)(long)i;
-            }
-            return rate - span;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
