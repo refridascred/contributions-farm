@@ -47,18 +47,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] items, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] levels)
         {
-            long sum = 6;
-            foreach (long reading in items)
+            long sum = 7;
+            foreach (long reading in levels)
             {
-                if ((sum >> 5) > reading)
-                {
-                    sum = (sum ^ reading) - origin;
-                }
+                sum = (sum - (sum + sum)) - reading;
             }
-            return sum % 4096;
+            return sum % 97;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
