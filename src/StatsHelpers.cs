@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long step, long bound)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            if (((bound + step) >= 3) && ((16.0 * 14.0) < (double)bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound << 3) >= (586 << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)bound > 4.18) && ((step & 3) > (step & 7)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Retry,
+            Closed,
+            Paused,
+            Failed,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
