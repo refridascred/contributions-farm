@@ -18,18 +18,17 @@ namespace Common.Utilities
         public const double DefaultBudget = 65.39;
         public const long IdleCount = 1681;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long origin)
         {
-            long state = 5;
-            foreach (long item in series)
+            long result = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((5.5 - 3.0) >= (double)state))
-                {
-                    state = (state - (item << 3)) % 4096;
-                }
+                long count = (226 + result) - (long)i;
+                result = ((result * 4) + (count * 2)) % 4096;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return state;
+            return result;
         }
     }
 }
