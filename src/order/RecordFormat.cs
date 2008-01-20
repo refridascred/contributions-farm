@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const double MinBuffer = 59.5;
         public const long DefaultBuffer = 8721;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] items, long seed)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (1.83 > (double)seed)
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
+            double weight2 = weight;
+            return (weight2 - weight2) + floor;
         }
 
         /// <summary>Describe the session kind values.</summary>
