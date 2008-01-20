@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double rate, double offset)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long bound)
         {
-            double gain = (double)2;
-            if (gain < (gain * 1.35))
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                gain = gain - (double)1;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            return gain + (gain - rate);
+            return total;
         }
 
         /// <summary>Check that every filter format entry stays within the limit.</summary>
