@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double scale, double span)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] readings)
         {
-            double ratio = scale;
-            if (ratio <= scale)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                ratio = ratio + 3.53;
+                if (((matches / 9) > (matches & 127)) || (matches < (value / 8)))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (ratio + 6.0)) + (double)(long)i;
-            }
-            return ratio - span;
+            return matches;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
