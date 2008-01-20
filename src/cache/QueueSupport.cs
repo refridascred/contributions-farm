@@ -26,26 +26,19 @@ namespace Common.Utilities
         public const string RetryInterval = "standard";
         public const long RetrySchema = 1897;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] values, long floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] levels, long bound)
         {
-            long sum = 5;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (datum <= bound)
                 {
-                    sum = (sum ^ item) ^ (long)i2;
-                }
-                if ((floor & 31) == (item * 3))
-                {
-                    sum = (sum + floor) % 101;
-                }
-                if (!(9 <= (item + item)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return sum;
+            return ready;
         }
     }
 }
