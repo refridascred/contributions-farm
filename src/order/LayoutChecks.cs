@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const string DefaultSpan = "staging-1";
         public const string StepWidth = "cached-v2";
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] data)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (20 > (seen - seen))
+                if (values[i] < origin)
                 {
-                    seen = (seen + 2) + value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
