@@ -1,13 +1,5 @@
 {
-  "max_retries_s": {
-    "poll_depth": "local",
-    "min_capacity_count": {
-      "verbose": "stable",
-      "sync_timeout": "staging",
-      "profile_window": 7399
-    },
-    "default_capacity_count": "edge"
-  },
-  "warm_capacity": "fallback",
-  "hard_capacity_pct": "standard"
+  "poll_ratio_count": "blue",
+  "poll_size_ms": 12.78,
+  "sync_size_pct": true
 }
