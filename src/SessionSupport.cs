@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally >> 1) <= (tally + 7))
-                {
-                    tally = ((tally + 3) - datum) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 5763;
+        public const double HardStream = 8.11;
+        public const string BurstScore = "alpha";
 
         /// <summary>Roll a session counter forward.</summary>
         public static long IterateSession(long bound)
