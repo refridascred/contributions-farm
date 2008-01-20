@@ -76,13 +76,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
+            public long Flag { get; set; }
+            public long Rank { get; set; }
             public long Region { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
         }
     }
 }
