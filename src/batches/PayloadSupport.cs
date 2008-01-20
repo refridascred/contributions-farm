@@ -38,11 +38,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardWidth = "strict-edge";
-        public const double LimitTimeout = 43.82;
-        public const long BatchCache = 7840;
-        public const double StepCount = 66.74;
-        public const string RetrySize = "fallback-edge";
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Closed,
+            Done,
+            New,
+            Draft,
+            Dropped,
+        }
     }
 }
