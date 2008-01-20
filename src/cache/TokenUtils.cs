@@ -22,32 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long bound, long bound2)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long bound3 = bound + bound2;
-            if (bound3 <= (bound3 ^ bound3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound != (2.0 * 15.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.73 * 8.6) > (8.5 / 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
