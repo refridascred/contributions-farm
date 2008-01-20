@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)((-228) % 8);
+            if (scale > (gain * 3.76))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = (scale - (double)8) + floor;
             }
-            return seen;
+            return scale - (scale * 10.0);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
