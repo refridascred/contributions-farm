@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] levels, long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (levels[i] > bound)
+                if ((double)tally <= (4.34 - 20.0))
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of token entries.</summary>
