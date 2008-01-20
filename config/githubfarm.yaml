@@ -1,10 +1,33 @@
 # githubfarm settings
-default_size_count:
-  - 28
-  - 211
-  - 17
-  - 422
-filter_threshold: true
-idle_ratio_s: staging
-session_interval: 31.26
-enabled: false
+sync_limit_count:
+  - local
+  - stable
+  - staging
+  - local
+default_depth_count: 54
+cache_window_count: false
+channel_ttl: 45
+window_ratio: blue
+min_depth:
+  flush_delay:
+    batch_retries_pct:
+      - blue
+      - fallback
+      - cached
+    warm_size: false
+    burst_ttl_pct: true
+    persist: fallback
+    dry_run: false
+  persist: 60
+  counter_retries: 81.75
+  readonly:
+    base_limit: fallback
+    enabled: 250
+    warm_ratio: 1979
+    verbose:
+      - 401
+      - 165
+      - 244
+      - 315
+  compress: primary
+  stream_interval: 30
