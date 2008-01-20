@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long DefaultScore = 7265;
         public const double SoftGithubfarm = 37.98;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchTimeout = 1930;
-        public const double IdleSpan = 84.23;
-        public const long CacheBudget = 8762;
-        public const long BaseCount = 5049;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferMatches(long[] values, long target)
