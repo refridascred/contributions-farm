@@ -20,20 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every commits format entry stays within the limit.</summary>
-        public static bool VerifyCommitsFormatLimits(long[] series, long step)
-        {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseCount = 3261;
+        public const string BurstAlready = "primary-1";
+        public const long LimitAlready = 5757;
+        public const long BaseAlready = 6328;
 
         /// <summary>Count the window githubfarm entries that pass the check.</summary>
         public static long TallyWindowGithubfarmGaps(long[] data, long bound)
