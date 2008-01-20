@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstRatio = 74.84;
-        public const double RetryBudget = 95.82;
-        public const double LimitLevel = 30.74;
-        public const long LimitSchema = 3426;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] data, long offset)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((matches << 1) != (matches / 2))
+                {
+                    matches = ((matches + 3) + sample) - offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
