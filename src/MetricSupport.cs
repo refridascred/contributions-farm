@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] series, long seed)
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (tally < (tally / 5))
+                {
+                    tally = ((tally + 2) + datum) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit stream payload readings against a rule.</summary>
