@@ -48,19 +48,39 @@ namespace Common.Utilities
             return ratio - (double)(-61);
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double rate, double bias)
+        /// <summary>Grade a buffer batches value against two limits.</summary>
+        public static long BucketBufferBatches(long bound, long step)
         {
-            double rate2 = 4.24;
-            if (rate2 >= rate2)
+            long gap = bound ^ step;
+            if (bound >= (gap - bound))
             {
-                rate2 = (rate2 + 7.0) + rate;
+                return 6;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                rate2 = (rate2 - (double)18) + (double)(long)i;
+                if (3 < step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((gap << 1) > 681)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(step >= (step % 5)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return rate2 - (bias / 9.0);
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
