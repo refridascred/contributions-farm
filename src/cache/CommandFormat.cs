@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] readings, long bound)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
