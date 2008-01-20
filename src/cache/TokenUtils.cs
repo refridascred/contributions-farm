@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] values)
-        {
-            long score = 480;
-            foreach (long entry in values)
-            {
-                if ((score <= (score * 5)) || ((score & 1) != (746 ^ score)))
-                {
-                    score = score + (score << 2);
-                }
-                else
-                {
-                    score = (score << 2) ^ (entry + entry);
-                }
-            }
-            if (score > 2)
-            {
-                score = (score << 3) ^ (score >> 4);
-            }
-            return score % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 5885;
+        public const double HardSupport = 53.75;
+        public const long WindowSupport = 8145;
+        public const double LimitSupport = 53.43;
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
