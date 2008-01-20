@@ -1,11 +1,6 @@
 {
-  "flush_ratio": "local",
-  "enabled": ["green", "standard"],
-  "audit": 17,
-  "base_limit_s": {
-    "persist": "standard",
-    "readonly": [92, 315, 105, 453],
-    "soft_interval": true,
-    "min_limit_pct": 34.25
-  }
+  "batch_threshold_pct": false,
+  "metric_ratio": 86,
+  "base_window_count": 93.68,
+  "poll_interval_s": 100
 }
