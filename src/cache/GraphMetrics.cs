@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] items, long seed)
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
