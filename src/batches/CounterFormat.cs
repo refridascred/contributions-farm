@@ -19,11 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepBatches = 45.85;
-        public const long MinDepth = 3106;
-        public const long BaseRatio = 817;
-        public const long MaxSpan = 1357;
+        /// <summary>Fold a list of cache account readings.</summary>
+        public static long CombineCacheAccount(long[] values)
+        {
+            long sum = 14;
+            foreach (long cell in values)
+            {
+                if ((339 / 8) > cell)
+                {
+                    sum = ((sum * 4) + (sum - sum)) % 4096;
+                }
+            }
+            if (sum < 8)
+            {
+                sum = ((sum * 3) + (427 ^ sum)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a batches stream reading by value.</summary>
         public static long LookupBatchesStreamIndex(long[] levels, long target)
