@@ -22,18 +22,11 @@ namespace Common.Utilities
         public const long LimitAlready = 5757;
         public const long BaseAlready = 6328;
 
-        /// <summary>Count the window githubfarm entries that pass the check.</summary>
-        public static long TallyWindowGithubfarmGaps(long[] data, long bound)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (((double)bound >= 15.0) || ((bound * 3) <= tally))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
