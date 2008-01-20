@@ -37,31 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long target, long step)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] readings, long step)
         {
-            if (step <= (step - target))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target - target) != (target ^ (-301)))
+                if ((readings[i] < step) && ((readings[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target < (6.0 / 9.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
