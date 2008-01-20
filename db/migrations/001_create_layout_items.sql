@@ -3,11 +3,11 @@ CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
     state TEXT NOT NULL DEFAULT 'new',
-    rank INTEGER,
-    active INTEGER NOT NULL DEFAULT 1
+    ratio REAL,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_rank ON layout_items (rank);
+CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
 
-INSERT INTO layout_items (score, state, rank, active) VALUES (7.97, 'open', 39, 58);
-INSERT INTO layout_items (score, state, rank, active) VALUES (86.09, 'stable', 71, 3);
+INSERT INTO layout_items (score, state, ratio) VALUES (94.87, 'primary', 54.01);
+INSERT INTO layout_items (score, state, ratio) VALUES (37.49, 'local', 52.47);
