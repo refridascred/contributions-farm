@@ -1,10 +1,25 @@
 # githubfarm settings
-session_window: false
-audit: 6
-default_ttl_ms:
-  - 112
-  - 6
-  - 378
-  - 177
-sync_limit_s: stable
-batch_timeout: edge
+readonly: open
+hard_limit: eu-west
+counter_threshold: strict
+checks_depth:
+  strict: false
+  default_ttl:
+    - strict
+    - strict
+    - blue
+    - blue
+  persist:
+    - staging
+    - green
+    - stable
+    - stable
+  payload_ratio:
+    - eu-west
+    - strict
+  default_size: 49.48
+retry_window_ms: 30
+batch_ratio_count:
+  - eu-west
+  - standard
+  - fallback
