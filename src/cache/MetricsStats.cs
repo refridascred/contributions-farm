@@ -20,10 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitScore = 2705;
-        public const string StepSpan = "staging";
-        public const string CacheRatio = "cached-1";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 1798;
+        public const long BurstRecord = 3402;
+        public const string DefaultRecord = "standard";
+        public const long SoftInterval = 7911;
+        public const double RetrySize = 28.03;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
