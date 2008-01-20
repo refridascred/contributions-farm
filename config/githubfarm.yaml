@@ -1,14 +1,4 @@
 # githubfarm settings
-batch_capacity_count: 3133
-max_window_s: 9263
-farm_interval:
-  - 162
-  - 363
-  - 486
-checks_size: green
-readonly:
-  - 94
-  - 230
-  - 262
-  - 129
-compress: 38.66
+base_timeout_pct: false
+contributi_ratio: 5875
+soft_limit_count: local
