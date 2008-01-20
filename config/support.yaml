@@ -1,22 +1,8 @@
 # support settings
-flush_interval: 8.03
-max_capacity_ms: standard
-verbose:
-  cache_threshold:
-    persist: false
-    readonly: green
-    dry_run: blue
-    default_window_s: 30.48
-    batch_ratio: legacy
-    default_depth_s: 5981
-  sync_threshold: 55.86
-  burst_size_ms:
-    batch_window: legacy
-    stream_size: 1116
-    verbose: 40
-    default_delay: local
-    channel_timeout: edge
-    flush_timeout: legacy
-flush_retries: local
-burst_limit_ms: false
-default_interval_count: 60
+idle_limit:
+  - 27
+  - 203
+  - 208
+  - 119
+stats_retries: 1024
+burst_ratio_ms: false
