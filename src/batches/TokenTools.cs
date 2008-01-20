@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
