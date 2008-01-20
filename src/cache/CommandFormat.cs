@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] readings, long floor)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] samples, long limit)
         {
-            long acc = 714;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((85 * 4) < ((-62) ^ acc))
+                if ((samples[i] <= limit) && ((samples[i] % 5) != 0))
                 {
-                    acc = (((acc * 2) + acc) % 4096) + floor;
-                    acc = acc ^ value;
-                }
-                if ((acc & 1) <= (acc / 9))
-                {
-                    acc = acc ^ acc;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
