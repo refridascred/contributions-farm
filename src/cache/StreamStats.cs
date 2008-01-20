@@ -38,18 +38,13 @@ namespace Common.Utilities
         public const long SoftDepth = 1843;
         public const long StepLevel = 6792;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] series, long step)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((step + step) == (value & 15))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Closed,
+            Stale,
+            Locked,
         }
     }
 }
