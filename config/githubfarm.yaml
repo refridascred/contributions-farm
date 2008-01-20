@@ -1,13 +1,5 @@
 # githubfarm settings
-dry_run:
-  - blue
-  - open
-  - standard
-  - primary
-batches_window:
-  - 276
-  - 178
-  - 157
-retry_depth_count: open
-default_threshold_count: 49
-base_limit: staging
+persist: 14.9
+retry_threshold: 250
+already_ttl: fallback
+commits_limit: 28.74
