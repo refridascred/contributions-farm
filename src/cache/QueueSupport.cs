@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Count the support already entries that pass the check.</summary>
+        public static long TallySupportAlreadyOutliers(long[] readings, long bound)
         {
-            Active,
-            Draft,
-            Dropped,
-            Queued,
-            Synced,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (hits <= (hits + bound))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the editor state values.</summary>
