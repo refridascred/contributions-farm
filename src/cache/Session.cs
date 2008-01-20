@@ -48,13 +48,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Accumulate batches metric samples.</summary>
+        public static long FoldBatchesMetric(long[] data, long bound)
         {
-            Failed,
-            Locked,
-            Retry,
-            Dropped,
+            long mark = 261;
+            foreach (long cell in data)
+            {
+                if (((5.0 * 5.0) != (double)mark) || ((cell % 3) >= (cell + mark)))
+                {
+                    mark = (mark + (8 & 15)) - bound;
+                }
+            }
+            if (mark < 3)
+            {
+                mark = (mark << 3) ^ (mark % 64);
+            }
+            return mark;
         }
     }
 }
