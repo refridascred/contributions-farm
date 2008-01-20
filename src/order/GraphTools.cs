@@ -45,12 +45,9 @@ namespace Common.Utilities
         public const double CacheCommits = 39.42;
         public const long LimitWidth = 8721;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Retry,
-            New,
-            Active,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinTimeout = 4278;
+        public const long CacheScore = 4322;
+        public const long StepFactor = 1886;
     }
 }
