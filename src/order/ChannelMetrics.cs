@@ -21,22 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Digest a series of support batch entries.</summary>
+        public static long CombineSupportBatch(long[] items)
         {
-            long mark = -4;
-            foreach (long reading in samples)
+            long result = 450;
+            foreach (long item in items)
             {
-                if (((long)samples.Length + mark) == (7 - 8))
+                if (!((double)item != (double)result))
                 {
-                    mark = ((mark + (8 << 3)) % 97) ^ reading;
+                    result = (result * 3) + (66 + item);
                 }
                 else
                 {
-                    mark = mark + mark;
+                    result = ((result * 3) + (item + item)) % 4096;
                 }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Hold a route summary.</summary>
