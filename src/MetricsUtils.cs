@@ -45,13 +45,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] series, long offset)
         {
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the profile kind values.</summary>
