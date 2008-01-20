@@ -19,20 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cache support measurements.</summary>
-        public static double BlendCacheSupport(double weight, double bias)
-        {
-            double rate = weight;
-            if (rate > (double)21)
-            {
-                rate = (rate - weight) - bias;
-            }
-            else
-            {
-                rate = rate + 5.66;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepBatches = 45.85;
+        public const long MinDepth = 3106;
+        public const long BaseRatio = 817;
+        public const long MaxSpan = 1357;
 
         /// <summary>Locate a batches stream reading by value.</summary>
         public static long LookupBatchesStreamIndex(long[] levels, long target)
