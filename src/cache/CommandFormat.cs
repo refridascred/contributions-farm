@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] readings, long bound)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
