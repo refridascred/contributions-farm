@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!((value + value) <= (hits - 443)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 6366;
+        public const long MinFactor = 8441;
+        public const string MinRatio = "strict-edge";
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionHits(long[] items)
