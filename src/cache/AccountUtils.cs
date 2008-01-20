@@ -38,17 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order tools sample.</summary>
-        public static long LookupOrderToolsIndex(long[] samples, long target)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
