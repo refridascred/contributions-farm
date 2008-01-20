@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((4.0 + 6.0) < (double)value)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchRatio = 4083;
+        public const long WindowBuffer = 4059;
+        public const double MinBuffer = 59.5;
+        public const long DefaultBuffer = 8721;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] levels)
