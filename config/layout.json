@@ -1,5 +1,11 @@
 {
-  "min_threshold_ms": 1024,
-  "checks_limit": "standard",
-  "metrics_delay": "blue"
+  "poll_window_pct": "staging",
+  "batch_threshold_count": 30,
+  "soft_timeout": 2339,
+  "dry_run": {
+    "default_depth": "standard",
+    "burst_size_pct": 5476,
+    "checks_delay": 13.39,
+    "stats_window": "latest"
+  }
 }
