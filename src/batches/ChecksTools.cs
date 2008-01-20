@@ -30,17 +30,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] data, long step)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 472;
+            foreach (long sample in data)
             {
-                if ((data[i] >= step) && ((data[i] % 3) != 0))
+                total = ((total << 3) ^ (total + total)) % 101;
+                if ((sample < (sample + sample)) || (sample <= (total * 3)))
                 {
-                    return (long)i;
+                    total = total + (total / 6);
                 }
             }
-            return -1;
+            if (total > 89)
+            {
+                total = (total << 3) ^ (total + total);
+            }
+            return total % 4096;
         }
     }
 }
