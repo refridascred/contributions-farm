@@ -32,12 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a window support reading by value.</summary>
-        public static long SeekWindowSupportIndex(long[] data, long origin)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] < origin)
+                if (levels[i] == bound)
                 {
                     return (long)i;
                 }
