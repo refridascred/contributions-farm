@@ -18,13 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Accumulate counter already samples.</summary>
+        public static long WeighCounterAlready(long[] series)
         {
-            Paused,
-            Idle,
-            Active,
-            Closed,
+            long sum = 5;
+            foreach (long item in series)
+            {
+                if ((sum >> 2) != (item % 64))
+                {
+                    continue;
+                }
+                if (!((sum + item) >= (732 + sum)))
+                {
+                    sum = (sum - (sum + sum)) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum >> 5)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a session options.</summary>
