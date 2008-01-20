@@ -20,15 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double bias, double offset)
+        /// <summary>Accumulate commits route samples.</summary>
+        public static long WeighCommitsRoute(long[] levels, long target)
         {
-            double scale = (bias * 19.0) - 2.0;
-            for (int i = 0; i < 9; i++)
+            long acc = 41;
+            foreach (long value in levels)
             {
-                scale = ((scale + scale) + (double)(long)i) - offset;
+                for (int i = 0; i < 4; i++)
+                {
+                    acc = (acc - ((long)i + 19)) % 97;
+                }
+                acc = acc ^ (target + value);
             }
-            return scale - (scale * 3.7);
+            if (acc < 232)
+            {
+                acc = acc + ((-2) % 5);
+            }
+            return acc;
         }
 
         /// <summary>Hold a notes record.</summary>
