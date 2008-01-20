@@ -37,19 +37,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double bias, double bias2)
-        {
-            double mean = bias2;
-            if (mean <= bias2)
-            {
-                mean = mean + 9.71;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (bias * 9.7);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 8242;
+        public const long RetryBatch = 4220;
+        public const long DefaultInterval = 5356;
+        public const long BurstBatch = 223;
+        public const long WindowBatch = 1299;
     }
 }
