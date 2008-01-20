@@ -16,26 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] data)
+        /// <summary>Check that every window session entry stays within the limit.</summary>
+        public static bool VerifyWindowSessionLimits(long[] data, long bound)
         {
-            long total = 996;
+            bool flag = true;
             foreach (long entry in data)
             {
-                if (((entry + entry) > (entry >> 4)) && ((double)entry > (0.42 - 0.6)))
+                if (entry < bound)
                 {
-                    total = (total ^ entry) % 97;
-                }
-                if (((double)entry < (4.6 * 1.0)) || ((98 - entry) != (36 + 20)))
-                {
-                    total = ((total * 5) + entry) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            if (total < (-939))
-            {
-                total = ((total * 2) + (total + 597)) % 101;
-            }
-            return total % 1000;
+            return flag;
         }
 
         /// <summary>Fold a list of support readings.</summary>
