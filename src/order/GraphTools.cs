@@ -23,10 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBudget = 9403;
-        public const long SoftBatches = 344;
-        public const string StepLevel = "standard-1";
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double scale, double floor)
+        {
+            double gain = (double)((-1) + 8);
+            if (gain > gain)
+            {
+                gain = gain - scale;
+            }
+            return gain + (scale - floor);
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long MatchMetricCount(long[] values)
