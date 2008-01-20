@@ -40,15 +40,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double scale, double bias)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            double drift = (double)6 + (bias + 6.0);
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (scale + bias)) - (double)(long)i;
-            }
-            return drift - (double)(-257);
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
