@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long CacheSize = 5481;
         public const string StepWidth = "staging-edge";
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] items, long step)
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            long sum = 863;
+            foreach (long cell in items)
+            {
+                sum = ((sum + (cell / 6)) % 255) + step;
+            }
+            return sum;
         }
 
         /// <summary>Describe the stats state values.</summary>
