@@ -33,13 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Blend two batch checks measurements.</summary>
+        public static double ProjectBatchChecks(double gain, double offset)
         {
-            Ready,
-            Pending,
-            Synced,
-            Paused,
+            double ratio = offset;
+            if (ratio < (gain / 4.0))
+            {
+                ratio = ratio + (gain + ratio);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + gain;
         }
     }
 }
