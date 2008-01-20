@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const double CacheFarm = 71.26;
         public const long StepSpan = 7589;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheDepth = 7609;
-        public const long RetryInterval = 6839;
-        public const double StepAlready = 0.61;
-        public const long BurstAlready = 6269;
-        public const long StepWidth = 5075;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 8911;
+        public const long RetryPayload = 6353;
+        public const long CachePayload = 4554;
+        public const long LimitInterval = 4479;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
