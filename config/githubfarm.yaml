@@ -1,10 +1,7 @@
 # githubfarm settings
-window_ratio:
-  - legacy
-  - local
-  - eu-west
-base_ttl:
-  soft_depth_pct: false
-  strict: cached
-  retry_delay_ms: local
-soft_window_ms: green
+default_ttl_pct: legacy
+compress: cached
+commits_depth:
+  - 61
+  - 413
+burst_interval_ms: 3363
