@@ -1,5 +1,10 @@
 # entry settings
-burst_capacity: edge
-max_limit_count: 1024
-channel_threshold: 86.19
-tools_depth: staging
+schema_interval: strict
+sync_ttl_ms: true
+warm_ttl: standard
+schema_depth:
+  max_threshold: edge
+  min_ttl_ms: 29
+  context_size: 4745
+flush_delay: 39.78
+persist: eu-west
