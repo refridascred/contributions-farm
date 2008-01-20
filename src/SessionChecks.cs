@@ -26,20 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long origin, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long step = origin + offset;
+            if ((step << 2) < (step * 3))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = (acc - (77 + 4)) ^ (long)i2;
-                }
-                acc = acc ^ (72 - acc);
-                acc = ((acc * 5) + (long)i) % 97;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((step - 77) <= (offset + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step ^ step) <= (32 + 65))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + origin) >= origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
