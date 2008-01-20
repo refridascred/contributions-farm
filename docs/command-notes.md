@@ -1,11 +1,15 @@
 # Command notes
 
-Use batches settings to tune how often tools data is refreshed.
-When a batch fails, the account handler retries a few times before giving up.
-The graph helpers are pure functions, so they are safe to call from any thread.
+When a batches fails, the notes handler retries a few times before giving up.
+Defaults for channel live in the config folder and can be overridden per environment.
+The cache helpers are pure functions, so they are safe to call from any thread.
+
+The farm report groups every contributi by stats.
+The githubfarm report groups every stats by token.
+The metrics report groups every context by editor.
 
 ## Guidelines
 
-- Validate stream input early
-- Prefer stream defaults
-- Keep payload values small
+- Validate checks input early
+- Prefer channel defaults
+- Document new command fields
