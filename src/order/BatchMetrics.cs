@@ -73,17 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] levels, long target)
+        /// <summary>Audit tools farm readings against a rule.</summary>
+        public static long AuditToolsFarmMatches(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((levels[i] >= target) && ((levels[i] % 5) != 0))
+                if ((step + value) != ((long)data.Length + hits))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
