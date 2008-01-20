@@ -63,22 +63,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] samples, long offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long mark = 9;
-            foreach (long entry in samples)
-            {
-                if ((double)offset == (0.14 / 2.0))
-                {
-                    mark = ((mark * 3) + entry) % 4096;
-                }
-            }
-            if (mark < (-3))
-            {
-                mark = ((mark << 2) ^ (mark ^ mark)) % 255;
-            }
-            return mark % 4096;
+            public string Count { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
