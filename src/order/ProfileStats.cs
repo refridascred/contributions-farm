@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinDepth = 84.2;
-        public const string HardInterval = "stable";
-        public const string BatchContributi = "standard-v2";
-        public const double HardContributi = 58.6;
-        public const long StepTimeout = 7831;
+        /// <summary>Scale a queue support figure with a bias.</summary>
+        public static double ProjectQueueSupport(double rate, double bias)
+        {
+            double scale = rate;
+            if (scale < (bias * 5.0))
+            {
+                scale = scale + scale;
+            }
+            return scale - bias;
+        }
 
         /// <summary>Count the stream payload entries that pass the check.</summary>
         public static long TallyStreamPayloadGaps(long[] samples, long step)
