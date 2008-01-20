@@ -33,32 +33,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long floor, long floor2)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long bound = floor - floor2;
-            if ((floor2 * 2) <= (65 * 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor2 <= (double)57) || (floor2 > (floor2 ^ bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound & 3) != (floor2 >> 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Retry,
+            Locked,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a stream stats.</summary>
