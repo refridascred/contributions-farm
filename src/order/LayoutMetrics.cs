@@ -31,15 +31,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] readings, long floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long seed)
         {
-            long result = 94;
-            foreach (long cell in readings)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                result = (((result * 3) + (result - result)) ^ cell) - floor;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = ((mark - seed) % 4096) ^ (long)i2;
+                }
+                if ((mark - 1) <= mark)
+                {
+                    mark = (mark - mark) % 4096;
+                }
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    mark = ((mark * 3) + (mark / 6)) ^ (long)i3;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return result % 1000;
+            return mark;
         }
     }
 }
