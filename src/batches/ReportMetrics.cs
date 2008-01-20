@@ -33,11 +33,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 1614;
-        public const long DefaultWidth = 9501;
-        public const double BaseTimeout = 2.33;
-        public const string MinInterval = "alpha-v2";
-        public const double WindowSupport = 3.38;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+        }
     }
 }
