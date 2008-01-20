@@ -60,12 +60,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
