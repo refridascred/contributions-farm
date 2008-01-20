@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell < (8.6 / 6.0))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 8183;
+        public const double MinFactor = 85.53;
+        public const double HardTimeout = 90.65;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long WindowFactor = 6168;
