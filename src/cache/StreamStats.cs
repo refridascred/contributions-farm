@@ -18,22 +18,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] data)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!!((tally * 4) <= (item - item)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define order limits and defaults.</summary>
