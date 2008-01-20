@@ -1,8 +1,18 @@
 {
-  "readonly": 30.05,
-  "idle_ratio": 75.8,
-  "flush_depth_count": 96.75,
-  "burst_timeout_ms": 60,
-  "retry_retries_ms": true,
-  "editor_size": ["open", "edge", "blue"]
+  "enabled": {
+    "batch_retries": "primary",
+    "batch_limit": true,
+    "support_retries": 73.84,
+    "layout_delay": {
+      "counter_ttl": [25, 330],
+      "verbose": "staging",
+      "enabled": ["green", "primary", "eu-west"],
+      "idle_threshold_pct": ["eu-west", "stable", "strict", "strict"]
+    },
+    "max_depth_count": "strict",
+    "commits_window": 72.49
+  },
+  "retry_delay_ms": false,
+  "sync_threshold": [237, 176],
+  "editor_limit": false
 }
