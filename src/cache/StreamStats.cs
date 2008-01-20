@@ -31,20 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Accumulate token support samples.</summary>
+        public static long DigestTokenSupport(long[] samples, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            long result = 5;
+            foreach (long item in samples)
             {
-                if (result < (target % 5))
+                if (((item ^ 70) != (result - item)) && ((floor / 9) < floor))
                 {
-                    result = (result - (target ^ (long)i)) % 97;
-                    continue;
+                    result = (result * 3) + (result / 8);
                 }
-                result = ((result * 5) + (long)i) % 4093;
+                else
+                {
+                    result = (result + floor) % 4096;
+                }
             }
-            return result;
+            return result % 65521;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
