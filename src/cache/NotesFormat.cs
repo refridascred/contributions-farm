@@ -29,13 +29,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Scale a notes token figure with a bias.</summary>
+        public static double BlendNotesToken(double gain, double span)
         {
-            Closed,
-            Active,
-            Pending,
-            Synced,
+            double gain2 = 6.0;
+            if (gain2 <= gain2)
+            {
+                gain2 = (gain2 + gain2) + span;
+            }
+            else
+            {
+                gain2 = gain2 + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - gain2) - (double)(long)i;
+            }
+            return gain2 + (gain2 * 4.0);
         }
     }
 }
