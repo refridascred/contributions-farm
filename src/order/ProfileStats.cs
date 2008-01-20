@@ -30,19 +30,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] samples)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] values, long limit)
         {
-            long state = 1;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long datum in values)
             {
-                state = (state << 3) ^ value;
+                if (datum <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (state < 44)
-            {
-                state = (state + (state - state)) % 255;
-            }
-            return state % 97;
+            return found;
         }
 
         /// <summary>Validate tools session readings against a bound.</summary>
