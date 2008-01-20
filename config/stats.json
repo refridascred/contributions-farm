@@ -1,8 +1,5 @@
 {
-  "stats_capacity": 29,
-  "format_ratio": 76,
-  "readonly": 1024,
-  "dry_run": "stable",
-  "enabled": "legacy",
-  "compress": 100
+  "strict": 96,
+  "burst_timeout_s": "edge",
+  "format_retries": "open"
 }
