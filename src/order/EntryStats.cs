@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Closed,
-            Active,
-            Pending,
-            Stale,
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public bool Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
