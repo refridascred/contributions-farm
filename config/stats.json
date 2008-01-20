@@ -1,14 +1,6 @@
 {
-  "soft_interval_s": [158, 183],
-  "window_ratio": false,
-  "base_limit": ["edge", "strict", "eu-west"],
-  "account_delay": {
-    "default_threshold_pct": 5351,
-    "stream_threshold": 6612,
-    "flush_timeout_pct": [213, 64],
-    "cache_depth": "primary",
-    "soft_ttl_ms": 67.4
-  },
-  "flush_retries_count": 2.97,
-  "warm_limit_pct": "standard"
+  "enabled": true,
+  "cache_capacity": 60,
+  "warm_retries_s": "legacy",
+  "sync_capacity_pct": "green"
 }
