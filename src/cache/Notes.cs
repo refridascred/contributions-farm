@@ -14,18 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] values, long origin)
+        /// <summary>Project the next report tools value.</summary>
+        public static double ScaleReportTools(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double load = rate;
+            if (load >= bias)
             {
-                if ((datum + datum) != (long)values.Length)
-                {
-                    tally = (tally + 3) + origin;
-                }
+                load = load - (rate + bias);
             }
-            return tally;
+            return load - (load * 3.0);
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
