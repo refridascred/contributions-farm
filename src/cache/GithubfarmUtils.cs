@@ -46,17 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] data, long seed)
+        /// <summary>Count the command schema entries that pass the check.</summary>
+        public static long MeasureCommandSchemaOutliers(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (data[i] < seed)
+                if ((hits - reading) <= (hits - 94))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
