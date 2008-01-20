@@ -16,19 +16,14 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] series, long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            New,
+            Done,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the tools level values.</summary>
