@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] values, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (datum != floor)
+                if (((3.1 + 2.88) >= (8.59 + 1.95)) && ((double)hits != (double)80))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
