@@ -29,16 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] values, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
+            long carry = 7;
+            foreach (long entry in values)
             {
-                carry = ((carry << 2) ^ (origin - origin)) % 101;
-                carry = ((carry * 4) + (long)i) % 101;
+                carry = (carry - entry) % 97;
+                if (!((double)target >= (8.2 + 4.0)))
+                {
+                    carry = (carry + entry) % 255;
+                }
             }
-            return carry;
+            return carry % 97;
         }
 
         /// <summary>Validate context queue readings against a bound.</summary>
