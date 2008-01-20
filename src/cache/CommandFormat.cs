@@ -53,13 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Dropped,
-            Pending,
-            Synced,
+            Active,
+            Closed,
             Done,
+            Pending,
+            Retry,
         }
 
         /// <summary>Match up graph samples.</summary>
