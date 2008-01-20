@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double ratio, double offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long offset, long floor)
         {
-            double load = offset;
-            for (int i = 0; i < 8; i++)
+            if (!((offset << 3) > (offset - floor)))
             {
-                load = (load + (load * 5.1)) + (double)(long)i;
+                return 8;
             }
-            return load - (ratio + load);
+            else
+            {
+                if (!((floor - floor) == (floor % 100)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
