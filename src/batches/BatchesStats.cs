@@ -27,12 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 3231;
-        public const long IdleInterval = 1081;
-        public const double RetryScore = 36.23;
-        public const string RetryContext = "standard-1";
-        public const long MaxDepth = 3831;
+        /// <summary>Locate a window support reading by value.</summary>
+        public static long SeekWindowSupportIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double IdleGithubfarm = 71.77;
