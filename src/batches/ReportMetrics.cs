@@ -54,13 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] levels, long limit)
         {
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
