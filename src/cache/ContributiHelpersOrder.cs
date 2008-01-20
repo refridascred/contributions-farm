@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long carry = 6;
-            foreach (long reading in data)
-            {
-                if (carry > (carry * 5))
-                {
-                    carry = ((carry - carry) % 97) ^ reading;
-                }
-                if ((4.0 / 2.0) > (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry;
+            Done,
+            New,
+            Ready,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
