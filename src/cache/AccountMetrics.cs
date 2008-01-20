@@ -64,12 +64,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] values, long limit)
         {
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
