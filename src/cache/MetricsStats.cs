@@ -35,13 +35,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Dropped,
-            New,
-            Failed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseWidth = 5056;
+        public const long MinRatio = 4612;
+        public const long BurstSpan = 2640;
+        public const string CacheFactor = "local-v2";
+        public const long IdleScore = 2930;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long ClassifyMetrics(long step, long limit)
