@@ -1,13 +1,15 @@
 # githubfarm settings
-retry_limit_ms: edge
-max_ttl_s:
-  - legacy
-  - eu-west
-dry_run: 5028
-hard_ratio_count: 100
-support_ttl: local
-cache_timeout:
-  - 15
-  - 56
-  - 238
-  - 417
+soft_capacity_ms: false
+already_interval:
+  idle_ratio: 8469
+  default_limit_ms:
+    - staging
+    - standard
+  soft_interval_ms: eu-west
+  readonly: legacy
+  checks_retries: 8409
+  min_size: primary
+farm_ttl: 82.79
+enabled: 22
+warm_timeout_s: 37.44
+session_interval: 250
