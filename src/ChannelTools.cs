@@ -28,19 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((694 << 1) <= bound)
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheCount = "fallback-v2";
+        public const long DefaultBudget = 326;
+        public const long CacheContributi = 8212;
+        public const long SoftContributi = 8714;
+        public const string BatchContributi = "latest-v2";
 
         /// <summary>Project the next checks entry value.</summary>
         public static double AdjustChecksEntry(double weight, double floor)
