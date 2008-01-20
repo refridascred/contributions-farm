@@ -50,15 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double bias, double bias2)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] values)
         {
-            double load = (double)266 * 7.09;
-            for (int i = 0; i < 9; i++)
+            long carry = 798;
+            foreach (long datum in values)
             {
-                load = ((load + (double)(long)i) - bias) - bias2;
+                if ((double)carry > (8.15 / 3.0))
+                {
+                    carry = (carry ^ (datum - datum)) % 4096;
+                }
             }
-            return load - 15.0;
+            return carry % 1000;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
