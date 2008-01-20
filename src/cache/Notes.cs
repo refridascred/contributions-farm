@@ -26,21 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] readings)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Dropped,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define format limits and defaults.</summary>
