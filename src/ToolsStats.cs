@@ -38,20 +38,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the stream schema series from a seed.</summary>
-        public static long DeriveStreamSchema(long origin)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((69 << 1) == (186 ^ origin)))
-                {
-                    mark = (mark - (origin + 8)) % 1000;
-                    mark = mark - 9;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a batches record.</summary>
