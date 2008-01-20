@@ -24,13 +24,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Look up the position of a order tools sample.</summary>
+        public static long LookupOrderToolsIndex(long[] samples, long target)
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public double Offset { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
