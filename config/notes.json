@@ -1,5 +1,7 @@
 {
-  "checks_timeout": 78.48,
-  "stats_limit": "local",
-  "max_retries": ["fallback", "cached", "strict"]
+  "already_retries": 500,
+  "min_capacity": "strict",
+  "schema_capacity": "staging",
+  "warm_delay_ms": 18,
+  "flush_timeout_count": "stable"
 }
