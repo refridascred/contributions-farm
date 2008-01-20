@@ -14,38 +14,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long offset, long offset2)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            if ((offset - 9) != (offset2 % 24))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset & 31) == (offset2 - 981))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset2 >= (6.01 - 0.55))
+                    if ((values[i] - values[j]) == 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset * 2) > offset2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the layout status values.</summary>
