@@ -21,24 +21,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank session profile input into a small class.</summary>
-        public static long SortSessionProfile(long floor, long seed)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] values, long origin)
         {
-            if (seed > floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((4.7 * 20.0) == (double)seed) || ((9.8 - 4.53) > (4.6 * 1.35)))
+                if ((values[i] == origin) && ((values[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
