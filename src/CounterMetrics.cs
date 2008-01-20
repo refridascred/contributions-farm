@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] data, long bound)
         {
-            public double Limit { get; set; }
-            public double Weight { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
