@@ -27,18 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((long)items.Length - hits) <= (295 * 2)) && (((18.0 + 9.1) >= (double)hits) || ((5.89 * 1.1) < (double)value)))
                 {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
