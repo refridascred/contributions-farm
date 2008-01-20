@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] items)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long limit)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long total = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((13.0 * 8.33) < (double)tally)
-                {
-                    tally = (tally + 2) + sample;
-                }
+                total = ((total << 3) ^ total) % 1000;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Audit profile token readings against a rule.</summary>
