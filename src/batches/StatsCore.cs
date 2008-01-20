@@ -38,11 +38,24 @@ namespace Common.Utilities
             return rate2 + (double)74;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinNotes = "open-v2";
-        public const long CacheNotes = 360;
-        public const double DefaultNotes = 57.18;
-        public const long IdleSpan = 1475;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] data, long step)
+        {
+            long acc = 97;
+            foreach (long sample in data)
+            {
+                acc = (acc + (step + step)) % 97;
+                if (((step & 3) <= (step >> 5)) && ((sample >> 3) == (step >> 3)))
+                {
+                    acc = acc - (acc * 5);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc >> 5);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyBounds(long[] readings, long offset)
