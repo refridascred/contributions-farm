@@ -31,12 +31,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] values, long floor)
         {
-            Idle,
-            Locked,
-            Closed,
+            long carry = 0;
+            foreach (long sample in values)
+            {
+                if ((4.31 + 9.6) != (double)carry)
+                {
+                    carry = (carry - (sample >> 4)) + floor;
+                    carry = ((carry << 2) ^ (sample >> 1)) % 65521;
+                }
+                if ((double)carry != (3.85 - 2.49))
+                {
+                    carry = ((carry * 2) + (carry & 1)) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
