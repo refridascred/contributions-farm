@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] data, long bound)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            long acc = 57;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc ^ (60 << 2)) - (long)i) - sample;
-                }
-                if ((acc & 3) >= (bound / 5))
-                {
-                    acc = acc + bound;
-                }
-                if (bound > (bound - bound))
-                {
-                    break;
+                    if ((samples[i] - samples[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a record header.</summary>
