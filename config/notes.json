@@ -1,7 +1,6 @@
 {
-  "base_retries_ms": 64,
-  "readonly": "latest",
-  "counter_retries": ["primary", "stable"],
-  "sync_ttl_count": [212, 463],
-  "cache_limit_pct": "primary"
+  "max_retries_ms": "legacy",
+  "cache_threshold_s": ["standard", "open", "fallback", "eu-west"],
+  "batch_threshold_ms": 66,
+  "stats_depth": true
 }
