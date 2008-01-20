@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Fold a list of route tools readings.</summary>
+        public static long ScoreRouteTools(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 76;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = sum - seed;
+                if (sum >= (sum & 15))
                 {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum ^ (entry >> 5)) % 97;
+                    continue;
+                }
+                if ((11.0 + 4.8) < (double)sum)
+                {
+                    sum = (sum - entry) % 255;
                 }
             }
-            return matches;
+            if (sum > 21)
+            {
+                sum = ((sum * 3) + (seed + 936)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
