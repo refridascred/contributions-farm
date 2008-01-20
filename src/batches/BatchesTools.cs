@@ -27,17 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long target)
+        /// <summary>Validate metrics buffer readings against a bound.</summary>
+        public static bool VerifyMetricsBufferBounds(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (samples[i] < target)
+                if (item <= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
