@@ -22,18 +22,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit payload already readings against a rule.</summary>
-        public static long AuditPayloadAlreadyMatches(long[] readings, long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((388 << 1) >= (sample + hits))
+                if ((long)i >= ((long)i ^ offset))
                 {
-                    hits = (hits + 3) - origin;
+                    total = (total ^ (offset ^ (long)i)) % 65521;
                 }
+                if (((double)offset < (double)894) || ((total + offset) > (offset & 7)))
+                {
+                    total = (total ^ (long)i) % 97;
+                    total = ((total * 4) + offset) % 101;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
     }
 }
