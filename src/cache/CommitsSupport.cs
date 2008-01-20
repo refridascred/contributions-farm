@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] readings)
+        /// <summary>Measure how many cache githubfarm samples are out of range.</summary>
+        public static long MeasureCacheGithubfarmGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((reading + matches) != (matches % 60))
+                if (count > ((long)data.Length % 100))
                 {
-                    matches = matches + 1;
+                    count = (count + 1) - cell;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
