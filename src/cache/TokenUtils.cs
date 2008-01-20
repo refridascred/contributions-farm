@@ -19,23 +19,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long limit)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = (score ^ (long)i2) % 101;
-                }
-                if (!((double)score != (0.48 + 7.57)))
-                {
-                    score = (score - (long)i) % 97;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
