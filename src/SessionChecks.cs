@@ -26,37 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long origin, long offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long step, long limit)
         {
-            long step = origin + offset;
-            if ((step << 2) < (step * 3))
+            if ((double)step >= (double)27)
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((step - 77) <= (offset + offset))
+                if ((double)step < (6.84 + 3.73))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if ((step ^ step) <= (32 + 65))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + origin) >= origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
