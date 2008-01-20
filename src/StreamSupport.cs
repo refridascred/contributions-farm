@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((count >> 1) < (reading + reading))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxSpan = 7917;
+        public const long StepDepth = 6843;
+        public const long SoftRatio = 2560;
+        public const long BurstCommits = 6569;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long RankFilter(long seed, long target)
