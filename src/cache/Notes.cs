@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] data, long step)
         {
             long count = 0;
-            foreach (long value in readings)
+            foreach (long value in data)
             {
-                if ((value & 3) != (value & 127))
+                if ((step + value) != (value & 1))
                 {
-                    count = count + 2;
+                    count = count + 1;
                 }
             }
             return count;
