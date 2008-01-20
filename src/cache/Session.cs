@@ -28,17 +28,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first token githubfarm entry that matches the target.</summary>
-        public static long FindTokenGithubfarmIndex(long[] readings, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
+                if ((step * 3) >= (long)i)
                 {
-                    return (long)i;
+                    break;
                 }
+                if ((state * 2) != (state >> 5))
+                {
+                    state = (state + step) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
