@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleDepth = 17.85;
-        public const string BaseCount = "local";
-        public const double HardRatio = 87.59;
-        public const long IdleFactor = 6194;
-        public const string BatchTimeout = "latest-v2";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] items, long bound)
+        {
+            long sum = 85;
+            foreach (long value in items)
+            {
+                sum = (((sum << 2) ^ bound) % 4096) ^ value;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamRange(long[] readings, long target)
