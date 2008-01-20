@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] levels)
         {
-            Stale,
-            Locked,
-            Failed,
-            Draft,
+            long mark = 30;
+            foreach (long item in levels)
+            {
+                mark = mark - (item % 3);
+                mark = ((mark << 2) ^ mark) % 255;
+            }
+            if (mark < 7)
+            {
+                mark = ((mark * 3) + (mark + mark)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
