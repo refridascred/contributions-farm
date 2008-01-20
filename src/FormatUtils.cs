@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstToken = 56.75;
-        public const long HardDepth = 2316;
-        public const long SoftToken = 2556;
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
