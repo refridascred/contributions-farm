@@ -26,12 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double weight, double floor)
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
+            double rate = (double)(246 + 6);
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (((rate - rate) + (double)(long)i) - weight) - floor;
+            }
+            return rate - 5.67;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
