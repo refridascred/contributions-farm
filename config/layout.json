@@ -1,5 +1,8 @@
 {
-  "idle_delay_pct": true,
-  "min_size_pct": "edge",
-  "max_ttl_s": 6114
+  "readonly": 30.05,
+  "idle_ratio": 75.8,
+  "flush_depth_count": 96.75,
+  "burst_timeout_ms": 60,
+  "retry_retries_ms": true,
+  "editor_size": ["open", "edge", "blue"]
 }
