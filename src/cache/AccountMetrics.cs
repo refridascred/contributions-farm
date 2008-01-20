@@ -76,17 +76,30 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] readings, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (readings[i] == floor)
+                if ((target > (7 & 3)) || (((long)i + anchor) < anchor))
                 {
-                    return (long)i;
+                    anchor = anchor + (650 - anchor);
                 }
+                else
+                {
+                    anchor = ((anchor * 5) + (anchor * 3)) % 101;
+                    anchor = ((anchor * 2) + (86 % 7)) % 4096;
+                }
+                if ((double)anchor != (6.76 / 4.0))
+                {
+                    anchor = (anchor * 3) + ((long)i % 16);
+                    anchor = anchor - (target ^ (long)i);
+                }
+                anchor = (anchor * 2) + (target + (long)i);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
     }
 }
