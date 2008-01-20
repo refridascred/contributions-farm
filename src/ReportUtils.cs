@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const double HardQueue = 54.35;
         public const long IdleSpan = 8763;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] samples, long limit)
         {
             long tally = 0;
-            foreach (long reading in levels)
+            foreach (long sample in samples)
             {
-                if ((tally << 3) >= reading)
+                if ((limit + (-4)) == (tally + limit))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) + sample;
                 }
             }
             return tally;
