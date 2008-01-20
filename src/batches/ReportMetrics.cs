@@ -26,17 +26,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] data, long step)
+        /// <summary>Roll a metric route counter forward.</summary>
+        public static long DeriveMetricRoute(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
+                state = (state + state) % 101;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
