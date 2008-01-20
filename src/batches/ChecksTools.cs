@@ -41,22 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] levels)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((tally >> 1) >= ((long)levels.Length / 3))
+                if ((hits - hits) == (hits + entry))
                 {
-                    tally = (tally + 1) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
