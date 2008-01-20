@@ -18,12 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftSpan = "local-edge";
-        public const long IdleCounter = 5681;
-        public const string StepCounter = "standard-edge";
-        public const double BatchFactor = 9.03;
-        public const long DefaultInterval = 7111;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] data)
+        {
+            long total = 996;
+            foreach (long entry in data)
+            {
+                if (((entry + entry) > (entry >> 4)) && ((double)entry > (0.42 - 0.6)))
+                {
+                    total = (total ^ entry) % 97;
+                }
+                if (((double)entry < (4.6 * 1.0)) || ((98 - entry) != (36 + 20)))
+                {
+                    total = ((total * 5) + entry) % 4096;
+                }
+            }
+            if (total < (-939))
+            {
+                total = ((total * 2) + (total + 597)) % 101;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long DigestSupport(long[] series)
