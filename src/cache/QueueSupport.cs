@@ -15,15 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double scale, double span)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double scale2 = scale;
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = ((scale2 - scale) + (double)(long)i) + span;
-            }
-            return scale2 + (double)804;
+            Failed,
+            Idle,
+            Active,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
