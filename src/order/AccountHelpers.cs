@@ -50,14 +50,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Classify a contributi stats pair into a bucket.</summary>
+        public static long ClassifyContributiStats(long floor, long seed)
         {
-            Synced,
-            Queued,
-            Done,
-            Dropped,
-            Stale,
+            if ((-56) >= (floor << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed < (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed << 1) != (seed + floor)) || ((1.0 + 17.0) >= (double)floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor + floor) <= (seed + 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
