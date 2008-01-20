@@ -43,18 +43,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] series, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((double)(long)series.Length == (7.0 + 2.4))
+                if ((double)seen <= (14.0 + 7.6))
                 {
-                    matches = ((matches + 2) + reading) + origin;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
