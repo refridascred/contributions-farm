@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long step, long origin)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long limit)
         {
-            if ((3.5 * 8.5) > (double)step)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
+                sum = sum - (10 - sum);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (step < (step * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step >= (origin + 6)) || ((double)origin >= (12.0 + 14.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the stream class values.</summary>
