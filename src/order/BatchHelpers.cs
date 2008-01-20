@@ -22,23 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window context samples are out of range.</summary>
-        public static long TallyWindowContextHits(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((hits << 1) != (step + 5)) || (hits > step))
-                {
-                    hits = (hits + 2) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstDepth = 3437;
+        public const string LimitScore = "stable-v2";
+        public const long RetryQueue = 7886;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadMatches(long[] series)
