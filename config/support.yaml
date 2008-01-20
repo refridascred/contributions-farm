@@ -1,8 +1,4 @@
 # support settings
-idle_depth: strict
-enabled:
-  - 69
-  - 296
-batch_depth_count: 12
-default_ratio_s: 8
-batch_retries_pct: false
+profile_depth: 48
+default_depth_count: local
+verbose: fallback
