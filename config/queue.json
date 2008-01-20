@@ -1,7 +1,6 @@
 {
-  "max_timeout_pct": "edge",
-  "retry_ttl_s": 16.74,
-  "flush_window": false,
-  "payload_threshold": 29.34,
-  "notes_timeout": "strict"
+  "githubfarm_capacity": 250,
+  "soft_timeout_s": "fallback",
+  "retry_retries": 30,
+  "format_interval": "blue"
 }
