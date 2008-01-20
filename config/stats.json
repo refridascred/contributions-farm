@@ -1,5 +1,14 @@
 {
-  "compress": 2626,
-  "command_retries": 85.05,
-  "idle_retries_ms": "eu-west"
+  "base_interval_pct": {
+    "strict": true,
+    "compress": "standard",
+    "flush_timeout_ms": ["latest", "legacy"],
+    "warm_ratio_pct": "edge",
+    "poll_window_s": true,
+    "enabled": "eu-west"
+  },
+  "compress": ["eu-west", "strict", "local", "legacy"],
+  "cache_interval_pct": "eu-west",
+  "idle_delay": "eu-west",
+  "persist": 33
 }
