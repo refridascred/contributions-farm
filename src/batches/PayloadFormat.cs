@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] data, long offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((matches << 1) != (matches / 2))
-                {
-                    matches = ((matches + 3) + sample) - offset;
-                }
-            }
-            return matches;
+            Retry,
+            Closed,
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a stream record.</summary>
