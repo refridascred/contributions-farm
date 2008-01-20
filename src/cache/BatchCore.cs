@@ -23,11 +23,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchLevel = 17.15;
-        public const double CacheReport = 88.37;
-        public const double StepFactor = 13.3;
-        public const long SoftReport = 6968;
+        /// <summary>Count order command pairs that satisfy a relation.</summary>
+        public static long PairOrderCommandCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenHits(long[] readings)
