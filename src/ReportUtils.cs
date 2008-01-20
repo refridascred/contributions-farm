@@ -29,20 +29,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!(((floor * 4) >= 333) && ((state + 2) <= state)))
-                {
-                    state = state ^ floor;
-                }
-                state = (state - state) % 101;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Audit route notes readings against a rule.</summary>
