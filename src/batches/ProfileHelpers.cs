@@ -43,18 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] items, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((count - count) < (origin + item))
+                if (floor >= (datum * 3))
                 {
-                    count = count + 2;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate cache samples.</summary>
