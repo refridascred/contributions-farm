@@ -15,20 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((93 & 15) == (long)i)
-                {
-                    total = total + seed;
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate tools samples.</summary>
