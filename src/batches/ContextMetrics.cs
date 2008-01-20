@@ -47,17 +47,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate checks metric samples.</summary>
-        public static long TallyChecksMetric(long[] data, long bound)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long target)
         {
-            long carry = 5;
-            foreach (long datum in data)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                carry = carry ^ (45 & 255);
-                carry = (carry + datum) % 101;
-                carry = (carry + (7 + bound)) % 1000;
+                long lane = ((long)i + (long)i) ^ (total + (long)i);
+                if (!((target + lane) >= target))
+                {
+                    lane = lane + (target + lane);
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return carry % 97;
+            return total;
         }
     }
 }
