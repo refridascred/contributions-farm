@@ -70,16 +70,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] readings, long floor)
-        {
-            long acc = 1;
-            foreach (long datum in readings)
-            {
-                acc = ((((acc << 2) ^ ((long)readings.Length & 3)) % 101) - datum) - floor;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 8626;
+        public const string MinLayout = "legacy-edge";
+        public const string LimitLayout = "legacy-edge";
+        public const long BatchSpan = 503;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long PairStreamCount(long[] data)
