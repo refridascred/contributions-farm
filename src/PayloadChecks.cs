@@ -33,22 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] values, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] samples)
         {
-            long score = 831;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((double)offset != (8.2 * 3.7))
+                if (((long)samples.Length / 2) == (43 << 2))
                 {
-                    score = ((score ^ (score * 2)) % 255) ^ datum;
-                }
-                else
-                {
-                    score = ((score << 3) ^ ((long)values.Length + 5)) % 101;
+                    hits = (hits + 2) + item;
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Accumulate filter samples.</summary>
