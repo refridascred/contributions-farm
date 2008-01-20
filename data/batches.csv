@@ -1,8 +1,6 @@
-id,level,ratio,region
-1,636,standard,fallback
-2,271,cached,637
-3,368,720,775
-4,32,legacy,stable
-5,68.0,eu-west,167
-6,129,blue,stable
-7,eu-west,720,96.84
+id,score,weight
+1,legacy,941
+2,74.08,primary
+3,strict,82.81
+4,open,72.96
+5,389,927
