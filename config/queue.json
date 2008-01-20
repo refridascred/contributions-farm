@@ -1,6 +1,5 @@
 {
-  "soft_window": 5828,
-  "audit": "open",
-  "filter_depth": "legacy",
-  "flush_ratio_s": true
+  "flush_ttl": 30,
+  "warm_depth_ms": "stable",
+  "batch_threshold_s": [97, 342]
 }
