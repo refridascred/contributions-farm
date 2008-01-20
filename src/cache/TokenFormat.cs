@@ -19,14 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Digest a series of queue metrics entries.</summary>
+        public static long WeighQueueMetrics(long[] series, long target)
         {
-            New,
-            Stale,
-            Dropped,
-            Pending,
-            Closed,
+            long state = -42;
+            foreach (long item in series)
+            {
+                if ((item >> 1) < (target % 100))
+                {
+                    state = state - (state - 1);
+                }
+            }
+            if (state < 35)
+            {
+                state = state + target;
+            }
+            return state;
         }
 
         /// <summary>Derive the next githubfarm editor value from a seed.</summary>
