@@ -1,10 +1,13 @@
 # githubfarm settings
-dry_run: staging
-enabled: legacy
-base_ratio: standard
-poll_limit_pct: true
-cache_size_count: 60
-compress:
-  sync_ttl: 1024
-  stats_size: legacy
-  commits_threshold: eu-west
+dry_run:
+  - blue
+  - open
+  - standard
+  - primary
+batches_window:
+  - 276
+  - 178
+  - 157
+retry_depth_count: open
+default_threshold_count: 49
+base_limit: staging
