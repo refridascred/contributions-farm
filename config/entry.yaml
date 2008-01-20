@@ -1,17 +1,9 @@
 # entry settings
-retry_size_pct:
-  - 52
-  - 170
-  - 160
-  - 236
-min_size_pct: strict
-window_window: false
-queue_retries: green
-max_size_pct:
-  idle_delay: fallback
-  readonly: 30
-  base_limit_pct: 59
-  burst_ttl_ms: fallback
-  soft_retries: 8.0
-  soft_depth_s: eu-west
-burst_window_s: 36
+commits_depth: 49.38
+hard_depth_s: 250
+contributi_retries:
+  stats_threshold: edge
+  profile_ttl: primary
+  max_retries_ms: strict
+  enabled: 50
+flush_limit: 54
