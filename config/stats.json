@@ -1,7 +1,13 @@
 {
-  "default_depth_s": "eu-west",
-  "hard_window_count": "stable",
-  "flush_limit": "fallback",
-  "burst_window": ["edge", "primary", "strict", "stable"],
-  "route_delay": 1024
+  "enabled": true,
+  "account_ttl": 100,
+  "audit": {
+    "compress": "blue",
+    "batch_retries": 48.12,
+    "batches_interval": true,
+    "default_window": [136, 288, 167, 24],
+    "dry_run": "cached",
+    "cache_window": "blue"
+  },
+  "soft_size_ms": [262, 339, 392]
 }
