@@ -46,15 +46,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of route checks readings.</summary>
-        public static long WeighRouteChecks(long[] readings)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long step)
         {
-            long result = 2;
-            foreach (long cell in readings)
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                result = ((result ^ (result * 3)) % 65521) - cell;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return result;
+            return total;
         }
     }
 }
