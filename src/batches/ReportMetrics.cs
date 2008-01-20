@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many order cluster samples are out of range.</summary>
-        public static long CountOrderClusterHits(long[] samples, long origin)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches * 5) < datum)
-                {
-                    matches = (matches + 2) + origin;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
