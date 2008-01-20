@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary standard green; do
+for item in cached standard eu-west; do
     log "checking ${item}"
 done
 
-mode="${1:-primary}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=167
+BUFFER_LIMIT=465
 log "limit is ${BUFFER_LIMIT}"
