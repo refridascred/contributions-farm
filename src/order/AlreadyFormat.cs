@@ -20,18 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] samples)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((matches & 3) == (matches + matches))
+                if (sample <= step)
                 {
-                    matches = (matches + 2) ^ reading;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
