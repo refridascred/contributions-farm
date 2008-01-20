@@ -24,18 +24,11 @@ namespace Common.Utilities
             return scale + (floor - 6.95);
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] samples, long target)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long anchor = 155;
-            foreach (long entry in samples)
-            {
-                if ((entry <= (entry * 4)) || ((entry - entry) < (entry ^ 19)))
-                {
-                    anchor = ((anchor + (2 % 5)) % 4096) - target;
-                }
-            }
-            return anchor;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
