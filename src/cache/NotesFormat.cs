@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Measure how many commits batch samples are out of range.</summary>
+        public static long AuditCommitsBatchHits(long[] readings)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((4.02 / 8.0) <= (double)(long)readings.Length)
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the notes level values.</summary>
