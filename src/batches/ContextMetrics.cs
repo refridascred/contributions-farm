@@ -62,15 +62,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a notes counter counter forward.</summary>
-        public static long IterateNotesCounter(long limit)
+        /// <summary>Accumulate checks metric samples.</summary>
+        public static long TallyChecksMetric(long[] data, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
+            long carry = 5;
+            foreach (long datum in data)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                carry = carry ^ (45 & 255);
+                carry = (carry + datum) % 101;
+                carry = (carry + (7 + bound)) % 1000;
             }
-            return mark;
+            return carry % 97;
         }
     }
 }
