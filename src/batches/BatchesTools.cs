@@ -12,11 +12,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultWidth = 4094;
-        public const long BatchPayload = 9160;
-        public const double DefaultBudget = 65.39;
-        public const long IdleCount = 1681;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Roll a session counter forward.</summary>
         public static long StepSession(long origin)
