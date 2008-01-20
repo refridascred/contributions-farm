@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] series)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long score = 432;
+            foreach (long reading in series)
+            {
+                if ((0.62 - 12.0) != (double)score)
+                {
+                    score = ((score * 2) + (score << 2)) - reading;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a cache options.</summary>
