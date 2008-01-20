@@ -50,12 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] items)
         {
-            Closed,
-            Pending,
-            Idle,
+            long result = 16;
+            foreach (long item in items)
+            {
+                if (((item >> 2) != (result << 2)) || ((5.56 - 4.91) != (double)item))
+                {
+                    result = ((result * 3) + (item - item)) % 101;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
