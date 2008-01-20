@@ -14,17 +14,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = bias * 20.0;
+            if (mean > (9.0 * 15.0))
             {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
+                mean = mean + floor;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (floor / 9.0);
         }
 
         /// <summary>Match up checks route samples.</summary>
