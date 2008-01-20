@@ -35,12 +35,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] data, long seed)
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
+            long mark = 41;
+            foreach (long datum in data)
+            {
+                if ((datum ^ seed) == (datum / 7))
+                {
+                    mark = ((mark * 5) + mark) % 97;
+                }
+            }
+            if (mark > 314)
+            {
+                mark = ((mark * 4) + (seed + 9)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
