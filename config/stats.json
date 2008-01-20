@@ -1,8 +1,7 @@
 {
-  "commits_capacity": ["latest", "eu-west", "strict", "legacy"],
-  "default_depth_pct": ["eu-west", "stable"],
-  "flush_interval_s": false,
-  "readonly": "legacy",
-  "route_retries": 44,
-  "audit": 60
+  "flush_delay": true,
+  "readonly": 31,
+  "strict": 68.07,
+  "order_retries": 59,
+  "entry_threshold": true
 }
