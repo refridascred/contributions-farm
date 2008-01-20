@@ -34,19 +34,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstInterval = 21;
+        public const double HardSchema = 19.96;
+        public const double MinSchema = 85.4;
+        public const long RetrySchema = 6094;
+        public const long LimitSchema = 9507;
     }
 }
