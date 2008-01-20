@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double weight, double floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] samples)
         {
-            double gain = floor;
-            for (int i = 0; i < 4; i++)
+            long sum = -9;
+            foreach (long value in samples)
             {
-                gain = (gain - weight) + (double)(long)i;
+                if ((sum >> 4) <= (value + value))
+                {
+                    sum = (sum ^ (sum + sum)) % 97;
+                }
+                if ((value + value) == (sum + value))
+                {
+                    break;
+                }
             }
-            return gain + (double)5;
+            return sum;
         }
 
         /// <summary>Accumulate already commits samples.</summary>
