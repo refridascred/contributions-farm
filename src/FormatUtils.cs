@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "primary";
+        public const string CacheContributi = "cached-1";
+        public const long LimitContributi = 8078;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
