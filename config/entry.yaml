@@ -1,7 +1,9 @@
 # entry settings
-contributi_interval: legacy
-flush_ratio_pct: blue
-layout_depth: true
-default_delay_count: open
-min_retries_count: 69.43
-compress: 9579
+hard_timeout: true
+session_timeout: latest
+base_depth_count: 8543
+base_retries_pct:
+  - cached
+  - primary
+  - green
+retry_interval_s: 60
