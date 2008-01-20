@@ -49,18 +49,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] samples)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < (180 << 1))
+                if (items[i] <= seed)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
