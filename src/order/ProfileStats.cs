@@ -35,13 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] samples, long floor)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a metrics entry.</summary>
