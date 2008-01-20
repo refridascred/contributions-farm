@@ -20,26 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long limit)
         {
-            long total = 87;
-            foreach (long reading in levels)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((reading + reading) > (reading & 127)))
-                {
-                    total = (total + 62) % 101;
-                }
-                if (((double)reading >= (8.25 - 6.8)) || ((total + reading) <= (total - 784)))
-                {
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            if (total < 0)
-            {
-                total = ((total << 2) ^ (total * 4)) % 1000;
-            }
-            return total % 1000;
+            return sum;
         }
 
         /// <summary>Describe the payload class values.</summary>
