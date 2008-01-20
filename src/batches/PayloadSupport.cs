@@ -25,9 +25,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultLevel = 2964;
-        public const long MinSchema = 576;
-        public const long LimitDepth = 5932;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Failed,
+            Stale,
+            Synced,
+            Active,
+            Dropped,
+        }
     }
 }
