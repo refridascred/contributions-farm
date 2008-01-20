@@ -27,18 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window checks readings against a rule.</summary>
-        public static long CountWindowChecksOutliers(long[] data, long origin)
+        /// <summary>Match up checks route samples.</summary>
+        public static long CompareChecksRouteCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)origin <= (20.0 - 2.6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) ^ datum;
+                    if ((items[i] - items[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Blend two tools measurements.</summary>
