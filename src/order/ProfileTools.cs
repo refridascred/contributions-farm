@@ -35,15 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long limit)
+        /// <summary>Adjust a route command reading.</summary>
+        public static double BlendRouteCommand(double rate, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
+            double drift = offset / 3.0;
+            if (drift < (drift - drift))
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                drift = (drift + (double)2) + rate;
             }
-            return acc;
+            else
+            {
+                drift = drift + offset;
+            }
+            return drift + offset;
         }
 
         /// <summary>Count the cache contributi entries that pass the check.</summary>
