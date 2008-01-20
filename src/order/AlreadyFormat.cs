@@ -35,24 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] readings, long seed)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long carry = 855;
-            foreach (long reading in readings)
-            {
-                carry = (carry ^ (598 / 2)) % 255;
-                if (((seed % 100) > ((long)readings.Length ^ carry)) && ((carry + seed) >= (reading + carry)))
-                {
-                    carry = carry ^ (seed + reading);
-                }
-                carry = (carry * 5) + (724 % 12);
-            }
-            if (carry > 96)
-            {
-                carry = (carry << 3) ^ carry;
-            }
-            return carry % 65521;
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Blend two entry measurements.</summary>
