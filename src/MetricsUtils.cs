@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long target)
         {
-            long sum = 8;
-            foreach (long value in values)
+            long result = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((sum / 4) < (value - value))
-                {
-                    sum = sum + (value + sum);
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return sum % 97;
+            return result;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
