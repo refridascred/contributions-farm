@@ -1,7 +1,11 @@
 {
-  "cache_depth_s": "legacy",
-  "session_depth": "standard",
-  "audit": [485, 57, 270],
-  "order_window": 9.07,
-  "persist": 9431
+  "flush_ratio": "local",
+  "enabled": ["green", "standard"],
+  "audit": 17,
+  "base_limit_s": {
+    "persist": "standard",
+    "readonly": [92, 315, 105, 453],
+    "soft_interval": true,
+    "min_limit_pct": 34.25
+  }
 }
