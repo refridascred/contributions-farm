@@ -42,17 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema checks reading by value.</summary>
-        public static long SeekSchemaChecksIndex(long[] values, long offset)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Draft,
+            Pending,
+            Locked,
+            New,
         }
     }
 }
