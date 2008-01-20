@@ -52,12 +52,26 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultRecord = "open-edge";
-        public const string RetryRatio = "cached-edge";
-        public const long MaxCount = 3435;
-        public const long RetryTimeout = 5258;
-        public const long BaseSpan = 4976;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((acc - acc) > (floor >> 2))
+                {
+                    acc = acc - (acc - (long)i);
+                    acc = acc ^ (acc + acc);
+                    break;
+                }
+                else
+                {
+                    acc = (acc ^ (floor + floor)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long WeighEditor(long[] data)
