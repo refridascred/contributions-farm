@@ -26,17 +26,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] levels, long origin)
+        /// <summary>Count buffer githubfarm pairs that satisfy a relation.</summary>
+        public static long PairBufferGithubfarmCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 2) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
