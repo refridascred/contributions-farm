@@ -65,10 +65,11 @@ namespace Common.Utilities
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
         {
-            Locked,
-            Failed,
             Active,
-            Closed,
+            Retry,
+            Failed,
+            Synced,
+            Draft,
         }
     }
 }
