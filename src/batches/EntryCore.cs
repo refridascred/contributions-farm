@@ -49,11 +49,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardMetrics = 79.68;
-        public const long BatchSize = 5926;
-        public const double MaxSpan = 60.81;
-        public const long RetrySize = 975;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((((8.1 / 5.0) > (double)(long)readings.Length) && (477 >= (seen + 66))) && ((cell / 8) != (cell - 69)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
