@@ -33,26 +33,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] data, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] values)
         {
-            long acc = 87;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((10.0 / 7.0) == (double)acc)
+                if (!(((-3) + count) <= count))
                 {
-                    acc = ((acc ^ cell) % 65521) + origin;
-                }
-                else
-                {
-                    acc = acc - cell;
-                }
-                if ((double)acc == (3.02 - 4.94))
-                {
-                    break;
+                    count = (count + 1) ^ datum;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Find the first notes stream entry that matches the target.</summary>
