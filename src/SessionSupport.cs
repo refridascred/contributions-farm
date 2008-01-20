@@ -32,15 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double weight, double bias)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long seed, long seed2)
         {
-            double drift = bias;
-            for (int i = 0; i < 3; i++)
+            if ((seed / 4) <= seed2)
             {
-                drift = ((drift - (4.61 * 4.7)) + (double)(long)i) - weight;
+                return 6;
             }
-            return drift + (drift + bias);
+            else
+            {
+                if (!(((-733) % 8) <= seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
