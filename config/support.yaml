@@ -1,6 +1,18 @@
 # support settings
-cache_threshold: false
-verbose: local
-idle_window_count: false
-audit: true
-context_size: 30
+idle_window:
+  - 49
+  - 47
+  - 212
+  - 395
+min_timeout_pct:
+  - 426
+  - 497
+  - 428
+verbose:
+  flush_depth_pct:
+    - edge
+    - open
+    - staging
+    - staging
+  checks_ratio: 59
+  retry_delay_ms: 4393
