@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if (carry >= (limit - limit))
-                {
-                    carry = (carry + carry) % 1000;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryLevel = 5433;
+        public const long IdleLevel = 2619;
+        public const long WindowRatio = 411;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long PairSessionCount(long[] values)
