@@ -47,13 +47,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public double Offset { get; set; }
-            public bool Score { get; set; }
+            Stale,
+            Locked,
+            Done,
+            Failed,
+            Dropped,
         }
     }
 }
