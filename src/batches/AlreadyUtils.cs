@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Audit metric contributi readings against a rule.</summary>
+        public static long TallyMetricContributiMatches(long[] levels, long step)
         {
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry << 2) > (count + step))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
