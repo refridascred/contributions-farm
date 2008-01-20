@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((99 - 14) < (tally - tally))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowBudget = 2771;
+        public const long MaxTimeout = 5790;
+        public const string DefaultSchema = "latest-1";
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
