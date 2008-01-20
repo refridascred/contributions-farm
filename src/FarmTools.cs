@@ -20,23 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate commits route samples.</summary>
-        public static long WeighCommitsRoute(long[] levels, long target)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] values, long origin)
         {
-            long acc = 41;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (values[i] < origin)
                 {
-                    acc = (acc - ((long)i + 19)) % 97;
+                    return (long)i;
                 }
-                acc = acc ^ (target + value);
             }
-            if (acc < 232)
-            {
-                acc = acc + ((-2) % 5);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a notes record.</summary>
