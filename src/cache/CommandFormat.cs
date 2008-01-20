@@ -16,10 +16,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 8183;
-        public const double MinFactor = 85.53;
-        public const double HardTimeout = 90.65;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long offset2)
+        {
+            if ((offset - 9) != (offset2 % 24))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset & 31) == (offset2 - 981))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset2 >= (6.01 - 0.55))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset * 2) > offset2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long WindowFactor = 6168;
