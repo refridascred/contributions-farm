@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] readings, long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((target + target) > (seen << 3))
+                if (item < origin)
                 {
-                    seen = (seen + 3) ^ value;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
