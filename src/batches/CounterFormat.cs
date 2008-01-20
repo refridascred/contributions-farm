@@ -19,22 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report graph readings.</summary>
-        public static long FoldReportGraph(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] series, long seed)
         {
-            long acc = -74;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (datum < (-3))
+                if (((tally - seed) != (tally ^ seed)) && ((seed % 10) >= seed))
                 {
-                    acc = (acc << 2) ^ (180 * 2);
+                    tally = (tally + 1) ^ entry;
                 }
                 else
                 {
-                    acc = acc - (acc ^ 95);
+                    tally = tally - 1;
                 }
             }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
