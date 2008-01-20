@@ -20,19 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] series, long limit)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Scale a metrics filter figure with a bias.</summary>
