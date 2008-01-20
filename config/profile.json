@@ -1,5 +1,11 @@
 {
-  "stream_ratio": 13.27,
-  "min_window_count": 70,
-  "compress": ["eu-west", "local", "eu-west"]
+  "cache_retries_pct": "cached",
+  "flush_size": ["open", "standard", "local", "strict"],
+  "schema_delay": {
+    "default_depth_s": 15,
+    "enabled": ["eu-west", "cached"],
+    "burst_interval": 79.4
+  },
+  "min_size": [331, 73, 262],
+  "dry_run": "edge"
 }
