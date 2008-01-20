@@ -42,11 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
+            Synced,
+            Pending,
+            Locked,
         }
     }
 }
