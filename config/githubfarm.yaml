@@ -1,4 +1,29 @@
 # githubfarm settings
-base_timeout_pct: false
-contributi_ratio: 5875
-soft_limit_count: local
+counter_size:
+  - 361
+  - 45
+account_capacity:
+  metrics_timeout:
+    - standard
+    - eu-west
+    - open
+    - green
+  cache_retries:
+    - 492
+    - 473
+    - 190
+  persist: 30
+checks_timeout:
+  default_depth_s:
+    - cached
+    - edge
+  dry_run: eu-west
+  max_depth_count: 26
+  max_interval_s: 12.23
+  enabled:
+    base_retries_count: 60
+    cache_window_ms: 36
+    metrics_retries: edge
+  readonly: 500
+batch_capacity_count: 71.92
+max_threshold_count: 72.88
