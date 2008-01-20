@@ -72,11 +72,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitFactor = 6346;
-        public const double StepContext = 72.38;
-        public const double LimitTimeout = 49.2;
-        public const long MinScore = 796;
-        public const string HardContext = "staging-1";
+        /// <summary>Derive the next context cluster value from a seed.</summary>
+        public static long SeriesContextCluster(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = (mix + 5) % 255;
+                if ((bound & 255) < mix)
+                {
+                    mix = (mix - (mix + mix)) % 1000;
+                    continue;
+                }
+                mix = (mix * 5) + bound;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
