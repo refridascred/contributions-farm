@@ -67,19 +67,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a notes support counter forward.</summary>
-        public static long SeriesNotesSupport(long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long step)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = ((result ^ (result - 974)) % 255) - (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 101;
+                total = (total - (218 / 8)) % 255;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return result;
+            return total;
         }
     }
 }
