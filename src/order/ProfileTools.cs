@@ -32,16 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
             {
-                state = (state ^ (long)i) % 1000;
-                state = ((state * 4) + (long)i) % 101;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
