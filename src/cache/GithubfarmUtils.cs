@@ -60,18 +60,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] items, long bound)
+        /// <summary>Match up context checks samples.</summary>
+        public static long CompareContextChecksCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)seen > 1.4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = ((seen + 3) + value) - bound;
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
