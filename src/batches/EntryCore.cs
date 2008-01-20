@@ -57,19 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] samples, long seed)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
