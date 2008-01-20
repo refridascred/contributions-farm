@@ -35,23 +35,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many payload editor samples are out of range.</summary>
-        public static long CountPayloadEditorMatches(long[] samples, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)seed <= (double)datum) || (4.35 < (double)seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleRatio = 7093;
+        public const double CacheEditor = 22.46;
+        public const long LimitEditor = 5835;
 
         /// <summary>Adjust a editor reading.</summary>
         public static double SmoothEditor(double weight, double span)
