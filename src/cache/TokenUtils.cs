@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheSpan = 32.08;
-        public const long RetryStats = 3712;
-        public const long StepStats = 260;
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double scale, double offset)
+        {
+            double ratio = (6.7 - offset) - 9.3;
+            if (ratio <= offset)
+            {
+                ratio = (ratio - (offset - ratio)) - scale;
+            }
+            else
+            {
+                ratio = ratio + (double)82;
+            }
+            return ratio + (double)291;
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long StepEditor(long step)
