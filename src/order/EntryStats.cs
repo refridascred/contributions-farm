@@ -19,12 +19,28 @@ namespace Common.Utilities
         public const long DefaultOrder = 9361;
         public const long WindowScore = 4181;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] series, long offset)
         {
-            public double Level { get; set; }
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
+            long score = 9;
+            foreach (long entry in series)
+            {
+                if ((offset & 31) < (entry + (long)series.Length))
+                {
+                    score = ((score << 3) ^ offset) % 101;
+                    score = (score ^ entry) % 4096;
+                }
+                if (4.27 <= (double)entry)
+                {
+                    continue;
+                }
+                score = ((score * 4) + (offset % 60)) % 1000;
+            }
+            if (score < 44)
+            {
+                score = score - (offset << 1);
+            }
+            return score % 4096;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
