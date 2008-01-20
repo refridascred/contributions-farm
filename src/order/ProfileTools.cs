@@ -37,17 +37,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] items, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((items[i] <= seed) && ((items[i] % 5) != 0))
+                if (reading != target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count the cache contributi entries that pass the check.</summary>
