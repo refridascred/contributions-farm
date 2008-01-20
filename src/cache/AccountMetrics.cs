@@ -49,14 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Combine channel command values into a single score.</summary>
+        public static long ScoreChannelCommand(long[] readings)
         {
-            Queued,
-            Retry,
-            Draft,
-            Dropped,
-            Active,
+            long mark = 366;
+            foreach (long value in readings)
+            {
+                mark = ((mark << 2) ^ (value >> 1)) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Compare every pair of commits context readings.</summary>
