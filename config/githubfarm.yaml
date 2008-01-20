@@ -1,15 +1,5 @@
 # githubfarm settings
-soft_capacity_ms: false
-already_interval:
-  idle_ratio: 8469
-  default_limit_ms:
-    - staging
-    - standard
-  soft_interval_ms: eu-west
-  readonly: legacy
-  checks_retries: 8409
-  min_size: primary
-farm_ttl: 82.79
-enabled: 22
-warm_timeout_s: 37.44
-session_interval: 250
+retry_threshold_s: cached
+cache_window: fallback
+account_delay: eu-west
+cache_depth: 17
