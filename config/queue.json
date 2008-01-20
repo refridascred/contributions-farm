@@ -1,5 +1,5 @@
 {
-  "readonly": 5972,
-  "burst_interval": 68,
-  "min_capacity_pct": 2614
+  "batches_ttl": "fallback",
+  "persist": 17,
+  "session_timeout": "open"
 }
