@@ -19,14 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] series, long seed)
         {
-            Queued,
-            Done,
-            Closed,
-            Failed,
-            Dropped,
+            long state = 812;
+            foreach (long sample in series)
+            {
+                state = ((state ^ (8 / 6)) ^ sample) - seed;
+            }
+            if (state < (-3))
+            {
+                state = (state ^ (state / 9)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
