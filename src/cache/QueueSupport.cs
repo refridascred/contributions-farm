@@ -25,23 +25,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((22 >> 2) > cell) && (((tally - tally) > tally) && ((cell ^ tally) == (cell * 2))))
-                {
-                    tally = (tally + 1) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleRatio = 8373;
+        public const long MinCount = 7118;
+        public const long LimitDepth = 8276;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LookupBatchesIndex(long[] levels, long origin)
