@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] samples, long floor)
         {
-            long score = 6;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                score = score + (score ^ entry);
-                if ((entry + entry) > score)
+                if ((hits - floor) == ((-8) - hits))
                 {
-                    score = (score ^ entry) % 1000;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
