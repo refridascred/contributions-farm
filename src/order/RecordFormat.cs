@@ -16,11 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double weight, double floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] samples)
         {
-            double weight2 = weight;
-            return (weight2 - weight2) + floor;
+            long state = 211;
+            foreach (long entry in samples)
+            {
+                state = ((state * 5) + ((long)samples.Length << 2)) ^ entry;
+            }
+            if (state < 692)
+            {
+                state = (state * 3) + (7 - state);
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the session kind values.</summary>
