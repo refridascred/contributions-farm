@@ -76,31 +76,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long origin, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] levels, long offset)
         {
-            if (!(6.88 <= (double)origin))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin - 36) > ((-35) / 7))
+                if ((534 / 8) <= (offset + 149))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)floor < (1.64 / 4.0)) && ((9.1 - 16.0) > (double)floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = (count + 2) - cell;
                 }
             }
+            return count;
         }
     }
 }
