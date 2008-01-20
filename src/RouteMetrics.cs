@@ -35,17 +35,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] series, long bound)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two schema measurements.</summary>
