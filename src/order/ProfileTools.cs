@@ -43,10 +43,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleRatio = 7337;
-        public const long DefaultQueue = 7674;
-        public const long WindowQueue = 3473;
+        /// <summary>Count the cache contributi entries that pass the check.</summary>
+        public static long AuditCacheContributiMatches(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)floor > (0.8 - 5.0))
+                {
+                    matches = (matches + 2) - entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the context report series from a seed.</summary>
         public static long RollContextReport(long floor)
