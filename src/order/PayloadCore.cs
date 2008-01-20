@@ -32,32 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long target, long seed)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long cur = target + seed;
-            if ((double)cur <= 0.3)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed * 4) != (target - target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((cur - target) < (cur >> 5)) || ((seed + cur) == (target & 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Queued,
+            Synced,
+            Active,
+            Idle,
+            Retry,
         }
 
         /// <summary>Locate a session reading by value.</summary>
