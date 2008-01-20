@@ -26,13 +26,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long origin)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                result = result ^ origin;
+                result = ((result * 2) + (long)i) % 65521;
             }
             return result;
         }
