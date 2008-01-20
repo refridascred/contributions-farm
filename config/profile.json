@@ -1,10 +1,21 @@
 {
-  "warm_timeout": {
-    "verbose": 78,
-    "channel_threshold": "cached",
-    "compress": ["strict", "cached"]
+  "burst_timeout_count": {
+    "max_threshold": 1024,
+    "dry_run": "eu-west",
+    "flush_ttl_s": 8572,
+    "context_depth": 53.44,
+    "default_interval_ms": "standard"
   },
-  "min_depth": "green",
-  "batch_size": 62.79,
-  "default_delay": false
+  "hard_limit": true,
+  "base_size_pct": 24.32,
+  "soft_timeout_s": "staging",
+  "batch_timeout_count": 100,
+  "default_depth_ms": {
+    "batch_depth_count": [237, 47, 89],
+    "retry_timeout_s": 91.24,
+    "compress": "open",
+    "record_size": 4916,
+    "hard_retries_ms": [430, 14, 436],
+    "hard_retries": 100
+  }
 }
