@@ -1,5 +1,8 @@
 {
-  "route_ttl": 24.2,
-  "readonly": true,
-  "burst_ttl_count": 67
+  "flush_threshold_ms": "green",
+  "max_timeout_s": 100,
+  "base_limit_s": 39,
+  "hard_ratio_ms": "green",
+  "compress": 69,
+  "hard_threshold_count": 1879
 }
