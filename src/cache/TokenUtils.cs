@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up notes checks samples.</summary>
-        public static long MatchNotesChecksCount(long[] items)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] + items[j]) > 1)
+                    if ((values[i] ^ values[j]) < 2)
                     {
                         seen = seen + 1;
                     }
