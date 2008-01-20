@@ -63,18 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 5121;
+        public const double BatchCounter = 79.86;
+        public const string WindowCounter = "open-v2";
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long LocateSupportIndex(long[] values, long limit)
