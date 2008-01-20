@@ -1,11 +1,5 @@
 {
-  "stream_timeout": 43.68,
-  "channel_window": 29,
-  "compress": false,
-  "retry_ratio_count": {
-    "min_window_ms": 30,
-    "max_retries_s": "primary",
-    "verbose": ["primary", "eu-west", "open"],
-    "warm_window": 2210
-  }
+  "idle_limit": [437, 452, 394],
+  "verbose": "cached",
+  "base_timeout": true
 }
