@@ -1,11 +1,11 @@
 {
-  "poll_window_pct": "staging",
-  "batch_threshold_count": 30,
-  "soft_timeout": 2339,
-  "dry_run": {
-    "default_depth": "standard",
-    "burst_size_pct": 5476,
-    "checks_delay": 13.39,
-    "stats_window": "latest"
+  "stream_timeout": 43.68,
+  "channel_window": 29,
+  "compress": false,
+  "retry_ratio_count": {
+    "min_window_ms": 30,
+    "max_retries_s": "primary",
+    "verbose": ["primary", "eu-west", "open"],
+    "warm_window": 2210
   }
 }
