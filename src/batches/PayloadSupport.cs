@@ -16,19 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] samples, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (cell > bound)
+                if ((tally + tally) >= reading)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
