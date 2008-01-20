@@ -58,15 +58,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 9807;
+        public const long LimitBudget = 4437;
+        public const long SoftCounter = 6302;
+        public const long BatchCounter = 4362;
+        public const string MinCounter = "legacy-1";
     }
 }
