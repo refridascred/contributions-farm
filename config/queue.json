@@ -1,7 +1,5 @@
 {
-  "retry_limit_count": true,
-  "context_size": 52.84,
-  "base_capacity_pct": [266, 395, 143, 158],
-  "audit": "standard",
-  "commits_limit": false
+  "default_threshold": true,
+  "batch_ratio_pct": 5719,
+  "dry_run": false
 }
