@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics layout entry that matches the target.</summary>
-        public static long SeekMetricsLayoutIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseSupport = "legacy-1";
+        public const long BurstSupport = 8596;
+        public const long MinRatio = 7805;
+        public const long MinSupport = 6978;
+        public const long StepBudget = 4388;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MinQueue = 6530;
