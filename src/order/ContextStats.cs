@@ -31,13 +31,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] samples, long limit)
         {
-            public double Flag { get; set; }
-            public double Count { get; set; }
-            public bool Mode { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a filter options.</summary>
