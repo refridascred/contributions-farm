@@ -32,38 +32,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long seed, long offset)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            if ((749 + seed) <= seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((4.5 + 5.0) > (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed > offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed >> 3) < offset) && ((offset + seed) == (seed / 9)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Retry,
+            Synced,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
