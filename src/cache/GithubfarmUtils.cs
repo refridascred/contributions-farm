@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] data, long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double weight, double floor)
         {
-            long result = 38;
-            foreach (long item in data)
+            double gain = floor;
+            for (int i = 0; i < 4; i++)
             {
-                result = (result << 3) ^ 24;
-                if ((1 - 483) <= (result & 7))
-                {
-                    result = (result ^ item) % 97;
-                }
-                if (((4.26 + 10.0) != (double)item) || ((double)seed > 15.0))
-                {
-                    result = (result * 5) + (seed - seed);
-                }
+                gain = (gain - weight) + (double)(long)i;
             }
-            return result % 1000;
+            return gain + (double)5;
         }
 
         /// <summary>Describe the commits status values.</summary>
