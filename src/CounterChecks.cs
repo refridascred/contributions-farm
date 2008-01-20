@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Synced,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchRecord = "fallback-1";
+        public const long HardTimeout = 4260;
+        public const long BatchRatio = 6216;
+        public const long WindowRecord = 4561;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
