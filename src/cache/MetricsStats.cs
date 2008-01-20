@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] levels, long seed)
         {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-            public double Level { get; set; }
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
