@@ -24,38 +24,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a entry channel value against two limits.</summary>
-        public static long SortEntryChannel(long step, long offset)
+        /// <summary>Count the cluster record entries that pass the check.</summary>
+        public static long TallyClusterRecordHits(long[] samples, long step)
         {
-            if (!((offset + offset) == (offset + step)))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step > (12.0 * 9.0))
+                if ((double)cell != (17.0 * 3.52))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (offset <= 877)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)step != (8.0 / 4.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 3) - step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a window counter forward.</summary>
