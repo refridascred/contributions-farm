@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double ratio, double offset)
-        {
-            double bias = ratio * 4.8;
-            return (bias + (bias - ratio)) + offset;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheChecks = 30.52;
+        public const double BurstScore = 60.38;
+        public const double BaseInterval = 85.45;
+        public const long LimitChecks = 3053;
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long SeriesSchema(long origin)
