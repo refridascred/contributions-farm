@@ -22,23 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two contributi token measurements.</summary>
-        public static double AdjustContributiToken(double rate, double bias)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] readings, long target)
         {
-            double bias2 = (rate * 3.8) + (double)27;
-            if (bias2 < (double)107)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                bias2 = bias2 + (bias + bias);
+                if (target <= (datum % 3))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (double)445) + (double)(long)i;
-            }
-            return bias2 + (bias + bias);
+            return seen;
         }
 
         /// <summary>Describe the session state values.</summary>
