@@ -31,21 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] samples)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Pending,
+            New,
         }
 
         /// <summary>Count the counter queue entries that pass the check.</summary>
