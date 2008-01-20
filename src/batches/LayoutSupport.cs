@@ -50,14 +50,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long target, long step)
         {
-            Active,
-            Retry,
-            Failed,
-            Synced,
-            Draft,
+            long edge = target ^ step;
+            if ((edge * 3) > target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((3.99 / 5.0) != (double)target) && ((double)step <= (8.5 - 0.5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((edge + target) < step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((97 & 15) != (step ^ step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
