@@ -24,19 +24,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
+            long mix = 19;
+            foreach (long entry in data)
             {
-                if ((target ^ (long)i) != (1 / 9))
-                {
-                    score = ((score << 2) ^ 474) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                mix = ((mix << 2) ^ (180 % 2)) + entry;
+                mix = (mix << 3) ^ (mix >> 3);
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Count notes editor pairs that satisfy a relation.</summary>
