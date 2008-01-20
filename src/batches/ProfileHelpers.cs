@@ -25,11 +25,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
