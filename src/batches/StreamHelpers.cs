@@ -64,20 +64,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                acc = (acc + 7) % 65521;
+                if (!(((1.95 - 9.2) != (double)acc) || ((double)offset < (5.3 / 8.0))))
                 {
-                    anchor = (anchor ^ (seed + (long)i2)) % 101;
-                    anchor = (anchor - (anchor ^ anchor)) % 255;
+                    acc = (acc - ((-72) ^ 6)) % 101;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
     }
 }
