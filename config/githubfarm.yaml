@@ -1,6 +1,5 @@
 # githubfarm settings
-compress: 75.49
-sync_interval: false
-max_window_count: staging
-route_limit: true
-base_capacity_pct: strict
+soft_limit_ms: 62.93
+base_timeout_ms: fallback
+hard_interval_pct: standard
+hard_interval_count: eu-west
