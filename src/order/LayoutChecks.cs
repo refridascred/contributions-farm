@@ -14,19 +14,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double scale, double offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] levels, long offset)
         {
-            double ratio = (double)758 / 3.0;
-            if (ratio > ratio)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ((ratio + (double)1) - scale) + offset;
+                if ((levels[i] >= offset) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + (double)(-9);
+            return -1;
         }
 
         /// <summary>Combine counter schema values into a single score.</summary>
