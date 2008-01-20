@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long bound, long bound2)
-        {
-            if (bound2 >= (bound & 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound < (bound - bound2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (bound2 >= (bound2 >> 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultQueue = 40.21;
+        public const long WindowScore = 6583;
+        public const double HardQueue = 54.35;
+        public const long IdleSpan = 8763;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long ClassifyLayout(long offset, long step)
