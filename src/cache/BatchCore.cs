@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long floor)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double rate, double offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            double bias = (double)(399 - 9);
+            return (bias - rate) + offset;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
