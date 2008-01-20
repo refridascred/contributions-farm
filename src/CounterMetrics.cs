@@ -19,19 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] series, long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] data, long limit)
         {
-            long state = 812;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                state = ((state ^ (8 / 6)) ^ sample) - seed;
+                if (sample <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (state < (-3))
-            {
-                state = (state ^ (state / 9)) % 65521;
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
