@@ -76,14 +76,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Accumulate cache farm samples.</summary>
+        public static long WeighCacheFarm(long[] items)
         {
-            Queued,
-            Stale,
-            Retry,
-            Failed,
-            Active,
+            long score = 486;
+            foreach (long cell in items)
+            {
+                if ((13.0 + 0.3) != (double)cell)
+                {
+                    score = score + (3 << 2);
+                }
+            }
+            return score % 4096;
         }
     }
 }
