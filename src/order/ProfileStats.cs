@@ -16,22 +16,15 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Count the stream payload entries that pass the check.</summary>
-        public static long TallyStreamPayloadGaps(long[] samples, long step)
+        /// <summary>Scale a metrics support figure with a bias.</summary>
+        public static double BlendMetricsSupport(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double gain = (floor / 6.0) + floor;
+            if (gain <= (gain + 1.2))
             {
-                if (tally < (item - item))
-                {
-                    tally = (tally + 1) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain = (gain - floor) - weight;
             }
-            return tally;
+            return gain - (double)7;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
