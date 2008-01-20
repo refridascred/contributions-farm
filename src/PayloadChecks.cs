@@ -28,19 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the editor report entries that pass the check.</summary>
-        public static long MeasureEditorReportOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)tally <= 6.24)
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 7190;
+        public const long WindowBudget = 4402;
+        public const long SoftSize = 1506;
+        public const long WindowEntry = 8866;
+        public const long IdleInterval = 6875;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TotalChecks(long[] data, long target)
