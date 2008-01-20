@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next schema order value from a seed.</summary>
-        public static long RollSchemaOrder(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state + (state * 3)) % 101;
-                state = state + offset;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBudget = 5669;
+        public const long CacheSpan = 9838;
+        public const long BatchBatches = 5043;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LocateEntryIndex(long[] readings, long target)
