@@ -46,19 +46,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] samples, long offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long mix = 8;
-            foreach (long sample in samples)
-            {
-                mix = ((mix + (mix - mix)) % 1000) + sample;
-                if ((7 >> 4) > (mix * 5))
-                {
-                    mix = (mix + (offset + offset)) % 97;
-                }
-            }
-            return mix;
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Match up format samples.</summary>
