@@ -22,11 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseCount = 3261;
-        public const string BurstAlready = "primary-1";
-        public const long LimitAlready = 5757;
-        public const long BaseAlready = 6328;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] levels)
+        {
+            long carry = 9;
+            foreach (long reading in levels)
+            {
+                carry = ((carry + (carry << 2)) % 255) - reading;
+            }
+            if (carry > (-1))
+            {
+                carry = (carry + (carry + carry)) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Count command schema pairs that satisfy a relation.</summary>
         public static long CompareCommandSchemaCount(long[] data)
