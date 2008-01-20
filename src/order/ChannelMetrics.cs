@@ -37,26 +37,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] data, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long mark = 604;
-            foreach (long cell in data)
-            {
-                if ((step * 2) < cell)
-                {
-                    mark = ((mark * 2) + mark) % 1000;
-                }
-                else
-                {
-                    mark = (mark + (-40)) % 255;
-                }
-            }
-            if (mark < 93)
-            {
-                mark = (mark * 4) + (step % 97);
-            }
-            return mark;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
