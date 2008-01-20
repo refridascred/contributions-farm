@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long MaxStats = 6549;
         public const double BaseInterval = 54.64;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public bool Level { get; set; }
-            public double Limit { get; set; }
+            Done,
+            New,
+            Locked,
         }
 
         /// <summary>Describe the session kind values.</summary>
