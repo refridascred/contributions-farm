@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] levels, long floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] series, long bound)
         {
-            long sum = 73;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long item in series)
             {
-                sum = (((sum ^ ((-28) + sum)) % 65521) + item) - floor;
+                if (item >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum % 4096;
+            return ok;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
