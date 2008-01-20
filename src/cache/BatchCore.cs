@@ -35,11 +35,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
