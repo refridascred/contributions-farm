@@ -27,12 +27,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 2196;
+        public const long HardEntry = 5389;
+        public const long StepEntry = 9710;
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long SeriesAlready(long limit)
