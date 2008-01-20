@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheFormat = 92.44;
-        public const long StepFormat = 4154;
-        public const long WindowLevel = 3927;
+        /// <summary>Measure how many report contributi samples are out of range.</summary>
+        public static long AuditReportContributiGaps(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (!((value + tally) > tally))
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long IdlePayload = 8911;
