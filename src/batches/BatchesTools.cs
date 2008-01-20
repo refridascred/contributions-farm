@@ -14,13 +14,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            Draft,
+            Ready,
+            Dropped,
+            Paused,
+            Failed,
         }
 
         /// <summary>Derive the next filter layout value from a seed.</summary>
