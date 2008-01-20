@@ -68,17 +68,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long origin)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double scale, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (6.7 / 5.0) / 4.0;
+            if (bias > (double)822)
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias + scale) + floor;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias + (double)44;
         }
 
         /// <summary>Accumulate profile samples.</summary>
