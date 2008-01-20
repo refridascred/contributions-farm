@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTimeout = 4207;
+        public const long BatchWidth = 9660;
+        public const double StepTools = 38.53;
+        public const long WindowTools = 4214;
+        public const double LimitTools = 38.34;
 
         /// <summary>Accumulate stats filter samples.</summary>
         public static long DigestStatsFilter(long[] items, long floor)
