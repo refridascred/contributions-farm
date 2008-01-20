@@ -64,19 +64,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] data, long seed)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long step)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (item != seed)
+                if (!((0.55 * 2.5) <= (double)anchor))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor ^ (4 + step)) % 65521;
                 }
+                if (!(((double)step > (8.9 * 2.1)) && ((long)i != (anchor << 1))))
+                {
+                    anchor = anchor + (400 % 8);
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return flag;
+            return anchor;
         }
     }
 }
