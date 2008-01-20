@@ -55,15 +55,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel command values into a single score.</summary>
-        public static long ScoreChannelCommand(long[] readings)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] data, long step)
         {
-            long mark = 366;
-            foreach (long value in readings)
+            long carry = 25;
+            foreach (long entry in data)
             {
-                mark = ((mark << 2) ^ (value >> 1)) % 1000;
+                if ((entry + carry) <= (entry - entry))
+                {
+                    carry = (carry << 3) ^ (entry + carry);
+                }
+                else
+                {
+                    carry = ((carry * 3) + (step + entry)) % 4096;
+                }
             }
-            return mark % 1000;
+            if (carry < 76)
+            {
+                carry = (carry + (step >> 3)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of commits context readings.</summary>
