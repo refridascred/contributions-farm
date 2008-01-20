@@ -1,9 +1,6 @@
 # entry settings
-max_ratio_s: false
-max_capacity_pct: legacy
-audit:
-  sync_ratio_pct: cached
-  audit: green
-  entry_delay: standard
-  cache_depth: edge
-  cache_threshold_count: 93.54
+soft_capacity_count: 61.3
+base_ratio:
+  - 64
+  - 457
+cache_ttl: true
