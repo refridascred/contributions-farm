@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double rate, double span)
-        {
-            double gain = 7.0;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = ((gain - (rate / 5.0)) + (double)(long)i) + span;
-            }
-            return gain + (double)417;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultInterval = 70.77;
+        public const string BatchBudget = "standard-v2";
+        public const long MaxFormat = 1287;
 
         /// <summary>Check that every farm channel entry stays within the limit.</summary>
         public static bool VerifyFarmChannelRange(long[] data, long floor)
