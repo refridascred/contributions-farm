@@ -49,18 +49,25 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] data)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long step, long step2)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long delta = step - step2;
+            if (step >= (step - step2))
             {
-                if (((seen << 2) == (datum + seen)) && ((seen / 6) != (datum * 3)))
+                return 4;
+            }
+            else
+            {
+                if (!((step * 5) >= delta))
                 {
-                    seen = seen + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
