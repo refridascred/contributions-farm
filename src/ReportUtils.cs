@@ -48,18 +48,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] readings, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] data)
         {
-            long state = -1;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (!((state + 5) <= 4))
+                if (!!((matches >> 4) <= (item + matches)))
                 {
-                    state = (((state ^ (6 / 2)) % 4096) ^ datum) + limit;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the filter state values.</summary>
