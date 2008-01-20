@@ -36,19 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] readings, long target)
+        /// <summary>Validate tools command readings against a bound.</summary>
+        public static bool GuardToolsCommandRange(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (reading != target)
+                if (value <= limit)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
