@@ -30,19 +30,21 @@ namespace Common.Utilities
             return load - (offset / 3.0);
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)i & 255) < (long)i)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (acc ^ 9)) % 255;
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
