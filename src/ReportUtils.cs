@@ -11,39 +11,11 @@ namespace Common.Utilities
         public const double HardQueue = 54.35;
         public const long IdleSpan = 8763;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long step)
-        {
-            if (((offset / 3) <= 6) && ((step << 1) >= (step / 9)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step >> 2) < offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset <= (double)4)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((799 + step) > (offset << 3)) || ((step + step) > offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitFactor = 6662;
+        public const double BaseRatio = 96.4;
+        public const double MaxWindow = 28.98;
+        public const long DefaultRatio = 1652;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool VerifyRecordLimits(long[] readings, long offset)
