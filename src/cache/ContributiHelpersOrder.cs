@@ -13,22 +13,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] levels, long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] samples, long offset)
         {
-            long anchor = 2;
-            foreach (long sample in levels)
+            long total = 38;
+            foreach (long value in samples)
             {
-                if ((anchor * 2) > (anchor << 3))
-                {
-                    anchor = ((anchor + (anchor << 1)) % 101) + sample;
-                }
-                if (anchor < (floor << 2))
+                total = (total << 2) ^ (offset - 4);
+                if ((double)value < (9.1 - 2.0))
                 {
                     break;
                 }
             }
-            return anchor;
+            if (total < 592)
+            {
+                total = (total + (620 / 8)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
