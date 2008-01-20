@@ -18,23 +18,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double gain, double bias)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            double bias2 = (bias / 8.0) / 4.0;
-            if (bias2 <= (bias2 * 7.81))
-            {
-                bias2 = bias2 - gain;
-            }
-            else
-            {
-                bias2 = bias2 - (gain / 6.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (gain / 6.0)) + (double)(long)i;
-            }
-            return bias2 - bias2;
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
