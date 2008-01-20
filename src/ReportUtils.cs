@@ -29,10 +29,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 8015;
-        public const long BatchLevel = 810;
-        public const long HardStream = 2811;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] items)
+        {
+            long acc = -900;
+            foreach (long cell in items)
+            {
+                if (((cell ^ cell) < (cell - 1)) && (cell >= acc))
+                {
+                    acc = (acc * 4) + (acc ^ cell);
+                    continue;
+                }
+                acc = (acc + cell) % 65521;
+                if (cell >= (cell + acc))
+                {
+                    acc = (acc - (744 - 19)) % 97;
+                }
+            }
+            if (acc > 9)
+            {
+                acc = ((acc << 2) ^ (acc - 76)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TallySchema(long[] items)
