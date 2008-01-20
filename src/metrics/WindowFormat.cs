@@ -40,5 +40,19 @@ namespace Common.Utilities
             }
             return state;
         }
+
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (!(sample > floor))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
