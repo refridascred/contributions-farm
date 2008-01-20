@@ -32,24 +32,12 @@ namespace Common.Utilities
         public const long MaxProfile = 6784;
         public const string BatchFactor = "stable-1";
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long offset, long origin)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            if ((origin ^ offset) >= (origin >> 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((2.0 + 7.5) > (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
