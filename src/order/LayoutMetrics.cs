@@ -16,11 +16,16 @@ namespace Common.Utilities
             return mean - (double)82;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 2302;
-        public const long MinCounter = 5700;
-        public const string RetryLevel = "fallback";
-        public const long IdleDepth = 4172;
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double ratio, double floor)
+        {
+            double scale = (floor - ratio) + floor;
+            if (scale > ratio)
+            {
+                scale = scale + (ratio * 0.08);
+            }
+            return scale + (ratio * 1.4);
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterOutliers(long[] samples, long floor)
