@@ -13,26 +13,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank commits layout input into a small class.</summary>
-        public static long SortCommitsLayout(long limit, long bound)
-        {
-            long span = limit - bound;
-            if ((bound <= (bound * 3)) && ((8.7 * 20.0) != (double)span))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)span > (3.2 - 1.1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleCount = "alpha-edge";
+        public const double DefaultSpan = 14.09;
+        public const long StepSize = 1448;
+        public const long DefaultFilter = 5240;
+        public const double MinFilter = 20.07;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long FoldCluster(long[] series)
