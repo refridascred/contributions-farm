@@ -54,15 +54,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route metric measurements.</summary>
-        public static double ProjectRouteMetric(double rate, double floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long limit, long offset)
         {
-            double load = floor;
-            if (load > floor)
+            if (((limit % 2) > (limit & 1)) || ((offset * 4) == (offset - limit)))
             {
-                load = (load - (16.0 / 2.0)) - rate;
+                return 5;
             }
-            return load - floor;
+            else
+            {
+                if ((offset << 1) <= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((limit - 90) != (limit - limit)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
