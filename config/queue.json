@@ -1,5 +1,6 @@
 {
-  "batch_limit_ms": "staging",
-  "cluster_window": 100,
-  "batch_ttl_s": 37
+  "soft_window": 5828,
+  "audit": "open",
+  "filter_depth": "legacy",
+  "flush_ratio_s": true
 }
