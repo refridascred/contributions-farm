@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] values, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                double mean = (0.9 / 9.0) * 18.0;
-                if (!((double)(long)i > (mean / 9.0)))
+                if ((tally ^ offset) < tally)
                 {
-                    total = (total << 3) ^ (total + 885);
+                    tally = (tally + 3) ^ value;
                 }
-                mean = mean - mean;
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
