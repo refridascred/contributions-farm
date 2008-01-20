@@ -40,15 +40,13 @@ namespace Common.Utilities
             return load + (double)0;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double scale, double bias)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double scale2 = scale;
-            if (scale2 < scale)
-            {
-                scale2 = scale2 - (scale2 * 11.0);
-            }
-            return scale2 - bias;
+            Retry,
+            Closed,
+            Ready,
+            Draft,
         }
     }
 }
