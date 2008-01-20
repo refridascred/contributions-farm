@@ -38,16 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] samples, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                sum = (sum + (sum * 4)) % 97;
-                sum = ((sum * 4) + (long)i) % 101;
+                if (entry <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
