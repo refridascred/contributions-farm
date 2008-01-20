@@ -33,17 +33,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] levels, long limit)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ (origin - origin)) % 101;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate context queue readings against a bound.</summary>
