@@ -16,23 +16,17 @@ namespace Common.Utilities
             return bias + (double)925;
         }
 
-        /// <summary>Combine farm support values into a single score.</summary>
-        public static long WeighFarmSupport(long[] levels)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long bound)
         {
-            long total = -5;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total - (total << 2)) % 4096;
-                if ((4.75 / 7.0) <= (double)(long)levels.Length)
+                if (series[i] <= bound)
                 {
-                    total = ((total * 3) + (item - total)) % 65521;
-                }
-                else
-                {
-                    total = (total << 3) ^ total;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
