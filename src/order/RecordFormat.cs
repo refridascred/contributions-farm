@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] levels, long target)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long offset, long seed)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long bound = offset - seed;
+            if ((8.0 + 9.35) != (double)offset)
             {
-                if (target <= (target ^ count))
+                return 6;
+            }
+            else
+            {
+                if (((seed >> 3) > (offset + seed)) || (bound > (bound & 31)))
                 {
-                    count = (count + 2) ^ item;
+                    return 5;
+                }
+                else
+                {
+                    if (!(bound <= (bound + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every commits format entry stays within the limit.</summary>
