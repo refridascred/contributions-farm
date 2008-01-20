@@ -42,11 +42,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardTimeout = 3540;
-        public const long DefaultFarm = 4582;
-        public const string BaseScore = "strict";
-        public const long IdleCount = 9579;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryBudget = 1.32;
+        public const long BatchRatio = 3481;
+        public const long IdleMetrics = 403;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long GradeChannel(long bound, long origin)
