@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] values)
+        /// <summary>Look up the position of a account stats sample.</summary>
+        public static long FindAccountStatsIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally <= (4.34 - 20.0))
+                if (readings[i] >= limit)
                 {
-                    tally = (tally + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
