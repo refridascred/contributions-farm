@@ -44,18 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload farm entries that pass the check.</summary>
-        public static long AuditPayloadFarmGaps(long[] readings, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] readings, long offset)
         {
-            long seen = 0;
+            bool ok = true;
             foreach (long datum in readings)
             {
-                if ((60 * 5) < ((long)readings.Length * 5))
+                if (datum < offset)
                 {
-                    seen = ((seen + 3) - datum) - limit;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
