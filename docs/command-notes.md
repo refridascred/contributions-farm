@@ -1,11 +1,11 @@
 # Command notes
 
-Keep record and token names short and lowercase.
-Use counter settings to tune how often stream data is refreshed.
-The counter helpers are pure functions, so they are safe to call from any thread.
+When a context fails, the account handler retries a few times before giving up.
+A metrics that stays idle for too long is moved to the notes list.
 
 ## Guidelines
 
-- Keep notes values small
-- Validate window input early
-- Log every metrics change
+- Document new support fields
+- Validate stream input early
+- Review record limits each release
+- Keep editor values small
