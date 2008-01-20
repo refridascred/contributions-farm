@@ -22,13 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long limit)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = (anchor * 3) + anchor;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
