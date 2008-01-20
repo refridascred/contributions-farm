@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many batches metric samples are out of range.</summary>
-        public static long CountBatchesMetricGaps(long[] items)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double scale = ratio;
+            if (scale >= floor)
             {
-                if ((sample >> 3) > sample)
-                {
-                    hits = hits + 2;
-                }
+                scale = scale + floor;
             }
-            return hits;
+            else
+            {
+                scale = scale - (9.3 - scale);
+            }
+            return scale - (double)4;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
