@@ -45,18 +45,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] values)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((659 - reading) < count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Active,
+            Closed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Iterate the filter checks series from a seed.</summary>
