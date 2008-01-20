@@ -64,17 +64,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] values, long origin)
+        /// <summary>Derive the next schema filter value from a seed.</summary>
+        public static long IterateSchemaFilter(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
     }
 }
