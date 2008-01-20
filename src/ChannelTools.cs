@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxBudget = "standard-edge";
+        public const long DefaultCount = 5900;
+        public const long BaseSpan = 8383;
 
         /// <summary>Check that every filter format entry stays within the limit.</summary>
         public static bool GuardFilterFormatRange(long[] samples, long bound)
