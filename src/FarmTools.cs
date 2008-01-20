@@ -21,18 +21,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of route profile entries.</summary>
-        public static long FoldRouteProfile(long[] series)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long sum = -3;
-            foreach (long sample in series)
-            {
-                if ((double)sum >= (1.78 - 5.0))
-                {
-                    sum = sum - sample;
-                }
-            }
-            return sum;
+            Pending,
+            Failed,
+            New,
         }
     }
 }
