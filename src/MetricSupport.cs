@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] items, long step)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
-            long state = 4;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-720) + step) == (step % 100))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state << 3) ^ (cell % 8);
-                }
-                if (((state % 97) < (step - cell)) && ((state << 3) <= (58 + step)))
-                {
-                    state = (state + (843 >> 3)) % 255;
-                }
-                else
-                {
-                    state = (state * 5) + (state << 1);
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many buffer command samples are out of range.</summary>
