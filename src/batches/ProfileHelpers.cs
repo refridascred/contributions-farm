@@ -57,39 +57,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long bound, long target)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long bound2 = bound - target;
-            if ((bound + bound2) > (bound - 73))
-            {
-                return 7;
-            }
-            else
-            {
-                if (9 < (bound2 << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound2 < (18.0 - 1.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound + bound) == (bound2 & 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Pending,
+            Locked,
+            New,
         }
     }
 }
