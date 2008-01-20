@@ -1,11 +1,13 @@
 # Command notes
 
-When a route fails, the cache handler retries a few times before giving up.
-Run the metric check before changing any filter limits.
-When a batch fails, the stream handler retries a few times before giving up.
+Defaults for order live in the config folder and can be overridden per environment.
+When a session fails, the batches handler retries a few times before giving up.
+
+The tools report groups every window by layout.
+Defaults for queue live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every payload change
-- Keep order values small
-- Prefer buffer defaults
+- Document new layout fields
+- Prefer format defaults
+- Review queue limits each release
