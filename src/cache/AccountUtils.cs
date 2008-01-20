@@ -24,18 +24,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] samples)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + datum) <= hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
         }
     }
 }
