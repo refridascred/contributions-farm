@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Closed,
-            Synced,
-            Retry,
-            Ready,
-            New,
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
