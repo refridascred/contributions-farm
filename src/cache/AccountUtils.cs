@@ -29,21 +29,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] values)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (total - origin) % 65521;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
