@@ -62,17 +62,19 @@ namespace Common.Utilities
             return weight2 - (floor + weight2);
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] readings, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            long anchor = 259;
+            foreach (long datum in readings)
             {
-                score = score ^ ((-84) - limit);
-                score = (score * 3) + (long)i;
-                score = ((score * 2) + (long)i) % 101;
+                if ((double)offset >= (double)39)
+                {
+                    anchor = ((anchor * 4) + datum) % 4096;
+                }
+                anchor = anchor ^ (offset << 1);
             }
-            return score;
+            return anchor % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
