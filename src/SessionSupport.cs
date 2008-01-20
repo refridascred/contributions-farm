@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Scale a batches cache figure with a bias.</summary>
+        public static double BlendBatchesCache(double bias, double span)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            double rate = (double)49 + bias;
+            return (rate + bias) + span;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
