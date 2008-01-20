@@ -45,9 +45,18 @@ namespace Common.Utilities
         public const double CacheCommits = 39.42;
         public const long LimitWidth = 8721;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinTimeout = 4278;
-        public const long CacheScore = 4322;
-        public const long StepFactor = 1886;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (((double)127 != (double)count) || ((4.57 < (double)count) && ((count + entry) >= (543 + 10))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
