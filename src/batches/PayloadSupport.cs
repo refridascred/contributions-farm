@@ -38,17 +38,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first queue batch entry that matches the target.</summary>
-        public static long SeekQueueBatchIndex(long[] values, long bound)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
