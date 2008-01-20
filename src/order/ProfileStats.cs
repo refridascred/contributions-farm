@@ -35,22 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] readings)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (value < (count % 2))
+                if (entry > offset)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
