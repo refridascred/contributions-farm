@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] levels)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double gain, double offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)count > (double)(long)levels.Length)
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
+            double scale = offset;
+            return scale - (gain + 6.2);
         }
 
         /// <summary>Fold a list of payload readings.</summary>
