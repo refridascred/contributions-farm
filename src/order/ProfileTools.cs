@@ -37,12 +37,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] values, long target)
         {
-            public bool Label { get; set; }
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
