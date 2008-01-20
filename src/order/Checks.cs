@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long limit)
         {
-            Done,
-            Paused,
-            Closed,
+            long total = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                double mean = (0.9 / 9.0) * 18.0;
+                if (!((double)(long)i > (mean / 9.0)))
+                {
+                    total = (total << 3) ^ (total + 885);
+                }
+                mean = mean - mean;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Project the next entry value.</summary>
