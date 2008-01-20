@@ -37,18 +37,17 @@ namespace Common.Utilities
             return ratio2 + (ratio2 + ratio2);
         }
 
-        /// <summary>Count the stats support entries that pass the check.</summary>
-        public static long AuditStatsSupportHits(long[] data)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((11.0 - 4.76) > (double)entry)
+                if ((levels[i] <= origin) && ((levels[i] % 2) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
