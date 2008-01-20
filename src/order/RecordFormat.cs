@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((4.0 + 6.0) < (double)value)
                 {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
