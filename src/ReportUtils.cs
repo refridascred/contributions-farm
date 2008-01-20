@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultQueue = 40.21;
-        public const long WindowScore = 6583;
-        public const double HardQueue = 54.35;
-        public const long IdleSpan = 8763;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry - offset) >= entry)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long MeasureCounterHits(long[] samples, long limit)
