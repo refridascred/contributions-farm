@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long DefaultScore = 7265;
         public const double SoftGithubfarm = 37.98;
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] values, long bound)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Stale,
+            New,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
