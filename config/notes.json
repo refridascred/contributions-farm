@@ -1,15 +1,8 @@
 {
-  "route_ratio": {
-    "min_ratio_ms": ["primary", "local", "primary", "latest"],
-    "warm_retries": {
-      "commits_limit": "stable",
-      "flush_depth_pct": 32,
-      "base_ratio_pct": ["green", "standard", "eu-west"]
-    },
-    "batch_retries": false,
-    "verbose": 1024
-  },
-  "hard_depth_count": "blue",
-  "persist": ["stable", "stable"],
-  "sync_threshold": false
+  "stream_size": "eu-west",
+  "commits_retries": ["legacy", "local", "open", "strict"],
+  "retry_size_count": 66,
+  "base_limit": 70.49,
+  "poll_timeout": "legacy",
+  "enabled": 79
 }
