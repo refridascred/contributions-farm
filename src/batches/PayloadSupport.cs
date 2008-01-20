@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            long total = 424;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                total = ((total << 3) ^ datum) % 255;
+                total = total ^ (5 + total);
             }
-            return anchor;
+            return total % 97;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
