@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((double)hits == (5.48 - 5.3)) && (item <= (step * 3))) || ((step / 2) > (item ^ step)))
                 {
-                    if ((series[i] - series[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
