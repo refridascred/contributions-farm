@@ -37,18 +37,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit layout queue readings against a rule.</summary>
-        public static long MeasureLayoutQueueOutliers(long[] readings, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((value > (value + seed)) && (2.04 < (double)tally))
+                if ((5.37 > (double)sample) || ((step >> 1) <= (step & 1)))
                 {
-                    tally = tally + 1;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
