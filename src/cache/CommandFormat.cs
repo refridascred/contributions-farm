@@ -32,22 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count notes editor pairs that satisfy a relation.</summary>
-        public static long MatchNotesEditorCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFactor = 6168;
+        public const double LimitLevel = 44.54;
+        public const long DefaultRatio = 3512;
+        public const string LimitBudget = "standard-v2";
 
         /// <summary>Match up graph samples.</summary>
         public static long CompareGraphCount(long[] items)
