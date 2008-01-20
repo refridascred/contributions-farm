@@ -49,31 +49,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank editor window input into a small class.</summary>
-        public static long RankEditorWindow(long floor, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] series, long step)
         {
-            if ((7 + floor) != (step + (-8)))
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step << 2) <= floor)
+                if ((step + step) == (value & 15))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.7 - 12.0) > (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
