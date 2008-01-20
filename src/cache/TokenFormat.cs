@@ -40,12 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseSupport = "legacy-1";
-        public const long BurstSupport = 8596;
-        public const long MinRatio = 7805;
-        public const long MinSupport = 6978;
-        public const long StepBudget = 4388;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = (anchor - offset) % 255;
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MinQueue = 6530;
