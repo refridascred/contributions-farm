@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long seed, long limit)
         {
-            Retry,
-            Ready,
-            Stale,
-            Closed,
+            long span = seed - limit;
+            if ((span >> 4) == (seed % 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((limit + limit) != (span ^ span)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((761 ^ span) > 9)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((span - limit) > (5 % 24)) || ((span >> 5) == (seed << 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next report tools value.</summary>
