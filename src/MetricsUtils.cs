@@ -19,15 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long offset)
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
             {
-                result = ((result * 3) + (long)i) % 101;
+                acc = (acc * 5) + ((long)i ^ acc);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
