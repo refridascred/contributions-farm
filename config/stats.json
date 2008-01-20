@@ -1,6 +1,5 @@
 {
-  "soft_interval_ms": 30,
-  "metrics_window": 60,
-  "soft_ttl_s": "blue",
-  "record_depth": 2517
+  "compress": 2626,
+  "command_retries": 85.05,
+  "idle_retries_ms": "eu-west"
 }
