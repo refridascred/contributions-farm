@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowSize = 54.68;
-        public const double MaxEditor = 28.51;
-        public const long BurstBudget = 5184;
-        public const long BurstLevel = 8748;
-        public const string LimitEditor = "primary-v2";
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsRange(long[] levels, long bound)
