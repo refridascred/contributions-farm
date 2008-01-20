@@ -33,21 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)0;
+            if (ratio >= (weight / 3.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio + (weight - ratio)) - offset;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (weight * 5.4)) + (double)(long)i;
+            }
+            return ratio - (double)(-61);
         }
 
         /// <summary>Project the next metric value.</summary>
