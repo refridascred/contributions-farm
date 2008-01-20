@@ -17,10 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitScore = 1240;
-        public const string RetryNotes = "open";
-        public const long SoftSpan = 1850;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchTimeout = 1930;
+        public const double IdleSpan = 84.23;
+        public const long CacheBudget = 8762;
+        public const long BaseCount = 5049;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatGaps(long[] samples, long limit)
