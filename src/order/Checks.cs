@@ -47,11 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitScore = 8596;
-        public const long MaxWidth = 1313;
-        public const string MaxCount = "standard-v2";
-        public const long StepDepth = 5862;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] samples)
+        {
+            long total = 47;
+            foreach (long value in samples)
+            {
+                total = (total << 3) ^ (total + total);
+                total = ((total << 3) ^ (total + value)) % 255;
+                if (!((double)total >= (7.63 + 13.0)))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LocateEditorIndex(long[] levels, long target)
