@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] series, long step)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long bound)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell > step)
+                long gap = sum;
+                if ((((long)i ^ 55) > gap) && ((244 >> 2) >= (long)i))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum - (bound ^ bound)) % 4096;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Roll a cache schema counter forward.</summary>
