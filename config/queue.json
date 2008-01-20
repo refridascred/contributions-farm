@@ -1,7 +1,12 @@
 {
-  "cache_delay_pct": "blue",
-  "entry_ttl": false,
-  "poll_size_count": [418, 310, 345],
-  "dry_run": 5456,
-  "min_window_pct": "staging"
+  "sync_ratio_count": "latest",
+  "editor_delay": 33,
+  "cache_threshold_pct": 2107,
+  "commits_interval": {
+    "verbose": 2758,
+    "persist": "edge",
+    "retry_ratio_count": 1024,
+    "githubfarm_ratio": false,
+    "notes_ttl": 6635
+  }
 }
