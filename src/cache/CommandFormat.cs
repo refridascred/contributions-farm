@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] samples, long limit)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
