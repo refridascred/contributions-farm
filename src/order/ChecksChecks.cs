@@ -29,15 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepBudget = 66.05;
+        public const long RetryNotes = 9871;
+        public const long SoftFactor = 4179;
+        public const string BurstNotes = "fallback";
+        public const string RetryFactor = "open";
     }
 }
