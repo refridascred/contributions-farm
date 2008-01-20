@@ -35,32 +35,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a profile format value against two limits.</summary>
-        public static long SortProfileFormat(long origin, long bound)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long prev = origin - bound;
-            if (27 >= prev)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((prev + prev) != (bound & 1)) && ((double)prev > (7.27 - 1.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin * 5) > prev)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Queued,
+            Active,
+            Idle,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
