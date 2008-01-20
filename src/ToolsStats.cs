@@ -51,18 +51,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] series)
         {
-            long anchor = 6;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor ^ 7) >= (905 - 8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor - (anchor - 24)) % 1000) ^ reading;
+                    if ((series[i] - series[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
