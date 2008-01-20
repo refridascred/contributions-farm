@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long seed, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] levels, long floor)
         {
-            long slot = seed + bound;
-            if (((57 & 255) <= (bound + 235)) && ((slot % 3) > ((-62) / 7)))
+            long anchor = 52;
+            foreach (long cell in levels)
             {
-                return 3;
+                anchor = ((anchor + ((-29) + anchor)) - cell) + floor;
             }
-            else
-            {
-                if ((640 + bound) > (bound + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
