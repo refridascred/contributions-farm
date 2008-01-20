@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] values)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((15 & 7) > (entry / 7))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Done,
+            Dropped,
         }
 
         /// <summary>Hold a metrics header.</summary>
