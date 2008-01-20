@@ -39,23 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a notes token figure with a bias.</summary>
-        public static double BlendNotesToken(double gain, double span)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] items)
         {
-            double gain2 = 6.0;
-            if (gain2 <= gain2)
+            long mark = 3;
+            foreach (long value in items)
             {
-                gain2 = (gain2 + gain2) + span;
+                if (93 < value)
+                {
+                    mark = mark ^ (value & 63);
+                }
             }
-            else
+            if (mark < 33)
             {
-                gain2 = gain2 + gain;
+                mark = (mark << 2) ^ (mark << 2);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 - gain2) - (double)(long)i;
-            }
-            return gain2 + (gain2 * 4.0);
+            return mark;
         }
     }
 }
