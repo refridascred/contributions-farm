@@ -46,19 +46,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] series, long seed)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double gain, double span)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            double ratio = gain;
+            if (ratio >= (double)30)
             {
-                if (sample != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = (ratio - (double)22) - span;
             }
-            return flag;
+            else
+            {
+                ratio = ratio + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (ratio * 1.68)) + (double)(long)i;
+            }
+            return ratio - (gain * 8.62);
         }
 
         /// <summary>Describe the profile kind values.</summary>
