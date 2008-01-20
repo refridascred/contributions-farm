@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of command already readings.</summary>
-        public static long MatchCommandAlreadyCount(long[] series)
+        /// <summary>Fold a list of batch already readings.</summary>
+        public static long DigestBatchAlready(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 494;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((((score << 3) ^ step) % 255) + (long)i) ^ reading;
+                    score = (score << 2) ^ (64 % 12);
                 }
+                score = (score ^ score) % 97;
             }
-            return matches;
+            if (score > (-792))
+            {
+                score = ((score << 2) ^ step) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
