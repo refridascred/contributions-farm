@@ -53,19 +53,19 @@ namespace Common.Utilities
             return ratio + (double)9;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] samples)
+        /// <summary>Blend two cache contributi measurements.</summary>
+        public static double AdjustCacheContributi(double weight, double span)
         {
-            long sum = 89;
-            foreach (long datum in samples)
+            double load = weight;
+            if (load <= (load / 7.0))
             {
-                sum = sum + datum;
-                if (((-337) * 4) != (datum >> 4))
-                {
-                    sum = ((sum * 3) + (595 >> 5)) % 4096;
-                }
+                load = load + (weight + span);
             }
-            return sum;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (7.0 + span)) + (double)(long)i;
+            }
+            return load - (span - load);
         }
 
         /// <summary>Adjust a checks reading.</summary>
