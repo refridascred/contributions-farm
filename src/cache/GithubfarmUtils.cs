@@ -30,39 +30,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long bound, long step)
+        /// <summary>Audit entry schema readings against a rule.</summary>
+        public static long TallyEntrySchemaHits(long[] data)
         {
-            long prev = bound + step;
-            if ((step / 6) == (199 ^ prev))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound >= 10.0)
+                if ((matches >> 2) >= (value * 5))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step + bound) != (8 & 7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((prev * 5) > (step >> 4)) || ((step - bound) != (bound + 399)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
