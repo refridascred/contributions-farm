@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((hits & 15) == (hits / 5))
-                {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleDepth = 17.85;
+        public const string BaseCount = "local";
+        public const double HardRatio = 87.59;
+        public const long IdleFactor = 6194;
+        public const string BatchTimeout = "latest-v2";
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamRange(long[] readings, long target)
