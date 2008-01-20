@@ -53,13 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public string Score { get; set; } = "";
             public string Weight { get; set; } = "";
-            public double Token { get; set; }
-            public long Label { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
