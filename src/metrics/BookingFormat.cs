@@ -22,22 +22,18 @@ namespace Common.Utilities
         public const long RetryFactor = 5965;
         public const string MaxRatio = "cached-v2";
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] values)
+        /// <summary>Audit format githubfarm readings against a rule.</summary>
+        public static long CountFormatGithubfarmHits(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((((15.0 - 2.6) < (double)count) || (count < (value * 4))) && ((count > (value + count)) || ((double)5 == (double)value)))
+                if (((15.0 + 1.0) <= (double)item) || ((tally + 2) == (tally % 3)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 1) - bound;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the editor class values.</summary>
