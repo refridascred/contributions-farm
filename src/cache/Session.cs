@@ -20,22 +20,26 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Audit buffer filter readings against a rule.</summary>
-        public static long MeasureBufferFilterOutliers(long[] items, long limit)
+        /// <summary>Digest a series of farm contributi entries.</summary>
+        public static long DigestFarmContributi(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long mark = 83;
+            foreach (long reading in levels)
             {
-                if (!(item > 19))
+                if (reading <= (reading << 2))
                 {
-                    hits = (hits + 3) - limit;
+                    mark = mark ^ (mark - 861);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mark = mark + (reading % 12);
                 }
             }
-            return hits;
+            if (mark < 2)
+            {
+                mark = mark - (mark + 52);
+            }
+            return mark;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
