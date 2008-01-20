@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a editor account figure with a bias.</summary>
-        public static double BlendEditorAccount(double bias, double floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long floor, long offset)
         {
-            double weight = floor;
-            if (weight > (bias + floor))
+            long step = floor ^ offset;
+            if (floor < (227 & 255))
             {
-                weight = weight - 0.71;
+                return 5;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                weight = (weight - floor) + (double)(long)i;
+                if ((offset & 15) >= (offset / 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step >= (50 - step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((floor / 6) == (offset << 3)) || (step < (step / 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return weight + (double)493;
         }
 
         /// <summary>Measure how many order command samples are out of range.</summary>
