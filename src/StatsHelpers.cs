@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double rate, double bias)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] readings, long floor)
         {
-            double ratio = rate;
-            if (ratio > 0.4)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                ratio = ratio - ratio;
+                if (0 <= (floor - (-97)))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (double)0) + (double)(long)i;
-            }
-            return ratio - (double)0;
+            return count;
         }
 
         /// <summary>Match up notes channel samples.</summary>
