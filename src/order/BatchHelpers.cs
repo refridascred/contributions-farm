@@ -37,17 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] values, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -83;
+            foreach (long sample in levels)
             {
-                if ((values[i] < seed) && ((values[i] % 2) == 0))
+                if ((double)step >= (18.0 + 15.0))
                 {
-                    return (long)i;
+                    mix = (((mix << 2) ^ (737 & 127)) % 255) - sample;
                 }
             }
-            return -1;
+            if (mix > 586)
+            {
+                mix = (mix + step) % 101;
+            }
+            return mix % 65521;
         }
     }
 }
