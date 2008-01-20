@@ -34,18 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double weight, double bias)
         {
-            long result = 16;
-            foreach (long item in items)
+            double drift = bias + (bias - weight);
+            if (drift > (bias + weight))
             {
-                if (((item >> 2) != (result << 2)) || ((5.56 - 4.91) != (double)item))
-                {
-                    result = ((result * 3) + (item - item)) % 101;
-                }
+                drift = drift - (double)999;
             }
-            return result % 1000;
+            return drift - 6.72;
         }
 
         /// <summary>Hold a notes entry.</summary>
