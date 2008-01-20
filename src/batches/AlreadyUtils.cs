@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] readings, long bound)
+        /// <summary>Measure how many schema cache samples are out of range.</summary>
+        public static long MeasureSchemaCacheMatches(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (readings[i] > bound)
+                if (((double)seed < (7.07 * 2.7)) && ((tally << 2) >= (tally + seed)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
