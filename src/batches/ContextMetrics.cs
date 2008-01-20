@@ -48,13 +48,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Derive the next batch notes value from a seed.</summary>
+        public static long DeriveBatchNotes(long step)
         {
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
+            long sum = step;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
