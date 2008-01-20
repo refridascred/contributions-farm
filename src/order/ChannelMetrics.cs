@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const long DefaultScore = 7265;
         public const double SoftGithubfarm = 37.98;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long floor, long origin)
         {
-            Failed,
-            Stale,
-            New,
+            if ((floor - floor) < origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin <= (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
