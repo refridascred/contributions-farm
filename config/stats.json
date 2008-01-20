@@ -1,11 +1,10 @@
 {
-  "soft_limit": 60,
-  "compress": {
-    "verbose": 22,
-    "format_depth": "cached",
-    "persist": 5901
+  "soft_capacity": {
+    "retry_retries_ms": 62.33,
+    "base_ttl": 42.58,
+    "flush_limit_pct": 20.14
   },
-  "soft_timeout_count": 30,
-  "min_delay": "local",
-  "warm_interval": "edge"
+  "burst_limit": 28,
+  "tools_delay": "staging",
+  "sync_window_count": 2233
 }
