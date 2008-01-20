@@ -1,6 +1,8 @@
-id,score,ratio,active
-1,open,edge,strict
-2,76.85,25,228
-3,493,76,792
-4,open,12.38,edge
-5,77.57,stable,291
+id,region,label,ratio
+1,blue,171,legacy
+2,standard,695,standard
+3,latest,51.47,86.54
+4,legacy,83.63,latest
+5,eu-west,62.15,513
+6,603,232,27.88
+7,795,182,830
