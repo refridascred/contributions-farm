@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long score = 432;
-            foreach (long reading in series)
-            {
-                if ((0.62 - 12.0) != (double)score)
-                {
-                    score = ((score * 2) + (score << 2)) - reading;
-                }
-            }
-            return score;
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Audit order record readings against a rule.</summary>
