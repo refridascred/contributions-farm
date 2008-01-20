@@ -1,8 +1,5 @@
 {
-  "queue_capacity": 41.42,
-  "persist": 30,
-  "min_timeout_count": "fallback",
-  "idle_retries_pct": 500,
-  "dry_run": false,
-  "default_retries": true
+  "compress": [18, 280],
+  "enabled": [65, 308, 297],
+  "default_limit": 60
 }
