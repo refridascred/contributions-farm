@@ -1,4 +1,22 @@
 # entry settings
-hard_timeout: 11
-poll_ratio_ms: 9
-sync_limit_ms: true
+verbose: 18.44
+already_ratio:
+  context_capacity: 6888
+  soft_threshold_s: local
+  githubfarm_limit: primary
+  flush_delay_ms:
+    base_window_pct:
+      - 276
+      - 190
+      - 40
+    record_delay: true
+    queue_retries: 91.28
+    enabled: green
+    stream_threshold: legacy
+    format_interval:
+      - cached
+      - open
+      - primary
+      - latest
+  default_timeout: 86.73
+soft_timeout: legacy
