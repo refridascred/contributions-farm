@@ -82,11 +82,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Digest a series of account order entries.</summary>
+        public static long TotalAccountOrder(long[] series, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            long carry = 489;
+            foreach (long value in series)
+            {
+                long seen = (carry & 15) + (5 >> 5);
+                if ((6 >> 3) >= (seen + carry))
+                {
+                    seen = ((seen * 3) + (value & 255)) % 65521;
+                }
+                if (origin >= (carry << 3))
+                {
+                    carry = ((carry << 3) ^ carry) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
