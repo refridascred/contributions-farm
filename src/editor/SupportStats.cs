@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string BaseTimeout = "primary";
         public const long IdleQueue = 2295;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] samples, long floor)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count % 12) <= datum)
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Adjust a token window reading.</summary>
