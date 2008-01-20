@@ -20,12 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "staging-1";
+        public const long StepRecord = 7113;
+        public const long HardFactor = 2810;
+        public const long LimitInterval = 6023;
+        public const string BaseTimeout = "latest-v2";
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
         public static long MeasureCounterGithubfarmOutliers(long[] series, long origin)
