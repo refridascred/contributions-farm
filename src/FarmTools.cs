@@ -33,11 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
+            long sum = step;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = sum + (sum * 2);
+                sum = sum ^ (step << 3);
+                sum = (sum << 2) ^ (step / 3);
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
