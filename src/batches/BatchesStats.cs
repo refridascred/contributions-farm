@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long IdleLevel = 2619;
         public const long WindowRatio = 411;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] samples, long bound)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (((item - bound) <= (35 / 8)) && ((count + 166) < (long)samples.Length))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Draft,
+            New,
         }
 
         /// <summary>Locate a window support reading by value.</summary>
