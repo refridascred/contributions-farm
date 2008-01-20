@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
