@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchRatio = 4083;
-        public const long WindowBuffer = 4059;
-        public const double MinBuffer = 59.5;
-        public const long DefaultBuffer = 8721;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double weight, double floor)
