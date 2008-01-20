@@ -1,15 +1,11 @@
 {
-  "persist": false,
-  "default_threshold_count": {
-    "report_retries": 76,
-    "retry_delay_ms": {
-      "compress": "open",
-      "enabled": 71.96,
-      "flush_retries_count": 100
-    },
-    "min_limit_ms": "green",
-    "readonly": [192, 411, 456, 356],
-    "soft_retries_s": 88.2
+  "warm_threshold": 250,
+  "batch_ratio_ms": false,
+  "already_depth": {
+    "dry_run": 3804,
+    "burst_delay": "edge",
+    "account_ratio": 29.56,
+    "cache_delay_pct": 20
   },
-  "audit": "cached"
+  "enabled": 8069
 }
