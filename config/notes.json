@@ -1,25 +1,7 @@
 {
-  "soft_capacity": {
-    "batch_ratio_s": "staging",
-    "cache_size_ms": true,
-    "soft_interval_ms": ["fallback", "local", "fallback", "blue"]
-  },
-  "batch_capacity": "eu-west",
-  "default_depth_pct": {
-    "batch_size_count": {
-      "commits_retries": 8245,
-      "flush_window_pct": [395, 414, 274],
-      "retry_ratio": "open",
-      "retry_capacity": 27.01,
-      "format_ratio": 100,
-      "burst_ratio": "primary"
-    },
-    "audit": [164, 47],
-    "idle_capacity_count": {
-      "verbose": 58.0,
-      "tools_interval": false,
-      "poll_timeout_pct": 37
-    },
-    "flush_depth_ms": "latest"
-  }
+  "base_retries_ms": 64,
+  "readonly": "latest",
+  "counter_retries": ["primary", "stable"],
+  "sync_ttl_count": [212, 463],
+  "cache_limit_pct": "primary"
 }
