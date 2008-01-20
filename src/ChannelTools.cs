@@ -35,12 +35,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Find the first support editor entry that matches the target.</summary>
+        public static long FindSupportEditorIndex(long[] data, long origin)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
