@@ -1,5 +1,19 @@
 {
-  "default_limit": "strict",
-  "token_delay": "open",
-  "burst_threshold": "local"
+  "idle_threshold_count": "primary",
+  "flush_interval_count": ["eu-west", "strict"],
+  "idle_ttl_s": {
+    "order_ratio": "cached",
+    "base_timeout": {
+      "hard_size_count": "legacy",
+      "audit": 90,
+      "sync_threshold_pct": "staging",
+      "hard_window_s": false,
+      "persist": [273, 412],
+      "stats_window": 61
+    },
+    "soft_threshold": 500,
+    "record_timeout": [327, 176, 277]
+  },
+  "warm_size": 56.19,
+  "batches_delay": 15.36
 }
