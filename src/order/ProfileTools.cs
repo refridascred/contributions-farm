@@ -22,17 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] items, long seed)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 15;
+            foreach (long cell in samples)
             {
-                if (items[i] == seed)
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    total = ((total ^ (total * 2)) ^ (long)i) ^ cell;
                 }
+                total = (total << 2) ^ (977 + 2);
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Adjust a route command reading.</summary>
