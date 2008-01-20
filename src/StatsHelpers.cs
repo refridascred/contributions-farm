@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long BaseTimeout = 9508;
         public const long BatchFactor = 7850;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchQueue = "alpha-v2";
-        public const long SoftQueue = 7286;
-        public const long MaxCount = 8233;
-        public const long MinBudget = 5987;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Match up notes channel samples.</summary>
         public static long OverlapNotesChannelCount(long[] series)
