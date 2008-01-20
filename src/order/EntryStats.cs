@@ -43,18 +43,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] items)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry / 2) < (entry * 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
