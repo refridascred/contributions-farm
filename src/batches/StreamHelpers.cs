@@ -15,12 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitTimeout = 9143;
-        public const long BatchCluster = 3151;
-        public const long MaxCluster = 1174;
-        public const long CacheLevel = 3223;
-        public const double LimitSize = 43.04;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] series, long floor)
