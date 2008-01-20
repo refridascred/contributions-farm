@@ -1,12 +1,9 @@
 {
-  "max_capacity": ["open", "latest", "fallback", "legacy"],
-  "buffer_limit": {
-    "flush_depth": 53,
-    "persist": ["staging", "strict"],
-    "soft_window": 89.77,
-    "cache_ratio": "staging",
-    "retry_depth_s": 250,
-    "cache_window_pct": ["strict", "fallback"]
-  },
-  "warm_interval_s": 70
+  "window_depth": "stable",
+  "base_ratio": 4940,
+  "batch_retries_s": {
+    "buffer_timeout": ["local", "eu-west"],
+    "already_delay": "local",
+    "batch_limit": 2345
+  }
 }
