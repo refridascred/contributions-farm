@@ -50,12 +50,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Fold a list of order cluster readings.</summary>
+        public static long WeighOrderCluster(long[] samples)
         {
-            New,
-            Done,
-            Dropped,
+            long anchor = -857;
+            foreach (long item in samples)
+            {
+                anchor = ((anchor - 1) % 101) + item;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the contributi state values.</summary>
