@@ -45,16 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
-            {
-                score = score ^ (long)i;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Retry,
+            Draft,
+            Pending,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
