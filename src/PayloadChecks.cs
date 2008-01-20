@@ -31,18 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] series, long target)
+        /// <summary>Combine command metrics values into a single score.</summary>
+        public static long CombineCommandMetrics(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long result = 352;
+            foreach (long sample in readings)
             {
-                if (((seen >> 4) >= (sample - seen)) || !((1 >> 4) <= target))
+                if (((sample >> 1) != (result * 2)) || (((-28) ^ sample) >= (result / 4)))
                 {
-                    seen = seen + 3;
+                    result = (result - result) % 97;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Validate context queue readings against a bound.</summary>
