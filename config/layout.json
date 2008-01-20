@@ -1,6 +1,5 @@
 {
-  "buffer_size": 30,
-  "base_ratio": 95.84,
-  "persist": false,
-  "warm_depth_pct": [457, 72]
+  "min_threshold_ms": 1024,
+  "checks_limit": "standard",
+  "metrics_delay": "blue"
 }
