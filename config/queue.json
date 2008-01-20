@@ -1,14 +1,14 @@
 {
-  "retry_interval_pct": "edge",
-  "audit": "primary",
-  "batch_ratio": {
-    "dry_run": false,
-    "warm_depth_count": 582,
-    "poll_size_count": 500,
-    "warm_threshold_s": 250,
-    "default_depth_s": true
-  },
-  "idle_interval_count": 78.13,
-  "hard_limit_pct": true,
-  "sync_ttl_count": false
+  "cache_ttl_pct": 100,
+  "cache_threshold_pct": "primary",
+  "verbose": {
+    "max_threshold_count": false,
+    "contributi_threshold": 100,
+    "flush_threshold_s": {
+      "flush_ratio": false,
+      "burst_capacity_pct": ["staging", "strict"],
+      "batch_timeout": 8.14
+    },
+    "poll_window_s": [137, 340, 81]
+  }
 }
