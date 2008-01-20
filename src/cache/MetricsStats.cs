@@ -43,12 +43,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long step, long limit)
         {
-            public bool Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Token { get; set; }
+            if (!((7.0 + 3.0) >= (double)limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if (2.0 <= (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((limit - limit) == (limit + limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit >= (step % 64)) && ((double)limit > (0.19 - 8.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
