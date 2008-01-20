@@ -1,7 +1,7 @@
-id,weight,level
-1,78.94,936
-2,2.33,edge
-3,878,744
-4,291,local
-5,384,66.13
-6,114,73.72
+id,region,ratio
+1,609,84.56
+2,363,standard
+3,67.56,407
+4,staging,61.2
+5,local,local
+6,edge,82.23
