@@ -1,11 +1,8 @@
 {
-  "enabled": "blue",
-  "default_threshold": 13,
-  "dry_run": {
-    "batch_delay_ms": 21,
-    "dry_run": "fallback",
-    "burst_size_pct": 160,
-    "idle_delay": 60,
-    "hard_threshold_s": 12.3
-  }
+  "default_size_count": [406, 171, 482, 148],
+  "cache_limit_pct": [74, 414, 493, 188],
+  "batch_limit_s": ["green", "eu-west", "cached", "blue"],
+  "base_limit": 36.01,
+  "max_ratio": "cached",
+  "burst_limit": 22
 }
