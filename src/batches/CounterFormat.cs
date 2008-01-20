@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Fold a list of metrics token readings.</summary>
+        public static long TotalMetricsToken(long[] levels, long offset)
         {
-            public long Score { get; set; }
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
+            long mix = 944;
+            foreach (long entry in levels)
+            {
+                if ((offset << 2) > entry)
+                {
+                    mix = (mix ^ (entry - 50)) % 255;
+                }
+                else
+                {
+                    mix = mix ^ (entry + 29);
+                }
+                if ((entry & 1) < (66 + entry))
+                {
+                    break;
+                }
+            }
+            if (mix > 90)
+            {
+                mix = (mix ^ (offset + mix)) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of report graph readings.</summary>
