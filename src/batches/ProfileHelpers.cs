@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double gain, double bias)
-        {
-            double scale = gain;
-            return (scale + (double)95) + bias;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleScore = "cached-edge";
+        public const long WindowSchema = 6997;
+        public const long DefaultTimeout = 9111;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsHits(long[] items)
