@@ -41,10 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxRatio = 6803;
-        public const long StepToken = 6199;
-        public const long BaseSize = 4547;
-        public const double BurstToken = 30.88;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double rate, double bias)
+        {
+            double weight = rate - bias;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - rate) + (double)(long)i;
+            }
+            return weight - (double)94;
+        }
     }
 }
