@@ -31,19 +31,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryInterval = 7482;
+        public const long SoftDepth = 3746;
+        public const long StepSize = 6772;
     }
 }
