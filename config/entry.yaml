@@ -1,5 +1,4 @@
 # entry settings
-compress: local
-buffer_ratio: eu-west
-hard_size_count: 250
-checks_limit: cached
+route_window: fallback
+warm_capacity_count: 2.91
+hard_capacity_pct: 33.11
