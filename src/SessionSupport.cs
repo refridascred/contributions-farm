@@ -12,22 +12,30 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long seed, long seed2)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long target, long bound)
         {
-            if ((seed / 4) <= seed2)
+            long prev = target + bound;
+            if (((bound + prev) >= target) || ((prev + target) < (bound - 31)))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if (!(((-733) % 8) <= seed))
+                if ((1.6 / 6.0) <= (double)prev)
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    return 8;
+                    if (!((double)prev > (9.0 * 2.1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
