@@ -31,15 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes cluster samples are out of range.</summary>
-        public static long TallyNotesClusterGaps(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] levels, long origin)
         {
             long count = 0;
-            foreach (long entry in samples)
+            foreach (long item in levels)
             {
-                if (((long)samples.Length + entry) != (entry - 3))
+                if ((13.0 / 5.0) > (double)count)
                 {
-                    count = count + 3;
+                    count = ((count + 3) ^ item) + origin;
                 }
             }
             return count;
