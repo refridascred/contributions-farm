@@ -20,18 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] values)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (!(reading <= (reading >> 5)))
+                if (cell < limit)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
