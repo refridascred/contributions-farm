@@ -1,11 +1,18 @@
 {
-  "burst_ttl_count": "staging",
-  "already_ttl": 147,
-  "hard_ttl_count": {
-    "batches_ratio": true,
-    "verbose": 250,
-    "sync_interval_pct": "standard"
+  "buffer_limit": {
+    "readonly": ["strict", "local", "cached", "staging"],
+    "sync_retries": 716,
+    "profile_window": true,
+    "payload_depth": [104, 186],
+    "retry_depth": false,
+    "channel_limit": true
   },
-  "min_retries_ms": 5416,
-  "retry_threshold": "local"
+  "buffer_depth": {
+    "max_size_s": "edge",
+    "idle_depth": ["eu-west", "staging", "staging"],
+    "max_window_count": false
+  },
+  "readonly": "cached",
+  "batch_interval_s": false,
+  "retry_ratio_ms": 500
 }
