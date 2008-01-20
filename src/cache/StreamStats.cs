@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long CacheSpan = 9838;
         public const long BatchBatches = 5043;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long origin)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
