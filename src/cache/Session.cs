@@ -27,10 +27,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 2196;
-        public const long HardEntry = 5389;
-        public const long StepEntry = 9710;
+        /// <summary>Find the first token githubfarm entry that matches the target.</summary>
+        public static long FindTokenGithubfarmIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long SeriesAlready(long limit)
