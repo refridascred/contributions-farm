@@ -1,11 +1,20 @@
 {
-  "cache_retries_pct": "cached",
-  "flush_size": ["open", "standard", "local", "strict"],
-  "schema_delay": {
-    "default_depth_s": 15,
-    "enabled": ["eu-west", "cached"],
-    "burst_interval": 79.4
+  "notes_timeout": 73.99,
+  "token_threshold": {
+    "batch_interval_count": "standard",
+    "burst_ratio_count": "open",
+    "idle_ttl_pct": 60
   },
-  "min_size": [331, 73, 262],
-  "dry_run": "edge"
+  "batch_limit": {
+    "soft_timeout_s": 33.25,
+    "strict": {
+      "channel_limit": ["open", "local", "staging"],
+      "default_interval_s": "primary",
+      "token_limit": true,
+      "tools_limit": 30.26
+    },
+    "default_capacity_ms": "edge",
+    "cache_timeout_s": 30,
+    "enabled": [173, 186, 5, 489]
+  }
 }
