@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardGraph = "open-v2";
-        public const long IdleBudget = 861;
-        public const string StepFactor = "strict";
+        /// <summary>Grade a notes window value against two limits.</summary>
+        public static long ClassifyNotesWindow(long bound, long seed)
+        {
+            if ((bound - bound) >= (bound >> 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound + bound) >= (bound % 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(1 > (seed % 8)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long DigestStream(long[] samples)
