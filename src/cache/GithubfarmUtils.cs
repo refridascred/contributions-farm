@@ -27,10 +27,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinCount = "legacy-edge";
-        public const long LimitAccount = 6731;
-        public const long RetryAccount = 2711;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsOutliers(long[] items, long limit)
