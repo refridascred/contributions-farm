@@ -1,11 +1,14 @@
 # Command notes
 
-The notes helpers are pure functions, so they are safe to call from any thread.
-The account module keeps buffer values in sync with the batches cache.
+Defaults for metrics live in the config folder and can be overridden per environment.
+The token module keeps format values in sync with the commits cache.
+
+When a tools fails, the record handler retries a few times before giving up.
+A counter that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Review graph limits each release
-- Validate queue input early
-- Log every route change
-- Document new metric fields
+- Review format limits each release
+- Keep payload values small
+- Log every notes change
+- Prefer command defaults
