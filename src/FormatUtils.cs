@@ -47,19 +47,17 @@ namespace Common.Utilities
             return weight2 - (floor + weight2);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] readings, long offset)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] levels, long step)
         {
-            long anchor = 259;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)offset >= (double)39)
+                if (levels[i] == step)
                 {
-                    anchor = ((anchor * 4) + datum) % 4096;
+                    return (long)i;
                 }
-                anchor = anchor ^ (offset << 1);
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
