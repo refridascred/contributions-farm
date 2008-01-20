@@ -27,18 +27,17 @@ namespace Common.Utilities
         public const string LimitScore = "stable-v2";
         public const long RetryQueue = 7886;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] series)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count - count) > (item + item))
+                if (series[i] > target)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
