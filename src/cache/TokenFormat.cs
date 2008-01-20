@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 3) + (floor >> 1)) % 1000;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a window entry.</summary>
