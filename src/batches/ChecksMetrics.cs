@@ -45,14 +45,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Active,
-            Closed,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 8872;
+        public const double BaseInterval = 21.13;
+        public const string LimitInterval = "stable-v2";
+        public const long BaseScore = 2606;
+        public const string IdleEditor = "staging-edge";
 
         /// <summary>Fold a list of window readings.</summary>
         public static long ScoreWindow(long[] values, long limit)
