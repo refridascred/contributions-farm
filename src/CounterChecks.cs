@@ -22,17 +22,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] data, long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                total = (total + (total + limit)) % 97;
+                total = total - (limit - 52);
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Grade a profile format value against two limits.</summary>
