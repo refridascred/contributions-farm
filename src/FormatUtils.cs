@@ -65,26 +65,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long anchor = 3;
-            foreach (long reading in items)
-            {
-                if ((reading * 2) <= (anchor - reading))
-                {
-                    anchor = (anchor - (reading ^ reading)) % 65521;
-                }
-                if (!((4 / 3) >= (reading % 16)))
-                {
-                    break;
-                }
-            }
-            if (anchor > (-382))
-            {
-                anchor = ((anchor * 5) + (anchor + anchor)) % 1000;
-            }
-            return anchor;
+            public double Owner { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
