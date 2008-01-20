@@ -38,29 +38,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long seed)
+        /// <summary>Find the first queue batch entry that matches the target.</summary>
+        public static long SeekQueueBatchIndex(long[] values, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)i - carry) >= (seed ^ 87))
+                if ((values[i] <= bound) && ((values[i] % 5) == 0))
                 {
-                    carry = (carry - (seed - seed)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry - carry)) % 97;
-                    carry = (carry + (long)i) % 4096;
-                }
-                carry = (carry * 3) + 634;
-                if (!((double)carry != (double)seed))
-                {
-                    carry = (carry + (carry - carry)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
     }
 }
