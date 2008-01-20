@@ -29,18 +29,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] levels, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] data)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((floor - floor) != (entry / 2))
+                if ((((double)tally == (double)item) && ((tally & 31) == (item * 5))) || ((double)(long)data.Length != (0.6 + 15.0)))
                 {
-                    count = count + 3;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
