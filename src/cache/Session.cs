@@ -20,23 +20,19 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double gain, double floor)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long offset)
         {
-            double rate = floor;
-            if (rate >= floor)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                rate = (rate - (rate * 4.08)) + gain;
+                if (offset > (offset ^ state))
+                {
+                    state = (state << 2) ^ (state << 1);
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            else
-            {
-                rate = rate + (rate / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (0.4 * 7.2)) + (double)(long)i;
-            }
-            return rate - (double)(-4);
+            return state;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
