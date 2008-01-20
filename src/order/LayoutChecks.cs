@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const string DefaultSpan = "staging-1";
         public const string StepWidth = "cached-v2";
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Ready,
-            Idle,
-            Stale,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstLevel = 1503;
+        public const double HardSize = 76.88;
+        public const double HardDepth = 4.52;
+        public const long RetryTools = 127;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long MatchQueueCount(long[] samples)
