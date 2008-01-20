@@ -32,15 +32,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double scale, double bias)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] items, long step)
         {
-            double ratio = (scale * 6.2) / 7.0;
-            if (ratio < scale)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio - (double)631) - bias;
+                if ((items[i] > step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (double)85;
+            return -1;
         }
 
         /// <summary>Hold a batches record.</summary>
