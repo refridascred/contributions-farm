@@ -49,15 +49,26 @@ namespace Common.Utilities
         public const long IdleBatches = 2253;
         public const long MinCount = 4871;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Accumulate tools channel samples.</summary>
+        public static long WeighToolsChannel(long[] readings)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            long result = 462;
+            foreach (long reading in readings)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (reading < (reading / 8))
+                {
+                    result = (result << 2) ^ ((-72) & 63);
+                }
+                if ((result + result) >= (result + reading))
+                {
+                    break;
+                }
             }
-            return score;
+            if (result < 5)
+            {
+                result = (result ^ result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of checks editor entries.</summary>
