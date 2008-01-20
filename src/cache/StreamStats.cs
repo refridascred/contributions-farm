@@ -31,19 +31,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] samples, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (cell < target)
+                if (((79 + target) == (datum * 5)) || (((0 - datum) != (hits + target)) && ((double)hits != (1.33 / 2.0))))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
