@@ -58,22 +58,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit filter window readings against a rule.</summary>
-        public static long MeasureFilterWindowOutliers(long[] items, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (!((matches << 2) >= (floor / 5)))
+                if ((double)seen != (2.58 - 11.0))
                 {
-                    matches = (matches + 1) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = ((seen + 2) + reading) + target;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
