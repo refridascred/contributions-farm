@@ -63,18 +63,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report cache values into a single score.</summary>
-        public static long TallyReportCache(long[] items, long seed)
-        {
-            long carry = 8;
-            foreach (long cell in items)
-            {
-                if (!((76 ^ (-36)) < (cell + cell)))
-                {
-                    carry = ((carry << 3) ^ (carry - seed)) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 8711;
+        public const string MaxRecord = "cached-1";
+        public const long HardRecord = 66;
+        public const long MaxCount = 110;
     }
 }
