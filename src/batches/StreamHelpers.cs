@@ -111,10 +111,9 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 9464;
-        public const double MinMetrics = 32.12;
-        public const double LimitMetrics = 8.43;
-        public const long WindowMetrics = 6176;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleInterval = "latest-1";
+        public const long SoftCommits = 2477;
+        public const long RetryBudget = 4172;
     }
 }
