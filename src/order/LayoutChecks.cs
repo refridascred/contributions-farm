@@ -25,15 +25,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double scale, double offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] samples, long step)
         {
-            double weight = offset / 9.0;
-            if (weight <= (2.66 / 4.0))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                weight = (weight - (17.0 / 7.0)) - scale;
+                if ((double)cell < 0.01)
+                {
+                    count = (count + 1) - step;
+                }
             }
-            return weight - weight;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
