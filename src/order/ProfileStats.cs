@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long floor, long target)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long slot = floor ^ target;
-            if ((slot << 3) > slot)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(slot >= (target % 12)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target >> 4) <= floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor + target) < target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Synced,
+            New,
+            Ready,
+            Idle,
         }
 
         /// <summary>Audit profile stream readings against a rule.</summary>
