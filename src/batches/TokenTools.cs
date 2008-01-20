@@ -13,14 +13,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public bool Count { get; set; }
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardRatio = 4982;
+        public const long BurstGraph = 459;
+        public const double WindowGraph = 95.91;
+        public const long BaseFactor = 131;
+        public const double DefaultGraph = 91.71;
 
         /// <summary>Adjust a report cache reading.</summary>
         public static double BlendReportCache(double rate, double floor)
