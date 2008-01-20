@@ -33,15 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the account record series from a seed.</summary>
-        public static long SeriesAccountRecord(long offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            Retry,
+            Pending,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the channel level values.</summary>
