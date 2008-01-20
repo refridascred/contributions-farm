@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Scale a editor account figure with a bias.</summary>
+        public static double BlendEditorAccount(double bias, double floor)
         {
-            Pending,
-            Ready,
-            Queued,
-            Failed,
+            double weight = floor;
+            if (weight > (bias + floor))
+            {
+                weight = weight - 0.71;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight + (double)493;
         }
 
         /// <summary>Measure how many order command samples are out of range.</summary>
