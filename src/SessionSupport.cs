@@ -43,16 +43,18 @@ namespace Common.Utilities
             return drift + (drift + bias);
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                carry = (carry ^ carry) % 1000;
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (((tally ^ item) > item) && (((tally * 4) <= item) && ((618 << 3) < ((long)samples.Length + item))))
+                {
+                    tally = tally + 3;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
