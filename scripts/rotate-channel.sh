@@ -6,16 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest strict; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-legacy}"
+mode="${1:-standard}"
 case "${mode}" in
-    strict)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=305
+log "limit is ${CHANNEL_LIMIT}"
