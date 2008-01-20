@@ -20,17 +20,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first checks account entry that matches the target.</summary>
-        public static long FindChecksAccountIndex(long[] items, long step)
+        /// <summary>Accumulate window farm samples.</summary>
+        public static long CombineWindowFarm(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 97;
+            foreach (long reading in series)
             {
-                if (items[i] > step)
+                if (96 < (reading & 31))
                 {
-                    return (long)i;
+                    sum = sum + (4 + reading);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum << 3)) % 4096;
+                }
+                if ((sum >> 2) == (sum >> 5))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
