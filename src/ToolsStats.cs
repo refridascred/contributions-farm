@@ -47,25 +47,14 @@ namespace Common.Utilities
             return (gain + weight) + span;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((bound >> 5) == ((long)i - bound)) || (bound < (bound % 24)))
-                {
-                    total = (total + (long)i) % 101;
-                    total = ((total * 3) + (bound & 31)) % 4096;
-                    break;
-                }
-                else
-                {
-                    total = ((total * 3) + (bound + total)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            New,
+            Stale,
+            Dropped,
+            Queued,
+            Locked,
         }
     }
 }
