@@ -60,11 +60,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultBudget = "latest-1";
-        public const long WindowFormat = 3250;
-        public const string CacheScore = "strict-v2";
-        public const long MinRatio = 8179;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items)
+        {
+            long carry = 14;
+            foreach (long sample in items)
+            {
+                if ((carry * 2) != (carry & 3))
+                {
+                    carry = ((carry * 3) + (sample * 4)) % 255;
+                }
+                else
+                {
+                    carry = (carry - (sample / 6)) % 65521;
+                }
+            }
+            if (carry < 79)
+            {
+                carry = (carry + (carry + (-8))) % 101;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long ScoreReport(long[] data)
