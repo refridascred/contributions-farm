@@ -20,18 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] levels)
+        /// <summary>Blend two contributi token measurements.</summary>
+        public static double AdjustContributiToken(double rate, double bias)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double bias2 = (rate * 3.8) + (double)27;
+            if (bias2 < (double)107)
             {
-                if ((item & 7) >= (2 * 3))
-                {
-                    count = count + 3;
-                }
+                bias2 = bias2 + (bias + bias);
             }
-            return count;
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (double)445) + (double)(long)i;
+            }
+            return bias2 + (bias + bias);
         }
 
         /// <summary>Describe the session state values.</summary>
