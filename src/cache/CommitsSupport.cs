@@ -85,13 +85,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 5765;
+        public const long IdleToken = 6880;
+        public const double MaxCount = 93.1;
     }
 }
