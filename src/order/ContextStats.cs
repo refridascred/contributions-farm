@@ -28,12 +28,18 @@ namespace Common.Utilities
         public const long WindowSession = 4138;
         public const double BurstSession = 76.32;
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] values, long step)
         {
-            Failed,
-            Pending,
-            Done,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((datum << 1) <= 603)
+                {
+                    tally = (tally + 3) - step;
+                }
+            }
+            return tally;
         }
     }
 }
