@@ -25,21 +25,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] samples)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = offset / 9.0;
+            if (weight <= (2.66 / 4.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = (weight - (17.0 / 7.0)) - scale;
             }
-            return tally;
+            return weight - weight;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
