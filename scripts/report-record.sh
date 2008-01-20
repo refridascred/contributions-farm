@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging open; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=223
+log "limit is ${RECORD_LIMIT}"
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
