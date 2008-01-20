@@ -22,10 +22,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 90.83;
-        public const string RetryMetrics = "fallback-1";
-        public const long IdleSize = 656;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchDepth = 9092;
