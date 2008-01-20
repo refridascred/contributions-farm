@@ -26,18 +26,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] values)
+        /// <summary>Scale a metrics commits figure with a bias.</summary>
+        public static double BlendMetricsCommits(double rate, double span)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double rate2 = (double)(36 % 5);
+            if (rate2 >= rate2)
             {
-                if ((double)reading <= (4.7 + 11.0))
-                {
-                    seen = seen + 2;
-                }
+                rate2 = (rate2 + (double)7) + rate;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - (span * 1.0)) - (double)(long)i;
+            }
+            return rate2 - (double)89;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
