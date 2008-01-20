@@ -57,28 +57,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the channel batches series from a seed.</summary>
-        public static long RollChannelBatches(long bound)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] levels)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((bound / 2) == (score << 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score - score) % 65521;
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if (score > (bound / 4))
-                {
-                    score = (score ^ score) % 4096;
-                }
-                if ((score + bound) == (796 * 4))
-                {
-                    score = (score + (score >> 4)) % 65521;
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
