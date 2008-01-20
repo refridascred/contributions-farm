@@ -19,11 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double gain, double offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] samples, long step)
         {
-            double scale = offset;
-            return scale - (gain + 6.2);
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!((datum / 3) < (step + step)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
