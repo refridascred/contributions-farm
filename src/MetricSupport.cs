@@ -45,18 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi record readings against a rule.</summary>
-        public static long MeasureContributiRecordOutliers(long[] readings)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally > (long)readings.Length) || (4.7 <= (18.0 - 1.0)))
+                if (values[i] == bound)
                 {
-                    tally = (tally + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
