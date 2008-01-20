@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up metric command samples.</summary>
-        public static long PairMetricCommandCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "cached-1";
+        public const long BaseTimeout = 9508;
+        public const long BatchFactor = 7850;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long RollContributi(long target)
