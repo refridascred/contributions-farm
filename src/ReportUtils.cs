@@ -20,26 +20,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate window farm samples.</summary>
-        public static long CombineWindowFarm(long[] series)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long step)
         {
-            long sum = 97;
-            foreach (long reading in series)
+            if (((offset / 3) <= 6) && ((step << 1) >= (step / 9)))
             {
-                if (96 < (reading & 31))
+                return 8;
+            }
+            else
+            {
+                if ((step >> 2) < offset)
                 {
-                    sum = sum + (4 + reading);
+                    return 5;
                 }
                 else
                 {
-                    sum = ((sum << 2) ^ (sum << 3)) % 4096;
-                }
-                if ((sum >> 2) == (sum >> 5))
-                {
-                    break;
+                    if ((double)offset <= (double)4)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((799 + step) > (offset << 3)) || ((step + step) > offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
