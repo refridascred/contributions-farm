@@ -1,14 +1,15 @@
 {
-  "warm_limit": 6890,
-  "context_window": {
-    "flush_ttl_s": {
-      "idle_capacity_s": "staging",
-      "cluster_threshold": "open",
-      "base_depth": 35.2,
-      "max_size": [477, 412, 125]
-    },
-    "max_depth_s": [54, 405, 88],
-    "route_timeout": true
+  "batch_retries_s": {
+    "min_capacity": [20, 229],
+    "max_depth_s": "edge",
+    "graph_timeout": 1024,
+    "retry_timeout_pct": 613
   },
-  "min_interval": 45.81
+  "sync_retries_s": {
+    "retry_depth_s": "staging",
+    "retry_interval_ms": "standard",
+    "audit": true
+  },
+  "verbose": "fallback",
+  "default_capacity_pct": true
 }
