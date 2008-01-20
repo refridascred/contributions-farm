@@ -19,19 +19,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] samples, long offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            New,
+            Closed,
+            Locked,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
