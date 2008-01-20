@@ -45,19 +45,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate context queue readings against a bound.</summary>
-        public static bool CheckContextQueueRange(long[] items, long limit)
+        /// <summary>Audit graph counter readings against a rule.</summary>
+        public static long MeasureGraphCounterMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (sample != limit)
+                if ((count / 7) == (count % 10))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
