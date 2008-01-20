@@ -35,13 +35,31 @@ namespace Common.Utilities
         public const long SoftContributi = 8714;
         public const string BatchContributi = "latest-v2";
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long origin, long seed)
         {
-            Synced,
-            Idle,
-            Pending,
-            Retry,
+            if (!((double)origin != (19.0 / 3.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((origin - 0) < (origin / 6)) || ((seed + origin) != (origin / 8)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((26 * 3) > seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
