@@ -1,7 +1,17 @@
 {
-  "dry_run": 72.88,
-  "default_delay_pct": false,
-  "layout_capacity": true,
-  "default_threshold_pct": 58,
-  "soft_depth_pct": false
+  "batch_ratio_pct": [442, 113, 349, 401],
+  "strict": false,
+  "soft_timeout": "eu-west",
+  "verbose": "primary",
+  "audit": {
+    "hard_retries_s": 20.93,
+    "cache_delay": ["primary", "cached"],
+    "verbose": 52,
+    "idle_retries": ["strict", "legacy", "primary", "eu-west"],
+    "burst_capacity": {
+      "enabled": [181, 392, 151],
+      "soft_ratio": "open",
+      "order_retries": false
+    }
+  }
 }
