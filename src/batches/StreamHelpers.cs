@@ -85,12 +85,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Paused,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 9464;
+        public const double MinMetrics = 32.12;
+        public const double LimitMetrics = 8.43;
+        public const long WindowMetrics = 6176;
     }
 }
