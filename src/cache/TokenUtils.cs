@@ -39,18 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] readings)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (!((seen % 2) <= (datum & 1)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Synced,
+            Failed,
+            Retry,
+            Done,
+            Closed,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
