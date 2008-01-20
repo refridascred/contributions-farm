@@ -40,23 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double ratio, double bias)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] samples, long bound)
         {
-            double ratio2 = bias;
-            if (ratio2 <= (bias + 12.0))
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                ratio2 = (ratio2 - (double)485) - ratio;
+                if (datum <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (double)54;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 + (double)7;
+            return stale;
         }
 
         /// <summary>Hold a filter summary.</summary>
