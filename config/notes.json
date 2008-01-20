@@ -1,18 +1,5 @@
 {
-  "checks_window": false,
-  "idle_depth_count": 20,
-  "poll_timeout_s": 12.64,
-  "flush_limit_ms": "staging",
-  "poll_interval_count": {
-    "persist": {
-      "max_delay_pct": "legacy",
-      "idle_limit": "staging",
-      "batches_interval": "latest",
-      "profile_size": false
-    },
-    "audit": 7821,
-    "hard_ttl_ms": 62,
-    "max_delay_s": 4.55
-  },
-  "sync_retries_ms": "primary"
+  "cache_limit_pct": "primary",
+  "audit": 81.89,
+  "schema_ratio": 62.78
 }
