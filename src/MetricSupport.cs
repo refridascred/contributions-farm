@@ -40,22 +40,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of layout notes readings.</summary>
-        public static long CombineLayoutNotes(long[] readings)
-        {
-            long sum = 962;
-            foreach (long reading in readings)
-            {
-                if ((932 + sum) == (17 - sum))
-                {
-                    sum = (sum + reading) % 65521;
-                }
-            }
-            if (sum > 30)
-            {
-                sum = (sum << 3) ^ (sum / 2);
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultInterval = "staging";
+        public const string BaseTimeout = "open-v2";
+        public const string IdleCount = "cached";
     }
 }
