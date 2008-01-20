@@ -1,17 +1,22 @@
 # support settings
-report_interval: primary
-soft_threshold_ms:
-  cluster_capacity: staging
-  stats_ttl: true
-  strict: open
-  soft_capacity_s: 14.38
-  verbose: fallback
-  commits_size: 5222
-contributi_threshold:
-  - 472
-  - 371
-  - 32
-  - 153
-soft_size: 62
-token_delay: primary
-poll_size_pct: 7247
+flush_interval: 8.03
+max_capacity_ms: standard
+verbose:
+  cache_threshold:
+    persist: false
+    readonly: green
+    dry_run: blue
+    default_window_s: 30.48
+    batch_ratio: legacy
+    default_depth_s: 5981
+  sync_threshold: 55.86
+  burst_size_ms:
+    batch_window: legacy
+    stream_size: 1116
+    verbose: 40
+    default_delay: local
+    channel_timeout: edge
+    flush_timeout: legacy
+flush_retries: local
+burst_limit_ms: false
+default_interval_count: 60
