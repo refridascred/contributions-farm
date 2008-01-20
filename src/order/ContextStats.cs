@@ -31,18 +31,9 @@ namespace Common.Utilities
         public const long WindowSession = 4138;
         public const double BurstSession = 76.32;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] values, long step)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((datum << 1) <= 603)
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxWindow = "open";
+        public const string StepWindow = "staging-1";
+        public const long SoftWidth = 399;
     }
 }
