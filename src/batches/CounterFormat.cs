@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double gain, double floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double scale = (double)((-228) % 8);
-            if (scale > (gain * 3.76))
-            {
-                scale = (scale - (double)8) + floor;
-            }
-            return scale - (scale * 10.0);
+            public long Score { get; set; }
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
