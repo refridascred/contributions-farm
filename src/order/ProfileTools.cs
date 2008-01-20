@@ -57,19 +57,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the context report series from a seed.</summary>
-        public static long RollContextReport(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((1 - acc) >= 6)
-                {
-                    acc = acc + (floor & 127);
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardStream = 86.93;
+        public const long IdleDepth = 3288;
+        public const string MaxStream = "fallback-1";
+        public const long DefaultTimeout = 6041;
     }
 }
