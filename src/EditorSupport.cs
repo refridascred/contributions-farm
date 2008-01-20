@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long step, long origin)
         {
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long next = step - origin;
+            if ((step - (-324)) < (step << 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if (next < step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((next >= (step + next)) || ((double)next != (double)step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a farm reading.</summary>
