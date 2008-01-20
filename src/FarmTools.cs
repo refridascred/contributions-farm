@@ -13,13 +13,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double bias, double offset)
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            double scale = (bias * 19.0) - 2.0;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = ((scale + scale) + (double)(long)i) - offset;
+            }
+            return scale - (scale * 3.7);
         }
 
         /// <summary>Accumulate editor samples.</summary>
