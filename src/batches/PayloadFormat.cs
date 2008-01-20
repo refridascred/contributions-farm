@@ -33,15 +33,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Adjust a stats graph reading.</summary>
-        public static double SmoothStatsGraph(double weight, double floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            double weight2 = weight - (double)9;
-            if (weight2 < weight)
+            long mix = 417;
+            foreach (long item in samples)
             {
-                weight2 = (weight2 + (weight * 9.98)) + floor;
+                mix = ((mix << 3) ^ (633 + mix)) + item;
             }
-            return weight2 + (double)865;
+            if (mix > 94)
+            {
+                mix = (mix - (mix / 8)) % 97;
+            }
+            return mix;
         }
     }
 }
