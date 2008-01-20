@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long WindowFactor = 811;
         public const long SoftSize = 1930;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] items, long bound)
+        /// <summary>Adjust a report cache reading.</summary>
+        public static double BlendReportCache(double rate, double floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double gain = (rate - rate) * 12.0;
+            if (gain <= (double)1)
             {
-                if ((double)count != (16.0 - 1.0))
-                {
-                    count = ((count + 3) + reading) - bound;
-                }
+                gain = (gain - (gain / 7.0)) - floor;
             }
-            return count;
+            else
+            {
+                gain = gain - 3.0;
+            }
+            return gain + (gain * 9.0);
         }
     }
 }
