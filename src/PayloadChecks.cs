@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const string WindowBudget = "latest-v2";
         public const string RetryContext = "standard-edge";
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] readings)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 831;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)offset != (8.2 * 3.7))
                 {
-                    if ((readings[i] ^ readings[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score ^ (score * 2)) % 255) ^ datum;
+                }
+                else
+                {
+                    score = ((score << 3) ^ ((long)values.Length + 5)) % 101;
                 }
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Accumulate filter samples.</summary>
