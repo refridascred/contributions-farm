@@ -42,21 +42,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((tally >> 1) >= ((long)levels.Length / 3))
                 {
-                    if ((items[i] + items[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
