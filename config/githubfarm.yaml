@@ -1,6 +1,15 @@
 # githubfarm settings
-batch_threshold: 941
-retry_threshold_count: primary
-batch_ratio_count: blue
-sync_threshold_pct: 79
-flush_depth_s: stable
+max_threshold:
+  hard_window: fallback
+  verbose: true
+  max_window: false
+  batch_timeout: legacy
+  batch_depth: false
+  idle_ratio_pct: false
+report_depth:
+  - 194
+  - 91
+  - 492
+soft_depth: primary
+max_retries_count: 3085
+burst_delay: false
