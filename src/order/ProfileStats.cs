@@ -20,15 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a metrics support figure with a bias.</summary>
-        public static double BlendMetricsSupport(double weight, double floor)
+        /// <summary>Roll a token filter counter forward.</summary>
+        public static long SeriesTokenFilter(long limit)
         {
-            double gain = (floor / 6.0) + floor;
-            if (gain <= (gain + 1.2))
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                gain = (gain - floor) - weight;
+                mix = ((mix * 5) + (mix >> 2)) % 65521;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return gain - (double)7;
+            return mix;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
