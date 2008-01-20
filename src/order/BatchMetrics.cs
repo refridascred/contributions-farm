@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next cluster route value from a seed.</summary>
-        public static long SeriesClusterRoute(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((offset / 2) > (sum >> 1))
-                {
-                    sum = (sum ^ offset) % 4096;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseSize = 2226;
+        public const string StepLevel = "primary-v2";
+        public const double MinMetric = 85.93;
+        public const string IdleMetric = "staging";
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long StepMetrics(long offset)
