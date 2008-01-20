@@ -20,31 +20,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long offset, long bound)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            if ((2.15 + 11.0) != (double)offset)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound >= (15.0 - 6.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((offset + 72) == (bound - bound)))
+                    if ((samples[i] ^ samples[j]) < 8)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
