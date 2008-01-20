@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 6070;
-        public const long BurstProfile = 712;
-        public const double RetryBudget = 22.13;
-        public const long BatchWidth = 7593;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] samples, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long ScoreNotes(long[] series)
