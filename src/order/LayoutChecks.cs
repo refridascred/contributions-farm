@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two metrics cluster measurements.</summary>
-        public static double SmoothMetricsCluster(double bias, double span)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] data, long target)
         {
-            double weight = bias;
-            if (weight <= (weight / 8.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - bias;
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return weight + (span * 9.1);
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
