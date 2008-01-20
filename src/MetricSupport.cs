@@ -20,18 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] samples, long limit)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches <= (70 * 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = ((matches + 1) - reading) - limit;
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
