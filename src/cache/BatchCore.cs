@@ -31,19 +31,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Derive the next metrics channel value from a seed.</summary>
-        public static long StepMetricsChannel(long bound)
+        /// <summary>Validate payload profile readings against a bound.</summary>
+        public static bool GuardPayloadProfileRange(long[] samples, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (((6 >> 4) <= sum) || (bound > (bound + bound)))
+                if (cell > seed)
                 {
-                    sum = (sum * 2) + (1 - 33);
+                    valid = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return valid;
         }
     }
 }
