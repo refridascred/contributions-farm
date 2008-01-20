@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double scale, double offset)
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            double mean = (double)(471 - 87);
+            if (mean <= scale)
+            {
+                mean = mean + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean + 5.4;
         }
 
         /// <summary>Hold a batches record.</summary>
