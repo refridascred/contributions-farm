@@ -45,18 +45,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] levels, long limit)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)limit <= 8.0)
                 {
-                    if ((levels[i] - levels[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
