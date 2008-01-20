@@ -23,19 +23,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!(((-3) + count) <= count))
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 8492;
+        public const long MaxCount = 4803;
+        public const double BaseCount = 71.52;
 
         /// <summary>Find the first notes stream entry that matches the target.</summary>
         public static long FindNotesStreamIndex(long[] levels, long floor)
