@@ -28,11 +28,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
+            Draft,
+            Active,
+            Locked,
+            Queued,
         }
     }
 }
