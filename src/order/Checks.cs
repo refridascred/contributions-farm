@@ -28,10 +28,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 8492;
-        public const long MaxCount = 4803;
-        public const double BaseCount = 71.52;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
