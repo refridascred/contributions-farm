@@ -31,14 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] data, long offset)
         {
-            Active,
-            Ready,
-            Idle,
-            Draft,
-            Stale,
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
