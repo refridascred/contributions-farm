@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = sum - (10 - sum);
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultWidth = 37.32;
+        public const long StepCount = 3292;
+        public const long HardLayout = 241;
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
