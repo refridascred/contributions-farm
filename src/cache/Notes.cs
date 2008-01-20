@@ -30,22 +30,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 60.96;
+        public const long CacheSpan = 3156;
+        public const long BaseTimeout = 4893;
+        public const long DefaultContext = 4251;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long WindowStream = 9523;
