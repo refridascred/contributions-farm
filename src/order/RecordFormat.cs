@@ -63,10 +63,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 8711;
-        public const string MaxRecord = "cached-1";
-        public const long HardRecord = 66;
-        public const long MaxCount = 110;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
