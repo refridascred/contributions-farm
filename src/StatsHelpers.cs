@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] values, long offset)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
