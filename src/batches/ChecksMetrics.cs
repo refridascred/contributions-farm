@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] samples, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (sample <= floor)
+                if ((seen - 8) > (sample + seen))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a command stats.</summary>
