@@ -53,12 +53,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
