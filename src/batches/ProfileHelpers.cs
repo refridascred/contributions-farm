@@ -45,18 +45,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] samples)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            long mark = 2;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((value << 3) < (463 >> 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (value << 2)) % 65521;
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count the editor account entries that pass the check.</summary>
