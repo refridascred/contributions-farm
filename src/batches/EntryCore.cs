@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] values, long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long target, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((target + limit) > (9 * 2))
             {
-                if (values[i] > bound)
+                return 0;
+            }
+            else
+            {
+                if ((target + target) > (limit % 12))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((target >= limit) || ((limit + limit) <= (target + 9)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit / 6) < (limit * 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the window level values.</summary>
