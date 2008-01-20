@@ -21,13 +21,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 75.54;
+        public const string RetryInterval = "standard";
+        public const long RetrySchema = 1897;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long WeighCounter(long[] values, long floor)
