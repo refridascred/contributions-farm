@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of graph editor readings.</summary>
-        public static long TotalGraphEditor(long[] levels, long bound)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            long result = 157;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.0 * 14.0) < (double)result)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (((result * 4) + (result + bound)) % 255) - sample;
-                }
-                else
-                {
-                    result = result - result;
+                    if ((levels[i] - levels[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
