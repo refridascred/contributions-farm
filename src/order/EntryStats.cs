@@ -22,25 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long seed, long seed2)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long next = seed - seed2;
-            if ((8 + 55) >= (seed2 / 8))
-            {
-                return 1;
-            }
-            else
-            {
-                if (879 >= (next / 6))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Paused,
+            Closed,
+            Queued,
+            Stale,
+            New,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
