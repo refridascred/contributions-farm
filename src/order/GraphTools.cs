@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] samples)
+        /// <summary>Combine queue format values into a single score.</summary>
+        public static long TotalQueueFormat(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long total = 3;
+            foreach (long sample in levels)
             {
-                if ((count & 15) > cell)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = (total << 2) ^ (sample ^ sample);
             }
-            return count;
+            if (total < 693)
+            {
+                total = ((total * 4) + (total >> 3)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Project the next queue value.</summary>
