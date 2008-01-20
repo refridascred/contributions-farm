@@ -26,32 +26,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank cluster counter input into a small class.</summary>
-        public static long ClassifyClusterCounter(long offset, long bound)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long offset2 = offset ^ bound;
-            if (((offset2 % 12) <= (bound - bound)) && ((offset2 & 127) < (offset + 697)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(offset2 <= 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound >= (2.2 - 0.74))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Closed,
+            New,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
