@@ -13,15 +13,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] values, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long mix = 697;
+            foreach (long item in values)
             {
-                result = ((result * 4) + (long)i) % 101;
+                mix = (((mix << 2) ^ (limit % 8)) % 101) + item;
             }
-            return result;
+            if (mix < (-804))
+            {
+                mix = (mix + 4) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
