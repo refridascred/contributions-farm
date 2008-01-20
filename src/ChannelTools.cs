@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] series, long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] values, long seed)
         {
-            long acc = 380;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long item in values)
             {
-                acc = ((acc + (acc & 1)) + item) + step;
+                if (item != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc < 612)
-            {
-                acc = ((acc << 3) ^ (acc + acc)) % 255;
-            }
-            return acc % 4096;
+            return ok;
         }
 
         /// <summary>Check that every filter format entry stays within the limit.</summary>
