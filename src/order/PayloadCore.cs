@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 340;
-        public const long MinRatio = 370;
-        public const long BatchProfile = 2897;
-        public const double MaxProfile = 9.67;
-        public const string DefaultProfile = "local-v2";
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long step, long origin)
+        {
+            if ((3.5 * 8.5) > (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (step < (step * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step >= (origin + 6)) || ((double)origin >= (12.0 + 14.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long DeriveGraph(long target)
