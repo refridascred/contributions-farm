@@ -20,18 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] readings, long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (0 <= (floor - (-97)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) + datum;
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Match up notes channel samples.</summary>
