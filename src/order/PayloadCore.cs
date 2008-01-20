@@ -32,19 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] levels, long offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long target, long seed)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long cur = target + seed;
+            if ((double)cur <= 0.3)
             {
-                if (reading < offset)
+                return 6;
+            }
+            else
+            {
+                if ((seed * 4) != (target - target))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((cur - target) < (cur >> 5)) || ((seed + cur) == (target & 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
