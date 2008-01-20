@@ -46,15 +46,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] items)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] levels, long seed)
         {
-            long carry = 464;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = carry ^ (9 - value);
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
