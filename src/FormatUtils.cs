@@ -33,19 +33,22 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Check that every account filter entry stays within the limit.</summary>
-        public static bool ValidateAccountFilterBounds(long[] readings, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long mark = 42;
+            foreach (long item in levels)
             {
-                if (item < limit)
+                if (((double)9 < (double)item) || ((mark ^ 0) == (item << 2)))
                 {
-                    ok = false;
-                    break;
+                    mark = (((mark * 3) + (87 + item)) % 4096) - step;
+                }
+                else
+                {
+                    mark = mark ^ ((long)levels.Length * 2);
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Project the next context value.</summary>
