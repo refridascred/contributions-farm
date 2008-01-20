@@ -20,17 +20,22 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] series, long seed)
+        /// <summary>Audit buffer filter readings against a rule.</summary>
+        public static long MeasureBufferFilterOutliers(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((series[i] <= seed) && ((series[i] % 5) == 0))
+                if (!(item > 19))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
