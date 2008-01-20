@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSpan = 2903;
-        public const double StepSupport = 41.45;
-        public const double MaxTimeout = 62.27;
-        public const long DefaultDepth = 5647;
-        public const long DefaultFactor = 3961;
+        /// <summary>Combine batch entry values into a single score.</summary>
+        public static long TotalBatchEntry(long[] items, long floor)
+        {
+            long carry = 9;
+            foreach (long cell in items)
+            {
+                if (565 >= (carry << 3))
+                {
+                    carry = (carry + (carry + floor)) % 65521;
+                }
+                carry = (carry * 4) + carry;
+                if ((floor & 15) < cell)
+                {
+                    carry = (carry - floor) % 97;
+                }
+                else
+                {
+                    carry = (carry + (58 % 3)) % 101;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double StepFactor = 31.54;
