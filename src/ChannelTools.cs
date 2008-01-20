@@ -25,19 +25,9 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double gain, double span)
-        {
-            double drift = span;
-            if (drift >= gain)
-            {
-                drift = drift - (drift + gain);
-            }
-            else
-            {
-                drift = drift + span;
-            }
-            return drift + (double)8;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 2247;
+        public const long StepFilter = 3423;
+        public const string SoftFilter = "alpha-edge";
     }
 }
