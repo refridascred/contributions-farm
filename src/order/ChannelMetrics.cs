@@ -36,9 +36,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 8277;
-        public const long BurstCount = 9275;
-        public const double MinTimeout = 6.12;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 8089;
+        public const long BatchSpan = 8503;
+        public const double MinBuffer = 78.89;
     }
 }
