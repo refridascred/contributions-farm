@@ -64,11 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchBudget = 5616;
-        public const double MinMetrics = 42.8;
-        public const double LimitMetrics = 48.8;
-        public const string SoftMetrics = "open-edge";
-        public const double MaxSize = 85.92;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+        }
     }
 }
