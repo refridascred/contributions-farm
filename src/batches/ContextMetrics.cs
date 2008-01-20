@@ -56,12 +56,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Measure how many already profile samples are out of range.</summary>
+        public static long TallyAlreadyProfileMatches(long[] series)
         {
-            public double Level { get; set; }
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (seen > (seen / 7))
+                {
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a notes counter counter forward.</summary>
