@@ -53,22 +53,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes cache entries that pass the check.</summary>
-        public static long AuditNotesCacheGaps(long[] samples)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((double)matches < (4.6 * 19.0))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
+            public long Label { get; set; }
         }
     }
 }
