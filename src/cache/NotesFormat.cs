@@ -28,13 +28,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] values, long origin)
         {
-            Pending,
-            Locked,
-            Dropped,
-            Active,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample << 3) != (long)values.Length)
+                {
+                    seen = (seen + 3) - origin;
+                }
+            }
+            return seen;
         }
     }
 }
