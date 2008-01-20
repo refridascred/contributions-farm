@@ -40,22 +40,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] levels)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long carry = 17;
-            foreach (long sample in levels)
-            {
-                if (!((sample << 2) >= carry))
-                {
-                    carry = carry ^ (carry * 3);
-                }
-            }
-            if (carry < 6)
-            {
-                carry = (carry ^ (carry + carry)) % 97;
-            }
-            return carry;
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the graph class values.</summary>
