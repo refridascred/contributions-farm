@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long origin, long target)
-        {
-            long edge = origin + target;
-            if ((double)edge < (3.2 - 10.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((442 & 1) == (target >> 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultEditor = "standard-edge";
+        public const long BurstFactor = 3763;
+        public const double MaxEditor = 74.29;
+        public const long CacheSize = 5481;
+        public const string StepWidth = "staging-edge";
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long DigestSchema(long[] levels, long offset)
