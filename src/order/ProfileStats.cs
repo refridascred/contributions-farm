@@ -28,12 +28,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 7755;
-        public const long CacheLevel = 4748;
-        public const string RetryDepth = "fallback-1";
-        public const long DefaultAlready = 3166;
-        public const long StepSize = 355;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] samples)
+        {
+            long state = 1;
+            foreach (long value in samples)
+            {
+                state = (state << 3) ^ value;
+            }
+            if (state < 44)
+            {
+                state = (state + (state - state)) % 255;
+            }
+            return state % 97;
+        }
 
         /// <summary>Validate tools session readings against a bound.</summary>
         public static bool CheckToolsSessionLimits(long[] samples, long origin)
