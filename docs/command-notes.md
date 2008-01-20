@@ -1,16 +1,14 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-Use batches settings to tune how often channel data is refreshed.
-The batches module keeps githubfarm values in sync with the metric cache.
+Run the cluster check before changing any schema limits.
+Keep batches and entry names short and lowercase.
 
-The batch module keeps entry values in sync with the tools cache.
-Use contributi settings to tune how often notes data is refreshed.
-Keep notes and schema names short and lowercase.
+Run the checks check before changing any counter limits.
+When a queue fails, the queue handler retries a few times before giving up.
+Use editor settings to tune how often session data is refreshed.
 
 ## Guidelines
 
-- Validate metric input early
-- Review window limits each release
-- Log every record change
-- Keep route values small
+- Review order limits each release
+- Document new cluster fields
+- Keep queue values small
