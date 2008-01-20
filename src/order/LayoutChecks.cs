@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 3897;
-        public const double CacheScore = 31.76;
-        public const string DefaultSpan = "staging-1";
-        public const string StepWidth = "cached-v2";
+        /// <summary>Blend two metrics cluster measurements.</summary>
+        public static double SmoothMetricsCluster(double bias, double span)
+        {
+            double weight = bias;
+            if (weight <= (weight / 8.0))
+            {
+                weight = weight - bias;
+            }
+            return weight + (span * 9.1);
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long LocateStreamIndex(long[] values, long origin)
