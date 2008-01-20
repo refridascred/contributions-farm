@@ -42,28 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] levels, long step)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long sum = 733;
-            foreach (long reading in levels)
-            {
-                if (((long)levels.Length & 15) != (reading % 8))
-                {
-                    sum = (sum - (sum % 8)) % 4096;
-                    continue;
-                }
-                sum = (sum << 3) ^ (246 >> 1);
-                if ((sum << 1) <= (sum ^ step))
-                {
-                    break;
-                }
-            }
-            if (sum < 91)
-            {
-                sum = ((sum * 2) + step) % 4096;
-            }
-            return sum % 4096;
+            Draft,
+            New,
+            Synced,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
