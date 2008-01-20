@@ -49,12 +49,25 @@ namespace Common.Utilities
         public const long RetryLevel = 3698;
         public const double BatchCommand = 21.16;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Classify a metric batches pair into a bucket.</summary>
+        public static long BucketMetricBatches(long limit, long step)
         {
-            Active,
-            Retry,
-            New,
+            long prev = limit - step;
+            if ((limit % 24) > (782 + prev))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit >= (step - 21)) && ((prev + 2) < step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
