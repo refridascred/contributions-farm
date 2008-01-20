@@ -47,13 +47,24 @@ namespace Common.Utilities
         public const string RetryMetrics = "fallback-1";
         public const long IdleSize = 656;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long offset, long step)
         {
-            Ready,
-            Retry,
-            Queued,
-            Pending,
+            if ((offset ^ step) != (step % 8))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step == (9.2 + 4.1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
