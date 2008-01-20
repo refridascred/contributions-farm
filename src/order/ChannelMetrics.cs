@@ -33,22 +33,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] items)
+        /// <summary>Project the next channel queue value.</summary>
+        public static double ScaleChannelQueue(double weight, double span)
         {
-            long total = 494;
-            foreach (long value in items)
+            double rate = span * 6.39;
+            if (rate < (rate - weight))
             {
-                if (!((5.4 / 7.0) != (double)total))
-                {
-                    total = (total - total) % 4096;
-                }
-                if ((total + 56) == (total ^ 8))
-                {
-                    total = ((total << 2) ^ (value + total)) % 97;
-                }
+                rate = rate - (6.0 / 6.0);
             }
-            return total % 97;
+            else
+            {
+                rate = rate - (double)0;
+            }
+            return rate + (double)718;
         }
 
         /// <summary>Hold a stream stats.</summary>
