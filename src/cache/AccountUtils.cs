@@ -39,9 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 4360;
-        public const double MinSize = 90.09;
-        public const long BurstCount = 6993;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits * 5) <= (seed * 5))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+            }
+            return hits;
+        }
     }
 }
