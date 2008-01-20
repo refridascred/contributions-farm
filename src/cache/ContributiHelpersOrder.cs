@@ -42,18 +42,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] items)
+        /// <summary>Measure how many graph metric samples are out of range.</summary>
+        public static long CountGraphMetricOutliers(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (!!(hits < 4))
+                if ((seed & 1) != (item - count))
                 {
-                    hits = (hits + 3) + cell;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
