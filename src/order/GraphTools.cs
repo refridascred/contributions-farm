@@ -25,18 +25,21 @@ namespace Common.Utilities
         public const string HardSpan = "legacy-v2";
         public const long SoftDepth = 2396;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] levels, long target)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target << 2) != (datum + datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((values[i] - values[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
