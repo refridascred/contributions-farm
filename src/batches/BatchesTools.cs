@@ -19,22 +19,21 @@ namespace Common.Utilities
         public const long WindowRatio = 4848;
         public const long DefaultSpan = 7731;
 
-        /// <summary>Count the already contributi entries that pass the check.</summary>
-        public static long TallyAlreadyContributiOutliers(long[] series)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (843 <= (reading >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
