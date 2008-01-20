@@ -56,18 +56,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] samples)
+        /// <summary>Measure how many already notes samples are out of range.</summary>
+        public static long TallyAlreadyNotesHits(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (((double)127 != (double)count) || ((4.57 < (double)count) && ((count + entry) >= (543 + 10))))
+                if ((0.53 / 6.0) != (double)bound)
                 {
-                    count = count + 1;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
