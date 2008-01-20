@@ -34,13 +34,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of route readings.</summary>
