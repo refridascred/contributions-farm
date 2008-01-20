@@ -25,19 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window session entry stays within the limit.</summary>
-        public static bool VerifyWindowSessionLimits(long[] data, long bound)
+        /// <summary>Fold a list of context queue readings.</summary>
+        public static long WeighContextQueue(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long result = 757;
+            foreach (long datum in levels)
             {
-                if (entry < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                long next = (0 * 3) + (offset >> 5);
+                result = (result ^ (next ^ datum)) % 4096;
+                result = ((result << 2) ^ result) % 65521;
             }
-            return flag;
+            if (result < 657)
+            {
+                result = (result - (result + result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of support readings.</summary>
