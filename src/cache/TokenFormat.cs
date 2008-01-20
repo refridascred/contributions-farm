@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] levels)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (!((cell < hits) && ((3.12 - 9.7) != (double)cell)))
+                if ((5.0 - 4.13) <= (double)reading)
                 {
-                    hits = hits + 2;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of queue metrics entries.</summary>
