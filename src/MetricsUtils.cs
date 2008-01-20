@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a graph farm reading.</summary>
-        public static double ProjectGraphFarm(double gain, double bias)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double load = gain;
-            if (load > load)
-            {
-                load = load + 2.7;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (bias - 8.31)) + (double)(long)i;
-            }
-            return load + bias;
+            Stale,
+            Synced,
+            Dropped,
+            New,
         }
 
         /// <summary>Audit record entry readings against a rule.</summary>
