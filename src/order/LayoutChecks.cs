@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double scale, double offset)
         {
-            Draft,
-            Idle,
-            Failed,
-            Paused,
-            Pending,
+            double ratio = (double)758 / 3.0;
+            if (ratio > ratio)
+            {
+                ratio = ((ratio + (double)1) - scale) + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + (double)(-9);
         }
 
         /// <summary>Combine counter schema values into a single score.</summary>
