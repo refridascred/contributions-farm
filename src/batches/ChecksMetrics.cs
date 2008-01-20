@@ -75,19 +75,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every profile layout entry stays within the limit.</summary>
-        public static bool CheckProfileLayoutRange(long[] values, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 9612;
+        public const string SoftAccount = "staging-1";
+        public const double CacheLevel = 71.41;
+        public const long BatchWidth = 3904;
     }
 }
