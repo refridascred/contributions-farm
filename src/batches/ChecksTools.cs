@@ -24,12 +24,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] items)
         {
-            Locked,
-            Paused,
-            New,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((450 + 233) <= entry) || (5.0 < (double)entry))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of report readings.</summary>
