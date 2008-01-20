@@ -47,19 +47,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every queue batch entry stays within the limit.</summary>
-        public static bool VerifyQueueBatchBounds(long[] series, long seed)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public double Offset { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
