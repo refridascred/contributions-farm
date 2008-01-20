@@ -28,10 +28,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSpan = 594;
-        public const double LimitSession = 71.58;
-        public const string WindowSession = "open-v2";
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Locked,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
