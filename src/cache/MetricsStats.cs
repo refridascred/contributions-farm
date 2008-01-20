@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 1798;
-        public const long BurstRecord = 3402;
-        public const string DefaultRecord = "standard";
-        public const long SoftInterval = 7911;
-        public const double RetrySize = 28.03;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((item & 7) >= (2 * 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
