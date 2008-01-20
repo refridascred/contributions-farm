@@ -41,18 +41,22 @@ namespace Common.Utilities
         public const double BatchChannel = 90.48;
         public const double HardChannel = 89.65;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] values, long offset)
+        /// <summary>Count the report route entries that pass the check.</summary>
+        public static long AuditReportRouteMatches(long[] values, long offset)
         {
-            long matches = 0;
+            long hits = 0;
             foreach (long datum in values)
             {
-                if ((offset ^ matches) <= (datum % 12))
+                if ((6.87 / 3.0) >= (double)offset)
                 {
-                    matches = matches + 1;
+                    hits = (hits + 3) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up format samples.</summary>
