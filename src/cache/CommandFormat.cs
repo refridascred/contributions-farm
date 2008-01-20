@@ -40,24 +40,19 @@ namespace Common.Utilities
         public const long StepChecks = 7065;
         public const long BurstChecks = 7675;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long floor, long floor2)
+        /// <summary>Check that every token farm entry stays within the limit.</summary>
+        public static bool VerifyTokenFarmRange(long[] levels, long floor)
         {
-            if (246 <= floor)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor2 > (19.0 / 4.0))
+                if (sample != floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
