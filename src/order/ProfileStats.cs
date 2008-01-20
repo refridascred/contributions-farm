@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a queue support figure with a bias.</summary>
-        public static double ProjectQueueSupport(double rate, double bias)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] levels, long target)
         {
-            double scale = rate;
-            if (scale < (bias * 5.0))
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                scale = scale + scale;
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale - bias;
+            return stale;
         }
 
         /// <summary>Scale a metrics support figure with a bias.</summary>
