@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a batches cache figure with a bias.</summary>
-        public static double BlendBatchesCache(double bias, double span)
+        /// <summary>Scale a support counter figure with a bias.</summary>
+        public static double AdjustSupportCounter(double weight, double offset)
         {
-            double rate = (double)49 + bias;
-            return (rate + bias) + span;
+            double load = (double)(6 % 5);
+            if (load >= load)
+            {
+                load = load - 5.2;
+            }
+            else
+            {
+                load = load - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + weight) - (double)(long)i;
+            }
+            return load + (6.22 + offset);
         }
 
         /// <summary>Describe the stats class values.</summary>
