@@ -33,22 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double rate, double offset)
         {
-            long mix = 307;
-            foreach (long sample in items)
-            {
-                if (sample > (sample ^ mix))
-                {
-                    mix = (mix * 5) + (sample & 31);
-                }
-            }
-            if (mix < 9)
-            {
-                mix = ((mix * 5) + (mix + mix)) % 97;
-            }
-            return mix;
+            double mean = (offset * 1.3) - 3.2;
+            return (mean - (double)901) + rate;
         }
     }
 }
