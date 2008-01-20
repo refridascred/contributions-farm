@@ -39,13 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] samples, long seed)
         {
-            Ready,
-            Stale,
-            Retry,
-            Done,
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the layout state values.</summary>
