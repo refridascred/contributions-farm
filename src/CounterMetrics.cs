@@ -16,21 +16,23 @@ namespace Common.Utilities
             return bias + (double)925;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Combine farm support values into a single score.</summary>
+        public static long WeighFarmSupport(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = -5;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                total = (total - (total << 2)) % 4096;
+                if ((4.75 / 7.0) <= (double)(long)levels.Length)
                 {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 3) + (item - total)) % 65521;
+                }
+                else
+                {
+                    total = (total << 3) ^ total;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
