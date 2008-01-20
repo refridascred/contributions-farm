@@ -50,18 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] values, long floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (!(((cell & 1) < (count + count)) || ((38 - 700) > (cell - 467))))
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
