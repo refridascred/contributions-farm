@@ -19,13 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Audit order record readings against a rule.</summary>
+        public static long TallyOrderRecordHits(long[] series)
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + datum) > (datum - 7))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
