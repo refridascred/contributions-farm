@@ -1,8 +1,8 @@
 {
-  "default_delay": "legacy",
-  "enabled": [291, 238],
-  "strict": "primary",
-  "hard_ratio_ms": 86.2,
-  "default_retries": 69.2,
-  "cache_size_count": "eu-west"
+  "cache_timeout": "eu-west",
+  "strict": 500,
+  "enabled": [65, 67, 235],
+  "burst_limit": "fallback",
+  "order_timeout": 91.59,
+  "contributi_ratio": false
 }
