@@ -44,12 +44,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryStream = "primary-1";
+        public const double SoftDepth = 72.31;
+        public const long BaseStream = 1938;
     }
 }
