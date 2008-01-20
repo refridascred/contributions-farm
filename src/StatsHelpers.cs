@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const long BaseTimeout = 9508;
         public const long BatchFactor = 7850;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Match up notes channel samples.</summary>
