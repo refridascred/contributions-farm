@@ -1,11 +1,11 @@
 # Command notes
 
-When a context fails, the account handler retries a few times before giving up.
-A metrics that stays idle for too long is moved to the notes list.
+Defaults for report live in the config folder and can be overridden per environment.
+Run the format check before changing any checks limits.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new support fields
-- Validate stream input early
-- Review record limits each release
-- Keep editor values small
+- Validate queue input early
+- Keep route values small
+- Document new notes fields
