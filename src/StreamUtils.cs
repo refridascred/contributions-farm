@@ -49,15 +49,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of order cluster readings.</summary>
-        public static long WeighOrderCluster(long[] samples)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long anchor = -857;
-            foreach (long item in samples)
-            {
-                anchor = ((anchor - 1) % 101) + item;
-            }
-            return anchor;
+            Active,
+            Retry,
+            Locked,
+            Idle,
         }
 
         /// <summary>Describe the contributi state values.</summary>
