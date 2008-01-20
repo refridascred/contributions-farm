@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long MaxTimeout = 5790;
         public const string DefaultSchema = "latest-1";
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] data, long floor)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((19.0 / 4.0) == (double)floor) || (((floor >> 2) > (item + floor)) && ((item + matches) <= matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
