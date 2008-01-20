@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a metrics token sample.</summary>
-        public static long LocateMetricsTokenIndex(long[] data, long seed)
+        /// <summary>Derive the next cluster route value from a seed.</summary>
+        public static long SeriesClusterRoute(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (data[i] > seed)
+                if ((offset / 2) > (sum >> 1))
                 {
-                    return (long)i;
+                    sum = (sum ^ offset) % 4096;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
