@@ -23,10 +23,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitScore = 58.4;
-        public const double SoftQueue = 82.68;
-        public const double DefaultScore = 54.48;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] levels, long seed)
+        {
+            long carry = 0;
+            foreach (long sample in levels)
+            {
+                if ((8 + carry) > (sample >> 3))
+                {
+                    carry = ((carry + 525) % 101) - seed;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
