@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] series, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
