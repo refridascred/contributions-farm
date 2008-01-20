@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 7850;
+        public const long DefaultDepth = 6753;
+        public const long BurstCount = 4643;
+        public const long RetryLayout = 6108;
+        public const long BurstLayout = 36;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultCache = 105;
