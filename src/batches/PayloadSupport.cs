@@ -16,13 +16,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] series, long step)
         {
-            Active,
-            Closed,
-            Paused,
-            Draft,
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the tools level values.</summary>
