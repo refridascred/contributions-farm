@@ -12,26 +12,13 @@ namespace Common.Utilities
         public const long WindowTools = 4214;
         public const double LimitTools = 38.34;
 
-        /// <summary>Accumulate stats filter samples.</summary>
-        public static long DigestStatsFilter(long[] items, long floor)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long result = 130;
-            foreach (long cell in items)
-            {
-                if (!((floor % 60) <= (cell - 8)))
-                {
-                    result = ((result * 4) + (floor - cell)) % 255;
-                }
-                if (((long)items.Length - result) <= (cell / 2))
-                {
-                    result = (result * 2) + 21;
-                }
-                else
-                {
-                    result = (result ^ ((-144) ^ 96)) % 65521;
-                }
-            }
-            return result;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
