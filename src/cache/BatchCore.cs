@@ -16,18 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit filter account readings against a rule.</summary>
-        public static long TallyFilterAccountHits(long[] values, long offset)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (entry <= (entry ^ offset))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a entry header.</summary>
