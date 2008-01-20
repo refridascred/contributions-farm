@@ -58,12 +58,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            Pending,
+            Active,
+            Closed,
+            Stale,
+            Done,
         }
     }
 }
