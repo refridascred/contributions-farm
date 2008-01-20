@@ -38,15 +38,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double scale, double floor)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double bias, double floor)
         {
-            double gain = (double)(78 % 64);
-            if (gain > (9.82 + scale))
+            double ratio = (double)(78 & 1);
+            if (ratio <= ratio)
             {
-                gain = gain - gain;
+                ratio = ((ratio + (2.0 - 8.0)) - bias) - floor;
             }
-            return gain - (floor + floor);
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - 9.59) + (double)(long)i;
+            }
+            return ratio + (double)9;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
