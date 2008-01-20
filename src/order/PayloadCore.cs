@@ -40,11 +40,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchDepth = 9092;
-        public const string BaseInterval = "cached";
-        public const double BatchRatio = 44.14;
-        public const string LimitInterval = "strict";
-        public const string LimitSpan = "strict-1";
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
