@@ -60,9 +60,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 9396;
-        public const long BurstFormat = 3420;
-        public const long SoftDepth = 3568;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchEditor = 89.67;
+        public const string BaseScore = "alpha-1";
+        public const long BaseSize = 8865;
+        public const string DefaultEditor = "local-edge";
     }
 }
