@@ -28,12 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Retry,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 1143;
+        public const long BurstCache = 1787;
+        public const double MaxInterval = 44.46;
+        public const double StepCache = 89.06;
+        public const long RetryCache = 1118;
     }
 }
