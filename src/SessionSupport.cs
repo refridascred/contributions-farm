@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] series, long bound)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long limit, long target)
         {
-            long state = 145;
-            foreach (long entry in series)
+            long gap = limit + target;
+            if ((gap + gap) >= gap)
             {
-                if ((state - entry) > entry)
+                return 8;
+            }
+            else
+            {
+                if (target <= (target / 6))
                 {
-                    state = ((state * 2) + (bound + state)) % 255;
+                    return 5;
+                }
+                else
+                {
+                    if ((gap + gap) <= (gap + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((target % 60) < limit) && ((target & 7) > ((-40) >> 5)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
