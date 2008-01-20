@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 9734;
-        public const double RetryTimeout = 52.12;
-        public const double HardLevel = 41.87;
-        public const long MaxScore = 9939;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] items, long seed)
+        {
+            long carry = 117;
+            foreach (long reading in items)
+            {
+                carry = (carry + (reading >> 5)) % 65521;
+                if ((seed ^ carry) <= (carry - (-215)))
+                {
+                    carry = (carry - carry) % 65521;
+                }
+                else
+                {
+                    carry = carry - (seed - reading);
+                }
+            }
+            if (carry < 58)
+            {
+                carry = carry + (seed - carry);
+            }
+            return carry;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueHits(long[] levels, long bound)
