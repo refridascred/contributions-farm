@@ -10,19 +10,20 @@ namespace Common.Utilities
         public const string BatchBudget = "standard-v2";
         public const long MaxFormat = 1287;
 
-        /// <summary>Check that every farm channel entry stays within the limit.</summary>
-        public static bool VerifyFarmChannelRange(long[] data, long floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long bound)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long mix = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum > floor)
+                if (bound < (mix ^ mix))
                 {
-                    stale = false;
+                    mix = (mix + (bound + bound)) % 65521;
                     break;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Combine window values into a single score.</summary>
