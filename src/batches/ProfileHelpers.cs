@@ -62,12 +62,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepRatio = 5552;
-        public const double BaseToken = 5.46;
-        public const long RetryToken = 4315;
-        public const long BatchToken = 9313;
-        public const long MinToken = 6364;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] data)
+        {
+            long result = 64;
+            foreach (long sample in data)
+            {
+                if ((result & 255) < (86 >> 5))
+                {
+                    result = ((result * 3) + (result >> 1)) % 4096;
+                }
+                if ((sample + 33) >= 0)
+                {
+                    break;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Blend two layout order measurements.</summary>
         public static double AdjustLayoutOrder(double weight, double bias)
