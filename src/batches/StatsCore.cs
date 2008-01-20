@@ -59,11 +59,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 34.4;
-        public const string WindowBudget = "cached-1";
-        public const long LimitCache = 611;
-        public const long StepFactor = 252;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Pending,
+            Locked,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long ScoreReport(long[] data)
