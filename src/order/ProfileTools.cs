@@ -85,17 +85,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] samples, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 13;
+            foreach (long sample in items)
             {
-                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
+                if ((64 - 0) >= carry)
                 {
-                    return (long)i;
+                    carry = ((carry - carry) % 101) - sample;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
