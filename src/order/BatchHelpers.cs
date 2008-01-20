@@ -22,10 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxTimeout = 90.07;
-        public const string SoftLevel = "standard-v2";
-        public const double CacheBatches = 96.97;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinStats = "alpha-1";
+        public const long WindowSpan = 2440;
+        public const long BatchStats = 375;
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
