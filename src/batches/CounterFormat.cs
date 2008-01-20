@@ -34,37 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long origin, long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long target, long bound)
         {
-            long edge = origin ^ bound;
-            if (((origin % 10) == (bound + bound)) && ((54 % 16) >= (origin / 8)))
+            if (((target ^ 21) == (target - bound)) || (4.46 < (double)target))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if (((double)origin > (0.5 + 15.0)) && ((double)bound < (15.0 / 8.0)))
+                if (target > (-64))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if (origin < (478 + edge))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((7 >= (edge ^ origin)) && ((0.31 * 14.0) >= (double)bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
