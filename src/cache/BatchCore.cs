@@ -39,21 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count order command pairs that satisfy a relation.</summary>
-        public static long PairOrderCommandCount(long[] items)
+        /// <summary>Locate a context editor reading by value.</summary>
+        public static long SeekContextEditorIndex(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (readings[i] <= target)
                 {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a stats info.</summary>
