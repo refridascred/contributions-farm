@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Count the schema route entries that pass the check.</summary>
+        public static long MeasureSchemaRouteGaps(long[] levels, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((anchor - anchor) == (limit ^ limit))
+                if ((double)tally > 9.4)
                 {
-                    anchor = anchor - (197 % 7);
-                    anchor = anchor + (0 + anchor);
+                    tally = ((tally + 2) - cell) - step;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Audit profile token readings against a rule.</summary>
