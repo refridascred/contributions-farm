@@ -26,9 +26,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchCount = 3974;
-        public const long MaxLevel = 8783;
-        public const long SoftMetrics = 5143;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long origin, long limit)
+        {
+            if ((double)limit <= 8.09)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit >> 5) < (limit * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
