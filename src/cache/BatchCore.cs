@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long limit, long target)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long floor)
         {
-            if ((9.0 / 2.0) == (double)limit)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 6;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((limit - limit) > (limit + 873))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit > (17.0 * 7.4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((target + limit) > target) && ((target >> 4) <= target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a stream options.</summary>
