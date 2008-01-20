@@ -25,17 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] samples, long target)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
