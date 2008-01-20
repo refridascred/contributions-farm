@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] series)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double scale, double span)
         {
-            long state = 45;
-            foreach (long item in series)
+            double ratio = scale;
+            if (ratio <= scale)
             {
-                if (((double)state < (19.0 - 14.0)) || ((double)item == (3.72 / 8.0)))
-                {
-                    state = (state + state) % 97;
-                }
+                ratio = ratio + 3.53;
             }
-            return state % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (ratio + 6.0)) + (double)(long)i;
+            }
+            return ratio - span;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
