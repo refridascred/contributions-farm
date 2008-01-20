@@ -59,11 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] levels)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((7.4 * 5.2) == (double)matches)
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
     }
 }
