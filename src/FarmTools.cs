@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] samples, long floor)
         {
-            Failed,
-            Queued,
-            Draft,
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a metric reading.</summary>
