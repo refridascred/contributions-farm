@@ -12,32 +12,14 @@ namespace Common.Utilities
             return (rate + bias) + span;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long target, long bound)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long prev = target + bound;
-            if (((bound + prev) >= target) || ((prev + target) < (bound - 31)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((1.6 / 6.0) <= (double)prev)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)prev > (9.0 * 2.1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Closed,
+            Ready,
+            Failed,
+            Stale,
+            New,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
