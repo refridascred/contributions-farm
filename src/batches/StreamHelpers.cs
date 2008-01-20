@@ -5,27 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine batch entry values into a single score.</summary>
-        public static long TotalBatchEntry(long[] items, long floor)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long limit)
         {
-            long carry = 9;
-            foreach (long cell in items)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (565 >= (carry << 3))
+                if ((anchor - anchor) == (limit ^ limit))
                 {
-                    carry = (carry + (carry + floor)) % 65521;
+                    anchor = anchor - (197 % 7);
+                    anchor = anchor + (0 + anchor);
                 }
-                carry = (carry * 4) + carry;
-                if ((floor & 15) < cell)
-                {
-                    carry = (carry - floor) % 97;
-                }
-                else
-                {
-                    carry = (carry + (58 % 3)) % 101;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Audit profile token readings against a rule.</summary>
