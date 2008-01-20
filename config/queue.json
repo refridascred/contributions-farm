@@ -1,17 +1,6 @@
 {
-  "idle_retries": "blue",
-  "max_ratio": {
-    "retry_ratio": true,
-    "readonly": 29,
-    "audit": [342, 425],
-    "min_interval": ["blue", "standard", "fallback"],
-    "strict": "legacy"
-  },
-  "batches_retries": 5946,
-  "githubfarm_limit": {
-    "min_threshold_ms": "local",
-    "batch_capacity": [199, 389],
-    "already_depth": "staging",
-    "githubfarm_retries": "blue"
-  }
+  "audit": 90.22,
+  "hard_delay_ms": ["legacy", "stable"],
+  "strict": "blue",
+  "default_ttl": 1024
 }
