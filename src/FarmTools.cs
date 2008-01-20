@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] levels, long bound)
+        /// <summary>Fold a list of schema format readings.</summary>
+        public static long TotalSchemaFormat(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long anchor = 55;
+            foreach (long datum in items)
             {
-                if (value > bound)
+                if (bound > anchor)
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (bound ^ datum)) % 97;
                 }
             }
-            return flag;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a filter record.</summary>
