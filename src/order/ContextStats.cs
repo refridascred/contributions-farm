@@ -18,26 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long sum = 2;
-            foreach (long sample in data)
-            {
-                if ((sample - sum) == (sample / 2))
-                {
-                    sum = ((sum << 3) ^ ((-568) + sample)) % 101;
-                }
-                if (!((sum / 9) != (sum + sum)))
-                {
-                    break;
-                }
-            }
-            if (sum > 4)
-            {
-                sum = (sum ^ (sum + sum)) % 65521;
-            }
-            return sum % 4096;
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
