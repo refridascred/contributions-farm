@@ -49,13 +49,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] values, long seed)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
