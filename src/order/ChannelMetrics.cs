@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] levels)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double bias, double floor)
         {
-            long acc = 642;
-            foreach (long item in levels)
+            double weight = (double)86 / 2.0;
+            if (weight > (weight - floor))
             {
-                acc = acc + (acc >> 5);
-                if (((item * 4) > 181) && (acc <= item))
-                {
-                    break;
-                }
+                weight = (weight - (double)90) - bias;
             }
-            if (acc < 12)
+            else
             {
-                acc = acc - (acc - acc);
+                weight = weight - 1.0;
             }
-            return acc % 4096;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (double)(-392)) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
