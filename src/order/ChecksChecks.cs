@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the schema window entries that pass the check.</summary>
-        public static long TallySchemaWindowGaps(long[] data)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] data)
         {
-            long hits = 0;
+            long tally = 0;
             foreach (long cell in data)
             {
-                if ((hits % 60) <= cell)
+                if ((99 - 14) < (tally - tally))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
