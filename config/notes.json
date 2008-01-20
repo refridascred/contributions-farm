@@ -1,8 +1,5 @@
 {
-  "cache_timeout": "eu-west",
-  "strict": 500,
-  "enabled": [65, 67, 235],
-  "burst_limit": "fallback",
-  "order_timeout": 91.59,
-  "contributi_ratio": false
+  "checks_timeout": 78.48,
+  "stats_limit": "local",
+  "max_retries": ["fallback", "cached", "strict"]
 }
