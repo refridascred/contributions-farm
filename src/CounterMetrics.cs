@@ -28,21 +28,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up checks route samples.</summary>
-        public static long CompareChecksRouteCount(long[] items)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = weight;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = ((load - 13.0) + (double)(long)i) + offset;
             }
-            return count;
+            return load + (double)0;
         }
 
         /// <summary>Blend two context measurements.</summary>
