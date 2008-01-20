@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Digest a series of notes profile entries.</summary>
+        public static long CombineNotesProfile(long[] samples)
         {
-            Active,
-            Stale,
-            Draft,
-            Pending,
-            Done,
+            long mark = -6;
+            foreach (long cell in samples)
+            {
+                mark = ((mark * 5) + (cell / 4)) % 4096;
+            }
+            if (mark < (-8))
+            {
+                mark = mark ^ (mark ^ mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
