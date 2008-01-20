@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 105;
-        public const string RetryCache = "staging-1";
-        public const long MaxDepth = 6574;
-        public const string WindowSpan = "strict-edge";
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Ready,
+            Draft,
+            Active,
+            Retry,
+        }
 
         /// <summary>Match up checks route samples.</summary>
         public static long CompareChecksRouteCount(long[] items)
