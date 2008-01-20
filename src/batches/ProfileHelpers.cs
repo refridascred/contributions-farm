@@ -15,19 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] samples, long bound)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Active,
+            Done,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a filter summary.</summary>
