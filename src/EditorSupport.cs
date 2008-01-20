@@ -25,32 +25,10 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Rank stats filter input into a small class.</summary>
-        public static long RankStatsFilter(long floor, long seed)
-        {
-            if ((floor % 24) < (7 / 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed + 9) != (seed / 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor <= (6.48 / 5.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "open";
+        public const double BatchChannel = 90.48;
+        public const double HardChannel = 89.65;
 
         /// <summary>Blend two notes measurements.</summary>
         public static double ScaleNotes(double gain, double floor)
