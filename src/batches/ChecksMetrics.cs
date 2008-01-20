@@ -54,29 +54,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the filter checks series from a seed.</summary>
-        public static long RollFilterChecks(long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] values, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            long mark = 527;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((274 % 64) > cell)
                 {
-                    sum = ((sum + (sum + 586)) % 101) ^ (long)i2;
-                    sum = sum - target;
-                }
-                if ((15.0 / 9.0) >= (double)sum)
-                {
-                    sum = (sum - (sum & 31)) % 255;
-                    sum = (sum + ((long)i * 2)) % 255;
+                    mark = (mark + (limit + 4)) % 65521;
                 }
                 else
                 {
-                    sum = (sum + ((long)i >> 3)) % 255;
+                    mark = ((mark * 3) + limit) % 4096;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Accumulate order samples.</summary>
