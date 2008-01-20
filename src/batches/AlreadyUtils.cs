@@ -20,15 +20,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double scale, double bias)
+        /// <summary>Count the already stats entries that pass the check.</summary>
+        public static long CountAlreadyStatsGaps(long[] data, long floor)
         {
-            double bias2 = bias / 5.0;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                bias2 = ((bias2 - (double)6) - (double)(long)i) + scale;
+                if ((double)floor >= (2.0 + 12.0))
+                {
+                    matches = (matches + 1) ^ value;
+                }
             }
-            return bias2 + (double)7;
+            return matches;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
