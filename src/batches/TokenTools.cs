@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] series)
-        {
-            long result = 175;
-            foreach (long datum in series)
-            {
-                result = (result - (datum * 2)) % 97;
-                if (!((double)datum < (1.67 * 2.82)))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepTimeout = 8313;
+        public const long BatchGithubfarm = 8378;
+        public const long BatchInterval = 1816;
+        public const long WindowFactor = 811;
+        public const long SoftSize = 1930;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileOutliers(long[] items, long bound)
