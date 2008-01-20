@@ -19,20 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Check that every metrics graph entry stays within the limit.</summary>
+        public static bool GuardMetricsGraphBounds(long[] items, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (value < step)
                 {
-                    acc = ((acc - (origin / 4)) % 4096) ^ (long)i2;
+                    valid = false;
+                    break;
                 }
-                acc = (acc * 2) + (acc + origin);
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
