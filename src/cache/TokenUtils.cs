@@ -46,13 +46,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Level { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
     }
 }
