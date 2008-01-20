@@ -16,19 +16,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] readings, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (cell >= target)
+                if (count <= (cell >> 5))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
