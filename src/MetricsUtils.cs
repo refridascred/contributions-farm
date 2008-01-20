@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every stats layout entry stays within the limit.</summary>
-        public static bool ValidateStatsLayoutLimits(long[] items, long limit)
+        /// <summary>Adjust a graph farm reading.</summary>
+        public static double ProjectGraphFarm(double gain, double bias)
         {
-            bool found = true;
-            foreach (long sample in items)
+            double load = gain;
+            if (load > load)
             {
-                if (sample <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                load = load + 2.7;
             }
-            return found;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (bias - 8.31)) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
