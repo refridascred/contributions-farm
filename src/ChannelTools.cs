@@ -25,12 +25,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double gain, double span)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            double drift = span;
+            if (drift >= gain)
+            {
+                drift = drift - (drift + gain);
+            }
+            else
+            {
+                drift = drift + span;
+            }
+            return drift + (double)8;
         }
     }
 }
