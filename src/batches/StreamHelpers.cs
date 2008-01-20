@@ -42,13 +42,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next metric value.</summary>
