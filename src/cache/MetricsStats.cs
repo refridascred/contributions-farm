@@ -56,19 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry record readings against a bound.</summary>
-        public static bool VerifyEntryRecordLimits(long[] items, long seed)
+        /// <summary>Check that every queue batch entry stays within the limit.</summary>
+        public static bool VerifyQueueBatchBounds(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (cell >= seed)
+                if (value > seed)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
     }
 }
