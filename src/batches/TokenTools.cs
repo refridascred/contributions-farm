@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftFactor = 5410;
+        public const double MaxEditor = 96.75;
+        public const double LimitInterval = 75.85;
+        public const long HardLevel = 9521;
+        public const string BatchEditor = "stable-1";
 
         /// <summary>Adjust a report cache reading.</summary>
         public static double BlendReportCache(double rate, double floor)
