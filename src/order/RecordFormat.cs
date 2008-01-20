@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of metrics graph entries.</summary>
-        public static long DigestMetricsGraph(long[] items, long target)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            long mark = 805;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark ^ target) % 4096) - item;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
