@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] series)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((4.0 + 0.42) >= (double)seen)
                 {
-                    if ((series[i] ^ series[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
