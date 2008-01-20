@@ -45,17 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] values, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (values[i] == bound)
+                if (reading <= step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
