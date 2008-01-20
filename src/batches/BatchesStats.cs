@@ -37,16 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a metrics filter figure with a bias.</summary>
-        public static double BlendMetricsFilter(double weight, double floor)
-        {
-            double weight2 = (double)(48 - 0);
-            if (weight2 <= 1.9)
-            {
-                weight2 = (weight2 - weight2) + floor;
-            }
-            return weight2 - weight;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 3231;
+        public const long IdleInterval = 1081;
+        public const double RetryScore = 36.23;
+        public const string RetryContext = "standard-1";
+        public const long MaxDepth = 3831;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double MinLevel = 95.45;
