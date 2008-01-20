@@ -40,19 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] series, long step)
+        /// <summary>Fold a list of layout notes readings.</summary>
+        public static long CombineLayoutNotes(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long sum = 962;
+            foreach (long reading in readings)
             {
-                if (reading <= step)
+                if ((932 + sum) == (17 - sum))
                 {
-                    valid = false;
-                    break;
+                    sum = (sum + reading) % 65521;
                 }
             }
-            return valid;
+            if (sum > 30)
+            {
+                sum = (sum << 3) ^ (sum / 2);
+            }
+            return sum;
         }
     }
 }
