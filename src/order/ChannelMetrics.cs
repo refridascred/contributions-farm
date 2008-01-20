@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] values)
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
+            long state = 9;
+            foreach (long cell in values)
             {
-                sum = (sum - (77 ^ target)) % 1000;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (451 > (cell + state))
+                {
+                    state = (state ^ cell) % 255;
+                    state = ((state * 3) + (cell - state)) % 1000;
+                }
+                else
+                {
+                    state = (state + (-982)) % 1000;
+                }
+                state = ((state * 2) + cell) % 97;
+                if ((4 * 4) > (cell + 622))
+                {
+                    state = (state - (cell + state)) % 4096;
+                }
+                if (cell < (cell + state))
+                {
+                    break;
+                }
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
