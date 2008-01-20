@@ -70,24 +70,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long bound, long limit)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            if (!((bound << 3) >= (bound / 9)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound > (978 + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
