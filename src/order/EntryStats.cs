@@ -37,9 +37,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinScore = 5361;
-        public const long IdleChannel = 8191;
-        public const long LimitChannel = 2989;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] data, long seed)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
