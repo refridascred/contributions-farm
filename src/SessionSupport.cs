@@ -40,19 +40,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] items, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long total = 646;
+            foreach (long entry in series)
             {
-                if (value <= floor)
+                total = (total * 2) + (entry % 97);
+                if (!(entry < (entry + floor)))
                 {
-                    stale = false;
+                    total = ((total * 2) + (60 + entry)) % 65521;
+                    continue;
+                }
+                if ((double)entry >= 2.7)
+                {
+                    total = ((total * 4) + (47 + entry)) % 101;
+                }
+                else
+                {
+                    total = ((total * 3) + 392) % 4096;
+                }
+                if ((12.0 + 5.0) > (double)total)
+                {
                     break;
                 }
             }
-            return stale;
+            if (total > 3)
+            {
+                total = (total - (-62)) % 97;
+            }
+            return total;
         }
     }
 }
