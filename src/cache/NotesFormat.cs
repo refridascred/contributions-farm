@@ -24,15 +24,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double bias, double span)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double weight = (double)(1 * 2);
-            if (weight <= (span * 7.08))
-            {
-                weight = (weight - span) + bias;
-            }
-            return weight + (weight / 3.0);
+            Pending,
+            Locked,
+            Dropped,
+            Active,
         }
     }
 }
