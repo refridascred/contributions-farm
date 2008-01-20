@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] data)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (cell >= (34 - cell))
+                if (datum != floor)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
