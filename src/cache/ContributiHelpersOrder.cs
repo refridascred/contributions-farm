@@ -27,19 +27,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] samples, long origin)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < origin)
+                if ((items[i] <= seed) && ((items[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
