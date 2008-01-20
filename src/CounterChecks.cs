@@ -20,18 +20,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] series)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((1.68 + 9.0) < (double)matches)
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
