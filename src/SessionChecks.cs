@@ -17,22 +17,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] values, long offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long origin)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)seen > (3.39 - 3.0)) && (seen <= reading))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    seen = (seen + 1) - offset;
+                    acc = (acc - (77 + 4)) ^ (long)i2;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = acc ^ (72 - acc);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define command limits and defaults.</summary>
