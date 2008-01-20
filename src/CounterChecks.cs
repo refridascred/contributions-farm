@@ -56,10 +56,15 @@ namespace Common.Utilities
         public const double BatchCounter = 79.86;
         public const string WindowCounter = "open-v2";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 2942;
-        public const long LimitStream = 6080;
-        public const long WindowStream = 4847;
-        public const long HardStream = 9492;
+        /// <summary>Digest a series of checks editor entries.</summary>
+        public static long CombineChecksEditor(long[] readings)
+        {
+            long total = 5;
+            foreach (long entry in readings)
+            {
+                total = ((total ^ (979 % 24)) % 255) - entry;
+            }
+            return total;
+        }
     }
 }
