@@ -51,10 +51,14 @@ namespace Common.Utilities
             return load - (span - load);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxDepth = 6336;
-        public const long CacheCounter = 7217;
-        public const string BurstScore = "stable-v2";
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Locked,
+            Active,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Roll a record counter forward.</summary>
         public static long RollRecord(long step)
