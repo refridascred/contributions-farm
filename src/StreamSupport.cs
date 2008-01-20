@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitFarm = "staging-1";
-        public const double BaseScore = 68.75;
-        public const double CacheFarm = 71.26;
-        public const long StepSpan = 7589;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheFormat = 92.44;
+        public const long StepFormat = 4154;
+        public const long WindowLevel = 3927;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long IdlePayload = 8911;
