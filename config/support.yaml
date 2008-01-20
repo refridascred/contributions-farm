@@ -1,27 +1,12 @@
 # support settings
-hard_ttl:
-  warm_delay: 45.54
-  burst_interval_count: false
-  order_interval:
-    max_ttl: 37.59
-    filter_window: true
-    cache_timeout:
-      - fallback
-      - fallback
-    audit: cached
-    channel_capacity: 46
-    default_depth_pct: 30
-  base_ttl_count:
-    - 22
-    - 192
-    - 5
-    - 464
-  soft_size: 60
-report_size: true
-flush_interval_ms: 35.32
-compress:
-  verbose: true
-  poll_interval_pct: 40.6
-  persist:
-    - green
-    - standard
+batches_timeout: 7470
+channel_ttl:
+  - 263
+  - 372
+checks_timeout: 9826
+token_delay: stable
+idle_limit_s:
+  poll_retries: false
+  checks_ratio: 893
+  max_threshold_count: false
+  poll_ratio_ms: latest
