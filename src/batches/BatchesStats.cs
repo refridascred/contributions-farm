@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long IdleLevel = 2619;
         public const long WindowRatio = 411;
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] samples, long offset)
         {
-            Locked,
-            Draft,
-            New,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a window support reading by value.</summary>
