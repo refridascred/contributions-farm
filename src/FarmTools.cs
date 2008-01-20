@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of schema format readings.</summary>
-        public static long TotalSchemaFormat(long[] items, long bound)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long anchor = 55;
-            foreach (long datum in items)
-            {
-                if (bound > anchor)
-                {
-                    anchor = ((anchor << 2) ^ (bound ^ datum)) % 97;
-                }
-            }
-            return anchor % 4096;
+            Failed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Hold a filter record.</summary>
