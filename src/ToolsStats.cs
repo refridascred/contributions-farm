@@ -13,23 +13,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double ratio, double bias)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] samples, long offset)
         {
-            double mean = bias;
-            if (mean > (double)6)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                mean = mean + mean;
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (ratio / 6.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + bias;
+            return found;
         }
 
         /// <summary>Hold a counter summary.</summary>
