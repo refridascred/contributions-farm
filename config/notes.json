@@ -1,11 +1,8 @@
 {
-  "warm_threshold": 250,
-  "batch_ratio_ms": false,
-  "already_depth": {
-    "dry_run": 3804,
-    "burst_delay": "edge",
-    "account_ratio": 29.56,
-    "cache_delay_pct": 20
-  },
-  "enabled": 8069
+  "min_threshold": false,
+  "base_ttl_pct": 9961,
+  "warm_capacity_pct": true,
+  "dry_run": 4.64,
+  "batch_window": "latest",
+  "checks_threshold": ["stable", "open", "cached", "cached"]
 }
