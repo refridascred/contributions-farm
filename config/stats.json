@@ -1,23 +1,13 @@
 {
-  "editor_interval": "latest",
-  "persist": {
-    "cache_size": 94,
-    "payload_timeout": 250,
-    "sync_window": 39.6,
-    "readonly": [436, 311, 259],
-    "hard_delay_count": 95.18
-  },
-  "support_ratio": ["standard", "primary"],
-  "support_interval": {
-    "base_retries_ms": 32,
-    "min_ratio": false,
-    "soft_capacity": 14.44,
-    "contributi_ttl": {
-      "idle_window": "primary",
-      "enabled": false,
-      "poll_capacity": true
-    }
-  },
-  "hard_capacity_ms": 37.18,
-  "readonly": "standard"
+  "soft_depth_pct": [251, 406, 345],
+  "max_interval": 30,
+  "burst_window_count": 62.14,
+  "entry_depth": 50.87,
+  "payload_ttl": {
+    "base_depth_s": 1024,
+    "persist": "standard",
+    "soft_timeout_count": [115, 389],
+    "burst_delay_count": "local",
+    "hard_timeout_s": "primary"
+  }
 }
