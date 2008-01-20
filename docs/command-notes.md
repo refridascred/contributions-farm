@@ -1,10 +1,11 @@
 # Command notes
 
-The buffer module keeps buffer values in sync with the layout cache.
-Keep queue and batch names short and lowercase.
+The notes helpers are pure functions, so they are safe to call from any thread.
+The account module keeps buffer values in sync with the batches cache.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Document new route fields
-- Keep commits values small
+- Review graph limits each release
+- Validate queue input early
+- Log every route change
+- Document new metric fields
