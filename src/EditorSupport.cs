@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics graph entry stays within the limit.</summary>
-        public static bool GuardMetricsGraphBounds(long[] items, long step)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double mean = (double)793 / 2.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (value < step)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = ((mean + (double)183) + (double)(long)i) + floor;
             }
-            return valid;
+            return mean + bias;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
