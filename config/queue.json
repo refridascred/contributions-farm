@@ -1,5 +1,7 @@
 {
-  "poll_window": [281, 317, 338, 105],
-  "idle_depth_ms": [267, 196],
-  "max_threshold_pct": "latest"
+  "max_timeout_pct": "edge",
+  "retry_ttl_s": 16.74,
+  "flush_window": false,
+  "payload_threshold": 29.34,
+  "notes_timeout": "strict"
 }
