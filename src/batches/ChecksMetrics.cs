@@ -83,24 +83,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank token profile input into a small class.</summary>
-        public static long BucketTokenProfile(long limit, long offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] data)
         {
-            if ((limit >> 4) < (limit >> 1))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset > 1.35)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
