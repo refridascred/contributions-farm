@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] items, long seed)
-        {
-            long state = 0;
-            foreach (long reading in items)
-            {
-                state = ((state - seed) % 101) + reading;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 9734;
+        public const double RetryTimeout = 52.12;
+        public const double HardLevel = 41.87;
+        public const long MaxScore = 9939;
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
