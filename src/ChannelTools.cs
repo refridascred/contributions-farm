@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 4011;
+        public const long BurstTimeout = 1439;
+        public const string IdleDepth = "standard-v2";
 
         /// <summary>Check that every filter format entry stays within the limit.</summary>
         public static bool GuardFilterFormatRange(long[] samples, long bound)
