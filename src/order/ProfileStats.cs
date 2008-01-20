@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const double HardContributi = 58.6;
         public const long StepTimeout = 7831;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] values, long seed)
+        /// <summary>Count the stream payload entries that pass the check.</summary>
+        public static long TallyStreamPayloadGaps(long[] samples, long step)
         {
-            long anchor = 280;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                anchor = ((anchor + (cell % 3)) % 97) + seed;
+                if (tally < (item - item))
+                {
+                    tally = (tally + 1) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
