@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long floor, long offset)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long step = floor ^ offset;
-            if (floor < (227 & 255))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset & 15) >= (offset / 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step >= (50 - step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((floor / 6) == (offset << 3)) || (step < (step / 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Idle,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a buffer header.</summary>
