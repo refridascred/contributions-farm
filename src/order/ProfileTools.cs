@@ -68,12 +68,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
