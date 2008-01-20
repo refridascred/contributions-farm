@@ -1,15 +1,11 @@
 # Command notes
 
-Use checks settings to tune how often graph data is refreshed.
-The account report groups every metric by cluster.
-Keep stream and entry names short and lowercase.
-
-Use editor settings to tune how often report data is refreshed.
-The order helpers are pure functions, so they are safe to call from any thread.
+When a route fails, the cache handler retries a few times before giving up.
+Run the metric check before changing any filter limits.
+When a batch fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Validate counter input early
-- Log every commits change
-- Document new batch fields
+- Log every payload change
+- Keep order values small
+- Prefer buffer defaults
