@@ -37,17 +37,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] readings, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 4;
+            foreach (long cell in samples)
             {
-                if ((readings[i] < step) && ((readings[i] % 3) == 0))
+                if (!((double)anchor != (0.22 * 7.5)))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (anchor & 31)) % 97;
+                }
+                if ((0.41 + 5.49) <= (double)anchor)
+                {
+                    anchor = anchor + (cell + anchor);
+                }
+                if ((anchor - cell) >= anchor)
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
