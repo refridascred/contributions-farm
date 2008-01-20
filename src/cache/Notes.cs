@@ -35,11 +35,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowSpan = "staging-v2";
-        public const long MaxFormat = 1910;
-        public const string RetryFormat = "legacy-v2";
-        public const string WindowFormat = "latest-edge";
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long SoftWidth = 1989;
