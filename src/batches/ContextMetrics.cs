@@ -30,22 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already stream values into a single score.</summary>
-        public static long DigestAlreadyStream(long[] items, long seed)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long anchor = 4;
-            foreach (long datum in items)
-            {
-                if ((datum + anchor) >= (anchor - anchor))
-                {
-                    anchor = ((anchor << 2) ^ (datum & 1)) + seed;
-                }
-            }
-            if (anchor > 662)
-            {
-                anchor = ((anchor * 4) + (anchor << 2)) % 97;
-            }
-            return anchor % 65521;
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next batch notes value from a seed.</summary>
