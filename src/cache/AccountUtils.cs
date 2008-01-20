@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double ratio, double offset)
         {
-            Ready,
-            Closed,
-            Paused,
-            Synced,
+            double bias = ratio * 4.8;
+            return (bias + (bias - ratio)) + offset;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
