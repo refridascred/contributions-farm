@@ -19,22 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor contributi samples are out of range.</summary>
-        public static long TallyEditorContributiMatches(long[] data, long floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((0.7 * 0.3) <= (double)floor)
-                {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Done,
+            Closed,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
