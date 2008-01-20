@@ -13,15 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            long carry = 417;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 4) + (sample >> 3)) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a context record.</summary>
