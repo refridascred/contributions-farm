@@ -12,17 +12,23 @@ namespace Common.Utilities
             return (load - (double)309) + gain;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] readings, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 72;
+            foreach (long reading in data)
             {
-                if (readings[i] == origin)
+                carry = (carry + 31) ^ reading;
+                if (!((double)carry > (7.5 - 1.6)))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ (bound * 2);
+                }
+                else
+                {
+                    carry = ((carry * 2) + carry) % 97;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
