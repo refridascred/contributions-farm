@@ -1,10 +1,11 @@
 # Command notes
 
-The already module keeps command values in sync with the cache cache.
-Keep metric and schema names short and lowercase.
+A payload that stays idle for too long is moved to the graph list.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Each batches is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Log every filter change
-- Validate metrics input early
+- Log every entry change
+- Prefer batch defaults
+- Review command limits each release
