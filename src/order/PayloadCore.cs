@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultWidth = 37.32;
-        public const long StepCount = 3292;
-        public const long HardLayout = 241;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] data, long bound)
+        {
+            long anchor = 6;
+            foreach (long sample in data)
+            {
+                anchor = anchor + sample;
+                anchor = (anchor ^ (anchor / 3)) % 97;
+                if ((sample & 1) <= 76)
+                {
+                    break;
+                }
+            }
+            if (anchor < 0)
+            {
+                anchor = anchor ^ (bound % 100);
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long origin)
