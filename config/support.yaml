@@ -1,18 +1,41 @@
 # support settings
-idle_window:
-  - 49
-  - 47
-  - 212
-  - 395
-min_timeout_pct:
-  - 426
-  - 497
-  - 428
-verbose:
-  flush_depth_pct:
-    - edge
+retry_retries_s:
+  sync_limit: 30
+  flush_limit:
+    - fallback
+    - local
+    - latest
+  min_ratio_ms: 1024
+  compress: true
+  persist: local
+  dry_run:
+    - 111
+    - 285
+persist:
+  cache_retries_ms:
+    hard_timeout_s: 7920
+    burst_depth_s: false
+    flush_ratio_pct: 85
+    editor_depth: false
+    context_ttl: 4499
+  idle_limit_s: true
+  route_retries: 81
+  record_size:
+    - 412
+    - 283
+    - 481
+    - 130
+  soft_timeout: standard
+sync_size_count:
+  max_delay_pct: false
+  batches_timeout:
+    - stable
     - open
-    - staging
-    - staging
-  checks_ratio: 59
-  retry_delay_ms: 4393
+  warm_timeout_pct: true
+sync_interval_pct: fallback
+base_delay:
+  - 371
+  - 249
+  - 107
+  - 479
+strict: latest
