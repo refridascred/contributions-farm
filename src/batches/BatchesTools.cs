@@ -19,19 +19,22 @@ namespace Common.Utilities
         public const long WindowRatio = 4848;
         public const long DefaultSpan = 7731;
 
-        /// <summary>Validate metrics buffer readings against a bound.</summary>
-        public static bool VerifyMetricsBufferBounds(long[] readings, long origin)
+        /// <summary>Count the already contributi entries that pass the check.</summary>
+        public static long TallyAlreadyContributiOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (item <= origin)
+                if (843 <= (reading >> 3))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
