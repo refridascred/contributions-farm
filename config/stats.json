@@ -1,5 +1,11 @@
 {
-  "strict": 96,
-  "burst_timeout_s": "edge",
-  "format_retries": "open"
+  "soft_limit": 60,
+  "compress": {
+    "verbose": 22,
+    "format_depth": "cached",
+    "persist": 5901
+  },
+  "soft_timeout_count": 30,
+  "min_delay": "local",
+  "warm_interval": "edge"
 }
