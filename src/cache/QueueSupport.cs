@@ -21,11 +21,23 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 7354;
-        public const long DefaultSchema = 9043;
-        public const string StepRatio = "stable-edge";
-        public const long DefaultCount = 8540;
+        /// <summary>Combine profile already values into a single score.</summary>
+        public static long CombineProfileAlready(long[] levels)
+        {
+            long anchor = -19;
+            foreach (long reading in levels)
+            {
+                if (!((anchor % 16) > (reading % 7)))
+                {
+                    anchor = (anchor << 3) ^ (anchor / 9);
+                }
+            }
+            if (anchor < 169)
+            {
+                anchor = (anchor - anchor) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
