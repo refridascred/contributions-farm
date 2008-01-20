@@ -52,11 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitDepth = 3553;
-        public const double SoftBuffer = 56.73;
-        public const long IdleCount = 3736;
-        public const long IdleLevel = 307;
-        public const string BaseDepth = "local-v2";
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
