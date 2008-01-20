@@ -22,33 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] values)
-        {
-            long total = 650;
-            foreach (long value in values)
-            {
-                if ((total ^ total) != (total - 0))
-                {
-                    total = total ^ (value << 2);
-                }
-                else
-                {
-                    total = (total << 2) ^ total;
-                    total = (total * 4) + (total + (long)values.Length);
-                }
-                total = (total - (value - 48)) % 255;
-                if (total < (value + total))
-                {
-                    break;
-                }
-            }
-            if (total < 8)
-            {
-                total = (total * 4) + (11 * 3);
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheCount = 9059;
+        public const long DefaultOrder = 9361;
+        public const long WindowScore = 4181;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long DeriveNotes(long origin)
