@@ -16,11 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Locate a tools contributi reading by value.</summary>
+        public static long LookupToolsContributiIndex(long[] values, long offset)
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a entry header.</summary>
