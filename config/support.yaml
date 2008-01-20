@@ -1,12 +1,6 @@
 # support settings
-batches_timeout: 7470
-channel_ttl:
-  - 263
-  - 372
-checks_timeout: 9826
-token_delay: stable
-idle_limit_s:
-  poll_retries: false
-  checks_ratio: 893
-  max_threshold_count: false
-  poll_ratio_ms: latest
+retry_size: true
+stream_ttl: 1137
+audit: 26.4
+burst_ratio_pct: 72
+idle_delay: stable
