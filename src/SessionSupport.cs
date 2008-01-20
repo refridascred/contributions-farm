@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 8375;
         public const double BaseGithubfarm = 40.5;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] samples, long target)
         {
-            Paused,
-            Dropped,
-            Active,
-            Idle,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally >> 1) <= (tally + 7))
+                {
+                    tally = ((tally + 3) - datum) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two layout measurements.</summary>
