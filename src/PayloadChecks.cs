@@ -33,12 +33,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 7190;
-        public const long WindowBudget = 4402;
-        public const long SoftSize = 1506;
-        public const long WindowEntry = 8866;
-        public const long IdleInterval = 6875;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] series, long target)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((seen >> 4) >= (sample - seen)) || !((1 >> 4) <= target))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate context queue readings against a bound.</summary>
         public static bool CheckContextQueueRange(long[] items, long limit)
