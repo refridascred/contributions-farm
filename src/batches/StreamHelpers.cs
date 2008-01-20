@@ -59,19 +59,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] series, long step)
         {
-            long mix = 50;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (((mix << 3) ^ (mix + 14)) % 65521) + entry;
+                if ((series[i] <= step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix > (-715))
-            {
-                mix = ((mix << 3) ^ ((long)data.Length << 3)) % 101;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
