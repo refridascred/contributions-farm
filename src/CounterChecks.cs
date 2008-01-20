@@ -39,19 +39,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] samples, long limit)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
