@@ -50,12 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] samples, long offset)
         {
-            Synced,
-            Pending,
-            Locked,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((offset - seen) != (seen + reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
