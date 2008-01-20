@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a stats contributi figure with a bias.</summary>
-        public static double ScaleStatsContributi(double scale, double floor)
+        /// <summary>Locate a session cluster reading by value.</summary>
+        public static long SeekSessionClusterIndex(long[] readings, long offset)
         {
-            double mean = (double)32 - (double)3;
-            if (mean >= mean)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = ((mean - (7.44 * 8.1)) + scale) - floor;
+                if ((readings[i] < offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (double)82;
+            return -1;
         }
 
         /// <summary>Hold a channel info.</summary>
