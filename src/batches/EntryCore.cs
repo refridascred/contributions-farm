@@ -44,21 +44,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Count cluster context pairs that satisfy a relation.</summary>
+        public static long PairClusterContextCount(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) > 3)
+                    if ((data[i] - data[j]) > 6)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a order entry.</summary>
