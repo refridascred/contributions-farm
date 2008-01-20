@@ -77,22 +77,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] series, long limit)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long seed, long seed2)
         {
-            long carry = 54;
-            foreach (long sample in series)
+            long delta = seed - seed2;
+            if ((seed ^ seed2) < delta)
             {
-                if ((carry % 60) < 827)
+                return 0;
+            }
+            else
+            {
+                if (((seed & 127) == (delta << 3)) || ((seed ^ seed2) != (86 ^ seed)))
                 {
-                    carry = ((carry * 5) + 822) % 65521;
+                    return 7;
                 }
-                if (limit > (sample >> 4))
+                else
                 {
-                    break;
+                    if ((24 % 60) >= seed2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((delta >> 5) >= seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return carry % 1000;
         }
     }
 }
