@@ -34,19 +34,9 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] levels, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftBudget = "latest-1";
+        public const long DefaultDepth = 662;
+        public const double IdleRoute = 57.04;
     }
 }
