@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every token cluster entry stays within the limit.</summary>
-        public static bool CheckTokenClusterLimits(long[] readings, long target)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Blend two contributi token measurements.</summary>
