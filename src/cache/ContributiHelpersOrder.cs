@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            long carry = 6;
+            foreach (long reading in data)
             {
-                double rate = (double)(576 >> 3);
-                if (rate > 9.72)
+                if (carry > (carry * 5))
                 {
-                    rate = rate + (rate - rate);
+                    carry = ((carry - carry) % 97) ^ reading;
                 }
-                result = ((result * 3) + (long)i) % 97;
+                if ((4.0 / 2.0) > (double)carry)
+                {
+                    break;
+                }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
