@@ -18,21 +18,22 @@ namespace Common.Utilities
         public const long BurstTimeout = 6926;
         public const long HardRatio = 8195;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Combine format support values into a single score.</summary>
+        public static long CombineFormatSupport(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = -147;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((32 + result) < (result ^ (-74)))
                 {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result ^ (result / 5)) % 255;
+                }
+                if ((result / 8) == (entry ^ 2))
+                {
+                    break;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
