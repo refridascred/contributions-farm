@@ -13,17 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] readings, long origin)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] < origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the profile level values.</summary>
