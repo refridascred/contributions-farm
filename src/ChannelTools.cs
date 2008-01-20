@@ -25,10 +25,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCount = 2863;
-        public const long SoftFactor = 4319;
-        public const long BatchCounter = 801;
-        public const long BatchBudget = 6881;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
