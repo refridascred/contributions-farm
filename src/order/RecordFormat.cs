@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const double MinBuffer = 59.5;
         public const long DefaultBuffer = 8721;
 
-        /// <summary>Count the format stats entries that pass the check.</summary>
-        public static long TallyFormatStatsGaps(long[] levels)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (((double)matches > (18.0 * 4.24)) || (((18.0 * 19.0) == (double)matches) || ((7.3 + 7.59) < (double)cell)))
+                if (1.83 > (double)seed)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a record counter forward.</summary>
