@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryWidth = 8423;
-        public const long CacheEditor = 653;
-        public const string BatchFactor = "strict-v2";
-        public const double BaseEditor = 32.51;
-        public const string BatchEditor = "primary-edge";
+        /// <summary>Look up the position of a metrics token sample.</summary>
+        public static long LocateMetricsTokenIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long StepMetrics(long offset)
