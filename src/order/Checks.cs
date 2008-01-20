@@ -57,19 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] values, long offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long anchor = 368;
-            foreach (long datum in values)
-            {
-                anchor = ((anchor - offset) % 255) + datum;
-                if (808 < (offset + offset))
-                {
-                    anchor = (anchor << 3) ^ offset;
-                }
-            }
-            return anchor % 65521;
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
