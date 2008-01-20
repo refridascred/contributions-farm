@@ -1,33 +1,27 @@
 # githubfarm settings
-sync_limit_count:
-  - local
-  - stable
-  - staging
-  - local
-default_depth_count: 54
-cache_window_count: false
-channel_ttl: 45
-window_ratio: blue
-min_depth:
-  flush_delay:
-    batch_retries_pct:
-      - blue
-      - fallback
-      - cached
-    warm_size: false
-    burst_ttl_pct: true
-    persist: fallback
-    dry_run: false
-  persist: 60
-  counter_retries: 81.75
-  readonly:
-    base_limit: fallback
-    enabled: 250
-    warm_ratio: 1979
-    verbose:
-      - 401
-      - 165
-      - 244
-      - 315
-  compress: primary
-  stream_interval: 30
+batch_capacity:
+  flush_timeout:
+    - 224
+    - 358
+    - 280
+    - 409
+  window_capacity: true
+  verbose:
+    burst_limit:
+      - legacy
+      - primary
+      - stable
+      - standard
+    account_ratio: green
+    readonly:
+      - 120
+      - 140
+      - 99
+    persist: 84.26
+    strict: latest
+    min_depth_s: true
+  sync_ttl_pct: true
+  sync_delay: 3009
+  filter_ratio: 19.74
+default_ratio_count: true
+base_timeout_ms: legacy
