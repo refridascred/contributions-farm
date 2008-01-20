@@ -51,18 +51,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the cache contributi entries that pass the check.</summary>
-        public static long AuditCacheContributiMatches(long[] readings, long floor)
+        /// <summary>Grade a channel cache value against two limits.</summary>
+        public static long SortChannelCache(long step, long origin)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if ((8.2 * 9.0) <= (double)origin)
             {
-                if ((double)floor > (0.8 - 5.0))
+                return 0;
+            }
+            else
+            {
+                if ((((-49) & 31) < (origin * 5)) || ((origin * 4) < (origin - origin)))
                 {
-                    matches = (matches + 2) - entry;
+                    return 8;
+                }
+                else
+                {
+                    if ((93 + origin) >= 901)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step + step) < step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
