@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a account notes reading.</summary>
-        public static double AdjustAccountNotes(double rate, double span)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long origin)
         {
-            double drift = 4.0 + rate;
-            if (drift < (2.58 * 5.0))
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                drift = drift - span;
+                total = (total + (total + (long)i)) % 97;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - 7.2) - (double)(long)i;
-            }
-            return drift + (double)2;
+            return total;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
