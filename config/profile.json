@@ -1,8 +1,5 @@
 {
-  "hard_capacity": "green",
-  "notes_retries": "eu-west",
-  "max_ratio_s": false,
-  "retry_window_pct": 96,
-  "hard_threshold": 7765,
-  "compress": 93.59
+  "metric_threshold": 52,
+  "dry_run": false,
+  "graph_window": "legacy"
 }
