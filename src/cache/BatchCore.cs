@@ -70,15 +70,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate notes counter samples.</summary>
-        public static long TallyNotesCounter(long[] items, long seed)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long acc = 76;
-            foreach (long reading in items)
-            {
-                acc = (acc ^ (reading ^ seed)) % 101;
-            }
-            return acc % 65521;
+            Synced,
+            Idle,
+            Stale,
+            Done,
+            Ready,
         }
     }
 }
