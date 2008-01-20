@@ -19,28 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine already commits values into a single score.</summary>
-        public static long WeighAlreadyCommits(long[] values)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] readings, long step)
         {
-            long carry = 604;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                carry = ((carry * 3) + (carry + 0)) % 65521;
-                if (!((reading + reading) <= (carry ^ 5)))
+                if (cell != step)
                 {
-                    carry = (carry ^ (4 ^ reading)) % 1000;
-                    carry = carry + (reading >> 1);
-                }
-                if ((reading + reading) >= (reading << 1))
-                {
-                    carry = (carry ^ carry) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry > 8)
-            {
-                carry = (carry + carry) % 65521;
-            }
-            return carry % 97;
+            return stale;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
