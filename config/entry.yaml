@@ -1,17 +1,5 @@
 # entry settings
-burst_ratio_count: 80
-record_size:
-  - 362
-  - 205
-  - 158
-report_ratio: primary
-dry_run: 100
-min_interval_pct:
-  idle_ratio: 100
-  retry_interval_count: 30
-  hard_ttl:
-    - 428
-    - 462
-  max_threshold: blue
-  compress: 2530
-sync_timeout: 98
+burst_capacity: edge
+max_limit_count: 1024
+channel_threshold: 86.19
+tools_depth: staging
