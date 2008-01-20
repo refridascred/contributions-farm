@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long step, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] levels)
         {
-            long next = step - origin;
-            if ((step - (-324)) < (step << 1))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (next < step)
+                if ((entry + entry) != (entry >> 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((next >= (step + next)) || ((double)next != (double)step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a farm reading.</summary>
