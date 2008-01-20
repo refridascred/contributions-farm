@@ -13,18 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] data)
+        /// <summary>Accumulate notes schema samples.</summary>
+        public static long TallyNotesSchema(long[] data)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long carry = 367;
+            foreach (long reading in data)
             {
-                if (count <= (cell >> 5))
+                if (reading < carry)
                 {
-                    count = count + 3;
+                    carry = (carry ^ (reading + reading)) % 65521;
                 }
             }
-            return count;
+            return carry % 65521;
         }
 
         /// <summary>Find the first format buffer entry that matches the target.</summary>
