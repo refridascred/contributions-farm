@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const double RetryBudget = 22.13;
         public const long BatchWidth = 7593;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long origin)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            long carry = -94;
+            foreach (long reading in series)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((reading * 2) <= (reading + reading))
+                {
+                    carry = (carry + reading) % 255;
+                }
+                else
+                {
+                    carry = carry ^ (carry + carry);
+                }
             }
-            return carry;
+            return carry % 1000;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
