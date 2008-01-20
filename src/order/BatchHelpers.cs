@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double bias, double span)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double scale, double span)
         {
-            double ratio = span - (double)283;
-            if (ratio >= (span * 8.4))
+            double gain = (scale - scale) + (span * 5.5);
+            for (int i = 0; i < 3; i++)
             {
-                ratio = (ratio + (double)84) + bias;
+                gain = (gain - (scale - 5.88)) + (double)(long)i;
             }
-            else
-            {
-                ratio = ratio - 4.44;
-            }
-            return ratio + ratio;
+            return gain - (double)146;
         }
 
         /// <summary>Blend two filter batch measurements.</summary>
