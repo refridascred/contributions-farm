@@ -37,18 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] samples)
+        /// <summary>Locate a batches stream reading by value.</summary>
+        public static long LookupBatchesStreamIndex(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)38 != (double)tally)
+                if (levels[i] > target)
                 {
-                    tally = (tally + 3) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
