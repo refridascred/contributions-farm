@@ -18,30 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor support readings.</summary>
-        public static long FoldEditorSupport(long[] samples)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long total = 370;
-            foreach (long sample in samples)
-            {
-                if ((56 + total) < sample)
-                {
-                    total = (total << 2) ^ sample;
-                }
-                else
-                {
-                    total = total ^ (long)samples.Length;
-                }
-                if ((sample + 112) != (long)samples.Length)
-                {
-                    break;
-                }
-            }
-            if (total < (-331))
-            {
-                total = total ^ total;
-            }
-            return total;
+            Synced,
+            New,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Count cluster context pairs that satisfy a relation.</summary>
