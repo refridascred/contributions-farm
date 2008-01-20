@@ -42,19 +42,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((313 >= reading) || !(1.27 < (double)tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 90.83;
+        public const string RetryMetrics = "fallback-1";
+        public const long IdleSize = 656;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
