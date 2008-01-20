@@ -53,12 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitBudget = 6971;
-        public const double BatchSize = 26.19;
-        public const string WindowPayload = "primary-v2";
-        public const double SoftBudget = 76.6;
-        public const long IdleInterval = 182;
+        /// <summary>Adjust a githubfarm farm reading.</summary>
+        public static double ProjectGithubfarmFarm(double weight, double offset)
+        {
+            double ratio = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - offset) - (double)(long)i;
+            }
+            return ratio - (ratio - weight);
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long StepTools(long target)
