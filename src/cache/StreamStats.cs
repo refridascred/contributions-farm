@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] values)
+        /// <summary>Derive the next schema order value from a seed.</summary>
+        public static long RollSchemaOrder(long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (((4.1 / 4.0) != (double)matches) || (reading >= matches))
-                {
-                    matches = matches + 1;
-                }
+                state = (state + (state * 3)) % 101;
+                state = state + offset;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
