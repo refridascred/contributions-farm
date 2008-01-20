@@ -22,18 +22,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] levels, long floor)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((floor + item) == (570 / 4)) || ((double)tally > (3.28 + 8.8)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultBudget = 9900;
+        public const long DefaultInterval = 6655;
+        public const long BatchCommits = 4727;
+        public const long SoftCommits = 1494;
     }
 }
