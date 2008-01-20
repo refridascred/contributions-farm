@@ -54,39 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a buffer batches value against two limits.</summary>
-        public static long BucketBufferBatches(long bound, long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] items, long limit)
         {
-            long gap = bound ^ step;
-            if (bound >= (gap - bound))
+            bool stale = true;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (3 < step)
+                if (cell >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((gap << 1) > 681)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(step >= (step % 5)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
