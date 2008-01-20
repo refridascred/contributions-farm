@@ -1,26 +1,36 @@
 {
-  "verbose": {
-    "retry_retries": ["local", "stable", "eu-west", "open"],
-    "min_capacity_s": false,
-    "hard_interval": "strict",
-    "base_limit_s": 60,
-    "strict": {
-      "persist": "cached",
-      "verbose": true,
-      "base_ratio_s": 7530,
-      "base_ttl_s": "green",
-      "audit": [440, 376, 271],
-      "max_interval": 23.05
+  "report_ratio": "latest",
+  "profile_size": {
+    "queue_ratio": false,
+    "sync_ttl": 82.77,
+    "burst_ratio_pct": 250,
+    "cache_retries_count": {
+      "queue_depth": 64.82,
+      "report_timeout": 20,
+      "readonly": [260, 13, 83, 278],
+      "base_window": [84, 68, 320, 241],
+      "commits_delay": "open",
+      "schema_window": 500
     },
-    "audit": [386, 174, 294]
+    "order_threshold": 760
   },
-  "compress": 30,
-  "burst_ttl": "staging",
-  "stream_retries": {
-    "batch_ratio": "stable",
-    "hard_window": 1024,
-    "default_window_s": 38
-  },
-  "batch_ttl_ms": 1024,
-  "readonly": false
+  "retry_delay": [21, 370, 208],
+  "retry_window": {
+    "verbose": {
+      "poll_capacity_count": 500,
+      "readonly": true,
+      "stream_delay": "green",
+      "order_size": false,
+      "enabled": "staging",
+      "poll_interval": true
+    },
+    "strict": ["latest", "stable", "staging", "fallback"],
+    "channel_size": 619,
+    "burst_ttl_s": {
+      "entry_ttl": 60,
+      "account_delay": true,
+      "burst_window_ms": 250,
+      "soft_ttl_ms": false
+    }
+  }
 }
