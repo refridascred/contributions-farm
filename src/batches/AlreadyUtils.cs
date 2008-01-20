@@ -19,10 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstInterval = 587;
-        public const double WindowCache = 65.26;
-        public const string BurstCache = "stable";
+        /// <summary>Audit order payload readings against a rule.</summary>
+        public static long AuditOrderPayloadHits(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((cell - count) == (count * 5)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long RankNotes(long step, long offset)
