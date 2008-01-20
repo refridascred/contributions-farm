@@ -43,18 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] samples, long floor)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (floor >= (datum * 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            Stale,
+            Retry,
+            Active,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
