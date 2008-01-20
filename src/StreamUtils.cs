@@ -34,19 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] values, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (((seed - seed) > (carry & 255)) || ((double)24 != (double)carry))
+                if (datum > bound)
                 {
-                    carry = (carry + seed) % 4096;
+                    valid = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Fold a list of order cluster readings.</summary>
