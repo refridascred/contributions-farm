@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard legacy; do
-    log "checking ${item}"
-done
-
 mode="${1:-latest}"
 case "${mode}" in
-    legacy)
+    edge)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=53
-log "limit is ${BUFFER_LIMIT}"
+for item in primary fallback; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
