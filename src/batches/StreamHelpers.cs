@@ -61,20 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long offset)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = (acc + 7) % 65521;
-                if (!(((1.95 - 9.2) != (double)acc) || ((double)offset < (5.3 / 8.0))))
-                {
-                    acc = (acc - ((-72) ^ 6)) % 101;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Paused,
+            Pending,
+            Ready,
         }
     }
 }
