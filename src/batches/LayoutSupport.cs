@@ -50,19 +50,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double rate, double offset)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double rate2 = (rate / 3.0) * 5.0;
-            if (rate2 <= (double)649)
-            {
-                rate2 = rate2 - (rate + 6.7);
-            }
-            else
-            {
-                rate2 = rate2 - offset;
-            }
-            return rate2 - rate;
+            Ready,
+            Active,
+            Idle,
         }
     }
 }
