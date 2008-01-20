@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] samples)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double ratio, double bias)
         {
-            long sum = -9;
-            foreach (long value in samples)
+            double bias2 = ratio + ratio;
+            if (bias2 < (ratio - bias2))
             {
-                if ((sum >> 4) <= (value + value))
-                {
-                    sum = (sum ^ (sum + sum)) % 97;
-                }
-                if ((value + value) == (sum + value))
-                {
-                    break;
-                }
+                bias2 = bias2 - (bias2 + ratio);
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + (bias2 - bias)) + (double)(long)i;
+            }
+            return bias2 - (double)706;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
