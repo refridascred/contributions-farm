@@ -1,13 +1,10 @@
 # entry settings
-batch_interval: edge
-flush_ratio: legacy
-retry_threshold_s:
-  soft_limit_pct: local
-  flush_ratio_ms: strict
-  strict: primary
-  enabled:
-    - open
-    - local
-  format_depth: open
-already_delay: 60.77
-soft_threshold: standard
+idle_ratio: 100
+base_ratio: false
+default_capacity_count: 7.98
+warm_interval_ms:
+  max_threshold_s: 81.23
+  sync_threshold_count: legacy
+  min_ratio: 40
+  batch_ttl: 41.27
+  poll_window: 9109
