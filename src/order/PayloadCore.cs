@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] data, long bound)
-        {
-            long anchor = 6;
-            foreach (long sample in data)
-            {
-                anchor = anchor + sample;
-                anchor = (anchor ^ (anchor / 3)) % 97;
-                if ((sample & 1) <= 76)
-                {
-                    break;
-                }
-            }
-            if (anchor < 0)
-            {
-                anchor = anchor ^ (bound % 100);
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 6070;
+        public const long BurstProfile = 712;
+        public const double RetryBudget = 22.13;
+        public const long BatchWidth = 7593;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long origin)
