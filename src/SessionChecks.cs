@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (((double)matches < (double)entry) || ((double)matches >= (18.0 - 11.0)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 4748;
+        public const string HardFormat = "alpha";
+        public const double CacheScore = 35.1;
+        public const long CacheFormat = 6482;
+        public const string BurstLevel = "strict-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheCommand = 1424;
