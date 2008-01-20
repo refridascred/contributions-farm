@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] values, long target)
         {
-            Closed,
-            Synced,
-            New,
-            Ready,
-            Idle,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (!(((long)values.Length - cell) > (hits / 6)) && ((38 - hits) >= (cell * 3)))
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit profile stream readings against a rule.</summary>
