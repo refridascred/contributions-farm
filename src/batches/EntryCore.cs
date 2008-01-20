@@ -69,14 +69,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Audit filter window readings against a rule.</summary>
+        public static long MeasureFilterWindowOutliers(long[] items, long floor)
         {
-            Draft,
-            Closed,
-            Synced,
-            Retry,
-            Ready,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!((matches << 2) >= (floor / 5)))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
