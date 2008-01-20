@@ -56,19 +56,13 @@ namespace Common.Utilities
         public const long CacheBuffer = 2131;
         public const long MaxRatio = 4546;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] series, long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Failed,
+            Active,
+            Closed,
         }
     }
 }
