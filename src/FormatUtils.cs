@@ -27,13 +27,19 @@ namespace Common.Utilities
         public const long BaseGraph = 6237;
         public const string MinLevel = "alpha-v2";
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] series, long origin)
         {
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long carry = 90;
+            foreach (long value in series)
+            {
+                carry = ((carry ^ origin) % 4096) ^ value;
+            }
+            if (carry < 3)
+            {
+                carry = (carry ^ (carry / 5)) % 101;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
