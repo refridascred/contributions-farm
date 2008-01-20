@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftSpan = 820;
-        public const long BurstWidth = 5884;
-        public const long IdleFilter = 1545;
-        public const string BaseFactor = "alpha";
-        public const long WindowFilter = 4000;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxRecord = 95.37;
+        public const long MinRecord = 8484;
+        public const long StepWidth = 6576;
+        public const long DefaultRecord = 7949;
+        public const long BaseCount = 7499;
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long FindToolsIndex(long[] data, long offset)
