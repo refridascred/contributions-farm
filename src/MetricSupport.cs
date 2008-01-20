@@ -54,18 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream payload readings against a rule.</summary>
-        public static long CountStreamPayloadMatches(long[] values, long target)
+        /// <summary>Validate channel order readings against a bound.</summary>
+        public static bool VerifyChannelOrderRange(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (((long)values.Length + target) <= (value - value))
+                if (item <= origin)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
