@@ -14,12 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] data, long floor)
         {
-            public double Count { get; set; }
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((double)22 == (double)(long)data.Length)
+                {
+                    count = ((count + 1) ^ cell) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
