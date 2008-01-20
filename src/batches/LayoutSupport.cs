@@ -46,17 +46,19 @@ namespace Common.Utilities
         public const long CacheBuffer = 2131;
         public const long MaxRatio = 4546;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] readings, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
+                if (datum <= target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
