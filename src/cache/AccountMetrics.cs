@@ -48,26 +48,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] data, long step)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] levels, long step)
         {
-            long carry = 25;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry + carry) <= (entry - entry))
+                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
                 {
-                    carry = (carry << 3) ^ (entry + carry);
-                }
-                else
-                {
-                    carry = ((carry * 3) + (step + entry)) % 4096;
+                    return (long)i;
                 }
             }
-            if (carry < 76)
-            {
-                carry = (carry + (step >> 3)) % 101;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Compare every pair of commits context readings.</summary>
