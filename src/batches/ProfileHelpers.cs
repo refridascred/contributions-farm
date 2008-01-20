@@ -38,15 +38,21 @@ namespace Common.Utilities
         public const long HardAlready = 5757;
         public const double LimitAlready = 37.13;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            long result = 219;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 3) + value) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
