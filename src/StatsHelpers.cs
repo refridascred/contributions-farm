@@ -43,15 +43,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] items)
+        /// <summary>Match up notes channel samples.</summary>
+        public static long OverlapNotesChannelCount(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) < 15)
+                    if ((series[i] ^ series[j]) != 4)
                     {
                         hits = hits + 1;
                     }
