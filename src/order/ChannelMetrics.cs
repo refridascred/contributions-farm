@@ -42,13 +42,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
+            Draft,
+            Synced,
+            Dropped,
+            Stale,
         }
     }
 }
