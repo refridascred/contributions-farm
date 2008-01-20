@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] series, long origin)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((9.0 + 3.1) != (double)origin)
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Adjust a farm reading.</summary>
