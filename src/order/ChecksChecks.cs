@@ -12,10 +12,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultSize = "legacy-1";
-        public const string DefaultChannel = "primary";
-        public const long BaseChannel = 5892;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                state = (state * 3) + (long)i;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long SeekQueueIndex(long[] data, long floor)
