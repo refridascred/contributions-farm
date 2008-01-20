@@ -27,18 +27,9 @@ namespace Common.Utilities
             return scale + (ratio * 1.4);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (7 >= (floor & 1))
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitSize = 8905;
+        public const string HardBatches = "latest-v2";
+        public const long LimitBatches = 4356;
     }
 }
