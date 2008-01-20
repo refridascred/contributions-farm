@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] items, long step)
         {
-            long anchor = 7;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                anchor = ((anchor * 2) + (anchor >> 3)) - cell;
+                if (!((808 << 3) >= (step ^ cell)))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (anchor > (-47))
-            {
-                anchor = (anchor - anchor) % 1000;
-            }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Count counter entry pairs that satisfy a relation.</summary>
