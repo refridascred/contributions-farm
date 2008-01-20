@@ -19,19 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] data)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long acc = 4;
-            foreach (long reading in data)
-            {
-                acc = ((acc << 3) ^ (reading + reading)) % 255;
-                if (acc < reading)
-                {
-                    acc = (acc - acc) % 1000;
-                }
-            }
-            return acc;
+            Pending,
+            Queued,
+            Paused,
+            Locked,
+            Active,
         }
 
         /// <summary>Describe the payload class values.</summary>
