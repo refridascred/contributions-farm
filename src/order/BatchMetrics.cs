@@ -28,10 +28,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 2812;
-        public const double SoftDepth = 27.45;
-        public const double HardFactor = 48.06;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (count >= (98 - value))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool VerifyCommitsRange(long[] samples, long step)
