@@ -59,10 +59,22 @@ namespace Common.Utilities
         public const long WindowScore = 3142;
         public const long MinBudget = 7353;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowSize = 3.97;
-        public const long MaxRatio = 2637;
-        public const double BaseMetric = 54.32;
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
