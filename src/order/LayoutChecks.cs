@@ -41,32 +41,19 @@ namespace Common.Utilities
         public const long BatchRatio = 3481;
         public const long IdleMetrics = 403;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long bound, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] items, long floor)
         {
-            long slot = bound + origin;
-            if ((double)bound > (9.97 - 6.3))
+            bool found = true;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin > (double)bound)
+                if (item < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (slot > (slot + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the metric state values.</summary>
