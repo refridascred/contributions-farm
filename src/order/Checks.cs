@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchInterval = 5974;
-        public const long LimitTimeout = 7677;
-        public const string BaseLevel = "staging";
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
