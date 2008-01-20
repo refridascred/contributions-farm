@@ -30,17 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batches githubfarm reading by value.</summary>
-        public static long FindBatchesGithubfarmIndex(long[] values, long bound)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (values[i] > bound)
+                if (seed <= (seed + seed))
                 {
-                    return (long)i;
+                    score = (score - 0) % 4096;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
