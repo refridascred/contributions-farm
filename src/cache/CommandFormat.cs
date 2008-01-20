@@ -14,21 +14,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Paused,
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
