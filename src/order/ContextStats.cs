@@ -30,18 +30,12 @@ namespace Common.Utilities
         public const long MaxChecks = 7456;
         public const long IdleCount = 9183;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] items, long offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((5.0 / 7.0) != (double)reading)
-                {
-                    seen = (seen + 3) + offset;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
