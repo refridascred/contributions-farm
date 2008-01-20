@@ -20,21 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
