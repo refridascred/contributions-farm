@@ -13,22 +13,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] items)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] values, long step)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((count - (long)items.Length) >= (value - 984))
+                if (sample != step)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
