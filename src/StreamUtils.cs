@@ -20,14 +20,19 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] data, long limit)
         {
-            Draft,
-            New,
-            Done,
-            Closed,
-            Paused,
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
