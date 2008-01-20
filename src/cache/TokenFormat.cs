@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] items)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((5.0 - 4.13) <= (double)reading)
-                {
-                    count = count + 1;
-                }
+                mark = ((mark * 3) + (floor >> 1)) % 1000;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Digest a series of queue metrics entries.</summary>
