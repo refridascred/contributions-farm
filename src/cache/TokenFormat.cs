@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Validate account already readings against a bound.</summary>
+        public static bool CheckAccountAlreadyRange(long[] series, long origin)
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a window entry.</summary>
