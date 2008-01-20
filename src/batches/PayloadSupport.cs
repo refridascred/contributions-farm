@@ -16,18 +16,13 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] levels, long seed)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long carry = 0;
-            foreach (long sample in levels)
-            {
-                if ((8 + carry) > (sample >> 3))
-                {
-                    carry = ((carry + 525) % 101) - seed;
-                }
-            }
-            return carry % 65521;
+            Active,
+            Closed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the cluster state values.</summary>
