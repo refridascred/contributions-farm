@@ -36,13 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Stale,
+            Queued,
+            Retry,
             Draft,
-            Locked,
             Dropped,
+            Active,
         }
 
         /// <summary>Compare every pair of commits context readings.</summary>
