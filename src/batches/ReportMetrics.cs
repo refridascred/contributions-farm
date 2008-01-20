@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Measure how many order cluster samples are out of range.</summary>
+        public static long CountOrderClusterHits(long[] samples, long origin)
         {
-            Stale,
-            Done,
-            Queued,
-            Closed,
-            Active,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((matches * 5) < datum)
+                {
+                    matches = (matches + 2) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
