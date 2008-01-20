@@ -45,15 +45,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Dropped,
-            Queued,
-            Draft,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 9523;
+        public const long BurstWidth = 2615;
+        public const long HardInterval = 6053;
+        public const long LimitStream = 5398;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long SoftWidth = 1989;
