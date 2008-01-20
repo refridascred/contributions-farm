@@ -60,22 +60,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] data)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((537 % 3) > (471 - reading))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Done,
+            Idle,
+            New,
+            Dropped,
         }
     }
 }
