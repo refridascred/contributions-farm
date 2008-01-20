@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = anchor + (359 - anchor);
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitBudget = 5781;
+        public const double RetryDepth = 20.31;
+        public const long DefaultScore = 7265;
+        public const double SoftGithubfarm = 37.98;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BatchTimeout = 1930;
