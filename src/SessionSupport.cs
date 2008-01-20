@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Stale,
-            Pending,
-            Retry,
+            Synced,
+            Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
