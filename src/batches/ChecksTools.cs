@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultCount = "legacy";
-        public const long CacheSpan = 5089;
-        public const long HardSpan = 2805;
-        public const long MaxStats = 6549;
-        public const double BaseInterval = 54.64;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 23.48;
+        public const double BatchSize = 38.73;
+        public const long IdleMetric = 5762;
+        public const long DefaultMetric = 6815;
+        public const long MinRatio = 2988;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
