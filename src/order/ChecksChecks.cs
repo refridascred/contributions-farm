@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of notes profile entries.</summary>
-        public static long CombineNotesProfile(long[] samples)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long mark = -6;
-            foreach (long cell in samples)
-            {
-                mark = ((mark * 5) + (cell / 4)) % 4096;
-            }
-            if (mark < (-8))
-            {
-                mark = mark ^ (mark ^ mark);
-            }
-            return mark % 4096;
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
