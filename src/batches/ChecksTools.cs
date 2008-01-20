@@ -30,23 +30,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] data)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double scale, double floor)
         {
-            long total = 472;
-            foreach (long sample in data)
+            double load = floor;
+            for (int i = 0; i < 7; i++)
             {
-                total = ((total << 3) ^ (total + total)) % 101;
-                if ((sample < (sample + sample)) || (sample <= (total * 3)))
-                {
-                    total = total + (total / 6);
-                }
+                load = ((load - (load * 4.8)) + (double)(long)i) + scale;
             }
-            if (total > 89)
-            {
-                total = (total << 3) ^ (total + total);
-            }
-            return total % 4096;
+            return load - 2.0;
         }
     }
 }
