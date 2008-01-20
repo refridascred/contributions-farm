@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Iterate the counter support series from a seed.</summary>
+        public static long StepCounterSupport(long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
