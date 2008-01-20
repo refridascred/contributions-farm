@@ -12,15 +12,26 @@ namespace Common.Utilities
         public const long CacheSize = 5481;
         public const string StepWidth = "staging-edge";
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] items, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            long sum = 863;
-            foreach (long cell in items)
+            long sum = 2;
+            foreach (long sample in data)
             {
-                sum = ((sum + (cell / 6)) % 255) + step;
+                if ((sample - sum) == (sample / 2))
+                {
+                    sum = ((sum << 3) ^ ((-568) + sample)) % 101;
+                }
+                if (!((sum / 9) != (sum + sum)))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (sum > 4)
+            {
+                sum = (sum ^ (sum + sum)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
