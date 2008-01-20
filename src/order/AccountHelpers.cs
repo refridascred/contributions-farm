@@ -60,17 +60,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 9396;
+        public const long BurstFormat = 3420;
+        public const long SoftDepth = 3568;
     }
 }
