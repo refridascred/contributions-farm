@@ -1,11 +1,6 @@
-id,label,owner,active,count
-1,51.54,green,legacy,blue
-2,edge,917,61.65,848
-3,588,latest,open,285
-4,33.86,102,eu-west,869
-5,568,89.83,50.07,green
-6,fallback,546,21.72,open
-7,4.5,cached,403,85.25
-8,821,71.47,primary,348
-9,edge,edge,standard,40.52
-10,15.53,95.08,23.57,156
+id,weight,level,token
+1,797,blue,851
+2,1.58,cached,893
+3,612,legacy,403
+4,cached,211,378
+5,756,fallback,legacy
