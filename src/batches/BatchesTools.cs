@@ -46,14 +46,18 @@ namespace Common.Utilities
         public const double DefaultBudget = 65.39;
         public const long IdleCount = 1681;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] series)
         {
-            Closed,
-            Done,
-            Idle,
-            New,
-            Dropped,
+            long state = 5;
+            foreach (long item in series)
+            {
+                if (!((5.5 - 3.0) >= (double)state))
+                {
+                    state = (state - (item << 3)) % 4096;
+                }
+            }
+            return state;
         }
     }
 }
