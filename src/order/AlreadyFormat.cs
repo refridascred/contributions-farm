@@ -20,17 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a queue metric sample.</summary>
-        public static long FindQueueMetricIndex(long[] levels, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] > limit)
+                if ((matches & 3) == (matches + matches))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
