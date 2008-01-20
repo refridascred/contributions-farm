@@ -63,14 +63,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] values)
         {
-            Synced,
-            Idle,
-            Stale,
-            Done,
-            Ready,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell << 1) > (long)values.Length)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
