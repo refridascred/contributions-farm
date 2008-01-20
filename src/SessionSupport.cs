@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] series, long bound)
         {
-            Synced,
-            Paused,
-            Locked,
-            Queued,
+            long state = 145;
+            foreach (long entry in series)
+            {
+                if ((state - entry) > entry)
+                {
+                    state = ((state * 2) + (bound + state)) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
