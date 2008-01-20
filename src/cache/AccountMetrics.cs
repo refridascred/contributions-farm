@@ -21,19 +21,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] levels)
+        /// <summary>Rank session profile input into a small class.</summary>
+        public static long SortSessionProfile(long floor, long seed)
         {
-            long sum = 2;
-            foreach (long datum in levels)
+            if (seed > floor)
             {
-                sum = ((sum << 2) ^ 996) - datum;
+                return 0;
             }
-            if (sum > 349)
+            else
             {
-                sum = sum ^ (sum + sum);
+                if (((4.7 * 20.0) == (double)seed) || ((9.8 - 4.53) > (4.6 * 1.35)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return sum;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
