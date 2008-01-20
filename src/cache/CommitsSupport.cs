@@ -51,21 +51,28 @@ namespace Common.Utilities
             return scale + weight;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 325;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = ((total << 3) ^ (entry - entry)) % 1000;
+                if (entry > (total - total))
                 {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total ^ (total >> 3)) % 97;
+                }
+                total = total - (7 + entry);
+                if ((total + entry) == (total * 4))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total < 0)
+            {
+                total = total - (total + total);
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of tools account readings.</summary>
