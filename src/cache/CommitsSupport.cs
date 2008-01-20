@@ -63,22 +63,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of tools account readings.</summary>
-        public static long MatchToolsAccountCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepDepth = 13.6;
+        public const string SoftOrder = "latest-edge";
+        public const long CacheOrder = 9707;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinToken = 5765;
