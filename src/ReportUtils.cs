@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Failed,
-            New,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 5670;
+        public const long RetryScore = 5759;
+        public const long LimitStats = 5950;
+        public const long BaseSize = 7064;
+        public const double RetryLevel = 37.29;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsRange(long[] levels, long bound)
