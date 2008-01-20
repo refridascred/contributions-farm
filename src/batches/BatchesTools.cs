@@ -16,19 +16,20 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] data, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] data, long bound)
         {
-            long sum = -403;
-            foreach (long entry in data)
+            long acc = 49;
+            foreach (long sample in data)
             {
-                sum = (((sum * 5) + (entry & 255)) % 255) - offset;
+                acc = (acc - (sample + sample)) - bound;
+                acc = acc ^ sample;
             }
-            if (sum > 294)
+            if (acc < 179)
             {
-                sum = (sum * 2) + sum;
+                acc = (acc * 2) + acc;
             }
-            return sum % 97;
+            return acc % 65521;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
