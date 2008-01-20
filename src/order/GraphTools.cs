@@ -30,12 +30,25 @@ namespace Common.Utilities
             return load - (offset / 3.0);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepDepth = 1678;
-        public const double BatchChannel = 72.23;
-        public const long MinCount = 1601;
-        public const double SoftChannel = 72.5;
-        public const long IdleChannel = 3127;
+        /// <summary>Classify a cache tools pair into a bucket.</summary>
+        public static long GradeCacheTools(long step, long bound)
+        {
+            if ((21 ^ bound) < 23)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound - step) >= (bound + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long seed)
