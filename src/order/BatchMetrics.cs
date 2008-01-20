@@ -64,16 +64,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total - (218 / 8)) % 255;
-                total = ((total * 2) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
     }
 }
