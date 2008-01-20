@@ -62,18 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitBudget = 6971;
+        public const double BatchSize = 26.19;
+        public const string WindowPayload = "primary-v2";
+        public const double SoftBudget = 76.6;
+        public const long IdleInterval = 182;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long StepTools(long target)
