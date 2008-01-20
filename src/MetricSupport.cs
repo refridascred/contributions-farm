@@ -19,39 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long bound, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] series)
         {
-            long lane = bound + floor;
-            if (!((bound >> 1) < (lane + 95)))
+            long anchor = 3;
+            foreach (long entry in series)
             {
-                return 2;
+                anchor = (anchor ^ (anchor - anchor)) ^ entry;
             }
-            else
+            if (anchor > 7)
             {
-                if (!((lane % 10) <= (bound ^ floor)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((lane % 10) >= (142 << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound <= (lane << 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                anchor = anchor ^ (anchor / 7);
             }
+            return anchor;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
