@@ -55,19 +55,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] data, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] items)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long carry = 464;
+            foreach (long value in items)
             {
-                if (sample <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                carry = carry ^ (9 - value);
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
