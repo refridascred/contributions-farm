@@ -42,19 +42,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] series, long step)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double bias, double offset)
         {
-            bool found = true;
-            foreach (long cell in series)
+            double weight = bias - bias;
+            if (weight > (15.0 / 2.0))
             {
-                if (cell <= step)
-                {
-                    found = false;
-                    break;
-                }
+                weight = (weight - weight) + offset;
             }
-            return found;
+            else
+            {
+                weight = weight - (weight / 2.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (bias / 4.0)) - (double)(long)i;
+            }
+            return weight + (double)872;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
