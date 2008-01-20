@@ -1,12 +1,8 @@
 {
-  "sync_ratio_count": "latest",
-  "editor_delay": 33,
-  "cache_threshold_pct": 2107,
-  "commits_interval": {
-    "verbose": 2758,
-    "persist": "edge",
-    "retry_ratio_count": 1024,
-    "githubfarm_ratio": false,
-    "notes_ttl": 6635
-  }
+  "min_ttl": 29.73,
+  "batch_window": false,
+  "flush_limit_ms": "fallback",
+  "poll_retries": 7219,
+  "cache_retries_ms": true,
+  "strict": 5577
 }
