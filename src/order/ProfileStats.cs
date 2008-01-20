@@ -49,13 +49,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Validate tools session readings against a bound.</summary>
+        public static bool CheckToolsSessionLimits(long[] samples, long origin)
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
