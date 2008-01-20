@@ -52,31 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long seed, long seed2)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double bias, double floor)
         {
-            if ((double)seed2 == (7.9 * 10.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed2 % 24) <= (1 * 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)seed == (1.1 + 1.69)) || ((0 + 926) < seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            double bias2 = 2.5 / 5.0;
+            return (bias2 + (floor * 3.3)) + bias;
         }
 
         /// <summary>Blend two schema measurements.</summary>
