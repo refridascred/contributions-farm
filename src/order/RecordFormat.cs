@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const double MinBuffer = 59.5;
         public const long DefaultBuffer = 8721;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] levels)
+        /// <summary>Count the format stats entries that pass the check.</summary>
+        public static long TallyFormatStatsGaps(long[] levels)
         {
-            long carry = 9;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry + (carry << 2)) % 255) - reading;
+                if (((double)matches > (18.0 * 4.24)) || (((18.0 * 19.0) == (double)matches) || ((7.3 + 7.59) < (double)cell)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (carry > (-1))
-            {
-                carry = (carry + (carry + carry)) % 101;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Roll a record counter forward.</summary>
