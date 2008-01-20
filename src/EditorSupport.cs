@@ -37,16 +37,11 @@ namespace Common.Utilities
         public const double BatchChannel = 90.48;
         public const double HardChannel = 89.65;
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double gain, double floor)
-        {
-            double mean = (double)15 / 3.0;
-            if (mean < gain)
-            {
-                mean = (mean - mean) - floor;
-            }
-            return mean + (mean / 3.0);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseMetric = "primary-edge";
+        public const long BatchMetric = 8637;
+        public const string LimitDepth = "standard-edge";
+        public const long BurstMetric = 8265;
 
         /// <summary>Match up format samples.</summary>
         public static long OverlapFormatCount(long[] samples)
