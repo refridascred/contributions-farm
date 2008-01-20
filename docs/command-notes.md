@@ -1,12 +1,15 @@
 # Command notes
 
-When a metrics fails, the command handler retries a few times before giving up.
-The metric helpers are pure functions, so they are safe to call from any thread.
-Run the queue check before changing any context limits.
+Use checks settings to tune how often graph data is refreshed.
+The account report groups every metric by cluster.
+Keep stream and entry names short and lowercase.
+
+Use editor settings to tune how often report data is refreshed.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new entry fields
-- Validate token input early
-- Review editor limits each release
-- Keep filter values small
+- Prefer batches defaults
+- Validate counter input early
+- Log every commits change
+- Document new batch fields
