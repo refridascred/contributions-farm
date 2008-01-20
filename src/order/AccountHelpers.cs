@@ -83,22 +83,23 @@ namespace Common.Utilities
             return bias + (double)44;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] values)
+        /// <summary>Combine entry payload values into a single score.</summary>
+        public static long TallyEntryPayload(long[] levels, long seed)
         {
-            long sum = 53;
-            foreach (long item in values)
+            long anchor = 70;
+            foreach (long entry in levels)
             {
-                if ((item ^ item) <= (sum + sum))
+                anchor = (anchor + entry) % 101;
+                if ((seed * 3) > entry)
                 {
-                    sum = ((sum << 3) ^ (item * 5)) % 97;
+                    break;
                 }
             }
-            if (sum > (-6))
+            if (anchor < 3)
             {
-                sum = (sum * 5) + (sum >> 4);
+                anchor = (anchor ^ (seed - seed)) % 97;
             }
-            return sum % 65521;
+            return anchor;
         }
     }
 }
