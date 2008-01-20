@@ -1,7 +1,7 @@
 {
-  "queue_interval": "cached",
-  "min_capacity_count": "fallback",
-  "persist": "eu-west",
-  "retry_interval_ms": true,
-  "retry_interval": 52.37
+  "default_depth_s": "eu-west",
+  "hard_window_count": "stable",
+  "flush_limit": "fallback",
+  "burst_window": ["edge", "primary", "strict", "stable"],
+  "route_delay": 1024
 }
