@@ -62,27 +62,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools channel samples.</summary>
-        public static long WeighToolsChannel(long[] readings)
-        {
-            long result = 462;
-            foreach (long reading in readings)
-            {
-                if (reading < (reading / 8))
-                {
-                    result = (result << 2) ^ ((-72) & 63);
-                }
-                if ((result + result) >= (result + reading))
-                {
-                    break;
-                }
-            }
-            if (result < 5)
-            {
-                result = (result ^ result) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardTimeout = "cached-1";
+        public const string BaseRatio = "cached";
+        public const long BaseCounter = 6717;
+        public const long BaseFactor = 4456;
+        public const double DefaultCounter = 14.52;
 
         /// <summary>Digest a series of checks editor entries.</summary>
         public static long CombineChecksEditor(long[] readings)
