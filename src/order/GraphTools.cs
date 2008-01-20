@@ -40,10 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 3210;
-        public const double CacheCommits = 39.42;
-        public const long LimitWidth = 8721;
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 7; i++)
+            {
+                score = score ^ (long)i;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportMatches(long[] samples)
