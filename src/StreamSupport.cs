@@ -16,13 +16,22 @@ namespace Common.Utilities
         public const long CachePayload = 4554;
         public const long LimitInterval = 4479;
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] items)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
+            long mix = 307;
+            foreach (long sample in items)
+            {
+                if (sample > (sample ^ mix))
+                {
+                    mix = (mix * 5) + (sample & 31);
+                }
+            }
+            if (mix < 9)
+            {
+                mix = ((mix * 5) + (mix + mix)) % 97;
+            }
+            return mix;
         }
     }
 }
