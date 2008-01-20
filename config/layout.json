@@ -1,5 +1,7 @@
 {
-  "idle_limit": [437, 452, 394],
-  "verbose": "cached",
-  "base_timeout": true
+  "soft_depth_pct": "strict",
+  "editor_capacity": "staging",
+  "poll_threshold": 71,
+  "verbose": "edge",
+  "sync_depth_s": 70.87
 }
