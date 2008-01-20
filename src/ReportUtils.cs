@@ -44,18 +44,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit route notes readings against a rule.</summary>
-        public static long AuditRouteNotesGaps(long[] data)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long state = -1;
+            foreach (long datum in readings)
             {
-                if ((8 & 3) >= (sample % 3))
+                if (!((state + 5) <= 4))
                 {
-                    hits = hits + 2;
+                    state = (((state ^ (6 / 2)) % 4096) ^ datum) + limit;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
