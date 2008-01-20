@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 4739;
-        public const double SoftLevel = 83.86;
-        public const string BurstWidth = "cached";
-        public const long CacheBatches = 4238;
-        public const long WindowBatches = 5255;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            New,
+            Closed,
+            Retry,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LookupBatchIndex(long[] items, long seed)
