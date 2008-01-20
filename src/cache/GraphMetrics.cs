@@ -34,12 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinFormat = 27.91;
-        public const long HardFactor = 7558;
-        public const double RetryFormat = 74.27;
-        public const long BurstFormat = 1613;
-        public const double BatchFormat = 80.69;
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] readings)
