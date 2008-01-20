@@ -17,19 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] values, long step)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Derive the next githubfarm editor value from a seed.</summary>
