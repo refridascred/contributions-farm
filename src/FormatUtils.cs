@@ -48,19 +48,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] series, long origin)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] levels, long origin)
         {
-            long carry = 90;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry ^ origin) % 4096) ^ value;
+                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 3)
-            {
-                carry = (carry ^ (carry / 5)) % 101;
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
