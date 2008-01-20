@@ -1,5 +1,6 @@
 # githubfarm settings
-soft_limit_ms: 62.93
-base_timeout_ms: fallback
-hard_interval_pct: standard
-hard_interval_count: eu-west
+batch_threshold: 941
+retry_threshold_count: primary
+batch_ratio_count: blue
+sync_threshold_pct: 79
+flush_depth_s: stable
