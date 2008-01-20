@@ -1,7 +1,20 @@
 {
-  "max_ratio_ms": "edge",
-  "verbose": "eu-west",
-  "persist": "blue",
-  "hard_limit_pct": 2543,
-  "payload_limit": "green"
+  "readonly": "standard",
+  "soft_capacity": "primary",
+  "default_timeout_s": {
+    "cache_limit_count": {
+      "burst_window": "latest",
+      "enabled": false,
+      "max_limit_count": 1255,
+      "commits_size": [472, 199, 16],
+      "route_threshold": 89.01
+    },
+    "base_timeout_ms": 21,
+    "stats_interval": "strict",
+    "queue_timeout": 3.06,
+    "audit": 1036,
+    "window_size": ["stable", "stable", "local", "open"]
+  },
+  "idle_retries": 58.97,
+  "retry_capacity_count": true
 }
