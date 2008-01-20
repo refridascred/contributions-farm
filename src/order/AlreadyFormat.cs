@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a stream cache reading by value.</summary>
-        public static long SeekStreamCacheIndex(long[] items, long bound)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (items[i] == bound)
+                if ((29 & 1) > (entry + count))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
