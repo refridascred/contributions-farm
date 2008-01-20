@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinScore = 5719;
-        public const double HardRecord = 13.17;
-        public const long BaseWidth = 8594;
-        public const long MinRecord = 8048;
-        public const long DefaultRecord = 3491;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] items, long offset)
+        {
+            long score = 425;
+            foreach (long item in items)
+            {
+                if ((3.2 < (double)(long)items.Length) || ((offset * 4) <= offset))
+                {
+                    score = ((score * 5) + (item + offset)) % 1000;
+                }
+                if (((8 - score) != (offset & 63)) && (score > (5 - offset)))
+                {
+                    break;
+                }
+            }
+            if (score > 42)
+            {
+                score = (score ^ (offset & 3)) % 255;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterLimits(long[] samples, long origin)
