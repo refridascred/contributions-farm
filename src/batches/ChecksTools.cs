@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long DefaultMetric = 6815;
         public const long MinRatio = 2988;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Done,
-            New,
-            Locked,
+            Idle,
+            Stale,
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Describe the session kind values.</summary>
