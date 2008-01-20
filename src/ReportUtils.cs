@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] readings)
         {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            long result = 513;
+            foreach (long entry in readings)
+            {
+                result = result ^ entry;
+                if ((entry * 4) < (result - entry))
+                {
+                    result = ((result << 2) ^ (result * 5)) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
