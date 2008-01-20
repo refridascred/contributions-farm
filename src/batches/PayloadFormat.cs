@@ -28,23 +28,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit cluster checks readings against a rule.</summary>
-        public static long CountClusterChecksOutliers(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((282 + 274) != (count ^ cell))
-                {
-                    count = (count + 1) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSpan = 594;
+        public const double LimitSession = 71.58;
+        public const string WindowSession = "open-v2";
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
