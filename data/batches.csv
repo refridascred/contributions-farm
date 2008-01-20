@@ -1,9 +1,8 @@
-id,token,owner
-1,15.99,377
-2,791,local
-3,33.84,398
-4,605,20
-5,19.75,strict
-6,78.95,fallback
-7,eu-west,460
-8,18,67.2
+id,level,ratio,region
+1,636,standard,fallback
+2,271,cached,637
+3,368,720,775
+4,32,legacy,stable
+5,68.0,eu-west,167
+6,129,blue,stable
+7,eu-west,720,96.84
