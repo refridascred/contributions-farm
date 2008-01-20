@@ -49,13 +49,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public double Offset { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
             public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
