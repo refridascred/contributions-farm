@@ -44,10 +44,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleBuffer = 26.5;
-        public const string WindowInterval = "staging-edge";
-        public const double SoftBuffer = 92.98;
-        public const double LimitSpan = 45.73;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
