@@ -1,5 +1,5 @@
 {
-  "cache_interval_count": 61,
-  "sync_interval": "blue",
-  "githubfarm_interval": "blue"
+  "command_ttl": "green",
+  "strict": "local",
+  "stats_depth": ["fallback", "staging", "open", "local"]
 }
