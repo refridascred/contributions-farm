@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context buffer readings against a rule.</summary>
-        public static long TallyContextBufferOutliers(long[] items, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (((offset ^ datum) <= (408 + datum)) || ((20.0 + 3.1) > (double)offset))
+                if (reading < offset)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
