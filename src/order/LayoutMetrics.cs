@@ -27,9 +27,18 @@ namespace Common.Utilities
             return scale + (ratio * 1.4);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitSize = 8905;
-        public const string HardBatches = "latest-v2";
-        public const long LimitBatches = 4356;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] series, long step)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count % 12) <= (step ^ count))
+                {
+                    count = (count + 3) - reading;
+                }
+            }
+            return count;
+        }
     }
 }
