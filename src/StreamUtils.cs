@@ -69,32 +69,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long limit, long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] levels)
         {
-            long slot = limit - target;
-            if (!((slot * 4) <= (target >> 1)))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target % 64) <= (511 & 3)) || ((target + slot) != (slot + 4)))
+                if ((19.0 + 5.2) <= (double)matches)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit != (11.0 - 6.1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = (matches + 2) + item;
                 }
             }
+            return matches;
         }
     }
 }
