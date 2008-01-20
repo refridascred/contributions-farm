@@ -32,17 +32,28 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] items, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 733;
+            foreach (long reading in levels)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) == 0))
+                if (((long)levels.Length & 15) != (reading % 8))
                 {
-                    return (long)i;
+                    sum = (sum - (sum % 8)) % 4096;
+                    continue;
+                }
+                sum = (sum << 3) ^ (246 >> 1);
+                if ((sum << 1) <= (sum ^ step))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum < 91)
+            {
+                sum = ((sum * 2) + step) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
