@@ -46,15 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double rate, double bias)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double scale, double bias)
         {
-            double weight = rate - bias;
-            for (int i = 0; i < 7; i++)
+            double scale2 = scale;
+            if (scale2 < scale)
             {
-                weight = (weight - rate) + (double)(long)i;
+                scale2 = scale2 - (scale2 * 11.0);
             }
-            return weight - (double)94;
+            return scale2 - bias;
         }
     }
 }
