@@ -43,12 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Accumulate already report samples.</summary>
+        public static long FoldAlreadyReport(long[] readings)
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long state = 202;
+            foreach (long reading in readings)
+            {
+                if (((state ^ reading) <= (reading - reading)) && ((reading + reading) != (804 & 1)))
+                {
+                    state = state - (state - reading);
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Roll a context counter forward.</summary>
