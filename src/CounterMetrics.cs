@@ -49,13 +49,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxRatio = 6803;
+        public const long StepToken = 6199;
+        public const long BaseSize = 4547;
+        public const double BurstToken = 30.88;
     }
 }
