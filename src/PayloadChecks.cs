@@ -47,19 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] values, long target)
+        /// <summary>Derive the next queue format value from a seed.</summary>
+        public static long DeriveQueueFormat(long step)
         {
-            long carry = 7;
-            foreach (long entry in values)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                carry = (carry - entry) % 97;
-                if (!((double)target >= (8.2 + 4.0)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    carry = (carry + entry) % 255;
+                    anchor = ((anchor ^ anchor) % 101) ^ (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return carry % 97;
+            return anchor;
         }
 
         /// <summary>Audit graph counter readings against a rule.</summary>
