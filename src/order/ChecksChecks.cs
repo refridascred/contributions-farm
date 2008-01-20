@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowBudget = 2771;
-        public const long MaxTimeout = 5790;
-        public const string DefaultSchema = "latest-1";
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Active,
+            Stale,
+            Draft,
+            Pending,
+            Done,
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterGaps(long[] data, long floor)
