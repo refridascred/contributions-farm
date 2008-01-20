@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] values, long seed)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (cell <= count)
-                {
-                    count = (count + 3) + seed;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
+            public double Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
