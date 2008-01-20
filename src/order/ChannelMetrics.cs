@@ -21,24 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long floor, long origin)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] data, long offset)
         {
-            if ((floor - floor) < origin)
+            bool found = true;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin <= (double)floor)
+                if (datum < offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Project the next cluster value.</summary>
