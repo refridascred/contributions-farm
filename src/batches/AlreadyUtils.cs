@@ -49,11 +49,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
+            Locked,
+            Closed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Digest a series of cluster commits entries.</summary>
