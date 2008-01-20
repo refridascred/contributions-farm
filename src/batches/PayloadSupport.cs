@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double scale, double bias)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double load = scale - (bias - scale);
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + load;
+            Paused,
+            Queued,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
