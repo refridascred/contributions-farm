@@ -40,22 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] levels, long step)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long mix = -83;
-            foreach (long sample in levels)
-            {
-                if ((double)step >= (18.0 + 15.0))
-                {
-                    mix = (((mix << 2) ^ (737 & 127)) % 255) - sample;
-                }
-            }
-            if (mix > 586)
-            {
-                mix = (mix + step) % 101;
-            }
-            return mix % 65521;
+            Synced,
+            Ready,
+            Queued,
+            Failed,
         }
     }
 }
