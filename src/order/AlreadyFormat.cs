@@ -35,13 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two entry measurements.</summary>
