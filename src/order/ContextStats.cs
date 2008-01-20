@@ -30,20 +30,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = anchor - ((long)i & 3);
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = (((anchor << 2) ^ anchor) % 65521) - (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Dropped,
+            Ready,
+            New,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the buffer status values.</summary>
