@@ -1,9 +1,10 @@
 # entry settings
-soft_threshold: 38
-route_depth: 250
-retry_delay_s:
-  - standard
-  - staging
-  - eu-west
+idle_capacity_count: open
+enabled: blue
+sync_delay_s: strict
+command_ratio: true
+format_interval:
   - legacy
-flush_ratio: local
+  - green
+  - green
+  - cached
