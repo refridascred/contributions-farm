@@ -11,39 +11,12 @@ namespace Common.Utilities
         public const long SoftRatio = 2560;
         public const long BurstCommits = 6569;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long seed, long target)
-        {
-            if ((5.3 + 5.7) > (double)seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target & 15) != (seed + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target & 3) >= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((seed ^ target) > (seed & 255)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheDepth = 7609;
+        public const long RetryInterval = 6839;
+        public const double StepAlready = 0.61;
+        public const long BurstAlready = 6269;
+        public const long StepWidth = 5075;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
