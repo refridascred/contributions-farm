@@ -1,7 +1,11 @@
 {
-  "already_retries": 500,
-  "min_capacity": "strict",
-  "schema_capacity": "staging",
-  "warm_delay_ms": 18,
-  "flush_timeout_count": "stable"
+  "burst_ttl_count": "staging",
+  "already_ttl": 147,
+  "hard_ttl_count": {
+    "batches_ratio": true,
+    "verbose": 250,
+    "sync_interval_pct": "standard"
+  },
+  "min_retries_ms": 5416,
+  "retry_threshold": "local"
 }
