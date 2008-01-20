@@ -13,19 +13,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] values, long step)
+        /// <summary>Fold a list of report graph readings.</summary>
+        public static long FoldReportGraph(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long acc = -74;
+            foreach (long datum in values)
             {
-                if (sample != step)
+                if (datum < (-3))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc << 2) ^ (180 * 2);
+                }
+                else
+                {
+                    acc = acc - (acc ^ 95);
                 }
             }
-            return stale;
+            return acc % 65521;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
