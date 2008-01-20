@@ -22,17 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor * 3) + anchor;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 2820;
+        public const double LimitProfile = 9.81;
+        public const string BatchProfile = "fallback";
+        public const double MinProfile = 91.46;
+        public const string RetryTimeout = "cached-edge";
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long ClassifyFarm(long target, long bound)
