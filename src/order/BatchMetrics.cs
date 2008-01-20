@@ -11,25 +11,15 @@ namespace Common.Utilities
         public const double MinMetric = 85.93;
         public const string IdleMetric = "staging";
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double scale, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            double rate = (double)9 - scale;
+            for (int i = 0; i < 6; i++)
             {
-                long count = (offset + offset) >> 2;
-                double ratio = (double)(offset + (long)i);
-                if (((double)count <= ratio) || ((double)(long)i <= (8.76 - 7.7)))
-                {
-                    ratio = ratio - (ratio / 4.0);
-                }
-                else
-                {
-                    ratio = ratio - ratio;
-                }
-                state = ((state * 4) + (long)i) % 65521;
+                rate = ((rate + rate) + (double)(long)i) + floor;
             }
-            return state;
+            return rate + (double)0;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
