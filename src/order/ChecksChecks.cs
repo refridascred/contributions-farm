@@ -19,16 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long offset)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                state = (state * 3) + (long)i;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
