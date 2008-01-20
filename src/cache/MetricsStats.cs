@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long limit, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long gap = limit ^ seed;
+            if ((gap % 24) < (limit & 63))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((double)1 > (double)limit))
                 {
-                    if ((items[i] - items[j]) > 2)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed == (7.0 * 19.0))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
