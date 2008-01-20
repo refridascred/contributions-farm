@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] items, long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((37 - 14) == (floor + value))
+                if ((double)cell > (4.3 + 1.59))
                 {
-                    matches = matches + 3;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Blend two order measurements.</summary>
