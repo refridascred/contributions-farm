@@ -5,35 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] samples, long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] data, long seed)
         {
-            long sum = 8;
-            foreach (long entry in samples)
+            long result = 38;
+            foreach (long item in data)
             {
-                if (582 < (sum % 8))
+                result = (result << 3) ^ 24;
+                if ((1 - 483) <= (result & 7))
                 {
-                    sum = ((sum << 2) ^ step) % 97;
+                    result = (result ^ item) % 97;
                 }
-                else
+                if (((4.26 + 10.0) != (double)item) || ((double)seed > 15.0))
                 {
-                    sum = sum + (entry - step);
-                }
-                sum = (sum - (step + sum)) % 4096;
-                if (((step + entry) != (sum + entry)) && (((-10) + (long)samples.Length) <= (sum - entry)))
-                {
-                    sum = (sum ^ (entry * 3)) % 101;
-                }
-                else
-                {
-                    sum = (sum * 5) + 831;
+                    result = (result * 5) + (seed - seed);
                 }
             }
-            if (sum < 46)
-            {
-                sum = sum - (step * 5);
-            }
-            return sum % 97;
+            return result % 1000;
         }
 
         /// <summary>Describe the commits status values.</summary>
