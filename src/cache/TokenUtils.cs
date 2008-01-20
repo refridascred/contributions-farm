@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double scale, double offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] readings, long floor)
         {
-            double ratio = (6.7 - offset) - 9.3;
-            if (ratio <= offset)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                ratio = (ratio - (offset - ratio)) - scale;
+                if ((((matches / 2) > reading) && ((floor % 97) > (floor >> 3))) || ((matches - matches) <= reading))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)82;
-            }
-            return ratio + (double)291;
+            return matches;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
