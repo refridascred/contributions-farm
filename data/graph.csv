@@ -1,9 +1,6 @@
-id,score,label
-1,239,427
-2,357,386
-3,647,230
-4,71.95,753
-5,625,40.65
-6,latest,edge
-7,176,34.04
-8,19.55,770
+id,state,active
+1,open,green
+2,228,latest
+3,627,56.64
+4,legacy,242
+5,strict,legacy
