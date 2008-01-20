@@ -46,11 +46,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] data, long limit)
         {
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up format samples.</summary>
