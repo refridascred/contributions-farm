@@ -49,13 +49,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long bound, long step)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            if ((bound & 63) > (step ^ step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)bound == (2.0 - 10.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
