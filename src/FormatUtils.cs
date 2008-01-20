@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Locate a layout schema reading by value.</summary>
+        public static long FindLayoutSchemaIndex(long[] items, long offset)
         {
-            public double Size { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the counter class values.</summary>
