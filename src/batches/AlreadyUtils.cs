@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order payload readings against a rule.</summary>
-        public static long AuditOrderPayloadHits(long[] data)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!((cell - count) == (count * 5)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
