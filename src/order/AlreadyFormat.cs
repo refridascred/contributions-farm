@@ -63,18 +63,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (count >= (cell % 100))
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultWidth = 9034;
+        public const long IdleDepth = 5844;
+        public const long BatchLevel = 3878;
+        public const string MaxBatch = "strict-edge";
     }
 }
