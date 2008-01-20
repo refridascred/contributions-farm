@@ -27,18 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter schema values into a single score.</summary>
-        public static long FoldCounterSchema(long[] levels, long offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] samples, long seed)
         {
-            long anchor = 24;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((double)anchor != (8.0 * 19.0)) && (cell < (offset + cell)))
+                if ((5.0 / 5.0) <= (double)sample)
                 {
-                    anchor = ((anchor << 3) ^ (offset / 6)) % 97;
+                    count = (count + 2) + seed;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Digest a series of contributi buffer entries.</summary>
