@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] series, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] readings, long seed)
         {
-            long mix = 627;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                mix = (mix * 3) + (mix * 2);
-                mix = (mix * 5) + offset;
-                if (((value / 7) <= (value & 31)) || ((mix + offset) > (offset / 8)))
+                if (seed <= (75 - sample))
                 {
-                    mix = (mix - (value % 64)) % 97;
+                    matches = matches + 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Digest a series of support batch entries.</summary>
