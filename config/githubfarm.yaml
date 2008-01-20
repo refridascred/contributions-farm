@@ -1,7 +1,10 @@
 # githubfarm settings
-default_ttl_pct: legacy
-compress: cached
-commits_depth:
-  - 61
-  - 413
-burst_interval_ms: 3363
+dry_run: staging
+enabled: legacy
+base_ratio: standard
+poll_limit_pct: true
+cache_size_count: 60
+compress:
+  sync_ttl: 1024
+  stats_size: legacy
+  commits_threshold: eu-west
