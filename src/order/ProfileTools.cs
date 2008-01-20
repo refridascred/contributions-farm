@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((total + limit) <= limit)
-                {
-                    total = ((total << 2) ^ limit) % 101;
-                    continue;
-                }
-                total = total - (long)i;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Stale,
+            Failed,
+            Closed,
         }
 
         /// <summary>Combine already commits values into a single score.</summary>
