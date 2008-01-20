@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 4188;
-        public const long MaxStream = 3601;
-        public const long WindowTimeout = 8916;
-        public const double MaxInterval = 36.82;
-        public const long MaxLevel = 2481;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            New,
+            Failed,
+            Active,
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamGaps(long[] data)
