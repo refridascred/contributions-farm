@@ -38,19 +38,10 @@ namespace Common.Utilities
         public const long LimitAccount = 6731;
         public const long RetryAccount = 2711;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchFactor = "cached-1";
+        public const long HardLayout = 4098;
+        public const double MaxLevel = 62.03;
+        public const long DefaultSize = 7002;
     }
 }
