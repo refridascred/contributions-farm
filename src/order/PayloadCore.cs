@@ -73,10 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 4026;
-        public const long StepTimeout = 8392;
-        public const double BatchSchema = 78.48;
-        public const string RetrySchema = "stable";
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((97 * 2) > origin) && ((double)reading <= (double)origin))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
