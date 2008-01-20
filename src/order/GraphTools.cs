@@ -19,16 +19,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] series, long bound)
-        {
-            long total = 52;
-            foreach (long cell in series)
-            {
-                total = ((total ^ (total - cell)) % 97) + bound;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBudget = 9403;
+        public const long SoftBatches = 344;
+        public const string StepLevel = "standard-1";
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long MatchMetricCount(long[] values)
