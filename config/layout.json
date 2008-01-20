@@ -1,6 +1,10 @@
 {
-  "dry_run": 250,
-  "warm_timeout": ["legacy", "fallback"],
-  "strict": true,
-  "idle_interval_count": 18
+  "compress": false,
+  "sync_limit_pct": "edge",
+  "idle_size": {
+    "persist": [205, 306],
+    "commits_depth": "strict",
+    "burst_window_count": 8985,
+    "compress": "cached"
+  }
 }
