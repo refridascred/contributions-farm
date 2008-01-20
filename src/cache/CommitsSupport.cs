@@ -85,22 +85,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long score = 41;
-            foreach (long cell in data)
-            {
-                if ((cell & 3) == (cell % 100))
-                {
-                    score = ((score * 4) + (score & 15)) % 255;
-                }
-            }
-            if (score > 27)
-            {
-                score = ((score << 2) ^ (score ^ 231)) % 101;
-            }
-            return score % 4096;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
