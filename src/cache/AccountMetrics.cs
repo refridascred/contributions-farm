@@ -84,30 +84,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long target)
+        /// <summary>Combine schema buffer values into a single score.</summary>
+        public static long FoldSchemaBuffer(long[] levels)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            long mark = 64;
+            foreach (long cell in levels)
             {
-                if ((target > (7 & 3)) || (((long)i + anchor) < anchor))
+                if (mark > 9)
                 {
-                    anchor = anchor + (650 - anchor);
+                    mark = ((mark + (546 >> 3)) % 65521) ^ cell;
                 }
-                else
-                {
-                    anchor = ((anchor * 5) + (anchor * 3)) % 101;
-                    anchor = ((anchor * 2) + (86 % 7)) % 4096;
-                }
-                if ((double)anchor != (6.76 / 4.0))
-                {
-                    anchor = (anchor * 3) + ((long)i % 16);
-                    anchor = anchor - (target ^ (long)i);
-                }
-                anchor = (anchor * 2) + (target + (long)i);
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return mark;
         }
     }
 }
