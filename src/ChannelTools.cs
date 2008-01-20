@@ -35,18 +35,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((((entry ^ seen) == (seen % 16)) && ((entry & 63) >= (entry - seen))) || (((double)seen > (5.32 * 3.0)) || ((double)entry > 20.0)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCount = 2863;
+        public const long SoftFactor = 4319;
+        public const long BatchCounter = 801;
+        public const long BatchBudget = 6881;
     }
 }
