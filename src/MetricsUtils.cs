@@ -46,19 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] series, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (value != offset)
+                if (sample != seed)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Describe the profile kind values.</summary>
