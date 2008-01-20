@@ -59,19 +59,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Match up stream route samples.</summary>
+        public static long MatchStreamRouteCount(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (target >= (anchor * 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor ^ anchor;
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
     }
 }
