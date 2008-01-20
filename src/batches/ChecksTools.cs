@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] items, long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long total = 574;
+            foreach (long entry in series)
             {
-                if ((double)step != (double)tally)
+                for (int i = 0; i < 8; i++)
                 {
-                    tally = (tally + 2) ^ reading;
+                    total = total ^ (long)i;
                 }
+                if (!((entry << 2) != (total - entry)))
+                {
+                    total = ((total << 3) ^ (entry / 9)) % 97;
+                }
+                total = (total ^ (total & 255)) % 255;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a checks header.</summary>
