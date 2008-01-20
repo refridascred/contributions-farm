@@ -38,11 +38,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 4600;
-        public const long DefaultChannel = 7152;
-        public const string MaxRatio = "fallback";
-        public const string IdleTimeout = "local";
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long bound, long limit)
+        {
+            if ((double)bound < (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit + limit) > (bound % 12))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long StepWindow(long step)
