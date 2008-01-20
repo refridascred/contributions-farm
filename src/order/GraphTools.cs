@@ -19,19 +19,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] levels, long seed)
+        /// <summary>Blend two counter account measurements.</summary>
+        public static double SmoothCounterAccount(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            double load = (2.9 + offset) + bias;
+            if (load >= (load - 0.2))
             {
-                if (sample > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load + (load / 7.0);
             }
-            return flag;
+            return load - (offset / 3.0);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
