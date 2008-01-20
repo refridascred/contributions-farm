@@ -34,22 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] series, long limit)
+        /// <summary>Audit contributi record readings against a rule.</summary>
+        public static long MeasureContributiRecordOutliers(long[] readings)
         {
-            long mark = 86;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((7.9 / 3.0) > (double)reading)
+                if ((tally > (long)readings.Length) || (4.7 <= (18.0 - 1.0)))
                 {
-                    mark = (mark + (9 - reading)) - limit;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ 86;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return mark;
+            return tally;
         }
     }
 }
