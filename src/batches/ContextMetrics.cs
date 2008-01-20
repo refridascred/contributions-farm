@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine account context values into a single score.</summary>
-        public static long WeighAccountContext(long[] samples, long target)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] items, long origin)
         {
-            long mark = 559;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if ((items[i] >= origin) && ((items[i] % 5) == 0))
                 {
-                    mark = (((mark * 4) + (807 / 4)) % 101) ^ (long)i;
-                    mark = ((mark * 4) + (mark + mark)) % 97;
-                }
-                mark = (mark - (mark + mark)) % 4096;
-                if (((0.8 - 9.93) > (double)target) || ((double)mark >= (double)153))
-                {
-                    mark = (mark - (value >> 4)) % 255;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
