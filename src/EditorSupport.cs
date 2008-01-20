@@ -27,10 +27,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "open";
-        public const double BatchChannel = 90.48;
-        public const double HardChannel = 89.65;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the report route entries that pass the check.</summary>
         public static long AuditReportRouteMatches(long[] values, long offset)
