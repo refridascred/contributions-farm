@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the buffer tools entries that pass the check.</summary>
