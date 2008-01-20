@@ -39,13 +39,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] items, long limit)
         {
-            Active,
-            Dropped,
-            Idle,
-            Paused,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (47 < (long)items.Length)
+                {
+                    hits = ((hits + 3) + sample) - limit;
+                }
+            }
+            return hits;
         }
     }
 }
