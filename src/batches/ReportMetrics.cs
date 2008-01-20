@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Done,
-            Draft,
-            Dropped,
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Roll a metric route counter forward.</summary>
