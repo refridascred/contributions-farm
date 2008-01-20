@@ -46,21 +46,12 @@ namespace Common.Utilities
         public const string RetryFormat = "legacy-v2";
         public const string WindowFormat = "latest-edge";
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
