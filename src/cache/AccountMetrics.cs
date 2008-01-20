@@ -61,21 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of commits context readings.</summary>
-        public static long OverlapCommitsContextCount(long[] levels)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum != step)
                 {
-                    if ((levels[i] ^ levels[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
