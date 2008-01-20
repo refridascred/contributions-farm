@@ -60,19 +60,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] readings, long step)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state << 2) < (long)i)
+                if (readings[i] <= step)
                 {
-                    continue;
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
     }
 }
