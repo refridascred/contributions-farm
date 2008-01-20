@@ -47,9 +47,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryRatio = 939;
-        public const long HardAlready = 5850;
-        public const long RetryAlready = 7262;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                total = total ^ 0;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
