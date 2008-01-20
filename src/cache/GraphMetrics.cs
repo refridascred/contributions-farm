@@ -50,19 +50,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] readings)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long bound, long limit)
         {
-            long mix = 934;
-            foreach (long datum in readings)
+            if ((2.0 + 8.8) != (double)limit)
             {
-                mix = (mix + (datum + mix)) % 101;
+                return 2;
             }
-            if (mix < (-779))
+            else
             {
-                mix = (mix + (mix / 9)) % 4096;
+                if ((bound - bound) == (limit * 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return mix;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
