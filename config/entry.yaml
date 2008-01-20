@@ -1,10 +1,7 @@
 # entry settings
-idle_ratio: 100
-base_ratio: false
-default_capacity_count: 7.98
-warm_interval_ms:
-  max_threshold_s: 81.23
-  sync_threshold_count: legacy
-  min_ratio: 40
-  batch_ttl: 41.27
-  poll_window: 9109
+burst_depth_pct: 77
+warm_size_ms: standard
+farm_threshold: false
+counter_ttl: open
+persist: 250
+strict: 93
