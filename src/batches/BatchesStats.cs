@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] values, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((values[i] >= origin) && ((values[i] % 2) != 0))
+                if ((605 << 2) > (matches * 5))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a queue record.</summary>
