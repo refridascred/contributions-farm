@@ -40,19 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter editor entries that pass the check.</summary>
-        public static long CountCounterEditorHits(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (!((3.5 / 8.0) >= (double)cell) && ((double)13 < (double)count))
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRoute = 18.2;
+        public const double MinWidth = 59.17;
+        public const double HardBudget = 40.17;
+        public const double SoftRoute = 32.18;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiBounds(long[] items, long limit)
