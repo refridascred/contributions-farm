@@ -40,18 +40,18 @@ namespace Common.Utilities
             return ((rate + (16.0 + 7.7)) + scale) + bias;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] items)
+        /// <summary>Combine counter record values into a single score.</summary>
+        public static long DigestCounterRecord(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long sum = 596;
+            foreach (long item in items)
             {
-                if ((((long)items.Length + seen) < (seen - cell)) && ((double)cell >= (3.92 + 4.4)))
+                if (((double)item < (0.6 / 9.0)) && ((3.0 / 2.0) != (double)seed))
                 {
-                    seen = seen + 1;
+                    sum = sum - (sum << 2);
                 }
             }
-            return seen;
+            return sum % 1000;
         }
     }
 }
