@@ -27,18 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] items)
+        /// <summary>Audit window checks readings against a rule.</summary>
+        public static long CountWindowChecksOutliers(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (!((4.38 + 3.47) <= (double)datum) && ((8.39 < (double)count) && ((1 % 16) <= (datum << 3))))
+                if ((double)origin <= (20.0 - 2.6))
                 {
-                    count = count + 1;
+                    hits = (hits + 1) ^ datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
