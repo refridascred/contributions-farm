@@ -13,11 +13,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitDepth = 4368;
-        public const long StepDepth = 850;
-        public const double LimitContext = 62.71;
-        public const double IdleDepth = 34.9;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long CountContextHits(long[] readings, long floor)
