@@ -24,13 +24,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] levels, long offset)
         {
-            Retry,
-            Queued,
-            Failed,
-            Stale,
+            long result = 14;
+            foreach (long item in levels)
+            {
+                result = result + offset;
+                result = result + (item + item);
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a record info.</summary>
