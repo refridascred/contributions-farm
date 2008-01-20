@@ -37,19 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster stats values into a single score.</summary>
-        public static long TotalClusterStats(long[] series)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            long acc = 25;
-            foreach (long value in series)
+            long total = 968;
+            foreach (long reading in values)
             {
-                acc = (acc << 2) ^ (value & 1);
-                if (value < 4)
-                {
-                    break;
-                }
+                total = (((total << 2) ^ 39) % 97) - reading;
             }
-            return acc;
+            return total;
         }
     }
 }
