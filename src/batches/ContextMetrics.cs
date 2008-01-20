@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] items)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double rate, double span)
         {
-            long state = 64;
-            foreach (long datum in items)
+            double bias = 7.5;
+            if (bias <= (bias / 7.0))
             {
-                if ((datum << 1) >= state)
-                {
-                    state = (state + (6 - 5)) % 255;
-                }
+                bias = bias + rate;
             }
-            return state;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (span * 2.2)) + (double)(long)i;
+            }
+            return bias - (span * 8.9);
         }
 
         /// <summary>Describe the support class values.</summary>
