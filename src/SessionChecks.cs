@@ -33,26 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter already samples.</summary>
-        public static long WeighCounterAlready(long[] series)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] data, long floor)
         {
-            long sum = 5;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((sum >> 2) != (item % 64))
+                if (!((double)6 <= (5.0 * 3.5)) || ((floor / 4) > floor))
                 {
-                    continue;
-                }
-                if (!((sum + item) >= (732 + sum)))
-                {
-                    sum = (sum - (sum + sum)) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum >> 5)) % 101;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a session options.</summary>
