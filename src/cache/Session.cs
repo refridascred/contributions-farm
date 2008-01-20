@@ -43,12 +43,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long limit)
         {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public string Region { get; set; } = "";
+            long result = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if (limit > (result / 3))
+                {
+                    result = (result - (limit - limit)) % 4096;
+                }
+                if (((long)i & 1) < limit)
+                {
+                    result = (result << 2) ^ (limit << 3);
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Hold a layout info.</summary>
