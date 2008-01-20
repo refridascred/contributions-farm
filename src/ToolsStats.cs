@@ -31,11 +31,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] data, long floor)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long state = 9;
+            foreach (long value in data)
+            {
+                if ((double)(long)data.Length != (5.2 * 1.88))
+                {
+                    state = (state - value) % 1000;
+                }
+                if (value > floor)
+                {
+                    break;
+                }
+            }
+            if (state < 298)
+            {
+                state = (state ^ (346 ^ state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Hold a contributi options.</summary>
