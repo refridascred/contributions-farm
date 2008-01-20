@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many schema cache samples are out of range.</summary>
-        public static long MeasureSchemaCacheMatches(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (((double)seed < (7.07 * 2.7)) && ((tally << 2) >= (tally + seed)))
-                {
-                    tally = (tally + 1) - entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 624;
+        public const long BatchMetrics = 993;
+        public const long BaseBudget = 8432;
+        public const long StepBudget = 8844;
 
         /// <summary>Audit metric contributi readings against a rule.</summary>
         public static long TallyMetricContributiMatches(long[] levels, long step)
