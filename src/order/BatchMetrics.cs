@@ -86,21 +86,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 50;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry ^ (value + value)) % 4096;
             }
-            return seen;
+            return carry % 4096;
         }
     }
 }
