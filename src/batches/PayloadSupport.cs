@@ -25,12 +25,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Pending,
-            Ready,
-            Active,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultLevel = 2964;
+        public const long MinSchema = 576;
+        public const long LimitDepth = 5932;
     }
 }
