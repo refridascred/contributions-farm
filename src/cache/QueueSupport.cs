@@ -25,10 +25,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleRatio = 8373;
-        public const long MinCount = 7118;
-        public const long LimitDepth = 8276;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (!((double)entry > (0.8 / 7.0)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LookupBatchesIndex(long[] levels, long origin)
