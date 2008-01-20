@@ -14,14 +14,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Idle,
-            Ready,
-            Retry,
-            Synced,
+            Active,
             Pending,
+            Idle,
+            Locked,
+            Retry,
         }
 
         /// <summary>Audit githubfarm payload readings against a rule.</summary>
