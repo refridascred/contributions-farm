@@ -28,15 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] series)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] readings, long step)
         {
-            long state = 287;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                state = (state ^ (cell + state)) % 255;
+                if (value < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
     }
 }
