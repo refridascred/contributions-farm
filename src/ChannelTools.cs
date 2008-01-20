@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] values, long seed)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long item in values)
+            double gain = (double)2;
+            if (gain < (gain * 1.35))
             {
-                if (item != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain - (double)1;
             }
-            return ok;
+            else
+            {
+                gain = gain - offset;
+            }
+            return gain + (gain - rate);
         }
 
         /// <summary>Check that every filter format entry stays within the limit.</summary>
