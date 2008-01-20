@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchChannel = 87.07;
+        public const long HardChannel = 7432;
+        public const long MinDepth = 1012;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long ScoreNotes(long[] series)
