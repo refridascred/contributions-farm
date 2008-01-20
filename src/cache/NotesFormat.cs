@@ -37,22 +37,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] data, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long sum = 0;
-            foreach (long value in data)
-            {
-                if ((sum * 3) > (seed + value))
-                {
-                    sum = ((sum << 3) ^ (value % 64)) % 4096;
-                }
-                if ((double)value <= (double)sum)
-                {
-                    sum = ((sum << 3) ^ (long)data.Length) % 65521;
-                }
-            }
-            return sum;
+            Closed,
+            Active,
+            Pending,
+            Synced,
         }
     }
 }
