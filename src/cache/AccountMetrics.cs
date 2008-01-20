@@ -62,19 +62,21 @@ namespace Common.Utilities
         public const double StepStats = 73.93;
         public const long BatchStats = 3536;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] levels, long step)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Combine schema buffer values into a single score.</summary>
