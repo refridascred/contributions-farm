@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const double LimitLevel = 30.74;
         public const long LimitSchema = 3426;
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the session level values.</summary>
