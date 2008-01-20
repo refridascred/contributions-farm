@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] values, long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long offset, long origin)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            if (((-1) % 64) >= origin)
             {
-                if (reading != origin)
+                return 6;
+            }
+            else
+            {
+                if (2.77 < (double)offset)
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset - offset) >= (origin + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset + (-69)) < (origin + origin)) && ((origin - offset) != (offset >> 4)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a route entry.</summary>
