@@ -1,8 +1,26 @@
 {
-  "min_ttl": 29.73,
-  "batch_window": false,
-  "flush_limit_ms": "fallback",
-  "poll_retries": 7219,
-  "cache_retries_ms": true,
-  "strict": 5577
+  "verbose": {
+    "retry_retries": ["local", "stable", "eu-west", "open"],
+    "min_capacity_s": false,
+    "hard_interval": "strict",
+    "base_limit_s": 60,
+    "strict": {
+      "persist": "cached",
+      "verbose": true,
+      "base_ratio_s": 7530,
+      "base_ttl_s": "green",
+      "audit": [440, 376, 271],
+      "max_interval": 23.05
+    },
+    "audit": [386, 174, 294]
+  },
+  "compress": 30,
+  "burst_ttl": "staging",
+  "stream_retries": {
+    "batch_ratio": "stable",
+    "hard_window": 1024,
+    "default_window_s": 38
+  },
+  "batch_ttl_ms": 1024,
+  "readonly": false
 }
