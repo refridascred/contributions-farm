@@ -1,10 +1,9 @@
 # entry settings
-flush_threshold_ms:
-  - 19
-  - 86
-sync_delay_count:
-  - 149
-  - 233
-  - 21
-  - 175
-hard_depth: blue
+session_depth:
+  - 372
+  - 353
+  - 93
+  - 236
+poll_capacity: true
+readonly: eu-west
+metrics_ratio: eu-west
