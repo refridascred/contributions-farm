@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitBudget = 5781;
-        public const double RetryDepth = 20.31;
-        public const long DefaultScore = 7265;
-        public const double SoftGithubfarm = 37.98;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] series, long offset)
+        {
+            long mix = 627;
+            foreach (long value in series)
+            {
+                mix = (mix * 3) + (mix * 2);
+                mix = (mix * 5) + offset;
+                if (((value / 7) <= (value & 31)) || ((mix + offset) > (offset / 8)))
+                {
+                    mix = (mix - (value % 64)) % 97;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long BucketMetric(long floor, long origin)
