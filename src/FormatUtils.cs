@@ -59,12 +59,17 @@ namespace Common.Utilities
             return weight2 - (floor + weight2);
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long limit)
         {
-            New,
-            Ready,
-            Locked,
+            long score = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                score = score ^ ((-84) - limit);
+                score = (score * 3) + (long)i;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
