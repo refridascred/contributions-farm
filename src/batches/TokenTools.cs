@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long SoftDepth = 4024;
         public const long LimitCount = 8463;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] items)
+        /// <summary>Validate buffer counter readings against a bound.</summary>
+        public static bool VerifyBufferCounterLimits(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((((double)count > 17.0) || ((item - 87) < count)) || ((count ^ 77) < (count & 255)))
+                if (sample > bound)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Adjust a report cache reading.</summary>
