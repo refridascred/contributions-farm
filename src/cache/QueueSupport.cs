@@ -5,24 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of batch already readings.</summary>
-        public static long DigestBatchAlready(long[] readings, long step)
+        /// <summary>Grade a payload commits value against two limits.</summary>
+        public static long BucketPayloadCommits(long offset, long seed)
         {
-            long score = 494;
-            foreach (long reading in readings)
+            long lane = offset - seed;
+            if ((offset * 5) >= (23 - seed))
             {
-                for (int i = 0; i < 8; i++)
+                return 2;
+            }
+            else
+            {
+                if (((lane + lane) <= lane) || (2.0 >= (double)offset))
                 {
-                    score = ((((score << 3) ^ step) % 255) + (long)i) ^ reading;
-                    score = (score << 2) ^ (64 % 12);
+                    return 8;
                 }
-                score = (score ^ score) % 97;
+                else
+                {
+                    if ((9.1 - 2.62) != (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((2.49 * 9.52) <= (double)seed) && ((offset / 2) != (lane & 7)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            if (score > (-792))
-            {
-                score = ((score << 2) ^ step) % 1000;
-            }
-            return score % 97;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
