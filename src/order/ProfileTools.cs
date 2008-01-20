@@ -68,11 +68,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double weight, double floor)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            double weight2 = floor;
+            if (weight2 > weight2)
+            {
+                weight2 = (weight2 - weight2) - weight;
+            }
+            return weight2 + (weight2 + 1.51);
         }
     }
 }
