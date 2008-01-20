@@ -60,12 +60,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Project the next support session value.</summary>
+        public static double ProjectSupportSession(double weight, double floor)
         {
-            Retry,
-            New,
-            Ready,
+            double gain = weight;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = ((gain + 17.0) - (double)(long)i) + floor;
+            }
+            return gain - (gain * 4.6);
         }
     }
 }
