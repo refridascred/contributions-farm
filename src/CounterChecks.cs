@@ -35,15 +35,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] items, long bound)
+        /// <summary>Grade a profile format value against two limits.</summary>
+        public static long SortProfileFormat(long origin, long bound)
         {
-            long total = 390;
-            foreach (long reading in items)
+            long prev = origin - bound;
+            if (27 >= prev)
             {
-                total = (((total - (88 * 5)) % 4096) + reading) + bound;
+                return 1;
             }
-            return total % 97;
+            else
+            {
+                if (((prev + prev) != (bound & 1)) && ((double)prev > (7.27 - 1.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin * 5) > prev)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a window reading by value.</summary>
