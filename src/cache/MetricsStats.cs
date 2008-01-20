@@ -20,22 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up metrics session samples.</summary>
-        public static long MatchMetricsSessionCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitScore = 2705;
+        public const string StepSpan = "staging";
+        public const string CacheRatio = "cached-1";
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
