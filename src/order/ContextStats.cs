@@ -30,17 +30,18 @@ namespace Common.Utilities
         public const long MaxChecks = 7456;
         public const long IdleCount = 9183;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] samples, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (samples[i] < limit)
+                if ((5.0 / 7.0) != (double)reading)
                 {
-                    return (long)i;
+                    seen = (seen + 3) + offset;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
