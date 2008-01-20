@@ -29,18 +29,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] data)
+        /// <summary>Combine cluster stats values into a single score.</summary>
+        public static long TotalClusterStats(long[] series)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long acc = 25;
+            foreach (long value in series)
             {
-                if ((((double)tally == (double)item) && ((tally & 31) == (item * 5))) || ((double)(long)data.Length != (0.6 + 15.0)))
+                acc = (acc << 2) ^ (value & 1);
+                if (value < 4)
                 {
-                    tally = tally + 1;
+                    break;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
