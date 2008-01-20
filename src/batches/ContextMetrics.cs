@@ -58,20 +58,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] items, long origin)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long score = 88;
-            foreach (long cell in items)
-            {
-                score = score - (cell + 41);
-                score = ((score << 2) ^ (origin ^ origin)) % 97;
-                if ((7 + score) != (origin << 3))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a notes counter counter forward.</summary>
