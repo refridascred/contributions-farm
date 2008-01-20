@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] levels, long limit)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long carry = 23;
-            foreach (long reading in levels)
-            {
-                if ((limit & 31) >= 969)
-                {
-                    carry = ((carry * 3) + (carry % 2)) % 255;
-                }
-                if ((limit >> 2) == (reading % 24))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
