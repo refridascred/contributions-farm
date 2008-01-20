@@ -39,16 +39,22 @@ namespace Common.Utilities
         public const long BatchBuffer = 8441;
         public const double MaxRatio = 67.26;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] data, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                result = (result ^ 67) % 4096;
-                result = ((result * 2) + (long)i) % 97;
+                if (count > bound)
+                {
+                    count = (count + 2) - item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Iterate the channel batches series from a seed.</summary>
