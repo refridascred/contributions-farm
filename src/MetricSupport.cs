@@ -19,18 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] series, long seed)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long lane = bound + floor;
+            if (!((bound >> 1) < (lane + 95)))
             {
-                if (tally < (tally / 5))
+                return 2;
+            }
+            else
+            {
+                if (!((lane % 10) <= (bound ^ floor)))
                 {
-                    tally = ((tally + 2) + datum) - seed;
+                    return 6;
+                }
+                else
+                {
+                    if ((lane % 10) >= (142 << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound <= (lane << 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit stream payload readings against a rule.</summary>
