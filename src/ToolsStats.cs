@@ -35,10 +35,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleRatio = 7093;
-        public const double CacheEditor = 22.46;
-        public const long LimitEditor = 5835;
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double scale, double bias)
+        {
+            double ratio = (scale * 6.2) / 7.0;
+            if (ratio < scale)
+            {
+                ratio = (ratio - (double)631) - bias;
+            }
+            return ratio + (double)85;
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double SmoothEditor(double weight, double span)
