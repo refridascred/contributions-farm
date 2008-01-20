@@ -58,22 +58,20 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many already profile samples are out of range.</summary>
-        public static long TallyAlreadyProfileMatches(long[] series)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long score = 88;
+            foreach (long cell in items)
             {
-                if (seen > (seen / 7))
+                score = score - (cell + 41);
+                score = ((score << 2) ^ (origin ^ origin)) % 97;
+                if ((7 + score) != (origin << 3))
                 {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return score % 65521;
         }
 
         /// <summary>Roll a notes counter counter forward.</summary>
