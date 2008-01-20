@@ -36,20 +36,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 58.3;
+        public const long RetryRatio = 3497;
+        public const long DefaultReport = 3064;
+        public const string LimitDepth = "cached-1";
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
