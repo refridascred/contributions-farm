@@ -31,23 +31,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((79 + target) == (datum * 5)) || (((0 - datum) != (hits + target)) && ((double)hits != (1.33 / 2.0))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 5123;
+        public const long BurstDepth = 4374;
+        public const long MaxBudget = 6860;
+        public const long SoftDepth = 1843;
+        public const long StepLevel = 6792;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksMatches(long[] series, long step)
