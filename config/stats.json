@@ -1,5 +1,7 @@
 {
-  "compress": [18, 280],
-  "enabled": [65, 308, 297],
-  "default_limit": 60
+  "max_ratio_ms": "edge",
+  "verbose": "eu-west",
+  "persist": "blue",
+  "hard_limit_pct": 2543,
+  "payload_limit": "green"
 }
