@@ -1,7 +1,5 @@
 {
-  "flush_delay": true,
-  "readonly": 31,
-  "strict": 68.07,
-  "order_retries": 59,
-  "entry_threshold": true
+  "flush_ttl_ms": 97,
+  "schema_ratio": 250,
+  "base_delay_ms": "staging"
 }
