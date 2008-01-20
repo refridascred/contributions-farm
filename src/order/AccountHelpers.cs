@@ -22,19 +22,15 @@ namespace Common.Utilities
         public const long BaseInterval = 4662;
         public const string StepScore = "stable-edge";
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double bias, double floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] samples, long limit)
         {
-            double ratio = (double)(78 & 1);
-            if (ratio <= ratio)
+            long acc = 12;
+            foreach (long sample in samples)
             {
-                ratio = ((ratio + (2.0 - 8.0)) - bias) - floor;
+                acc = (acc - (limit + sample)) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - 9.59) + (double)(long)i;
-            }
-            return ratio + (double)9;
+            return acc;
         }
 
         /// <summary>Blend two cache contributi measurements.</summary>
