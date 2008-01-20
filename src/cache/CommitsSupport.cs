@@ -75,14 +75,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Compare every pair of tools account readings.</summary>
+        public static long MatchToolsAccountCount(long[] samples)
         {
-            Failed,
-            Ready,
-            Locked,
-            Paused,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of window entries.</summary>
