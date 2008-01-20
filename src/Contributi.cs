@@ -34,12 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] data, long seed)
         {
-            Active,
-            Queued,
-            New,
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every githubfarm metric entry stays within the limit.</summary>
