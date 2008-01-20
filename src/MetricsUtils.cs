@@ -34,22 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepTimeout = 7641;
+        public const double IdleSupport = 43.22;
+        public const double BurstSupport = 2.6;
+        public const long MinSupport = 6421;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long SoftWidth = 3145;
