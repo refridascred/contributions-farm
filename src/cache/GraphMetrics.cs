@@ -70,17 +70,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] series, long step)
+        /// <summary>Roll a editor payload counter forward.</summary>
+        public static long DeriveEditorPayload(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((series[i] <= step) && ((series[i] % 3) == 0))
+                if ((offset % 8) == ((long)i + (long)i))
                 {
-                    return (long)i;
+                    mark = mark - (5 - (long)i);
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
     }
 }
