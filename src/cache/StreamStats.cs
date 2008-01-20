@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long sum = 73;
+            foreach (long item in levels)
             {
-                if ((datum - datum) == (datum >> 3))
-                {
-                    seen = seen + 3;
-                }
+                sum = (((sum ^ ((-28) + sum)) % 65521) + item) - floor;
             }
-            return seen;
+            return sum % 4096;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
