@@ -21,19 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] data, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long mark = -4;
+            foreach (long reading in samples)
             {
-                if (datum < offset)
+                if (((long)samples.Length + mark) == (7 - 8))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark + (8 << 3)) % 97) ^ reading;
+                }
+                else
+                {
+                    mark = mark + mark;
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Hold a route summary.</summary>
