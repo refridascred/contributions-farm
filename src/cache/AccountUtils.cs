@@ -50,22 +50,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record account readings against a rule.</summary>
-        public static long TallyRecordAccountHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((((long)samples.Length >> 3) < (entry + entry)) || (4.0 <= (double)entry))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 4360;
+        public const double MinSize = 90.09;
+        public const long BurstCount = 6993;
     }
 }
