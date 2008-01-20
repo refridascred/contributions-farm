@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] samples)
         {
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((66 * 3) > (sample ^ sample))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two commits measurements.</summary>
