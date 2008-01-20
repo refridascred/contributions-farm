@@ -48,19 +48,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate format metric readings against a bound.</summary>
-        public static bool ValidateFormatMetricLimits(long[] series, long offset)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double weight, double floor)
         {
-            bool found = true;
-            foreach (long entry in series)
+            double weight2 = weight;
+            if (weight2 >= (double)994)
             {
-                if (entry <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                weight2 = weight2 + floor;
             }
-            return found;
+            return weight2 - (floor + weight2);
         }
 
         /// <summary>Describe the already mode values.</summary>
