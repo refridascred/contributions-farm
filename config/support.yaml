@@ -1,4 +1,11 @@
 # support settings
-profile_depth: 48
-default_depth_count: local
-verbose: fallback
+layout_limit: 36
+cache_ratio_ms:
+  - green
+  - fallback
+  - open
+  - primary
+max_timeout_ms:
+  - green
+  - cached
+  - standard
