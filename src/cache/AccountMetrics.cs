@@ -21,17 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] values, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 4;
+            foreach (long sample in levels)
             {
-                if ((values[i] == origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry ^ carry) % 1000) + sample;
             }
-            return -1;
+            if (carry > 81)
+            {
+                carry = ((carry * 2) + (carry >> 1)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
