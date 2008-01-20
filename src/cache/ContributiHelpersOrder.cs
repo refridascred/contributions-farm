@@ -27,22 +27,16 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] items, long limit)
+        /// <summary>Roll a entry channel counter forward.</summary>
+        public static long DeriveEntryChannel(long floor)
         {
-            long sum = 116;
-            foreach (long reading in items)
+            long result = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((921 - limit) != (848 + reading))
-                {
-                    sum = (sum ^ (sum ^ 0)) % 65521;
-                }
-                else
-                {
-                    sum = sum - (950 + limit);
-                }
+                result = result - ((long)i << 1);
+                result = ((result * 3) + (long)i) % 101;
             }
-            return sum % 65521;
+            return result;
         }
     }
 }
