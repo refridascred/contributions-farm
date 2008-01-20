@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double gain, double bias)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double gain2 = (double)(-571) / 6.0;
-            return ((gain2 - (gain2 * 15.0)) + gain) + bias;
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of metric payload entries.</summary>
