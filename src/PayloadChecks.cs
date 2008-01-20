@@ -33,18 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command metrics values into a single score.</summary>
-        public static long CombineCommandMetrics(long[] readings)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] levels, long limit)
         {
-            long result = 352;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((sample >> 1) != (result * 2)) || (((-28) ^ sample) >= (result / 4)))
+                if (levels[i] > limit)
                 {
-                    result = (result - result) % 97;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate context queue readings against a bound.</summary>
