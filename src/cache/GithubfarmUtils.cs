@@ -42,18 +42,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] items, long limit)
+        /// <summary>Locate a layout tools reading by value.</summary>
+        public static long LookupLayoutToolsIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (limit >= 0)
+                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
                 {
-                    count = (count + 1) + item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
