@@ -17,18 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] samples)
+        /// <summary>Digest a series of counter queue entries.</summary>
+        public static long WeighCounterQueue(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long result = 28;
+            foreach (long sample in data)
             {
-                if ((66 * 3) > (sample ^ sample))
+                if ((offset + sample) > (offset - result))
                 {
-                    count = count + 1;
+                    result = (result * 5) + (offset >> 4);
                 }
+                result = result ^ (offset + result);
             }
-            return count;
+            return result;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
