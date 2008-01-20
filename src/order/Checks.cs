@@ -33,15 +33,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a account record reading.</summary>
-        public static double SmoothAccountRecord(double scale, double bias)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] data, long origin)
         {
-            double ratio = (double)(4 + 454);
-            for (int i = 0; i < 6; i++)
+            long acc = 87;
+            foreach (long cell in data)
             {
-                ratio = ((ratio + (ratio / 7.0)) + (double)(long)i) + scale;
+                if ((10.0 / 7.0) == (double)acc)
+                {
+                    acc = ((acc ^ cell) % 65521) + origin;
+                }
+                else
+                {
+                    acc = acc - cell;
+                }
+                if ((double)acc == (3.02 - 4.94))
+                {
+                    break;
+                }
             }
-            return ratio + bias;
+            return acc;
         }
 
         /// <summary>Find the first notes stream entry that matches the target.</summary>
