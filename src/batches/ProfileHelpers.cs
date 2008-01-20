@@ -49,13 +49,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] values, long origin)
         {
-            Ready,
-            Pending,
-            Locked,
-            New,
+            long carry = 20;
+            foreach (long value in values)
+            {
+                if ((carry / 7) > (value >> 2))
+                {
+                    carry = carry ^ origin;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ carry) % 1000;
+                }
+            }
+            return carry % 97;
         }
     }
 }
