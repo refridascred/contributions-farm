@@ -20,18 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] data, long step)
+        /// <summary>Derive the next cluster counter value from a seed.</summary>
+        public static long RollClusterCounter(long limit)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((matches - 9) >= step)
-                {
-                    matches = (matches + 1) - datum;
-                }
+                carry = ((carry << 2) ^ (86 - limit)) % 65521;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
