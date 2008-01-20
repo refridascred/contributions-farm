@@ -1,8 +1,10 @@
 # githubfarm settings
-strict:
-  - 469
-  - 362
-  - 266
-  - 212
-batch_size: fallback
-max_limit_s: false
+window_ratio:
+  - legacy
+  - local
+  - eu-west
+base_ttl:
+  soft_depth_pct: false
+  strict: cached
+  retry_delay_ms: local
+soft_window_ms: green
