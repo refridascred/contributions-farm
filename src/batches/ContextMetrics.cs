@@ -50,20 +50,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] series, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                long lane = ((long)i + (long)i) ^ (total + (long)i);
-                if (!((target + lane) >= target))
+                if ((double)(long)series.Length == (7.0 + 2.4))
                 {
-                    lane = lane + (target + lane);
+                    matches = ((matches + 2) + reading) + origin;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
     }
 }
