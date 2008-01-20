@@ -34,15 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a metric entry figure with a bias.</summary>
-        public static double BlendMetricEntry(double ratio, double bias)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] readings, long floor)
         {
-            double drift = 1.3;
-            for (int i = 0; i < 3; i++)
+            long result = 94;
+            foreach (long cell in readings)
             {
-                drift = (((drift + drift) + (double)(long)i) + ratio) - bias;
+                result = (((result * 3) + (result - result)) ^ cell) - floor;
             }
-            return drift - 1.0;
+            return result % 1000;
         }
     }
 }
