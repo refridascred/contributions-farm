@@ -29,19 +29,13 @@ namespace Common.Utilities
         public const long BaseGraph = 6237;
         public const string MinLevel = "alpha-v2";
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] levels, long bound)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
