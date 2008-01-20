@@ -1,11 +1,16 @@
 # entry settings
-compress: 7587
-batch_delay: standard
-context_depth: 46.88
-strict: legacy
-audit: true
-dry_run:
-  metrics_depth: 53
-  idle_interval_count: false
-  flush_limit_s: eu-west
-  max_ratio_s: false
+poll_capacity: 94.07
+warm_depth: strict
+format_ttl: stable
+audit: false
+compress:
+  base_timeout: 15
+  burst_capacity_count: 60
+  contributi_delay: strict
+  retry_capacity_s:
+    - edge
+    - cached
+    - legacy
+    - strict
+  layout_window: 26
+  base_limit_pct: false
