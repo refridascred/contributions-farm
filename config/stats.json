@@ -1,17 +1,5 @@
 {
-  "batch_ratio_pct": [442, 113, 349, 401],
-  "strict": false,
-  "soft_timeout": "eu-west",
-  "verbose": "primary",
-  "audit": {
-    "hard_retries_s": 20.93,
-    "cache_delay": ["primary", "cached"],
-    "verbose": 52,
-    "idle_retries": ["strict", "legacy", "primary", "eu-west"],
-    "burst_capacity": {
-      "enabled": [181, 392, 151],
-      "soft_ratio": "open",
-      "order_retries": false
-    }
-  }
+  "batch_depth": "edge",
+  "sync_timeout": "staging",
+  "base_capacity_ms": "staging"
 }
