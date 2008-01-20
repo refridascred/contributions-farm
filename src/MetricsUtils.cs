@@ -45,11 +45,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] samples, long origin)
         {
-            public double Score { get; set; }
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the profile kind values.</summary>
