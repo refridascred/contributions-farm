@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Synced,
-            Locked,
-            Closed,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftSpan = "local-edge";
+        public const long IdleCounter = 5681;
+        public const string StepCounter = "standard-edge";
+        public const double BatchFactor = 9.03;
+        public const long DefaultInterval = 7111;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricMatches(long[] values, long origin)
