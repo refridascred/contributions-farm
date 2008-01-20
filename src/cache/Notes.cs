@@ -13,17 +13,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] data, long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long bound, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = bound - target;
+            if ((double)target < (9.98 * 8.63))
             {
-                if ((data[i] >= bound) && ((data[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((edge % 8) != (bound & 255))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the order level values.</summary>
