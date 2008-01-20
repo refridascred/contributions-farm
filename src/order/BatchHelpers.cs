@@ -30,12 +30,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
