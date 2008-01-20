@@ -23,33 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a profile order value against two limits.</summary>
-        public static long BucketProfileOrder(long limit, long limit2)
-        {
-            long gap = limit ^ limit2;
-            if ((limit - gap) <= (gap + limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit - limit) <= (limit ^ gap))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.16 * 4.0) > (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstDepth = 6864;
+        public const string CacheBatches = "strict-1";
+        public const string SoftBatches = "cached-edge";
 
         /// <summary>Audit stream payload readings against a rule.</summary>
         public static long CountStreamPayloadMatches(long[] values, long target)
