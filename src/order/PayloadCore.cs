@@ -47,15 +47,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] series, long offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] values)
         {
             long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(sample <= seen))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) + offset;
+                    if ((values[i] ^ values[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
