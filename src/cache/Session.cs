@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if (offset > (offset ^ state))
-                {
-                    state = (state << 2) ^ (state << 1);
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Dropped,
+            Pending,
+            Retry,
+            Ready,
         }
 
         /// <summary>Hold a batch entry.</summary>
