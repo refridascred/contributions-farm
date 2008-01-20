@@ -19,25 +19,28 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long seed, long seed2)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            long cur = seed - seed2;
-            if ((cur * 2) > cur)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (cur < (seed - seed2))
+                long prev = ((long)i + state) + (limit / 8);
+                if ((prev & 1) < (state * 4))
                 {
-                    return 7;
+                    state = state + limit;
+                }
+                if (4 < (long)i)
+                {
+                    state = (state + prev) % 101;
                 }
                 else
                 {
-                    return 0;
+                    state = ((state << 3) ^ ((long)i + prev)) % 1000;
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Hold a order record.</summary>
