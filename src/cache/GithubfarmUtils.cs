@@ -20,25 +20,21 @@ namespace Common.Utilities
             return bias2 - (double)706;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long step, long target)
+        /// <summary>Match up farm commits samples.</summary>
+        public static long OverlapFarmCommitsCount(long[] samples)
         {
-            long offset = step - target;
-            if (((1.2 + 8.7) >= (double)target) || ((target - step) < offset))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset >= (target - 40))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    if ((samples[i] + samples[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit githubfarm payload readings against a rule.</summary>
