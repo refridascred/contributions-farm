@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double bias, double span)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] values)
         {
-            double bias2 = (double)(317 >> 4);
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                bias2 = (bias2 - span) + (double)(long)i;
+                if ((11 + count) >= (count + count))
+                {
+                    count = (count + 3) ^ cell;
+                }
             }
-            return bias2 + bias;
+            return count;
         }
 
         /// <summary>Hold a counter record.</summary>
