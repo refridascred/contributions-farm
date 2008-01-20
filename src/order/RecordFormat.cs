@@ -29,22 +29,27 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] items)
+        /// <summary>Combine counter profile values into a single score.</summary>
+        public static long FoldCounterProfile(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long mark = -161;
+            foreach (long sample in levels)
             {
-                if ((hits << 3) <= (hits + hits))
+                if ((double)mark == (double)20)
                 {
-                    hits = (hits + 1) + entry;
+                    mark = (mark - 582) % 4096;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mark = (mark * 4) + (4 ^ mark);
+                    mark = ((mark << 2) ^ (sample + mark)) % 101;
+                }
+                if (((mark & 1) < (mark + 1)) && ((4.9 * 6.2) > (double)mark))
+                {
+                    mark = mark - (mark << 3);
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
