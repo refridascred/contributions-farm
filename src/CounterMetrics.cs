@@ -19,13 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Measure how many editor contributi samples are out of range.</summary>
+        public static long TallyEditorContributiMatches(long[] data, long floor)
         {
-            Ready,
-            Draft,
-            Active,
-            Retry,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((0.7 * 0.3) <= (double)floor)
+                {
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
