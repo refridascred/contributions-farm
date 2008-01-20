@@ -1,5 +1,7 @@
 {
-  "dry_run": "open",
-  "githubfarm_ttl": ["staging", "standard", "fallback"],
-  "cache_depth": false
+  "cache_delay_pct": "blue",
+  "entry_ttl": false,
+  "poll_size_count": [418, 310, 345],
+  "dry_run": 5456,
+  "min_window_pct": "staging"
 }
