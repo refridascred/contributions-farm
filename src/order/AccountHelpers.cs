@@ -15,12 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxFactor = 4923;
-        public const long MinSchema = 7979;
-        public const double IdleSchema = 48.29;
-        public const long BaseInterval = 4662;
-        public const string StepScore = "stable-edge";
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Synced,
+            Locked,
+            New,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long ScoreStats(long[] samples, long limit)
