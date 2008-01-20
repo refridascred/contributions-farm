@@ -43,14 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] samples)
         {
-            Queued,
-            Locked,
-            Stale,
-            Retry,
-            Active,
+            long mark = 2;
+            foreach (long value in samples)
+            {
+                if ((value << 3) < (463 >> 4))
+                {
+                    mark = ((mark << 3) ^ (value << 2)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the editor account entries that pass the check.</summary>
