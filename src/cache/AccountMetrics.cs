@@ -42,18 +42,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the route profile entries that pass the check.</summary>
-        public static long TallyRouteProfileGaps(long[] readings, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((47 + target) <= (target - entry))
+                if (cell <= step)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
