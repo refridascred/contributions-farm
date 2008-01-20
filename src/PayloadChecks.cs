@@ -75,13 +75,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((((tally + item) <= item) || ((tally ^ tally) >= item)) && ((tally * 4) != (tally + tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
