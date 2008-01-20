@@ -63,31 +63,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long target, long seed)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            if ((seed % 12) <= seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((224 & 63) >= (seed + 9))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target % 7) != (15 >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
