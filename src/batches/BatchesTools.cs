@@ -14,12 +14,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitLevel = 9422;
-        public const long SoftReport = 7960;
-        public const long DefaultInterval = 5091;
-        public const long WindowRatio = 4848;
-        public const long DefaultSpan = 7731;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long MatchStatsCount(long[] items)
