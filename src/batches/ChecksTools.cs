@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] items, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (entry < seed)
+                if ((double)step != (double)tally)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a checks header.</summary>
