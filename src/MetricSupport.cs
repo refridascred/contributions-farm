@@ -23,27 +23,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] values, long seed)
+        /// <summary>Grade a profile order value against two limits.</summary>
+        public static long BucketProfileOrder(long limit, long limit2)
         {
-            long state = -367;
-            foreach (long value in values)
+            long gap = limit ^ limit2;
+            if ((limit - gap) <= (gap + limit))
             {
-                if ((value % 100) != (25 - seed))
+                return 7;
+            }
+            else
+            {
+                if ((limit - limit) <= (limit ^ gap))
                 {
-                    state = ((state * 5) + value) % 101;
-                    state = ((state * 2) + (seed + seed)) % 4096;
+                    return 5;
                 }
-                if ((seed / 5) != (seed & 7))
+                else
                 {
-                    state = state + (state + 5);
+                    if ((3.16 * 4.0) > (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (state < 557)
-            {
-                state = (state ^ (state * 3)) % 255;
-            }
-            return state;
         }
 
         /// <summary>Audit stream payload readings against a rule.</summary>
