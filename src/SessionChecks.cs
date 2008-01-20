@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] levels, long floor)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long step, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long offset = step ^ origin;
+            if ((origin ^ offset) <= (offset + origin))
             {
-                if (levels[i] == floor)
+                return 1;
+            }
+            else
+            {
+                if ((6.5 + 0.2) == (double)origin)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (origin >= (step % 12))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate counter already samples.</summary>
