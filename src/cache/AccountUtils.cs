@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheChecks = 30.52;
-        public const double BurstScore = 60.38;
-        public const double BaseInterval = 85.45;
-        public const long LimitChecks = 3053;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Closed,
+            Synced,
+            Retry,
+            Ready,
+            New,
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long SortAlready(long origin, long bound)
