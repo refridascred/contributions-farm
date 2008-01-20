@@ -51,21 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] items)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 476;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sum ^ sample) < sum)
                 {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum + (sum + sample)) % 101;
+                }
+                if (sample > (sum / 8))
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Project the next batch value.</summary>
