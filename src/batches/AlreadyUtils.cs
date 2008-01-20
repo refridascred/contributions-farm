@@ -63,11 +63,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Find the first batch cache entry that matches the target.</summary>
+        public static long FindBatchCacheIndex(long[] data, long seed)
         {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
