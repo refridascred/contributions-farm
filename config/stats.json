@@ -1,6 +1,21 @@
 {
-  "enabled": true,
-  "cache_capacity": 60,
-  "warm_retries_s": "legacy",
-  "sync_capacity_pct": "green"
+  "tools_depth": false,
+  "metrics_limit": {
+    "poll_ratio": ["blue", "green"],
+    "verbose": 6181,
+    "audit": 45.6,
+    "format_timeout": 7876,
+    "cluster_ttl": {
+      "min_retries_count": "edge",
+      "sync_size_pct": 39.7,
+      "sync_window_count": "stable",
+      "hard_ttl_s": "latest",
+      "base_threshold_s": 100
+    }
+  },
+  "sync_window_pct": {
+    "persist": ["open", "strict", "strict"],
+    "command_interval": "green",
+    "session_interval": 11.37
+  }
 }
