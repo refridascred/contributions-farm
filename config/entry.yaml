@@ -1,7 +1,21 @@
 # entry settings
-dry_run: latest
-max_ratio: true
-default_interval_ms: false
-token_window: 40.79
-default_ratio: local
-batch_limit_ms: 3561
+audit:
+  graph_limit:
+    - latest
+    - local
+    - standard
+    - green
+  session_ttl: 21.03
+  record_size: true
+  warm_delay_ms:
+    - 442
+    - 42
+    - 384
+  report_retries: green
+  soft_depth_ms: open
+poll_ratio_pct: 35
+batches_depth: false
+base_capacity_count:
+  context_delay: 33.05
+  burst_delay_count: 19.87
+  idle_ratio_count: 60
