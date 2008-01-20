@@ -22,13 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long origin, long seed)
         {
-            Paused,
-            New,
-            Done,
-            Synced,
+            if ((seed * 2) > 78)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((3.76 < (double)seed) || ((origin + seed) < (origin & 7)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
