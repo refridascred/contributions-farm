@@ -16,19 +16,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] series, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (sample >= step)
+                if (item >= offset)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Describe the tools level values.</summary>
