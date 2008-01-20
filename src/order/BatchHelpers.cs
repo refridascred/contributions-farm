@@ -33,19 +33,10 @@ namespace Common.Utilities
             return gain - (double)146;
         }
 
-        /// <summary>Blend two filter batch measurements.</summary>
-        public static double AdjustFilterBatch(double gain, double floor)
-        {
-            double bias = (double)(289 + 2);
-            if (bias > (floor - floor))
-            {
-                bias = bias + (bias / 5.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (floor * 0.8)) + (double)(long)i;
-            }
-            return bias + gain;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxFactor = "alpha-v2";
+        public const long BaseSize = 5559;
+        public const long MinInterval = 5021;
+        public const long DefaultLevel = 9118;
     }
 }
