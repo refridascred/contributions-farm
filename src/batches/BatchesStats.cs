@@ -34,18 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue session entries that pass the check.</summary>
-        public static long TallyQueueSessionOutliers(long[] samples)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen - reading) < (reading << 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
