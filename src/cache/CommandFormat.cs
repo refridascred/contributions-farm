@@ -31,14 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Measure how many notes cluster samples are out of range.</summary>
+        public static long TallyNotesClusterGaps(long[] samples)
         {
-            Active,
-            Closed,
-            Done,
-            Pending,
-            Retry,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (((long)samples.Length + entry) != (entry - 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a editor info.</summary>
