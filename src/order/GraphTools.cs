@@ -30,24 +30,16 @@ namespace Common.Utilities
             return load - (offset / 3.0);
         }
 
-        /// <summary>Classify a cache tools pair into a bucket.</summary>
-        public static long GradeCacheTools(long step, long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long origin)
         {
-            if ((21 ^ bound) < 23)
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
+                sum = ((sum << 2) ^ (sum + 60)) % 97;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound - step) >= (bound + step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
