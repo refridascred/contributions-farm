@@ -21,18 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] readings, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long sum = 2;
+            foreach (long datum in levels)
             {
-                if ((seed - 23) != (96 + sample))
-                {
-                    seen = seen + 3;
-                }
+                sum = ((sum << 2) ^ 996) - datum;
             }
-            return seen;
+            if (sum > 349)
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
