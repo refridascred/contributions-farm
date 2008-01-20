@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] items, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] levels)
         {
-            long score = 425;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((3.2 < (double)(long)items.Length) || ((offset * 4) <= offset))
+                if ((4.37 / 5.0) < (double)item)
                 {
-                    score = ((score * 5) + (item + offset)) % 1000;
-                }
-                if (((8 - score) != (offset & 63)) && (score > (5 - offset)))
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (score > 42)
-            {
-                score = (score ^ (offset & 3)) % 255;
-            }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
