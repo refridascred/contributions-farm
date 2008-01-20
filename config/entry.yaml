@@ -1,13 +1,4 @@
 # entry settings
-burst_window_count: standard
-flush_depth_s: 40
-githubfarm_limit: 71.5
-strict:
-  sync_delay:
-    - cached
-    - latest
-    - latest
-  sync_capacity: open
-  burst_ratio_ms: 100
-dry_run: 20.9
-default_capacity_ms: 94.39
+hard_timeout: 11
+poll_ratio_ms: 9
+sync_limit_ms: true
