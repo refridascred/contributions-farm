@@ -70,18 +70,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache farm samples.</summary>
-        public static long WeighCacheFarm(long[] items)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] series, long step)
         {
-            long score = 486;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((13.0 + 0.3) != (double)cell)
+                if ((series[i] <= step) && ((series[i] % 3) == 0))
                 {
-                    score = score + (3 << 2);
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
     }
 }
