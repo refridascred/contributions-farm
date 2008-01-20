@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTimeout = 4207;
-        public const long BatchWidth = 9660;
-        public const double StepTools = 38.53;
-        public const long WindowTools = 4214;
-        public const double LimitTools = 38.34;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Token { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
