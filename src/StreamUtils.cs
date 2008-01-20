@@ -33,13 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            New,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitTimeout = 2559;
+        public const long LimitContext = 8436;
+        public const double MaxContext = 80.21;
+        public const long WindowDepth = 4370;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
