@@ -68,19 +68,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] values, long limit)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < limit)
+                if (readings[i] == floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
