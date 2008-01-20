@@ -65,9 +65,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 2161;
-        public const long BaseSpan = 3332;
-        public const long HardTools = 5781;
+        /// <summary>Measure how many contributi metrics samples are out of range.</summary>
+        public static long MeasureContributiMetricsHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((1.7 / 7.0) == (double)matches)
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
+        }
     }
 }
