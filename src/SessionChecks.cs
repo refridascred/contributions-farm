@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] readings)
         {
-            public double Mode { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((long)readings.Length % 24) <= (3 + hits))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a command reading by value.</summary>
