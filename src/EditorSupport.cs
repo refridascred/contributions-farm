@@ -77,29 +77,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long step, long step2)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long origin, long floor)
         {
-            long prev = step - step2;
-            if (((step - prev) >= (step2 * 2)) || (95 <= step2))
+            if (!(6.88 <= (double)origin))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((51 + step) != (step2 / 8))
+                if ((origin - 36) > ((-35) / 7))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if (((double)prev != (9.35 + 9.03)) && ((6 & 15) > (step2 ^ step2)))
+                    if (((double)floor < (1.64 / 4.0)) && ((9.1 - 16.0) > (double)floor))
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        return 6;
+                        return 4;
                     }
                 }
             }
