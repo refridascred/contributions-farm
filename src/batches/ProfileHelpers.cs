@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long WindowSchema = 6997;
         public const long DefaultTimeout = 9111;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] items)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen - seen) != (seen & 7))
+                if (samples[i] == bound)
                 {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
