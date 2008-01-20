@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Active,
-            Draft,
-            Dropped,
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
