@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long target, long step)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long limit)
         {
-            if (((4.06 / 4.0) == (double)step) || ((target / 4) < (target + (-9))))
+            long next = floor ^ limit;
+            if ((next << 1) > limit)
             {
                 return 0;
             }
             else
             {
-                if (step >= (step + step))
+                if (((next * 5) > ((-78) - limit)) && (limit <= (limit >> 3)))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    return 5;
+                    return 6;
                 }
             }
         }
