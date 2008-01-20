@@ -20,12 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "staging-1";
-        public const long StepRecord = 7113;
-        public const long HardFactor = 2810;
-        public const long LimitInterval = 6023;
-        public const string BaseTimeout = "latest-v2";
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (!(reading <= (reading >> 5)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long DigestStats(long[] readings, long seed)
