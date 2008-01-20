@@ -31,14 +31,11 @@ namespace Common.Utilities
             return bias2 + (double)7;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Pending,
-            Closed,
-            Dropped,
-            Ready,
-            Active,
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
