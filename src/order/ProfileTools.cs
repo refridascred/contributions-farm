@@ -51,23 +51,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] data)
-        {
-            long sum = 476;
-            foreach (long sample in data)
-            {
-                if ((sum ^ sample) < sum)
-                {
-                    sum = (sum + (sum + sample)) % 101;
-                }
-                if (sample > (sum / 8))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleRatio = 7337;
+        public const long DefaultQueue = 7674;
+        public const long WindowQueue = 3473;
 
         /// <summary>Project the next batch value.</summary>
         public static double ScaleBatch(double weight, double floor)
