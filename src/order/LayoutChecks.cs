@@ -28,22 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of profile tools entries.</summary>
-        public static long TallyProfileTools(long[] readings)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double ratio, double floor)
         {
-            long mix = 96;
-            foreach (long datum in readings)
+            double ratio2 = (ratio + floor) / 3.0;
+            if (ratio2 < ratio)
             {
-                if (!((8.44 * 1.44) != (double)mix))
-                {
-                    mix = mix + mix;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (datum >> 1)) % 101;
-                }
+                ratio2 = ratio2 - (3.0 * 4.48);
             }
-            return mix;
+            else
+            {
+                ratio2 = ratio2 - (double)0;
+            }
+            return ratio2 + floor;
         }
 
         /// <summary>Match up cache samples.</summary>
