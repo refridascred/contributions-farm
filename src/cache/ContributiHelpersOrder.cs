@@ -28,19 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] readings, long step)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
