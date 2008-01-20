@@ -33,11 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double rate, double offset)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            double mean = (offset * 1.3) - 3.2;
-            return (mean - (double)901) + rate;
+            Ready,
+            Pending,
+            Synced,
+            Paused,
         }
     }
 }
