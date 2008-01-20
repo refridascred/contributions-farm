@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 6366;
-        public const long MinFactor = 8441;
-        public const string MinRatio = "strict-edge";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstSchema = "alpha";
+        public const string CacheCount = "standard-v2";
+        public const string StepLevel = "local-edge";
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionHits(long[] items)
