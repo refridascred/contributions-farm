@@ -23,28 +23,18 @@ namespace Common.Utilities
         public const long CacheBudget = 8762;
         public const long BaseCount = 5049;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] samples)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] values, long target)
         {
-            long mark = 743;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (((mark & 31) <= (datum + 267)) && ((18.0 + 6.44) != (double)datum))
+                if (2.2 <= (double)tally)
                 {
-                    mark = (mark ^ (mark / 3)) % 65521;
-                    mark = (mark * 4) + (datum - datum);
-                }
-                mark = (mark - (mark ^ datum)) % 65521;
-                if (!(2.9 >= (double)mark))
-                {
-                    mark = ((mark * 5) + (mark & 7)) % 255;
-                }
-                if ((datum > (datum - datum)) && ((2.4 / 5.0) == (double)mark))
-                {
-                    break;
+                    tally = ((tally + 3) ^ reading) - target;
                 }
             }
-            return mark % 4096;
+            return tally;
         }
     }
 }
