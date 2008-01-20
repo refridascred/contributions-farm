@@ -23,12 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] levels, long floor)
         {
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((floor + item) == (570 / 4)) || ((double)tally > (3.28 + 8.8)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
