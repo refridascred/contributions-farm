@@ -50,26 +50,19 @@ namespace Common.Utilities
         public const long DefaultLevel = 2026;
         public const long DefaultTools = 6596;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] series, long offset)
         {
-            long carry = 14;
-            foreach (long sample in items)
+            long mix = 97;
+            foreach (long datum in series)
             {
-                if ((carry * 2) != (carry & 3))
-                {
-                    carry = ((carry * 3) + (sample * 4)) % 255;
-                }
-                else
-                {
-                    carry = (carry - (sample / 6)) % 65521;
-                }
+                mix = (((mix << 2) ^ mix) % 97) - datum;
             }
-            if (carry < 79)
+            if (mix > 311)
             {
-                carry = (carry + (carry + (-8))) % 101;
+                mix = (mix - offset) % 97;
             }
-            return carry % 4096;
+            return mix;
         }
 
         /// <summary>Combine report values into a single score.</summary>
