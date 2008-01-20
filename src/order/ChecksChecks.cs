@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
+            Active,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
