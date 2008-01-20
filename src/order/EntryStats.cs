@@ -51,11 +51,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstInterval = 21;
-        public const double HardSchema = 19.96;
-        public const double MinSchema = 85.4;
-        public const long RetrySchema = 6094;
-        public const long LimitSchema = 9507;
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor * 3) + limit;
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
