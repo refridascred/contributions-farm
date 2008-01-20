@@ -20,15 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double scale, double span)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double gain = (scale - scale) + (span * 5.5);
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (scale - 5.88)) + (double)(long)i;
-            }
-            return gain - (double)146;
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
