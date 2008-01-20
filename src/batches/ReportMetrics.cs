@@ -26,22 +26,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Rank cluster counter input into a small class.</summary>
+        public static long ClassifyClusterCounter(long offset, long bound)
         {
-            long anchor = 2;
-            foreach (long reading in samples)
+            long offset2 = offset ^ bound;
+            if (((offset2 % 12) <= (bound - bound)) && ((offset2 & 127) < (offset + 697)))
             {
-                if (((reading ^ anchor) >= (anchor / 4)) && (91 < reading))
+                return 4;
+            }
+            else
+            {
+                if (!(offset2 <= 5))
                 {
-                    anchor = anchor - anchor;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound >= (2.2 - 0.74))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (anchor > 38)
-            {
-                anchor = anchor ^ (anchor + anchor);
-            }
-            return anchor;
         }
 
         /// <summary>Hold a cluster stats.</summary>
