@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the counter class values.</summary>
