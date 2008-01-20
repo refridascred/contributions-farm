@@ -51,19 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster account samples are out of range.</summary>
-        public static long MeasureClusterAccountMatches(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (limit > (matches + matches))
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftWidth = 3145;
+        public const string SoftSize = "open-1";
+        public const string MaxSize = "staging-1";
+        public const long WindowProfile = 1348;
+        public const long IdleCount = 2654;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long GradeReport(long floor, long offset)
