@@ -30,20 +30,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 9168;
+        public const double HardInterval = 17.54;
+        public const string DefaultScore = "standard-1";
 
         /// <summary>Validate tools session readings against a bound.</summary>
         public static bool CheckToolsSessionLimits(long[] samples, long origin)
