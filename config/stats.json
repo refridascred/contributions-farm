@@ -1,8 +1,8 @@
 {
-  "channel_size": 5385,
-  "poll_timeout": 75,
-  "retry_limit_pct": [168, 14, 308],
-  "batch_depth": [417, 67, 354, 424],
-  "base_window_count": "blue",
-  "default_window_s": "legacy"
+  "commits_capacity": ["latest", "eu-west", "strict", "legacy"],
+  "default_depth_pct": ["eu-west", "stable"],
+  "flush_interval_s": false,
+  "readonly": "legacy",
+  "route_retries": 44,
+  "audit": 60
 }
