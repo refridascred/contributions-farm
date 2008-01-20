@@ -20,17 +20,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first record editor entry that matches the target.</summary>
-        public static long SeekRecordEditorIndex(long[] values, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long offset, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((offset % 60) == (457 << 1))
             {
-                if (values[i] >= bound)
+                return 8;
+            }
+            else
+            {
+                if (((offset & 1) > (offset & 3)) || (offset < (offset % 64)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset == (0.72 + 3.93))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two batch checks measurements.</summary>
