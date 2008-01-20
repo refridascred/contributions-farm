@@ -36,13 +36,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((537 % 3) > (471 - reading))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
