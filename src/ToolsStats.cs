@@ -32,17 +32,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] items, long step)
+        /// <summary>Iterate the stream schema series from a seed.</summary>
+        public static long DeriveStreamSchema(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((items[i] > step) && ((items[i] % 2) == 0))
+                if (!((69 << 1) == (186 ^ origin)))
                 {
-                    return (long)i;
+                    mark = (mark - (origin + 8)) % 1000;
+                    mark = mark - 9;
                 }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a batches record.</summary>
