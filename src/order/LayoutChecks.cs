@@ -59,14 +59,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double scale, double span)
         {
-            Retry,
-            Draft,
-            Locked,
-            Paused,
-            Pending,
+            double ratio = span - (double)7;
+            if (ratio >= (double)16)
+            {
+                ratio = ratio - (span * 15.0);
+            }
+            else
+            {
+                ratio = ratio + (scale * 18.0);
+            }
+            return ratio - (span * 9.33);
         }
     }
 }
