@@ -22,16 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cluster counter value from a seed.</summary>
-        public static long RollClusterCounter(long limit)
+        /// <summary>Audit profile stream readings against a rule.</summary>
+        public static long TallyProfileStreamGaps(long[] levels)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry << 2) ^ (86 - limit)) % 65521;
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((42 >= (44 - cell)) && ((double)matches > (17.0 / 9.0)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
