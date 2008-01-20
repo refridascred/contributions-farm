@@ -1,26 +1,13 @@
 # githubfarm settings
-poll_capacity_s:
-  already_limit:
-    poll_capacity_ms:
-      - 212
-      - 285
-      - 20
-    retry_timeout:
-      - green
-      - blue
-    payload_window: 1024
-    filter_size: fallback
-    batch_delay: true
-    enabled: 27
-  compress: 9
-  flush_depth:
-    compress: 100
-    enabled: false
-    report_ttl: 20.15
-    order_threshold: 24.51
-    format_delay: false
-  flush_window_pct: false
-  buffer_window: legacy
-  token_ratio: true
-burst_window_s: 500
-layout_retries: 11.78
+retry_limit_ms: edge
+max_ttl_s:
+  - legacy
+  - eu-west
+dry_run: 5028
+hard_ratio_count: 100
+support_ttl: local
+cache_timeout:
+  - 15
+  - 56
+  - 238
+  - 417
