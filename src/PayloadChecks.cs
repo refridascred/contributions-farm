@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long floor, long floor2)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            if (((-19) >> 4) < (floor * 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor - floor2) < (floor2 / 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
