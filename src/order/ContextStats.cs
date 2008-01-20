@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultEditor = "standard-edge";
-        public const long BurstFactor = 3763;
-        public const double MaxEditor = 74.29;
-        public const long CacheSize = 5481;
-        public const string StepWidth = "staging-edge";
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long ScoreWindow(long[] data)
