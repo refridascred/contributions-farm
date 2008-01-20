@@ -25,19 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] samples, long step)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell < 0.01)
-                {
-                    count = (count + 1) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 25.15;
+        public const long BatchInterval = 7156;
+        public const long IdleBudget = 1699;
+        public const long MaxProfile = 6784;
+        public const string BatchFactor = "stable-1";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double RetryBudget = 1.32;
