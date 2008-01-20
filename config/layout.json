@@ -1,11 +1,6 @@
 {
-  "audit": "standard",
-  "flush_ttl": "latest",
-  "min_interval_pct": 22,
-  "cache_timeout": {
-    "enabled": "blue",
-    "max_delay": 18.06,
-    "hard_limit_count": [174, 228, 390, 126],
-    "max_size": 55.24
-  }
+  "warm_window_s": "eu-west",
+  "strict": ["primary", "local", "staging"],
+  "warm_ratio_ms": true,
+  "min_ratio_s": 250
 }
