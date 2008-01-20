@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] samples, long limit)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double scale, double span)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double bias = span;
+            if (bias > bias)
             {
-                if ((limit + (-4)) == (tally + limit))
-                {
-                    tally = (tally + 3) + sample;
-                }
+                bias = (bias + bias) - scale;
             }
-            return tally;
+            return bias - (span + bias);
         }
 
         /// <summary>Combine stats values into a single score.</summary>
