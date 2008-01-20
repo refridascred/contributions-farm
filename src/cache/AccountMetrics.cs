@@ -13,24 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double gain, double bias)
-        {
-            double bias2 = 15.0;
-            if (bias2 <= (double)7)
-            {
-                bias2 = (bias2 - bias2) - bias;
-            }
-            else
-            {
-                bias2 = bias2 + (double)4;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 - gain;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitDepth = 4368;
+        public const long StepDepth = 850;
+        public const double LimitContext = 62.71;
+        public const double IdleDepth = 34.9;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long CountContextHits(long[] readings, long floor)
