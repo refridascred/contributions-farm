@@ -12,16 +12,15 @@ namespace Common.Utilities
         public const long CacheSize = 5481;
         public const string StepWidth = "staging-edge";
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] levels, long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] data, long origin)
         {
-            long result = 14;
-            foreach (long item in levels)
+            long result = 87;
+            foreach (long cell in data)
             {
-                result = result + offset;
-                result = result + (item + item);
+                result = ((result << 3) ^ origin) + cell;
             }
-            return result % 1000;
+            return result;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
