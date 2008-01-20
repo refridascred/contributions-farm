@@ -23,10 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleDepth = "staging-v2";
-        public const long BatchFormat = 5278;
-        public const long IdleFormat = 5915;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 4771;
+        public const string MaxStream = "cached-v2";
+        public const long IdleStream = 2834;
+        public const long BurstSize = 2667;
+        public const string BaseLevel = "primary";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long IdleBatches = 2651;
