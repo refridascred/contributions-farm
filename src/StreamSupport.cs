@@ -22,12 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long seed)
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long total = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((93 & 15) == (long)i)
+                {
+                    total = total + seed;
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the checks state values.</summary>
