@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
