@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] readings)
         {
-            Pending,
-            Queued,
-            Paused,
-            Locked,
-            Active,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!((double)sample <= (3.41 - 1.0)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the payload class values.</summary>
