@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] values)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long state = 0;
+            foreach (long reading in items)
             {
-                if ((11 + count) >= (count + count))
-                {
-                    count = (count + 3) ^ cell;
-                }
+                state = ((state - seed) % 101) + reading;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a counter record.</summary>
