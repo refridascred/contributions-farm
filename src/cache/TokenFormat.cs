@@ -17,22 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of queue metrics entries.</summary>
-        public static long WeighQueueMetrics(long[] series, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] values, long step)
         {
-            long state = -42;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((item >> 1) < (target % 100))
+                if (sample > step)
                 {
-                    state = state - (state - 1);
+                    flag = false;
+                    break;
                 }
             }
-            if (state < 35)
-            {
-                state = state + target;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Derive the next githubfarm editor value from a seed.</summary>
