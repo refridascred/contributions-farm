@@ -1,13 +1,10 @@
 # githubfarm settings
-flush_ttl: edge
-compress: true
-persist: 1024
-idle_window_ms:
-  - 362
-  - 460
-  - 355
-  - 314
-idle_capacity:
-  - 486
-  - 304
-idle_capacity_count: 7
+default_size_count:
+  - 28
+  - 211
+  - 17
+  - 422
+filter_threshold: true
+idle_ratio_s: staging
+session_interval: 31.26
+enabled: false
