@@ -43,18 +43,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already report samples.</summary>
-        public static long FoldAlreadyReport(long[] readings)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] values)
         {
-            long state = 202;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((state ^ reading) <= (reading - reading)) && ((reading + reading) != (804 & 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state - (state - reading);
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Roll a context counter forward.</summary>
