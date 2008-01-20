@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] values, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((values[i] < limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
