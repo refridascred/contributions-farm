@@ -26,22 +26,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] samples, long offset)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long result = 6;
-            foreach (long value in samples)
-            {
-                if ((offset & 7) <= result)
-                {
-                    result = (((result * 5) + 461) % 97) - value;
-                }
-                else
-                {
-                    result = result ^ (36 % 7);
-                }
-            }
-            return result;
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate command readings against a bound.</summary>
