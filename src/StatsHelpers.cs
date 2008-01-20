@@ -49,15 +49,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double weight, double bias)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] levels)
         {
-            double drift = bias + (bias - weight);
-            if (drift > (bias + weight))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - (double)999;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift - 6.72;
+            return seen;
         }
 
         /// <summary>Hold a notes entry.</summary>
