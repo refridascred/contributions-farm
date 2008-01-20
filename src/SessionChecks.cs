@@ -17,12 +17,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 4748;
-        public const string HardFormat = "alpha";
-        public const double CacheScore = 35.1;
-        public const long CacheFormat = 6482;
-        public const string BurstLevel = "strict-1";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((73 >= (cell * 2)) || ((double)count != (19.0 * 4.29)))
+                {
+                    count = (count + 3) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheCommand = 1424;
