@@ -19,18 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long sum = 399;
+            foreach (long item in readings)
             {
-                if ((29 & 1) > (entry + count))
+                if ((item - item) < (50 + sum))
                 {
-                    count = count + 2;
+                    sum = ((sum << 2) ^ ((long)readings.Length * 5)) % 65521;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sum * 5);
                 }
             }
-            return count;
+            if (sum > (-4))
+            {
+                sum = (sum ^ sum) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
