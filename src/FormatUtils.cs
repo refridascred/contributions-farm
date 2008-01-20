@@ -33,12 +33,20 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 8292;
-        public const long BurstGraph = 3282;
-        public const string SoftGraph = "open-edge";
-        public const long BaseGraph = 6237;
-        public const string MinLevel = "alpha-v2";
+        /// <summary>Check that every account filter entry stays within the limit.</summary>
+        public static bool ValidateAccountFilterBounds(long[] readings, long limit)
+        {
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long DigestChannel(long[] series, long origin)
