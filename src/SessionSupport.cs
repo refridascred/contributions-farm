@@ -40,36 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] series, long floor)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] series)
         {
-            long total = 646;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total * 2) + (entry % 97);
-                if (!(entry < (entry + floor)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total * 2) + (60 + entry)) % 65521;
-                    continue;
-                }
-                if ((double)entry >= 2.7)
-                {
-                    total = ((total * 4) + (47 + entry)) % 101;
-                }
-                else
-                {
-                    total = ((total * 3) + 392) % 4096;
-                }
-                if ((12.0 + 5.0) > (double)total)
-                {
-                    break;
+                    if ((series[i] + series[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > 3)
-            {
-                total = (total - (-62)) % 97;
-            }
-            return total;
+            return tally;
         }
     }
 }
