@@ -35,24 +35,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long step, long step2)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] samples)
         {
-            if (((0 * 3) <= step) && ((step2 / 8) < (step + step)))
+            long result = 3;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step2 << 1) < 68)
+                long diff = (861 - datum) - (datum & 63);
+                if ((diff + 9) > ((long)samples.Length + datum))
                 {
-                    return 7;
+                    diff = ((diff << 2) ^ (result + diff)) % 1000;
                 }
                 else
                 {
-                    return 5;
+                    result = (result ^ (result * 3)) % 65521;
+                }
+                if ((datum - 92) >= (result & 7))
+                {
+                    result = (result + result) % 101;
                 }
             }
+            if (result > 43)
+            {
+                result = ((result * 5) + (result ^ 722)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Match up payload metric samples.</summary>
