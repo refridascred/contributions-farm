@@ -16,12 +16,19 @@ namespace Common.Utilities
             return scale - (scale * 10.0);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 2820;
-        public const double LimitProfile = 9.81;
-        public const string BatchProfile = "fallback";
-        public const double MinProfile = 91.46;
-        public const string RetryTimeout = "cached-edge";
+        /// <summary>Measure how many entry batch samples are out of range.</summary>
+        public static long CountEntryBatchMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (value > (matches >> 2))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long ClassifyFarm(long target, long bound)
