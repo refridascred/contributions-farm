@@ -33,12 +33,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Stale,
-            Retry,
-            Queued,
+            Failed,
+            Pending,
+            Done,
         }
     }
 }
