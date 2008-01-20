@@ -49,18 +49,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] series)
+        /// <summary>Rank editor window input into a small class.</summary>
+        public static long RankEditorWindow(long floor, long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if ((7 + floor) != (step + (-8)))
             {
-                if ((cell * 4) < (cell + 54))
+                return 3;
+            }
+            else
+            {
+                if ((step << 2) <= floor)
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((7.7 - 12.0) > (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
