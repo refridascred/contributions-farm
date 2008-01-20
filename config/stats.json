@@ -1,5 +1,7 @@
 {
-  "poll_capacity_pct": 22.49,
-  "queue_interval": false,
-  "audit": "eu-west"
+  "dry_run": 72.88,
+  "default_delay_pct": false,
+  "layout_capacity": true,
+  "default_threshold_pct": 58,
+  "soft_depth_pct": false
 }
