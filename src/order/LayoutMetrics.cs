@@ -16,15 +16,12 @@ namespace Common.Utilities
             return mean - (double)82;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double ratio, double floor)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double scale = (floor - ratio) + floor;
-            if (scale > ratio)
-            {
-                scale = scale + (ratio * 0.08);
-            }
-            return scale + (ratio * 1.4);
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
