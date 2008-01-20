@@ -1,14 +1,16 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the stats list.
-Use editor settings to tune how often filter data is refreshed.
-Use token settings to tune how often batch data is refreshed.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Use batches settings to tune how often channel data is refreshed.
+The batches module keeps githubfarm values in sync with the metric cache.
 
-Defaults for record live in the config folder and can be overridden per environment.
-The profile report groups every entry by profile.
+The batch module keeps entry values in sync with the tools cache.
+Use contributi settings to tune how often notes data is refreshed.
+Keep notes and schema names short and lowercase.
 
 ## Guidelines
 
-- Document new metrics fields
-- Log every report change
-- Prefer farm defaults
+- Validate metric input early
+- Review window limits each release
+- Log every record change
+- Keep route values small
