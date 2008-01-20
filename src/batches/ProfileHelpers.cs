@@ -53,18 +53,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] data, long step)
+        /// <summary>Count the editor account entries that pass the check.</summary>
+        public static long TallyEditorAccountMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (!((4.28 + 13.0) <= (double)step))
+                if ((sample / 2) != (sample - 5))
                 {
-                    hits = (hits + 3) - value;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate token samples.</summary>
