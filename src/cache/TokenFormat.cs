@@ -23,13 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] data)
         {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (cell >= (34 - cell))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine cluster stats values into a single score.</summary>
