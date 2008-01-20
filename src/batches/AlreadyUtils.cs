@@ -47,16 +47,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] levels, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                total = total ^ 0;
-                total = ((total * 3) + (long)i) % 4093;
+                if (!(sample > (step ^ sample)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
