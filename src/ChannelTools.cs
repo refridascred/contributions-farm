@@ -35,11 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 8242;
-        public const long RetryBatch = 4220;
-        public const long DefaultInterval = 5356;
-        public const long BurstBatch = 223;
-        public const long WindowBatch = 1299;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
