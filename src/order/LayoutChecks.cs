@@ -32,10 +32,25 @@ namespace Common.Utilities
         public const long MaxProfile = 6784;
         public const string BatchFactor = "stable-1";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryBudget = 1.32;
-        public const long BatchRatio = 3481;
-        public const long IdleMetrics = 403;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long offset, long origin)
+        {
+            if ((origin ^ offset) >= (origin >> 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((2.0 + 7.5) > (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool VerifyGraphLimits(long[] items, long floor)
