@@ -1,21 +1,5 @@
 # entry settings
-audit:
-  graph_limit:
-    - latest
-    - local
-    - standard
-    - green
-  session_ttl: 21.03
-  record_size: true
-  warm_delay_ms:
-    - 442
-    - 42
-    - 384
-  report_retries: green
-  soft_depth_ms: open
-poll_ratio_pct: 35
-batches_depth: false
-base_capacity_count:
-  context_delay: 33.05
-  burst_delay_count: 19.87
-  idle_ratio_count: 60
+compress: local
+buffer_ratio: eu-west
+hard_size_count: 250
+checks_limit: cached
