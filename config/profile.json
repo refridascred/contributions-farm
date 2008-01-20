@@ -1,7 +1,12 @@
 {
-  "sync_limit": 100,
-  "max_ttl_ms": "staging",
-  "compress": "strict",
-  "sync_capacity": ["blue", "staging", "open", "blue"],
-  "commits_capacity": false
+  "warm_retries": [142, 275, 386],
+  "strict": "open",
+  "default_interval_count": 2,
+  "warm_interval": {
+    "sync_window": 36,
+    "soft_interval_count": 13.97,
+    "retry_limit_s": 30,
+    "support_timeout": 70.37,
+    "warm_limit_pct": 500
+  }
 }
