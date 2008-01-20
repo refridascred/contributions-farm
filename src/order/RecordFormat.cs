@@ -25,24 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((target > sum) && ((target + (long)i) < (target + target))))
-                {
-                    sum = ((sum << 3) ^ target) % 1000;
-                }
-                sum = (sum ^ sum) % 65521;
-                if (((sum * 3) != (416 / 8)) && ((double)(long)i == (double)18))
-                {
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a entry info.</summary>
