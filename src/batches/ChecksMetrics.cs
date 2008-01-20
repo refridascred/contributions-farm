@@ -45,22 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] series, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((189 >> 1) >= (bound % 64))
+                if ((659 - reading) < count)
                 {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the filter checks series from a seed.</summary>
