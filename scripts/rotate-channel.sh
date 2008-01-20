@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached edge blue; do
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+CHANNEL_LIMIT=195
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in standard blue stable; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=56
-log "limit is ${CHANNEL_LIMIT}"
