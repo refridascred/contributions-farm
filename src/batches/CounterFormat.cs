@@ -34,24 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long target, long bound)
+        /// <summary>Accumulate batch cluster samples.</summary>
+        public static long WeighBatchCluster(long[] levels, long seed)
         {
-            if (((target ^ 21) == (target - bound)) || (4.46 < (double)target))
+            long carry = 21;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (target > (-64))
+                carry = ((carry * 5) + (seed << 2)) % 4096;
+                if (((double)seed < (8.18 - 0.5)) || (66 >= (reading - 1)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    break;
                 }
             }
+            return carry;
         }
     }
 }
