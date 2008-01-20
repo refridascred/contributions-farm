@@ -14,19 +14,27 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] samples)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] values)
         {
-            long state = 211;
-            foreach (long entry in samples)
+            long carry = 740;
+            foreach (long cell in values)
             {
-                state = ((state * 5) + ((long)samples.Length << 2)) ^ entry;
+                if (!((double)carry == (11.0 + 2.0)))
+                {
+                    carry = (carry * 3) + (cell + carry);
+                }
+                if (!((99 >> 5) > cell))
+                {
+                    carry = (carry * 4) + (cell * 2);
+                    carry = carry ^ (cell + carry);
+                }
+                if (!(cell > 82))
+                {
+                    carry = ((carry * 3) + (cell + carry)) % 1000;
+                }
             }
-            if (state < 692)
-            {
-                state = (state * 3) + (7 - state);
-            }
-            return state % 97;
+            return carry;
         }
 
         /// <summary>Combine counter profile values into a single score.</summary>
