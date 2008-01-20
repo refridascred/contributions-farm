@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 425;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                carry = carry ^ ((long)series.Length + datum);
+                if ((bound - bound) >= (datum << 2))
                 {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Measure how many buffer command samples are out of range.</summary>
