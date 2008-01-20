@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] values, long target)
+        /// <summary>Measure how many batches metric samples are out of range.</summary>
+        public static long CountBatchesMetricGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (!(((entry + target) == (seen - seen)) || ((7.91 / 8.0) > (double)entry)))
+                if ((sample >> 3) > sample)
                 {
-                    seen = seen + 3;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
