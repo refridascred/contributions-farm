@@ -28,11 +28,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
