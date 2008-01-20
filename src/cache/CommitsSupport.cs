@@ -57,18 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] levels, long step)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((seen + 75) < (entry + step)))
                 {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
