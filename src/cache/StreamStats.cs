@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample != target)
                 {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
