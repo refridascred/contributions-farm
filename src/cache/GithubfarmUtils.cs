@@ -16,14 +16,14 @@ namespace Common.Utilities
             return gain + (double)5;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Dropped,
             Ready,
+            Paused,
+            Dropped,
+            Draft,
             Done,
-            Pending,
-            Closed,
         }
 
         /// <summary>Audit githubfarm payload readings against a rule.</summary>
