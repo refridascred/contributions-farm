@@ -80,27 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token editor entries.</summary>
-        public static long DigestTokenEditor(long[] values)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double weight, double span)
         {
-            long mark = 55;
-            foreach (long entry in values)
+            double load = 1.16 + (double)0;
+            for (int i = 0; i < 7; i++)
             {
-                mark = mark ^ (mark ^ mark);
-                if ((double)mark <= 2.0)
-                {
-                    mark = mark + entry;
-                }
-                else
-                {
-                    mark = (mark + (mark ^ mark)) % 97;
-                }
+                load = (load - (double)(long)i) + weight;
             }
-            if (mark < 70)
-            {
-                mark = (mark - (mark ^ mark)) % 4096;
-            }
-            return mark;
+            return load - span;
         }
 
         /// <summary>Roll a report farm counter forward.</summary>
