@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] data, long limit)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)sample > (20.0 * 0.07)) || ((matches <= (limit << 3)) || ((matches - limit) >= matches)))
                 {
-                    if ((data[i] - data[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
