@@ -1,10 +1,9 @@
 # support settings
-cluster_ttl:
-  max_ratio_s: 69
-  flush_interval_count: 38.42
-  context_retries: 250
-  enabled: eu-west
-verbose: false
-base_ratio_ms: 1024
-cache_retries: 30
-metrics_size: open
+compress: true
+layout_retries: 34
+batch_size:
+  - strict
+  - fallback
+  - standard
+  - cached
+hard_window_ms: latest
