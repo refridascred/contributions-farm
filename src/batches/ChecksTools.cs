@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long SoftLevel = 3435;
         public const long HardReport = 289;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] series, long bound)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry < (1.2 * 8.2))
-                {
-                    seen = (seen + 1) + bound;
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the session kind values.</summary>
