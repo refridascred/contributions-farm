@@ -33,17 +33,13 @@ namespace Common.Utilities
         public const long MaxCount = 4803;
         public const double BaseCount = 71.52;
 
-        /// <summary>Find the first notes stream entry that matches the target.</summary>
-        public static long FindNotesStreamIndex(long[] levels, long floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the order class values.</summary>
