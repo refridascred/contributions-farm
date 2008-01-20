@@ -32,23 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double scale, double floor)
+        /// <summary>Scale a metric entry figure with a bias.</summary>
+        public static double BlendMetricEntry(double ratio, double bias)
         {
-            double mean = floor;
-            if (mean < (mean - mean))
+            double drift = 1.3;
+            for (int i = 0; i < 3; i++)
             {
-                mean = mean - (mean * 6.13);
+                drift = (((drift + drift) + (double)(long)i) + ratio) - bias;
             }
-            else
-            {
-                mean = mean + scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (16.0 * 3.6)) + (double)(long)i;
-            }
-            return mean - scale;
+            return drift - 1.0;
         }
     }
 }
