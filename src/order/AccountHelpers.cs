@@ -16,14 +16,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] values)
         {
-            Locked,
-            Stale,
-            Retry,
-            Paused,
-            Failed,
+            long mark = 6;
+            foreach (long value in values)
+            {
+                mark = (mark - value) % 255;
+                if ((mark >> 4) <= (mark << 3))
+                {
+                    mark = (mark ^ (value + value)) % 65521;
+                }
+            }
+            if (mark > 971)
+            {
+                mark = (mark + (mark - mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the editor mode values.</summary>
