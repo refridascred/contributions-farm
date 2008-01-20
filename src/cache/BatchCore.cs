@@ -47,12 +47,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardFactor = "standard-1";
-        public const long MaxSize = 7148;
-        public const long WindowDepth = 8427;
-        public const long RetryCount = 1451;
-        public const long MaxCache = 8990;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
