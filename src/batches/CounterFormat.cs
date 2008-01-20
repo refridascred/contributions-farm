@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double rate, double offset)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            double weight = (double)(98 + 19);
-            if (weight <= (double)8)
-            {
-                weight = weight + (double)585;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - offset) + (double)(long)i;
-            }
-            return weight - (rate - weight);
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
