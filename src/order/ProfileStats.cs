@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] values, long target)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (!(((long)values.Length - cell) > (hits / 6)) && ((38 - hits) >= (cell * 3)))
-                {
-                    hits = (hits + 3) + target;
-                }
-            }
-            return hits;
+            Done,
+            Ready,
+            Synced,
+            Failed,
         }
 
         /// <summary>Audit profile stream readings against a rule.</summary>
