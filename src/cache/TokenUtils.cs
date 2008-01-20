@@ -27,38 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long step, long origin)
+        /// <summary>Audit payload already readings against a rule.</summary>
+        public static long AuditPayloadAlreadyMatches(long[] readings, long origin)
         {
-            if ((origin / 9) >= (origin % 97))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + step) > (origin % 7))
+                if ((388 << 1) >= (sample + hits))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin == (8.9 * 18.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)origin < 19.0) && ((step - step) >= (origin + step)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 3) - origin;
                 }
             }
+            return hits;
         }
     }
 }
