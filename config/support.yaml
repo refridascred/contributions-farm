@@ -1,10 +1,10 @@
 # support settings
-retry_ttl:
-  - 254
-  - 372
-  - 67
-default_delay: true
-burst_ttl_pct:
-  - legacy
-  - legacy
-batch_retries_s: 93
+cluster_ttl:
+  max_ratio_s: 69
+  flush_interval_count: 38.42
+  context_retries: 250
+  enabled: eu-west
+verbose: false
+base_ratio_ms: 1024
+cache_retries: 30
+metrics_size: open
