@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] series, long seed)
+        /// <summary>Blend two cache support measurements.</summary>
+        public static double BlendCacheSupport(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double rate = weight;
+            if (rate > (double)21)
             {
-                if (((tally - seed) != (tally ^ seed)) && ((seed % 10) >= seed))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = (rate - weight) - bias;
             }
-            return tally;
+            else
+            {
+                rate = rate + 5.66;
+            }
+            return rate - rate;
         }
 
         /// <summary>Locate a batches stream reading by value.</summary>
