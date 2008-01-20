@@ -16,18 +16,19 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Audit counter already readings against a rule.</summary>
-        public static long TallyCounterAlreadyMatches(long[] samples)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long sum = -403;
+            foreach (long entry in data)
             {
-                if ((34 ^ matches) < (877 % 7))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
+                sum = (((sum * 5) + (entry & 255)) % 255) - offset;
             }
-            return matches;
+            if (sum > 294)
+            {
+                sum = (sum * 2) + sum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
