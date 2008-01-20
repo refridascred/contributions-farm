@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] items)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 8;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sum / 4) < (value - value))
                 {
-                    if ((items[i] ^ items[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = sum + (value + sum);
                 }
             }
-            return seen;
+            return sum % 97;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
