@@ -1,7 +1,5 @@
 {
-  "soft_depth_pct": "strict",
-  "editor_capacity": "staging",
-  "poll_threshold": 71,
-  "verbose": "edge",
-  "sync_depth_s": 70.87
+  "cache_interval_count": 50.1,
+  "record_depth": 7150,
+  "queue_retries": 250
 }
