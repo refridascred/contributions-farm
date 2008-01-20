@@ -39,31 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long seed, long origin)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if ((origin > seed) || ((double)origin > (2.3 * 1.2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed << 1) >= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed * 2) <= (861 << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Ready,
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the layout state values.</summary>
