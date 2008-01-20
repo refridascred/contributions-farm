@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a account stats sample.</summary>
-        public static long FindAccountStatsIndex(long[] readings, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 38;
+            foreach (long cell in values)
             {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
+                state = (((state * 2) + (origin - origin)) % 255) ^ cell;
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Hold a report entry.</summary>
