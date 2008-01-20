@@ -36,19 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools command readings against a bound.</summary>
-        public static bool GuardToolsCommandRange(long[] values, long limit)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Queued,
+            Retry,
         }
 
         /// <summary>Adjust a metrics reading.</summary>
