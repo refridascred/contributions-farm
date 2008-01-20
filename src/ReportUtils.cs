@@ -29,13 +29,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] readings, long offset)
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit route notes readings against a rule.</summary>
