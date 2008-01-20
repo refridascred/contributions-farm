@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long target)
         {
-            Locked,
-            Active,
-            Retry,
+            long carry = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((carry + target) != (carry & 255)) && (((long)i >> 2) <= ((long)i % 100)))
+                {
+                    break;
+                }
+                carry = (carry ^ target) % 101;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
