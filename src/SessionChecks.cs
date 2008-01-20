@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long seed, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            long slot = seed + bound;
+            if (((57 & 255) <= (bound + 235)) && ((slot % 3) > ((-62) / 7)))
             {
-                carry = carry + 303;
-                carry = ((carry * 5) + (long)i) % 1000;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((640 + bound) > (bound + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
