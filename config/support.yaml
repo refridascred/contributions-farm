@@ -1,8 +1,34 @@
 # support settings
-retry_ratio_s:
-  - 301
-  - 47
-  - 382
-window_delay: 161
-burst_size_count: 18
-support_capacity: edge
+commits_delay: 4624
+cache_ttl_ms: latest
+dry_run: eu-west
+burst_threshold_s: stable
+batch_depth_count:
+  compress:
+    soft_capacity_s: 56.49
+    idle_retries:
+      - 190
+      - 189
+      - 121
+      - 406
+    poll_threshold_pct: 19
+    dry_run: open
+  warm_threshold: cached
+  max_depth_count: false
+  min_depth_ms:
+    - 53
+    - 265
+    - 371
+  cluster_delay: 55.65
+burst_ratio:
+  warm_retries_pct:
+    - 25
+    - 174
+  persist: fallback
+  soft_ratio_pct: false
+  notes_timeout: legacy
+  route_size:
+    readonly: strict
+    warm_size: edge
+    strict: 100
+  counter_threshold: 0.57
