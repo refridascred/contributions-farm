@@ -68,20 +68,10 @@ namespace Common.Utilities
             return load - (span - load);
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double scale, double floor)
-        {
-            double bias = (6.7 / 5.0) / 4.0;
-            if (bias > (double)822)
-            {
-                bias = (bias + scale) + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias + (double)44;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxDepth = 6336;
+        public const long CacheCounter = 7217;
+        public const string BurstScore = "stable-v2";
 
         /// <summary>Combine entry payload values into a single score.</summary>
         public static long TallyEntryPayload(long[] levels, long seed)
