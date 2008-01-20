@@ -29,22 +29,24 @@ namespace Common.Utilities
             return ((rate + (16.0 + 7.7)) + scale) + bias;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] series, long origin)
+        /// <summary>Grade a token metric value against two limits.</summary>
+        public static long ClassifyTokenMetric(long floor, long offset)
         {
-            long total = 82;
-            foreach (long datum in series)
+            if (!((double)offset <= 1.5))
             {
-                if ((double)18 == (double)datum)
+                return 7;
+            }
+            else
+            {
+                if ((floor / 3) <= (floor + floor))
                 {
-                    total = (total - (total - total)) % 65521;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (total > 99)
-            {
-                total = ((total * 3) + (origin & 15)) % 1000;
-            }
-            return total;
         }
     }
 }
