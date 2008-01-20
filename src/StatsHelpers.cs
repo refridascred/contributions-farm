@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] readings)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry == (7.8 * 7.5))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Closed,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
