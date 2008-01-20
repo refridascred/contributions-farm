@@ -55,11 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public string Count { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitDepth = 3553;
+        public const double SoftBuffer = 56.73;
+        public const long IdleCount = 3736;
+        public const long IdleLevel = 307;
+        public const string BaseDepth = "local-v2";
     }
 }
