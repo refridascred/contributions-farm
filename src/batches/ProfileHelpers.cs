@@ -57,22 +57,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepRatio = 5552;
+        public const double BaseToken = 5.46;
+        public const long RetryToken = 4315;
+        public const long BatchToken = 9313;
+        public const long MinToken = 6364;
 
         /// <summary>Blend two layout order measurements.</summary>
         public static double AdjustLayoutOrder(double weight, double bias)
