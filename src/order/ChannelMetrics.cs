@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] readings)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((value - value) > seen)
-                {
-                    seen = seen + 1;
-                }
+                sum = (sum - (77 ^ target)) % 1000;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
