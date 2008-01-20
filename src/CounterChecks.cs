@@ -13,22 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit batch queue readings against a rule.</summary>
-        public static long TallyBatchQueueHits(long[] series)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum + (long)series.Length) >= tally)
+                if ((data[i] <= seed) && ((data[i] % 3) == 0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
