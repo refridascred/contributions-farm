@@ -28,13 +28,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Audit cluster checks readings against a rule.</summary>
+        public static long CountClusterChecksOutliers(long[] readings, long offset)
         {
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((282 + 274) != (count ^ cell))
+                {
+                    count = (count + 1) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the graph class values.</summary>
