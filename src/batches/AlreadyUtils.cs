@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public long Weight { get; set; }
-            public double Count { get; set; }
-            public bool Flag { get; set; }
+            Done,
+            Paused,
+            Ready,
         }
 
         /// <summary>Adjust a graph reading.</summary>
