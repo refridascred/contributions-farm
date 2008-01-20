@@ -37,11 +37,19 @@ namespace Common.Utilities
         public const double BatchChannel = 90.48;
         public const double HardChannel = 89.65;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseMetric = "primary-edge";
-        public const long BatchMetric = 8637;
-        public const string LimitDepth = "standard-edge";
-        public const long BurstMetric = 8265;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((offset ^ matches) <= (datum % 12))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long OverlapFormatCount(long[] samples)
