@@ -39,22 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] values, long offset)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen & 31) >= (entry - offset))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
