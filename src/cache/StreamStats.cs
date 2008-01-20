@@ -36,22 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] samples, long target)
         {
-            long state = 87;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((state << 1) != (sample % 10))
+                if (cell < target)
                 {
-                    state = ((state * 2) + sample) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (state < 211)
-            {
-                state = state - (state + state);
-            }
-            return state % 97;
+            return ok;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
