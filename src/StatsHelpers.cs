@@ -64,39 +64,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long bound, long floor)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long bound2 = bound - floor;
-            if (!(15.0 > (double)floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((0.1 <= (double)bound2) || ((bound & 1) > (bound % 24)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound2 <= 6.4)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor / 7) > floor) && ((5.79 - 6.92) == (double)bound2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
