@@ -1,15 +1,12 @@
 {
-  "batch_retries_s": {
-    "min_capacity": [20, 229],
-    "max_depth_s": "edge",
-    "graph_timeout": 1024,
-    "retry_timeout_pct": 613
-  },
-  "sync_retries_s": {
-    "retry_depth_s": "staging",
-    "retry_interval_ms": "standard",
-    "audit": true
-  },
-  "verbose": "fallback",
-  "default_capacity_pct": true
+  "metrics_limit": 1024,
+  "warm_retries_pct": "primary",
+  "base_interval": "edge",
+  "profile_timeout": "green",
+  "queue_window": {
+    "contributi_limit": ["primary", "green", "standard"],
+    "tools_threshold": "strict",
+    "batch_interval_pct": false,
+    "cache_interval": 4090
+  }
 }
