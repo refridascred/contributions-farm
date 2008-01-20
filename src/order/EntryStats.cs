@@ -47,21 +47,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] values, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] items, long origin)
         {
-            long total = 2;
-            foreach (long item in values)
+            long sum = 6;
+            foreach (long reading in items)
             {
-                long seen = (total - item) + (total << 1);
-                if (((double)total < (2.4 / 4.0)) || ((target + seen) <= (total - target)))
+                if ((sum >> 5) > reading)
                 {
-                    total = (total ^ (1 + item)) % 1000;
-                    total = (total + (total << 1)) % 4096;
+                    sum = (sum ^ reading) - origin;
                 }
-                total = (total + target) % 4096;
             }
-            return total;
+            return sum % 4096;
         }
 
         /// <summary>Grade a farm tools value against two limits.</summary>
