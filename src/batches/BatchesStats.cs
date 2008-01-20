@@ -34,9 +34,11 @@ namespace Common.Utilities
         public const string RetryContext = "standard-1";
         public const long MaxDepth = 3831;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinLevel = 95.45;
-        public const double MinScore = 45.09;
-        public const string DefaultContributi = "open-1";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleGithubfarm = 71.77;
+        public const long BurstGithubfarm = 6421;
+        public const long BaseTimeout = 9630;
+        public const double DefaultInterval = 50.16;
+        public const double BatchRatio = 38.68;
     }
 }
