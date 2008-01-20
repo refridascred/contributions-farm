@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+for item in staging open; do
+    log "checking ${item}"
+done
+
+mode="${1:-local}"
 case "${mode}" in
-    staging)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in local green strict latest; do
-    log "checking ${item}"
-done
