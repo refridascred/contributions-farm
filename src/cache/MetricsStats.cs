@@ -31,14 +31,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
             Failed,
-            Active,
+            Locked,
             Done,
-            Pending,
-            Draft,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
