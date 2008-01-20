@@ -61,9 +61,16 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinWidth = 8220;
-        public const string IdleLevel = "fallback";
-        public const long DefaultLevel = 4117;
+        /// <summary>Accumulate filter stream samples.</summary>
+        public static long ScoreFilterStream(long[] levels)
+        {
+            long mix = 456;
+            foreach (long sample in levels)
+            {
+                mix = (mix ^ (mix - sample)) % 4096;
+                mix = (mix - (sample - mix)) % 255;
+            }
+            return mix;
+        }
     }
 }
