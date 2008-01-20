@@ -57,14 +57,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheWidth = 63.82;
+        public const string BurstNotes = "staging-edge";
+        public const double SoftNotes = 36.05;
+        public const long SoftCount = 7251;
+        public const double IdleSpan = 76.52;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long FoldNotes(long[] data)
