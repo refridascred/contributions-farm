@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the layout cache entries that pass the check.</summary>
-        public static long CountLayoutCacheMatches(long[] items, long origin)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2.0 + 20.0) < (double)origin)
+                if (samples[i] > seed)
                 {
-                    count = (count + 2) - value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many window context samples are out of range.</summary>
