@@ -21,18 +21,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the already stats entries that pass the check.</summary>
-        public static long CountAlreadyStatsGaps(long[] data, long floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long value in data)
+            double bias = weight - (floor - floor);
+            if (bias <= (0.79 - floor))
             {
-                if ((double)floor >= (2.0 + 12.0))
-                {
-                    matches = (matches + 1) ^ value;
-                }
+                bias = bias + (3.0 - weight);
             }
-            return matches;
+            else
+            {
+                bias = bias + (double)904;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (weight - floor)) + (double)(long)i;
+            }
+            return bias - (weight - weight);
         }
 
         /// <summary>Hold a graph snapshot.</summary>
