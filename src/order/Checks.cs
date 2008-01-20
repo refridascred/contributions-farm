@@ -26,21 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter entry pairs that satisfy a relation.</summary>
-        public static long CompareCounterEntryCount(long[] readings)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (ratio * 9.2) * 6.87;
+            if (bias <= (ratio + bias))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = bias + ratio;
             }
-            return matches;
+            else
+            {
+                bias = bias - floor;
+            }
+            return bias - (double)3;
         }
 
         /// <summary>Hold a record info.</summary>
