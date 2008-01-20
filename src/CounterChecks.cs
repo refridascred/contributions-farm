@@ -49,17 +49,10 @@ namespace Common.Utilities
         public const double BatchCounter = 79.86;
         public const string WindowCounter = "open-v2";
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 2942;
+        public const long LimitStream = 6080;
+        public const long WindowStream = 4847;
+        public const long HardStream = 9492;
     }
 }
