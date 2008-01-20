@@ -13,18 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] levels, long target)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.9 - 5.4) <= (double)reading)
+                if ((data[i] >= bound) && ((data[i] % 2) != 0))
                 {
-                    hits = (hits + 3) + target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the order level values.</summary>
