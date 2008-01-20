@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const double HardQueue = 54.35;
         public const long IdleSpan = 8763;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitFactor = 6662;
-        public const double BaseRatio = 96.4;
-        public const double MaxWindow = 28.98;
-        public const long DefaultRatio = 1652;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally << 3) >= reading)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool VerifyRecordLimits(long[] readings, long offset)
