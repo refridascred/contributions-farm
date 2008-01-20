@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging eu-west; do
-    log "checking ${item}"
-done
+mode="${1:-standard}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-CHANNEL_LIMIT=20
+CHANNEL_LIMIT=387
 log "limit is ${CHANNEL_LIMIT}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+for item in strict local primary; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
