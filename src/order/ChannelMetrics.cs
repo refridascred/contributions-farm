@@ -24,12 +24,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double scale, double bias)
-        {
-            double rate = (double)(93 ^ 6);
-            return ((rate + (16.0 + 7.7)) + scale) + bias;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitScore = 1240;
+        public const string RetryNotes = "open";
+        public const long SoftSpan = 1850;
 
         /// <summary>Grade a token metric value against two limits.</summary>
         public static long ClassifyTokenMetric(long floor, long offset)
