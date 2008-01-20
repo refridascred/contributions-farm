@@ -28,22 +28,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count cluster context pairs that satisfy a relation.</summary>
-        public static long PairClusterContextCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardMetrics = 79.68;
+        public const long BatchSize = 5926;
+        public const double MaxSpan = 60.81;
+        public const long RetrySize = 975;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
