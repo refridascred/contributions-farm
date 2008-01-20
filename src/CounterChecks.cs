@@ -20,17 +20,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                total = (total + (total + limit)) % 97;
-                total = total - (limit - 52);
-                total = ((total * 5) + (long)i) % 65521;
+                if ((1.68 + 9.0) < (double)matches)
+                {
+                    matches = (matches + 2) + item;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the schema class values.</summary>
