@@ -62,19 +62,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] series, long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a editor header.</summary>
