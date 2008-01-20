@@ -17,12 +17,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstScore = 9926;
+        public const long RetryFactor = 5965;
+        public const string MaxRatio = "cached-v2";
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsGaps(long[] values)
