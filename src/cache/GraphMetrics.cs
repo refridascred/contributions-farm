@@ -50,24 +50,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long bound, long limit)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double bias, double bias2)
         {
-            if ((2.0 + 8.8) != (double)limit)
+            double load = (double)266 * 7.09;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
+                load = ((load + (double)(long)i) - bias) - bias2;
             }
-            else
-            {
-                if ((bound - bound) == (limit * 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return load - 15.0;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
