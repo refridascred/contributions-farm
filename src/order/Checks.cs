@@ -22,14 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Locked,
-            Failed,
-            Queued,
-            Idle,
+            Active,
             Draft,
+            Dropped,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
