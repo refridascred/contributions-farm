@@ -22,23 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long mark = 958;
-            foreach (long datum in series)
-            {
-                mark = mark - (datum >> 4);
-                if ((double)68 >= (double)datum)
-                {
-                    mark = (mark + ((long)series.Length % 100)) % 101;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ mark) % 101;
-                }
-            }
-            return mark;
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the layout status values.</summary>
