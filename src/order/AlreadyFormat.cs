@@ -46,21 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] data)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(mix >= limit))
                 {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    mix = mix + (mix * 3);
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Match up cache samples.</summary>
