@@ -29,26 +29,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] samples)
+        /// <summary>Locate a contributi record reading by value.</summary>
+        public static long LocateContributiRecordIndex(long[] series, long floor)
         {
-            long score = 9;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item ^ score) >= (-751))
+                if (series[i] < floor)
                 {
-                    score = score - score;
-                }
-                else
-                {
-                    score = (score * 3) + (score - item);
+                    return (long)i;
                 }
             }
-            if (score < (-84))
-            {
-                score = score + score;
-            }
-            return score % 97;
+            return -1;
         }
     }
 }
