@@ -22,15 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of channel cluster readings.</summary>
-        public static long PairChannelClusterCount(long[] items)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] + items[j]) == 9)
+                    if ((values[i] ^ values[j]) > 19)
                     {
                         matches = matches + 1;
                     }
