@@ -13,11 +13,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowRatio = 5584;
-        public const double CacheBuffer = 57.65;
-        public const long MinSize = 9282;
-        public const long IdleBuffer = 2166;
+        /// <summary>Audit batch queue readings against a rule.</summary>
+        public static long TallyBatchQueueHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + (long)series.Length) >= tally)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long SeekEditorIndex(long[] data, long limit)
