@@ -31,22 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token support samples.</summary>
-        public static long DigestTokenSupport(long[] samples, long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            long result = 5;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((item ^ 70) != (result - item)) && ((floor / 9) < floor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result * 3) + (result / 8);
-                }
-                else
-                {
-                    result = (result + floor) % 4096;
+                    if ((samples[i] ^ samples[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
