@@ -21,19 +21,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] items, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long anchor = 2;
+            foreach (long sample in levels)
             {
-                if (reading < target)
+                if ((anchor * 2) > (anchor << 3))
                 {
-                    flag = false;
+                    anchor = ((anchor + (anchor << 1)) % 101) + sample;
+                }
+                if (anchor < (floor << 2))
+                {
                     break;
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
