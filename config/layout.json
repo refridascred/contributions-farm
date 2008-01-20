@@ -1,8 +1,6 @@
 {
-  "strict": 73.43,
-  "hard_window_pct": 2136,
-  "min_limit_ms": "latest",
-  "order_limit": "cached",
-  "burst_limit_pct": "latest",
-  "retry_threshold_ms": "strict"
+  "buffer_size": 30,
+  "base_ratio": 95.84,
+  "persist": false,
+  "warm_depth_pct": [457, 72]
 }
