@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long seed, long bound)
+        /// <summary>Fold a list of command commits readings.</summary>
+        public static long TallyCommandCommits(long[] series, long step)
         {
-            long step = seed - bound;
-            if (step < (seed + step))
+            long result = 88;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed % 10) > (seed + 3))
+                if (((long)series.Length <= (step - (-1))) || ((6 - step) > (step >> 2)))
                 {
-                    return 2;
+                    result = result - (item - step);
                 }
-                else
+                if ((item + (long)series.Length) <= (item + item))
                 {
-                    if (((double)bound != (6.2 - 1.61)) && ((bound + step) == (981 - bound)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Accumulate profile channel samples.</summary>
