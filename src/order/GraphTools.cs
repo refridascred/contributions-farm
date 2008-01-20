@@ -19,15 +19,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two counter account measurements.</summary>
-        public static double SmoothCounterAccount(double bias, double offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] samples, long offset)
         {
-            double load = (2.9 + offset) + bias;
-            if (load >= (load - 0.2))
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                load = load + (load / 7.0);
+                if (datum > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - (offset / 3.0);
+            return stale;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
