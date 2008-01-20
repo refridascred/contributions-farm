@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const long CacheSize = 5481;
         public const string StepWidth = "staging-edge";
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] data, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] values, long floor)
         {
-            long result = 87;
-            foreach (long cell in data)
+            long mix = 554;
+            foreach (long entry in values)
             {
-                result = ((result << 3) ^ origin) + cell;
+                if ((mix + 816) <= (252 - entry))
+                {
+                    mix = ((mix << 2) ^ (mix / 5)) % 65521;
+                }
             }
-            return result;
+            if (mix < 2)
+            {
+                mix = (mix + floor) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
