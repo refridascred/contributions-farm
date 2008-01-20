@@ -13,13 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] levels)
         {
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (6.0 < (double)seen)
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
