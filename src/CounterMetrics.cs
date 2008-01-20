@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] data, long bound)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = (double)264 * 17.0;
+            if (bias <= (double)61)
             {
-                if ((data[i] >= bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias - (span * 8.39)) - weight;
             }
-            return -1;
+            return bias + (double)925;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
