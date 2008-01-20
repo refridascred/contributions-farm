@@ -34,17 +34,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] readings, long seed)
+        /// <summary>Count the window githubfarm entries that pass the check.</summary>
+        public static long TallyWindowGithubfarmGaps(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (readings[i] < seed)
+                if (((double)bound >= 15.0) || ((bound * 3) <= tally))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
