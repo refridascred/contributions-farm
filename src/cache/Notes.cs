@@ -13,25 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long bound, long target)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] readings, long origin)
         {
-            long edge = bound - target;
-            if ((double)target < (9.98 * 8.63))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((edge % 8) != (bound & 255))
+                if (readings[i] < origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
