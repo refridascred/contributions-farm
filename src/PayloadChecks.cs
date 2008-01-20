@@ -25,12 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Locate a account counter reading by value.</summary>
+        public static long SeekAccountCounterIndex(long[] readings, long target)
         {
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
