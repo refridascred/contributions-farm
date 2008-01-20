@@ -54,11 +54,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "open-1";
-        public const long RetryFilter = 1785;
-        public const long WindowCount = 3324;
-        public const string BurstFilter = "strict-edge";
-        public const long MinScore = 4332;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = (carry ^ carry) % 1000;
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
