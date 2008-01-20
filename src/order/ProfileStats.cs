@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] values, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (value >= limit)
+                if ((829 <= (matches ^ offset)) && !((double)sample < (double)offset))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
