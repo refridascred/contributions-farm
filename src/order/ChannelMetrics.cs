@@ -36,19 +36,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double rate, double span)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double bias = (double)18;
-            if (bias <= (span + span))
-            {
-                bias = bias - (12.0 + rate);
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias + bias;
+            public double Token { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
