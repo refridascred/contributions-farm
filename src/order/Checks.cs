@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] values, long offset)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double load = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((tally ^ offset) < tally)
-                {
-                    tally = (tally + 3) ^ value;
-                }
+                load = (load + (load * 5.1)) + (double)(long)i;
             }
-            return tally;
+            return load - (ratio + load);
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
