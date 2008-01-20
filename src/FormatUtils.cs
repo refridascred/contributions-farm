@@ -61,39 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long floor, long step)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long offset = floor ^ step;
-            if ((floor + 4) >= (offset + (-208)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset * 5) < (29 ^ offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((9.0 * 9.71) == (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((9.7 - 6.1) != (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            New,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
