@@ -31,18 +31,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] values, long target)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (2.2 <= (double)tally)
-                {
-                    tally = ((tally + 3) ^ reading) - target;
-                }
-            }
-            return tally;
+            Stale,
+            Locked,
+            New,
         }
     }
 }
