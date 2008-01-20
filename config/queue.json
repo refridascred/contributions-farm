@@ -1,5 +1,7 @@
 {
-  "default_threshold": true,
-  "batch_ratio_pct": 5719,
-  "dry_run": false
+  "default_threshold_pct": "edge",
+  "batch_capacity": "stable",
+  "sync_ttl": ["legacy", "latest"],
+  "stats_depth": 99,
+  "format_threshold": 44.62
 }
