@@ -20,16 +20,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Audit record entry readings against a rule.</summary>
+        public static long TallyRecordEntryMatches(long[] values, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                acc = (acc * 5) + ((long)i ^ acc);
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((6.0 / 2.0) != (double)seed)
+                {
+                    matches = (matches + 2) + reading;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
