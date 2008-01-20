@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] data, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((value * 2) <= hits)
+                if ((double)cell < (8.6 / 6.0))
                 {
-                    hits = (hits + 2) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count notes editor pairs that satisfy a relation.</summary>
