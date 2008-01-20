@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the schema route entries that pass the check.</summary>
-        public static long MeasureSchemaRouteGaps(long[] levels, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] items)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long sample in items)
             {
-                if ((double)tally > 9.4)
+                if ((13.0 * 8.33) < (double)tally)
                 {
-                    tally = ((tally + 2) - cell) - step;
+                    tally = (tally + 2) + sample;
                 }
             }
             return tally;
