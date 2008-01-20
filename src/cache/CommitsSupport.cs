@@ -76,9 +76,16 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 5765;
-        public const long IdleToken = 6880;
-        public const double MaxCount = 93.1;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 7; i++)
+            {
+                score = (score + (score << 1)) % 4096;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
