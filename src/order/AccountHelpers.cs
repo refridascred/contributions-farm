@@ -15,14 +15,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Synced,
             Locked,
-            New,
-            Draft,
-            Closed,
+            Stale,
+            Retry,
+            Paused,
+            Failed,
         }
 
         /// <summary>Combine stats values into a single score.</summary>
