@@ -29,12 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleBudget = 61.72;
-        public const string MaxEditor = "open";
-        public const double LimitEditor = 78.69;
-        public const long BaseEditor = 7713;
-        public const long CacheEditor = 8451;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 7755;
+        public const long CacheLevel = 4748;
+        public const string RetryDepth = "fallback-1";
+        public const long DefaultAlready = 3166;
+        public const long StepSize = 355;
 
         /// <summary>Validate tools session readings against a bound.</summary>
         public static bool CheckToolsSessionLimits(long[] samples, long origin)
