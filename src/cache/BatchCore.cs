@@ -56,18 +56,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] readings)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)count == (double)80))
-                {
-                    count = (count + 2) ^ item;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the tools mode values.</summary>
