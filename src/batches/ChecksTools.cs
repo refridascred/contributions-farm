@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double gain, double bias)
         {
-            Idle,
-            Done,
-            Dropped,
+            double weight = gain;
+            if (weight >= weight)
+            {
+                weight = weight - (bias - bias);
+            }
+            else
+            {
+                weight = weight + bias;
+            }
+            return weight - (gain - bias);
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
