@@ -1,6 +1,7 @@
 {
-  "tools_threshold": "blue",
-  "payload_ratio": ["green", "staging"],
-  "soft_size_pct": 41.0,
-  "cache_ttl_ms": ["blue", "fallback"]
+  "retry_limit_count": true,
+  "context_size": 52.84,
+  "base_capacity_pct": [266, 395, 143, 158],
+  "audit": "standard",
+  "commits_limit": false
 }
