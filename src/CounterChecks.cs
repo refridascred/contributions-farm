@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Stale,
-            Draft,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 22.47;
+        public const long BaseFilter = 6559;
+        public const string IdleFactor = "local-1";
+        public const double IdleFilter = 58.1;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
