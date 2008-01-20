@@ -33,11 +33,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseTimeout = 45.73;
-        public const long WindowFactor = 5120;
-        public const double DefaultDepth = 49.53;
-        public const long RetryBudget = 2360;
-        public const double MinOrder = 44.69;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((6 - limit) != (limit & 127))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
+        }
     }
 }
