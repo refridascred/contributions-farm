@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] levels)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((4.37 / 5.0) < (double)item)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            Idle,
+            Draft,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
