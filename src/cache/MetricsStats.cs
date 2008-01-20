@@ -20,15 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Match up metrics session samples.</summary>
+        public static long MatchMetricsSessionCount(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the session state values.</summary>
