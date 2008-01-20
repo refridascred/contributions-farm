@@ -18,32 +18,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a already account value against two limits.</summary>
-        public static long SortAlreadyAccount(long seed, long step)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] readings)
         {
-            long edge = seed - step;
-            if ((double)seed >= (8.16 / 6.0))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)edge != (4.89 / 3.0)) || ((3.87 + 6.3) == (double)seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed <= 0.11)
+                    if ((readings[i] + readings[j]) != 11)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
