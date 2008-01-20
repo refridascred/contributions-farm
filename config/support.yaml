@@ -1,6 +1,11 @@
 # support settings
-idle_capacity_pct: stable
-batches_window: 8663
-base_ratio_s: 2622
-strict: local
-session_ttl: 3480
+compress: eu-west
+cache_size_count:
+  - staging
+  - stable
+  - local
+  - cached
+max_interval: 4301
+cache_ttl: 100
+burst_capacity_ms: latest
+audit: open
