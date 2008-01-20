@@ -53,14 +53,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Stale,
-            Locked,
-            Done,
-            Failed,
-            Dropped,
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
