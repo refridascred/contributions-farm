@@ -13,12 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a profile record.</summary>
