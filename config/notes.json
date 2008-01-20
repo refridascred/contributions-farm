@@ -1,6 +1,8 @@
 {
-  "hard_ratio": 45,
-  "route_threshold": false,
-  "base_depth_ms": 1024,
-  "retry_depth": 8443
+  "default_delay": "legacy",
+  "enabled": [291, 238],
+  "strict": "primary",
+  "hard_ratio_ms": 86.2,
+  "default_retries": 69.2,
+  "cache_size_count": "eu-west"
 }
