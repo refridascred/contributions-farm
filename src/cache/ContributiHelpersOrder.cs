@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleCount = "alpha-edge";
-        public const double DefaultSpan = 14.09;
-        public const long StepSize = 1448;
-        public const long DefaultFilter = 5240;
-        public const double MinFilter = 20.07;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] readings, long target)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((target + target) > (seen << 3))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long FoldCluster(long[] series)
