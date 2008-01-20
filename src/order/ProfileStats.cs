@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Done,
-            Ready,
-            Synced,
-            Failed,
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Audit profile stream readings against a rule.</summary>
