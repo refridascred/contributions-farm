@@ -52,11 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double bias, double floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double gain, double floor)
         {
-            double bias2 = 2.5 / 5.0;
-            return (bias2 + (floor * 3.3)) + bias;
+            double mean = (double)15 / 3.0;
+            if (mean < gain)
+            {
+                mean = (mean - mean) - floor;
+            }
+            return mean + (mean / 3.0);
         }
 
         /// <summary>Match up format samples.</summary>
