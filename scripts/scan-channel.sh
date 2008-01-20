@@ -6,22 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in edge blue primary; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 4); do
+for i in $(seq 1 10); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
 mode="${1:-latest}"
 case "${mode}" in
-    standard)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in standard blue eu-west fallback; do
-    log "checking ${item}"
-done
