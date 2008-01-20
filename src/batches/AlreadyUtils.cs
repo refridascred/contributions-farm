@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the route phase values.</summary>
