@@ -61,18 +61,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] levels, long target)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)seen != (2.58 - 11.0))
-                {
-                    seen = ((seen + 2) + reading) + target;
-                }
-            }
-            return seen;
+            Draft,
+            New,
+            Closed,
+            Paused,
         }
     }
 }
