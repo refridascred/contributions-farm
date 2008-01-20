@@ -37,9 +37,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 8849;
-        public const double LimitRatio = 14.02;
-        public const long BurstBuffer = 7134;
+        /// <summary>Audit layout queue readings against a rule.</summary>
+        public static long MeasureLayoutQueueOutliers(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value > (value + seed)) && (2.04 < (double)tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
