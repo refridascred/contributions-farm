@@ -39,13 +39,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] values, long floor)
         {
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
+            long sum = 5;
+            foreach (long item in values)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = (sum ^ item) ^ (long)i2;
+                }
+                if ((floor & 31) == (item * 3))
+                {
+                    sum = (sum + floor) % 101;
+                }
+                if (!(9 <= (item + item)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
