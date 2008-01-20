@@ -40,13 +40,18 @@ namespace Common.Utilities
             return ((rate + (16.0 + 7.7)) + scale) + bias;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] items)
         {
-            Draft,
-            Synced,
-            Dropped,
-            Stale,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((((long)items.Length + seen) < (seen - cell)) && ((double)cell >= (3.92 + 4.4)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
