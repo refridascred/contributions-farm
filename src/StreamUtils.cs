@@ -45,10 +45,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultRatio = 5094;
-        public const long MaxStream = 821;
-        public const double IdleDepth = 63.13;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            New,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long IterateAccount(long target)
