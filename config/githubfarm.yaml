@@ -1,13 +1,10 @@
 # githubfarm settings
-base_timeout_count:
-  readonly: 5
-  flush_depth_ms: local
-  retry_capacity_pct:
-    - strict
-    - blue
-    - blue
-    - open
-batch_ratio:
+session_window: false
+audit: 6
+default_ttl_ms:
+  - 112
+  - 6
   - 378
-  - 431
-poll_delay_pct: 68.45
+  - 177
+sync_limit_s: stable
+batch_timeout: edge
