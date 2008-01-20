@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long BaseBudget = 8432;
         public const long StepBudget = 8844;
 
-        /// <summary>Audit metric contributi readings against a rule.</summary>
-        public static long TallyMetricContributiMatches(long[] levels, long step)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry << 2) > (count + step))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Ready,
+            Failed,
+            New,
+            Synced,
         }
 
         /// <summary>Adjust a graph reading.</summary>
