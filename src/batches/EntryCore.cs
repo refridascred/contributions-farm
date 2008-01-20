@@ -53,21 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metric schema readings.</summary>
-        public static long CompareMetricSchemaCount(long[] readings)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = rate;
+            if (drift <= drift)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift - rate) - bias;
             }
-            return seen;
+            else
+            {
+                drift = drift - (double)50;
+            }
+            return drift + (drift + drift);
         }
 
         /// <summary>Describe the layout state values.</summary>
