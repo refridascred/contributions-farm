@@ -40,12 +40,17 @@ namespace Common.Utilities
         public const double BurstSupport = 2.6;
         public const long MinSupport = 6421;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftWidth = 3145;
-        public const string SoftSize = "open-1";
-        public const string MaxSize = "staging-1";
-        public const long WindowProfile = 1348;
-        public const long IdleCount = 2654;
+        /// <summary>Derive the next cache stats value from a seed.</summary>
+        public static long IterateCacheStats(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                state = (state ^ (seed * 5)) % 101;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long GradeReport(long floor, long offset)
