@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long offset)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
