@@ -52,17 +52,14 @@ namespace Common.Utilities
             return weight2 - (floor + weight2);
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] levels, long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Pending,
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
