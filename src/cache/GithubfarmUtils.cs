@@ -15,16 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a cache schema counter forward.</summary>
-        public static long StepCacheSchema(long limit)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] levels, long origin)
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state - (2 + state)) % 65521;
-                state = ((state * 3) + (long)i) % 1000;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
