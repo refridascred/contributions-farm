@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long floor, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long slot = floor ^ target;
+            if ((slot << 3) > slot)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!(slot >= (target % 12)))
                 {
-                    if ((levels[i] ^ levels[j]) > 20)
+                    return 8;
+                }
+                else
+                {
+                    if ((target >> 4) <= floor)
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor + target) < target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit profile stream readings against a rule.</summary>
