@@ -1,12 +1,8 @@
 {
-  "warm_retries": [142, 275, 386],
-  "strict": "open",
-  "default_interval_count": 2,
-  "warm_interval": {
-    "sync_window": 36,
-    "soft_interval_count": 13.97,
-    "retry_limit_s": 30,
-    "support_timeout": 70.37,
-    "warm_limit_pct": 500
-  }
+  "hard_capacity": "green",
+  "notes_retries": "eu-west",
+  "max_ratio_s": false,
+  "retry_window_pct": 96,
+  "hard_threshold": 7765,
+  "compress": 93.59
 }
