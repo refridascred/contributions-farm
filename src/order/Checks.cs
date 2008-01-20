@@ -56,17 +56,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] levels, long target)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= target) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Retry,
+            Idle,
         }
     }
 }
