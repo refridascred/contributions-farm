@@ -15,22 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepFactor = 31.54;
+        public const long DefaultInterval = 1739;
+        public const long DefaultWidth = 1841;
+        public const string BurstLevel = "legacy-edge";
+        public const string MaxRoute = "latest-1";
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] series, long floor)
