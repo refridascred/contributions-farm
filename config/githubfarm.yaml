@@ -1,36 +1,26 @@
 # githubfarm settings
-cache_depth_count: fallback
-max_limit_count:
-  stream_capacity: blue
-  batch_timeout_pct: 50.08
-  verbose: 53.22
-  flush_interval: false
-editor_capacity:
-  sync_retries:
-    enabled: standard
-    cache_ratio: stable
-    flush_delay_count: staging
-    min_ttl_ms:
-      - 34
-      - 267
-      - 317
-      - 137
-    sync_ttl_ms:
-      - open
-      - strict
-  command_threshold:
-    readonly: 14
-    poll_size:
-      - fallback
-      - primary
-    verbose: 78.83
-    max_limit_pct: true
-    farm_ttl: fallback
-  poll_threshold_s:
-    poll_timeout_ms: 2147
-    graph_depth: open
-    flush_limit_s: cached
-    layout_delay: 69.48
-min_delay: 60
-idle_limit_s: local
-batch_capacity_s: 500
+poll_capacity_s:
+  already_limit:
+    poll_capacity_ms:
+      - 212
+      - 285
+      - 20
+    retry_timeout:
+      - green
+      - blue
+    payload_window: 1024
+    filter_size: fallback
+    batch_delay: true
+    enabled: 27
+  compress: 9
+  flush_depth:
+    compress: 100
+    enabled: false
+    report_ttl: 20.15
+    order_threshold: 24.51
+    format_delay: false
+  flush_window_pct: false
+  buffer_window: legacy
+  token_ratio: true
+burst_window_s: 500
+layout_retries: 11.78
