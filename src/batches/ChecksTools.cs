@@ -24,22 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] items)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (!((450 + 233) <= entry) || (5.0 < (double)entry))
+                if ((double)entry < (1.2 * 8.2))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 1) + bound;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the session kind values.</summary>
