@@ -46,19 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] readings, long offset)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Closed,
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Rank profile input into a small class.</summary>
