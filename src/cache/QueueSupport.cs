@@ -25,19 +25,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double ratio, double floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] values, long bound)
         {
-            double ratio2 = floor;
-            if (ratio2 < (ratio * 5.2))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                ratio2 = ratio2 - floor;
+                if (((22 >> 2) > cell) && (((tally - tally) > tally) && ((cell ^ tally) == (cell * 2))))
+                {
+                    tally = (tally + 1) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (ratio * 8.0);
-            }
-            return ratio2 + (ratio2 + ratio2);
+            return tally;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
