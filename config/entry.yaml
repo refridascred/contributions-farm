@@ -1,4 +1,18 @@
 # entry settings
-flush_limit_ms: true
-strict: 500
-retry_limit_pct: 39.28
+stats_interval:
+  notes_threshold: 94
+  compress:
+    counter_limit: 38.14
+    command_delay: standard
+    flush_ratio_ms: fallback
+  idle_ratio_s: blue
+  poll_window: 1089
+  default_retries: 96.34
+cache_window: 39
+burst_window:
+  soft_timeout_count: 60
+  warm_limit_s: 13.91
+  enabled: local
+  githubfarm_ratio: false
+  githubfarm_retries: 2304
+  batch_threshold_s: 545
