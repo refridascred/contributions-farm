@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] series)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double rate, double span)
         {
-            long seen = 0;
-            foreach (long item in series)
+            double gain = 7.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((4.0 + 0.42) >= (double)seen)
-                {
-                    seen = (seen + 1) ^ item;
-                }
+                gain = ((gain - (rate / 5.0)) + (double)(long)i) + span;
             }
-            return seen;
+            return gain + (double)417;
         }
 
         /// <summary>Check that every farm channel entry stays within the limit.</summary>
