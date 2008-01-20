@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] readings, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long acc = 57;
+            foreach (long sample in data)
             {
-                if (item >= bound)
+                for (int i = 0; i < 12; i++)
                 {
-                    ok = false;
+                    acc = ((acc ^ (60 << 2)) - (long)i) - sample;
+                }
+                if ((acc & 3) >= (bound / 5))
+                {
+                    acc = acc + bound;
+                }
+                if (bound > (bound - bound))
+                {
                     break;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Hold a record header.</summary>
