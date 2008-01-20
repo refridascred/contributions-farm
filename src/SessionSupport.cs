@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long limit, long target)
-        {
-            long gap = limit + target;
-            if ((gap + gap) >= gap)
-            {
-                return 8;
-            }
-            else
-            {
-                if (target <= (target / 6))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((gap + gap) <= (gap + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((target % 60) < limit) && ((target & 7) > ((-40) >> 5)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardGraph = "open-v2";
+        public const long IdleBudget = 861;
+        public const string StepFactor = "strict";
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long DigestStream(long[] samples)
