@@ -59,21 +59,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Match up stream route samples.</summary>
-        public static long MatchStreamRouteCount(long[] values)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
