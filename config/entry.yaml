@@ -1,24 +1,17 @@
 # entry settings
-enabled: 96.91
-hard_timeout:
-  cache_size_ms: fallback
-  batch_ttl_ms:
-    cache_capacity_s: 17.57
-    report_limit: 7688
-    batch_capacity_pct: 250
-    verbose: 500
-    persist: cached
-    default_depth: true
-  max_timeout_pct: 60
-  retry_capacity_s: false
-  batch_delay:
-    - open
-    - blue
-verbose:
-  burst_retries:
-    - 281
-    - 166
-  queue_threshold: eu-west
-  base_capacity_count: 98
-  enabled: false
-strict: 34.04
+retry_size_pct:
+  - 52
+  - 170
+  - 160
+  - 236
+min_size_pct: strict
+window_window: false
+queue_retries: green
+max_size_pct:
+  idle_delay: fallback
+  readonly: 30
+  base_limit_pct: 59
+  burst_ttl_ms: fallback
+  soft_retries: 8.0
+  soft_depth_s: eu-west
+burst_window_s: 36
