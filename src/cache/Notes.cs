@@ -39,13 +39,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
+            Dropped,
+            Queued,
+            Draft,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
