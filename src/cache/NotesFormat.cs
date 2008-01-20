@@ -40,12 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public bool Size { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
     }
 }
