@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] items, long seed)
         {
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
