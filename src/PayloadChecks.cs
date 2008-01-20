@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
