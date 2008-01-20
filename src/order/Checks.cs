@@ -47,20 +47,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long total = 47;
-            foreach (long value in samples)
-            {
-                total = (total << 3) ^ (total + total);
-                total = ((total << 3) ^ (total + value)) % 255;
-                if (!((double)total >= (7.63 + 13.0)))
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
