@@ -29,22 +29,21 @@ namespace Common.Utilities
             return (bias - (offset * 9.9)) + gain;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] items)
+        /// <summary>Count counter entry pairs that satisfy a relation.</summary>
+        public static long CompareCounterEntryCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((long)items.Length - hits) <= (295 * 2)) && (((18.0 + 9.1) >= (double)hits) || ((5.89 * 1.1) < (double)value)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a record info.</summary>
