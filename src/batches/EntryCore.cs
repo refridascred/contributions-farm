@@ -13,21 +13,30 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] values)
+        /// <summary>Fold a list of editor support readings.</summary>
+        public static long FoldEditorSupport(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 370;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((56 + total) < sample)
                 {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total << 2) ^ sample;
+                }
+                else
+                {
+                    total = total ^ (long)samples.Length;
+                }
+                if ((sample + 112) != (long)samples.Length)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total < (-331))
+            {
+                total = total ^ total;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
