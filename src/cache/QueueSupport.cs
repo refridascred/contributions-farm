@@ -14,13 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Failed,
-            Idle,
-            Active,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 7354;
+        public const long DefaultSchema = 9043;
+        public const string StepRatio = "stable-edge";
+        public const long DefaultCount = 8540;
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
