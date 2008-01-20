@@ -22,25 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank payload session input into a small class.</summary>
-        public static long BucketPayloadSession(long target, long origin)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            long prev = target ^ origin;
-            if (prev < (prev << 1))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((18.0 - 4.8) <= (double)origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
