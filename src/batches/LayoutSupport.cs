@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the graph report entries that pass the check.</summary>
-        public static long MeasureGraphReportHits(long[] data)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long target, long step)
         {
-            long count = 0;
-            foreach (long cell in data)
+            if (((4.06 / 4.0) == (double)step) || ((target / 4) < (target + (-9))))
             {
-                if (!(count > (count + cell)))
+                return 0;
+            }
+            else
+            {
+                if (step >= (step + step))
                 {
-                    count = count + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a cluster summary.</summary>
