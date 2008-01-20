@@ -7,14 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in local standard; do
+for item in blue edge strict; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=376
-log "limit is ${COMMAND_LIMIT}"
