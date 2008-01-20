@@ -1,39 +1,7 @@
 # support settings
-poll_timeout_count: 59.29
-persist:
-  batch_depth_count: green
-  flush_capacity: primary
-  soft_size_ms: local
-  contributi_retries:
-    base_window_pct: eu-west
-    burst_threshold_pct:
-      - 3
-      - 334
-      - 246
-    warm_capacity_ms: staging
-    batch_threshold_pct:
-      - primary
-      - legacy
-    batch_ttl: 60
-  min_delay_s:
-    cache_threshold_ms:
-      - blue
-      - fallback
-      - open
-      - primary
-    batch_threshold:
-      - legacy
-      - strict
-    dry_run: edge
-order_delay:
-  already_retries: 10.0
-  format_size: primary
-  default_limit:
-    - green
-    - legacy
-    - edge
-    - open
-  hard_limit_ms: edge
-soft_depth_s: 100
-warm_window_pct: 61.89
-base_limit: local
+default_timeout_count: green
+default_ttl_ms:
+  - 336
+  - 298
+  - 11
+poll_ttl_ms: standard
