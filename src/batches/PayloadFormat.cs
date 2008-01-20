@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long seed, long step)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            if ((26 * 2) >= (seed * 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((5 - seed) > seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed < (seed >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a batches record.</summary>
