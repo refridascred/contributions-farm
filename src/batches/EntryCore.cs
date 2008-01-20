@@ -26,24 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long bound, long limit)
+        /// <summary>Find the first format buffer entry that matches the target.</summary>
+        public static long LookupFormatBufferIndex(long[] items, long target)
         {
-            if ((double)bound < (double)limit)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit + limit) > (bound % 12))
+                if (items[i] >= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank order input into a small class.</summary>
