@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] readings)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long bound, long bound2)
         {
-            long result = 513;
-            foreach (long entry in readings)
+            if (bound2 >= (bound & 1))
             {
-                result = result ^ entry;
-                if ((entry * 4) < (result - entry))
+                return 7;
+            }
+            else
+            {
+                if (bound < (bound - bound2))
                 {
-                    result = ((result << 2) ^ (result * 5)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    if (bound2 >= (bound2 >> 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
