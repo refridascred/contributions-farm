@@ -15,12 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] values, long limit)
         {
-            Locked,
-            Synced,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
