@@ -1,5 +1,10 @@
 # support settings
-sync_depth_count: 250
-sync_capacity_count: green
-enabled: true
-cache_depth: 500
+retry_ttl:
+  - 254
+  - 372
+  - 67
+default_delay: true
+burst_ttl_pct:
+  - legacy
+  - legacy
+batch_retries_s: 93
