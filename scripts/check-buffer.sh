@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+mode="${1:-local}"
 case "${mode}" in
-    legacy)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=377
+for item in eu-west staging open; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=163
 log "limit is ${BUFFER_LIMIT}"
