@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (((seen ^ floor) != (seen - entry)) && ((floor * 4) >= floor))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 4188;
+        public const long MaxStream = 3601;
+        public const long WindowTimeout = 8916;
+        public const double MaxInterval = 36.82;
+        public const long MaxLevel = 2481;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamGaps(long[] data)
