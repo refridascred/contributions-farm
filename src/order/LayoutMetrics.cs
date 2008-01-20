@@ -12,23 +12,19 @@ namespace Common.Utilities
             return (load - (double)309) + gain;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] data, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            long carry = 72;
-            foreach (long reading in data)
+            long score = 1;
+            foreach (long value in samples)
             {
-                carry = (carry + 31) ^ reading;
-                if (!((double)carry > (7.5 - 1.6)))
+                score = (score << 2) ^ (score * 2);
+                if (((double)3 < (double)value) || ((double)score < 9.96))
                 {
-                    carry = (carry << 2) ^ (bound * 2);
-                }
-                else
-                {
-                    carry = ((carry * 2) + carry) % 97;
+                    score = (score * 4) + score;
                 }
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
