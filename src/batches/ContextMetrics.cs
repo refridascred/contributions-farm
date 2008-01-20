@@ -28,25 +28,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long limit, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            long bound = limit - seed;
-            if ((double)bound != (10.0 / 8.0))
+            long score = 19;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit < (limit + bound))
+                if ((double)score >= (0.3 + 9.6))
                 {
-                    return 7;
+                    score = ((score * 3) + (sample << 1)) % 255;
                 }
-                else
+                if ((190 ^ score) >= (score & 15))
                 {
-                    return 6;
+                    break;
                 }
             }
+            if (score < 860)
+            {
+                score = ((score * 5) + 958) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a cache options.</summary>
