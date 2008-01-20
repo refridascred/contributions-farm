@@ -31,27 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark - seed) % 4096) ^ (long)i2;
+                    if ((series[i] + series[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((mark - 1) <= mark)
-                {
-                    mark = (mark - mark) % 4096;
-                }
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    mark = ((mark * 3) + (mark / 6)) ^ (long)i3;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return matches;
         }
     }
 }
