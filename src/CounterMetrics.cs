@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double weight, double span)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double bias = (double)264 * 17.0;
-            if (bias <= (double)61)
-            {
-                bias = (bias - (span * 8.39)) - weight;
-            }
-            return bias + (double)925;
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
