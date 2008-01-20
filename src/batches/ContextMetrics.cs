@@ -49,22 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel cluster values into a single score.</summary>
-        public static long FoldChannelCluster(long[] samples, long floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long mark = 56;
-            foreach (long sample in samples)
-            {
-                if (((sample * 5) < (floor - floor)) && (8 < floor))
-                {
-                    mark = (mark + (floor / 9)) % 65521;
-                }
-            }
-            if (mark < 171)
-            {
-                mark = mark - (floor % 64);
-            }
-            return mark % 97;
+            public double Level { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a notes counter counter forward.</summary>
