@@ -38,17 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] levels, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
+                if (sample < step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
