@@ -26,18 +26,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] levels, long target)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((target << 2) != (datum + datum))
                 {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
