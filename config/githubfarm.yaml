@@ -1,5 +1,12 @@
 # githubfarm settings
-flush_size: staging
-retry_size_ms: stable
-persist: false
-cache_size: 250
+soft_size: 93.99
+min_size_count: 5.39
+retry_retries: cached
+already_ratio: staging
+soft_depth_ms:
+  idle_threshold: green
+  max_retries_count: legacy
+  persist: fallback
+  cache_interval: primary
+  strict: 59
+base_threshold_pct: local
