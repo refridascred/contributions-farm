@@ -24,12 +24,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "open-v2";
-        public const long BurstChecks = 5961;
-        public const long MaxWidth = 8896;
-        public const long MaxChecks = 7456;
-        public const long IdleCount = 9183;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Retry,
+            Queued,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
