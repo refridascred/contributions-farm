@@ -23,13 +23,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Accumulate stats filter samples.</summary>
+        public static long DigestStatsFilter(long[] items, long floor)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
+            long result = 130;
+            foreach (long cell in items)
+            {
+                if (!((floor % 60) <= (cell - 8)))
+                {
+                    result = ((result * 4) + (floor - cell)) % 255;
+                }
+                if (((long)items.Length - result) <= (cell / 2))
+                {
+                    result = (result * 2) + 21;
+                }
+                else
+                {
+                    result = (result ^ ((-144) ^ 96)) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
