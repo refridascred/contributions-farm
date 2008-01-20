@@ -31,18 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] values, long seed)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double load = floor;
+            if (load < (double)850)
             {
-                if ((double)seed < (double)value)
-                {
-                    hits = hits + 1;
-                }
+                load = load + ratio;
             }
-            return hits;
+            return load - load;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
