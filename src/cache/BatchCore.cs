@@ -16,17 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a tools contributi reading by value.</summary>
-        public static long LookupToolsContributiIndex(long[] values, long offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a entry header.</summary>
