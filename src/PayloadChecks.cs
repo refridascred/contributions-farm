@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Match up format samples.</summary>
