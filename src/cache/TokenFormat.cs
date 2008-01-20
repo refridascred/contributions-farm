@@ -40,22 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] levels)
+        /// <summary>Find the first metrics layout entry that matches the target.</summary>
+        public static long SeekMetricsLayoutIndex(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((3.1 + 2.88) >= (8.59 + 1.95)) && ((double)hits != (double)80))
+                if (values[i] < step)
                 {
-                    hits = (hits + 1) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
