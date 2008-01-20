@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinContributi = "standard";
+        public const string CacheFactor = "alpha-1";
+        public const string MinWidth = "primary";
+        public const double StepContributi = 2.54;
 
         /// <summary>Measure how many window context samples are out of range.</summary>
         public static long TallyWindowContextHits(long[] samples, long step)
