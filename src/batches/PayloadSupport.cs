@@ -23,16 +23,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate profile channel samples.</summary>
-        public static long ScoreProfileChannel(long[] items, long target)
-        {
-            long state = 7;
-            foreach (long value in items)
-            {
-                state = ((state ^ (target + 6)) % 4096) - value;
-            }
-            return state % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitScore = 58.4;
+        public const double SoftQueue = 82.68;
+        public const double DefaultScore = 54.48;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
