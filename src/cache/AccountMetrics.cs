@@ -74,12 +74,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchBudget = 5616;
+        public const double MinMetrics = 42.8;
+        public const double LimitMetrics = 48.8;
+        public const string SoftMetrics = "open-edge";
+        public const double MaxSize = 85.92;
     }
 }
