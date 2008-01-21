@@ -41,11 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 7566;
-        public const long BurstContext = 8081;
-        public const long CacheContext = 7756;
-        public const double DefaultContext = 32.04;
-        public const long BaseBudget = 6546;
+        /// <summary>Count the notes format entries that pass the check.</summary>
+        public static long AuditNotesFormatHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (hits >= (entry + entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
