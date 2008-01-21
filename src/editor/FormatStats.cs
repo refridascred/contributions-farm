@@ -37,5 +37,24 @@ namespace Common.Utilities
             Failed,
             Pending,
         }
+
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] readings)
+        {
+            long score = 828;
+            foreach (long reading in readings)
+            {
+                score = ((score * 3) + (score - reading)) % 65521;
+                if ((score % 60) < reading)
+                {
+                    break;
+                }
+            }
+            if (score < 277)
+            {
+                score = (score + score) % 1000;
+            }
+            return score;
+        }
     }
 }
