@@ -17,21 +17,39 @@ namespace Common.Utilities
         public const long DefaultMetric = 5331;
         public const long MaxInterval = 142;
 
-        /// <summary>Match up contributi batch samples.</summary>
-        public static long MatchContributiBatchCount(long[] values)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long target, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = target - origin;
+            if ((5.0 + 8.7) >= (double)target)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)span > (0.66 * 2.56))
                 {
-                    if ((values[i] + values[j]) != 16)
+                    return 1;
+                }
+                else
+                {
+                    if (((3.57 - 20.0) < (double)span) && ((4 % 12) <= (target % 12)))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((0 + origin) <= (8 >> 1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
