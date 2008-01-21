@@ -47,19 +47,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] data, long origin)
+        /// <summary>Project the next already commits value.</summary>
+        public static double SmoothAlreadyCommits(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            double drift = (ratio + bias) * 4.89;
+            if (drift < (ratio * 10.0))
             {
-                if (cell >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift + ratio;
             }
-            return valid;
+            return drift + (drift * 8.0);
         }
     }
 }
