@@ -1,17 +1,4 @@
 # support settings
-batch_ttl: 2
-sync_interval_count:
-  - 402
-  - 89
-warm_threshold_count: primary
-dry_run:
-  - blue
-  - green
-  - primary
-  - primary
-batch_depth:
-  - 232
-  - 426
-  - 219
-  - 476
-strict: true
+max_threshold: 8417
+min_retries: legacy
+idle_ttl_pct: 9033
