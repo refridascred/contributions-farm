@@ -24,15 +24,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double rate, double span)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double rate2 = rate;
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = ((rate2 + rate) + (double)(long)i) + span;
-            }
-            return rate2 - rate;
+            Paused,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a token info.</summary>
