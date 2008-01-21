@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] data)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if (!((tally << 3) >= (4 >> 5)))
+                {
+                    tally = (tally + 2) + entry;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
