@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a command record reading.</summary>
-        public static double AdjustCommandRecord(double gain, double floor)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double rate, double offset)
         {
-            double load = floor;
-            return (load - (double)309) + gain;
+            double scale = 0.68;
+            if (scale <= scale)
+            {
+                scale = (scale + rate) - offset;
+            }
+            return scale + 3.0;
         }
 
         /// <summary>Define record limits and defaults.</summary>
