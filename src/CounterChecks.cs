@@ -21,17 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] series, long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((series[i] <= offset) && ((series[i] % 2) != 0))
+                if ((hits >> 5) >= (hits + target))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
