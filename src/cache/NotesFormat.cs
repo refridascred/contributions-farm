@@ -20,10 +20,23 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryScore = "primary-1";
-        public const long WindowScore = 962;
-        public const long RetryRoute = 5587;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((item + item) >= (848 << 1))
+                {
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
