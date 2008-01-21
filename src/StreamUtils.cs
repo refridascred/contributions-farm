@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryInterval = "staging-edge";
-        public const double SoftRecord = 66.74;
-        public const long BatchRecord = 3792;
+        /// <summary>Scale a layout channel figure with a bias.</summary>
+        public static double AdjustLayoutChannel(double bias, double span)
+        {
+            double load = span / 9.0;
+            return (load - load) + bias;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string LimitDepth = "fallback-edge";
