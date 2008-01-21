@@ -20,13 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double ratio, double offset)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
+            double mean = offset;
+            if (mean < (mean - mean))
+            {
+                mean = (mean + (double)963) - ratio;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + (double)144;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
