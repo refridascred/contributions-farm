@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 2;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((1 ^ 37) < (1 - cell))
                 {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (((mark << 3) ^ mark) % 4096) - offset;
                 }
             }
-            return tally;
+            return mark % 65521;
         }
 
         /// <summary>Find the first payload command entry that matches the target.</summary>
