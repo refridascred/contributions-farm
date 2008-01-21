@@ -38,9 +38,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftSize = 7259;
-        public const long CacheBudget = 3784;
-        public const string BaseWidth = "staging";
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (reading <= (525 & 63))
+                {
+                    count = (count + 3) + target;
+                }
+            }
+            return count;
+        }
     }
 }
