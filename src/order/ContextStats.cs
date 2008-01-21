@@ -31,19 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] values, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (datum <= floor)
+                if (((cell / 7) < (-8)) || ((9 - cell) > (seen ^ cell)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
