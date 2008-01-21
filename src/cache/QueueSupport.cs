@@ -12,23 +12,17 @@ namespace Common.Utilities
         public const long HardTools = 4863;
         public const long MinTools = 3977;
 
-        /// <summary>Scale a counter buffer figure with a bias.</summary>
-        public static double AdjustCounterBuffer(double gain, double bias)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] data, long seed)
         {
-            double drift = 1.0;
-            if (drift < (double)14)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + (20.0 * 1.1);
+                if ((data[i] >= seed) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (bias - drift);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (gain - bias)) + (double)(long)i;
-            }
-            return drift - (double)431;
+            return -1;
         }
 
         /// <summary>Blend two order measurements.</summary>
