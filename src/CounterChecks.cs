@@ -79,23 +79,13 @@ namespace Common.Utilities
             return drift - (double)(-7);
         }
 
-        /// <summary>Combine format batches values into a single score.</summary>
-        public static long FoldFormatBatches(long[] samples, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long state = 7;
-            foreach (long value in samples)
-            {
-                state = ((state * 4) + (4 << 3)) + limit;
-                if ((state << 2) <= value)
-                {
-                    break;
-                }
-            }
-            if (state > 88)
-            {
-                state = ((state << 3) ^ (state & 15)) % 255;
-            }
-            return state;
+            public double Token { get; set; }
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
