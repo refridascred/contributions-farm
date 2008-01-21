@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long limit, long offset)
         {
-            Stale,
-            Synced,
-            Dropped,
-            New,
+            if ((3 ^ offset) <= (offset & 31))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit * 4) != (offset >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((5.29 + 4.65) > (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((127 + limit) <= (limit - offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate notes samples.</summary>
