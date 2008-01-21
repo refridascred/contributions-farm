@@ -57,19 +57,27 @@ namespace Common.Utilities
         public const long BurstInterval = 6346;
         public const double SoftInterval = 29.19;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double weight, double offset)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long step)
         {
-            double load = 5.59;
-            if (load >= load)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                load = (load - load) + offset;
+                if (!((step + (long)i) < ((long)i << 3)))
+                {
+                    acc = ((acc << 3) ^ acc) % 65521;
+                }
+                if (((acc * 4) > acc) && ((2.5 * 3.3) > (double)(long)i))
+                {
+                    acc = ((acc * 5) + step) % 1000;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (step << 1)) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (weight / 5.0)) + (double)(long)i;
-            }
-            return load + (2.0 / 8.0);
+            return acc;
         }
     }
 }
