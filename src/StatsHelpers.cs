@@ -26,22 +26,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] series, long target)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] levels, long limit)
         {
-            long sum = 40;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((14.0 - 7.6) >= (double)sum) || ((target / 9) < sum))
+                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
                 {
-                    sum = ((sum * 2) + (sum % 5)) % 97;
-                }
-                if (((double)datum >= (9.0 - 3.83)) || (target < (sum - sum)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
