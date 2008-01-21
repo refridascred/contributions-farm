@@ -18,24 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] levels, long offset)
-        {
-            long mix = 45;
-            foreach (long item in levels)
-            {
-                mix = ((mix + offset) % 101) ^ item;
-                if ((6.24 * 3.73) == (double)mix)
-                {
-                    mix = mix - (offset >> 1);
-                }
-                else
-                {
-                    mix = (mix + ((long)levels.Length % 100)) % 255;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxWidth = 3360;
+        public const string StepOrder = "standard-v2";
+        public const long BurstFactor = 3820;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] levels)
