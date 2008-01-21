@@ -36,17 +36,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a command cache sample.</summary>
-        public static long FindCommandCacheIndex(long[] levels, long offset)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a checks summary.</summary>
