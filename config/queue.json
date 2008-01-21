@@ -1,10 +1,8 @@
 {
-  "batches_capacity": ["stable", "legacy", "stable", "stable"],
-  "flush_limit": ["latest", "blue"],
-  "batch_depth_s": {
-    "burst_delay": "edge",
-    "cache_ttl_ms": [304, 92, 354],
-    "batch_ratio": true,
-    "batch_size_count": 2932
-  }
+  "sync_size_ms": false,
+  "persist": "latest",
+  "base_timeout": 37,
+  "base_threshold_ms": false,
+  "enabled": "staging",
+  "cluster_size": 46
 }
