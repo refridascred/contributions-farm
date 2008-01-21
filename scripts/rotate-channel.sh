@@ -6,22 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-staging}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in edge stable local green; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=184
+log "limit is ${CHANNEL_LIMIT}"
