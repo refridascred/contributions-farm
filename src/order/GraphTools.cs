@@ -20,15 +20,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double scale, double floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] samples, long floor)
         {
-            double gain = (double)((-1) + 8);
-            if (gain > gain)
+            long acc = 28;
+            foreach (long sample in samples)
             {
-                gain = gain - scale;
+                acc = ((acc * 2) + (acc + acc)) - sample;
+                acc = (acc + (81 * 4)) % 4096;
             }
-            return gain + (scale - floor);
+            if (acc > 8)
+            {
+                acc = (acc + (floor << 2)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
