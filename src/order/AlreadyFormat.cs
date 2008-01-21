@@ -19,30 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] levels, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] levels, long target)
         {
-            long mark = 2;
-            foreach (long reading in levels)
+            long anchor = 5;
+            foreach (long value in levels)
             {
-                if (!(mark < (mark / 2)))
+                if (target < (target + 8))
                 {
-                    mark = mark - (709 % 97);
+                    anchor = ((anchor << 2) ^ (anchor << 3)) % 97;
                 }
-                else
-                {
-                    mark = (mark + (reading - (long)levels.Length)) % 101;
-                }
-                if (((5.0 + 4.06) == (double)mark) && ((seed + mark) > (seed ^ 146)))
-                {
-                    break;
-                }
+                anchor = (anchor - (value - anchor)) % 4096;
             }
-            if (mark > 619)
-            {
-                mark = mark ^ (mark & 7);
-            }
-            return mark % 97;
+            return anchor % 65521;
         }
 
         /// <summary>Check that every account cache entry stays within the limit.</summary>
