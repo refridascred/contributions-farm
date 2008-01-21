@@ -1,5 +1,5 @@
 {
-  "base_ratio": 6.24,
-  "poll_retries": 50,
-  "batch_window": true
+  "idle_ratio_ms": true,
+  "default_limit_count": "eu-west",
+  "commits_limit": "stable"
 }
