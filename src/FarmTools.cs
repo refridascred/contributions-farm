@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 7055;
-        public const double BatchInterval = 75.16;
-        public const long IdleCount = 1685;
-        public const long CacheFactor = 3808;
-        public const string LimitCommand = "strict";
+        /// <summary>Combine contributi context values into a single score.</summary>
+        public static long ScoreContributiContext(long[] items)
+        {
+            long score = 695;
+            foreach (long item in items)
+            {
+                score = ((score ^ (score << 3)) % 1000) - item;
+            }
+            if (score < 675)
+            {
+                score = (score - score) % 255;
+            }
+            return score % 97;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
