@@ -22,25 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank window record input into a small class.</summary>
-        public static long BucketWindowRecord(long floor, long origin)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long step = floor - origin;
-            if ((5.0 < (double)origin) && ((origin + step) <= (origin << 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((4.15 + 7.5) >= (double)step) && ((step / 4) <= origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the record kind values.</summary>
