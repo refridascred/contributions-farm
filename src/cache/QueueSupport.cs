@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseScore = 6633;
-        public const long LimitChannel = 7012;
-        public const double BurstChannel = 18.68;
-        public const double DefaultBudget = 84.13;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinRoute = "open-edge";
+        public const long MaxInterval = 6518;
+        public const double CacheRoute = 81.97;
+        public const long BaseRoute = 1051;
 
         /// <summary>Roll a cluster cache counter forward.</summary>
         public static long IterateClusterCache(long step)
