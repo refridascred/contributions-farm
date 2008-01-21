@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] values, long target)
         {
-            long score = -2;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in values)
             {
-                score = ((score * 2) + (116 ^ cell)) % 65521;
-                if ((double)score == (5.5 * 5.1))
+                if ((double)target <= (2.3 - 0.44))
                 {
-                    break;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
