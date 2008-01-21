@@ -63,15 +63,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double weight, double span)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long bound)
         {
-            double scale = 3.0;
-            if (scale < (double)5)
+            long state = bound;
+            for (int i = 0; i < 15; i++)
             {
-                scale = ((scale - (double)9) + weight) - span;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return scale - 1.7;
+            return state;
         }
     }
 }
