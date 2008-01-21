@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] values, long bound)
+        /// <summary>Accumulate session support samples.</summary>
+        public static long TotalSessionSupport(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mix = 69;
+            foreach (long datum in samples)
             {
-                if ((6.2 - 15.0) < (double)reading)
-                {
-                    tally = (tally + 2) - bound;
-                }
+                mix = (((mix ^ mix) % 1000) - datum) - offset;
             }
-            return tally;
+            return mix % 4096;
         }
 
         /// <summary>Hold a stats info.</summary>
