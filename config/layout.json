@@ -1,11 +1,15 @@
 {
-  "idle_threshold_pct": false,
-  "sync_delay": {
-    "default_ratio": ["staging", "stable"],
-    "readonly": 5449,
-    "base_interval_ms": "standard",
-    "max_retries_count": 19.19
+  "poll_ttl_pct": 60,
+  "dry_run": false,
+  "stats_threshold": {
+    "verbose": 48.4,
+    "token_capacity": {
+      "min_depth_count": 286,
+      "min_ttl_s": 2197,
+      "burst_ratio_s": 500,
+      "base_threshold": false
+    },
+    "stream_ttl": "blue"
   },
-  "contributi_size": 9065,
-  "batches_capacity": ["primary", "green"]
+  "flush_ratio_s": true
 }
