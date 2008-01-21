@@ -46,14 +46,14 @@ namespace Common.Utilities
             return bias - (double)3;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Locked,
-            New,
-            Done,
+            Synced,
+            Retry,
             Dropped,
-            Draft,
+            Active,
+            Pending,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
