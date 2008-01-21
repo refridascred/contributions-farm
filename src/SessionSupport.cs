@@ -35,20 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            long carry = 648;
+            foreach (long reading in items)
             {
-                if ((step & 1) >= (499 >> 4))
-                {
-                    break;
-                }
-                carry = (carry ^ 762) % 65521;
-                carry = ((carry * 4) + (long)i) % 4093;
+                carry = (((carry << 3) ^ (carry >> 3)) % 101) ^ reading;
             }
-            return carry;
+            return carry % 97;
         }
     }
 }
