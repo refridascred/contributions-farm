@@ -1,18 +1,7 @@
 {
-  "layout_threshold": "edge",
-  "retry_retries_ms": 48,
-  "cache_window_ms": ["blue", "staging"],
-  "metric_threshold": "strict",
-  "compress": {
-    "flush_limit_ms": "stable",
-    "sync_threshold": {
-      "sync_interval_s": 49,
-      "default_size": [114, 498, 15, 217],
-      "base_size": "legacy",
-      "base_ratio": ["edge", "green"],
-      "sync_timeout": 47,
-      "flush_timeout": "cached"
-    },
-    "base_depth_ms": [138, 319, 382]
-  }
+  "enabled": 64.88,
+  "default_delay": "strict",
+  "batch_window": false,
+  "min_size_count": false,
+  "idle_capacity": "eu-west"
 }
