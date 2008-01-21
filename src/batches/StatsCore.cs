@@ -77,9 +77,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 6473;
-        public const string MinGithubfarm = "legacy-1";
-        public const long IdleScore = 8051;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Done,
+            Ready,
+            Idle,
+        }
     }
 }
