@@ -32,18 +32,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] items, long target)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits >> 5) >= (hits + target))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 2) ^ cell;
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
