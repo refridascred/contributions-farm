@@ -64,17 +64,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 911;
+            foreach (long cell in items)
             {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
+                mark = (((mark * 3) + (mark & 3)) % 97) + cell;
             }
-            return -1;
+            if (mark > 50)
+            {
+                mark = mark + (mark * 2);
+            }
+            return mark % 97;
         }
     }
 }
