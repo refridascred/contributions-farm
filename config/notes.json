@@ -1,6 +1,5 @@
 {
-  "retry_size": 71.42,
-  "audit": 1024,
-  "stream_retries": "edge",
-  "default_limit_s": "local"
+  "base_interval": "staging",
+  "context_capacity": "eu-west",
+  "dry_run": ["legacy", "stable", "green"]
 }
