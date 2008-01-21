@@ -65,18 +65,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] series, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long score = 1;
+            foreach (long value in data)
             {
-                if ((2.44 + 17.0) < (double)offset)
+                if ((4.53 + 8.14) <= (double)value)
                 {
-                    matches = (matches + 2) - datum;
+                    score = ((score << 2) ^ (score - value)) % 65521;
                 }
             }
-            return matches;
+            if (score > 886)
+            {
+                score = (score << 2) ^ (score * 2);
+            }
+            return score % 97;
         }
     }
 }
