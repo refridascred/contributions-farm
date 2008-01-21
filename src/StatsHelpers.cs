@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySpan = 4374;
-        public const long IdleBudget = 7535;
-        public const long RetrySession = 1008;
-        public const string CacheSession = "primary";
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if (mix <= ((long)i + floor))
+                {
+                    mix = (mix * 2) + floor;
+                }
+                else
+                {
+                    mix = (mix - floor) % 1000;
+                    mix = mix ^ (floor << 2);
+                }
+                mix = ((mix << 2) ^ floor) % 101;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterHits(long[] readings)
