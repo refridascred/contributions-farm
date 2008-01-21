@@ -49,13 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Check that every buffer profile entry stays within the limit.</summary>
+        public static bool CheckBufferProfileLimits(long[] items, long origin)
         {
-            Active,
-            Retry,
-            Locked,
-            Idle,
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first notes cache entry that matches the target.</summary>
