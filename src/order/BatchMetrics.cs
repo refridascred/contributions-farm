@@ -28,21 +28,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (floor - rate) + rate;
+            if (scale >= floor)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale - scale;
             }
-            return count;
+            else
+            {
+                scale = scale + 2.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + rate) + (double)(long)i;
+            }
+            return scale + (double)81;
         }
 
         /// <summary>Match up batch samples.</summary>
