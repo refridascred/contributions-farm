@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long target, long step)
+        /// <summary>Iterate the profile already series from a seed.</summary>
+        public static long StepProfileAlready(long floor)
         {
-            if (((step - target) >= target) && ((step - 68) < (step + (-37))))
+            long total = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (step < (5 + step))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 2;
+                    total = (total - ((long)i2 * 2)) % 101;
                 }
-                else
-                {
-                    if (!(target >= (9 & 31)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Hold a entry options.</summary>
