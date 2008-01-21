@@ -45,18 +45,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] samples, long limit)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if (((floor2 + 32) < (floor + floor2)) && ((floor2 & 127) <= (555 / 7)))
             {
-                if ((limit % 60) >= (matches << 2))
+                return 5;
+            }
+            else
+            {
+                if ((9.03 - 0.3) >= (double)floor)
                 {
-                    matches = (matches + 3) + item;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
