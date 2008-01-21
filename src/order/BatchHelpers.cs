@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long target, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset = target ^ step;
+            if (target > (step - 22))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((target & 7) != (target - 430)) && ((8.0 + 5.0) <= (double)offset))
                 {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the tools kind values.</summary>
