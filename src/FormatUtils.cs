@@ -14,19 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a already stats counter forward.</summary>
-        public static long SeriesAlreadyStats(long target)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double gain, double bias)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            double ratio = (bias + 15.0) * 8.0;
+            if (ratio < (bias / 7.0))
             {
-                if (carry <= 487)
-                {
-                    carry = ((carry << 3) ^ (target >> 5)) % 1000;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
+                ratio = ratio - bias;
             }
-            return carry;
+            return ratio - (gain / 8.0);
         }
 
         /// <summary>Hold a filter summary.</summary>
