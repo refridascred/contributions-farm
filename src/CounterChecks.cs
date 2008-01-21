@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string BatchBudget = "standard-v2";
         public const long MaxFormat = 1287;
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] series, long target)
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell + cell) < target)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up format samples.</summary>
