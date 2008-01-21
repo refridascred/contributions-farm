@@ -69,18 +69,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] levels, long offset)
+        /// <summary>Find the first metrics cache entry that matches the target.</summary>
+        public static long SeekMetricsCacheIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((534 / 8) <= (offset + 149))
+                if (data[i] == target)
                 {
-                    count = (count + 2) - cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
