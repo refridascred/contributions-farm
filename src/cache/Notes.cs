@@ -45,23 +45,12 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double rate, double offset)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            double drift = offset;
-            if (drift <= (drift * 5.0))
-            {
-                drift = drift - (drift - rate);
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (3.6 + drift)) + (double)(long)i;
-            }
-            return drift + (7.51 - rate);
+            Draft,
+            Idle,
+            Stale,
         }
 
         /// <summary>Hold a record header.</summary>
