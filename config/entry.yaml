@@ -1,5 +1,31 @@
 # entry settings
-batch_interval_ms: 33
-hard_ratio: green
-hard_window: false
-audit: 85.0
+retry_depth_pct:
+  metrics_delay: 100
+  soft_window: legacy
+  base_threshold_pct: false
+  min_interval_count:
+    - 41
+    - 295
+    - 355
+  batch_timeout_s: 83.56
+idle_threshold_s:
+  - green
+  - standard
+flush_window_count:
+  flush_size_s:
+    - 101
+    - 169
+    - 339
+    - 388
+  cluster_timeout: primary
+  poll_size_ms: 92
+  idle_retries_ms:
+    - local
+    - standard
+    - stable
+  stream_threshold:
+    - cached
+    - strict
+    - fallback
+  flush_timeout_count: true
+persist: legacy
