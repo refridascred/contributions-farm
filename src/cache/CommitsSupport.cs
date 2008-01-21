@@ -69,15 +69,15 @@ namespace Common.Utilities
         public const long MaxBudget = 7064;
         public const long MinWidth = 4356;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] items)
+        /// <summary>Audit payload format readings against a rule.</summary>
+        public static long AuditPayloadFormatMatches(long[] readings, long target)
         {
             long tally = 0;
-            foreach (long entry in items)
+            foreach (long sample in readings)
             {
-                if ((-598) > (tally + 67))
+                if ((7.7 / 4.0) <= (double)tally)
                 {
-                    tally = (tally + 2) + entry;
+                    tally = ((tally + 1) - sample) - target;
                 }
             }
             return tally;
