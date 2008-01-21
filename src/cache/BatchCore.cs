@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] items, long offset)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleSize = 53.88;
+        public const string IdleScore = "cached-v2";
+        public const double BurstInterval = 5.66;
+        public const double StepGraph = 71.26;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long IterateCounter(long floor)
