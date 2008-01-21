@@ -33,11 +33,38 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 9948;
-        public const long BurstEditor = 9075;
-        public const long CacheInterval = 5859;
-        public const double CacheTimeout = 85.57;
-        public const long WindowEditor = 2642;
+        /// <summary>Grade a githubfarm batches value against two limits.</summary>
+        public static long SortGithubfarmBatches(long step, long seed)
+        {
+            if ((seed + seed) > (seed * 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((863 + seed) == (seed + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed >= (3.94 / 2.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((((-835) >> 4) != (step % 2)) || ((step + step) < (step ^ step)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
