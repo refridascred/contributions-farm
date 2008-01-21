@@ -12,11 +12,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] levels, long step)
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of stream command entries.</summary>
