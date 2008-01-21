@@ -18,21 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 45;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                mix = ((mix + offset) % 101) ^ item;
+                if ((6.24 * 3.73) == (double)mix)
                 {
-                    if ((items[i] ^ items[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix - (offset >> 1);
+                }
+                else
+                {
+                    mix = (mix + ((long)levels.Length % 100)) % 255;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
