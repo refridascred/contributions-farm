@@ -21,19 +21,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] levels)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] series, long limit)
         {
-            long sum = 622;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                sum = ((sum * 3) + reading) % 65521;
+                if (cell <= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (sum < (-87))
-            {
-                sum = ((sum << 3) ^ sum) % 65521;
-            }
-            return sum % 97;
+            return flag;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
