@@ -69,28 +69,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long limit)
+        /// <summary>Count metrics buffer pairs that satisfy a relation.</summary>
+        public static long MatchMetricsBufferCount(long[] items)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((8.0 / 6.0) > (double)anchor) && (anchor >= (limit - (long)i)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((double)limit >= (1.22 + 5.26))
-                {
-                    anchor = ((anchor << 2) ^ ((long)i * 3)) % 65521;
-                    anchor = (anchor - (limit ^ (long)i)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ ((long)i << 2)) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
     }
 }
