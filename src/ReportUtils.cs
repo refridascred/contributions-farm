@@ -77,12 +77,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Dropped,
-            New,
-            Retry,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepSize = 63.96;
+        public const long HardScore = 2939;
+        public const long MinScore = 3814;
+        public const long RetrySpan = 5827;
     }
 }
