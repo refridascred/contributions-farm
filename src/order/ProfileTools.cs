@@ -43,10 +43,19 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinDepth = 17.8;
-        public const long DefaultLevel = 5201;
-        public const long WindowCount = 4185;
-        public const long StepCount = 1359;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] values, long limit)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
