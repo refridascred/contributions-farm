@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] values, long step)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            long acc = 7;
-            foreach (long cell in values)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((7.7 - 5.0) == (double)(long)values.Length)
-                {
-                    acc = (((acc << 2) ^ (step % 2)) % 255) ^ cell;
-                }
+                sum = sum ^ 878;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
