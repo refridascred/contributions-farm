@@ -14,15 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] readings, long target)
+        /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
+        public static long AuditQueueGithubfarmMatches(long[] items)
         {
-            long total = 483;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long item in items)
             {
-                total = (((total ^ (total - (long)readings.Length)) % 1000) - datum) - target;
+                if (((long)items.Length <= (item ^ hits)) || !((double)hits != (7.2 + 17.0)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the entry status values.</summary>
