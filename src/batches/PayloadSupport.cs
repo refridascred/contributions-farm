@@ -16,23 +16,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of farm batch readings.</summary>
-        public static long CombineFarmBatch(long[] samples, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double weight, double offset)
         {
-            long total = 598;
-            foreach (long item in samples)
+            double load = weight;
+            if (load < weight)
             {
-                total = ((total ^ floor) % 65521) - item;
-                if ((double)total <= 1.3)
-                {
-                    total = ((total * 3) + (total >> 2)) % 255;
-                }
-                if (3.45 > (double)total)
-                {
-                    break;
-                }
+                load = (load + (double)108) - offset;
             }
-            return total % 65521;
+            else
+            {
+                load = load + 6.0;
+            }
+            return load - 6.06;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
