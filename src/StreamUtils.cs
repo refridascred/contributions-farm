@@ -37,10 +37,18 @@ namespace Common.Utilities
         public const double BaseRatio = 73.34;
         public const long SoftSize = 4610;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftToken = 59.03;
-        public const double CacheToken = 43.54;
-        public const long MaxSize = 6260;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
