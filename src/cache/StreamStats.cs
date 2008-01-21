@@ -20,17 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first githubfarm metrics entry that matches the target.</summary>
-        public static long LookupGithubfarmMetricsIndex(long[] levels, long limit)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double rate, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = 7.46;
+            if (drift >= 2.5)
             {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
+                drift = drift - floor;
             }
-            return -1;
+            return drift - rate;
         }
 
         /// <summary>Describe the cache level values.</summary>
