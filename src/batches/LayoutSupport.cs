@@ -39,17 +39,22 @@ namespace Common.Utilities
         public const long DefaultReport = 3064;
         public const string LimitDepth = "cached-1";
 
-        /// <summary>Find the first cluster record entry that matches the target.</summary>
-        public static long SeekClusterRecordIndex(long[] levels, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
+                if ((tally * 4) <= 49)
                 {
-                    return (long)i;
+                    tally = ((tally + 2) + entry) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
