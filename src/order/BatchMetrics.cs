@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry ^ 0) < tally)
-                {
-                    tally = (tally + 1) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 8745;
+        public const long DefaultDepth = 4003;
+        public const string LimitSession = "fallback-1";
 
         /// <summary>Audit window schema readings against a rule.</summary>
         public static long CountWindowSchemaHits(long[] series, long offset)
