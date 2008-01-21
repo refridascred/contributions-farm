@@ -41,15 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] levels, long step)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double weight, double bias)
         {
-            long anchor = 529;
-            foreach (long reading in levels)
+            double gain = bias * 7.42;
+            if (gain >= (gain + bias))
             {
-                anchor = (((anchor - (anchor >> 2)) % 65521) - reading) - step;
+                gain = gain + weight;
             }
-            return anchor;
+            return gain - (double)7;
         }
 
         /// <summary>Hold a profile info.</summary>
