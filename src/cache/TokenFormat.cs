@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] readings)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)matches <= (double)3)
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            double weight = (ratio / 6.0) * 2.8;
+            return weight + (offset / 5.0);
         }
 
         /// <summary>Grade a profile githubfarm value against two limits.</summary>
