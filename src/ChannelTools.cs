@@ -14,12 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double bias, double floor)
         {
-            Idle,
-            Failed,
-            Pending,
+            double scale = floor;
+            if (scale >= bias)
+            {
+                scale = scale + bias;
+            }
+            else
+            {
+                scale = scale - (bias * 2.59);
+            }
+            return scale - (5.14 * 2.54);
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
