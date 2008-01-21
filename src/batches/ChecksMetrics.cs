@@ -21,18 +21,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultSize = 7036;
+        public const long RetryScore = 6470;
+        public const double StepFormat = 43.55;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatMatches(long[] samples)
