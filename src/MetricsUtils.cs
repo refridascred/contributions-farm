@@ -46,18 +46,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] values)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (seen > (seen - seen))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            Active,
+            Queued,
+            Stale,
+            Retry,
         }
     }
 }
