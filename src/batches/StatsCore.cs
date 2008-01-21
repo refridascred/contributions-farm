@@ -64,10 +64,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultDepth = 43.63;
-        public const double HardTimeout = 5.9;
-        public const string BaseCache = "primary-1";
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] items, long floor)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long HardGithubfarm = 6473;
