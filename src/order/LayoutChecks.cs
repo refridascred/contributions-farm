@@ -71,13 +71,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Count the account checks entries that pass the check.</summary>
+        public static long AuditAccountChecksMatches(long[] levels, long target)
         {
-            Stale,
-            Queued,
-            New,
-            Paused,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading & 7) != (reading + seen)) && (seen < (target + 9)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
