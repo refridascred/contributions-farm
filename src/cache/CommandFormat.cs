@@ -27,39 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long bound, long bound2)
-        {
-            if (bound2 <= (bound2 ^ 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound2 <= (double)837)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound2 ^ bound2) != (bound2 << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((bound2 - bound) != (719 + bound)) && ((bound2 - bound2) > (bound2 + bound2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstTimeout = 6028;
+        public const long SoftEditor = 33;
+        public const long CacheRatio = 9819;
+        public const string IdleSpan = "cached";
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordHits(long[] readings, long seed)
