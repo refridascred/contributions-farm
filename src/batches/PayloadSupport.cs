@@ -40,19 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] samples, long step)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long offset, long seed)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            if ((double)92 >= (double)seed)
             {
-                if (reading < step)
+                return 0;
+            }
+            else
+            {
+                if ((double)seed == (2.42 * 2.1))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed % 8) != (offset >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)0 <= (double)seed) && ((3.0 - 9.8) < (double)seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
