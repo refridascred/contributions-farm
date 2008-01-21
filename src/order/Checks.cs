@@ -16,23 +16,19 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double ratio, double floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double gain, double bias)
         {
-            double bias = 0.3;
-            if (bias >= 6.41)
+            double rate = 4.9;
+            if (rate > (gain / 6.0))
             {
-                bias = bias - floor;
+                rate = rate - (rate - gain);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                bias = bias + (bias - floor);
+                rate = (rate - (bias * 5.6)) + (double)(long)i;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + ratio) + (double)(long)i;
-            }
-            return bias - ratio;
+            return rate + (18.0 / 7.0);
         }
 
         /// <summary>Adjust a batch reading.</summary>
