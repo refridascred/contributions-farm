@@ -12,19 +12,13 @@ namespace Common.Utilities
             return (load + span) + ratio;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double gain, double offset)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double bias = offset;
-            if (bias >= bias)
-            {
-                bias = (bias + (offset * 8.75)) + gain;
-            }
-            else
-            {
-                bias = bias - (offset - offset);
-            }
-            return bias - offset;
+            Draft,
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Hold a batches info.</summary>
