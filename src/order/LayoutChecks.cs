@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double gain, double bias)
+        /// <summary>Check that every batch session entry stays within the limit.</summary>
+        public static bool GuardBatchSessionBounds(long[] levels, long target)
         {
-            double ratio = (double)(684 / 5);
-            if (ratio >= 13.0)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                ratio = (ratio - (bias * 14.0)) - gain;
+                if (cell > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio + bias;
+            return ok;
         }
 
         /// <summary>Locate a order reading by value.</summary>
