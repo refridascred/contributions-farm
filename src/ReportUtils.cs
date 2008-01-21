@@ -31,15 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster account figure with a bias.</summary>
-        public static double SmoothClusterAccount(double gain, double offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            double drift = gain * 16.0;
-            if (drift <= gain)
+            long carry = -68;
+            foreach (long value in samples)
             {
-                drift = (drift + drift) - offset;
+                if ((869 - carry) > (value + value))
+                {
+                    carry = (carry + (value * 2)) % 255;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ carry) % 101;
+                }
             }
-            return drift - 7.0;
+            return carry;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
