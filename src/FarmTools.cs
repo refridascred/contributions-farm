@@ -30,19 +30,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double bias, double floor)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long offset)
         {
-            double gain = bias;
-            if (gain < (14.0 / 4.0))
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                gain = gain + (gain / 2.0);
+                sum = sum - (offset / 3);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain + floor;
-            }
-            return gain + (floor / 6.0);
+            return sum;
         }
     }
 }
