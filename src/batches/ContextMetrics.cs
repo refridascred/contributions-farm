@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long MinLayout = 8311;
         public const double BurstCount = 10.99;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] readings, long offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
