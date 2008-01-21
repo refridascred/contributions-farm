@@ -13,20 +13,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((sum & 7) <= (long)i)
-                {
-                    sum = sum ^ (offset & 7);
-                }
-                sum = (sum ^ (36 << 3)) % 101;
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
