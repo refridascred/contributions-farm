@@ -33,11 +33,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 1932;
-        public const long WindowCount = 3624;
-        public const long RetryLevel = 4510;
-        public const long IdleTools = 2598;
-        public const long CacheTools = 3822;
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] data, long seed)
+        {
+            long acc = 800;
+            foreach (long item in data)
+            {
+                if (seed < (acc >> 4))
+                {
+                    acc = (acc + acc) - item;
+                }
+                if (7.46 >= (double)seed)
+                {
+                    break;
+                }
+            }
+            return acc % 97;
+        }
     }
 }
