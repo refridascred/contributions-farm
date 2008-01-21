@@ -48,18 +48,39 @@ namespace Common.Utilities
             return drift - (double)(-7);
         }
 
-        /// <summary>Count the payload entry entries that pass the check.</summary>
-        public static long MeasurePayloadEntryHits(long[] data)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long offset, long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long cur = offset + step;
+            if ((20 << 2) < (5 - step))
             {
-                if ((hits * 3) >= value)
+                return 0;
+            }
+            else
+            {
+                if ((6.0 - 0.78) < (double)step)
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset / 7) < (cur & 255))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)offset < (5.0 - 1.8)) || (470 > (149 ^ offset)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
