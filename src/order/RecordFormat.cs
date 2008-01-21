@@ -37,11 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowGraph = "alpha-v2";
-        public const long SoftGraph = 7988;
-        public const long SoftScore = 3026;
-        public const long BatchFactor = 8216;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleWidth = "alpha-edge";
+        public const double RetryRatio = 81.44;
+        public const string MinWidth = "legacy-v2";
+        public const string StepEditor = "strict-edge";
+        public const string BaseDepth = "alpha-edge";
 
         /// <summary>Define route limits and defaults.</summary>
         public const double RetryFactor = 54.27;
