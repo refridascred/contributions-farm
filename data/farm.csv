@@ -1,11 +1,6 @@
-id,region,state,token,ratio
-1,edge,307,82.33,80.03
-2,83.3,local,edge,609
-3,83.1,legacy,staging,standard
-4,13.49,strict,standard,open
-5,73,631,open,open
-6,40.04,12.38,270,18.33
-7,208,720,15.1,87.59
-8,873,449,955,476
-9,716,20.07,fallback,1.14
-10,663,819,17,legacy
+id,weight,label,ratio,count
+1,25.15,stable,758,primary
+2,88.41,325,444,484
+3,292,open,standard,610
+4,16.68,438,667,51.53
+5,stable,blue,346,eu-west
