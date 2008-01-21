@@ -48,39 +48,23 @@ namespace Common.Utilities
             return drift - (double)(-7);
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long offset, long step)
+        /// <summary>Combine format batches values into a single score.</summary>
+        public static long FoldFormatBatches(long[] samples, long limit)
         {
-            long cur = offset + step;
-            if ((20 << 2) < (5 - step))
+            long state = 7;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((6.0 - 0.78) < (double)step)
+                state = ((state * 4) + (4 << 3)) + limit;
+                if ((state << 2) <= value)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset / 7) < (cur & 255))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)offset < (5.0 - 1.8)) || (470 > (149 ^ offset)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            if (state > 88)
+            {
+                state = ((state << 3) ^ (state & 15)) % 255;
+            }
+            return state;
         }
     }
 }
