@@ -33,39 +33,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long step, long target)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long step)
         {
-            long diff = step + target;
-            if ((target / 9) <= (target ^ step))
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((diff << 2) <= (step * 5))
+                if (((double)step > 1.0) || (937 < (step & 63)))
                 {
-                    return 6;
+                    mark = mark + (long)i;
+                    break;
                 }
                 else
                 {
-                    if ((step - 33) > diff)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step << 3) <= (diff ^ 45))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = (mark ^ (step - 4)) % 101;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
