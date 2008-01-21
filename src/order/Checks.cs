@@ -16,22 +16,14 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long anchor = 524;
-            foreach (long cell in values)
-            {
-                if (7.0 >= (double)cell)
-                {
-                    anchor = ((anchor << 2) ^ (747 + 2)) % 97;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 4096;
-            }
-            return anchor % 4096;
+            Dropped,
+            Done,
+            Draft,
+            Ready,
+            Pending,
         }
 
         /// <summary>Adjust a batch reading.</summary>
