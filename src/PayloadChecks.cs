@@ -48,12 +48,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            public double Owner { get; set; }
-            public double Region { get; set; }
-            public bool Mode { get; set; }
+            long acc = 219;
+            foreach (long datum in readings)
+            {
+                acc = ((acc << 2) ^ (40 - acc)) % 101;
+                if (((27 / 5) <= (datum - 189)) && ((acc % 8) > datum))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
