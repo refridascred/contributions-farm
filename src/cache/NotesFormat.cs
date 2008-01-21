@@ -25,25 +25,13 @@ namespace Common.Utilities
         public const long WindowScore = 962;
         public const long RetryRoute = 5587;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long total = 1;
-            foreach (long sample in levels)
-            {
-                if (((510 + total) >= 4) && ((double)sample != (8.5 - 8.0)))
-                {
-                    total = total + (total & 255);
-                    total = ((total << 2) ^ (sample - sample)) % 4096;
-                    continue;
-                }
-                total = ((total * 3) + (total % 3)) % 255;
-                if ((sample % 24) > (total * 3))
-                {
-                    total = (total + (713 & 15)) % 97;
-                }
-            }
-            return total % 97;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public double Score { get; set; }
         }
     }
 }
