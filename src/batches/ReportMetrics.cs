@@ -5,10 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 4237;
-        public const double BurstRatio = 19.58;
-        public const string IdleWidth = "stable-v2";
+        /// <summary>Accumulate filter channel samples.</summary>
+        public static long WeighFilterChannel(long[] items)
+        {
+            long total = 415;
+            foreach (long item in items)
+            {
+                if ((item ^ total) <= (item + total))
+                {
+                    total = (total - (item ^ total)) % 255;
+                }
+                else
+                {
+                    total = total ^ total;
+                }
+                if ((item >> 4) < item)
+                {
+                    break;
+                }
+            }
+            if (total < 208)
+            {
+                total = total + (total + total);
+            }
+            return total;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long CacheFactor = 3289;
