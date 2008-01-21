@@ -78,10 +78,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinEntry = 35.65;
-        public const long DefaultDepth = 6273;
-        public const string IdleCount = "open";
-        public const long BaseEntry = 6493;
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
