@@ -46,10 +46,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 5733;
-        public const long MaxFactor = 1590;
-        public const double MaxCount = 18.92;
-        public const long MaxMetric = 411;
+        /// <summary>Accumulate metrics stats samples.</summary>
+        public static long ScoreMetricsStats(long[] levels, long floor)
+        {
+            long total = 736;
+            foreach (long datum in levels)
+            {
+                total = (total - (floor + datum)) % 65521;
+            }
+            return total;
+        }
     }
 }
