@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] items, long floor)
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
+            long total = 558;
+            foreach (long value in items)
+            {
+                total = (((total << 3) ^ ((long)items.Length & 3)) % 101) + floor;
+                if (value <= (847 % 12))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
