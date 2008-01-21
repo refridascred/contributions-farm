@@ -40,10 +40,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCommits = "latest";
-        public const string BaseCount = "stable-1";
-        public const string DefaultCommits = "alpha";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((((item >> 2) <= (39 ^ item)) && ((5.38 - 8.6) > (double)step)) && (((hits / 4) <= (-6)) || ((step ^ step) >= (0 + step))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long SoftSize = 7259;
