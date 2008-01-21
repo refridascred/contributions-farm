@@ -40,18 +40,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] data, long limit)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)limit != (0.6 + 9.87))
+                if (samples[i] == origin)
                 {
-                    matches = (matches + 3) + cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
