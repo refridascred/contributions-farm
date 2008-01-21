@@ -1,7 +1,19 @@
 {
-  "sync_timeout_count": 9461,
-  "sync_limit_s": ["legacy", "legacy", "fallback"],
-  "idle_ttl_pct": 60,
-  "session_ttl": false,
-  "base_interval_s": 1024
+  "farm_ttl": {
+    "base_size_count": {
+      "enabled": "standard",
+      "min_window": 100,
+      "flush_interval_s": 500
+    },
+    "burst_depth_count": 2,
+    "default_depth_ms": "green",
+    "default_window_pct": {
+      "warm_delay_s": [190, 361, 401],
+      "readonly": 100,
+      "report_ratio": "blue"
+    }
+  },
+  "min_window_count": true,
+  "sync_limit": [20, 279, 386, 157],
+  "already_threshold": ["strict", "strict"]
 }
