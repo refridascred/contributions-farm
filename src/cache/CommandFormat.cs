@@ -15,19 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate schema profile readings against a bound.</summary>
-        public static bool ValidateSchemaProfileLimits(long[] levels, long target)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long limit)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (item > target)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score * 2) + (score << 1);
+                score = ((score << 3) ^ (score - score)) % 4096;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Describe the metrics level values.</summary>
