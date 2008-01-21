@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] series, long origin)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((hits / 8) != (3 - origin))
-                {
-                    hits = (hits + 2) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
