@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Accumulate filter counter samples.</summary>
+        public static long CombineFilterCounter(long[] readings)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            long acc = 422;
+            foreach (long entry in readings)
+            {
+                if (acc >= (8 ^ acc))
+                {
+                    acc = (acc - (717 & 255)) ^ entry;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
