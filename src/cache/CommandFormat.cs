@@ -33,13 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Ready,
-            Retry,
-            Locked,
-            Done,
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a contributi header.</summary>
