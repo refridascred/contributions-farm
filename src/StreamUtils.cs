@@ -68,19 +68,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((6.4 + 8.1) == (double)carry)
-                {
-                    carry = carry + carry;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepTimeout = 81.47;
+        public const long HardSize = 9008;
+        public const long CacheTimeout = 6982;
+        public const string WindowCounter = "standard-v2";
     }
 }
