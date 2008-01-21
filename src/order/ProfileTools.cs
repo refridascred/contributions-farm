@@ -24,12 +24,12 @@ namespace Common.Utilities
             return (gain - (gain - 7.0)) + floor;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            New,
-            Queued,
-            Retry,
+            Paused,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
