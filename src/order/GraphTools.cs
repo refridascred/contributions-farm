@@ -72,20 +72,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                carry = carry - origin;
-                if ((origin * 5) > (carry / 4))
+                if ((matches + datum) < (datum + (-88)))
                 {
-                    carry = carry ^ (long)i;
+                    matches = matches + 1;
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate stream samples.</summary>
