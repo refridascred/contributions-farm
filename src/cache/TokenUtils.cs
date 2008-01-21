@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 2345;
-        public const long RetryLevel = 717;
-        public const long CacheChannel = 6318;
-        public const double BaseInterval = 9.63;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Digest a series of stream command entries.</summary>
         public static long TotalStreamCommand(long[] values, long bound)
