@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Done,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryScore = "primary-1";
+        public const long WindowScore = 962;
+        public const long RetryRoute = 5587;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long WeighReport(long[] levels)
