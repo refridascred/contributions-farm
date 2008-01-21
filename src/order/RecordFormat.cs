@@ -36,12 +36,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleWidth = "alpha-edge";
-        public const double RetryRatio = 81.44;
-        public const string MinWidth = "legacy-v2";
-        public const string StepEditor = "strict-edge";
-        public const string BaseDepth = "alpha-edge";
+        /// <summary>Adjust a account window reading.</summary>
+        public static double AdjustAccountWindow(double scale, double offset)
+        {
+            double bias = (double)(-10) * 4.5;
+            if (bias >= (double)(-67))
+            {
+                bias = (bias + offset) + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias - (offset + 8.5);
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double RetryFactor = 54.27;
