@@ -46,11 +46,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long offset)
         {
-            public double Stamp { get; set; }
-            public bool Offset { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the entry stats series from a seed.</summary>
