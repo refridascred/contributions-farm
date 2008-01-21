@@ -61,38 +61,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank window channel input into a small class.</summary>
-        public static long RankWindowChannel(long offset, long floor)
+        /// <summary>Adjust a cluster counter reading.</summary>
+        public static double SmoothClusterCounter(double gain, double offset)
         {
-            if ((offset + offset) != (floor + 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor / 9) == (floor & 15))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset ^ floor) < (floor >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.0 - 7.88) < (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double load = gain;
+            return (load + gain) + offset;
         }
     }
 }
