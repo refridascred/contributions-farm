@@ -24,18 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] series)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count > (datum % 24)) || !((double)datum > (7.6 / 6.0)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a session format reading by value.</summary>
