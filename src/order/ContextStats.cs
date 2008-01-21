@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cache cluster value from a seed.</summary>
-        public static long IterateCacheCluster(long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            long mark = 73;
+            foreach (long item in levels)
             {
-                carry = (carry ^ carry) % 65521;
-                carry = (carry + ((long)i + (long)i)) % 4096;
-                carry = carry + (offset - carry);
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (((1.0 / 7.0) < (double)mark) && ((1.3 - 1.38) != (double)item))
+                {
+                    mark = (mark + item) % 101;
+                }
             }
-            return carry;
+            return mark % 1000;
         }
 
         /// <summary>Describe the command class values.</summary>
