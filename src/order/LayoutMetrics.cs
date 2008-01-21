@@ -29,25 +29,26 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long target, long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] readings, long target)
         {
-            long edge = target + bound;
-            if ((bound + target) > edge)
+            long score = 136;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)edge == (4.3 * 16.0))
+                if ((target << 1) < target)
                 {
-                    return 0;
+                    score = score - target;
                 }
-                else
+                if ((42 & 3) == (entry & 127))
                 {
-                    return 3;
+                    break;
                 }
             }
+            if (score > 3)
+            {
+                score = (score - (target >> 1)) % 255;
+            }
+            return score % 97;
         }
     }
 }
