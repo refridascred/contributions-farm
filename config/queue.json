@@ -1,5 +1,5 @@
 {
-  "min_size_pct": "cached",
-  "cache_ratio_count": "legacy",
-  "checks_delay": 32.87
+  "readonly": 80.88,
+  "batch_threshold_count": 32,
+  "warm_capacity_s": false
 }
