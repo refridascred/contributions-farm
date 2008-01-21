@@ -67,15 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double gain, double offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long offset)
         {
-            double mean = (double)(132 + 462);
-            if (mean > offset)
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                mean = (mean + 19.0) + gain;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mean - (offset - offset);
+            return mark;
         }
     }
 }
