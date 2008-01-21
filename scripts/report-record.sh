@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=223
+RECORD_LIMIT=87
 log "limit is ${RECORD_LIMIT}"
 
-for item in primary strict eu-west; do
-    log "checking ${item}"
-done
+mode="${1:-eu-west}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
