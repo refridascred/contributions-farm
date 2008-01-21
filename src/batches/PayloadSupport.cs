@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Draft,
-            Dropped,
-            Idle,
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a window cache value against two limits.</summary>
