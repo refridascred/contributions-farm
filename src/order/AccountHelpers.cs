@@ -11,14 +11,24 @@ namespace Common.Utilities
         public const long SoftChannel = 9295;
         public const long WindowInterval = 2581;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long bound, long origin)
         {
-            Dropped,
-            Retry,
-            Draft,
-            Stale,
-            Done,
+            if ((double)bound == (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin > (origin >> 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Adjust a route reading.</summary>
