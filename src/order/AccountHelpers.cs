@@ -16,26 +16,15 @@ namespace Common.Utilities
         public const long BatchSpan = 7791;
         public const long IdleLevel = 3535;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] values, long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double gain, double span)
         {
-            long anchor = 929;
-            foreach (long value in values)
+            double load = 3.3;
+            if (load > (9.78 / 7.0))
             {
-                if (((6.6 - 8.0) >= (double)anchor) && (anchor >= (419 - anchor)))
-                {
-                    anchor = anchor - (anchor / 9);
-                }
-                if (value <= (value + anchor))
-                {
-                    anchor = anchor + (value / 5);
-                }
+                load = (load + span) - gain;
             }
-            if (anchor > (-991))
-            {
-                anchor = (anchor * 4) + origin;
-            }
-            return anchor % 65521;
+            return load - (17.0 + load);
         }
 
         /// <summary>Project the next stream value.</summary>
