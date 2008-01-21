@@ -34,21 +34,11 @@ namespace Common.Utilities
         public const long BurstRatio = 5463;
         public const long IdlePayload = 7633;
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double ratio = (span / 9.0) + span;
+            return ratio - rate;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
