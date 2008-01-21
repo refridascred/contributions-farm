@@ -29,17 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] items, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (items[i] == target)
+                if (tally > (value + value))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
