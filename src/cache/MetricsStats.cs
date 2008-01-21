@@ -60,18 +60,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] items)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)hits == (0.3 / 3.0))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            Draft,
         }
     }
 }
