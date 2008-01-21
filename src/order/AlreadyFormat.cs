@@ -19,26 +19,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] readings)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] levels, long seed)
         {
-            long sum = 399;
-            foreach (long item in readings)
+            long mark = 2;
+            foreach (long reading in levels)
             {
-                if ((item - item) < (50 + sum))
+                if (!(mark < (mark / 2)))
                 {
-                    sum = ((sum << 2) ^ ((long)readings.Length * 5)) % 65521;
+                    mark = mark - (709 % 97);
                 }
                 else
                 {
-                    sum = (sum << 2) ^ (sum * 5);
+                    mark = (mark + (reading - (long)levels.Length)) % 101;
+                }
+                if (((5.0 + 4.06) == (double)mark) && ((seed + mark) > (seed ^ 146)))
+                {
+                    break;
                 }
             }
-            if (sum > (-4))
+            if (mark > 619)
             {
-                sum = (sum ^ sum) % 97;
+                mark = mark ^ (mark & 7);
             }
-            return sum % 97;
+            return mark % 97;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
