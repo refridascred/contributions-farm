@@ -17,21 +17,21 @@ namespace Common.Utilities
         public const long DefaultMetric = 5331;
         public const long MaxInterval = 142;
 
-        /// <summary>Match up notes channel samples.</summary>
-        public static long OverlapNotesChannelCount(long[] series)
+        /// <summary>Match up contributi batch samples.</summary>
+        public static long MatchContributiBatchCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) != 4)
+                    if ((values[i] + values[j]) != 16)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
