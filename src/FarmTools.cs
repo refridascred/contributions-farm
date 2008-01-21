@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const long CacheFactor = 3808;
         public const string LimitCommand = "strict";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinLevel = 2383;
-        public const long BaseRatio = 2501;
-        public const double DefaultReport = 84.24;
-        public const long BatchLevel = 3233;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Idle,
+            Queued,
+            New,
+            Pending,
+            Done,
+        }
 
         /// <summary>Digest a series of order session entries.</summary>
         public static long CombineOrderSession(long[] data)
