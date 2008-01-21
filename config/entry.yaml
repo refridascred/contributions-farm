@@ -1,9 +1,20 @@
 # entry settings
-enabled: 5.84
-entry_depth:
-  - 366
-  - 216
-  - 74
-  - 43
-stats_ratio: 66
-hard_depth: false
+stream_retries: true
+session_capacity: 38.96
+sync_ratio:
+  batch_ratio:
+    hard_interval_ms:
+      - 228
+      - 406
+    burst_window_s: 62.3
+    default_delay: false
+    cluster_ratio:
+      - 3
+      - 498
+    batch_interval_ms: 5113
+    cache_window_ms: blue
+  strict: 77.14
+  compress: 60
+  checks_limit: 60.17
+  soft_depth_s: 2.87
+hard_delay: true
