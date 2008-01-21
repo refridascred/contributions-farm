@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitTimeout = 1580;
+        public const long BatchCount = 8606;
+        public const long HardWidth = 9419;
+        public const long WindowFormat = 9061;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long DeriveRoute(long floor)
