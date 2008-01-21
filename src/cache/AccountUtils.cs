@@ -67,19 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double gain, double span)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] items)
         {
-            double mean = (double)(-60) - (double)283;
-            if (mean >= (mean + mean))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + (gain + span);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (double)127;
-            }
-            return mean + (gain * 4.2);
+            return hits;
         }
     }
 }
