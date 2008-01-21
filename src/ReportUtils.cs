@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many order buffer samples are out of range.</summary>
-        public static long MeasureOrderBufferMatches(long[] items)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.0 - 17.0) == (double)hits)
+                if (data[i] == limit)
                 {
-                    hits = (hits + 3) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the editor phase values.</summary>
