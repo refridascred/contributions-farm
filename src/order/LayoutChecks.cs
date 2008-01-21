@@ -68,24 +68,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long state = 184;
-            foreach (long reading in data)
-            {
-                if ((80 * 2) < (reading * 3))
-                {
-                    state = (state + (-9)) % 101;
-                }
-                state = (state ^ state) % 65521;
-                state = ((state << 2) ^ (7 - reading)) % 97;
-            }
-            if (state < (-16))
-            {
-                state = (state * 4) + (state + state);
-            }
-            return state;
+            Stale,
+            Queued,
+            New,
+            Paused,
         }
     }
 }
