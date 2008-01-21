@@ -36,21 +36,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = -38;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading * 5) != (sum % 24))
                 {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum << 3) ^ (8 & 1);
                 }
             }
-            return matches;
+            return sum % 65521;
         }
     }
 }
