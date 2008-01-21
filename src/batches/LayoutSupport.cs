@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstInterval = 9550;
-        public const double BurstAccount = 41.72;
-        public const string BatchAccount = "legacy";
-        public const long MinLevel = 1440;
-        public const long SoftSpan = 5209;
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long RollStats(long target)
