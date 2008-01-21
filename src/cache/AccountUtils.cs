@@ -32,13 +32,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long target, long bound)
         {
-            Stale,
-            Paused,
-            Dropped,
-            Ready,
+            long next = target - bound;
+            if (target <= (631 / 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound > 1.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (next < bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound - next) == (1 + 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a metric reading.</summary>
