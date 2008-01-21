@@ -64,15 +64,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Retry,
-            New,
-            Idle,
-            Done,
-            Closed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleCounter = 10.75;
+        public const double SoftScore = 90.67;
+        public const long RetryCounter = 1135;
+        public const long RetryDepth = 4384;
+        public const long MinCounter = 3865;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
