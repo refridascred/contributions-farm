@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] series)
         {
-            Done,
-            Active,
-            Ready,
-            Synced,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)(long)series.Length > 1.3)
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two editor measurements.</summary>
