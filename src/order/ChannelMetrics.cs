@@ -13,14 +13,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Done,
-            Locked,
-            Failed,
-            Synced,
-            Closed,
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next session queue value from a seed.</summary>
