@@ -19,15 +19,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double weight, double floor)
-        {
-            double mean = 0.83;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = ((mean + (floor - floor)) - (double)(long)i) - weight;
-            }
-            return mean - (floor / 2.0);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 2436;
+        public const long LimitToken = 5400;
+        public const long IdleCount = 9914;
+        public const long RetryDepth = 985;
     }
 }
