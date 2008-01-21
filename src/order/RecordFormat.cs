@@ -45,18 +45,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] data)
+        /// <summary>Derive the next buffer order value from a seed.</summary>
+        public static long SeriesBufferOrder(long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((cell ^ 13) > (-3))
-                {
-                    seen = seen + 3;
-                }
+                score = (score << 3) ^ score;
+                score = ((score << 2) ^ (score & 7)) % 1000;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the report state values.</summary>
