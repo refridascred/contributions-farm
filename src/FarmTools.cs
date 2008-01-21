@@ -20,27 +20,23 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate metric notes samples.</summary>
-        public static long CombineMetricNotes(long[] series, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] readings)
         {
-            long mark = 671;
-            foreach (long datum in series)
+            long total = 481;
+            foreach (long item in readings)
             {
-                mark = (mark - (offset & 127)) % 255;
-                if (datum > (mark - datum))
+                total = (total << 3) ^ (total - item);
+                if ((double)total != (double)4)
                 {
-                    mark = (mark << 3) ^ (offset / 5);
+                    total = total - (969 - total);
                 }
-                if ((32 > offset) || ((double)mark > 9.3))
+                else
                 {
-                    break;
+                    total = ((total * 2) + item) % 1000;
                 }
             }
-            if (mark < 1)
-            {
-                mark = (mark + (mark & 31)) % 1000;
-            }
-            return mark % 97;
+            return total;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
