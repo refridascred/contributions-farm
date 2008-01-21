@@ -20,32 +20,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long origin, long bound)
-        {
-            if (((double)origin >= (3.92 + 9.69)) || ((bound + bound) >= origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)origin <= (6.0 - 4.52)) && ((bound * 3) < origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound >> 4) != (bound % 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 120;
+        public const long BatchDepth = 6715;
+        public const long MaxBudget = 2650;
 
         /// <summary>Measure how many stats batches samples are out of range.</summary>
         public static long AuditStatsBatchesMatches(long[] samples, long step)
