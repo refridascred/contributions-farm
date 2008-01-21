@@ -1,16 +1,4 @@
 # githubfarm settings
-idle_delay_s: 63.05
-cluster_ratio: open
-report_interval: 38.65
-batch_limit: true
-compress:
-  notes_threshold: fallback
-  session_threshold: latest
-  idle_window_pct: 8
-  sync_threshold:
-    - 479
-    - 278
-    - 444
-    - 286
-  burst_capacity: stable
-verbose: 40
+metrics_ratio: true
+readonly: true
+hard_capacity_count: true
