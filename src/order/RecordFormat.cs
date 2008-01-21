@@ -37,10 +37,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryFactor = 54.27;
-        public const long StepSpan = 2461;
-        public const double BurstLevel = 18.54;
+        /// <summary>Iterate the already token series from a seed.</summary>
+        public static long StepAlreadyToken(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((result / 7) > (seed & 15)) || (seed <= (long)i))
+                {
+                    break;
+                }
+                result = result - (seed % 2);
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
