@@ -56,15 +56,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next already commits value.</summary>
-        public static double SmoothAlreadyCommits(double ratio, double bias)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] readings, long target)
         {
-            double drift = (ratio + bias) * 4.89;
-            if (drift < (ratio * 10.0))
+            long carry = 2;
+            foreach (long entry in readings)
             {
-                drift = drift + ratio;
+                if (entry <= carry)
+                {
+                    carry = carry + (target / 2);
+                }
             }
-            return drift + (drift * 8.0);
+            if (carry > 97)
+            {
+                carry = (carry - carry) % 255;
+            }
+            return carry % 1000;
         }
     }
 }
