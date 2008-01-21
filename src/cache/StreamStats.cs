@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Find the first githubfarm metrics entry that matches the target.</summary>
+        public static long LookupGithubfarmMetricsIndex(long[] levels, long limit)
         {
-            long total = 38;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 2) + (entry ^ total)) % 4096;
-                if ((43 <= entry) || ((7.6 / 6.0) >= (double)total))
+                if (levels[i] <= limit)
                 {
-                    total = (total ^ (entry & 1)) % 1000;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Describe the cache level values.</summary>
