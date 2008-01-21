@@ -14,10 +14,16 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheCount = 9059;
-        public const long DefaultOrder = 9361;
-        public const long WindowScore = 4181;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] readings)
+        {
+            long carry = 96;
+            foreach (long value in readings)
+            {
+                carry = ((carry * 2) + (carry & 15)) + value;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long WeighStats(long[] series, long offset)
