@@ -39,11 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheSize = "cached-v2";
-        public const long RetryChannel = 1847;
-        public const double WindowChannel = 75.55;
-        public const double MaxScore = 46.24;
-        public const long BatchChannel = 7651;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public double Weight { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
