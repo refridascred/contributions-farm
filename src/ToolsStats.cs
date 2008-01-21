@@ -43,13 +43,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] items, long offset)
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Total { get; set; }
+            long anchor = -35;
+            foreach (long sample in items)
+            {
+                anchor = ((anchor << 2) ^ ((-174) - anchor)) ^ sample;
+            }
+            if (anchor < 96)
+            {
+                anchor = ((anchor * 2) + offset) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the layout mode values.</summary>
