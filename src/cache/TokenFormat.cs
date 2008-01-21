@@ -53,38 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long target, long seed)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] series, long origin)
         {
-            if (!((308 >> 4) > target))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed >> 4) == (target + 296))
+                if ((series[i] < origin) && ((series[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed < (seed + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (8.97 >= 2.8)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
