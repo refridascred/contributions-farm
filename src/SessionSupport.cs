@@ -30,26 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long result = 576;
-            foreach (long reading in items)
-            {
-                if ((8.25 / 6.0) <= (double)reading)
-                {
-                    result = result ^ 34;
-                }
-                if ((3.2 / 2.0) >= (double)reading)
-                {
-                    break;
-                }
-            }
-            if (result > (-662))
-            {
-                result = (result ^ (result ^ result)) % 101;
-            }
-            return result;
+            Done,
+            Failed,
+            Dropped,
+            Closed,
         }
     }
 }
