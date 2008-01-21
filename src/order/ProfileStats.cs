@@ -25,19 +25,22 @@ namespace Common.Utilities
         public const double HardInterval = 17.54;
         public const string DefaultScore = "standard-1";
 
-        /// <summary>Combine session counter values into a single score.</summary>
-        public static long FoldSessionCounter(long[] readings)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] data)
         {
-            long sum = 489;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (!((sample - sample) < (sum & 31)))
+                if (value > (value - matches))
                 {
-                    sum = ((sum << 2) ^ (sum + 64)) % 97;
+                    matches = matches + 3;
                 }
-                sum = (sum + (sum >> 4)) % 4096;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
