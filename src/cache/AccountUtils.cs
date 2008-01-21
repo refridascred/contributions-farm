@@ -23,39 +23,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long target, long bound)
+        /// <summary>Audit session stats readings against a rule.</summary>
+        public static long MeasureSessionStatsHits(long[] values, long floor)
         {
-            long next = target - bound;
-            if (target <= (631 / 5))
+            long tally = 0;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound > 1.0)
+                if (((double)floor > (double)tally) && (floor < item))
                 {
-                    return 6;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if (next < bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound - next) == (1 + 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
