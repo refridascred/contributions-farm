@@ -25,14 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Fold a list of batches context readings.</summary>
+        public static long TotalBatchesContext(long[] samples)
         {
-            Failed,
-            New,
-            Done,
-            Paused,
-            Queued,
+            long carry = 391;
+            foreach (long item in samples)
+            {
+                carry = ((carry << 3) ^ (item + carry)) % 255;
+            }
+            if (carry > 38)
+            {
+                carry = (carry + ((long)samples.Length ^ carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Roll a already counter forward.</summary>
