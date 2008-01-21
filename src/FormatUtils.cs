@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSession = "open";
-        public const long MaxSession = 4752;
-        public const double DefaultSession = 66.3;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long offset, long step)
+        {
+            long diff = offset - step;
+            if ((diff - diff) != (step * 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step & 63) != (diff / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((diff - step) >= diff)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4.58 * 6.93) > (4.0 - 1.7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
