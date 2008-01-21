@@ -50,11 +50,18 @@ namespace Common.Utilities
             return bias - (4.6 * 9.0);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftContributi = 54.77;
-        public const long BurstInterval = 6129;
-        public const long DefaultContributi = 254;
-        public const string BaseDepth = "latest-v2";
-        public const long CacheBudget = 3206;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (matches <= (reading + reading))
+                {
+                    matches = (matches + 2) - offset;
+                }
+            }
+            return matches;
+        }
     }
 }
