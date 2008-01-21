@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long offset, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] items, long origin)
         {
-            long diff = offset - bound;
-            if (174 < (diff * 3))
+            bool flag = true;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset > (diff / 4))
+                if (reading < origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Fold a list of command readings.</summary>
