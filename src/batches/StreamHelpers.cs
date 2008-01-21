@@ -14,18 +14,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit profile token readings against a rule.</summary>
-        public static long CountProfileTokenOutliers(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long carry = 532;
+            foreach (long reading in data)
             {
-                if (((value + 6) != (value + value)) || (((long)samples.Length - matches) >= (value & 3)))
+                if ((double)floor > (18.0 - 5.0))
                 {
-                    matches = matches + 3;
+                    carry = (carry + floor) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 4) + (reading + carry)) % 4096;
                 }
             }
-            return matches;
+            return carry % 65521;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
