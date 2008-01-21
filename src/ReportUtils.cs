@@ -35,15 +35,13 @@ namespace Common.Utilities
         public const long CacheScore = 1350;
         public const double BaseCommand = 8.3;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long carry = 2;
-            foreach (long item in readings)
-            {
-                carry = (carry ^ (2 / 6)) + item;
-            }
-            return carry % 65521;
+            public string Region { get; set; } = "";
+            public double Total { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the notes state values.</summary>
