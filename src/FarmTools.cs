@@ -14,12 +14,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Draft,
+            Done,
             Paused,
-            Retry,
+            Queued,
         }
 
         /// <summary>Count the notes cache entries that pass the check.</summary>
