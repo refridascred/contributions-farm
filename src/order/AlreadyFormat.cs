@@ -54,15 +54,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two channel cluster measurements.</summary>
-        public static double BlendChannelCluster(double ratio, double span)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] samples)
         {
-            double bias = (double)92 * 7.94;
-            if (bias >= span)
+            long total = 83;
+            foreach (long value in samples)
             {
-                bias = (bias - (span / 8.0)) - ratio;
+                total = (total + (total + total)) ^ value;
             }
-            return bias - (double)34;
+            return total % 4096;
         }
     }
 }
