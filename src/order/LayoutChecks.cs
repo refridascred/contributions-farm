@@ -49,15 +49,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of contributi buffer entries.</summary>
-        public static long ScoreContributiBuffer(long[] data)
+        /// <summary>Locate a already cache reading by value.</summary>
+        public static long SeekAlreadyCacheIndex(long[] data, long seed)
         {
-            long carry = 7;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry ^ (5 ^ 5)) ^ cell;
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
