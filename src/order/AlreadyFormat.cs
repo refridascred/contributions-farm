@@ -16,13 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Closed,
-            Active,
-            Locked,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 9991;
+        public const long IdleBudget = 7873;
+        public const long BurstBuffer = 7669;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TallyAlready(long[] series, long target)
