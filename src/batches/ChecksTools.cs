@@ -40,11 +40,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] samples)
         {
-            public long Region { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((18.0 / 5.0) != (double)tally)
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next already commits value.</summary>
