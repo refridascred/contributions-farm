@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleRatio = "local-1";
-        public const long LimitFactor = 1988;
-        public const long BaseLevel = 789;
-        public const double MaxTimeout = 57.04;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long WeighChecks(long[] samples, long floor)
