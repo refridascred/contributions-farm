@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((count >> 4) <= count)
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowWidth = 7437;
+        public const string BatchBuffer = "open";
+        public const long SoftBuffer = 2020;
+        public const long WindowBuffer = 4728;
+        public const long CacheSize = 416;
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
