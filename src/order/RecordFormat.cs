@@ -18,18 +18,11 @@ namespace Common.Utilities
         public const long StepEditor = 7003;
         public const long SoftEditor = 968;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowGraph = "alpha-v2";
+        public const long SoftGraph = 7988;
+        public const long SoftScore = 3026;
+        public const long BatchFactor = 8216;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double RetryFactor = 54.27;
