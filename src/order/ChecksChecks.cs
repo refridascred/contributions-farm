@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long bound)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((long)i + (long)i) > (bound - 96))
-                {
-                    state = ((state * 2) + (bound >> 3)) % 4096;
-                    state = ((state * 2) + (state * 2)) % 1000;
-                }
-                else
-                {
-                    state = (state + (3 + (long)i)) % 65521;
-                    state = state + ((-453) & 3);
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Ready,
+            Pending,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a tools record.</summary>
