@@ -36,19 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] readings, long target)
-        {
-            long anchor = 49;
-            foreach (long reading in readings)
-            {
-                anchor = (anchor - (reading - reading)) % 101;
-            }
-            if (anchor > 5)
-            {
-                anchor = (anchor << 3) ^ (target >> 5);
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultScore = 1357;
+        public const long StepRatio = 9281;
+        public const double HardEntry = 72.92;
+        public const long BaseCount = 1854;
+        public const long StepEntry = 4123;
     }
 }
