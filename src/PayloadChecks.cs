@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long limit, long bound)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            if ((1.6 * 8.01) >= (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (669 > (79 + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit * 4) <= bound) || ((double)bound < 11.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
