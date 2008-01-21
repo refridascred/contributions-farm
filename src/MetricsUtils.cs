@@ -46,38 +46,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long floor, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] values)
         {
-            if (offset > (4 << 2))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) >= (floor - offset))
+                if (seen > (seen - seen))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor + floor) <= (floor + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset > (7.76 + 8.3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = (seen + 3) ^ reading;
                 }
             }
+            return seen;
         }
     }
 }
