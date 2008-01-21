@@ -13,12 +13,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardTools = 0.69;
-        public const long WindowFactor = 4047;
-        public const long BatchTools = 2861;
-        public const long IdleInterval = 2980;
-        public const long CacheTools = 2429;
+        /// <summary>Digest a series of cache session entries.</summary>
+        public static long FoldCacheSession(long[] items)
+        {
+            long total = 69;
+            foreach (long cell in items)
+            {
+                if ((total + total) == (cell % 60))
+                {
+                    total = (total ^ cell) % 255;
+                }
+            }
+            if (total > 8)
+            {
+                total = total - total;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Combine order already values into a single score.</summary>
         public static long DigestOrderAlready(long[] data, long limit)
