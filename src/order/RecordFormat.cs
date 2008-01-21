@@ -51,21 +51,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Accumulate cache account samples.</summary>
+        public static long TotalCacheAccount(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 263;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = ((anchor << 2) ^ step) - sample;
+                anchor = (anchor * 4) + (24 >> 3);
+                if (!((anchor >> 4) <= anchor))
                 {
-                    if ((items[i] ^ items[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor * 5) + (407 >> 3);
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
