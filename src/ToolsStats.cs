@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] values)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)tally < (double)(-7)) && !((double)tally != (7.31 + 7.4)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) + reading;
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
