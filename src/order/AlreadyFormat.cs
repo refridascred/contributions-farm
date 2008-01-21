@@ -45,18 +45,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] items, long seed)
+        /// <summary>Check that every account cache entry stays within the limit.</summary>
+        public static bool CheckAccountCacheRange(long[] series, long offset)
         {
-            long sum = 49;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((sum + 3) <= (seed & 7))
+                if (item >= offset)
                 {
-                    sum = (((sum * 2) + (9 * 5)) % 97) ^ cell;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Digest a series of support command entries.</summary>
