@@ -80,14 +80,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Locate a layout queue reading by value.</summary>
+        public static long FindLayoutQueueIndex(long[] samples, long origin)
         {
-            Locked,
-            Retry,
-            Queued,
-            New,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
