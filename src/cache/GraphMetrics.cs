@@ -48,13 +48,9 @@ namespace Common.Utilities
         public const long LimitCache = 4612;
         public const long RetryCache = 3407;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Locked,
-            Synced,
-            Stale,
-            Done,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 8179;
+        public const long MaxRoute = 6096;
+        public const double IdleDepth = 48.08;
     }
 }
