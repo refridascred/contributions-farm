@@ -12,15 +12,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Idle,
-            Pending,
-            New,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseBatch = 35.88;
+        public const long CacheDepth = 5941;
+        public const long StepCount = 3059;
+        public const long DefaultWidth = 61;
+        public const long DefaultCount = 499;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordHits(long[] data, long limit)
