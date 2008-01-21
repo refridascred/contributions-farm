@@ -25,24 +25,22 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long floor, long step)
+        /// <summary>Count the notes cache entries that pass the check.</summary>
+        public static long MeasureNotesCacheGaps(long[] readings, long limit)
         {
-            if (!((double)floor <= (4.62 / 5.0)))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(18.0 >= (double)floor))
+                if ((8.51 - 9.91) != (double)hits)
                 {
-                    return 4;
+                    hits = ((hits + 2) ^ sample) + limit;
                 }
                 else
                 {
-                    return 6;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
