@@ -16,11 +16,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 2965;
-        public const long LimitLevel = 9406;
-        public const long StepCluster = 7751;
-        public const long WindowCluster = 8662;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            New,
+            Ready,
+            Idle,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BaseCount = 1933;
