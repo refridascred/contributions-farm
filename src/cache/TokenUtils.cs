@@ -23,20 +23,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of stream command entries.</summary>
-        public static long TotalStreamCommand(long[] values, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] items)
         {
-            long sum = 918;
-            foreach (long entry in values)
+            long sum = -252;
+            foreach (long datum in items)
             {
-                sum = ((sum << 2) ^ (entry % 24)) + bound;
-                sum = (sum - sum) % 255;
-                if ((double)entry <= (7.17 * 7.57))
-                {
-                    sum = (sum ^ (sum + entry)) % 101;
-                }
+                sum = (sum + (datum + sum)) % 255;
             }
-            return sum % 1000;
+            if (sum > 97)
+            {
+                sum = sum + (sum << 3);
+            }
+            return sum;
         }
     }
 }
