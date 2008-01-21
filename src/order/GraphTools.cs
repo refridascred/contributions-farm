@@ -51,15 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] items, long floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] data, long floor)
         {
-            long result = 465;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (((result * 5) + (result % 7)) - sample) - floor;
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
