@@ -18,18 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long floor)
         {
-            long mark = 73;
-            foreach (long item in levels)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (((1.0 / 7.0) < (double)mark) && ((1.3 - 1.38) != (double)item))
+                mark = mark + (floor << 1);
+                if ((long)i <= (floor ^ mark))
                 {
-                    mark = (mark + item) % 101;
+                    continue;
                 }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark % 1000;
+            return mark;
         }
 
         /// <summary>Hold a session options.</summary>
