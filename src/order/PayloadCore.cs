@@ -45,19 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long offset)
+        /// <summary>Validate order contributi readings against a bound.</summary>
+        public static bool CheckOrderContributiLimits(long[] series, long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (value < floor)
                 {
-                    mark = (mark ^ offset) ^ (long)i2;
+                    found = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return found;
         }
     }
 }
