@@ -57,28 +57,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] levels, long origin)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            long anchor = 2;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item ^ anchor) >= anchor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor + (item >> 3);
-                    anchor = (anchor - origin) % 65521;
-                    continue;
-                }
-                if (((item - item) != (item + origin)) && ((item * 5) <= 1))
-                {
-                    anchor = (anchor + (origin ^ item)) % 101;
-                }
-                if ((double)item < (19.0 / 5.0))
-                {
-                    anchor = (anchor << 2) ^ anchor;
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
