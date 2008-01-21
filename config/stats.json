@@ -1,5 +1,5 @@
 {
-  "retry_limit": "cached",
-  "poll_timeout_s": "fallback",
-  "poll_threshold_count": 3411
+  "metric_size": [108, 402, 34],
+  "batch_threshold_s": 100,
+  "cache_delay": true
 }
