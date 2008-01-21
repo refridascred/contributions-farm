@@ -1,8 +1,6 @@
 # githubfarm settings
-default_ttl: false
-context_capacity:
-  - 109
-  - 46
-default_delay: false
-cache_size: 68.49
-metric_depth: green
+audit: latest
+default_window: stable
+poll_size_ms: true
+order_ttl: strict
+format_window: primary
