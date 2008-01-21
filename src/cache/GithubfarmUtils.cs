@@ -54,11 +54,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "fallback-1";
-        public const long SoftMetrics = 4844;
-        public const double MinMetrics = 92.57;
-        public const long DefaultMetrics = 6591;
-        public const long MinCount = 4232;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double gain, double floor)
+        {
+            double ratio = 0.52;
+            if (ratio > (ratio * 15.0))
+            {
+                ratio = (ratio + (floor - 6.0)) - gain;
+            }
+            return ratio + (floor / 9.0);
+        }
     }
 }
