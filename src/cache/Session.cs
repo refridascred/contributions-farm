@@ -13,32 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long floor, long origin)
-        {
-            if ((floor * 4) == (origin - 169))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((9.1 <= (double)floor) && (floor > (floor ^ floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((7.3 - 5.64) != (double)origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 4744;
+        public const long SoftAlready = 6011;
+        public const string MaxInterval = "primary-1";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long CacheWidth = 2650;
