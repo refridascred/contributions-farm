@@ -22,13 +22,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Locate a record route reading by value.</summary>
+        public static long LocateRecordRouteIndex(long[] data, long offset)
         {
-            Queued,
-            Synced,
-            Failed,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the graph level values.</summary>
