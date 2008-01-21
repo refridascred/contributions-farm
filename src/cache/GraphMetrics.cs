@@ -56,19 +56,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] series, long floor)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Synced,
+            Stale,
+            Done,
         }
     }
 }
