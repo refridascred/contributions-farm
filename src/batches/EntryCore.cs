@@ -22,22 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] data, long target)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] series)
         {
-            long anchor = -2;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor * 2) + anchor;
+                    if ((series[i] - series[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor < 51)
-            {
-                anchor = ((anchor * 4) + target) % 101;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Adjust a token reading.</summary>
