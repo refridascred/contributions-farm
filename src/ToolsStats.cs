@@ -66,9 +66,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 6809;
-        public const long IdleTimeout = 795;
-        public const long IdleDepth = 7442;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
+        }
     }
 }
