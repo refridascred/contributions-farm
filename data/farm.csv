@@ -1,6 +1,9 @@
-id,score,owner
-1,86.35,45.45
-2,65.57,18.95
-3,blue,305
-4,55.56,6.96
-5,27,eu-west
+id,level,region,ratio
+1,171,44.69,primary
+2,467,stable,205
+3,40.02,566,247
+4,primary,legacy,425
+5,5.87,strict,477
+6,133,fallback,edge
+7,561,290,689
+8,58.45,67.53,green
