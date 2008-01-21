@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] data)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] levels, long step)
         {
-            long state = 58;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state - 749) % 255) - cell;
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
