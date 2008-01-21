@@ -16,18 +16,14 @@ namespace Common.Utilities
         public const string CacheFormat = "standard-1";
         public const string MaxFormat = "latest-edge";
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] levels, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((88 / 3) >= step)
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            Draft,
+            Pending,
+            Paused,
         }
     }
 }
