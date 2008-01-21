@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchTimeout = 7091;
-        public const long BurstWidth = 8330;
-        public const long HardInterval = 2754;
-        public const double BaseScore = 44.77;
-        public const long IdleScore = 2591;
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double bias, double bias2)
+        {
+            double ratio = (double)(68 & 127);
+            if (ratio <= (double)3)
+            {
+                ratio = (ratio + 0.5) - bias;
+            }
+            else
+            {
+                ratio = ratio - bias2;
+            }
+            return ratio - 10.0;
+        }
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
