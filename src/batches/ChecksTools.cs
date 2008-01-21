@@ -35,12 +35,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Synced,
-            Queued,
-            Retry,
+            public long Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
