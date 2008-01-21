@@ -46,14 +46,14 @@ namespace Common.Utilities
             return bias - (double)3;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
             Locked,
-            Synced,
             New,
+            Done,
             Dropped,
-            Queued,
+            Draft,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
