@@ -1,8 +1,6 @@
 {
-  "base_delay": "green",
-  "soft_threshold": 89.23,
-  "context_limit": 51,
-  "hard_window_count": "latest",
-  "readonly": false,
-  "filter_limit": 1024
+  "stats_timeout": "cached",
+  "retry_window": 1024,
+  "dry_run": true,
+  "persist": [211, 226, 239]
 }
