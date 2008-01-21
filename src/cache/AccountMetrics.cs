@@ -38,22 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit account contributi readings against a rule.</summary>
-        public static long AuditAccountContributiMatches(long[] values)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((value ^ 624) >= hits)
+                if ((datum + seen) <= (seen * 3))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Scale a queue buffer figure with a bias.</summary>
