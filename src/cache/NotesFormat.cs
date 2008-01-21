@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a editor graph figure with a bias.</summary>
-        public static double BlendEditorGraph(double rate, double offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] values)
         {
-            double weight = rate;
-            if (weight > (weight - offset))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                weight = weight + (rate * 8.0);
+                if (!(((7 << 2) != (cell - cell)) || (488 > (1 - cell))))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                weight = weight + (weight + 16.0);
-            }
-            return weight - weight;
+            return hits;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
