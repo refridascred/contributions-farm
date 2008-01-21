@@ -55,14 +55,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Match up graph githubfarm samples.</summary>
+        public static long OverlapGraphGithubfarmCount(long[] readings)
         {
-            Failed,
-            Pending,
-            Retry,
-            Draft,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two already measurements.</summary>
