@@ -12,31 +12,18 @@ namespace Common.Utilities
             return ((weight - (double)(-19)) + gain) + offset;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long target, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] items)
         {
-            if ((target - 9) <= target)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((limit / 6) <= (limit % 16)))
+                if ((96 + matches) >= datum)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target >> 1) >= target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a format entry.</summary>
