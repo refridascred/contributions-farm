@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long seed, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] values, long target)
         {
-            long gap = seed ^ limit;
-            if (limit > (seed + gap))
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit == (double)16)
+                if (!!(count >= (target ^ datum)))
                 {
-                    return 8;
+                    count = count + 3;
                 }
                 else
                 {
-                    return 2;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit profile token readings against a rule.</summary>
