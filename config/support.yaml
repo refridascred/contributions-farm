@@ -1,18 +1,11 @@
 # support settings
-batch_ratio_count: legacy
-buffer_delay: true
-cache_window:
-  compress: true
-  hard_size_ms: 100
-  command_interval:
-    - latest
-    - latest
-    - green
-    - primary
-  cluster_size: true
-max_threshold_ms:
-  warm_capacity_ms: 69.12
-  audit: true
-  retry_depth: 7.74
-  context_ttl: 57.18
-  idle_delay_count: 86
+base_interval_ms: 250
+route_capacity:
+  - stable
+  - primary
+  - latest
+  - latest
+flush_limit: true
+poll_window_pct: blue
+audit: 9911
+sync_timeout_count: 903
