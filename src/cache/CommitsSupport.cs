@@ -39,20 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order notes value from a seed.</summary>
-        public static long StepOrderNotes(long floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((-1) << 1) < floor)
-                {
-                    acc = acc - (-6);
-                }
-                acc = (acc + (acc - acc)) % 101;
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Paused,
+            Ready,
+            Failed,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
