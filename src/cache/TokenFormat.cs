@@ -19,13 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Grade a profile githubfarm value against two limits.</summary>
+        public static long ClassifyProfileGithubfarm(long target, long bound)
         {
-            Paused,
-            Dropped,
-            Locked,
-            Idle,
+            if ((56 + bound) > (target << 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((96 + 4) > bound) || (bound < (bound >> 4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((target + 70) >= (target >> 2)) && ((double)target >= (13.0 + 5.6)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target - bound) <= target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
