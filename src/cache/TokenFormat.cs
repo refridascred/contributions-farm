@@ -28,14 +28,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] items, long origin)
         {
-            Retry,
-            Active,
-            Done,
-            Draft,
-            New,
+            long total = 0;
+            foreach (long value in items)
+            {
+                if ((double)origin < (7.0 + 11.0))
+                {
+                    total = ((total ^ total) % 65521) ^ value;
+                }
+            }
+            return total;
         }
     }
 }
