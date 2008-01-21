@@ -1,8 +1,10 @@
 {
-  "hard_size_pct": 3995,
-  "retry_ttl": [407, 288, 186],
-  "batch_retries_count": true,
-  "session_timeout": "standard",
-  "batch_ratio_pct": "primary",
-  "flush_depth": "staging"
+  "warm_threshold_s": 4044,
+  "flush_ratio": 1024,
+  "format_timeout": {
+    "retry_depth_s": true,
+    "context_timeout": "latest",
+    "dry_run": true
+  },
+  "min_ttl": ["green", "legacy"]
 }
