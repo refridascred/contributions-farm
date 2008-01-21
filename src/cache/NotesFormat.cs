@@ -15,31 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long bound, long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] samples)
         {
-            if (limit > (limit - bound))
+            long state = 10;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)limit >= 6.4))
+                if ((double)item == (double)state)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + limit) < (-46))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    state = state - (item ^ item);
                 }
             }
+            return state % 4096;
         }
 
         /// <summary>Describe the entry status values.</summary>
