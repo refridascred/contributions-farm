@@ -1,5 +1,12 @@
 {
-  "burst_threshold_s": "blue",
-  "strict": ["primary", "staging", "cached"],
-  "max_interval_pct": 100
+  "hard_capacity_count": {
+    "min_capacity_count": 18.24,
+    "min_delay_ms": 35.82,
+    "max_interval": "strict",
+    "filter_depth": [208, 245, 279, 359],
+    "default_depth_count": 70.15,
+    "burst_capacity": "eu-west"
+  },
+  "entry_ttl": "latest",
+  "poll_delay_pct": false
 }
