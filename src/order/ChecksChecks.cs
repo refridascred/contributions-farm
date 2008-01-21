@@ -27,19 +27,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] items, long offset)
+        /// <summary>Count the token metric entries that pass the check.</summary>
+        public static long MeasureTokenMetricGaps(long[] items, long floor)
         {
-            long score = 3;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in items)
             {
-                score = (((score * 5) + (offset * 2)) % 97) - sample;
+                if ((floor + floor) == (floor & 31))
+                {
+                    matches = (matches + 3) - item;
+                }
             }
-            if (score < 4)
-            {
-                score = (score << 2) ^ ((-516) / 9);
-            }
-            return score;
+            return matches;
         }
     }
 }
