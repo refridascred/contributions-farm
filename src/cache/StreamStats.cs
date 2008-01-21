@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] values, long limit)
+        /// <summary>Derive the next farm githubfarm value from a seed.</summary>
+        public static long IterateFarmGithubfarm(long bound)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum * 4) + (sum >> 5);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Blend two cache measurements.</summary>
