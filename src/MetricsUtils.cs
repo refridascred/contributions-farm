@@ -14,15 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Failed,
-            Stale,
-            Synced,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCount = "local-v2";
+        public const long BurstCommand = 6807;
+        public const long DefaultWidth = 2377;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long FoldCluster(long[] levels, long origin)
