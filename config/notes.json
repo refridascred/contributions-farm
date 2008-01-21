@@ -1,19 +1,5 @@
 {
-  "flush_size_pct": {
-    "cache_ratio": false,
-    "base_size_ms": 8078,
-    "support_capacity": "local",
-    "hard_timeout": 3721,
-    "flush_interval": {
-      "flush_capacity_ms": 60,
-      "base_limit_s": 6855,
-      "dry_run": 5053,
-      "flush_limit": false,
-      "min_delay": "primary"
-    }
-  },
-  "retry_capacity_s": "green",
-  "warm_delay": 2768,
-  "warm_ttl_count": "green",
-  "queue_delay": ["strict", "cached"]
+  "max_delay_s": "strict",
+  "enabled": 58,
+  "session_delay": false
 }
