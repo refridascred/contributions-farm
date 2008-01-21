@@ -29,18 +29,24 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long floor, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            if (!((double)floor <= (4.62 / 5.0)))
             {
-                sum = sum + (sum * 2);
-                sum = sum ^ (step << 3);
-                sum = (sum << 2) ^ (step / 3);
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if (!(18.0 >= (double)floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
