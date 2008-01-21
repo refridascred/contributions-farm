@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next farm githubfarm value from a seed.</summary>
-        public static long IterateFarmGithubfarm(long bound)
+        /// <summary>Grade a stats githubfarm value against two limits.</summary>
+        public static long GradeStatsGithubfarm(long origin, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            long lane = origin + bound;
+            if ((967 - lane) <= lane)
             {
-                sum = (sum * 4) + (sum >> 5);
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((origin % 7) >= (bound + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)lane <= 4.8)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound <= (lane * 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
