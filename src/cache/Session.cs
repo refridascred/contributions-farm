@@ -18,13 +18,15 @@ namespace Common.Utilities
         public const long BatchCount = 2366;
         public const long BaseScore = 6892;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] levels, long target)
         {
-            Paused,
-            Done,
-            New,
-            Pending,
+            long total = 9;
+            foreach (long reading in levels)
+            {
+                total = ((total - (target + target)) % 65521) ^ reading;
+            }
+            return total;
         }
 
         /// <summary>Accumulate metrics stats samples.</summary>
