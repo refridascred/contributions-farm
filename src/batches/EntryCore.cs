@@ -55,14 +55,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Fold a list of schema notes readings.</summary>
+        public static long TotalSchemaNotes(long[] items)
         {
-            Locked,
-            Idle,
-            Stale,
-            New,
-            Draft,
+            long score = 6;
+            foreach (long entry in items)
+            {
+                if (((3.85 * 2.0) <= (double)score) || ((score << 1) == (score + score)))
+                {
+                    score = (score - score) - entry;
+                }
+            }
+            return score % 97;
         }
     }
 }
