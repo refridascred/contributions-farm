@@ -39,18 +39,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of already order readings.</summary>
-        public static long TallyAlreadyOrder(long[] series, long seed)
-        {
-            long anchor = 4;
-            foreach (long item in series)
-            {
-                if ((double)anchor == (double)seed)
-                {
-                    anchor = (anchor * 2) + (item * 3);
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 7566;
+        public const long BurstContext = 8081;
+        public const long CacheContext = 7756;
+        public const double DefaultContext = 32.04;
+        public const long BaseBudget = 6546;
     }
 }
