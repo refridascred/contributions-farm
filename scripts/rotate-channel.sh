@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary open cached; do
+for item in green strict fallback legacy; do
     log "checking ${item}"
 done
 
-mode="${1:-primary}"
+mode="${1:-fallback}"
 case "${mode}" in
-    strict)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
