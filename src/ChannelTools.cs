@@ -28,13 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            public double Count { get; set; }
+            public double Level { get; set; }
             public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
