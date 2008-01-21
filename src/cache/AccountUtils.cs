@@ -25,18 +25,21 @@ namespace Common.Utilities
         public const long BatchDepth = 6715;
         public const long MaxBudget = 2650;
 
-        /// <summary>Measure how many stats batches samples are out of range.</summary>
-        public static long AuditStatsBatchesMatches(long[] samples, long step)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)seen < (7.86 + 7.35)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = ((seen + 2) + reading) + step;
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
