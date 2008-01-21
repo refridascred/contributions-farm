@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] items, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (item <= seed)
+                if ((offset - datum) <= (offset + count))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a tools record.</summary>
