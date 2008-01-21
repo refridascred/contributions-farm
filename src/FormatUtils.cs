@@ -14,22 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] series, long floor)
+        /// <summary>Roll a already stats counter forward.</summary>
+        public static long SeriesAlreadyStats(long target)
         {
-            long sum = 83;
-            foreach (long cell in series)
+            long carry = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (((sum ^ 3) > (sum ^ floor)) && ((cell - cell) > cell))
+                if (carry <= 487)
                 {
-                    sum = (sum << 3) ^ (floor * 4);
+                    carry = ((carry << 3) ^ (target >> 5)) % 1000;
                 }
-                else
-                {
-                    sum = sum - floor;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return sum % 65521;
+            return carry;
         }
 
         /// <summary>Hold a filter summary.</summary>
