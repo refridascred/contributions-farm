@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every channel batch entry stays within the limit.</summary>
-        public static bool ValidateChannelBatchRange(long[] series, long step)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            New,
+            Ready,
+            Active,
+            Stale,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
