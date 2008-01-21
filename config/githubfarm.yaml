@@ -1,6 +1,10 @@
 # githubfarm settings
-strict: open
-poll_retries_count: primary
-commits_threshold: latest
-channel_window: 67.42
-buffer_delay: 7268
+idle_threshold_s:
+  - staging
+  - standard
+  - cached
+  - stable
+max_delay_count: legacy
+route_timeout: fallback
+editor_timeout: 5.74
+max_delay_ms: 52
