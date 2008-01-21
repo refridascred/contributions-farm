@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            long result = 5;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result << 2) ^ (-7)) % 97;
-                if ((double)result > 17.0)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result ^ (result - value)) % 1000;
+                    if ((data[i] + data[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a session summary.</summary>
