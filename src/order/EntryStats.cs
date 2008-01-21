@@ -27,18 +27,13 @@ namespace Common.Utilities
             return gain + (double)917;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] items, long seed)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count + 175) > (seed % 97))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            Active,
+            Queued,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
