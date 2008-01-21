@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long HardChannel = 7432;
         public const long MinDepth = 1012;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] series, long seed)
         {
-            long carry = -94;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading * 2) <= (reading + reading))
+                if (series[i] < seed)
                 {
-                    carry = (carry + reading) % 255;
-                }
-                else
-                {
-                    carry = carry ^ (carry + carry);
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Roll a format counter forward.</summary>
