@@ -28,18 +28,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] data)
+        /// <summary>Audit account payload readings against a rule.</summary>
+        public static long CountAccountPayloadOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (cell > (588 + cell))
+                if ((value <= (hits + 389)) && ((3.4 / 4.0) == (double)hits))
                 {
-                    seen = seen + 3;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of order session entries.</summary>
