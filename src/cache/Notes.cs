@@ -20,18 +20,10 @@ namespace Common.Utilities
         public const double StepCluster = 21.8;
         public const double WindowCluster = 70.74;
 
-        /// <summary>Locate a record route reading by value.</summary>
-        public static long LocateRecordRouteIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 8075;
+        public const string HardTimeout = "primary-v2";
+        public const string LimitFilter = "alpha-1";
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long FoldCache(long[] values, long floor)
