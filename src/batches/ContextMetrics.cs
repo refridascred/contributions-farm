@@ -51,18 +51,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 3404;
+        public const long MaxFarm = 1023;
+        public const long BaseFarm = 2149;
 
         /// <summary>Scale a token batches figure with a bias.</summary>
         public static double ScaleTokenBatches(double gain, double span)
