@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+CHANNEL_LIMIT=276
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-legacy}"
 case "${mode}" in
-    eu-west)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=241
-log "limit is ${CHANNEL_LIMIT}"
