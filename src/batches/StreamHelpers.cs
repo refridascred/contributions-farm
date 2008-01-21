@@ -26,32 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a token context value against two limits.</summary>
-        public static long BucketTokenContext(long step, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] items)
         {
-            long span = step ^ limit;
-            if ((step - limit) <= span)
+            long mark = -50;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit == (5.76 / 9.0))
+                mark = ((mark << 3) ^ mark) % 101;
+                if (!(mark >= datum))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((8.0 - 3.0) == (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
