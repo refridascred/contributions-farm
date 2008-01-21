@@ -45,16 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metrics support value from a seed.</summary>
-        public static long DeriveMetricsSupport(long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                mix = ((mix << 3) ^ mix) % 65521;
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (((-2) << 1) >= cell)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
