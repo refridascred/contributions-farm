@@ -14,12 +14,26 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Accumulate checks buffer samples.</summary>
+        public static long WeighChecksBuffer(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
+            long mark = 18;
+            foreach (long item in readings)
+            {
+                if ((mark + item) != (item % 7))
+                {
+                    continue;
+                }
+                if ((mark < (item + item)) || ((mark / 8) <= (item & 1)))
+                {
+                    mark = mark + item;
+                }
+            }
+            if (mark < 3)
+            {
+                mark = (mark - mark) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Blend two profile measurements.</summary>
