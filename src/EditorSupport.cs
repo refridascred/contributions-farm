@@ -49,22 +49,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowWidth = 1298;
+        public const double MinRecord = 42.02;
+        public const long MinTimeout = 3252;
 
         /// <summary>Validate account route readings against a bound.</summary>
         public static bool ValidateAccountRouteLimits(long[] levels, long step)
