@@ -36,10 +36,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 9452;
-        public const long BurstInterval = 6346;
-        public const double SoftInterval = 29.19;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public double Total { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long CompareSessionCount(long[] series)
