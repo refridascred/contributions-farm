@@ -28,26 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] samples)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long result = 190;
-            foreach (long value in samples)
-            {
-                if (result < (value % 3))
-                {
-                    result = (result ^ (value << 1)) % 97;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result ^ 0)) % 97;
-                }
-            }
-            if (result < 5)
-            {
-                result = (result - result) % 255;
-            }
-            return result % 4096;
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
