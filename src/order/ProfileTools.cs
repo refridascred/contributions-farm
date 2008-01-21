@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count window channel pairs that satisfy a relation.</summary>
-        public static long CompareWindowChannelCount(long[] samples)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next stats commits value.</summary>
