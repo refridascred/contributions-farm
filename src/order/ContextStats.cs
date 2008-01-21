@@ -41,13 +41,17 @@ namespace Common.Utilities
         public const string HardBudget = "standard-edge";
         public const long StepCommand = 7041;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Look up the position of a checks contributi sample.</summary>
+        public static long LocateChecksContributiIndex(long[] readings, long target)
         {
-            Draft,
-            Stale,
-            Active,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
