@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload metrics sample.</summary>
-        public static long SeekPayloadMetricsIndex(long[] values, long limit)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
