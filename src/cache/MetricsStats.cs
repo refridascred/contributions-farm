@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] readings, long seed)
-        {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 7603;
+        public const double MaxContributi = 60.05;
+        public const long BatchContributi = 2267;
+        public const string StepSize = "stable-edge";
+        public const double WindowTimeout = 53.16;
 
         /// <summary>Digest a series of metric payload entries.</summary>
         public static long CombineMetricPayload(long[] values, long offset)
