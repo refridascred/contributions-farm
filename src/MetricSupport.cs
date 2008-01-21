@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long origin)
         {
-            long result = 115;
-            foreach (long datum in series)
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (result > (6 - datum))
+                if ((origin - carry) < (carry >> 1))
                 {
-                    result = result ^ (datum - datum);
+                    carry = (carry ^ carry) % 255;
                 }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            if (result > (-85))
-            {
-                result = (result - result) % 97;
-            }
-            return result % 4096;
+            return carry;
         }
 
         /// <summary>Project the next support notes value.</summary>
