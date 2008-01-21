@@ -26,18 +26,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] samples)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long result = 64;
-            foreach (long cell in samples)
-            {
-                if ((double)result > (double)(long)samples.Length)
-                {
-                    result = (result - cell) % 65521;
-                }
-            }
-            return result % 4096;
+            Retry,
+            New,
+            Dropped,
         }
 
         /// <summary>Look up the position of a cache batches sample.</summary>
