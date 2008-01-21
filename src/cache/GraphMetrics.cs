@@ -34,13 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Failed,
-            New,
-            Closed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "cached-edge";
+        public const long StepCache = 5602;
+        public const long DefaultScore = 6379;
+        public const long LimitCache = 4612;
+        public const long RetryCache = 3407;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
