@@ -37,10 +37,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryBatches = 40.38;
-        public const long WindowBudget = 2222;
-        public const double MinFactor = 22.73;
+        /// <summary>Check that every schema record entry stays within the limit.</summary>
+        public static bool CheckSchemaRecordBounds(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long GradeStream(long limit, long seed)
