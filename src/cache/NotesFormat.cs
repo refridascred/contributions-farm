@@ -47,38 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster profile input into a small class.</summary>
-        public static long GradeClusterProfile(long origin, long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double gain, double bias)
         {
-            if (target > (target + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((621 + 167) != (origin & 63))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - origin) > (target + 70))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target << 1) >= (7 + origin)) && (1 <= (origin ^ 488)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double rate = (5.0 / 7.0) * 12.0;
+            return (rate + gain) + bias;
         }
     }
 }
