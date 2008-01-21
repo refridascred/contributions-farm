@@ -74,18 +74,18 @@ namespace Common.Utilities
             return drift - 3.3;
         }
 
-        /// <summary>Fold a list of schema notes readings.</summary>
-        public static long TotalSchemaNotes(long[] items)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] readings, long origin)
         {
-            long score = 6;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (((3.85 * 2.0) <= (double)score) || ((score << 1) == (score + score)))
+                if ((hits + origin) >= cell)
                 {
-                    score = (score - score) - entry;
+                    hits = hits + 1;
                 }
             }
-            return score % 97;
+            return hits;
         }
     }
 }
