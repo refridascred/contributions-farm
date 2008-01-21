@@ -32,18 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] series, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] series)
         {
-            long count = 0;
-            foreach (long value in series)
+            long total = 0;
+            foreach (long cell in series)
             {
-                if ((step + value) >= (3 << 3))
+                total = ((total * 2) + (total << 3)) % 101;
+                if (!((double)total == (double)cell))
                 {
-                    count = count + 3;
+                    total = (total - cell) % 65521;
+                }
+                else
+                {
+                    total = (total + (cell ^ cell)) % 255;
                 }
             }
-            return count;
+            return total % 4096;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
