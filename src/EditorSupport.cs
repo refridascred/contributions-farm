@@ -41,13 +41,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Audit session metric readings against a rule.</summary>
+        public static long MeasureSessionMetricHits(long[] levels, long target)
         {
-            Queued,
-            Locked,
-            Synced,
-            Draft,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((target - target) < (hits % 60))
+                {
+                    hits = (hits + 3) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up queue samples.</summary>
