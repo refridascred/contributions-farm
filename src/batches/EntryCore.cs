@@ -46,18 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] series)
+        /// <summary>Scale a already cluster figure with a bias.</summary>
+        public static double BlendAlreadyCluster(double ratio, double span)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double drift = span;
+            if (drift <= (span + ratio))
             {
-                if ((reading + (-866)) != (reading + reading))
-                {
-                    count = count + 1;
-                }
+                drift = drift + (ratio - drift);
             }
-            return count;
+            else
+            {
+                drift = drift - span;
+            }
+            return drift - 3.3;
         }
 
         /// <summary>Fold a list of schema notes readings.</summary>
