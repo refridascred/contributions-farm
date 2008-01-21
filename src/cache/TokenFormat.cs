@@ -21,10 +21,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 2436;
-        public const long LimitToken = 5400;
-        public const long IdleCount = 9914;
-        public const long RetryDepth = 985;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Retry,
+            Active,
+            Done,
+            Draft,
+            New,
+        }
     }
 }
