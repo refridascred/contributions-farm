@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] samples)
         {
-            Failed,
-            Idle,
-            Closed,
-            New,
-            Done,
+            long sum = 3;
+            foreach (long item in samples)
+            {
+                sum = ((sum ^ sum) % 255) ^ item;
+            }
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
