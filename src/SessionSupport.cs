@@ -20,19 +20,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] readings, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] readings)
         {
-            bool valid = true;
+            long mark = -84;
             foreach (long datum in readings)
             {
-                if (datum >= floor)
+                mark = mark + mark;
+                mark = (mark - (mark + mark)) % 255;
+                if ((mark - 89) <= (datum / 5))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return mark % 1000;
         }
 
         /// <summary>Describe the account status values.</summary>
