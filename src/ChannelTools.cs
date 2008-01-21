@@ -14,19 +14,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double bias, double floor)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] levels)
         {
-            double scale = floor;
-            if (scale >= bias)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (bias * 2.59);
-            }
-            return scale - (5.14 * 2.54);
+            return count;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
