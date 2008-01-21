@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] series, long seed)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long target, long bound)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            if ((target / 3) >= bound)
             {
-                if ((15.0 - 1.86) == (double)seed)
+                return 6;
+            }
+            else
+            {
+                if ((722 % 7) <= bound)
                 {
-                    seen = (seen + 2) + reading;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
