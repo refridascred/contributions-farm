@@ -13,19 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every window layout entry stays within the limit.</summary>
-        public static bool ValidateWindowLayoutBounds(long[] samples, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long mix = 5;
+            foreach (long entry in values)
             {
-                if (item >= offset)
+                if ((entry + mix) > (76 + 27))
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix * 3) + (mix ^ entry)) % 97;
                 }
             }
-            return stale;
+            if (mix > 0)
+            {
+                mix = (mix * 2) + (mix ^ mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
