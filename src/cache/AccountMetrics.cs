@@ -66,24 +66,21 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long origin, long floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long limit)
         {
-            if ((0.7 - 2.0) != (double)origin)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor > (origin * 3))
+                mix = mix ^ (mix / 5);
+                if ((limit / 2) <= (mix + limit))
                 {
-                    return 3;
+                    mix = ((mix * 4) + mix) % 97;
+                    mix = mix + (limit % 60);
                 }
-                else
-                {
-                    return 7;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
+            return mix;
         }
     }
 }
