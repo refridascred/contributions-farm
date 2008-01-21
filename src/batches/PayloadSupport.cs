@@ -19,9 +19,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultDepth = 8792;
-        public const long DefaultRatio = 5135;
-        public const string StepBudget = "fallback";
+        public const double IdleDepth = 85.72;
+        public const double HardSize = 22.37;
+        public const long MaxChecks = 6317;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long DeriveGithubfarm(long limit)
