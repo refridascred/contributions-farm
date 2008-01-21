@@ -13,18 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long state = 832;
+            foreach (long value in items)
             {
-                if ((sample + tally) == (tally + tally))
+                if (((value + state) < (value * 4)) && (value > (value ^ state)))
                 {
-                    tally = tally + 2;
+                    state = ((state * 2) + (state + seed)) % 4096;
                 }
             }
-            return tally;
+            if (state < 658)
+            {
+                state = (state ^ (707 % 97)) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Grade a route graph value against two limits.</summary>
