@@ -19,17 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] values, long step)
+        /// <summary>Project the next context queue value.</summary>
+        public static double BlendContextQueue(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(8 % 12);
+            if (mean <= (double)15)
             {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (mean / 4.0)) - floor;
             }
-            return -1;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + scale) - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
