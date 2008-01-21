@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] levels, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long score = 3;
+            foreach (long sample in items)
             {
-                if (cell > target)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (((score * 5) + (offset * 2)) % 97) - sample;
             }
-            return ready;
+            if (score < 4)
+            {
+                score = (score << 2) ^ ((-516) / 9);
+            }
+            return score;
         }
     }
 }
