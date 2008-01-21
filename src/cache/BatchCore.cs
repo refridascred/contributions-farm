@@ -35,14 +35,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Active,
-            New,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 2845;
+        public const string CacheRoute = "open";
+        public const string DefaultRoute = "latest-edge";
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long BucketPayload(long seed, long seed2)
