@@ -58,21 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Validate account route readings against a bound.</summary>
+        public static bool ValidateAccountRouteLimits(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell <= step)
                 {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
