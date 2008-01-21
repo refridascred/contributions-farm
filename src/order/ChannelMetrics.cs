@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit cache graph readings against a rule.</summary>
-        public static long AuditCacheGraphGaps(long[] series, long bound)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((bound + tally) == (tally + datum))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
