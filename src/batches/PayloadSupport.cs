@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Paused,
-            Queued,
-            New,
-            Synced,
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
