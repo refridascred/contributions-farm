@@ -49,11 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double gain, double bias)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double rate = (5.0 / 7.0) * 12.0;
-            return (rate + gain) + bias;
+            Ready,
+            Synced,
+            Paused,
+            Locked,
+            Done,
         }
     }
 }
