@@ -38,19 +38,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((tally + tally) == (tally ^ 70))
-                {
-                    tally = (tally + 3) - value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheSize = 3150;
+        public const string MinChecks = "staging-v2";
+        public const double RetryChecks = 83.29;
+        public const long HardLevel = 6434;
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
