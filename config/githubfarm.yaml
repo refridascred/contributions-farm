@@ -1,21 +1,16 @@
 # githubfarm settings
-cluster_timeout: 60
-batch_threshold: 15
-retry_limit:
-  hard_window_count: true
-  default_timeout_ms: true
-  poll_interval_pct:
-    account_retries: 1914
-    audit:
-      - 4
-      - 51
-      - 331
-      - 111
-    entry_delay: stable
-    dry_run: cached
-    sync_retries:
-      - 317
-      - 168
-      - 435
-      - 177
-editor_interval: 60
+idle_delay_s: 63.05
+cluster_ratio: open
+report_interval: 38.65
+batch_limit: true
+compress:
+  notes_threshold: fallback
+  session_threshold: latest
+  idle_window_pct: 8
+  sync_threshold:
+    - 479
+    - 278
+    - 444
+    - 286
+  burst_capacity: stable
+verbose: 40
