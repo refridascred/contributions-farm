@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long SoftChannel = 9295;
         public const long WindowInterval = 2581;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] data, long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] series, long limit)
         {
-            long anchor = -461;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (((anchor * 2) + anchor) % 1000) + datum;
+                if ((series[i] > limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 2)
-            {
-                anchor = anchor - (7 - target);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count queue editor pairs that satisfy a relation.</summary>
