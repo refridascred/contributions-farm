@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const string StepSize = "stable-edge";
         public const double WindowTimeout = 53.16;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
