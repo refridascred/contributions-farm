@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            New,
+            Queued,
+            Closed,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a batch summary.</summary>
