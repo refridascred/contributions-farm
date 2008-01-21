@@ -62,19 +62,19 @@ namespace Common.Utilities
         public const long DefaultLevel = 2026;
         public const long DefaultTools = 6596;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] items, long limit)
+        /// <summary>Validate checks route readings against a bound.</summary>
+        public static bool CheckChecksRouteLimits(long[] readings, long offset)
         {
-            long sum = 84;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                sum = (((sum * 3) + 232) % 255) + limit;
-                if ((sum * 2) < (9 - sample))
+                if (datum > offset)
                 {
-                    sum = (sum - sample) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return found;
         }
 
         /// <summary>Hold a cache stats.</summary>
