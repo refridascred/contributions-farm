@@ -43,21 +43,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleSpan = 35.91;
+        public const long BatchMetric = 5558;
+        public const string SoftMetric = "stable-1";
+        public const long CacheMetric = 4103;
     }
 }
