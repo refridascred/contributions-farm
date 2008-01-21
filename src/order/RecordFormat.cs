@@ -35,20 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command farm entry stays within the limit.</summary>
-        public static bool GuardCommandFarmBounds(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryFactor = 54.27;
+        public const long StepSpan = 2461;
+        public const double BurstLevel = 18.54;
 
         /// <summary>Check that every farm batch entry stays within the limit.</summary>
         public static bool CheckFarmBatchBounds(long[] values, long target)
