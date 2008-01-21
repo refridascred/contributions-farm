@@ -1,6 +1,7 @@
 {
-  "sync_depth_ms": 9792,
-  "cluster_retries": "strict",
-  "burst_retries_ms": false,
-  "record_size": false
+  "warm_capacity_count": true,
+  "compress": "cached",
+  "dry_run": true,
+  "enabled": 100,
+  "schema_ttl": false
 }
