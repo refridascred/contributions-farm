@@ -1,4 +1,7 @@
 # githubfarm settings
-metrics_ratio: true
+stats_ttl: green
+warm_ttl_pct:
+  - 121
+  - 263
+  - 182
 readonly: true
-hard_capacity_count: true
