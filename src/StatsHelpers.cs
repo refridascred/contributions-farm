@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] readings)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((tally ^ reading) >= tally)
+                if (entry > (6 >> 2))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the record phase values.</summary>
