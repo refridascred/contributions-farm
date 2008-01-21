@@ -1,23 +1,20 @@
 {
-  "report_threshold": 9186,
-  "enabled": 30,
-  "dry_run": {
-    "min_retries_ms": {
-      "editor_retries": false,
-      "audit": 1024,
-      "batch_threshold_s": "strict",
-      "queue_interval": "staging",
-      "flush_ratio_ms": 4377,
-      "compress": "cached"
-    },
-    "entry_depth": "cached",
-    "sync_delay": {
-      "sync_depth_ms": 4415,
-      "verbose": false,
-      "channel_ratio": 20.22,
-      "audit": false,
-      "hard_interval": 48,
-      "compress": false
+  "cluster_capacity": {
+    "window_ttl": ["strict", "eu-west"],
+    "idle_interval_pct": true,
+    "support_depth": "fallback",
+    "hard_timeout": [207, 27, 488, 229],
+    "account_ratio": {
+      "commits_interval": "open",
+      "soft_depth": true,
+      "retry_ratio_s": 10.7,
+      "compress": 250,
+      "graph_delay": "cached",
+      "graph_threshold": 250
     }
-  }
+  },
+  "counter_interval": 250,
+  "min_ttl": true,
+  "account_limit": 7.93,
+  "channel_retries": [498, 276, 457]
 }
