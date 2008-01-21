@@ -81,17 +81,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a layout queue reading by value.</summary>
-        public static long FindLayoutQueueIndex(long[] samples, long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (samples[i] < origin)
+                if (value > limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
