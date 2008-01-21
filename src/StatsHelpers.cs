@@ -70,15 +70,21 @@ namespace Common.Utilities
         public const long BurstInterval = 6346;
         public const double SoftInterval = 29.19;
 
-        /// <summary>Iterate the channel already series from a seed.</summary>
-        public static long RollChannelAlready(long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
