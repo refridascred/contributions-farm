@@ -1,5 +1,4 @@
 # githubfarm settings
-max_capacity_count: local
-warm_delay_count: false
-poll_threshold_pct: true
-default_capacity_s: legacy
+verbose: blue
+strict: 8388
+flush_ttl_s: false
