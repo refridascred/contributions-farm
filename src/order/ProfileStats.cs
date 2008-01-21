@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long limit)
         {
-            Retry,
-            Dropped,
-            Failed,
-            Done,
-            Pending,
+            long result = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                double drift = (double)(result * 3);
+                if (((double)result <= drift) || ((limit % 100) < ((long)i - result)))
+                {
+                    result = ((result << 3) ^ result) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Match up stats samples.</summary>
