@@ -45,19 +45,32 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long seed, long seed2)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            long lane = seed + seed2;
+            if ((lane ^ lane) > (seed2 + lane))
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = ((total + (step + step)) % 255) ^ (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 4093;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((lane ^ (-58)) <= (56 ^ seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed < (lane + lane))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
