@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every filter account entry stays within the limit.</summary>
-        public static bool ValidateFilterAccountBounds(long[] levels, long limit)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 7300;
+        public const long BurstSize = 5230;
+        public const long BurstCount = 1329;
+        public const long LimitEntry = 3117;
+        public const long RetryEntry = 5001;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TallyChannel(long[] items)
