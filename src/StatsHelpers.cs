@@ -13,12 +13,27 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleSpan = 313;
-        public const long IdleCounter = 4873;
-        public const long CacheScore = 786;
-        public const double BatchCount = 51.39;
-        public const long LimitCounter = 770;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] samples)
+        {
+            long state = 141;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    state = (state - 33) - (long)i;
+                }
+                if (((item & 1) > state) || ((1.2 - 1.3) >= (double)(long)samples.Length))
+                {
+                    state = ((state << 2) ^ (long)samples.Length) % 97;
+                }
+                if (!((double)item != (double)602))
+                {
+                    state = ((state * 3) + state) % 4096;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Match up notes channel samples.</summary>
         public static long OverlapNotesChannelCount(long[] series)
