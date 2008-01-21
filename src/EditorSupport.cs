@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] data)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long target, long step)
         {
-            long total = 3;
-            foreach (long datum in data)
+            if (((step - target) >= target) && ((step - 68) < (step + (-37))))
             {
-                if (34 > datum)
+                return 8;
+            }
+            else
+            {
+                if (step < (5 + step))
                 {
-                    total = (total ^ datum) % 97;
+                    return 2;
+                }
+                else
+                {
+                    if (!(target >= (9 & 31)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
