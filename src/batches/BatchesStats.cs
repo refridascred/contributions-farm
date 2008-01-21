@@ -39,38 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long step, long origin)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            if (((step >> 4) >= (origin + 7)) && ((step & 15) < origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((step + origin) != (946 - origin)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + 364) > (step + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((616 - 2) < step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Dropped,
+            Idle,
+            Stale,
+            Ready,
         }
 
         /// <summary>Blend two editor measurements.</summary>
