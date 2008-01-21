@@ -51,19 +51,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] series, long offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long limit, long floor)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long slot = limit ^ floor;
+            if (((double)floor != (2.78 * 3.0)) || ((double)floor != (7.0 + 8.58)))
             {
-                if (cell != offset)
+                return 1;
+            }
+            else
+            {
+                if (floor <= (slot - 8))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
     }
 }
