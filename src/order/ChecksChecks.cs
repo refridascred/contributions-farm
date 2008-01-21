@@ -48,17 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long floor)
+        /// <summary>Locate a token tools reading by value.</summary>
+        public static long FindTokenToolsIndex(long[] series, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 2) + (carry << 3)) % 4096;
-                carry = (carry * 3) + ((long)i >> 3);
-                carry = ((carry * 2) + (long)i) % 101;
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
