@@ -1,11 +1,14 @@
 # support settings
-buffer_interval: 6354
-default_interval: latest
-burst_limit_s: eu-west
-audit:
-  readonly: 60
-  warm_delay: false
-  base_depth_s: 37.55
-  sync_limit: false
-  max_delay_s: 9122
-  min_depth_ms: 3671
+audit: 96
+enabled: edge
+cache_interval:
+  cache_limit_ms:
+    - 309
+    - 22
+    - 129
+    - 378
+  cache_interval_s: true
+  audit: true
+strict: edge
+channel_limit: 56
+sync_depth_ms: true
