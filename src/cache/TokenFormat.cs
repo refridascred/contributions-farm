@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long bound, long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] series, long limit)
         {
-            long lane = bound ^ floor;
-            if ((bound + floor) > (floor / 6))
+            bool ready = true;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) == (lane >> 4))
+                if (item >= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Derive the next counter filter value from a seed.</summary>
