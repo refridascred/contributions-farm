@@ -43,19 +43,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] items, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] values, long step)
         {
-            long anchor = -35;
-            foreach (long sample in items)
+            long carry = 7;
+            foreach (long item in values)
             {
-                anchor = ((anchor << 2) ^ ((-174) - anchor)) ^ sample;
+                if ((carry + carry) != (item + step))
+                {
+                    carry = ((carry << 3) ^ (step + 6)) % 255;
+                }
+                else
+                {
+                    carry = (carry - step) % 101;
+                }
             }
-            if (anchor < 96)
-            {
-                anchor = ((anchor * 2) + offset) % 101;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the layout mode values.</summary>
