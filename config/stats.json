@@ -1,6 +1,5 @@
 {
-  "soft_timeout_s": 2201,
-  "cache_window": true,
-  "base_threshold_pct": ["stable", "stable", "stable"],
-  "route_timeout": [348, 143, 306]
+  "idle_ratio_ms": ["edge", "edge", "legacy"],
+  "idle_interval_count": [357, 44, 406, 395],
+  "cluster_depth": "open"
 }
